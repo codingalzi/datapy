@@ -339,7 +339,7 @@ np.arange(0, 1, 0.1)
 # | --- | --- | --- |
 # | int8, uint8 | i1, u1 | signed/unsigned 8 비트 정수|
 # | int16, uint16 | i2, u2 | signed/unsigned 16 비트 정수|
-# | int32, uint32 | i4, u5 | signed/unsigned 32 비트 정수|
+# | int32, uint32 | i4, u4 | signed/unsigned 32 비트 정수|
 # | int64, uint64 | i8, u8 | signed/unsigned 64 비트 정수|
 # | float16 | f2 | 16비트(반 정밀도) 부동소수점 |
 # | float32 | f4 또는 f | 32비트(단 정밀도) 부동소수점 |
@@ -360,12 +360,28 @@ arr1 = np.array([1, 2, 3], dtype=np.float64)
 arr1.dtype
 
 
-# **`int32` 자료형**
-
 # In[25]:
 
 
+arr1 = np.array([1, 2, 3], dtype='f8')
+
+arr1.dtype
+
+
+# **`int32` 자료형**
+
+# In[26]:
+
+
 arr2 = np.array([1, 2, 3], dtype=np.int32)
+
+arr2.dtype
+
+
+# In[27]:
+
+
+arr2 = np.array([1, 2, 3], dtype='i4')
 
 arr2.dtype
 
@@ -377,14 +393,14 @@ arr2.dtype
 # 
 # * `int` 자료형을 `float` 자료형으로 형변환하기
 
-# In[26]:
+# In[28]:
 
 
 arr = np.array([1, 2, 3, 4, 5])
 arr.dtype
 
 
-# In[27]:
+# In[29]:
 
 
 float_arr = arr.astype(np.float64)
@@ -394,14 +410,14 @@ float_arr.dtype
 # * `float` 자료형을 `int` 자료형으로 형변환하기
 #     - 소수점 이하는 버림.
 
-# In[28]:
+# In[30]:
 
 
 arr = np.array([3.7, -1.2, -2.6, 0.5, 12.9, 10.1])
 arr
 
 
-# In[29]:
+# In[31]:
 
 
 arr.astype(np.int32)
@@ -409,14 +425,14 @@ arr.astype(np.int32)
 
 # * 숫자 형식의 문자열을 숫자로 형변환하기
 
-# In[30]:
+# In[32]:
 
 
 numeric_strings = np.array(['1.25', '-9.6', '42'], dtype=np.string_)
 numeric_strings.dtype
 
 
-# In[31]:
+# In[33]:
 
 
 numeric_strings.astype(float)
@@ -425,7 +441,7 @@ numeric_strings.astype(float)
 # **주의사항:** 문자열 자료형의 크기는 넘파이가 알아서 임의로 정하며, 부동소수점으로 형변환하면 
 # 지정된 정밀도에 따라 소수점 이하를 자른다.
 
-# In[32]:
+# In[34]:
 
 
 numeric_strings2 = np.array(['1.25345', '-9.673811345', '42'], dtype=np.string_)
@@ -438,7 +454,7 @@ numeric_strings2.dtype
 # np.set_printoptions(precision=4, suppress=True)
 # ```
 
-# In[33]:
+# In[35]:
 
 
 numeric_strings2.astype(float)
@@ -446,13 +462,13 @@ numeric_strings2.astype(float)
 
 # 부동소수점 정밀도를 변경하면 그에 따라 다르게 결정된다.
 
-# In[34]:
+# In[36]:
 
 
 np.set_printoptions(precision=6, suppress=True)
 
 
-# In[35]:
+# In[37]:
 
 
 numeric_strings2.astype(float)
@@ -460,20 +476,20 @@ numeric_strings2.astype(float)
 
 # `astype()` 메서드의 인자로 다른 배열의 `dtype` 정보를 이용할 수도 있다.
 
-# In[36]:
+# In[38]:
 
 
 int_array = np.arange(10)
 int_array.dtype
 
 
-# In[37]:
+# In[39]:
 
 
 calibers = np.array([.22, .270, .357, .380, .44, .50], dtype=np.float64)
 
 
-# In[38]:
+# In[40]:
 
 
 int_array.astype(calibers.dtype)
@@ -481,7 +497,7 @@ int_array.astype(calibers.dtype)
 
 # 자료형 코드를 이용하여 `dtype`을 지정할 수 있다. (위 테이블 참조)
 
-# In[39]:
+# In[41]:
 
 
 empty_uint32 = np.empty(8, dtype='u4')
@@ -493,14 +509,14 @@ empty_uint32.dtype
 # 넘파이 어레이 연산은 기본적으로 항목별로 이루어진다. 
 # 즉, 지정된 연산을 동일한 위치의 항목끼리 실행하여 새로운, 동일한 모양의 어레이를 생성한다.
 
-# In[40]:
+# In[42]:
 
 
 arr = np.array([[1., 2., 3.], [4., 5., 6.]])
 arr
 
 
-# In[41]:
+# In[43]:
 
 
 arr2 = np.array([[3., 4., 1.], [7., 2., 12.]])
@@ -509,7 +525,7 @@ arr2
 
 # **덧셈**
 
-# In[42]:
+# In[44]:
 
 
 arr * arr2
@@ -517,7 +533,7 @@ arr * arr2
 
 # 숫자와의 연산은 모든 항목에 동일한 값을 사용한다.
 
-# In[43]:
+# In[45]:
 
 
 arr * 2.4
@@ -525,13 +541,13 @@ arr * 2.4
 
 # **뺄셈**
 
-# In[44]:
+# In[46]:
 
 
 arr - arr2
 
 
-# In[45]:
+# In[47]:
 
 
 3.78 - arr
@@ -542,19 +558,19 @@ arr - arr2
 # 나눗셈 또한 항목별로 연산이 이루어진다. 
 # 따라서 0이 항목으로 포함되면 오류가 발생한다.
 
-# In[46]:
+# In[48]:
 
 
 arr / arr2
 
 
-# In[47]:
+# In[49]:
 
 
 1 / arr
 
 
-# In[48]:
+# In[50]:
 
 
 arr / 3.2
@@ -562,19 +578,19 @@ arr / 3.2
 
 # **거듭제곱(지수승)**
 
-# In[49]:
+# In[51]:
 
 
 arr ** arr2
 
 
-# In[50]:
+# In[52]:
 
 
 2 ** arr
 
 
-# In[51]:
+# In[53]:
 
 
 arr ** 0.5
@@ -582,37 +598,37 @@ arr ** 0.5
 
 # **비교**
 
-# In[52]:
+# In[54]:
 
 
 arr2 > arr
 
 
-# In[53]:
+# In[55]:
 
 
 arr2 <= arr
 
 
-# In[54]:
+# In[56]:
 
 
 1.2 < arr
 
 
-# In[55]:
+# In[57]:
 
 
 1.2 >= arr2
 
 
-# In[56]:
+# In[58]:
 
 
 arr == arr
 
 
-# In[57]:
+# In[59]:
 
 
 arr != arr2
@@ -624,19 +640,19 @@ arr != arr2
 # * `&`: 논리곱(and) 연산자
 # * `|`: 논리합(or) 연산자
 
-# In[58]:
+# In[60]:
 
 
 ~(arr == arr)
 
 
-# In[59]:
+# In[61]:
 
 
 (arr == arr) & (arr2 == arr2)
 
 
-# In[60]:
+# In[62]:
 
 
 ~(arr == arr) | (arr2 != arr)
