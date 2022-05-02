@@ -184,7 +184,7 @@ np.divmod(arr3, arr4)
 # 
 # __주의사항:__ `for` 반복문을 전혀 사용하지 않아야 한다.
 
-# <img src="https://github.com/codingalzi/pydata/blob/master/notebooks/images/graphs/meshgrid20x20.png?raw=true" style="width:400px;">
+# <div align="center" border="1px"><img src="https://github.com/codingalzi/pydata/blob/master/notebooks/images/graphs/meshgrid20x20.png?raw=true" style="width:400px;"></div>
 
 # 먼저 `arange()` 함수를 이용하여 -1와 1 사이의 구간을 20개의 구간으로 균등하게 
 # 나누는 어레이를 생성하려면

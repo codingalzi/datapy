@@ -196,7 +196,7 @@ arr2d[0][2]
 arr2d[0, 2]
 
 
-# <img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy146.png" style="width:300px;">
+# <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy146.png" style="width:300px;"></div>
 
 # ## 3차원 어레이 인덱싱
 
@@ -336,7 +336,7 @@ arr2d[:3]
 arr2d[:2, 1:]
 
 
-# <img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy149-1.png" style="width:350px;">
+# <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy149-1.png" style="width:350px;"></div>
 
 # 인덱싱과 슬라이싱이 행과 열 각각에 대해 독립적으로 사용될 수 있다.
 
@@ -349,7 +349,7 @@ arr2d[:2, 1:]
 arr2d[1, :2]
 
 
-# <img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy149-4.png" style="width:350px;">
+# <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy149-4.png" style="width:350px;"></div>
 
 # **주의사항:** 인덱싱을 사용하는 만큼 결과 어레이의 차원이 기존 어레이의 차원보다 1씩 줄어든다.
 
@@ -389,7 +389,7 @@ arr2d[1:2, :2].shape
 arr2d[:, :2]
 
 
-# <img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy149-3.png" style="width:350px;">
+# <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy149-3.png" style="width:350px;"></div>
 
 # In[38]:
 
@@ -404,63 +404,72 @@ arr2d[:2, 1:] = 0
 arr2d
 
 
-# **예제**
-
+# :::{prf:example}
+# :label: array_indexing_slicing
+# 
 # 먼저 아래 그림 모양의 2차원 어레이를 생성한다.
 # 길이가 36인 1차원 어레이를 (6, 6) 모양의 2차원 어레이로 항목을 재배열하기 위해
 # `reshape()` 함수를 사용한다.
 # `reshape()` 함수에 대한 자세한 설명은 뒤에서 이루어진다.
-
-# In[40]:
-
-
-arr = np.arange(36).reshape((6, 6))
-arr
-
-
-# <img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy-2darray.png" style="width:250px;">
 # 
-# <그림 출처: [geeksforgeeks](https://www.geeksforgeeks.org/numpy-indexing/)>
-
+# ```python
+# >>> arr = np.arange(36).reshape((6, 6)) + np.arange(0, 21, 4).reshape(6, 1)
+# >>> arr
+# array([[ 0,  1,  2,  3,  4,  5],
+#        [10, 11, 12, 13, 14, 15],
+#        [20, 21, 22, 23, 24, 25],
+#        [30, 31, 32, 33, 34, 35],
+#        [40, 41, 42, 43, 44, 45],
+#        [50, 51, 52, 53, 54, 55]])
+# ```
+# 
+# <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy-2darray.png" style="width:250px;"></div>
+# 
+# <그림 출처: [Scipy Lecture Notes](https://scipy-lectures.org/intro/numpy/array_object.html#indexing-and-slicing)>
+# 
 # 위 그림에 색깔별로 표시된 어레이를 슬라이싱을 이용하여 구하라.
-
-# * 주황색 1차원 어레이
-
-# In[41]:
-
-
-arr[0, 3:5]
-
-
-# * 빨강색 2차원 어레이
-#     - 주의: 위아래 모양은 2차원 어레이로 간주한다.
-
-# In[42]:
-
-
-arr[:, 2:3]
-
-
-# 만약에 열에 대해 슬라이싱 대신 인덱싱을 사용하면 1차원 어레이를 얻는다.
-
-# In[43]:
-
-
-arr[:, 2]
-
-
-# **스텝**
 # 
-# 리스트 슬라이싱의 경우처럼 스텝도 사용할 수 있다.
-
+# * 빨강색 1차원 어레이
+# 
+# ```python
+# >>> arr[0, 3:5]
+# array([3, 4])
+# ```
+# 
+# * 파랑색 2차원 어레이
+# 
+# ```python
+# >>> arr[:, 2:3]
+# array([[ 2],
+#        [12],
+#        [22],
+#        [32],
+#        [42],
+#        [52]])
+# ```
+# 
+# 만약에 열에 대해 슬라이싱 대신 인덱싱을 사용하면 1차원 어레이를 얻는다.
+# 
+# ```python
+# >>> arr[:, 2]
+# ```
+# 
+# * 보라색 2차원 어레이 (스텝 활용)
+# 
+# ```python
+# >>> arr[2:5:2, 0::2]
+# array([[20, 22, 24],
+#        [40, 42, 44]])
+# ```
+# 
 # * 초록색 2차원 어레이
-#     - 초록색 칸의 항목들을 슬라이싱 하려면 두 칸씩 건너뛰는 __스텝__을 사용한 슬라이싱을 이용해야 한다.
-
-# In[44]:
-
-
-arr[2:5:2, 0::2]
-
+# 
+# ```python
+# >>> arr[4:, 4:]
+# array([[44, 45],
+#        [54, 55]])
+# ```
+# :::
 
 # ### 3차원 어레이 인덱싱/슬라이싱
 
@@ -473,7 +482,7 @@ arr[2:5:2, 0::2]
 # 
 # **주의사항:** 아래와 같은 코드가 있다는 정도 기억해 두기 바란다.
 
-# In[45]:
+# In[40]:
 
 
 import scipy.misc
@@ -485,7 +494,7 @@ face = scipy.misc.face()
 # * `imshow()` 함수는 3차원 이미지 어레이를 이미지로 보여주는 함수이다.
 # * `show()` 함수는 지정된 여러 개의 이미지를 동시에 화면에 띄우는 기능을 갖는 함수이다.
 
-# In[46]:
+# In[41]:
 
 
 plt.imshow(face)
@@ -494,7 +503,7 @@ plt.show()
 
 # `face`는 아래 모양의 3차원 어레이를 가리킨다.
 
-# In[47]:
+# In[42]:
 
 
 face.shape
@@ -514,19 +523,19 @@ face.shape
 # 
 # 어레이에 사용된 값들의 정확한 자료형은 `uint8`, 즉, 8바이트로 표현된 양의 정수 자료형이다.
 
-# In[48]:
+# In[43]:
 
 
 face.dtype
 
 
-# In[49]:
+# In[44]:
 
 
 face.min()
 
 
-# In[50]:
+# In[45]:
 
 
 face.max()
@@ -540,7 +549,7 @@ face.max()
 # 
 # RGB 정보의 최댓값이 255이기에 모든 항목을 255로 나누어 0과 1사이의 값으로 정규화시킨다.
 
-# In[51]:
+# In[46]:
 
 
 face = face/255
@@ -552,7 +561,7 @@ face = face/255
 # 예를 들어, 빨강색 정보만 가져오려면 아래처럼 3차원 인덱싱을 실행한다.
 # 아래 코드는 이미지의 행과 열은 그대로 두고 RGB 정보에서 R(빨강)에 대한 정보만 인덱싱으로 가져온다.
 
-# In[52]:
+# In[47]:
 
 
 face_gray_red = face[:,:,0]
@@ -565,7 +574,7 @@ face_gray_red = face[:,:,0]
 # [Matplotlib: Choosing Colormaps](https://matplotlib.org/stable/tutorials/colors/colormaps.html)를
 # 참조한다.
 
-# In[53]:
+# In[48]:
 
 
 plt.imshow(face_gray_red, cmap='gray')
@@ -586,18 +595,18 @@ plt.show()
 # 벡터 내적 연산은 `dot()` 함수를 이용한 어레이의 내적 연산으로 쉽게 계산된다.
 # 
 # ```python
-# face_gray = np.dot(face, [0.2989, 0.5870,0.114])
+# >>> face_gray = np.dot(face, [0.2989, 0.5870,0.114])
 # ```
 # 
 # 결과는 2차원 어레이며, 흑백 이미지의 정보를 모두 갖고 있다.
 # 따라서 보다 선명한 명암을 보여주는 이미지가 결과로 나온다.
 # 
 # ```python
-# plt.imshow(face_gray, cmap=plt.get_cmap('gray'))
-# plt.show()
+# >>> plt.imshow(face_gray, cmap=plt.get_cmap('gray'))
+# >>> plt.show()
 # ```
 # 
-# <img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/face_black_white.png" style="width:500px;">
+# <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/face_black_white.png" style="width:500px;"></div>
 # :::
 
 # ### 이미지 크기 조정
@@ -609,9 +618,9 @@ plt.show()
 # 아래 코드는 행과 열에 대해 모두 스텝 2를 지정하고 슬라이싱을 적용한다. 
 # 즉, `2x2` 모양을 이루는 네 개의 픽셀 중에 상단 왼편에 있는 픽셀만 선택한다.
 
-# <img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/interpolation01.png" style="width:150px;">
+# <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/interpolation01.png" style="width:150px;"></div>
 
-# In[54]:
+# In[49]:
 
 
 face_half_simple = face[::2, ::2,:]
@@ -619,7 +628,7 @@ face_half_simple = face[::2, ::2,:]
 
 # 행과 열의 픽셀 수가 모두 절반으로 줄었다.
 
-# In[55]:
+# In[50]:
 
 
 face_half_simple.shape
@@ -627,7 +636,7 @@ face_half_simple.shape
 
 # 이미지를 확인하면 살짝 흐려진 느낌을 받는다.
 
-# In[56]:
+# In[51]:
 
 
 plt.imshow(face_half_simple)
@@ -642,21 +651,21 @@ plt.show()
 # 
 # 아래 코드는 짝수 인덱스의 값과 홀수 인덱스의 값의 평균을 취하는 방식으로 보간법을 활용한다.
 
-# <img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/interpolation02.png" style="width:150px;">
+# <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/interpolation02.png" style="width:150px;"></div>
 
-# In[57]:
+# In[52]:
 
 
 face_half_interpolation = (face[::2, ::2, :] + face[1::2, 1::2, :])/2
 
 
-# In[58]:
+# In[53]:
 
 
 face_half_interpolation.shape
 
 
-# In[59]:
+# In[54]:
 
 
 plt.imshow(face_half_interpolation)
@@ -665,13 +674,13 @@ plt.show()
 
 # 4분의 1 크기의 두 이미지 데이터가 조금 다르기는 하지만 이미지 상으로 차이점을 발견하기 어렵다.
 
-# In[60]:
+# In[55]:
 
 
 face_half_interpolation[:2]
 
 
-# In[61]:
+# In[56]:
 
 
 face_half_simple[:2]
@@ -692,7 +701,7 @@ face_half_simple[:2]
 # 
 # * 중복된 이름을 포함하면서 길이가 7인 1차원 어레이.
 
-# In[62]:
+# In[57]:
 
 
 names = np.array(['Bob', 'Joe', 'Will', 'Bob', 'Will', 'Joe', 'Joe'])
@@ -704,7 +713,7 @@ names
 #     - __주의사항:__ 인자로 하나의 튜플이 아닌 여러 개의 인자 사용. 
 #         각각의 인자가 각각의 행(축 0), 열(축 1) 등에 사용되는 항목의 개수 지정.
 
-# In[63]:
+# In[58]:
 
 
 np.random.seed(3)
@@ -716,7 +725,7 @@ data
 # `names`에 포함된 이름이 Bob인지 여부를 확인하면 부울 값으로 이루어진 길이가 7인 어레이가 생성된다.
 # 즉, 항목별 비교 연산이 이루어진다.
 
-# In[64]:
+# In[59]:
 
 
 name_Bob = names == 'Bob'
@@ -733,7 +742,7 @@ name_Bob
 # 결과는 `data`에서 0번행과 3번행만 가져온다.
 # 이유는 `name_Bob`에서 0번, 3번 인덱스의 항목만 `True`이기 때문이다.
 
-# In[65]:
+# In[60]:
 
 
 data[name_Bob]
@@ -746,7 +755,7 @@ data[name_Bob]
 # * 행 기준: Bob이 포함된 행의 인덱스를 갖는 행
 # * 열 기준: 2번 열 이후 전체
 
-# In[66]:
+# In[61]:
 
 
 data[name_Bob, 2:]
@@ -755,7 +764,7 @@ data[name_Bob, 2:]
 # * 행 기준: Bob이 포함된 행의 인덱스를 갖는 행
 # * 열 기준: 3번 열
 
-# In[67]:
+# In[62]:
 
 
 data[name_Bob, 3]
@@ -766,13 +775,13 @@ data[name_Bob, 3]
 # 예를 들어, 이름이 Bob 아닌 이름이 위치한 인덱스에 해당하는 행만 가져오려면
 # `==` 대신에 `~=`를 이용하거나 `==`와 `~` 연산자를 함께 이용한다.
 
-# In[68]:
+# In[63]:
 
 
 data[names != 'Bob']
 
 
-# In[69]:
+# In[64]:
 
 
 data[~name_Bob]
@@ -780,14 +789,14 @@ data[~name_Bob]
 
 # 다음은 Bob 또는 Will 이 위치한 인덱스에 해당하는 행만 가져온다.
 
-# In[70]:
+# In[65]:
 
 
 mask = (names == 'Bob') | (names == 'Will')
 mask
 
 
-# In[71]:
+# In[66]:
 
 
 data[mask]
@@ -806,14 +815,14 @@ data[mask]
 # 
 # 아래 코드는 `names`에서 Joe가 사용되지 않은 항목의 인덱스에 해당하는 행에 포함된 항목을 모두 7로 변경한다.
 
-# In[72]:
+# In[67]:
 
 
 mask = names != 'Joe'
 mask
 
 
-# In[73]:
+# In[68]:
 
 
 data[mask] = 7
@@ -824,7 +833,7 @@ data
 # 
 # 부울 인덱싱은 뷰를 이용하지 않고 항상 새로운 어레이를 생성한다.
 
-# In[74]:
+# In[69]:
 
 
 data2 = data[names == 'Bob']
@@ -833,7 +842,7 @@ data2
 
 # `data2`의 0번 행을 모두 -1로 변경해도 `data`는 변하지 않는다.
 
-# In[75]:
+# In[70]:
 
 
 data2[0] = -1
@@ -842,7 +851,7 @@ data2
 
 # 하지만 `data`는 변경되지 않았다.
 
-# In[76]:
+# In[71]:
 
 
 data
@@ -853,7 +862,7 @@ data
 # 아래 표현식은 `data`와 동일한 모양의 부울 어레이를 생성한다.
 # 이유는 부등호 연산이 항목별로 작동하기 때문이다.
 
-# In[77]:
+# In[72]:
 
 
 mask = data < 0
@@ -862,7 +871,7 @@ mask
 
 # 음수 항목만 끄집어 내면 1차원 어레이가 된다.
 
-# In[78]:
+# In[73]:
 
 
 data[mask]
@@ -871,7 +880,7 @@ data[mask]
 # `mask`를 이용하여 모든 음수 항목을 0으로 변경할 수도 있다.
 # 방식은 리스트의 인덱싱을 이용하여 항목을 변경하는 방식과 매우 유사하다.
 
-# In[79]:
+# In[74]:
 
 
 data[mask] = 0
@@ -885,13 +894,13 @@ data
 # 아래 (8, 4) 모양의 2차원 어레이를 이용해서 팬시 인덱싱을 설명한다.
 # 팬시 인덱싱은 객체를 항상 새로 생성한다. 즉, 뷰 기능을 이용하지 않는다. 
 
-# In[80]:
+# In[75]:
 
 
 arr = np.empty((8, 4))
 
 
-# In[81]:
+# In[76]:
 
 
 for i in range(8):
@@ -902,7 +911,7 @@ arr
 
 # 아래 코드는 `arr` 의 4번, 3번, 0번, 6번 인덱스에 해당하는 항목을 모아서 새로운 어레이를 생성한다.
 
-# In[82]:
+# In[77]:
 
 
 arr[[4, 3, 0, 6]]
@@ -911,7 +920,7 @@ arr[[4, 3, 0, 6]]
 # 음수를 인덱스로 사용하면 맨 아래에 위치한 행부터 순서를 매긴다. 
 # 밑에서 셋째, 다섯째, 일곱째 항목으로 이루어진 어레이는 다음과 같이 구한다.
 
-# In[83]:
+# In[78]:
 
 
 arr[[-3, -5, -7]]
@@ -920,7 +929,7 @@ arr[[-3, -5, -7]]
 # 여러 개의 인덱스 어레이를 사용하면 1차원 어레이가 생성된다. 
 # 이유는 각각의 인덱스 어레이가 각 축의 좌표로 사용되기 때문이다.
 
-# In[84]:
+# In[79]:
 
 
 arr = np.arange(32).reshape((8, 4))
@@ -930,7 +939,7 @@ arr
 # (1, 0), (5, 3), (7, 2), (2, 2) 좌표에 위치한 항목으로 이루어진 어레이는 다음과 같이 
 # 축별로 항목을 모아놓은 두 개의 어레이를 사용해서 패신 인덱싱을 진행한다.
 
-# In[85]:
+# In[80]:
 
 
 arr[[1, 5, 7, 2], [0, 3, 1, 2]]
@@ -938,8 +947,55 @@ arr[[1, 5, 7, 2], [0, 3, 1, 2]]
 
 # 2차원 어레이를 얻고자 한다면 다음과 같이 해야 한다.
 
-# In[86]:
+# In[81]:
 
 
 arr[[1, 5, 7, 2]][:, [0, 3, 1, 2]]
 
+
+# :::{prf:example}
+# :label: fancy_indexing
+# 
+# 아래 이미지 모양의 2차원 어레이에서 색깔로 구분된 1차원 또는 2차원 어레이를 추출해보자.
+# 
+# <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/fancy_indexing.png" style="width:250px;"></div>
+# 
+# <그림 출처: [Scipy Lecture Notes](https://scipy-lectures.org/intro/numpy/array_object.html#indexing-and-slicing)>
+# 
+# 먼저 이미지 모양의 2차원 어레이를 다음처럼 생성한다.
+# 
+# ```python
+# >>> arr = np.arange(36).reshape(6, 6) + np.arange(0, 21, 4).reshape(6, 1)
+# >>> arr
+# array([[ 0,  1,  2,  3,  4,  5],
+#        [10, 11, 12, 13, 14, 15],
+#        [20, 21, 22, 23, 24, 25],
+#        [30, 31, 32, 33, 34, 35],
+#        [40, 41, 42, 43, 44, 45],
+#        [50, 51, 52, 53, 54, 55]])
+# ```
+# 
+# * 초록색 1차원 어레이 
+# 
+# ```python
+# >>> arr[(0,1,2,3,4), (1,2,3,4,5)]
+# array([ 1, 12, 23, 34, 45])
+# ```
+# 
+# * 빨강색 1차원 어레이
+# 
+# ```python
+# >>> mask = np.array([1,0,1,0,0,1], dtype=bool)
+# >>> arr[mask, 2]
+# array([ 2, 22, 52])
+# ```
+# 
+# * 파랑색 2차원 어레이
+# 
+# ```python
+# >>> arr[3:, [0,2,5]]
+# array([[30, 32, 35],
+#        [40, 42, 45],
+#        [50, 52, 55]])
+# ```
+# :::

@@ -199,14 +199,14 @@ arr1.shape
 #     (R, G, B) 색상 정보를 담은 길이 3인 튜플을 표현함.
 #     (RGB 정보는 각각 0과 1 사이의 부동소수점으로 구현됨)
 
-# <img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/impixelregion.png" style="width:5=700px;">
+# <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/impixelregion.png" style="width:5=700px;"></div>
 # 
 # <그림 출처: [Big Data & Image Processing](http://maprabu.blogspot.com/2013/08/dont-photoshop-just-matlab-it.html)>
 
 # * 방법 2: (m, p) 모양의 2차원 어레이 n 개를 항목으로 갖는 1차원 어레이로 이해하기.
 #     아래 그림 참조.
 
-# <img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/np-array.png" style="width:500px;">
+# <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/np-array.png" style="width:500px;"></div>
 # 
 # <그림 출처: [NumPy Arrays and Data Analysis](https://www.reallifeedublogging.com/2020/07/numpy-arrays-and-data-analysis.html)>
 
