@@ -497,8 +497,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>넘파이 어레이에 대해 슬라이싱을 실행하면 지정된 구간에 해당하는 어레이를 새로 생성하는 게 아니라
 지정된 구간의 정보를 이용만 한다.
 이렇게 작동하는 기능이 <strong>뷰</strong>(view)이다.
-즉, 어레이를 새로 생성하지 않고 기존 어레이를 적절하게 활용한다.</p>
-<p><strong>참고:</strong> 넘파이 어레이와 관련된 많은 기능이 뷰 기능을 이용한다. 이전에 소개한 전치 어레이를
+즉, 어레이를 새로 생성하지 않고 기존 어레이를 적절하게 활용한다.
+넘파이 어레이와 관련된 많은 기능이 뷰 기능을 이용한다. 이전에 소개한 전치 어레이를
 구하는 과정도 뷰를 이용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -660,7 +660,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy146.png" style="width:300px;"></div>
+<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy146.png" style="width:300px;"></div></div>
 </div>
 <div class="section" id="id5">
 <h2><span class="section-number">2.2. </span>3차원 어레이 인덱싱<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
@@ -906,7 +906,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy149-1.png" style="width:350px;"><p>인덱싱과 슬라이싱이 행과 열 각각에 대해 독립적으로 사용될 수 있다.</p>
+<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy149-1.png" style="width:350px;"></div><p>인덱싱과 슬라이싱이 행과 열 각각에 대해 독립적으로 사용될 수 있다.</p>
 <ul class="simple">
 <li><p>행 기준: 1번 행 인덱싱</p></li>
 <li><p>열 기준: 2번 열 이전까지</p></li>
@@ -923,7 +923,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy149-4.png" style="width:350px;"><p><strong>주의사항:</strong> 인덱싱을 사용하는 만큼 결과 어레이의 차원이 기존 어레이의 차원보다 1씩 줄어든다.</p>
+<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy149-4.png" style="width:350px;"></div><p><strong>주의사항:</strong> 인덱싱을 사용하는 만큼 결과 어레이의 차원이 기존 어레이의 차원보다 1씩 줄어든다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr2d</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span>
@@ -985,7 +985,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy149-3.png" style="width:350px;"><div class="cell docutils container">
+<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy149-3.png" style="width:350px;"></div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr2d</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
@@ -1014,107 +1014,67 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p><strong>예제</strong></p>
-<p>아래 그림 모양의 2차원 어레이를 생성한다.</p>
-<p><strong>참고:</strong> 아래에서는 길이가 36인 1차원 어레이를 (6, 6) 모양의 2차원 어레이로 항목을 재배열하기 위해
+<div class="proof example admonition" id="array_indexing_slicing">
+<p class="admonition-title"><span class="caption-number">Example 2.1 </span></p>
+<div class="example-content section" id="proof-content">
+<p>먼저 아래 그림 모양의 2차원 어레이를 생성한다.
+길이가 36인 1차원 어레이를 (6, 6) 모양의 2차원 어레이로 항목을 재배열하기 위해
 <code class="docutils literal notranslate"><span class="pre">reshape()</span></code> 함수를 사용한다.
 <code class="docutils literal notranslate"><span class="pre">reshape()</span></code> 함수에 대한 자세한 설명은 뒤에서 이루어진다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">36</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">arr</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">36</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span>
+<span class="go">array([[ 0,  1,  2,  3,  4,  5],</span>
+<span class="go">       [10, 11, 12, 13, 14, 15],</span>
+<span class="go">       [20, 21, 22, 23, 24, 25],</span>
+<span class="go">       [30, 31, 32, 33, 34, 35],</span>
+<span class="go">       [40, 41, 42, 43, 44, 45],</span>
+<span class="go">       [50, 51, 52, 53, 54, 55]])</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0,  1,  2,  3,  4,  5],
-       [ 6,  7,  8,  9, 10, 11],
-       [12, 13, 14, 15, 16, 17],
-       [18, 19, 20, 21, 22, 23],
-       [24, 25, 26, 27, 28, 29],
-       [30, 31, 32, 33, 34, 35]])
-</pre></div>
-</div>
-</div>
-</div>
-<img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy-2darray.png" style="width:250px;">
-<p>&lt;그림 출처: <a class="reference external" href="https://www.geeksforgeeks.org/numpy-indexing/">geeksforgeeks</a>&gt;</p>
+<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy-2darray.png" style="width:250px;"></div>
+<p>&lt;그림 출처: <a class="reference external" href="https://scipy-lectures.org/intro/numpy/array_object.html#indexing-and-slicing">Scipy Lecture Notes</a>&gt;</p>
 <p>위 그림에 색깔별로 표시된 어레이를 슬라이싱을 이용하여 구하라.</p>
 <ul class="simple">
-<li><p>주황색 1차원 어레이</p></li>
+<li><p>빨강색 1차원 어레이</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<span class="go">array([3, 4])</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3, 4])
-</pre></div>
-</div>
-</div>
 </div>
 <ul class="simple">
-<li><p>빨강색 2차원 어레이</p>
-<ul>
-<li><p>주의: 위아래 모양은 2차원 어레이로 간주한다.</p></li>
+<li><p>파랑색 2차원 어레이</p></li>
 </ul>
-</li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="go">array([[ 2],</span>
+<span class="go">       [12],</span>
+<span class="go">       [22],</span>
+<span class="go">       [32],</span>
+<span class="go">       [42],</span>
+<span class="go">       [52]])</span>
 </pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2],
-       [ 8],
-       [14],
-       [20],
-       [26],
-       [32]])
-</pre></div>
-</div>
-</div>
 </div>
 <p>만약에 열에 대해 슬라이싱 대신 인덱싱을 사용하면 1차원 어레이를 얻는다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 2,  8, 14, 20, 26, 32])
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>스텝</strong></p>
-<p>리스트 슬라이싱의 경우처럼 스텝도 사용할 수 있다.</p>
 <ul class="simple">
-<li><p>초록색 2차원 어레이</p>
-<ul>
-<li><p>초록색 칸의 항목들을 슬라이싱 하려면 두 칸씩 건너뛰는 __스텝__을 사용한 슬라이싱을 이용해야 한다.</p></li>
+<li><p>보라색 2차원 어레이 (스텝 활용)</p></li>
 </ul>
-</li>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
+<span class="go">array([[20, 22, 24],</span>
+<span class="go">       [40, 42, 44]])</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>초록색 2차원 어레이</p></li>
 </ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span><span class="p">[</span><span class="mi">4</span><span class="p">:,</span> <span class="mi">4</span><span class="p">:]</span>
+<span class="go">array([[44, 45],</span>
+<span class="go">       [54, 55]])</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[12, 14, 16],
-       [24, 26, 28]])
-</pre></div>
-</div>
-</div>
-</div>
-</div>
+</div></div>
 <div class="section" id="id7">
 <h3><span class="section-number">2.2.2. </span>3차원 어레이 인덱싱/슬라이싱<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>기본적으로 2차원 어레이 슬라이싱 기능과 동일하게 작동한다.
@@ -1144,7 +1104,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/array_indexing_110_0.png" src="_images/array_indexing_110_0.png" />
+<img alt="_images/array_indexing_96_0.png" src="_images/array_indexing_96_0.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">face</span></code>는 아래 모양의 3차원 어레이를 가리킨다.</p>
@@ -1230,9 +1190,9 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 </div>
-<p>흑백사진으로 보여주려면 <code class="docutils literal notranslate"><span class="pre">imshow()</span></code> 함수의 <code class="docutils literal notranslate"><span class="pre">cmap</span></code> 키워드 인자를 gray style 을 사용하도록 지정해야 한다.</p>
-<p><strong>참고:</strong> <code class="docutils literal notranslate"><span class="pre">cmap</span></code> 키워드: 색상 지도(color map)을 가리키는 매개변수이며,
-<code class="docutils literal notranslate"><span class="pre">'gray'</span></code>를 사용하여 흑백사진으로 출력한다.
+<p>흑백사진으로 보여주려면 <code class="docutils literal notranslate"><span class="pre">imshow()</span></code> 함수의 <code class="docutils literal notranslate"><span class="pre">cmap</span></code> 키워드 인자를 그레이(회색) 스타일을
+사용하도록 지정해야 한다.
+<code class="docutils literal notranslate"><span class="pre">cmap</span></code> 은 색상 지도(color map)을 가리키는 매개변수이며, <code class="docutils literal notranslate"><span class="pre">'gray'</span></code>를 인자로 지정하면 흑백사진으로 출력한다.
 색상 지도에 대한 자세한 안내는
 <a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">Matplotlib: Choosing Colormaps</a>를
 참조한다.</p>
@@ -1244,51 +1204,29 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/array_indexing_126_0.png" src="_images/array_indexing_126_0.png" />
+<img alt="_images/array_indexing_112_0.png" src="_images/array_indexing_112_0.png" />
 </div>
 </div>
-<p><strong>참고:</strong> 진정한 흑백사진으로 변경하려면 RGB 정보를 전부 이용하여 하나의 값을 계산해야 한다.
+<div class="info admonition">
+<p class="admonition-title">흑백 사진 변환</p>
+<p>진정한 흑백사진으로 변경하려면 RGB 정보를 전부 이용하여 하나의 값을 계산해야 한다.
 흑백 이미지의 명암을 구현하는 <strong>벡터 내적</strong> 수식은 다음과 같다.</p>
 <div class="math notranslate nohighlight">
 \[
 [R, G, B]\cdot[0.2989, 0.5870, 0.1140]
 = 0.2989 \cdot R + 0.5870 \cdot G + 0.1140 \cdot B
 \]</div>
-<p>벡터 내적 연산은 어레이의 내적 연산을 통해 쉽게 계산할 수 있다.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">dot()</span></code> 함수: 벡터 내적 계산</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">face_gray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">face</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.2989</span><span class="p">,</span> <span class="mf">0.5870</span><span class="p">,</span><span class="mf">0.114</span><span class="p">])</span>
+<p>벡터 내적 연산은 <code class="docutils literal notranslate"><span class="pre">dot()</span></code> 함수를 이용한 어레이의 내적 연산으로 쉽게 계산된다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">face_gray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">face</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.2989</span><span class="p">,</span> <span class="mf">0.5870</span><span class="p">,</span><span class="mf">0.114</span><span class="p">])</span>
 </pre></div>
 </div>
-</div>
-</div>
-<p>결과는 2차원 어레이며, 흑백 이미지의 정보를 모두 갖고 있다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">face_gray</span><span class="o">.</span><span class="n">shape</span>
+<p>결과는 2차원 어레이며, 흑백 이미지의 정보를 모두 갖고 있다.
+따라서 보다 선명한 명암을 보여주는 이미지가 결과로 나온다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">face_gray</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;gray&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(768, 1024)
-</pre></div>
-</div>
-</div>
-</div>
-<p>보다 선명한 명암을 보여주는 이미지가 결과로 나온다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">face_gray</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;gray&#39;</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/array_indexing_133_0.png" src="_images/array_indexing_133_0.png" />
-</div>
+<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/face_black_white.png" style="width:500px;"></div>
 </div>
 </div>
 <div class="section" id="id8">
@@ -1298,7 +1236,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 일부 데이터가 상실되지만 작은 이미지에는 눈으로 보일 정도로 영향을 받지는 않는다.</p>
 <p>아래 코드는 행과 열에 대해 모두 스텝 2를 지정하고 슬라이싱을 적용한다.
 즉, <code class="docutils literal notranslate"><span class="pre">2x2</span></code> 모양을 이루는 네 개의 픽셀 중에 상단 왼편에 있는 픽셀만 선택한다.</p>
-<img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/interpolation01.png" style="width:150px;"><div class="cell docutils container">
+<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/interpolation01.png" style="width:150px;"></div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">face_half_simple</span> <span class="o">=</span> <span class="n">face</span><span class="p">[::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">,:]</span>
 </pre></div>
@@ -1327,7 +1265,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/array_indexing_141_0.png" src="_images/array_indexing_141_0.png" />
+<img alt="_images/array_indexing_121_0.png" src="_images/array_indexing_121_0.png" />
 </div>
 </div>
 <p><strong>보간법</strong></p>
@@ -1335,7 +1273,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 이미지 크기 변경에 사용되는 다양한 보간법 기법이 있지만 여기서는 두 픽셀 사이의 평균값을 취하는 방식을 이용한다.
 보간법의 다양한 방식에 대한 설명은 <a class="reference external" href="https://m.blog.naver.com/vps32/221762092250">OpenCV 보간법</a>을 참조한다.</p>
 <p>아래 코드는 짝수 인덱스의 값과 홀수 인덱스의 값의 평균을 취하는 방식으로 보간법을 활용한다.</p>
-<img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/interpolation02.png" style="width:150px;"><div class="cell docutils container">
+<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/interpolation02.png" style="width:150px;"></div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">face_half_interpolation</span> <span class="o">=</span> <span class="p">(</span><span class="n">face</span><span class="p">[::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">face</span><span class="p">[</span><span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">,</span> <span class="p">:])</span><span class="o">/</span><span class="mi">2</span>
 </pre></div>
@@ -1362,7 +1300,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/array_indexing_147_0.png" src="_images/array_indexing_147_0.png" />
+<img alt="_images/array_indexing_127_0.png" src="_images/array_indexing_127_0.png" />
 </div>
 </div>
 <p>4분의 1 크기의 두 이미지 데이터가 조금 다르기는 하지만 이미지 상으로 차이점을 발견하기 어렵다.</p>
@@ -1418,7 +1356,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 </div>
-<p><strong>참고:</strong> 4차원 이상의 어레이에 대해서는 기본적으로 2, 3차원 어레이 대상과 동일하게 작동한다.
+<p>4차원 이상의 어레이에 대해서는 기본적으로 2, 3차원 어레이 대상과 동일하게 작동한다.
 하지만 시각화가 기본적으로 불가능하고, 사람이 직접 4차원 이상의 슬라이싱을 조작하는 것도 매우 어렵다.
 따라서 2, 3차원 어레이 슬라이싱의 기본 아이디어만 이해했다면 그것으로 충분하다는 점만 언급한다.</p>
 </div>
@@ -1457,19 +1395,21 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">data</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.2047,  0.4789, -0.5194, -0.5557],
-       [ 1.9658,  1.3934,  0.0929,  0.2817],
-       [ 0.769 ,  1.2464,  1.0072, -1.2962],
-       [ 0.275 ,  0.2289,  1.3529,  0.8864],
-       [-2.0016, -0.3718,  1.669 , -0.4386],
-       [-0.5397,  0.477 ,  3.2489, -1.0212],
-       [-0.5771,  0.1241,  0.3026,  0.5238]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.7886,  0.4365,  0.0965, -1.8635],
+       [-0.2774, -0.3548, -0.0827, -0.627 ],
+       [-0.0438, -0.4772, -1.3139,  0.8846],
+       [ 0.8813,  1.7096,  0.05  , -0.4047],
+       [-0.5454, -1.5465,  0.9824, -1.1011],
+       [-1.185 , -0.2056,  1.4861,  0.2367],
+       [-1.0238, -0.713 ,  0.6252, -0.1605]])
 </pre></div>
 </div>
 </div>
@@ -1504,8 +1444,8 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.2047,  0.4789, -0.5194, -0.5557],
-       [ 0.275 ,  0.2289,  1.3529,  0.8864]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.7886,  0.4365,  0.0965, -1.8635],
+       [ 0.8813,  1.7096,  0.05  , -0.4047]])
 </pre></div>
 </div>
 </div>
@@ -1524,8 +1464,8 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.5194, -0.5557],
-       [ 1.3529,  0.8864]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.0965, -1.8635],
+       [ 0.05  , -0.4047]])
 </pre></div>
 </div>
 </div>
@@ -1541,7 +1481,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.5557,  0.8864])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-1.8635, -0.4047])
 </pre></div>
 </div>
 </div>
@@ -1557,11 +1497,11 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.9658,  1.3934,  0.0929,  0.2817],
-       [ 0.769 ,  1.2464,  1.0072, -1.2962],
-       [-2.0016, -0.3718,  1.669 , -0.4386],
-       [-0.5397,  0.477 ,  3.2489, -1.0212],
-       [-0.5771,  0.1241,  0.3026,  0.5238]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.2774, -0.3548, -0.0827, -0.627 ],
+       [-0.0438, -0.4772, -1.3139,  0.8846],
+       [-0.5454, -1.5465,  0.9824, -1.1011],
+       [-1.185 , -0.2056,  1.4861,  0.2367],
+       [-1.0238, -0.713 ,  0.6252, -0.1605]])
 </pre></div>
 </div>
 </div>
@@ -1573,11 +1513,11 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.9658,  1.3934,  0.0929,  0.2817],
-       [ 0.769 ,  1.2464,  1.0072, -1.2962],
-       [-2.0016, -0.3718,  1.669 , -0.4386],
-       [-0.5397,  0.477 ,  3.2489, -1.0212],
-       [-0.5771,  0.1241,  0.3026,  0.5238]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.2774, -0.3548, -0.0827, -0.627 ],
+       [-0.0438, -0.4772, -1.3139,  0.8846],
+       [-0.5454, -1.5465,  0.9824, -1.1011],
+       [-1.185 , -0.2056,  1.4861,  0.2367],
+       [-1.0238, -0.713 ,  0.6252, -0.1605]])
 </pre></div>
 </div>
 </div>
@@ -1603,16 +1543,19 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.2047,  0.4789, -0.5194, -0.5557],
-       [ 0.769 ,  1.2464,  1.0072, -1.2962],
-       [ 0.275 ,  0.2289,  1.3529,  0.8864],
-       [-2.0016, -0.3718,  1.669 , -0.4386]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.7886,  0.4365,  0.0965, -1.8635],
+       [-0.0438, -0.4772, -1.3139,  0.8846],
+       [ 0.8813,  1.7096,  0.05  , -0.4047],
+       [-0.5454, -1.5465,  0.9824, -1.1011]])
 </pre></div>
 </div>
 </div>
 </div>
-<p><strong>참고:</strong> 부울 인덱싱에 사용되는 부울 어레이를 <strong>마스크</strong>(mask)라고 한다.
+<div class="info admonition">
+<p class="admonition-title">부울 마스크</p>
+<p>부울 인덱싱에 사용되는 부울 어레이를 <strong>부울 마스크</strong>(boolean mask)라고 한다.
 따라서 mask 단어가 종종 부울 인덱싱에 사용되는 마스크 변수로 사용된다.</p>
+</div>
 </div>
 <div class="section" id="id11">
 <h3><span class="section-number">2.3.2. </span>항목 업데이트<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
@@ -1640,12 +1583,12 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 7.    ,  7.    ,  7.    ,  7.    ],
-       [ 1.9658,  1.3934,  0.0929,  0.2817],
+       [-0.2774, -0.3548, -0.0827, -0.627 ],
        [ 7.    ,  7.    ,  7.    ,  7.    ],
        [ 7.    ,  7.    ,  7.    ,  7.    ],
        [ 7.    ,  7.    ,  7.    ,  7.    ],
-       [-0.5397,  0.477 ,  3.2489, -1.0212],
-       [-0.5771,  0.1241,  0.3026,  0.5238]])
+       [-1.185 , -0.2056,  1.4861,  0.2367],
+       [-1.0238, -0.713 ,  0.6252, -0.1605]])
 </pre></div>
 </div>
 </div>
@@ -1692,12 +1635,12 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 7.    ,  7.    ,  7.    ,  7.    ],
-       [ 1.9658,  1.3934,  0.0929,  0.2817],
+       [-0.2774, -0.3548, -0.0827, -0.627 ],
        [ 7.    ,  7.    ,  7.    ,  7.    ],
        [ 7.    ,  7.    ,  7.    ,  7.    ],
        [ 7.    ,  7.    ,  7.    ,  7.    ],
-       [-0.5397,  0.477 ,  3.2489, -1.0212],
-       [-0.5771,  0.1241,  0.3026,  0.5238]])
+       [-1.185 , -0.2056,  1.4861,  0.2367],
+       [-1.0238, -0.713 ,  0.6252, -0.1605]])
 </pre></div>
 </div>
 </div>
@@ -1716,17 +1659,31 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[False, False, False, False],
+       [ True,  True,  True,  True],
        [False, False, False, False],
        [False, False, False, False],
        [False, False, False, False],
-       [False, False, False, False],
-       [ True, False, False,  True],
-       [ True, False, False, False]])
+       [ True,  True, False, False],
+       [ True,  True, False,  True]])
 </pre></div>
 </div>
 </div>
 </div>
-<p>이제 <code class="docutils literal notranslate"><span class="pre">mask</span></code>를 이용하여 모든 음수 항목을 0으로 변경할 수 있다.
+<p>음수 항목만 끄집어 내면 1차원 어레이가 된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.2774, -0.3548, -0.0827, -0.627 , -1.185 , -0.2056, -1.0238,
+       -0.713 , -0.1605])
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">mask</span></code>를 이용하여 모든 음수 항목을 0으로 변경할 수도 있다.
 방식은 리스트의 인덱싱을 이용하여 항목을 변경하는 방식과 매우 유사하다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1738,12 +1695,12 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[7.    , 7.    , 7.    , 7.    ],
-       [1.9658, 1.3934, 0.0929, 0.2817],
+       [0.    , 0.    , 0.    , 0.    ],
        [7.    , 7.    , 7.    , 7.    ],
        [7.    , 7.    , 7.    , 7.    ],
        [7.    , 7.    , 7.    , 7.    ],
-       [0.    , 0.477 , 3.2489, 0.    ],
-       [0.    , 0.1241, 0.3026, 0.5238]])
+       [0.    , 0.    , 1.4861, 0.2367],
+       [0.    , 0.    , 0.6252, 0.    ]])
 </pre></div>
 </div>
 </div>
@@ -1752,8 +1709,9 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 <div class="section" id="id14">
 <h2><span class="section-number">2.4. </span>팬시 인덱싱<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
-<p><strong>팬시 인덱싱</strong><font size='2'>fancy indexing</font>은 정수를 이용한다.
-아래 (8, 4) 모양의 2차원 어레이를 이용해서 팬시 인덱싱을 설명한다.</p>
+<p><strong>팬시 인덱싱</strong><font size='2'>fancy indexing</font>은 정수 배열을 이용한다.
+아래 (8, 4) 모양의 2차원 어레이를 이용해서 팬시 인덱싱을 설명한다.
+팬시 인덱싱은 객체를 항상 새로 생성한다. 즉, 뷰 기능을 이용하지 않는다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
@@ -1867,8 +1825,49 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 </div>
-<p><strong>참고:</strong> 팬시 인덱싱은 객체를 항상 새로 생성한다. 즉, 뷰 기능을 이용하지 않는다.</p>
+<div class="proof example admonition" id="fancy_indexing">
+<p class="admonition-title"><span class="caption-number">Example 2.2 </span></p>
+<div class="example-content section" id="proof-content">
+<p>아래 이미지 모양의 2차원 어레이에서 색깔로 구분된 1차원 또는 2차원 어레이를 추출해보자.</p>
+<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/fancy_indexing.png" style="width:250px;"></div>
+<p>&lt;그림 출처: <a class="reference external" href="https://scipy-lectures.org/intro/numpy/array_object.html#indexing-and-slicing">Scipy Lecture Notes</a>&gt;</p>
+<p>먼저 이미지 모양의 2차원 어레이를 다음처럼 생성한다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">36</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span>
+<span class="go">array([[ 0,  1,  2,  3,  4,  5],</span>
+<span class="go">       [10, 11, 12, 13, 14, 15],</span>
+<span class="go">       [20, 21, 22, 23, 24, 25],</span>
+<span class="go">       [30, 31, 32, 33, 34, 35],</span>
+<span class="go">       [40, 41, 42, 43, 44, 45],</span>
+<span class="go">       [50, 51, 52, 53, 54, 55]])</span>
+</pre></div>
 </div>
+<ul class="simple">
+<li><p>초록색 1차원 어레이</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)]</span>
+<span class="go">array([ 1, 12, 23, 34, 45])</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>빨강색 1차원 어레이</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="go">array([ 2, 22, 52])</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>파랑색 2차원 어레이</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">]]</span>
+<span class="go">array([[30, 32, 35],</span>
+<span class="go">       [40, 42, 45],</span>
+<span class="go">       [50, 52, 55]])</span>
+</pre></div>
+</div>
+</div>
+</div></div>
 </div>
 
     <script type="text/x-thebe-config">

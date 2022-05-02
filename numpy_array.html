@@ -365,8 +365,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 14.3 ms, sys: 365 µs, total: 14.7 ms
-Wall time: 13.6 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 14.3 ms, sys: 407 µs, total: 14.7 ms
+Wall time: 13.7 ms
 </pre></div>
 </div>
 </div>
@@ -378,8 +378,8 @@ Wall time: 13.6 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 495 ms, sys: 101 ms, total: 596 ms
-Wall time: 594 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 480 ms, sys: 111 ms, total: 591 ms
+Wall time: 589 ms
 </pre></div>
 </div>
 </div>
@@ -550,13 +550,13 @@ Wall time: 594 ms
 (R, G, B) 색상 정보를 담은 길이 3인 튜플을 표현함.
 (RGB 정보는 각각 0과 1 사이의 부동소수점으로 구현됨)</p></li>
 </ul>
-<img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/impixelregion.png" style="width:5=700px;">
+<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/impixelregion.png" style="width:5=700px;"></div>
 <p>&lt;그림 출처: <a class="reference external" href="http://maprabu.blogspot.com/2013/08/dont-photoshop-just-matlab-it.html">Big Data &amp; Image Processing</a>&gt;</p>
 <ul class="simple">
 <li><p>방법 2: (m, p) 모양의 2차원 어레이 n 개를 항목으로 갖는 1차원 어레이로 이해하기.
 아래 그림 참조.</p></li>
 </ul>
-<img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/np-array.png" style="width:500px;">
+<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/np-array.png" style="width:500px;"></div>
 <p>&lt;그림 출처: <a class="reference external" href="https://www.reallifeedublogging.com/2020/07/numpy-arrays-and-data-analysis.html">NumPy Arrays and Data Analysis</a>&gt;</p>
 <p>위 이미지를 직접 구현하면 다음과 같다.</p>
 <ul class="simple">
@@ -717,11 +717,11 @@ Wall time: 594 ms
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[0.0000e+000, 0.0000e+000],
         [0.0000e+000, 0.0000e+000],
-        [6.9307e-310, 4.5159e-037]],
+        [1.7248e+276, 7.4911e-067]],
 
-       [[1.3142e-071, 6.3995e+170],
-        [1.4360e-051, 4.0347e+175],
-        [8.8398e+165, 1.7717e-051]]])
+       [[3.2200e-057, 1.2112e-071],
+        [1.5614e+161, 6.2852e-038],
+        [1.8162e-052, 7.3540e-043]]])
 </pre></div>
 </div>
 </div>
@@ -770,8 +770,8 @@ Wall time: 594 ms
 <p><code class="docutils literal notranslate"><span class="pre">dtype</span></code>은 어레이 항목의 자료형을 담고 있으며, 파이썬 표준 라이브러리에서 제공하는
 <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code> 등을 보다 세분화시킨 자료형을 제공한다.
 여기서는 세분화된 자료형을 일일이 설명하기 보다는 예제를 이용하여 세분화된 자료형의 형식을
-살펴본다.</p>
-<p><strong>참고:</strong> 자료형 세분화는 주로 자료형의 객체가 사용하는 메모리 용량을 제한하는 형식으로 이루어진다.
+살펴본다.
+자료형 세분화는 주로 자료형의 객체가 사용하는 메모리 용량을 제한하는 형식으로 이루어진다.
 이를 통해 보다 메모리 효율적이며 빠른 계산이 가능해졌다.</p>
 <table class="colwidths-auto table">
 <thead>
