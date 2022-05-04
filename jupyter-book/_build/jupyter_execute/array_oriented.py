@@ -1112,8 +1112,4 @@ plt.show()
 
 # ## 연습 문제
 
-# In[ ]:
-
-
-
-
+# 참고: [(실습) 어레이 중심 프로그래밍](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-array_oriented.ipynb)

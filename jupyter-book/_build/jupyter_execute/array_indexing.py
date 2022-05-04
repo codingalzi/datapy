@@ -1002,8 +1002,4 @@ arr[[1, 5, 7, 2]][:, [0, 3, 1, 2]]
 
 # ## 연습문제
 
-# In[ ]:
-
-
-
-
+# 참고: [(실습) 어레이 인덱싱](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-array_indexing.ipynb)

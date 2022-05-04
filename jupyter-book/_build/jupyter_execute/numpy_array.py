@@ -659,8 +659,4 @@ arr != arr2
 
 # ## 연습문제
 
-# In[ ]:
-
-
-
-
+# 참고: [(실습) 넘파이 어레이](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-numpy_array.ipynb)
