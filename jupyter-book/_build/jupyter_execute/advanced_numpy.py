@@ -627,3 +627,7 @@ arr
 arr[:2] = [[-1.37], [0.509]]
 arr
 
+
+# ## 연습문제
+
+# 참고: [(실습) 고급 넘파이](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-advanced_array.ipynb)
