@@ -189,7 +189,7 @@ def dot_product(x: Vector, y: Vector) -> float:
 # 매개변수 `xs`가 정수들의 리스트를 입력받을 것으로 기대하며,
 # 리스트의 메소드의 목록을 보여주며 코드 작성을 도와준다.
 
-# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/type_annotation.png" width="50%"></div>
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/type_annotation.png" width="90%"></div>
 
 # ### 자료형 힌트 사용법
 

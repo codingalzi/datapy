@@ -94,7 +94,7 @@ grades2 : Vector = [85, 82, 79, 82]
 # 
 # 벡터 $a$와 벡터 $b$의 합 $a+b$의 의미를 아래 그래프에서처럼 해석할 수 있다.
 
-# <img src="https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/images/vector_addition.png" width="40%">
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/vector_addition.png" width="40%"></div>
 # 
 # 출처: [위키백과](https://en.wikipedia.org/wiki/Euclidean_vector)
 
@@ -172,7 +172,7 @@ vector_sum([[1, 2], [3, 4], [5, 6], [7, 8]])
 # 
 # 벡터 $a$와 벡터 $b$의 합 $a-b$의 의미를 아래 그래프에서처럼 해석할 수 있다.
 
-# <img src="https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/images/vector_subtraction.png" width="20%">
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/vector_subtraction.png" width="20%"></div>
 # 
 # 출처: [위키백과](https://en.wikipedia.org/wiki/Euclidean_vector)
 
@@ -219,8 +219,8 @@ subtractV(grades1, grades2)
 # 
 # <table>
 # <tr>
-#     <td><img src="https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/images/Scalar_mult_3.png" width="60%"></td>
-#     <td><img src="https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/images/Scalar_mult_2.png" width="60%"></td>
+#     <td><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Scalar_mult_3.png" width="60%"></td>
+#     <td><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Scalar_mult_2.png" width="60%"></td>
 # </tr>
 # </table>
 # 
@@ -295,7 +295,7 @@ vector_mean([[1, 2], [2, 1], [2, 3]])
 # 두 개의 벡터 $A$와 $B$가 주어졌고, 벡터 $B$의 길이가 1이라고 가정하자.
 # 그러면 내적 $A \cdot B$는 벡터 $A$가 벡터 $B$ 방향으로 사영되었을 때의 길이를 나타낸다. 
 
-# <img src="https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/images/dot_product.png" width="20%">
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/dot_product.png" width="20%"></div>
 # 
 # 출처: [위키백과](https://en.wikipedia.org/wiki/Dot_product)
 
@@ -697,7 +697,7 @@ subtractM(C, D)
 
 # 그림으로 나타내면 다음과 같다.
 
-# <img src="https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/images/Matrix_mult_diagram.png" width="30%">
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Matrix_mult_diagram.png" width="30%"></div>
 # 
 # 출처: [위키백과](https://en.wikipedia.org/wiki/Dot_product)
 
