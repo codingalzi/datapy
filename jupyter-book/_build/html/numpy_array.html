@@ -38,12 +38,9 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -106,6 +103,21 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="advanced_numpy.html">
    4. 고급 넘파이
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="type_annotations.html">
+   5. 자료형 힌트
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="linear_algebra_basics.html">
+   6. 선형대수 기초 밑바닥부터
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="statistics_basics.html">
+   7. 통계 기초 밑바닥부터
   </a>
  </li>
 </ul>
@@ -390,8 +402,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 15.9 ms, sys: 0 ns, total: 15.9 ms
-Wall time: 14.8 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 242 µs, sys: 10.2 ms, total: 10.4 ms
+Wall time: 10.3 ms
 </pre></div>
 </div>
 </div>
@@ -403,8 +415,8 @@ Wall time: 14.8 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 477 ms, sys: 120 ms, total: 597 ms
-Wall time: 595 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 313 ms, sys: 59.3 ms, total: 372 ms
+Wall time: 371 ms
 </pre></div>
 </div>
 </div>
