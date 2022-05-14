@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # 선형대수 기초 밑바닥부터
+# # 선형대수 기초
 
 # **참고** 
 # 

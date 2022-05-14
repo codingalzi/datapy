@@ -6,12 +6,16 @@ root: intro
 options:
   numbered: True
 #  only_build_toc_files: true
-chapters:
-- file: numpy_array
-- file: array_indexing
-- file: array_oriented
-- file: advanced_numpy
-- file: type_annotations
-- file: linear_algebra_basics
-- file: statistics_basics
+parts:
+  - caption: 밑바닥부터
+    chapters:
+    - file: type_annotations
+    - file: linear_algebra_basics
+    - file: statistics_basics
+  - caption: 넘파이
+    chapters:
+    - file: numpy_array
+    - file: array_indexing
+    - file: array_oriented
+    - file: advanced_numpy
 
