@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>7. 통계 기초 밑바닥부터 &#8212; 파이썬 데이터 분석</title>
+    <title>통계 기초 &#8212; 파이썬 데이터 분석</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -43,17 +43,19 @@
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="6. 선형대수 기초 밑바닥부터" href="linear_algebra_basics.html" />
+    <link rel="next" title="넘파이 어레이" href="numpy_array.html" />
+    <link rel="prev" title="선형대수 기초" href="linear_algebra_basics.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -85,40 +87,52 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="numpy_array.html">
-   1. 넘파이 어레이
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="array_indexing.html">
-   2. 어레이 인덱싱
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="array_oriented.html">
-   3. 어레이 중심 프로그래밍
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="advanced_numpy.html">
-   4. 고급 넘파이
-  </a>
- </li>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  밑바닥부터
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="type_annotations.html">
-   5. 자료형 힌트
+   자료형 힌트
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="linear_algebra_basics.html">
-   6. 선형대수 기초 밑바닥부터
+   선형대수 기초
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   7. 통계 기초 밑바닥부터
+   통계 기초
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  넘파이
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="numpy_array.html">
+   넘파이 어레이
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="array_indexing.html">
+   어레이 인덱싱
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="array_oriented.html">
+   어레이 중심 프로그래밍
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="advanced_numpy.html">
+   고급 넘파이
   </a>
  </li>
 </ul>
@@ -227,93 +241,93 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   7.1. 데이터셋 설명하기
+   데이터셋 설명하기
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   7.2. 중심 경향성
+   중심 경향성
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     7.2.1. 평균값
+     평균값
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     7.2.2. 중앙값
+     중앙값
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     7.2.3. 최빈값
+     최빈값
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   7.3. 산포도
+   산포도
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     7.3.1. 범위
+     범위
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id9">
-     7.3.2. 사분범위
+     사분범위
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id10">
-     7.3.3. 분산
+     분산
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id11">
-     7.3.4. 표준편차
+     표준편차
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id12">
-   7.4. 상관관계
+   상관관계
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id13">
-     7.4.1. 공분산
+     공분산
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id14">
-     7.4.2. 피어슨 상관계수
+     피어슨 상관계수
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id15">
-   7.5. 심슨의 역설
+   심슨의 역설
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id16">
-   7.6. 상관계수 관련 추가 주의사항
+   상관계수 관련 추가 주의사항
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id17">
-   7.7. 상관관계와 인과관계
+   상관관계와 인과관계
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id18">
-   7.8. 연습문제
+   연습문제
   </a>
  </li>
 </ul>
@@ -326,7 +340,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>통계 기초 밑바닥부터</h1>
+                <h1>통계 기초</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -338,93 +352,93 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   7.1. 데이터셋 설명하기
+   데이터셋 설명하기
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   7.2. 중심 경향성
+   중심 경향성
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     7.2.1. 평균값
+     평균값
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     7.2.2. 중앙값
+     중앙값
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     7.2.3. 최빈값
+     최빈값
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   7.3. 산포도
+   산포도
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     7.3.1. 범위
+     범위
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id9">
-     7.3.2. 사분범위
+     사분범위
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id10">
-     7.3.3. 분산
+     분산
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id11">
-     7.3.4. 표준편차
+     표준편차
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id12">
-   7.4. 상관관계
+   상관관계
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id13">
-     7.4.1. 공분산
+     공분산
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id14">
-     7.4.2. 피어슨 상관계수
+     피어슨 상관계수
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id15">
-   7.5. 심슨의 역설
+   심슨의 역설
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id16">
-   7.6. 상관계수 관련 추가 주의사항
+   상관계수 관련 추가 주의사항
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id17">
-   7.7. 상관관계와 인과관계
+   상관관계와 인과관계
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id18">
-   7.8. 연습문제
+   연습문제
   </a>
  </li>
 </ul>
@@ -437,7 +451,7 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">7. </span>통계 기초 밑바닥부터<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1>통계 기초<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p><strong>참고</strong></p>
 <p>여기서 사용하는 코드는 조엘 그루스(Joel Grus)의
 <a class="reference external" href="https://github.com/joelgrus/data-science-from-scratch">밑다닥부터 시작하는 데이터 과학</a>
@@ -454,7 +468,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>상관관계와 인과관계</p></li>
 </ol>
 <div class="section" id="id2">
-<h2><span class="section-number">7.1. </span>데이터셋 설명하기<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2>데이터셋 설명하기<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>총 204명의 사용자 각각의 친구수에 데이터가 다음과 같이 주어졌다고 가정한다.
 즉, 사용자별 최대 친구수는 100명이고, 최소 1명이다.</p>
 <div class="cell docutils container">
@@ -563,7 +577,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">7.2. </span>중심 경향성<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2>중심 경향성<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>중심 경향성은 데이터의 중심의 위치를 알려주며, 중심 경향성을 지정하기 위해 보통 세 종류의 평균(average)을 사용한다.</p>
 <ol class="simple">
 <li><p>평균값(mean)</p></li>
@@ -574,7 +588,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p><strong>전제</strong></p>
 <p><span class="math notranslate nohighlight">\(X\)</span>를 데이터셋이라 하고, <span class="math notranslate nohighlight">\(X\)</span>의 크기, 즉, 테이터 개수를 <span class="math notranslate nohighlight">\(n\)</span>이라 하자.</p>
 <div class="section" id="id4">
-<h3><span class="section-number">7.2.1. </span>평균값<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3>평균값<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>평균값(mean)은 우리가 보통 평균이라 부르는 값이며 모든 데이터의 합을 데이터 개수로 나눈다.
 그러면, 데이터셋 <span class="math notranslate nohighlight">\(X\)</span>의 평균값은 보통 그리스 알파벳 뮤(<span class="math notranslate nohighlight">\(\mu\)</span>) 또는 <span class="math notranslate nohighlight">\(E(X)\)</span>로 표시하며 값은 아래와 같다.</p>
 <div class="math notranslate nohighlight">
@@ -601,7 +615,7 @@ E(X) = \mu = \frac{\sum X}{n}
 </div>
 </div>
 <div class="section" id="id5">
-<h3><span class="section-number">7.2.2. </span>중앙값<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3>중앙값<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>중앙값(median) 말 그대로, 데이터의 중앙위치에 자리잡은 값이다.
 단, 데이터를 크기순으로 정렬했을 때 중앙위치에 있는 값이다.
 따라서 중앙값을 구하려면 먼저 데이터를 크기순으로 정렬해야 한다.
@@ -702,7 +716,7 @@ E(X) = \mu = \frac{\sum X}{n}
 </div>
 </div>
 <div class="section" id="id6">
-<h3><span class="section-number">7.2.3. </span>최빈값<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3>최빈값<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>데이터에서 가장 자주 나오는 값을 최빈값(mode)라 부르며,
 경우에 따라 평균값, 중앙값 대신에 중심을 대표하는 값으로 사용된다.</p>
 <p><code class="docutils literal notranslate"><span class="pre">num_friends</span></code>의 최빈값은 1과 6이다.</p>
@@ -789,7 +803,7 @@ E(X) = \mu = \frac{\sum X}{n}
 </div>
 </div>
 <div class="section" id="id7">
-<h2><span class="section-number">7.3. </span>산포도<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2>산포도<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>산포도는 데이터가 얼마나 퍼져 있는지를 측정한다.
 산포도가 0에 가까운 값이면 퍼져있지 않고 한 값 주위에 뭉쳐있다는 의미이고,
 0에서 멀어질 수록 퍼져있는 정도가 커진다는 의미이다.</p>
@@ -801,7 +815,7 @@ E(X) = \mu = \frac{\sum X}{n}
 <li><p>표준편차(standard deviation)</p></li>
 </ol>
 <div class="section" id="id8">
-<h3><span class="section-number">7.3.1. </span>범위<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3>범위<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>범위는 데이터셋의 최대값과 최소값의 차이를 가리킨다.
 일반적으로 범위가 크다는 것은 데이터의 퍼짐 정도가 크다는 것을 의미한다.</p>
 <p>그런데 범위는 최대, 최소값에만 의존한다.
@@ -825,7 +839,7 @@ E(X) = \mu = \frac{\sum X}{n}
 </div>
 </div>
 <div class="section" id="id9">
-<h3><span class="section-number">7.3.2. </span>사분범위<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3>사분범위<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>평균, 분산, 표준편차와 함께 범위도 이상치에 민감하다.
 이런 점을 해소하기 위해 제1사분위수와 제3사분위수 사이의 범위인 사분범위를 사용하기도 한다.</p>
 <p>예를 들어, <code class="docutils literal notranslate"><span class="pre">num_friends</span></code>의 사분범위는 6이다.
@@ -848,7 +862,7 @@ E(X) = \mu = \frac{\sum X}{n}
 </div>
 </div>
 <div class="section" id="id10">
-<h3><span class="section-number">7.3.3. </span>분산<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<h3>분산<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>데이터 평균값과의 차이의 제곱들의 평균값이 분산이다.
 쉽게 말하면, 데이터가 평균값으로부터 얼마나 떨어져 있는가를 알려주는 값이며,
 정확한 계산식은 다음과 같으며,
@@ -898,7 +912,7 @@ E(X) = \mu = \frac{\sum X}{n}
 </div>
 </div>
 <div class="section" id="id11">
-<h3><span class="section-number">7.3.4. </span>표준편차<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<h3>표준편차<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <p>분간값의 단위는 원래 단위의 제곱이다.
 따라서 분산값 보다는 분산값의 제곱근을 보다 많이 사용한다.</p>
 <p>표본의 표준편차를 나타내는 기호는 보통 <span class="math notranslate nohighlight">\(s\)</span>이다.</p>
@@ -928,7 +942,7 @@ E(X) = \mu = \frac{\sum X}{n}
 </div>
 </div>
 <div class="section" id="id12">
-<h2><span class="section-number">7.4. </span>상관관계<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<h2>상관관계<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <p>두 데이터셋이 서로 상관이 있는가를 알고자 할 때 상관관계를 파악하며,
 상관관계의 정도는 보통 공분산(covariance) 또는 피어슨 상관계수(correlation)로 측정한다.</p>
 <p>예를 들어, 사용자가 사이트에서 보내는 시간과 친구 수 사이의 연관성을 파악하고자 한다.</p>
@@ -977,7 +991,7 @@ E(X) = \mu = \frac{\sum X}{n}
 <p><code class="docutils literal notranslate"><span class="pre">num_friends</span></code>와 <code class="docutils literal notranslate"><span class="pre">daily_minutes</span></code>는 각각
 사용자별 친구수와 사이트에서 머무르는 시간을 순서에 맞게 데이터로 담고 있다.</p>
 <div class="section" id="id13">
-<h3><span class="section-number">7.4.1. </span>공분산<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<h3>공분산<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <p>두 데이터셋의 공분산은 각 데이터넷의 변수가 각각의 평균값으로부터 떨어져 있는 정도를 계산하며,
 수식은 다음과 같다.
 두 데이터셋 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>를 크기를 <span class="math notranslate nohighlight">\(n\)</span>이라 하자.
@@ -1013,7 +1027,7 @@ Cov(X,Y) = \frac{\sum (X- E(X))(Y- E(Y))}{n-1}
 즉, 공분산이 크다, 작다의 기준을 잡기가 어렵다.</p>
 </div>
 <div class="section" id="id14">
-<h3><span class="section-number">7.4.2. </span>피어슨 상관계수<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<h3>피어슨 상관계수<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
 <p>공분산의 한계를 해결하기 위해 피어슨 상관계수가 제시되었다.
 피어슨 상관계수는 공분산을 각 데이터셋의 표준편차의 곱으로 나누어
 두 데이터셋 사이의 <strong>선형</strong> 상관관계를 수치로 계산한다.</p>
@@ -1118,7 +1132,7 @@ Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
 </div>
 </div>
 <div class="section" id="id15">
-<h2><span class="section-number">7.5. </span>심슨의 역설<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<h2>심슨의 역설<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
 <p>상관계수를 계산할 때 소위 혼재변수(confounding variable)를 고려하지 않으면 잘못된 결과를 얻는다.</p>
 <p>예를 들어,
 모든 데이터 과학자를 서부와 동부로 구분할 수 있다고 가정하자.
@@ -1193,7 +1207,7 @@ Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
 전체 데이터 과학자들의 평균 친구수가 동부 보다 높아게 된다.</p>
 </div>
 <div class="section" id="id16">
-<h2><span class="section-number">7.6. </span>상관계수 관련 추가 주의사항<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
+<h2>상관계수 관련 추가 주의사항<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h2>
 <p>상관관계가 0 또는 1에 아주 가깝다고 해서 반드시 어떤 관계도 없다거나
 매우 밀접합 선형관계이다라고 섣부르게 결론 내리면 위험하다.</p>
 <p><strong>예제 1</strong></p>
@@ -1271,7 +1285,7 @@ Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
 <p>하지만 두 데이터셋 사이의 선형관계가 정말로 완벽하게 선형인지에 대해서는 장담할 수 없다.</p>
 </div>
 <div class="section" id="id17">
-<h2><span class="section-number">7.7. </span>상관관계와 인과관계<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<h2>상관관계와 인과관계<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
 <p>두 데이터셋 사이에 상관관계가 있다고 해서 한 쪽이 다른 쪽에 영향을 주는 인과관계가 있다고 주장할 수 없다.
 왜냐하면 두 데이터셋에 영향을 주는 다른 외부 요소가 존재할 수 있기 때문이다.</p>
 <p>예를 들어, 친구 수를 담은 <code class="docutils literal notranslate"><span class="pre">num_friends</span></code>와 사이트 사용시간을 담은 <code class="docutils literal notranslate"><span class="pre">daily_minutes</span></code>의 관계를 살펴보자.
@@ -1287,7 +1301,7 @@ Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
 이런 식으로 해서 상관관계의 진짜 근거를 얻어내도록 해야 한다.</p>
 </div>
 <div class="section" id="id18">
-<h2><span class="section-number">7.8. </span>연습문제<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+<h2>연습문제<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/pybook/blob/master/practices/practice-appendix-statistics_basics.ipynb">(실습) 부록: 통계 기초 밑바닥부터</a></p>
 </div>
 </div>
@@ -1321,8 +1335,15 @@ Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">6. </span>선형대수 기초 밑바닥부터</p>
+            <p class="prev-next-title">선형대수 기초</p>
         </div>
+    </a>
+    <a class='right-next' id="next-link" href="numpy_array.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">넘파이 어레이</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             
