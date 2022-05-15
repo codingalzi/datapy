@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>어레이 중심 프로그래밍 &#8212; 파이썬 데이터 분석</title>
+    <title>6. 어레이 중심 프로그래밍 &#8212; 파이썬 데이터 분석</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,8 +54,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="고급 넘파이" href="advanced_numpy.html" />
-    <link rel="prev" title="어레이 인덱싱" href="array_indexing.html" />
+    <link rel="next" title="7. 고급 넘파이" href="advanced_numpy.html" />
+    <link rel="prev" title="5. 어레이 인덱싱" href="array_indexing.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -95,17 +95,17 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="type_annotations.html">
-   자료형 힌트
+   1. 자료형 힌트
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="linear_algebra_basics.html">
-   선형대수 기초
+   2. 선형대수 기초
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="statistics_basics.html">
-   통계 기초
+   3. 통계 기초
   </a>
  </li>
 </ul>
@@ -117,22 +117,22 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="numpy_array.html">
-   넘파이 어레이
+   4. 넘파이 어레이
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="array_indexing.html">
-   어레이 인덱싱
+   5. 어레이 인덱싱
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   어레이 중심 프로그래밍
+   6. 어레이 중심 프로그래밍
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="advanced_numpy.html">
-   고급 넘파이
+   7. 고급 넘파이
   </a>
  </li>
 </ul>
@@ -241,37 +241,37 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   유니버설 함수
+   6.1. 유니버설 함수
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   통계
+   6.2. 통계
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   부울 어레이
+   6.3. 부울 어레이
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   정렬
+   6.4. 정렬
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   선형 대수
+   6.5. 선형 대수
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   난수 생성
+   6.6. 난수 생성
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id8">
-   연습 문제
+   6.7. 연습 문제
   </a>
  </li>
 </ul>
@@ -296,37 +296,37 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   유니버설 함수
+   6.1. 유니버설 함수
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   통계
+   6.2. 통계
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   부울 어레이
+   6.3. 부울 어레이
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   정렬
+   6.4. 정렬
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   선형 대수
+   6.5. 선형 대수
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   난수 생성
+   6.6. 난수 생성
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id8">
-   연습 문제
+   6.7. 연습 문제
   </a>
  </li>
 </ul>
@@ -339,7 +339,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1>어레이 중심 프로그래밍<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">6. </span>어레이 중심 프로그래밍<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>연산과 함수 호출에 사용되는 넘파이 어레이는 기본적으로 항목 단위로 연산과 함수 호출이 이루어진다.
 넘파이 어레이의 이런 특징을 잘 활용하도록 유도하는 프로그래밍을
 <strong>어레이 중심 프로그래밍</strong>(array-oriented programming)이라 한다.</p>
@@ -374,7 +374,7 @@
 </div>
 </div>
 <div class="section" id="id2">
-<h2>유니버설 함수<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.1. </span>유니버설 함수<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>유니버설 함수는 어레이의 항목 각각에 대해 적용되는 함수이며, 반환값은 인자로 사용된 어레이와
 동일한 모양의 어레이로 구현된다.
 유니버설 함수를 줄여서 __ufunc__라 부른다.
@@ -916,7 +916,7 @@
 </div>
 </div>
 <div class="section" id="id3">
-<h2>통계<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.2. </span>통계<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>넘파이 어레이에 사용된 항목들의 합(sum), 평균값(mean), 표준편차(std) 등 기본 통계함수를 지원한다.</p>
 <p>연습을 위해 먼저 (3, 3) 모양의 어레이를 무작위로 생성한다.</p>
 <div class="cell docutils container">
@@ -1140,7 +1140,7 @@
 </div>
 </div>
 <div class="section" id="id4">
-<h2>부울 어레이<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.3. </span>부울 어레이<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p><strong>참인 항목의 개수</strong></p>
 <p>특정 조건을 만족하는 항목들의 개수를 구하는 과정은 다음과 같다.</p>
 <ul class="simple">
@@ -1205,7 +1205,7 @@
 </div>
 </div>
 <div class="section" id="id5">
-<h2>정렬<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.4. </span>정렬<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p><strong><code class="docutils literal notranslate"><span class="pre">sort()</span></code> 메서드</strong></p>
 <p>정해진 축을 기준으로 오름차순으로 정열할 때 사용한다.
 물론 1차원 어레이는 축을 지정할 필요가 없다.</p>
@@ -1473,7 +1473,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;./datasets/iris/iris.data&#39;, &lt;http.client.HTTPMessage at 0x7f5904c863a0&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;./datasets/iris/iris.data&#39;, &lt;http.client.HTTPMessage at 0x7f50611c9a30&gt;)
 </pre></div>
 </div>
 </div>
@@ -1800,7 +1800,7 @@
 </div>
 </div>
 <div class="section" id="id6">
-<h2>선형 대수<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.5. </span>선형 대수<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>행렬 곱셈, 전치 행렬, 역행렬 등을 2차원 어레이로 계산하는 방식을
 간단한 예제를 이용하여 소개한다.</p>
 <p><strong>행렬곱</strong></p>
@@ -2062,7 +2062,7 @@
 찾아볼 수 있다.</p>
 </div>
 <div class="section" id="id7">
-<h2>난수 생성<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.6. </span>난수 생성<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>가장 많이 사용된 무작위 수 생성함수 3개와 시드(seed)의 역할을 살펴본다.</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">np.random.randn()</span></code> 함수</strong></p>
 <p>임의의 부동소수점을 표준 정규 분포를 따르면서 지정된 수만큼 생성한다.</p>
@@ -2154,7 +2154,7 @@
 </div>
 </div>
 <div class="section" id="id8">
-<h2>연습 문제<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">6.7. </span>연습 문제<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-array_oriented.ipynb">(실습) 어레이 중심 프로그래밍</a></p>
 </div>
 </div>
@@ -2188,13 +2188,13 @@
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">어레이 인덱싱</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>어레이 인덱싱</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="advanced_numpy.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">고급 넘파이</p>
+        <p class="prev-next-title"><span class="section-number">7. </span>고급 넘파이</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

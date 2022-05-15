@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>넘파이 어레이 &#8212; 파이썬 데이터 분석</title>
+    <title>4. 넘파이 어레이 &#8212; 파이썬 데이터 분석</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,8 +52,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="어레이 인덱싱" href="array_indexing.html" />
-    <link rel="prev" title="통계 기초" href="statistics_basics.html" />
+    <link rel="next" title="5. 어레이 인덱싱" href="array_indexing.html" />
+    <link rel="prev" title="3. 통계 기초" href="statistics_basics.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -93,17 +93,17 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="type_annotations.html">
-   자료형 힌트
+   1. 자료형 힌트
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="linear_algebra_basics.html">
-   선형대수 기초
+   2. 선형대수 기초
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="statistics_basics.html">
-   통계 기초
+   3. 통계 기초
   </a>
  </li>
 </ul>
@@ -115,22 +115,22 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   넘파이 어레이
+   4. 넘파이 어레이
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="array_indexing.html">
-   어레이 인덱싱
+   5. 어레이 인덱싱
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="array_oriented.html">
-   어레이 중심 프로그래밍
+   6. 어레이 중심 프로그래밍
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="advanced_numpy.html">
-   고급 넘파이
+   7. 고급 넘파이
   </a>
  </li>
 </ul>
@@ -239,21 +239,22 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   넘파이란?
+   4.1. 넘파이란?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   다차원 어레이
+   4.2. 다차원 어레이
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     어레이 객체 생성
+     4.2.1. 어레이 객체 생성
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dtype">
+     4.2.2.
      <code class="docutils literal notranslate">
       <span class="pre">
        dtype
@@ -264,19 +265,19 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     사용자 정의 자료형
+     4.2.3. 사용자 정의 자료형
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   어레이 연산
+   4.3. 어레이 연산
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   연습문제
+   4.4. 연습문제
   </a>
  </li>
 </ul>
@@ -301,21 +302,22 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   넘파이란?
+   4.1. 넘파이란?
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   다차원 어레이
+   4.2. 다차원 어레이
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     어레이 객체 생성
+     4.2.1. 어레이 객체 생성
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dtype">
+     4.2.2.
      <code class="docutils literal notranslate">
       <span class="pre">
        dtype
@@ -326,19 +328,19 @@
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     사용자 정의 자료형
+     4.2.3. 사용자 정의 자료형
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   어레이 연산
+   4.3. 어레이 연산
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   연습문제
+   4.4. 연습문제
   </a>
  </li>
 </ul>
@@ -351,7 +353,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1>넘파이 어레이<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">4. </span>넘파이 어레이<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p><strong>주요 내용</strong></p>
 <ul class="simple">
 <li><p>넘파이(numpy) 어레이 소개</p></li>
@@ -380,7 +382,7 @@
 </div>
 </div>
 <div class="section" id="id2">
-<h2>넘파이란?<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.1. </span>넘파이란?<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p><strong>넘파이</strong><font size='2'>numpy</font>는 numerical python의 줄임말이며,
 파이썬 데이터 과학에서 가장 중요한 도구를 제공하는 패키지이다.
 넘파이가 제공하는 가장 중 요소는 아래 두 가지이다.</p>
@@ -413,8 +415,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 11.4 ms, sys: 353 µs, total: 11.8 ms
-Wall time: 10.8 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 10.6 ms, sys: 51 µs, total: 10.7 ms
+Wall time: 9.84 ms
 </pre></div>
 </div>
 </div>
@@ -426,8 +428,8 @@ Wall time: 10.8 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 350 ms, sys: 89.3 ms, total: 439 ms
-Wall time: 437 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 219 ms, sys: 101 ms, total: 320 ms
+Wall time: 319 ms
 </pre></div>
 </div>
 </div>
@@ -435,9 +437,9 @@ Wall time: 437 ms
 <p>이제부터 넘파이에 대해 필수적으로 알아 두어야만 하는 내용들을 정리하며 살펴본다.</p>
 </div>
 <div class="section" id="id3">
-<h2>다차원 어레이<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.2. </span>다차원 어레이<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id4">
-<h3>어레이 객체 생성<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.1. </span>어레이 객체 생성<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>리스트, 튜플 등을 <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> 함수를 이용하여 어레이로 변환시킬 수 있다.</p>
 <p><strong>1차원 어레이</strong></p>
 <ul class="simple">
@@ -763,13 +765,13 @@ Wall time: 437 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[0., 0.],
-        [0., 0.],
-        [0., 0.]],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[ 0.0000e+000,  0.0000e+000],
+        [ 0.0000e+000,  0.0000e+000],
+        [-7.4149e-206,  1.7416e+184]],
 
-       [[0., 0.],
-        [0., 0.],
-        [0., 0.]]])
+       [[ 1.5603e+161,  4.9823e-037],
+        [ 1.2580e-075,  6.8720e-038],
+        [ 1.5877e-076,  2.0033e-076]]])
 </pre></div>
 </div>
 </div>
@@ -814,7 +816,7 @@ Wall time: 437 ms
 </div>
 </div>
 <div class="section" id="dtype">
-<h3><code class="docutils literal notranslate"><span class="pre">dtype</span></code>: 어레이 항목의 자료형<a class="headerlink" href="#dtype" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.2. </span><code class="docutils literal notranslate"><span class="pre">dtype</span></code>: 어레이 항목의 자료형<a class="headerlink" href="#dtype" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">dtype</span></code>은 어레이 항목의 자료형을 담고 있으며, 파이썬 표준 라이브러리에서 제공하는
 <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code> 등을 보다 세분화시킨 자료형을 제공한다.
 여기서는 세분화된 자료형을 일일이 설명하기 보다는 예제를 이용하여 세분화된 자료형의 형식을
@@ -1129,7 +1131,7 @@ Wall time: 437 ms
 </div>
 </div>
 <div class="section" id="id5">
-<h3>사용자 정의 자료형<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">4.2.3. </span>사용자 정의 자료형<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>보다 복잡한 구조의 자료형을 <code class="docutils literal notranslate"><span class="pre">np.dtype()</span></code> 함수를 이용하여 정의할 수 있다.
 예를 들어 최대 16글자로 이루어진 이름과 세 개의 점수를 담은 튜플로 이루어진 튜클의 자료형은
 다음과 같이 정의한다.</p>
@@ -1309,7 +1311,7 @@ Wall time: 437 ms
 </div>
 </div>
 <div class="section" id="id6">
-<h2>어레이 연산<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.3. </span>어레이 연산<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>넘파이 어레이 연산은 기본적으로 항목별로 이루어진다.
 즉, 지정된 연산을 동일한 위치의 항목끼리 실행하여 새로운, 동일한 모양의 어레이를 생성한다.</p>
 <div class="cell docutils container">
@@ -1603,7 +1605,7 @@ Wall time: 437 ms
 </div>
 </div>
 <div class="section" id="id7">
-<h2>연습문제<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.4. </span>연습문제<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-numpy_array.ipynb">(실습) 넘파이 어레이</a></p>
 </div>
 </div>
@@ -1637,13 +1639,13 @@ Wall time: 437 ms
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">통계 기초</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>통계 기초</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="array_indexing.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">어레이 인덱싱</p>
+        <p class="prev-next-title"><span class="section-number">5. </span>어레이 인덱싱</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
