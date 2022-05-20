@@ -698,4 +698,4 @@ correlation(x,y)
 
 # ## 연습문제
 
-# 참고: [(실습) 부록: 통계 기초 밑바닥부터](https://colab.research.google.com/github/codingalzi/pybook/blob/master/practices/practice-appendix-statistics_basics.ipynb)
+# 참고: [(실습) 통계 기초 밑바닥부터](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-statistics_basics.ipynb)

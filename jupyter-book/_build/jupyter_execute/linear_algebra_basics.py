@@ -906,4 +906,4 @@ subtractM(C, D)
 
 # ## 연습문제
 
-# 참고: [(실습) 부록: 선형대수 기초 밑바닥부터](https://colab.research.google.com/github/codingalzi/pybook/blob/master/practices/practice-appendix-linear_algebra_basics.ipynb)
+# 참고: [(실습) 선형대수 기초 밑바닥부터](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-linear_algebra_basics.ipynb)
