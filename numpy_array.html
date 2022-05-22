@@ -263,7 +263,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     4.2.1. 어레이 객체 생성
+     4.2.1. 1차원 어레이
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     4.2.2. 2차원 어레이
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     4.2.3. 3차원 어레이
     </a>
    </li>
   </ul>
@@ -280,7 +290,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
+    <a class="reference internal nav-link" href="#id7">
      4.3.1. 기본
      <code class="docutils literal notranslate">
       <span class="pre">
@@ -290,7 +300,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
+    <a class="reference internal nav-link" href="#id8">
      4.3.2. 사용자 정의
      <code class="docutils literal notranslate">
       <span class="pre">
@@ -302,12 +312,12 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id7">
+  <a class="reference internal nav-link" href="#id9">
    4.4. 어레이 연산
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
+  <a class="reference internal nav-link" href="#id10">
    4.5. 연습문제
   </a>
  </li>
@@ -343,7 +353,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     4.2.1. 어레이 객체 생성
+     4.2.1. 1차원 어레이
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     4.2.2. 2차원 어레이
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     4.2.3. 3차원 어레이
     </a>
    </li>
   </ul>
@@ -360,7 +380,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
+    <a class="reference internal nav-link" href="#id7">
      4.3.1. 기본
      <code class="docutils literal notranslate">
       <span class="pre">
@@ -370,7 +390,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
+    <a class="reference internal nav-link" href="#id8">
      4.3.2. 사용자 정의
      <code class="docutils literal notranslate">
       <span class="pre">
@@ -382,12 +402,12 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id7">
+  <a class="reference internal nav-link" href="#id9">
    4.4. 어레이 연산
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
+  <a class="reference internal nav-link" href="#id10">
    4.5. 연습문제
   </a>
  </li>
@@ -463,8 +483,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 4.41 ms, sys: 10.8 ms, total: 15.2 ms
-Wall time: 14.5 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 9.75 ms, sys: 10.4 ms, total: 20.1 ms
+Wall time: 19.4 ms
 </pre></div>
 </div>
 </div>
@@ -476,8 +496,8 @@ Wall time: 14.5 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 337 ms, sys: 64.6 ms, total: 402 ms
-Wall time: 401 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 288 ms, sys: 89.4 ms, total: 378 ms
+Wall time: 377 ms
 </pre></div>
 </div>
 </div>
@@ -486,10 +506,9 @@ Wall time: 401 ms
 </div>
 <div class="section" id="id3">
 <h2><span class="section-number">4.2. </span>다차원 어레이<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id4">
-<h3><span class="section-number">4.2.1. </span>어레이 객체 생성<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>리스트, 튜플 등을 <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> 함수를 이용하여 어레이로 변환시킬 수 있다.</p>
-<p><strong>1차원 어레이</strong></p>
+<div class="section" id="id4">
+<h3><span class="section-number">4.2.1. </span>1차원 어레이<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>리스트 활용</p></li>
 </ul>
@@ -538,7 +557,9 @@ Wall time: 401 ms
 </div>
 </div>
 </div>
-<p><strong>2차원 어레이</strong></p>
+</div>
+<div class="section" id="id5">
+<h3><span class="section-number">4.2.2. </span>2차원 어레이<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>중첩된 리스트나 어레이는 2차원 어레이로 변환된다.
 단, 항목으로 사용된 리스트의 길이가 모두 동일해야 한다.
 즉, 2차원 어레이는 어레이의 모든 항목이 동일한 크기의 1차원 어레이이다.</p>
@@ -636,7 +657,9 @@ Wall time: 401 ms
 </div>
 </div>
 </div>
-<p><strong>3차원 어레이</strong></p>
+</div>
+<div class="section" id="id6">
+<h3><span class="section-number">4.2.3. </span>3차원 어레이<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>3차원 이상의 어레이는 처음에는 매우 생소하게 다가올 수 있다.
 하지만 이미지 데이터 분석에서 가장 기본으로 사용되는 차원이기에 3차원 어레이에 익숙해져야 한다.</p>
 <p>(n, m, p) 모양의 3차원 어레이를 이해하는 두 가지 방법은 다음과 같다.</p>
@@ -868,8 +891,8 @@ Wall time: 401 ms
 <h2><span class="section-number">4.3. </span><code class="docutils literal notranslate"><span class="pre">dtype</span></code>: 어레이 항목의 자료형<a class="headerlink" href="#dtype" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">dtype</span></code> 속성은 어레이 항목의 자료형을 담고 있으며, 파이썬 표준 라이브러리에서 제공하는
 <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code> 등을 보다 세분화시킨 자료형을 제공한다.</p>
-<div class="section" id="id5">
-<h3><span class="section-number">4.3.1. </span>기본 <code class="docutils literal notranslate"><span class="pre">dtype</span></code><a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id7">
+<h3><span class="section-number">4.3.1. </span>기본 <code class="docutils literal notranslate"><span class="pre">dtype</span></code><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>여기서는 세분화된 자료형을 일일이 설명하기 보다는 예제를 이용하여 세분화된 자료형의 형식을
 살펴본다.
 자료형 세분화는 주로 자료형의 객체가 사용하는 메모리 용량을 제한하는 형식으로 이루어진다.
@@ -1181,8 +1204,8 @@ Wall time: 401 ms
 </div>
 </div>
 </div>
-<div class="section" id="id6">
-<h3><span class="section-number">4.3.2. </span>사용자 정의 <code class="docutils literal notranslate"><span class="pre">dtype</span></code><a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3><span class="section-number">4.3.2. </span>사용자 정의 <code class="docutils literal notranslate"><span class="pre">dtype</span></code><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>보다 복잡한 구조의 자료형을 <code class="docutils literal notranslate"><span class="pre">np.dtype()</span></code> 함수를 이용하여 정의할 수 있다.
 예를 들어 최대 16글자로 이루어진 이름과 세 개의 점수를 담은 튜플로 이루어진 튜클의 자료형은
 다음과 같이 정의한다.</p>
@@ -1361,8 +1384,8 @@ Wall time: 401 ms
 </div>
 </div>
 </div>
-<div class="section" id="id7">
-<h2><span class="section-number">4.4. </span>어레이 연산<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h2><span class="section-number">4.4. </span>어레이 연산<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>넘파이 어레이 연산은 기본적으로 항목별로 이루어진다.
 즉, 지정된 연산을 동일한 위치의 항목끼리 실행하여 새로운, 동일한 모양의 어레이를 생성한다.</p>
 <div class="cell docutils container">
@@ -1655,8 +1678,8 @@ Wall time: 401 ms
 </div>
 </div>
 </div>
-<div class="section" id="id8">
-<h2><span class="section-number">4.5. </span>연습문제<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<h2><span class="section-number">4.5. </span>연습문제<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-numpy_array.ipynb">(실습) 넘파이 어레이</a></p>
 </div>
 </div>
