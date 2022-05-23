@@ -45,11 +45,9 @@ PREVIOUS_MAX_ROWS = pd.options.display.max_rows # 원래 60이 기본.
 pd.set_option("max_rows", 20)
 
 
-# ## 핵심 기능
+# ## 리인덱싱
 
-# ### 리인덱싱
-
-# **시리즈 리인덱싱**
+# ### 시리즈 리인덱싱
 
 # In[4]:
 
@@ -76,77 +74,12 @@ obj2 = obj.reindex(['a', 'c', 'd', 'e'])
 obj2
 
 
-# **결측치 채우기 1: `method` 키워드 인자**
-
-# 리인덱싱 과정에서 결측치가 발생할 때 여러 방식으로 채울 수 있다.
-# `method='fill'` 키워드 인자는 결측치를 위쪽에 위치한 값으로 채운다.
-# 
-# __주의사항:__ 인덱스가 오름 또는 내림 차순으로 정렬되어 있는 경우에만 가능하다.
-
-# In[7]:
-
-
-obj3 = pd.Series(['blue', 'purple', 'yellow'], index=[0, 2, 5])
-obj3
-
-
-# In[8]:
-
-
-obj3.reindex(range(6), method='ffill')
-
-
-# 물론 위쪽에 위치한 값이 없으면 결측치가 된다.
-
-# In[9]:
-
-
-obj3.reindex(range(-1, 6), method='ffill')
-
-
-# 아랫쪽에 있는 값으로 채울 수도 있다.
-
-# In[10]:
-
-
-obj3.reindex(range(-1, 6), method='bfill')
-
-
-# 아니면 가장 가까운 곳에 있는 값으로 채울 수도 있다.
-# 1번 인덱스의 경우처럼 거리가 같으면 아랫쪽에서 택한다.
-
-# In[11]:
-
-
-obj3.reindex(range(-1, 6), method='nearest')
-
-
-# **결측치 채우기 2: `fill_value` 키워드 인자**
-
-# 리인덱싱 과정에서 발생하는 모든 결측치를 지정된 값으로 대체할 수 있다.
-# 기본값은 `NaN` 이다.
-
-# In[12]:
-
-
-obj3.reindex(range(-1, 6), fill_value='No Color')
-
-
-# 리인덱싱은 항상 새로운 시리즈를 생성한다.
-# 따라서 `obj3` 자체는 변하지 않는다.
-
-# In[13]:
-
-
-obj3
-
-
-# **데이터프레임 리인덱싱**
+# ### 데이터프레임 리인덱싱
 
 # 데이터프레임은 (행의) `index`와 (열의) `columns` 속성에 대해 
 # 리인덱싱이 가능하며 작동법은 시리지의 인덱싱과 동일하다.
 
-# In[14]:
+# In[7]:
 
 
 frame = pd.DataFrame(np.arange(9).reshape((3, 3)),
@@ -157,7 +90,7 @@ frame
 
 # `reindex()` 메서드는 기본적으로 행의 `index` 에 대해 작동한다.
 
-# In[15]:
+# In[8]:
 
 
 frame2 = frame.reindex(['a', 'b', 'c', 'd'])
@@ -166,7 +99,7 @@ frame2
 
 # 열의 `columns`에 대해서는 `columns` 키워드 인자를 활용한다.
 
-# In[16]:
+# In[9]:
 
 
 states = ['Texas', 'Utah', 'California']
@@ -175,129 +108,100 @@ frame.reindex(columns=states)
 
 # `reindex()` 메서드와 함께 사용할 수 있는 키워드 인자가 더 있지만 여기서는 다루지 않는다.
 
-# ### `drop()` 메서드
+# ## 결측치 처리
 
-# 특정 행 또는 열의 인덱스를 제외한 나머지로 이루어진 시리즈/데이터프레임을 구할 때 사용한다.
+# **결측치 채우기 1: `method` 키워드 인자**
+
+# 리인덱싱 과정에서 결측치가 발생할 때 여러 방식으로 채울 수 있다.
+# `method='fill'` 키워드 인자는 결측치를 위쪽에 위치한 값으로 채운다.
 # 
-# 시리즈의 경우 인덱스를 한 개 또는 여러 개 지정하면 나머지로 이루어진 시리즈를 얻는다.
+# __주의사항:__ 인덱스가 오름 또는 내림 차순으로 정렬되어 있는 경우에만 가능하다.
 
-# In[17]:
-
-
-obj = pd.Series(np.arange(5.), index=['a', 'b', 'c', 'd', 'e'])
-obj
+# In[10]:
 
 
-# In[18]:
+obj3 = pd.Series(['blue', 'purple', 'yellow'], index=[0, 2, 5])
+obj3
 
 
-new_obj = obj.drop('c')
-new_obj
+# In[11]:
 
 
-# In[19]:
+obj3.reindex(range(6), method='ffill')
 
 
-obj.drop(['d', 'c'])
+# 물론 위쪽에 위치한 값이 없으면 결측치가 된다.
+
+# In[12]:
 
 
-# 원래의 시리즈를 직접 건드리지는 않는다.
-
-# In[20]:
+obj3.reindex(range(-1, 6), method='ffill')
 
 
-obj
+# 아랫쪽에 있는 값으로 채울 수도 있다.
+
+# In[13]:
 
 
-# 하지만 `inplace=True` 키워드 인자를 이용하여 원본을 수정할 수도 있다.
-# 물론 사용에 매우 주의해야 한다.
-
-# In[21]:
+obj3.reindex(range(-1, 6), method='bfill')
 
 
-obj.drop('c', inplace=True)
+# 아니면 가장 가까운 곳에 있는 값으로 채울 수도 있다.
+# 1번 인덱스의 경우처럼 거리가 같으면 아랫쪽에서 택한다.
+
+# In[14]:
 
 
-# In[22]:
+obj3.reindex(range(-1, 6), method='nearest')
 
 
-obj
+# **결측치 채우기 2: `fill_value` 키워드 인자**
+
+# 리인덱싱 과정에서 발생하는 모든 결측치를 지정된 값으로 대체할 수 있다.
+# 기본값은 `NaN` 이다.
+
+# In[15]:
 
 
-# 데이터프레임의 경우도 기본적으로 행의 인덱스를 기준으로 작동한다.
-
-# In[23]:
+obj3.reindex(range(-1, 6), fill_value='No Color')
 
 
-data = pd.DataFrame(np.arange(16).reshape((4, 4)),
-                    index=['Ohio', 'Colorado', 'Utah', 'New York'],
-                    columns=['one', 'two', 'three', 'four'])
-data
+# 리인덱싱은 항상 새로운 시리즈를 생성한다.
+# 따라서 `obj3` 자체는 변하지 않는다.
+
+# In[16]:
 
 
-# In[24]:
+obj3
 
 
-data.drop(['Colorado', 'Ohio'])
+# ## 인덱싱, 슬라이싱, 필터링
 
-
-# 열을 기준으로 작동하게 하려면 `axis=1`로 지정한다.
-
-# In[25]:
-
-
-data.drop('two', axis=1)
-
-
-# `axis='columns'`로 지정해도 된다.
-
-# In[26]:
-
-
-data.drop(['two', 'four'], axis='columns')
-
-
-# `inplace=True` 키워드 인자를 사용하면 이번에도 원본을 수정함에 주의하라.
-
-# In[27]:
-
-
-data.drop('two', axis=1, inplace=True)
-
-
-# In[28]:
-
-
-data
-
-
-# ### 인덱싱, 슬라이싱, 필터링(부울 인덱싱)
-
-# **시리즈의 인덱싱, 슬라이싱, 필터링(부울 인덱싱)**
+# ### 시리즈의 인덱싱, 슬라이싱, 필터링
 
 # 시리즈의 경우 1차원 넘파이 어레이와 거의 동일하게 작동한다.
 # 다만 정수 대신에 지정된 인덱스를 사용할 때 조금 차이가 있다.
 
-# In[29]:
+# In[17]:
 
 
 obj = pd.Series(np.arange(4.), index=['a', 'b', 'c', 'd'])
 obj
 
 
-# In[30]:
+# In[18]:
 
 
 obj['b']
 
 
-# In[31]:
+# In[19]:
 
 
 obj[1]
 
 
-# In[32]:
+# In[20]:
 
 
 obj[2:4]
@@ -305,13 +209,13 @@ obj[2:4]
 
 # 여러 개의 인덱스를 리스트로 지정하여 인덱싱을 진행할 수 있다.
 
-# In[33]:
+# In[21]:
 
 
 obj[['b', 'a', 'd']]
 
 
-# In[34]:
+# In[22]:
 
 
 obj[[1, 3]]
@@ -319,13 +223,13 @@ obj[[1, 3]]
 
 # 필터링(부울 인덱싱)은 동일하게 작동한다.
 
-# In[35]:
+# In[23]:
 
 
 obj < 2
 
 
-# In[36]:
+# In[24]:
 
 
 obj[obj < 2]
@@ -334,13 +238,13 @@ obj[obj < 2]
 # 정수가 아닌 다른 인덱스 이름, 즉 라벨을 이용하는 슬라이싱은 양쪽 구간의 끝을 모두 
 # 포함하는 점이 다르다.
 
-# In[37]:
+# In[25]:
 
 
 obj['b':'c']
 
 
-# In[38]:
+# In[26]:
 
 
 obj['b':'c'] = 5
@@ -350,23 +254,23 @@ obj
 # __주의사항:__ 라벨 슬라이싱은 기본적으로 알파벳 순서를 따르며
 # 시리즈에 사용된 순서와 상관 없다.
 
-# In[39]:
+# In[27]:
 
 
 obj.reindex(['b', 'd', 'c', 'a'])
 
 
-# In[40]:
+# In[28]:
 
 
 obj['b':'d']
 
 
-# **데이터프레임의 인덱싱, 슬라이싱, 필터링(부울 인덱싱)**
+# ### 데이터프레임의 인덱싱, 슬라이싱, 필터링
 
 # 2차원 넘파이 어레이와 거의 유사하게 작동한다.
 
-# In[41]:
+# In[29]:
 
 
 data = pd.DataFrame(np.arange(16).reshape((4, 4)),
@@ -377,13 +281,13 @@ data
 
 # 인덱싱인 기본적으로 열을 기준으로 진행된다.
 
-# In[42]:
+# In[30]:
 
 
 data['two']
 
 
-# In[43]:
+# In[31]:
 
 
 data[['three', 'one']]
@@ -391,7 +295,7 @@ data[['three', 'one']]
 
 # 하지만 숫자 슬라이싱은 행을 기준으로 작동한다.
 
-# In[44]:
+# In[32]:
 
 
 data[:2]
@@ -399,14 +303,14 @@ data[:2]
 
 # 필터링(부울 인덱싱) 또한 넘파이 2차원 어레이와 동일하게 작동한다.
 
-# In[45]:
+# In[33]:
 
 
 mask1 = data['three'] > 5
 mask1
 
 
-# In[46]:
+# In[34]:
 
 
 data[mask1]
@@ -416,7 +320,7 @@ data[mask1]
 # 
 # - `~mask1`은 `mask1`의 부정을 나타낸다.
 
-# In[47]:
+# In[35]:
 
 
 data[~mask1] = 0
@@ -425,14 +329,14 @@ data
 
 # 각각의 항목에 대한 필터링도 비슷하게 작동한다.
 
-# In[48]:
+# In[36]:
 
 
 mask2 = data < 6
 mask2
 
 
-# In[49]:
+# In[37]:
 
 
 data[mask2] = 0
@@ -446,13 +350,13 @@ data
 # - `loc()` 메서드: 라벨을 이용할 경우
 # - `iloc()` 메서드: 정수 인덱스를 이용할 경우
 
-# In[50]:
+# In[38]:
 
 
 data.loc['Colorado']
 
 
-# In[51]:
+# In[39]:
 
 
 data.iloc[2]
@@ -461,25 +365,25 @@ data.iloc[2]
 # 행과 열에 대해 동시에 인덱싱/슬라이싱을 사용할 수 있으며
 # 2차원 넘파이 어레이가 작동하는 방식과 비슷하다.
 
-# In[52]:
+# In[40]:
 
 
 data.loc['Colorado', ['two', 'three']]
 
 
-# In[53]:
+# In[41]:
 
 
 data.iloc[2, [3, 0, 1]]
 
 
-# In[54]:
+# In[42]:
 
 
 data.iloc[[1, 2], [3, 0, 1]]
 
 
-# In[55]:
+# In[43]:
 
 
 data.loc[:'Colorado', 'two']
@@ -487,13 +391,109 @@ data.loc[:'Colorado', 'two']
 
 # 인덱싱/슬라이싱에 이은 필터링을 연달아 적용할 수도 있다.
 
-# In[56]:
+# In[44]:
 
 
 data.iloc[:, :3][data.three > 5]
 
 
-# ### 산술 연산
+# ### `drop()` 메서드
+
+# 특정 행 또는 열의 인덱스를 제외한 나머지로 이루어진 시리즈/데이터프레임을 구할 때 사용한다.
+# 
+# 시리즈의 경우 인덱스를 한 개 또는 여러 개 지정하면 나머지로 이루어진 시리즈를 얻는다.
+
+# In[45]:
+
+
+obj = pd.Series(np.arange(5.), index=['a', 'b', 'c', 'd', 'e'])
+obj
+
+
+# In[46]:
+
+
+new_obj = obj.drop('c')
+new_obj
+
+
+# In[47]:
+
+
+obj.drop(['d', 'c'])
+
+
+# 원래의 시리즈를 직접 건드리지는 않는다.
+
+# In[48]:
+
+
+obj
+
+
+# 하지만 `inplace=True` 키워드 인자를 이용하여 원본을 수정할 수도 있다.
+# 물론 사용에 매우 주의해야 한다.
+
+# In[49]:
+
+
+obj.drop('c', inplace=True)
+
+
+# In[50]:
+
+
+obj
+
+
+# 데이터프레임의 경우도 기본적으로 행의 인덱스를 기준으로 작동한다.
+
+# In[51]:
+
+
+data = pd.DataFrame(np.arange(16).reshape((4, 4)),
+                    index=['Ohio', 'Colorado', 'Utah', 'New York'],
+                    columns=['one', 'two', 'three', 'four'])
+data
+
+
+# In[52]:
+
+
+data.drop(['Colorado', 'Ohio'])
+
+
+# 열을 기준으로 작동하게 하려면 `axis=1`로 지정한다.
+
+# In[53]:
+
+
+data.drop('two', axis=1)
+
+
+# `axis='columns'`로 지정해도 된다.
+
+# In[54]:
+
+
+data.drop(['two', 'four'], axis='columns')
+
+
+# `inplace=True` 키워드 인자를 사용하면 이번에도 원본을 수정함에 주의하라.
+
+# In[55]:
+
+
+data.drop('two', axis=1, inplace=True)
+
+
+# In[56]:
+
+
+data
+
+
+# ## 산술 연산
 
 # 시리즈/데이터프레임의 사칙 연산은 기본적으로 아래 원칙을 따른다.
 # 
@@ -556,7 +556,7 @@ df1 + df2
 # | `floordiv()` | 몫 (`//`) 계산 메서드 | 
 # | `pow()` | 거듭제곱(`**`) 메서드 | 
 
-# **연산 과정에서 결측치 채우기**
+# ### 연산과 결측치
 
 # 공통 인덱스가 아니거나 결측치가 이미 존재하는 경우 기본적으로 결측치로 처리된다.
 # 하지만 `fill_value` 키워드 인자를 이용하여 지정된 값으로 처리하게 만들 수도 있다.
@@ -568,7 +568,7 @@ df1 + df2
 df1.add(df2, fill_value=0)
 
 
-# **데이터프레임과 시리즈 사이의 연산**
+# ### 브로드캐스팅
 
 # 넘파이에서 2차원 어레이와 1차원 어레이 사이에
 # 브로드캐스팅이 가능한 경우,
@@ -692,9 +692,7 @@ frame.sub(series3, axis=0)
 frame.sub(series3, axis='index')
 
 
-# ### 함수 적용
-
-# **유니버설 함수**
+# ### 유니버설 함수
 
 # 유니버설 함수는 넘파이의 경우와 동일하게 작동한다.
 
@@ -810,7 +808,7 @@ frame.apply(f2)
 # 기본적으로 `map()` 메서드처럼 작동한다. 
 # `map()` 메서드보다 좀 더 다야한 기능을 갖지만 여기서는 다루지 않는다.
 
-# ### 정렬
+# ## 정렬
 
 # 행과 열의 인덱스 또는 항목을 대상으로 정렬할 수 있다.
 
