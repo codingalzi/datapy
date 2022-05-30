@@ -38,9 +38,12 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -612,7 +615,7 @@ dtype: float64
 </div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">std()</span></code> 메서드: 평균값 계산</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">std()</span></code> 메서드: 표준편차 계산</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -940,7 +943,73 @@ dtype: object
 <h3><span class="section-number">10.1.1. </span>상관관계와 공분산<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>금융 사이트에서 구한 4 개 회사의 주가(price)와 거래량(volume)을 담고 있는 두 개의 데이터를 이용하여
 상관계수와 공분산을 계산해본다.</p>
-<p>먼저 두 개의 데이터를 불러온다.</p>
+<p>이를 위해 먼저 바이너리 파일 두 개를 다운로드해서 지정된 하위 디렉토리에 저장한다.</p>
+<ul class="simple">
+<li><p>파일 저장 디렉토리 지정 및 생성</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">data_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;examples&quot;</span>
+
+<span class="n">data_path</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>특정 서버에서 파일 다운로드 함수</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+
+<span class="c1"># 파일 서버 기본 주소</span>
+<span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/examples/&quot;</span>
+
+<span class="k">def</span> <span class="nf">myWget</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+    <span class="c1"># 다운로드 대상 파일 경로</span>
+    <span class="n">file_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="o">+</span> <span class="n">filename</span>
+    
+    <span class="c1"># 저장 경로와 파일명</span>
+    <span class="n">target_path</span> <span class="o">=</span> <span class="n">data_path</span> <span class="o">/</span> <span class="n">filename</span>
+
+    <span class="k">return</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">target_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>두 개의 픽클 파일 다운로드</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">myWget</span><span class="p">(</span><span class="s2">&quot;yahoo_price.pkl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(PosixPath(&#39;examples/yahoo_price.pkl&#39;),
+ &lt;http.client.HTTPMessage at 0x7f653147d8e0&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">myWget</span><span class="p">(</span><span class="s2">&quot;yahoo_volume.pkl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(PosixPath(&#39;examples/yahoo_volume.pkl&#39;),
+ &lt;http.client.HTTPMessage at 0x7f65681d6e20&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>다운로드한 두 개의 데이터를 불러온다.</p>
 <ul class="simple">
 <li><p>pkl 파일: 판다스에서 제공하는 객체를 <code class="docutils literal notranslate"><span class="pre">to_pickle()</span></code> 메서드를 이용하여
 컴퓨터에 파일로 저장할 때 사용되는 바이너리 파일.</p></li>
