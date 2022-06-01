@@ -3,7 +3,10 @@
 
 # # 데이터 시각화: matplotlib.pyplot
 
-# - [Matplotlib Tutorial](https://www.w3schools.com/python/matplotlib_intro.asp) 따라하기
+# **참고**
+# 
+# [Matplotlib Tutorial](https://www.w3schools.com/python/matplotlib_intro.asp) 를 참고하였습니다. 
+# 
 # - annotation 추가 필요
 
 # **기본 설정**
