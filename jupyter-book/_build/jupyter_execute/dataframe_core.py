@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # 데이터프레임 핵심 기능
+# # 데이터프레임 핵심
 
 # **주요 내용**
 
@@ -949,3 +949,7 @@ frame.sort_values(by=['a', 'b'])
 
 frame.sort_values(by=2, axis=1, ascending=False)
 
+
+# ## 연습문제
+
+# 참고: [(실습) 데이터프레임 핵심](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-dataframe_core.ipynb)

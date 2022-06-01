@@ -43,18 +43,17 @@
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="9. 데이터프레임 핵심 기능" href="dataframe_core.html" />
+    <link rel="prev" title="9. 데이터프레임 핵심" href="dataframe_core.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -148,7 +147,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="dataframe_core.html">
-   9. 데이터프레임 핵심 기능
+   9. 데이터프레임 핵심
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -968,11 +967,11 @@ dtype: object
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 
 <span class="c1"># 파일 서버 기본 주소</span>
 <span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/examples/&quot;</span>
-
+    
 <span class="k">def</span> <span class="nf">myWget</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
     <span class="c1"># 다운로드 대상 파일 경로</span>
     <span class="n">file_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="o">+</span> <span class="n">filename</span>
@@ -980,7 +979,10 @@ dtype: object
     <span class="c1"># 저장 경로와 파일명</span>
     <span class="n">target_path</span> <span class="o">=</span> <span class="n">data_path</span> <span class="o">/</span> <span class="n">filename</span>
 
-    <span class="k">return</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">target_path</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file_url</span><span class="p">)</span>
+    
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -996,136 +998,10 @@ dtype: object
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_6335</span><span class="o">/</span><span class="mf">5901615.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">myWget</span><span class="p">(</span><span class="s2">&quot;yahoo_price.pkl&quot;</span><span class="p">)</span>
-
-<span class="nn">/tmp/ipykernel_6335/2741841099.py</span> in <span class="ni">myWget</span><span class="nt">(filename)</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="n">target_path</span> <span class="o">=</span> <span class="n">data_path</span> <span class="o">/</span> <span class="n">filename</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> 
-<span class="ne">---&gt; </span><span class="mi">13</span>     <span class="k">return</span> <span class="n">urlretrieve</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">target_path</span><span class="p">)</span>
-
-<span class="nn">~/anaconda3/lib/python3.9/urllib/request.py</span> in <span class="ni">urlretrieve</span><span class="nt">(url, filename, reporthook, data)</span>
-<span class="g g-Whitespace">    </span><span class="mi">237</span>     <span class="n">url_type</span><span class="p">,</span> <span class="n">path</span> <span class="o">=</span> <span class="n">_splittype</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">238</span> 
-<span class="ne">--&gt; </span><span class="mi">239</span>     <span class="k">with</span> <span class="n">contextlib</span><span class="o">.</span><span class="n">closing</span><span class="p">(</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">))</span> <span class="k">as</span> <span class="n">fp</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">240</span>         <span class="n">headers</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">241</span> 
-
-<span class="nn">~/anaconda3/lib/python3.9/urllib/request.py</span> in <span class="ni">urlopen</span><span class="nt">(url, data, timeout, cafile, capath, cadefault, context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">212</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">213</span>         <span class="n">opener</span> <span class="o">=</span> <span class="n">_opener</span>
-<span class="ne">--&gt; </span><span class="mi">214</span>     <span class="k">return</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">215</span> 
-<span class="g g-Whitespace">    </span><span class="mi">216</span> <span class="k">def</span> <span class="nf">install_opener</span><span class="p">(</span><span class="n">opener</span><span class="p">):</span>
-
-<span class="nn">~/anaconda3/lib/python3.9/urllib/request.py</span> in <span class="ni">open</span><span class="nt">(self, fullurl, data, timeout)</span>
-<span class="g g-Whitespace">    </span><span class="mi">515</span> 
-<span class="g g-Whitespace">    </span><span class="mi">516</span>         <span class="n">sys</span><span class="o">.</span><span class="n">audit</span><span class="p">(</span><span class="s1">&#39;urllib.Request&#39;</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">full_url</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">get_method</span><span class="p">())</span>
-<span class="ne">--&gt; </span><span class="mi">517</span>         <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_open</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">518</span> 
-<span class="g g-Whitespace">    </span><span class="mi">519</span>         <span class="c1"># post-process response</span>
-
-<span class="nn">~/anaconda3/lib/python3.9/urllib/request.py</span> in <span class="ni">_open</span><span class="nt">(self, req, data)</span>
-<span class="g g-Whitespace">    </span><span class="mi">532</span> 
-<span class="g g-Whitespace">    </span><span class="mi">533</span>         <span class="n">protocol</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">type</span>
-<span class="ne">--&gt; </span><span class="mi">534</span>         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">handle_open</span><span class="p">,</span> <span class="n">protocol</span><span class="p">,</span> <span class="n">protocol</span> <span class="o">+</span>
-<span class="g g-Whitespace">    </span><span class="mi">535</span>                                   <span class="s1">&#39;_open&#39;</span><span class="p">,</span> <span class="n">req</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">536</span>         <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
-
-<span class="nn">~/anaconda3/lib/python3.9/urllib/request.py</span> in <span class="ni">_call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
-<span class="g g-Whitespace">    </span><span class="mi">492</span>         <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">493</span>             <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">494</span>             <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">495</span>             <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">496</span>                 <span class="k">return</span> <span class="n">result</span>
-
-<span class="nn">~/anaconda3/lib/python3.9/urllib/request.py</span> in <span class="ni">https_open</span><span class="nt">(self, req)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1387</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1388</span>         <span class="k">def</span> <span class="nf">https_open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">1389</span>             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_open</span><span class="p">(</span><span class="n">http</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">HTTPSConnection</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1390</span>                 <span class="n">context</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_context</span><span class="p">,</span> <span class="n">check_hostname</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_check_hostname</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1391</span> 
-
-<span class="nn">~/anaconda3/lib/python3.9/urllib/request.py</span> in <span class="ni">do_open</span><span class="nt">(self, http_class, req, **http_conn_args)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1344</span>         <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1345</span>             <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1346</span>                 <span class="n">h</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">get_method</span><span class="p">(),</span> <span class="n">req</span><span class="o">.</span><span class="n">selector</span><span class="p">,</span> <span class="n">req</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1347</span>                           <span class="n">encode_chunked</span><span class="o">=</span><span class="n">req</span><span class="o">.</span><span class="n">has_header</span><span class="p">(</span><span class="s1">&#39;Transfer-encoding&#39;</span><span class="p">))</span>
-<span class="g g-Whitespace">   </span><span class="mi">1348</span>             <span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span> <span class="c1"># timeout error</span>
-
-<span class="nn">~/anaconda3/lib/python3.9/http/client.py</span> in <span class="ni">request</span><span class="nt">(self, method, url, body, headers, encode_chunked)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1277</span>                 <span class="n">encode_chunked</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1278</span>         <span class="sd">&quot;&quot;&quot;Send a complete request to the server.&quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1279</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_send_request</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">encode_chunked</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1280</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1281</span>     <span class="k">def</span> <span class="nf">_send_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">body</span><span class="p">,</span> <span class="n">headers</span><span class="p">,</span> <span class="n">encode_chunked</span><span class="p">):</span>
-
-<span class="nn">~/anaconda3/lib/python3.9/http/client.py</span> in <span class="ni">_send_request</span><span class="nt">(self, method, url, body, headers, encode_chunked)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1323</span>             <span class="c1"># default charset of iso-8859-1.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1324</span>             <span class="n">body</span> <span class="o">=</span> <span class="n">_encode</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1325</span>         <span class="bp">self</span><span class="o">.</span><span class="n">endheaders</span><span class="p">(</span><span class="n">body</span><span class="p">,</span> <span class="n">encode_chunked</span><span class="o">=</span><span class="n">encode_chunked</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1326</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1327</span>     <span class="k">def</span> <span class="nf">getresponse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-<span class="nn">~/anaconda3/lib/python3.9/http/client.py</span> in <span class="ni">endheaders</span><span class="nt">(self, message_body, encode_chunked)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1272</span>         <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1273</span>             <span class="k">raise</span> <span class="n">CannotSendHeader</span><span class="p">()</span>
-<span class="ne">-&gt; </span><span class="mi">1274</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_send_output</span><span class="p">(</span><span class="n">message_body</span><span class="p">,</span> <span class="n">encode_chunked</span><span class="o">=</span><span class="n">encode_chunked</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1275</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1276</span>     <span class="k">def</span> <span class="nf">request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">{},</span> <span class="o">*</span><span class="p">,</span>
-
-<span class="nn">~/anaconda3/lib/python3.9/http/client.py</span> in <span class="ni">_send_output</span><span class="nt">(self, message_body, encode_chunked)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1032</span>         <span class="n">msg</span> <span class="o">=</span> <span class="sa">b</span><span class="s2">&quot;</span><span class="se">\r\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1033</span>         <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_buffer</span><span class="p">[:]</span>
-<span class="ne">-&gt; </span><span class="mi">1034</span>         <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1035</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1036</span>         <span class="k">if</span> <span class="n">message_body</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">~/anaconda3/lib/python3.9/http/client.py</span> in <span class="ni">send</span><span class="nt">(self, data)</span>
-<span class="g g-Whitespace">    </span><span class="mi">972</span>         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sock</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">973</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">auto_open</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">974</span>                 <span class="bp">self</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">975</span>             <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">976</span>                 <span class="k">raise</span> <span class="n">NotConnected</span><span class="p">()</span>
-
-<span class="nn">~/anaconda3/lib/python3.9/http/client.py</span> in <span class="ni">connect</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1439</span>             <span class="s2">&quot;Connect to a host on a given (SSL) port.&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1440</span> 
-<span class="ne">-&gt; </span><span class="mi">1441</span>             <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1442</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1443</span>             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tunnel_host</span><span class="p">:</span>
-
-<span class="nn">~/anaconda3/lib/python3.9/http/client.py</span> in <span class="ni">connect</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">943</span>     <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">944</span>         <span class="sd">&quot;&quot;&quot;Connect to the host and port specified in __init__.&quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">945</span>         <span class="bp">self</span><span class="o">.</span><span class="n">sock</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_connection</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">946</span>             <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">host</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">port</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">timeout</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">source_address</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">947</span>         <span class="bp">self</span><span class="o">.</span><span class="n">sock</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">IPPROTO_TCP</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">TCP_NODELAY</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="nn">~/anaconda3/lib/python3.9/socket.py</span> in <span class="ni">create_connection</span><span class="nt">(address, timeout, source_address)</span>
-<span class="g g-Whitespace">    </span><span class="mi">830</span>             <span class="k">if</span> <span class="n">source_address</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">831</span>                 <span class="n">sock</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">source_address</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">832</span>             <span class="n">sock</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">sa</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">833</span>             <span class="c1"># Break explicitly a reference cycle</span>
-<span class="g g-Whitespace">    </span><span class="mi">834</span>             <span class="n">err</span> <span class="o">=</span> <span class="kc">None</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">myWget</span><span class="p">(</span><span class="s2">&quot;yahoo_volume.pkl&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(PosixPath(&#39;examples/yahoo_volume.pkl&#39;),
- &lt;http.client.HTTPMessage at 0x7f71b81b4f40&gt;)
 </pre></div>
 </div>
 </div>
@@ -1502,7 +1378,7 @@ Var(Y) &amp; = \dfrac{\sum (X-\mu_Y)^2}{n}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.49976361144151144
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4997636114415114
 </pre></div>
 </div>
 </div>
@@ -1528,7 +1404,7 @@ Var(Y) &amp; = \dfrac{\sum (X-\mu_Y)^2}{n}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.49976361144151144
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4997636114415114
 </pre></div>
 </div>
 </div>
@@ -3226,7 +3102,7 @@ dtype: float64
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">9. </span>데이터프레임 핵심 기능</p>
+            <p class="prev-next-title"><span class="section-number">9. </span>데이터프레임 핵심</p>
         </div>
     </a>
 </div>

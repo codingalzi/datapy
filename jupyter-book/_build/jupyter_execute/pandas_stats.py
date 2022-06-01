@@ -254,11 +254,11 @@ data_path.mkdir(parents=True, exist_ok=True)
 # In[28]:
 
 
-from urllib.request import urlretrieve
+import requests
 
 # 파일 서버 기본 주소
 base_url = "https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/examples/"
-
+    
 def myWget(filename):
     # 다운로드 대상 파일 경로
     file_url = base_url + filename
@@ -266,7 +266,10 @@ def myWget(filename):
     # 저장 경로와 파일명
     target_path = data_path / filename
 
-    return urlretrieve(file_url, target_path)
+    data = requests.get(file_url)
+    
+    with open(target_path, 'wb') as f:
+        f.write(data.content)
 
 
 # 두 개의 픽클 파일 다운로드한다.
@@ -279,7 +282,7 @@ def myWget(filename):
 myWget("yahoo_price.pkl")
 
 
-# In[34]:
+# In[30]:
 
 
 myWget("yahoo_volume.pkl")
@@ -292,7 +295,7 @@ myWget("yahoo_volume.pkl")
 # 아래 코드는 일별 주가 데이터를 불러온다.
 # 2010년 1월 4일부터 2016년 10월 21일까지의 데이터 1714개를 담고 있다.
 
-# In[35]:
+# In[31]:
 
 
 price = pd.read_pickle('examples/yahoo_price.pkl')
@@ -301,7 +304,7 @@ price
 
 # 아래 코드는 동일 회사, 동일 날짜의 1일 거래량(volume) 담고 있는 데이터를 불러온다.
 
-# In[36]:
+# In[32]:
 
 
 volume = pd.read_pickle('examples/yahoo_volume.pkl')
@@ -312,7 +315,7 @@ volume
 # 
 # __참고:__ 증권분야에서 return은 이익율을 의미한다.
 
-# In[37]:
+# In[33]:
 
 
 returns = price.pct_change()
@@ -353,7 +356,7 @@ returns.tail()
 
 # 'MSFT'와 'IBM' 사이의 상관계수는 다음과 같다.
 
-# In[38]:
+# In[34]:
 
 
 returns['MSFT'].corr(returns['IBM'])
@@ -361,7 +364,7 @@ returns['MSFT'].corr(returns['IBM'])
 
 # 'MSFT'와 'IBM' 사이의 공분산은 다음과 같다.
 
-# In[39]:
+# In[35]:
 
 
 returns['MSFT'].cov(returns['IBM'])
@@ -369,7 +372,7 @@ returns['MSFT'].cov(returns['IBM'])
 
 # 아래와 같이 속성으로 처리할 수 있으면 보다 깔금하게 보인다.
 
-# In[40]:
+# In[36]:
 
 
 returns.MSFT.corr(returns.IBM)
@@ -377,13 +380,13 @@ returns.MSFT.corr(returns.IBM)
 
 # 전체 회사를 대상으로 하는 상관계수와 공분산을 계산할 수도 있다.
 
-# In[41]:
+# In[37]:
 
 
 returns.corr()
 
 
-# In[42]:
+# In[38]:
 
 
 returns.cov()
@@ -393,7 +396,7 @@ returns.cov()
 
 # 시리즈를 인자로 사용하면 각 열에 대한 상관계수를 계산한다.
 
-# In[43]:
+# In[39]:
 
 
 returns.corrwith(returns.IBM)
@@ -401,7 +404,7 @@ returns.corrwith(returns.IBM)
 
 # 데이터프레임을 인자로 사용하면 공통 인덱스를 사용하는 모든 열에 대한 상관계수를 계산한다.
 
-# In[44]:
+# In[40]:
 
 
 returns.corrwith(volume)
@@ -414,14 +417,14 @@ returns.corrwith(volume)
 # 시리즈에서 사용된 값을 중복 없이 확인하려면 `unique()` 메서드를 이용한다.
 # `set()` 함수와 유사하게 작동하며, 넘파이 어레이를 반환한다.
 
-# In[45]:
+# In[41]:
 
 
 obj = pd.Series(['c', 'a', 'd', 'a', 'a', 'b', 'b', 'c', 'c'])
 obj
 
 
-# In[46]:
+# In[42]:
 
 
 uniques = obj.unique()
@@ -432,13 +435,13 @@ uniques
 
 # 값들의 빈도수를 확인하기 위해 사용한다.
 
-# In[47]:
+# In[43]:
 
 
 obj.value_counts()
 
 
-# In[48]:
+# In[44]:
 
 
 pd.value_counts(obj.values, sort=False)
@@ -449,7 +452,7 @@ pd.value_counts(obj.values, sort=False)
 # 아래 코드는 인터넷 데이터 저장소로부터 아이리스(붓꽃) 데이터(`iris.data`)를 
 # 2차원 넘파이 어레이로 불러온다.
 
-# In[49]:
+# In[45]:
 
 
 # 아이리스(붓꽃) 데이터 불러오기
@@ -470,13 +473,13 @@ iris = np.genfromtxt(url, delimiter=',', dtype='str')
 # 꽃받침 길이, 꽃받침 너비, 꽃잎 길이, 꽃잎 너비, 품종
 # ```
 
-# In[50]:
+# In[46]:
 
 
 type(iris)
 
 
-# In[51]:
+# In[47]:
 
 
 iris.shape
@@ -488,7 +491,7 @@ iris.shape
 # 
 # __참고:__ `'<U15'`는 길이가 최대 15인 유니코드 문자열 자료형을 나타낸다.
 
-# In[52]:
+# In[48]:
 
 
 iris[:5]
@@ -497,7 +500,7 @@ iris[:5]
 # 수치형 데이터와 품종 데이터를 분리해서 각각 (150,4), (150,) 모양의 어레이를 생성하자.
 # 이때 수치형 데이터는 `'f8'`, 즉 `'float64'` 자료형을 사용하도록 한다.
 
-# In[53]:
+# In[49]:
 
 
 iris_features = iris[:,:4].astype('f8')
@@ -507,7 +510,7 @@ iris_labels = iris[:, 4]
 # 두 어레이를 판다스의 데이터프레임으로 형변환한다.
 # 이때 각 열의 이름을 사용된 데이터 특성을 반영하도록 지정한다.
 
-# In[54]:
+# In[50]:
 
 
 columns = ['꽃받침길이', '꽃받침너비', '꽃잎길이', '꽃잎너비']
@@ -517,7 +520,7 @@ iris_features[:5]
 
 # 레이블은 판다스의 시리즈로 변환한다.
 
-# In[55]:
+# In[51]:
 
 
 iris_labels = pd.Series(iris_labels)
@@ -533,25 +536,25 @@ iris_labels
 # 즉, 0번, 50번, 100번부터 각 품종의 데이터가 시작된다.
 # 넘파이의 경우와는 달리 인덱스를 항상 함께 보여준다.
 
-# In[56]:
+# In[52]:
 
 
 iris_labels[::50]
 
 
-# In[57]:
+# In[53]:
 
 
 iris_labels[:5]
 
 
-# In[58]:
+# In[54]:
 
 
 iris_labels[50:55]
 
 
-# In[59]:
+# In[55]:
 
 
 iris_labels[100:105]
@@ -561,7 +564,7 @@ iris_labels[100:105]
 
 # 부울 인덱싱은 넘파이의 경우와 기본적으로 동일하다.
 
-# In[60]:
+# In[56]:
 
 
 mask = (iris_features.꽃잎길이>1.5) | (iris_features.꽃받침길이<5.0)
@@ -570,7 +573,7 @@ mask
 
 # 조건을 만족하는 샘플의 수는 아래와 같다.
 
-# In[61]:
+# In[57]:
 
 
 mask.sum()
@@ -581,7 +584,7 @@ mask.sum()
 # 하지만 아래에서 볼 수 있듯이 다른 붓꽃의 인덱스가 조정되지는 않는다.
 # 즉, 인덱스는 한 번 정해지면 절대 변하지 않는다.
 
-# In[62]:
+# In[58]:
 
 
 iris_features[mask]
@@ -596,7 +599,7 @@ iris_features[mask]
 
 # 데이터프레임의 `corr()` 메서드는 모든 특성들 사이의 피어슨 상관계수로 이루어진 데이터프레임을 반환환다.
 
-# In[63]:
+# In[59]:
 
 
 iris_corr = iris_features.corr()
@@ -609,7 +612,7 @@ iris_corr
 #     행(row) 단위 인덱싱은 `loc()` 또는 `iloc()` 메서드를 이용한다.
 # - `sort_values()`: 열 단위로 오름차순으로 정렬함. 역순으로 하고자 할 경우 `ascending=False` 키워드 인자 사용.
 
-# In[64]:
+# In[60]:
 
 
 iris_corr['꽃받침길이'].sort_values(ascending=False)
@@ -618,7 +621,7 @@ iris_corr['꽃받침길이'].sort_values(ascending=False)
 # 따라서 '꽃받침길이'와 '꽃잎길이' 사이의 상관계수가 가장 높으며 
 # 아래처럼 인덱싱을 두 번 사용하면 해당 값을 확인할 수 있다.
 
-# In[65]:
+# In[61]:
 
 
 iris_corr['꽃받침길이']['꽃잎길이']
@@ -633,7 +636,7 @@ iris_corr['꽃받침길이']['꽃잎길이']
 # 이어서 `iris_features` 데이터프레임과 합칠 때 새로 추가되는 열의 이름으로 
 # 사용되도록 하기 위함이다.
 
-# In[66]:
+# In[62]:
 
 
 # pass와 None을 각각 적절한 코드와 표현식으로 대체하라.
@@ -642,13 +645,13 @@ scaled = (3.14 * iris_features['꽃잎길이'] * iris_features['꽃받침길이'
 length_property1 = pd.Series(scaled, name='길이특성1')
 
 
-# In[67]:
+# In[63]:
 
 
 length_property1
 
 
-# In[68]:
+# In[64]:
 
 
 iris_features_added = pd.concat([iris_features, length_property1], axis=1)
@@ -661,7 +664,7 @@ iris_features_added
 
 # 부울 인덱싱을 사용한다.
 
-# In[69]:
+# In[65]:
 
 
 # None을 적절한 부울 표현식으로 대체하라.
@@ -672,7 +675,7 @@ mask
 
 # 정확히 50개의 샘플에 대해서만 `True`이다.
 
-# In[70]:
+# In[66]:
 
 
 mask.sum()
@@ -680,14 +683,14 @@ mask.sum()
 
 # 보다 정확히는 50번부터 99번까지 붓꽃만 선택된다.
 
-# In[71]:
+# In[67]:
 
 
 iris_versicolor = iris_features[mask]
 iris_versicolor.head()
 
 
-# In[72]:
+# In[68]:
 
 
 iris_versicolor.tail()
@@ -698,28 +701,28 @@ iris_versicolor.tail()
 # __참고:__ 데이터프레임의 메서드는 기본적으로 열(columns)에 대한 속성을 다룬다.
 # 즉, `axis=0`을 기본 축으로 사용한다.
 
-# In[73]:
+# In[69]:
 
 
 iris_mean = iris_features.mean()
 iris_mean
 
 
-# In[74]:
+# In[70]:
 
 
 iris_mean = iris_features.mean(axis=0)
 iris_mean
 
 
-# In[75]:
+# In[71]:
 
 
 iris_median = iris_features.median()
 iris_median
 
 
-# In[76]:
+# In[72]:
 
 
 iris_std = iris_features.std()
@@ -732,7 +735,7 @@ iris_std
 # 아래 코드는 통계와 관련해서 데이터프레임 객체가 제공하는 세 개의 메서드에 
 # 대한 반복문을 적용하는 방식을 보여준다.
 
-# In[77]:
+# In[73]:
 
 
 average_methods = [pd.DataFrame.mean, pd.DataFrame.median, pd.DataFrame.std]
@@ -753,7 +756,7 @@ for fun in average_methods:
 
 # 데이터프레임을 만들려면 `index`와 `columns` 키워드를 인자를 적절하게 지정해야 한다.
 
-# In[78]:
+# In[74]:
 
 
 kinds = list(set(iris_labels))
@@ -771,7 +774,7 @@ pd.DataFrame(iris_mean_sepal_width, index=kinds, columns=['평균 꽃받침 너�
 
 # 시리즈를 만들려면 `index`와 `name` 키워드를 인자를 적절하게 지정해야 한다.
 
-# In[79]:
+# In[75]:
 
 
 kinds = list(set(iris_labels))
@@ -792,7 +795,7 @@ pd.Series(iris_mean_sepal_width, index=kinds, name='평균 꽃받침 너비')
 # 힌트: 하나의 특성, 여기서는 꽃잎 너비,에 속하는 값을 모두 0과 1사이의 값으로 변환하는 작업을 정규화(normalization)이라 한다.
 # 정규화에 대한 설명은 [정규화/표준화](https://rucrazia.tistory.com/90)을 참고하라.
 
-# In[80]:
+# In[76]:
 
 
 iris_features[:5]
@@ -802,19 +805,19 @@ iris_features[:5]
 # 하지만 데이터프레임의 메서드는 기본적으로 축을 0으로 지정해서 열 단위로 작동하기에
 # 조금 더 간단하게 구현할 수 있다.
 
-# In[81]:
+# In[77]:
 
 
 iris_features.min()
 
 
-# In[82]:
+# In[78]:
 
 
 iris_features.min(axis=0)
 
 
-# In[83]:
+# In[79]:
 
 
 iris_features_normalized = (iris_features - iris_features.min())/(iris_features.max() - iris_features.min())
@@ -824,7 +827,7 @@ iris_features_normalized
 
 # 이제 꽃잎 너비에 대한 정보만 인덱싱으로 추출하면 된다.
 
-# In[84]:
+# In[80]:
 
 
 iris_features_normalized.꽃잎너비
@@ -836,19 +839,19 @@ iris_features_normalized.꽃잎너비
 
 # `mean()`, `std()` 메서드도 기본적으로 축을 0으로 지정해서 작동한다.
 
-# In[85]:
+# In[81]:
 
 
 iris_features.mean()
 
 
-# In[86]:
+# In[82]:
 
 
 iris_features.std()
 
 
-# In[87]:
+# In[83]:
 
 
 # None을 적절한 부울 표현식으로 대체하라.
