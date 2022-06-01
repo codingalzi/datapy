@@ -315,7 +315,7 @@ plt.plot(ypoints, 'o:g', ms=20, mfc='blueviolet', mec='blueviolet')
 plt.show()
 
 
-# ### 선분
+# ## 선분
 
 # `linestyle` 또는 `ls` 옵션 인자로 선 모양을 지정할 수 있다.
 # 앞서 언급한 선 기호를 사용하거나 다음 문자열 중에 하나를 사용한다.
@@ -406,4 +406,4 @@ plt.plot(x1, y1, x2, y2)
 plt.show()
 
 
-# ### 레이블과 제목
+# ## 레이블과 제목
