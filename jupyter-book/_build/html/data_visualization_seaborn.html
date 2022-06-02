@@ -38,9 +38,12 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -51,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="12. 데이터 시각화: pandas" href="data_visualization_pandas.html" />
+    <link rel="prev" title="12. 데이터 시각화: matplotlib.pyplot 2부" href="data_visualization_pyplot2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -161,13 +164,13 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="data_visualization_pyplot.html">
-   11. 데이터 시각화: matplotlib.pyplot
+  <a class="reference internal" href="data_visualization_pyplot1.html">
+   11. 데이터 시각화: matplotlib.pyplot 1부
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="data_visualization_pandas.html">
-   12. 데이터 시각화: pandas
+  <a class="reference internal" href="data_visualization_pyplot2.html">
+   12. 데이터 시각화: matplotlib.pyplot 2부
   </a>
  </li>
  <li class="toctree-l1 current active">
@@ -348,7 +351,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fea60493640&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fe8963e3f70&gt;
 </pre></div>
 </div>
 <img alt="_images/data_visualization_seaborn_3_1.png" src="_images/data_visualization_seaborn_3_1.png" />
@@ -367,7 +370,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fea5c3f7070&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fe895b3d5e0&gt;
 </pre></div>
 </div>
 <img alt="_images/data_visualization_seaborn_4_1.png" src="_images/data_visualization_seaborn_4_1.png" />
@@ -385,7 +388,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fea5c3f7160&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fe8958c1a60&gt;
 </pre></div>
 </div>
 <img alt="_images/data_visualization_seaborn_5_1.png" src="_images/data_visualization_seaborn_5_1.png" />
@@ -398,7 +401,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fea5c3f7e20&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fe8959f1df0&gt;
 </pre></div>
 </div>
 <img alt="_images/data_visualization_seaborn_6_1.png" src="_images/data_visualization_seaborn_6_1.png" />
@@ -411,7 +414,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fea21fd53a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fe88ffc1e80&gt;
 </pre></div>
 </div>
 <img alt="_images/data_visualization_seaborn_7_1.png" src="_images/data_visualization_seaborn_7_1.png" />
@@ -424,7 +427,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fea2209f5e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fe88c678070&gt;
 </pre></div>
 </div>
 <img alt="_images/data_visualization_seaborn_8_1.png" src="_images/data_visualization_seaborn_8_1.png" />
@@ -437,7 +440,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fea21f8cb50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fe895a5b940&gt;
 </pre></div>
 </div>
 <img alt="_images/data_visualization_seaborn_9_1.png" src="_images/data_visualization_seaborn_9_1.png" />
@@ -450,7 +453,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fea206b1f70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fe88c495ac0&gt;
 </pre></div>
 </div>
 <img alt="_images/data_visualization_seaborn_10_1.png" src="_images/data_visualization_seaborn_10_1.png" />
@@ -463,7 +466,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fea205c6610&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fe88c611f40&gt;
 </pre></div>
 </div>
 <img alt="_images/data_visualization_seaborn_11_1.png" src="_images/data_visualization_seaborn_11_1.png" />
@@ -477,7 +480,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fea204ef970&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7fe88c2f4a30&gt;
 </pre></div>
 </div>
 <img alt="_images/data_visualization_seaborn_12_1.png" src="_images/data_visualization_seaborn_12_1.png" />
@@ -490,7 +493,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fea2031d0a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fe88c20e2b0&gt;
 </pre></div>
 </div>
 <img alt="_images/data_visualization_seaborn_13_1.png" src="_images/data_visualization_seaborn_13_1.png" />
@@ -521,7 +524,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fea23b23700&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fe8768ceb50&gt;
 </pre></div>
 </div>
 <img alt="_images/data_visualization_seaborn_15_1.png" src="_images/data_visualization_seaborn_15_1.png" />
@@ -544,7 +547,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fea100661c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fe8768f4a00&gt;
 </pre></div>
 </div>
 <img alt="_images/data_visualization_seaborn_16_1.png" src="_images/data_visualization_seaborn_16_1.png" />
@@ -578,11 +581,11 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="data_visualization_pandas.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="data_visualization_pyplot2.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">12. </span>데이터 시각화: pandas</p>
+            <p class="prev-next-title"><span class="section-number">12. </span>데이터 시각화: matplotlib.pyplot 2부</p>
         </div>
     </a>
 </div>
