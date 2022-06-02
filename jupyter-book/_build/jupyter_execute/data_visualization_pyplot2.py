@@ -8,10 +8,12 @@
 # 
 # [Matplotlib Tutorial](https://www.w3schools.com/python/matplotlib_intro.asp) 를 참고하였습니다. 
 # 
-# - annotation 추가 필요
-# - `plt.axis([0, 7.5, 0, 3])`
-# - `plt.gca().set_aspect("equal")`
-# - `plt.grid()`
+# - 추가해야 할 사항
+#     - annotation
+#     - `plt.axis([0, 7.5, 0, 3])`
+#     - `plt.gca().set_aspect("equal")`
+#     - `plt.grid()`
+#     - `plt.rcParams`
 
 # **기본 설정**
 
