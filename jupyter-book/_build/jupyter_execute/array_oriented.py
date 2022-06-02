@@ -713,7 +713,7 @@ arr.argmin(1)
 url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 
 
-# 위 주소의 `iris.data` 파일을 `datasets/iris/`라는 하위 디렉토리에 저장한다.
+# 위 주소의 `iris.data` 파일을 `data`라는 하위 디렉토리에 저장한다.
 
 # In[70]:
 
@@ -721,7 +721,7 @@ url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 import os
 import urllib.request
 
-PATH = './datasets/iris/'
+PATH = './data/'
 os.makedirs(PATH, exist_ok=True)
 urllib.request.urlretrieve(url, PATH+'iris.data')
 
@@ -742,7 +742,7 @@ urllib.request.urlretrieve(url, PATH+'iris.data')
 # In[71]:
 
 
-get_ipython().system('cat datasets/iris/iris.data | head -n 5')
+get_ipython().system('cat data/iris.data | head -n 5')
 
 
 # 이 중에 마지막 품종 특성은 문자열이고 나머지 특성은 부동소수점, 즉 수치형 데이터이다. 

@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # (ch:seaborn)=
-# # 데이터 시각화: seaborn
+# # seaborn
 
 # - [Seaborn 홈페이지](https://seaborn.pydata.org/index.html)
 # - [Seaborn intro](https://seaborn.pydata.org/introduction.html)

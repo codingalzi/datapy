@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # (ch:pyplot1)=
-# # 데이터 시각화: matplotlib.pyplot 1부
+# # matplotlib.pyplot 1부
 
 # **참고**
 # 
@@ -407,7 +407,7 @@ plt.plot(x1, y1, x2, y2)
 plt.show()
 
 
-# ## 레이블과 제목
+# ## 라벨과 제목
 
 # **축 라벨**
 
@@ -428,7 +428,7 @@ plt.plot(x, y, 'o')
 plt.show()
 
 
-# 한글 라베를 사용할 수도 있지만 시스템에 포트 설치 등 추가 설정을 해줘야 하기에
+# 한글 라벨을 사용할 수도 있지만 시스템에 포트 설치 등 추가 설정을 해줘야 하기에
 # 여기서는 사용하지 않는다.
 
 # **그래프 제목**
@@ -494,4 +494,174 @@ plt.title("Python and ML", fontdict=font1, loc='left')
 plt.plot(x, y, 'o')
 
 plt.show()
+
+
+# **범례**
+
+# 그래프에 사용된 데이터의 정보를 범례<font size='2'>legend</font> 로 전달할 수 있다.
+# 이를 위해 `plot()` 함수에 `label` 옵션 인자를 사용한다.
+
+# In[31]:
+
+
+y1 = np.array([5, 1, 2, 10, 7, 9])
+y2 = np.array([3, 7, 4, 2, 9, 6])
+y3 = np.array([4, 6, 8, 6, 4, 5])
+
+plt.plot(y1, label='Python') # 범례에 사용된 라벨 지정
+plt.plot(y2, label='ML')
+plt.plot(y3, label='DL')
+plt.legend() # 범례 설정
+
+plt.show()
+
+
+# 범례는 적절한 곳에 자동으로 위치하지만, 
+# `loc` 옵션 인자 다음 중 하나를 선택하여 위치를 지정할 수도 있다.
+# 문자열 또는 코드를 사용한다.
+# 
+# | 위치 문자열 | 위치 코드 | 
+# | :--- | :--- |
+# | 'best' | 0 |
+# | 'upper right' | 1 |
+# | 'upper left' | 2 |
+# | 'lower left' | 3 |
+# | 'lower right' | 4 |
+# | 'right' |	5 |
+# | 'center left' | 6 |
+# | 'center right' | 7 |
+# | 'lower center' | 8 |
+# | 'upper center' | 9 |
+# | 'center' | 10 |
+
+# In[32]:
+
+
+y1 = np.array([5, 1, 2, 10, 7, 9])
+y2 = np.array([3, 7, 4, 2, 9, 6])
+y3 = np.array([4, 6, 8, 6, 4, 5])
+
+plt.plot(y1, label='Python') # 범례에 사용된 라벨 지정
+plt.plot(y2, label='ML')
+plt.plot(y3, label='DL')
+plt.legend(loc='lower right') # 범례 설정
+
+plt.show()
+
+
+# ## 활용 예제
+
+# 붓꽃 데이터셋을 아래 방식으로 불러온다. 
+
+# In[33]:
+
+
+from sklearn import datasets
+
+iris = datasets.load_iris(as_frame=True)
+
+
+# :::{admonition} 사이킷런<font size='2'>scikit-learn</font> 라이브러리
+# :class:
+# 
+# 사이킷런 라이브러리는 머신러닝에 가장 중요한 라이브러리 중 하나며,
+# 다양한 데이터셋을 기본으로 제공한다.
+# :::
+
+# `load_iris()` 함수의 반환값은 사이킷런 라이브리의 `utils` 모듈에서 정의된 `Bunch` 자료형이다. 
+
+# In[34]:
+
+
+type(iris)
+
+
+# `Bunch` 객체는 데이터셋을 사전 형식으로 담으며, 키를 객체의 속성처럼 다룰 수 있다.
+# 사용된 키를 확인해보자.
+
+# In[35]:
+
+
+iris.keys()
+
+
+# 이중에 붓꽃 데이터는 `'data'` 키의 값으로 저장되어 있으며, 데이터프레임 객체다.
+
+# In[36]:
+
+
+iris.data # iris['data']
+
+
+# 품종 데이터는 `'target'` 키의 값으로 저장되어 있으려, 시리즈 객체다.
+# 
+# | 기호 | 품종 |
+# | :---: | :---: |
+# | 0 | 세토사(Iris setosa) |
+# | 1 | 버시컬러(Iris versicolor) |
+# | 2 | 버지니카(Iris verginica) |
+
+# In[37]:
+
+
+iris.target # iris['target']
+
+
+# 시각화를 위해 꽃잎<font size='2'>petal</font>의 길이와 너비 두 개의 특성만 선택한다.
+# 
+# * `values` 속성: 데이터프레임 또는 시리즈의 항목으로 구성된 넘파이 어레이
+
+# In[38]:
+
+
+X = iris.data[["petal length (cm)", "petal width (cm)"]].values
+y = iris.target.values
+
+
+# 꽃잎의 길이와 너비를 이용하여 품종별로 산점도를 그려보자. 
+# 먼저 세토사 품종의 데이터는 다음과 같다. 
+
+# In[39]:
+
+
+mask_setosa = (y == 0)
+X_setosa = X[mask_setosa]
+
+
+# 50개의 샘플로 구성된다.
+
+# In[40]:
+
+
+X_setosa.shape
+
+
+# 버시컬러 데이터셋과 버지니카 데이터셋도 동일한 방식으로 구해진다.
+
+# In[41]:
+
+
+mask_versicolor = (y == 1)
+X_versicolor = X[mask_versicolor]
+
+
+# In[42]:
+
+
+mask_verginica = (y == 2)
+X_verginica = X[mask_verginica]
+
+
+# 각 데이터셋의 산점도를 다른 색을 이용하여 그리면 다음과 같다.
+
+# In[43]:
+
+
+plt.plot(X_setosa[:, 0], X_setosa[:, 1], "yo", label="Iris setosa")
+plt.plot(X_versicolor[:, 0], X_versicolor[:, 1], "bs", label="Iris versicolor")
+plt.plot(X_verginica[:, 0], X_verginica[:, 1], "rs", label="Iris verginica")
+
+plt.xlabel("Petal length")
+plt.ylabel("Petal width")
+plt.legend(loc="upper left")
 
