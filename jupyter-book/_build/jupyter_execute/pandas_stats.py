@@ -447,7 +447,7 @@ obj.value_counts()
 pd.value_counts(obj.values, sort=False)
 
 
-# ## 붓꽃 데이터셋 다루기
+# ## 미니 프로젝트: 붓꽃 데이터셋 표준화
 
 # 아래 코드는 인터넷 데이터 저장소로부터 아이리스(붓꽃) 데이터(`iris.data`)를 
 # 2차원 넘파이 어레이로 불러온다.

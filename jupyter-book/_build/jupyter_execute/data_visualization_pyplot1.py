@@ -4,12 +4,6 @@
 # (ch:pyplot1)=
 # # matplotlib.pyplot 1부
 
-# **참고**
-# 
-# [Matplotlib Tutorial](https://www.w3schools.com/python/matplotlib_intro.asp) 를 참고하였습니다. 
-# 
-# - annotation 추가 필요
-
 # **기본 설정**
 
 # In[1]:
@@ -154,10 +148,11 @@ plt.show()
 # 
 # 출처: [Matplotlib](https://matplotlib.org/stable/api/markers_api.html)
 
-# **포맷 문자열**
+# **선-마커 형식 문자열**
 
 # 점 모양, 선분 사용 여부 등을 한꺼번에 지정할 수 있다.
-# 예를 들어, 빨간 점을 잇는 선분을 사용하려면 셋째 인자로 `o-r` 을 사용한다.
+# 예를 들어, 빨간 점을 잇는 선분을 사용하려면 셋째 인자로 선과 마커의 속성을 지정하는
+# 형식 문자열로 `o-r` 을 사용한다.
 
 # In[12]:
 
@@ -168,7 +163,7 @@ plt.plot(ypoints, 'o-r')
 plt.show()
 
 
-# 초록 점선을 사용하려면 `o:g` 를 셋째 인자로 사용한다.
+# 초록 점선을 사용하려면 형식 문자열 `o:g` 를 셋째 인자로 사용한다.
 
 # In[13]:
 
@@ -179,7 +174,7 @@ plt.plot(ypoints, 'o:g')
 plt.show()
 
 
-# 포맷 문자열은 세 개의 요소로 구성되며, 각 요소는 생략될 수 있다.
+# 형식 문자열은 세 개의 요소로 구성되며, 각 요소는 생략될 수 있다.
 # 
 # - 점 모양
 # - 선분 모양
@@ -513,6 +508,10 @@ plt.plot(y2, label='ML')
 plt.plot(y3, label='DL')
 plt.legend() # 범례 설정
 
+plt.xlabel("Counts", fontdict=font2)
+plt.ylabel("Scores", fontdict=font2)
+plt.title("Data Analysis", fontdict=font1)
+
 plt.show()
 
 
@@ -546,14 +545,133 @@ plt.plot(y2, label='ML')
 plt.plot(y3, label='DL')
 plt.legend(loc='lower right') # 범례 설정
 
+plt.xlabel("Counts", fontdict=font2)
+plt.ylabel("Scores", fontdict=font2)
+plt.title("Data Analysis", fontdict=font1)
+
 plt.show()
 
 
-# ## 활용 예제
+# ## 격자 무늬 배경
+
+# 격자 무늬를 그래프의 배경에 넣기 위해 `plt.grid()` 함수를 사용한다.
+
+# In[33]:
+
+
+ypoints = np.array([5, 1, 2, 10, 7, 9])
+
+plt.plot(ypoints)
+plt.grid()
+
+plt.show()
+
+
+# 축을 지정하여 격자를 선택할 수 있다.
+
+# In[34]:
+
+
+ypoints = np.array([5, 1, 2, 10, 7, 9])
+
+plt.plot(ypoints)
+plt.grid(axis='x')
+
+plt.show()
+
+
+# In[35]:
+
+
+ypoints = np.array([5, 1, 2, 10, 7, 9])
+
+plt.plot(ypoints)
+plt.grid(axis='y')
+
+plt.show()
+
+
+# 격자 무늬의 선 속성을 그래프의 선 속성과 유사한 방식으로 변경할 수 있다.
+
+# In[36]:
+
+
+ypoints = np.array([5, 1, 2, 10, 7, 9])
+
+plt.plot(ypoints)
+plt.grid(color = 'green', linestyle = '-.', linewidth = 0.5)
+
+plt.show()
+
+
+# ## 축의 범위와 척도
+
+# x 축, y 축의 범위와 척도는 `plt.plot()` 함수가 데이터에 맞춰 자동으로 지정한다.
+# 하자민 경우에 따라 범위와 척도를 수동으로 지정해야할 때가 있다.
+
+# **범위 지정**
+
+# `plt.axis()` 함수를 이용한다. 
+# 함수의 인자로 길이가 4인 리스트를 인자로 받으며
+# x 축의 최솟값, 최댓값,
+# y 축의 최솟값, 최댓값 
+# 순서로 리스트의 항목을 사용한다.
+
+# In[37]:
+
+
+ypoints = np.array([5, 1, 2, 10, 7, 9])
+
+plt.plot(ypoints)
+plt.grid(color = 'green', linestyle = '-.', linewidth = 0.5)
+plt.axis([-1, 6, -1, 12])
+
+plt.show()
+
+
+# **척도 지정**
+
+# x 축과 y 축에 사용되는 척도를 통일시킬 수 있다.
+# `plt.gca().set_aspect()` 함수의 인자로 `"equal"` 을 사용하면 된다.
+# `plt.gca()` 함수는 현재 이미지에 사용된 축의 인스턴스를 생성한다. 
+
+# In[38]:
+
+
+ypoints = np.array([5, 1, 2, 10, 7, 9])
+
+plt.plot(ypoints)
+plt.grid(color = 'green', linestyle = '-.', linewidth = 0.5)
+
+plt.axis([-1, 6, -1, 12])
+plt.gca().set_aspect("equal")
+
+plt.show()
+
+
+# x 축에 대한 y 축의 척도 비율을 함수의 인자로 지정할 수 있다.
+# 예를 들어 0.5 는 x 축 상에서의 1에 해당하는 길이가 y 축 상에서는 0.5에 해당한다는 의미다.
+
+# In[39]:
+
+
+ypoints = np.array([5, 1, 2, 10, 7, 9])
+
+plt.plot(ypoints)
+plt.grid(color = 'green', linestyle = '-.', linewidth = 0.5)
+
+plt.axis([-1, 6, -1, 12])
+plt.gca().set_aspect(0.5)
+
+plt.show()
+
+
+# (sec:iris-classfication)=
+# ## 미니 프로젝트: 붓꽃 데이터셋 분류 그래프
 
 # 붓꽃 데이터셋을 아래 방식으로 불러온다. 
 
-# In[33]:
+# In[40]:
 
 
 from sklearn import datasets
@@ -570,7 +688,7 @@ iris = datasets.load_iris(as_frame=True)
 
 # `load_iris()` 함수의 반환값은 사이킷런 라이브리의 `utils` 모듈에서 정의된 `Bunch` 자료형이다. 
 
-# In[34]:
+# In[41]:
 
 
 type(iris)
@@ -579,7 +697,7 @@ type(iris)
 # `Bunch` 객체는 데이터셋을 사전 형식으로 담으며, 키를 객체의 속성처럼 다룰 수 있다.
 # 사용된 키를 확인해보자.
 
-# In[35]:
+# In[42]:
 
 
 iris.keys()
@@ -587,7 +705,7 @@ iris.keys()
 
 # 이중에 붓꽃 데이터는 `'data'` 키의 값으로 저장되어 있으며, 데이터프레임 객체다.
 
-# In[36]:
+# In[43]:
 
 
 iris.data # iris['data']
@@ -601,7 +719,7 @@ iris.data # iris['data']
 # | 1 | 버시컬러(Iris versicolor) |
 # | 2 | 버지니카(Iris verginica) |
 
-# In[37]:
+# In[44]:
 
 
 iris.target # iris['target']
@@ -611,7 +729,7 @@ iris.target # iris['target']
 # 
 # * `values` 속성: 데이터프레임 또는 시리즈의 항목으로 구성된 넘파이 어레이
 
-# In[38]:
+# In[45]:
 
 
 X = iris.data[["petal length (cm)", "petal width (cm)"]].values
@@ -621,7 +739,7 @@ y = iris.target.values
 # 꽃잎의 길이와 너비를 이용하여 품종별로 산점도를 그려보자. 
 # 먼저 세토사 품종의 데이터는 다음과 같다. 
 
-# In[39]:
+# In[46]:
 
 
 mask_setosa = (y == 0)
@@ -630,7 +748,7 @@ X_setosa = X[mask_setosa]
 
 # 50개의 샘플로 구성된다.
 
-# In[40]:
+# In[47]:
 
 
 X_setosa.shape
@@ -638,14 +756,14 @@ X_setosa.shape
 
 # 버시컬러 데이터셋과 버지니카 데이터셋도 동일한 방식으로 구해진다.
 
-# In[41]:
+# In[48]:
 
 
 mask_versicolor = (y == 1)
 X_versicolor = X[mask_versicolor]
 
 
-# In[42]:
+# In[49]:
 
 
 mask_verginica = (y == 2)
@@ -654,7 +772,7 @@ X_verginica = X[mask_verginica]
 
 # 각 데이터셋의 산점도를 다른 색을 이용하여 그리면 다음과 같다.
 
-# In[43]:
+# In[50]:
 
 
 plt.plot(X_setosa[:, 0], X_setosa[:, 1], "yo", label="Iris setosa")
@@ -664,4 +782,97 @@ plt.plot(X_verginica[:, 0], X_verginica[:, 1], "rs", label="Iris verginica")
 plt.xlabel("Petal length")
 plt.ylabel("Petal width")
 plt.legend(loc="upper left")
+
+plt.show()
+
+
+# 범위를 x 축은 0에서 7.5 사이로, 
+# y 축은 0에서 3 사이로 지정한 다음에
+# 축의 척도를 일치 시키면 그림이 사뭇 다르게 보인다.
+
+# In[51]:
+
+
+plt.plot(X[:, 0][y == 0], X[:, 1][y == 0], "yo", label="Iris setosa")
+plt.plot(X[:, 0][y == 1], X[:, 1][y == 1], "bs", label="Iris versicolor")
+plt.plot(X[:, 0][y == 2], X[:, 1][y == 2], "rs", label="Iris verginica")
+
+plt.xlabel("Petal length")
+plt.ylabel("Petal width")
+plt.legend(loc="upper left")
+
+plt.axis([0, 7.5, 0, 3])
+plt.gca().set_aspect("equal")
+
+plt.show()
+
+
+# 격자 무늬 배경도 추가하자.
+
+# In[52]:
+
+
+plt.plot(X[:, 0][y == 0], X[:, 1][y == 0], "yo", label="Iris setosa")
+plt.plot(X[:, 0][y == 1], X[:, 1][y == 1], "bs", label="Iris versicolor")
+plt.plot(X[:, 0][y == 2], X[:, 1][y == 2], "rs", label="Iris verginica")
+
+plt.xlabel("Petal length")
+plt.ylabel("Petal width")
+plt.legend(loc="upper left")
+
+plt.axis([0, 7.5, 0, 3])
+plt.gca().set_aspect("equal")
+plt.grid()
+
+plt.show()
+
+
+# 아래 코드는 두 개의 직선을 그린다.
+
+# In[53]:
+
+
+# x 좌표
+x0 = np.linspace(0, 7.5, 200) # 0부터 7.5 사이를 200개의 작은 구간으로 균등하게 쪼갠 x 좌표값
+
+# 두 개의 직선에 대한 y 좌표값
+pred_1 = 5 * x0 - 12  # 직선 1의 y 좌표
+pred_2 = -x0 + 6.5    # 직선 2의 y 좌표
+
+plt.plot(x0, pred_1, "g--", linewidth=2) # 직선 1
+plt.plot(x0, pred_2, "m-.", linewidth=2) # 직선 2
+
+plt.axis([0, 7.5, 0, 3])
+plt.gca().set_aspect("equal")
+plt.grid()
+
+plt.show()
+
+
+# 위 두 직선과 붓꽃 데이터셋의 산포도를 합치면
+# 품종을 구별하는 경계선을 얻는다.
+
+# In[54]:
+
+
+x0 = np.linspace(0, 7.5, 200)
+pred_1 = 5 * x0 - 12
+pred_2 = -x0 + 6.5
+pred_3 = 0.05 * x0 + 0.6
+
+plt.plot(x0, pred_1, "g--", linewidth=2)
+plt.plot(x0, pred_2, "m-.", linewidth=2)
+# plt.plot(x0, pred_3, "y-", linewidth=2)
+
+plt.plot(X[:, 0][y==0], X[:, 1][y==0], "yo", label="Iris setosa")
+plt.plot(X[:, 0][y==1], X[:, 1][y==1], "bs", label="Iris versicolor")
+plt.plot(X[:, 0][y==2], X[:, 1][y==2], "rs", label="Iris verginica")
+plt.xlabel("Petal length")
+plt.ylabel("Petal width")
+plt.legend(loc="upper left")
+plt.axis([0, 7.5, 0, 3])
+plt.gca().set_aspect("equal")
+plt.grid()
+
+plt.show()
 
