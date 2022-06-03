@@ -826,12 +826,11 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 도표 크기 지정(기본값으로 되돌림)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
-<span class="c1"># 흑백사진으로 보여주도록 함.</span>
+<span class="c1"># 흑백사진으로 보여주기</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="c1"># 컬러바(색상 지도)도 보여줄 수 있음.</span>
+
+<span class="c1"># 색막대(색상 지도): 수와 색 사이의 관계를 보여주는 일종의 색지도</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
-<span class="c1"># 도표 타이틀 지정(한글 지원은 좀 복잡함)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Image plot of $\sqrt{x^2 + y^2}$ for a grid of values&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -942,12 +941,11 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 도표 크기 지정(기본값으로 되돌림)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
-<span class="c1"># 흑백사진으로 보여주도록 함.</span>
+<span class="c1"># 흑백사진으로 보여주기</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-<span class="c1"># 컬러바(색상 지도)도 보여줄 수 있음.</span>
+
+<span class="c1"># 색막대(색상 지도): 수와 색 사이의 관계를 보여주는 일종의 색지도</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
-<span class="c1"># 도표 타이틀 지정(한글 지원은 좀 복잡함)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Image plot of $\sqrt{x^2 + y^2}$ for a grid of values&quot;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -1516,7 +1514,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;./data/iris.data&#39;, &lt;http.client.HTTPMessage at 0x7f5088c8bb80&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;./data/iris.data&#39;, &lt;http.client.HTTPMessage at 0x7f74f77db160&gt;)
 </pre></div>
 </div>
 </div>
@@ -2195,6 +2193,7 @@ const thebe_selector_output = ".output, .cell_output"
 <img alt="_images/array_oriented_240_0.png" src="_images/array_oriented_240_0.png" />
 </div>
 </div>
+<p>구간의 오른쪽 끝은 포함되지 않으며, 구간의 왼쪽 끝은 생략되면 0이 기본값으로 사용된다.</p>
 </div>
 <div class="section" id="id8">
 <h2><span class="section-number">6.7. </span>연습문제<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
