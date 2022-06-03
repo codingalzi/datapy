@@ -259,12 +259,11 @@ z.shape
 # 도표 크기 지정(기본값으로 되돌림)
 plt.rc('figure', figsize=(10, 6))
 
-# 흑백사진으로 보여주도록 함.
+# 흑백사진으로 보여주기
 plt.imshow(z, cmap=plt.cm.gray, extent=[-1, 1, 1, -1])
-# 컬러바(색상 지도)도 보여줄 수 있음.
+
+# 색막대(색상 지도): 수와 색 사이의 관계를 보여주는 일종의 색지도
 plt.colorbar()
-# 도표 타이틀 지정(한글 지원은 좀 복잡함)
-plt.title("Image plot of $\sqrt{x^2 + y^2}$ for a grid of values")
 
 plt.show()
 
@@ -348,12 +347,11 @@ z.shape
 # 도표 크기 지정(기본값으로 되돌림)
 plt.rc('figure', figsize=(10, 6))
 
-# 흑백사진으로 보여주도록 함.
+# 흑백사진으로 보여주기
 plt.imshow(z, cmap=plt.cm.gray, extent=[-1, 1, 1, -1])
-# 컬러바(색상 지도)도 보여줄 수 있음.
+
+# 색막대(색상 지도): 수와 색 사이의 관계를 보여주는 일종의 색지도
 plt.colorbar()
-# 도표 타이틀 지정(한글 지원은 좀 복잡함)
-plt.title("Image plot of $\sqrt{x^2 + y^2}$ for a grid of values")
 
 plt.show()
 
@@ -1195,6 +1193,8 @@ samples = np.random.randint(0,100,10000)
 plt.hist(samples, bins=100)
 plt.show()
 
+
+# 구간의 오른쪽 끝은 포함되지 않으며, 구간의 왼쪽 끝은 생략되면 0이 기본값으로 사용된다.
 
 # ## 연습문제
 

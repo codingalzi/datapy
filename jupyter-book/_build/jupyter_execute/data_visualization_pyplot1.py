@@ -408,6 +408,8 @@ plt.show()
 
 # `plt.xlabel()`, `plt.ylabel()` 함수를 이용하여
 # x 축, y 축에 표시 라벨을 붙일 수 있다. 
+# 
+# 아래 그래프는 파이썬 점수와 머신러닝 점수 사이의 연관성을 보여준다.
 
 # In[27]:
 
@@ -666,12 +668,220 @@ plt.gca().set_aspect(0.5)
 plt.show()
 
 
+# ## 산점도
+
+# 산점도는 데이터의 분포를 표현할 때 사용된다.
+# 예를 들어, 아래 그래프는 파이썬 점수가 높으면 머신러닝 점수도 높아짐을 
+# 산점도를 통해 보여준다.
+
+# In[40]:
+
+
+x = np.array([25, 80, 85, 35, 48, 90, 95, 77, 88, 56, 15, 20, 33, 69, 44])
+y = np.array([35, 90, 70, 40, 55, 95, 90, 80, 90, 65, 25, 25, 44, 77, 45])
+
+font1 = {'family':'serif','color':'blue','size':20}
+font2 = {'family':'serif','color':'darkred','size':14}
+
+plt.xlabel("Python score", fontdict=font2)
+plt.ylabel("Machine Learning Score", fontdict=font2)
+plt.title("Python and ML", fontdict=font1)
+
+plt.scatter(x, y)
+
+plt.show()
+
+
+# **여러 개의 산점도**
+
+# `plt.plot()` 함수처럼 여러 데이터의 산점도를 동시에 그릴 수 있으며
+# 자동으로 다른 색깔로 표시된다.
+# 예를 들어, 다른 반의 파이썬 점수와 머신러닝 점수 데이터를 추가해보자.
+
+# In[41]:
+
+
+# A 반 성적
+xa = np.array([25, 80, 85, 35, 48, 90, 95, 77, 88, 56, 15, 20, 33, 69, 44])
+ya = np.array([35, 90, 70, 40, 55, 95, 90, 80, 90, 65, 25, 25, 44, 77, 45])
+plt.scatter(xa, ya)
+
+# B 반 성적
+xb = np.array([23, 85, 81, 38, 49, 94, 91, 70, 86, 52, 19, 23, 32, 64, 47])
+yb = np.array([38, 96, 73, 48, 51, 99, 93, 87, 90, 61, 28, 27, 46, 73, 45])
+plt.scatter(xb, yb)
+
+
+font1 = {'family':'serif','color':'blue','size':20}
+font2 = {'family':'serif','color':'darkred','size':14}
+
+plt.xlabel("Python score", fontdict=font2)
+plt.ylabel("Machine Learning Score", fontdict=font2)
+plt.title("Python and ML", fontdict=font1)
+
+plt.show()
+
+
+# **색 지정**
+
+# 산점도의 색은 `plt.scatter()` 함수의 `color` 옵션 인자로 지정한다.
+
+# In[42]:
+
+
+# A 반 성적
+xa = np.array([25, 80, 85, 35, 48, 90, 95, 77, 88, 56, 15, 20, 33, 69, 44])
+ya = np.array([35, 90, 70, 40, 55, 95, 90, 80, 90, 65, 25, 25, 44, 77, 45])
+plt.scatter(xa, ya, color='hotpink')
+
+# B 반 성적
+xb = np.array([23, 85, 81, 38, 49, 94, 91, 70, 86, 52, 19, 23, 32, 64, 47])
+yb = np.array([38, 96, 73, 48, 51, 99, 93, 87, 90, 61, 28, 27, 46, 73, 45])
+plt.scatter(xb, yb, color='#8fc9ff')
+
+plt.show()
+
+
+# 각 점에 대해서도 색을 지정할 수 있다.
+# 단, 각 점에 대해 색을 리스트 어레이 형식으로 지정해야 한다.
+
+# In[43]:
+
+
+x = np.array([25, 80, 85, 35, 48, 90, 95, 77, 88, 56, 15, 20, 33])
+y = np.array([35, 90, 70, 40, 55, 95, 90, 80, 90, 65, 25, 25, 44])
+
+colors = np.array(["red","green","blue","yellow","pink","black","orange",
+                   "purple","beige","brown","gray","cyan","magenta"])
+
+plt.scatter(x, y, color=colors)
+
+plt.show()
+
+
+# **색지도**
+
+# 색지도<font size='2'>colormap</font>는 일종의 색 리스트다.
+# 리스트에 포함된 색은 특정 온도를 가리키며,
+# 온도는 0도에서 100도 사이를 움직인다.
+# 즉, 0에서 100 사이의 값으로 이루어진 리스트가 색지도 역할을 수행한다.
+# 
+# 그런데 색지도에 포함된 수가 가리키는 색은 선택된 색지도에 따라 다르다.
+# 예를 들어 `'magma'` 색지도를 선택하면 각 수가 가리키는 색은 다음과 같다.
+
+# <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/colormap-magma.png" style="width:40px;"></div>
+
+# `'viridis'` 를 색지도로 선택하면 다음과 같은 색을 사용한다.
+
+# <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/colormap-viridis.png" style="width:40px;"></div>
+
+# 반면에 `'gray'` 는 흑백 색지도를 사용한다.
+
+# <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/colormap-gray.png" style="width:40px;"></div>
+
+# :::{admonition} 색지도 목록
+# :class: info
+# 
+# 제공되는 색지도의 목록은 [Choosing Colormaps in Matplotlib](https://matplotlib.org/3.5.0/tutorials/colors/colormaps.html)에서 확인한다.
+# :::
+
+# 100개의 점과 100개의 색을 무작위로 선택한 다음
+# `magma` 색지도를 사용한 결과는 다음과 같다.
+# 
+# - `cmap='Pastel1'`: 색지도 선택
+# - `plt.colorbar()`: 색막대 표시
+
+# In[44]:
+
+
+x = np.random.randint(101, size=(100,))
+y = np.random.randint(101, size=(100,))
+colors = np.random.randint(101, size=(100,))
+
+plt.scatter(x, y, c=colors, cmap='magma')
+plt.colorbar()
+
+plt.show()
+
+
+# 가로 세로 비율을 맞추면 좀 다르게 보인다.
+
+# In[45]:
+
+
+x = np.random.randint(101, size=(100,))
+y = np.random.randint(101, size=(100,))
+colors = np.random.randint(101, size=(100,))
+
+plt.scatter(x, y, c=colors, cmap='magma')
+plt.colorbar()
+plt.gca().set_aspect("equal") # 가로, 세로 비율 맞추기
+
+plt.show()
+
+
+# **점 크기**
+
+# 점들의 크기를 지정할 수 있으며 `s` 옵션 인자를 활용한다.
+
+# In[46]:
+
+
+np.random.seed(1000)
+
+x = np.random.randint(101, size=(20,))
+y = np.random.randint(101, size=(20,))
+sizes = 10 * np.random.randint(100, size=(20,))
+
+plt.scatter(x, y, s=sizes)
+
+plt.show()
+
+
+# 색지도와 혼용하면 많이 달라 보인다.
+
+# In[47]:
+
+
+np.random.seed(1000)
+
+x = np.random.randint(101, size=(20,))
+y = np.random.randint(101, size=(20,))
+sizes = 10 * np.random.randint(100, size=(20,))
+colors = np.random.randint(101, size=(20,))
+
+plt.scatter(x, y, c=colors, s=sizes, cmap='viridis')
+plt.colorbar()
+
+plt.show()
+
+
+# **투명도**
+
+# 색의 투명도는 알파<font size='2'>alpha</font> 값을 조정한다.
+
+# In[48]:
+
+
+np.random.seed(1000)
+
+x = np.random.randint(101, size=(20,))
+y = np.random.randint(101, size=(20,))
+sizes = 10 * np.random.randint(100, size=(20,))
+colors = np.random.randint(101, size=(20,))
+
+plt.scatter(x, y, c=colors, s=sizes, cmap='viridis', alpha=0.5)
+plt.colorbar()
+
+plt.show()
+
+
 # (sec:iris-classfication)=
 # ## 미니 프로젝트: 붓꽃 데이터셋 분류 그래프
 
 # 붓꽃 데이터셋을 아래 방식으로 불러온다. 
 
-# In[40]:
+# In[49]:
 
 
 from sklearn import datasets
@@ -688,7 +898,7 @@ iris = datasets.load_iris(as_frame=True)
 
 # `load_iris()` 함수의 반환값은 사이킷런 라이브리의 `utils` 모듈에서 정의된 `Bunch` 자료형이다. 
 
-# In[41]:
+# In[50]:
 
 
 type(iris)
@@ -697,7 +907,7 @@ type(iris)
 # `Bunch` 객체는 데이터셋을 사전 형식으로 담으며, 키를 객체의 속성처럼 다룰 수 있다.
 # 사용된 키를 확인해보자.
 
-# In[42]:
+# In[51]:
 
 
 iris.keys()
@@ -705,7 +915,7 @@ iris.keys()
 
 # 이중에 붓꽃 데이터는 `'data'` 키의 값으로 저장되어 있으며, 데이터프레임 객체다.
 
-# In[43]:
+# In[52]:
 
 
 iris.data # iris['data']
@@ -719,7 +929,7 @@ iris.data # iris['data']
 # | 1 | 버시컬러(Iris versicolor) |
 # | 2 | 버지니카(Iris verginica) |
 
-# In[44]:
+# In[53]:
 
 
 iris.target # iris['target']
@@ -729,7 +939,7 @@ iris.target # iris['target']
 # 
 # * `values` 속성: 데이터프레임 또는 시리즈의 항목으로 구성된 넘파이 어레이
 
-# In[45]:
+# In[54]:
 
 
 X = iris.data[["petal length (cm)", "petal width (cm)"]].values
@@ -739,7 +949,7 @@ y = iris.target.values
 # 꽃잎의 길이와 너비를 이용하여 품종별로 산점도를 그려보자. 
 # 먼저 세토사 품종의 데이터는 다음과 같다. 
 
-# In[46]:
+# In[55]:
 
 
 mask_setosa = (y == 0)
@@ -748,7 +958,7 @@ X_setosa = X[mask_setosa]
 
 # 50개의 샘플로 구성된다.
 
-# In[47]:
+# In[56]:
 
 
 X_setosa.shape
@@ -756,14 +966,14 @@ X_setosa.shape
 
 # 버시컬러 데이터셋과 버지니카 데이터셋도 동일한 방식으로 구해진다.
 
-# In[48]:
+# In[57]:
 
 
 mask_versicolor = (y == 1)
 X_versicolor = X[mask_versicolor]
 
 
-# In[49]:
+# In[58]:
 
 
 mask_verginica = (y == 2)
@@ -772,12 +982,12 @@ X_verginica = X[mask_verginica]
 
 # 각 데이터셋의 산점도를 다른 색을 이용하여 그리면 다음과 같다.
 
-# In[50]:
+# In[59]:
 
 
-plt.plot(X_setosa[:, 0], X_setosa[:, 1], "yo", label="Iris setosa")
-plt.plot(X_versicolor[:, 0], X_versicolor[:, 1], "bs", label="Iris versicolor")
-plt.plot(X_verginica[:, 0], X_verginica[:, 1], "rs", label="Iris verginica")
+plt.plot(X_setosa[:, 0], X_setosa[:, 1], "yo", label="Iris setosa")             # 노랑 원
+plt.plot(X_versicolor[:, 0], X_versicolor[:, 1], "bs", label="Iris versicolor") # 파랑 네모
+plt.plot(X_verginica[:, 0], X_verginica[:, 1], "r^", label="Iris verginica")    # 빨강 세모
 
 plt.xlabel("Petal length")
 plt.ylabel("Petal width")
@@ -790,12 +1000,12 @@ plt.show()
 # y 축은 0에서 3 사이로 지정한 다음에
 # 축의 척도를 일치 시키면 그림이 사뭇 다르게 보인다.
 
-# In[51]:
+# In[60]:
 
 
-plt.plot(X[:, 0][y == 0], X[:, 1][y == 0], "yo", label="Iris setosa")
-plt.plot(X[:, 0][y == 1], X[:, 1][y == 1], "bs", label="Iris versicolor")
-plt.plot(X[:, 0][y == 2], X[:, 1][y == 2], "rs", label="Iris verginica")
+plt.plot(X[:, 0][y == 0], X[:, 1][y == 0], "yo", label="Iris setosa")     # 노랑 원
+plt.plot(X[:, 0][y == 1], X[:, 1][y == 1], "bs", label="Iris versicolor") # 파랑 네모
+plt.plot(X[:, 0][y == 2], X[:, 1][y == 2], "r^", label="Iris verginica")  # 빨강 세모
 
 plt.xlabel("Petal length")
 plt.ylabel("Petal width")
@@ -809,12 +1019,12 @@ plt.show()
 
 # 격자 무늬 배경도 추가하자.
 
-# In[52]:
+# In[61]:
 
 
-plt.plot(X[:, 0][y == 0], X[:, 1][y == 0], "yo", label="Iris setosa")
-plt.plot(X[:, 0][y == 1], X[:, 1][y == 1], "bs", label="Iris versicolor")
-plt.plot(X[:, 0][y == 2], X[:, 1][y == 2], "rs", label="Iris verginica")
+plt.plot(X[:, 0][y == 0], X[:, 1][y == 0], "yo", label="Iris setosa")     # 노랑 원
+plt.plot(X[:, 0][y == 1], X[:, 1][y == 1], "bs", label="Iris versicolor") # 파랑 네모
+plt.plot(X[:, 0][y == 2], X[:, 1][y == 2], "rs", label="Iris verginica")  # 빨강 세모
 
 plt.xlabel("Petal length")
 plt.ylabel("Petal width")
@@ -829,7 +1039,7 @@ plt.show()
 
 # 아래 코드는 두 개의 직선을 그린다.
 
-# In[53]:
+# In[62]:
 
 
 # x 좌표
@@ -852,7 +1062,7 @@ plt.show()
 # 위 두 직선과 붓꽃 데이터셋의 산포도를 합치면
 # 품종을 구별하는 경계선을 얻는다.
 
-# In[54]:
+# In[63]:
 
 
 x0 = np.linspace(0, 7.5, 200)
@@ -864,9 +1074,9 @@ plt.plot(x0, pred_1, "g--", linewidth=2)
 plt.plot(x0, pred_2, "m-.", linewidth=2)
 # plt.plot(x0, pred_3, "y-", linewidth=2)
 
-plt.plot(X[:, 0][y==0], X[:, 1][y==0], "yo", label="Iris setosa")
-plt.plot(X[:, 0][y==1], X[:, 1][y==1], "bs", label="Iris versicolor")
-plt.plot(X[:, 0][y==2], X[:, 1][y==2], "rs", label="Iris verginica")
+plt.plot(X[:, 0][y==0], X[:, 1][y==0], "yo", label="Iris setosa")     # 노랑 원
+plt.plot(X[:, 0][y==1], X[:, 1][y==1], "bs", label="Iris versicolor") # 파랑 네모
+plt.plot(X[:, 0][y==2], X[:, 1][y==2], "rs", label="Iris verginica")  # 빨강 세모
 plt.xlabel("Petal length")
 plt.ylabel("Petal width")
 plt.legend(loc="upper left")
