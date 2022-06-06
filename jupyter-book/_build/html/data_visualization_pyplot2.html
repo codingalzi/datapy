@@ -449,7 +449,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4ce0c563d0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0707aac4f0&gt;]
 </pre></div>
 </div>
 <img alt="_images/data_visualization_pyplot2_17_1.png" src="_images/data_visualization_pyplot2_17_1.png" />
@@ -471,7 +471,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4ce0b198e0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f070796e820&gt;]
 </pre></div>
 </div>
 <img alt="_images/data_visualization_pyplot2_19_1.png" src="_images/data_visualization_pyplot2_19_1.png" />
@@ -604,6 +604,22 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="simple">
 <li><p>여백이 0.1일 때:</p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+        <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span> <span class="c1"># 상하좌우 여백: 0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/data_visualization_pyplot2_36_0.png" src="_images/data_visualization_pyplot2_36_0.png" />
+</div>
+</div>
 </div>
 <div class="section" id="id1">
 <h2><span class="section-number">12.2. </span>눈금과 라벨<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
@@ -641,7 +657,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Levels&#39;)
 </pre></div>
 </div>
-<img alt="_images/data_visualization_pyplot2_42_1.png" src="_images/data_visualization_pyplot2_42_1.png" />
+<img alt="_images/data_visualization_pyplot2_43_1.png" src="_images/data_visualization_pyplot2_43_1.png" />
 </div>
 </div>
 <p>눈금 크기와 방향도 지정할 수 있다.</p>
@@ -664,7 +680,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Levels&#39;)
 </pre></div>
 </div>
-<img alt="_images/data_visualization_pyplot2_44_1.png" src="_images/data_visualization_pyplot2_44_1.png" />
+<img alt="_images/data_visualization_pyplot2_45_1.png" src="_images/data_visualization_pyplot2_45_1.png" />
 </div>
 </div>
 <p><em>방식 2: pyplot 모듈의 함수 활용</em></p>
@@ -692,7 +708,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Levels&#39;)
 </pre></div>
 </div>
-<img alt="_images/data_visualization_pyplot2_47_1.png" src="_images/data_visualization_pyplot2_47_1.png" />
+<img alt="_images/data_visualization_pyplot2_48_1.png" src="_images/data_visualization_pyplot2_48_1.png" />
 </div>
 </div>
 </div>
@@ -929,10 +945,10 @@ Name: SPX, Length: 5472, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4cda57fe50&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f070764e3a0&gt;]
 </pre></div>
 </div>
-<img alt="_images/data_visualization_pyplot2_58_1.png" src="_images/data_visualization_pyplot2_58_1.png" />
+<img alt="_images/data_visualization_pyplot2_59_1.png" src="_images/data_visualization_pyplot2_59_1.png" />
 </div>
 </div>
 <p><strong>참고:</strong> 판다스와 시리즈 자체로 그래프 그리기 기능을 지원한다.</p>
@@ -952,7 +968,7 @@ Name: SPX, Length: 5472, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
 </pre></div>
 </div>
-<img alt="_images/data_visualization_pyplot2_60_1.png" src="_images/data_visualization_pyplot2_60_1.png" />
+<img alt="_images/data_visualization_pyplot2_61_1.png" src="_images/data_visualization_pyplot2_61_1.png" />
 </div>
 </div>
 <p>2007-2008년 세계적 금융위기 지점을 아래 내용으로 그래프에 주석으로 추가해보자.</p>
@@ -1009,7 +1025,7 @@ Name: SPX, Length: 5472, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Important dates in the 2008-2009 financial crisis&#39;)
 </pre></div>
 </div>
-<img alt="_images/data_visualization_pyplot2_65_1.png" src="_images/data_visualization_pyplot2_65_1.png" />
+<img alt="_images/data_visualization_pyplot2_66_1.png" src="_images/data_visualization_pyplot2_66_1.png" />
 </div>
 </div>
 </div>
@@ -1062,7 +1078,7 @@ Name: SPX, Length: 5472, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Important dates in the 2008-2009 financial crisis&#39;)
 </pre></div>
 </div>
-<img alt="_images/data_visualization_pyplot2_69_1.png" src="_images/data_visualization_pyplot2_69_1.png" />
+<img alt="_images/data_visualization_pyplot2_70_1.png" src="_images/data_visualization_pyplot2_70_1.png" />
 </div>
 </div>
 <p>아래 코드는 다양한 속성을 지정하는 방식을 보여준다.</p>
@@ -1143,7 +1159,7 @@ Name: SPX, Length: 5472, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Important dates in the 2008-2009 financial crisis&#39;)
 </pre></div>
 </div>
-<img alt="_images/data_visualization_pyplot2_80_1.png" src="_images/data_visualization_pyplot2_80_1.png" />
+<img alt="_images/data_visualization_pyplot2_81_1.png" src="_images/data_visualization_pyplot2_81_1.png" />
 </div>
 </div>
 </div>

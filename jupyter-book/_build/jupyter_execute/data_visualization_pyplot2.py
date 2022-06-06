@@ -204,6 +204,18 @@ plt.subplots_adjust(wspace=0, hspace=0) # 상하좌우 여백: 0
 
 # * 여백이 0.1일 때:
 
+# In[12]:
+
+
+fig, axes = plt.subplots(2, 2, sharex=True, sharey=True)
+
+for i in range(2):
+    for j in range(2):
+        axes[i, j].plot(np.random.randn(50))
+
+plt.subplots_adjust(wspace=0.1, hspace=0.1) # 상하좌우 여백: 0
+
+
 # ## 눈금과 라벨
 
 # **이미지 타이틀, 축 이름, 눈금, 눈금 이름 지정**
@@ -217,13 +229,13 @@ plt.subplots_adjust(wspace=0, hspace=0) # 상하좌우 여백: 0
 # - `set_title()` 함수: 그래프 타이틀 지정
 # - `set_xlabel()` 함수: x축 이름 지정
 
-# In[12]:
+# In[13]:
 
 
 data = np.random.randn(100).cumsum()
 
 
-# In[13]:
+# In[14]:
 
 
 fig = plt.figure()
@@ -239,7 +251,7 @@ ax.set_xlabel('Levels')
 
 # 눈금 크기와 방향도 지정할 수 있다.
 
-# In[14]:
+# In[15]:
 
 
 fig = plt.figure()
@@ -262,7 +274,7 @@ ax.set_xlabel('Levels')
 # - `plt.title()` 함수: 그래프 타이틀 지정
 # - `plt.xlabel()` 함수: x축 이름 지정
 
-# In[15]:
+# In[16]:
 
 
 fig = plt.figure()
@@ -284,7 +296,7 @@ ax.set_xlabel('Levels')
 # 주식시장지수 데이터로 그래프를 생성하고 2007-2008년 사이에 있었던 
 # 재정위기와 관련된 중요한 날짜를 주석으로 추가한다.
 
-# In[16]:
+# In[17]:
 
 
 import pandas as pd
@@ -292,7 +304,7 @@ import pandas as pd
 spx_path = 'https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/examples/spx.csv'
 
 
-# In[17]:
+# In[18]:
 
 
 data = pd.read_csv(spx_path)
@@ -304,7 +316,7 @@ data
 # - `index_col=0`: 0번 열(column)을 인덱스로 사용
 # - `parse_dates=True`: 년월일까지만 구분해서 인덱스로 사용하도록 함. 기본값은 `False`.
 
-# In[18]:
+# In[19]:
 
 
 data = pd.read_csv(spx_path, index_col=0, parse_dates=True)
@@ -321,7 +333,7 @@ data
 # 
 # __참고:__ 반드시 필요한 과정은 아니다. `spx` 대신 `data`를 그대로 사용해도 동일하게 작동한다.
 
-# In[19]:
+# In[20]:
 
 
 spx = data['SPX']
@@ -330,7 +342,7 @@ spx
 
 # 위 데이터를 단순하게 그래프로 나타내면 다음과 같다.
 
-# In[20]:
+# In[21]:
 
 
 from datetime import datetime
@@ -343,7 +355,7 @@ ax.plot(spx, 'k-')
 
 # **참고:** 판다스와 시리즈 자체로 그래프 그리기 기능을 지원한다. 
 
-# In[21]:
+# In[22]:
 
 
 from datetime import datetime
@@ -361,7 +373,7 @@ spx.plot(ax=ax, style='k-')
 # - 2008년 3월 12일: 베어스턴스 투자은행 붕괴
 # - 2008년 9월 15일: 레만 투자은행 파산
 
-# In[22]:
+# In[23]:
 
 
 crisis_data = [
@@ -379,7 +391,7 @@ crisis_data = [
 # - `horizontalalignment`: 텍스트 좌우 줄맞춤
 # - `verticalalignment`: 텍스트 상하 줄맞춤
 
-# In[23]:
+# In[24]:
 
 
 from datetime import datetime
@@ -419,13 +431,13 @@ ax.set_title('Important dates in the 2008-2009 financial crisis')
 # 
 # 아래 코드는 이미지의 사이즈를 지정한다.
 
-# In[24]:
+# In[25]:
 
 
 plt.rc('figure', figsize=(6, 6))
 
 
-# In[25]:
+# In[26]:
 
 
 from datetime import datetime
@@ -454,7 +466,7 @@ ax.set_title('Important dates in the 2008-2009 financial crisis')
 
 # * 이미지 사이즈 지정
 
-# In[26]:
+# In[27]:
 
 
 plt.rc('figure', figsize=(10, 6))
@@ -462,7 +474,7 @@ plt.rc('figure', figsize=(10, 6))
 
 # * 선 속성 지정
 
-# In[27]:
+# In[28]:
 
 
 plt.rc('lines', linewidth=3, color='b')
@@ -470,7 +482,7 @@ plt.rc('lines', linewidth=3, color='b')
 
 # * 텍스트 폰트 속성 지정
 
-# In[28]:
+# In[29]:
 
 
 font_options = {'family' : 'monospace',
@@ -481,7 +493,7 @@ plt.rc('font', **font_options)
 
 # * 그래프 구성 요소의 색상 지정
 
-# In[29]:
+# In[30]:
 
 
 plt.rcParams['text.color'] = 'blue'
@@ -492,7 +504,7 @@ plt.rcParams['ytick.color'] = '#CD5C5C'  # RGB 색상
 
 # 아래 코드는 앞서 설정된 다양한 속성을 반영한 결과를 보여준다.
 
-# In[30]:
+# In[31]:
 
 
 from datetime import datetime
