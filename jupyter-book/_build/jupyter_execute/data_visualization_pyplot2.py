@@ -213,7 +213,7 @@ for i in range(2):
     for j in range(2):
         axes[i, j].plot(np.random.randn(50))
 
-plt.subplots_adjust(wspace=0.1, hspace=0.1) # 상하좌우 여백: 0
+plt.subplots_adjust(wspace=0.1, hspace=0.1) # 상하좌우 여백: 0.1
 
 
 # ## 눈금과 라벨
@@ -323,12 +323,6 @@ data = pd.read_csv(spx_path, index_col=0, parse_dates=True)
 data
 
 
-# __참고:__ `parse_dates=True` 를 지정하지 않으면 원래 그대로 가져온다. 
-# 
-# ```python
-# data = pd.read_csv(spx_path, index_col=0)
-# ```
-
 # 하나의 열만 존재하는 데이터프레임이기에 시리즈로 변환한다.
 # 
 # __참고:__ 반드시 필요한 과정은 아니다. `spx` 대신 `data`를 그대로 사용해도 동일하게 작동한다.
@@ -353,27 +347,13 @@ ax = fig.add_subplot(1, 1, 1)
 ax.plot(spx, 'k-')
 
 
-# **참고:** 판다스와 시리즈 자체로 그래프 그리기 기능을 지원한다. 
-
-# In[22]:
-
-
-from datetime import datetime
-
-fig = plt.figure()
-ax = fig.add_subplot(1, 1, 1)
-
-# ax.plot(spx, 'k-')
-spx.plot(ax=ax, style='k-')
-
-
 # 2007-2008년 세계적 금융위기 지점을 아래 내용으로 그래프에 주석으로 추가해보자.
 # 
 # - 2007년 10월 11일: 주가 강세장 위치
 # - 2008년 3월 12일: 베어스턴스 투자은행 붕괴
 # - 2008년 9월 15일: 레만 투자은행 파산
 
-# In[23]:
+# In[22]:
 
 
 crisis_data = [
@@ -391,7 +371,7 @@ crisis_data = [
 # - `horizontalalignment`: 텍스트 좌우 줄맞춤
 # - `verticalalignment`: 텍스트 상하 줄맞춤
 
-# In[24]:
+# In[23]:
 
 
 from datetime import datetime
@@ -405,7 +385,7 @@ for date, label in crisis_data:
     ax.annotate(label, 
                 xy=(date, spx.asof(date) + 75),
                 xytext=(date, spx.asof(date) + 225),
-                arrowprops=dict(facecolor='black', headwidth=4, width=2,
+                arrowprops=dict(facecolor='red', headwidth=4, width=2,
                                 headlength=4),
                 horizontalalignment='left', verticalalignment='top')
 
@@ -431,13 +411,13 @@ ax.set_title('Important dates in the 2008-2009 financial crisis')
 # 
 # 아래 코드는 이미지의 사이즈를 지정한다.
 
-# In[25]:
+# In[24]:
 
 
 plt.rc('figure', figsize=(6, 6))
 
 
-# In[26]:
+# In[25]:
 
 
 from datetime import datetime
@@ -466,7 +446,7 @@ ax.set_title('Important dates in the 2008-2009 financial crisis')
 
 # * 이미지 사이즈 지정
 
-# In[27]:
+# In[26]:
 
 
 plt.rc('figure', figsize=(10, 6))
@@ -474,7 +454,7 @@ plt.rc('figure', figsize=(10, 6))
 
 # * 선 속성 지정
 
-# In[28]:
+# In[27]:
 
 
 plt.rc('lines', linewidth=3, color='b')
@@ -482,7 +462,7 @@ plt.rc('lines', linewidth=3, color='b')
 
 # * 텍스트 폰트 속성 지정
 
-# In[29]:
+# In[28]:
 
 
 font_options = {'family' : 'monospace',
@@ -493,7 +473,7 @@ plt.rc('font', **font_options)
 
 # * 그래프 구성 요소의 색상 지정
 
-# In[30]:
+# In[29]:
 
 
 plt.rcParams['text.color'] = 'blue'
@@ -504,7 +484,7 @@ plt.rcParams['ytick.color'] = '#CD5C5C'  # RGB 색상
 
 # 아래 코드는 앞서 설정된 다양한 속성을 반영한 결과를 보여준다.
 
-# In[31]:
+# In[30]:
 
 
 from datetime import datetime
@@ -532,4 +512,4 @@ ax.set_title('Important dates in the 2008-2009 financial crisis')
 
 # ## 연습문제
 
-# 참고: [(실습) matplotlib.pyplot 2부](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-visualization_pyplot2.ipynb)
+# 참고: [(실습) matplotlib.pyplot 2부](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-data_visualization_pyplot2.ipynb)

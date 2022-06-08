@@ -449,7 +449,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0707aac4f0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4cb409f340&gt;]
 </pre></div>
 </div>
 <img alt="_images/data_visualization_pyplot2_17_1.png" src="_images/data_visualization_pyplot2_17_1.png" />
@@ -471,7 +471,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f070796e820&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4ca13e4910&gt;]
 </pre></div>
 </div>
 <img alt="_images/data_visualization_pyplot2_19_1.png" src="_images/data_visualization_pyplot2_19_1.png" />
@@ -612,7 +612,7 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
         <span class="n">axes</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span> <span class="c1"># 상하좌우 여백: 0</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">hspace</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span> <span class="c1"># 상하좌우 여백: 0.1</span>
 </pre></div>
 </div>
 </div>
@@ -902,10 +902,6 @@ const thebe_selector_output = ".output, .cell_output"
 <p>5472 rows × 1 columns</p>
 </div></div></div>
 </div>
-<p><strong>참고:</strong> <code class="docutils literal notranslate"><span class="pre">parse_dates=True</span></code> 를 지정하지 않으면 원래 그대로 가져온다.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">spx_path</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
 <p>하나의 열만 존재하는 데이터프레임이기에 시리즈로 변환한다.</p>
 <p><strong>참고:</strong> 반드시 필요한 과정은 아니다. <code class="docutils literal notranslate"><span class="pre">spx</span></code> 대신 <code class="docutils literal notranslate"><span class="pre">data</span></code>를 그대로 사용해도 동일하게 작동한다.</p>
 <div class="cell docutils container">
@@ -945,30 +941,10 @@ Name: SPX, Length: 5472, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f070764e3a0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f4ca0ec2b20&gt;]
 </pre></div>
 </div>
-<img alt="_images/data_visualization_pyplot2_59_1.png" src="_images/data_visualization_pyplot2_59_1.png" />
-</div>
-</div>
-<p><strong>참고:</strong> 판다스와 시리즈 자체로 그래프 그리기 기능을 지원한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-
-<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># ax.plot(spx, &#39;k-&#39;)</span>
-<span class="n">spx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;k-&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
-</pre></div>
-</div>
-<img alt="_images/data_visualization_pyplot2_61_1.png" src="_images/data_visualization_pyplot2_61_1.png" />
+<img alt="_images/data_visualization_pyplot2_58_1.png" src="_images/data_visualization_pyplot2_58_1.png" />
 </div>
 </div>
 <p>2007-2008년 세계적 금융위기 지점을 아래 내용으로 그래프에 주석으로 추가해보자.</p>
@@ -1009,7 +985,7 @@ Name: SPX, Length: 5472, dtype: float64
     <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> 
                 <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">spx</span><span class="o">.</span><span class="n">asof</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span> <span class="mi">75</span><span class="p">),</span>
                 <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">spx</span><span class="o">.</span><span class="n">asof</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span> <span class="mi">225</span><span class="p">),</span>
-                <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
                                 <span class="n">headlength</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
                 <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
 
@@ -1025,7 +1001,7 @@ Name: SPX, Length: 5472, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Important dates in the 2008-2009 financial crisis&#39;)
 </pre></div>
 </div>
-<img alt="_images/data_visualization_pyplot2_66_1.png" src="_images/data_visualization_pyplot2_66_1.png" />
+<img alt="_images/data_visualization_pyplot2_63_1.png" src="_images/data_visualization_pyplot2_63_1.png" />
 </div>
 </div>
 </div>
@@ -1078,7 +1054,7 @@ Name: SPX, Length: 5472, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Important dates in the 2008-2009 financial crisis&#39;)
 </pre></div>
 </div>
-<img alt="_images/data_visualization_pyplot2_70_1.png" src="_images/data_visualization_pyplot2_70_1.png" />
+<img alt="_images/data_visualization_pyplot2_67_1.png" src="_images/data_visualization_pyplot2_67_1.png" />
 </div>
 </div>
 <p>아래 코드는 다양한 속성을 지정하는 방식을 보여준다.</p>
@@ -1159,13 +1135,13 @@ Name: SPX, Length: 5472, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Important dates in the 2008-2009 financial crisis&#39;)
 </pre></div>
 </div>
-<img alt="_images/data_visualization_pyplot2_81_1.png" src="_images/data_visualization_pyplot2_81_1.png" />
+<img alt="_images/data_visualization_pyplot2_78_1.png" src="_images/data_visualization_pyplot2_78_1.png" />
 </div>
 </div>
 </div>
 <div class="section" id="id3">
 <h2><span class="section-number">12.5. </span>연습문제<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-visualization_pyplot2.ipynb">(실습) matplotlib.pyplot 2부</a></p>
+<p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-data_visualization_pyplot2.ipynb">(실습) matplotlib.pyplot 2부</a></p>
 </div>
 </div>
 
