@@ -20,10 +20,11 @@ rc('font', family=font)
 [여기](https://bskyvision.com/entry/python-matplotlibpyplot%EB%A1%9C-%EA%B7%B8%EB%9E%98%ED%94%84-%EA%B7%B8%EB%A6%B4-%EB%95%8C-%ED%95%9C%EA%B8%80-%EA%B9%A8%EC%A7%90-%EB%AC%B8%EC%A0%9C-%ED%95%B4%EA%B2%B0-%EB%B0%A9%EB%B2%95)를 참고할 수 있다.
 
 위 단계를 실행했음에도 불구하고 font를 찾을 수 없다는 등의 경고가 발생하면
-아래 홈디렉토리의 `.matplotlib` 폴더에 포함된 `fontList*.json` 형식의 파일을 삭제한 후에
-주피터노트북을 재실행한다.
+아래 홈디렉토리의 `.matplotlib` 폴더에 포함된 `fontList***.json` 형식의 파일을 삭제해서
+matplotlib이 사용하는 폰트를 강제로 재구성하도록 한다.
+이제 주피터노트북을 재실행한다.
 
-`fontList*.json` 파일의 위치를 알아내기 위해 아래 명령문을 이용할 수 있다
+`fontList*.json` 형식의 파일의 위치를 알아내기 위해 아래 명령문을 이용할 수 있다
 
 ```python
 import matplotlib as mpl
@@ -55,7 +56,7 @@ plt.rc("axes", unicode_minus=False)
 ```
 
 위 단계를 실행했음에도 불구하고 font를 찾을 수 없다는 등의 경고가 발생하면
-윈도우의 경에서 설명한 것처럼 `fontList*.json` 파일을 삭제한다.
+윈도우의 경에서 설명한 것처럼 `fontList***.json` 형식의 파일을 삭제한다.
 우분투의 경우 홈디렉토리의 `.cache/matplotlib` 폴더에 위치할 수 있다.
 
 구글 코랩의 경우 런타임을 다시 시작해야 한다.
