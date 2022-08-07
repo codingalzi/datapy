@@ -43,11 +43,12 @@
     <script src="_static/copybutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -904,8 +905,13 @@ x 축, y 축에 표시 라벨을 붙일 수 있다.</p>
 <img alt="_images/data_visualization_pyplot1_78_0.png" src="_images/data_visualization_pyplot1_78_0.png" />
 </div>
 </div>
-<p>한글 라벨을 사용할 수도 있지만 시스템에 포트 설치 등 추가 설정을 해줘야 하기에
-여기서는 사용하지 않는다.</p>
+<div class="info admonition">
+<p class="admonition-title">한글 라벨과 타이틀</p>
+<p>한글 라벨을 사용하려면 시스템에 폰트 설치 등 추가 설정을 해야 한다. 하지만 여기서는 사용하지 않는다.
+자세한 설정법은
+<a class="reference external" href="https://github.com/codingalzi/datapy/blob/master/matplotlib-%ED%95%9C%EA%B8%80.md">matplotlib에서 한글 지원하기</a>를
+참고할 수 있다.</p>
+</div>
 <p><strong>그래프 제목</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">plt.tittle()</span></code> 함수를 이용하여 그래프에 제목을 추가할 수 있다.</p>
 <div class="cell docutils container">
