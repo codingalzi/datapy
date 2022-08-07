@@ -415,7 +415,7 @@ plt.show()
 # 
 # 한글 라벨을 사용하려면 시스템에 폰트 설치 등 추가 설정을 해야 한다. 하지만 여기서는 사용하지 않는다.
 # 자세한 설정법은
-# [matplotlib에서 한글 지원하기](https://github.com/codingalzi/datapy/blob/master/matplotlib-%ED%95%9C%EA%B8%80.md)를
+# [matplotlib에서 한글 지원하기](https://github.com/codingalzi/datapy/blob/master/matplotlib-korean.md)를
 # 참고할 수 있다.
 # :::
 
