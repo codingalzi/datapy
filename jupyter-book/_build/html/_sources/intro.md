@@ -79,7 +79,7 @@
 TIOBE Index 2022년 2월 기준 가장 많이 사용되는 프로그래밍 언어이며 
 점유율이 점점 높아지고 있다. 
 
-<img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/tiobe-index202202.png" style="width:750px">
+<img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/tiobe-index.jpg" style="width:750px">
 
 그림출처: [TIOBE Index](https://www.tiobe.com/tiobe-index/)
 

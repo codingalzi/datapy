@@ -58,30 +58,25 @@
 
 **주요 학습내용**
 
-* numpy 기초
-* pandas 기초
+* 파이썬 기초
+* numpy 활용
+* pandas 활용
 * 데이터 불러오기 및 저장
 * 데이터 전처리: 데이터 정제 및 변환
 * 데이터 다루기: 조인, 병합, 변형
 * 데이터 시각화
 * 데이터 집계와 그룹화
 * 시계열 데이터
-* 고급 pandas
-* 모델링 라이브러리: statsmodels, scikit-learn
-* 데이터 분석 실전 예제
-
 
 **파이썬<font size='2'>Python</font> 프로그래밍 언어**
 
 프로그래밍 실습에 사용되는 파이썬(Python)은 현재 데이터 분석 및 머신러닝 분야에서 
 가장 많이 사용되는 프로그래밍언어이다.
 
-TIOBE Index 2022년 2월 기준 가장 많이 사용되는 프로그래밍 언어이며 
+[TIOBE Index](https://www.tiobe.com/tiobe-index/) 2022년 12월 기준 가장 많이 사용되는 프로그래밍 언어이며 
 점유율이 점점 높아지고 있다. 
 
-<img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/tiobe-index202202.png" style="width:750px">
-
-그림출처: [TIOBE Index](https://www.tiobe.com/tiobe-index/)
+<img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/tiobe-index.jpg" style="width:750px">
 
 파이썬이 데이터 과학 분야에서 인기가 높은 이유는 다음과 같다.
 
@@ -94,3 +89,8 @@ TIOBE Index 2022년 2월 기준 가장 많이 사용되는 프로그래밍 언�
     * [Keras](https://keras.io/)
     * [PyTorch](https://keras.io/)
     * ...
+
+**프로그래밍 환경**
+
+- 오프라인 개발환경: [아나콘다(Anaconda)](https://www.anaconda.com)와 주피터 노트북
+- 온라인 개발환경: [구글 코랩](https://colab.research.google.com)의 주피터 노트북
