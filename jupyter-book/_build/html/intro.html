@@ -246,9 +246,9 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/intro.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/intro.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -282,11 +282,68 @@ const thebe_selector_output = ".output, .cell_output"
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/codingalzi/datapy/master?urlpath=tree/jupyter-book/intro.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   데이터 과학과 파이썬 데이터 분석
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   주요 학습내용
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   파이썬 프로그래밍 언어
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   프로그래밍 환경
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     오프라인 개발환경
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     온라인 개발환경
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -299,6 +356,46 @@ const thebe_selector_output = ".output, .cell_output"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   데이터 과학과 파이썬 데이터 분석
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   주요 학습내용
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   파이썬 프로그래밍 언어
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   프로그래밍 환경
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     오프라인 개발환경
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     온라인 개발환경
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -321,7 +418,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p>본 강의는 데이터 분석의 기본 아이디어와 다양한 활용법을 실전 예제와
 함께 전달한다.
 여기서 다루는 내용은 또한 머신러닝/딥러닝 학습을 위한 기초 지식으로 활용된다.</p>
-<p><strong>데이터 과학과 파이썬 데이터 분석</strong></p>
+<div class="section" id="id2">
+<h2>데이터 과학과 파이썬 데이터 분석<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>데이터 과학이란 <strong>주어진 데이터로부터 수학과 통계 지식을 활용하여 필요한 정보를 추출하는 학문 분야</strong>이다.
 반면에 파이썬 데이터 분석은 <strong>데이터 과학의 주요 연구 도구</strong>이다.</p>
 <p>파이썬 데이터 분석 학습을 위해 아래 분야의 기초지식이 요구되지만
@@ -345,42 +443,81 @@ const thebe_selector_output = ".output, .cell_output"
 <p>역사적 관점에서 바라본 인공지능, 머신러닝, 딥러닝의 관계는 다음과 같다.</p>
 <img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book//images/ai-ml-relation2.png" style="width:600px;">
 <p>그림 출처: <a class="reference external" href="https://blogs.nvidia.com/blog/2016/07/29/whats-difference-artificial-intelligence-machine-learning-deep-learning-ai/">NVIDIA 블로그</a></p>
-<p><strong>주요 학습내용</strong></p>
+</div>
+<div class="section" id="id3">
+<h2>주요 학습내용<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>numpy 기초</p></li>
-<li><p>pandas 기초</p></li>
+<li><p>파이썬 기초</p></li>
+<li><p>numpy 활용</p></li>
+<li><p>pandas 활용</p></li>
 <li><p>데이터 불러오기 및 저장</p></li>
 <li><p>데이터 전처리: 데이터 정제 및 변환</p></li>
 <li><p>데이터 다루기: 조인, 병합, 변형</p></li>
 <li><p>데이터 시각화</p></li>
 <li><p>데이터 집계와 그룹화</p></li>
 <li><p>시계열 데이터</p></li>
-<li><p>고급 pandas</p></li>
-<li><p>모델링 라이브러리: statsmodels, scikit-learn</p></li>
-<li><p>데이터 분석 실전 예제</p></li>
 </ul>
-<p><strong>파이썬<font size='2'>Python</font> 프로그래밍 언어</strong></p>
+</div>
+<div class="section" id="id4">
+<h2>파이썬 프로그래밍 언어<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>프로그래밍 실습에 사용되는 파이썬(Python)은 현재 데이터 분석 및 머신러닝 분야에서
 가장 많이 사용되는 프로그래밍언어이다.</p>
-<p>TIOBE Index 2022년 2월 기준 가장 많이 사용되는 프로그래밍 언어이며
+<p><a class="reference external" href="https://www.tiobe.com/tiobe-index/">TIOBE Index</a> 2022년 12월 기준 가장 많이 사용되는 프로그래밍 언어이며
 점유율이 점점 높아지고 있다.</p>
 <img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/tiobe-index.jpg" style="width:750px">
-<p>그림출처: <a class="reference external" href="https://www.tiobe.com/tiobe-index/">TIOBE Index</a></p>
 <p>파이썬이 데이터 과학 분야에서 인기가 높은 이유는 다음과 같다.</p>
 <ul class="simple">
 <li><p>범용 프로그래밍언어</p></li>
 <li><p>R, 매트랩, SQL, 엑셀 등 특정 분야에서 유용하게 사용되는 언어들의 기능 지원</p></li>
 <li><p>데이터 적재, 시각화, 통계, 자연어 처리, 이미지 처리 등에 필요한 라이브러리 제공</p></li>
-<li><p>머신러닝, 데이터 분석 등에 활용될 수 있는 라이브러리 및 도구의 지속적 개발</p>
+<li><p>머신러닝, 데이터 분석, 수치 해석, 통계, 확률 등에 활용될 수 있는 라이브러리 및 도구의 지속적 개발</p>
 <ul>
+<li><p><a class="reference external" href="https://scipy.org">SciPy</a></p></li>
+<li><p><a class="reference external" href="https://www.statsmodels.org/stable/index.html">statsmodels</a></p></li>
 <li><p><a class="reference external" href="https://scikit-learn.org/">scikit-learn</a></p></li>
 <li><p><a class="reference external" href="https://www.tensorflow.org/">TensorFlow</a></p></li>
 <li><p><a class="reference external" href="https://keras.io/">Keras</a></p></li>
 <li><p><a class="reference external" href="https://keras.io/">PyTorch</a></p></li>
-<li><p>…</p></li>
 </ul>
 </li>
 </ul>
+</div>
+<div class="section" id="id5">
+<h2>프로그래밍 환경<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3>오프라인 개발환경<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.anaconda.com">아나콘다(Anaconda)</a>의 주피터 노트북을 이용한다.
+콘다 한경(conda environment)을 설정하여 파이썬 코드 실행에 필요한 패키지를 미리 설치하고 관리한다.</p>
+<p><strong>주피터 노트북 실행환경 준비</strong></p>
+<p>아래 명령을 임의의 터미널에서 실행하면 <code class="docutils literal notranslate"><span class="pre">pydata-book</span></code> 콘다 환경을 지정할 수 있다.
+윈도우 사용자의 경우 아나콘다 패키지와 함께 설치된 <code class="docutils literal notranslate"><span class="pre">Anaconda</span> <span class="pre">Prompt</span> <span class="pre">(anaconda3)</span></code> 터미널을 이용할 수 있다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span> $ conda config --add channels conda-forge
+<span class="o">(</span>base<span class="o">)</span> $ conda config --set channel_priority strict
+<span class="o">(</span>base<span class="o">)</span> $ conda create -y -n pydata-book <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.10
+<span class="o">(</span>base<span class="o">)</span> $ conda activate pydata-book
+<span class="o">(</span>pydata-book<span class="o">)</span> $ conda install -y pandas jupyter matplotlib
+<span class="o">(</span>pydata-book<span class="o">)</span> $ conda install lxml beautifulsoup4 html5lib openpyxl requests sqlalchemy seaborn scipy statsmodels patsy scikit-learn pyarrow pytables numba
+</pre></div>
+</div>
+<p><strong>주피터 노트북 실행</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">Anaconda</span> <span class="pre">Prompt</span> <span class="pre">(anaconda3)</span></code> 등 임의의 터미널에서 아래 명령을 차례대로 실행하면 주피터 노트북을 열거나 새로 작성할 수 있다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>base<span class="o">)</span> $ conda activate pydata-book
+<span class="o">(</span>pydata-book<span class="o">)</span> $ jupyter notebook
+</pre></div>
+</div>
+<p>브라우저에 아래와 같은 주피터 서버가 실행되며, 원하는 폴더에서 기존의 노트북을 실행, 수정하거나 새로운 주피터 노트북을 생성할 수 있다.</p>
+<img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/JupyterServer.jpg" style="width:750px"></div>
+<div class="section" id="id7">
+<h3>온라인 개발환경<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://colab.research.google.com">구글 코랩</a>의 주피터 노트북을 활용하며 특별히 추가 설정을 할 필요가 없지만
+특정 라이브러리를 설치해야하는 경우가 발생할 수 있다. 그럴 때는 <code class="docutils literal notranslate"><span class="pre">pip</span></code> 파이썬 라이브러리 관리자를 이용하면 된다.
+예를 들어 <code class="docutils literal notranslate"><span class="pre">beautifulsoup4</span></code> 라이브러리를 설치하려면 아래 명령문을 주피터 노트북 코드셀에서 실행하면 된다.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>!pip install beautifulsoup4
+</pre></div>
+</div>
+<p>참고: <code class="docutils literal notranslate"><span class="pre">pip</span></code>은 파이썬 명령어가 아니라 쉘(shell) 명령이다. 이런 쉘 명령어를 터미널이 아닌 주피터 노트북 셀에서 실행하려면 느낌표(<code class="docutils literal notranslate"><span class="pre">!</span></code>)를 함께 사용한다.</p>
+</div>
+</div>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
