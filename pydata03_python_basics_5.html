@@ -1,0 +1,935 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>클래스와 자료형 &#8212; 파이썬 데이터 분석</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">파이썬 데이터 분석</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  파이썬 기초
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_datatypes.html">
+   1. 파이썬 프로그래밍 기초 1부 1편
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="control_flow.html">
+   2. 파이썬 프로그래밍 기초 1부 2편
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="collections.html">
+   3. 파이썬 프로그래밍 기초 2부 1편
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions_files.html">
+   4. 파이썬 프로그래밍 기초 2부 3편
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  밑바닥부터
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="type_annotations.html">
+   5. 자료형 힌트
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="linear_algebra_basics.html">
+   6. 선형대수 기초
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="statistics_basics.html">
+   7. 통계 기초
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  넘파이
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="numpy_array.html">
+   8. 넘파이 어레이
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="array_indexing.html">
+   9. 어레이 인덱싱
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="array_oriented.html">
+   10. 어레이 중심 프로그래밍
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="advanced_numpy.html">
+   11. 고급 넘파이
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  판다스
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas_dataframe.html">
+   12. 판다스 데이터프레임
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dataframe_core.html">
+   13. 데이터프레임 핵심
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas_stats.html">
+   14. 판다스 활용: 통계 기초
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  그래프와 시각화
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_visualization_pyplot1.html">
+   15. matplotlib.pyplot 1부
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_visualization_pyplot2.html">
+   16. matplotlib.pyplot 2부
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_visualization_seaborn.html">
+   17. seaborn
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/pydata03_python_basics_5.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/codingalzi/datapy"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/codingalzi/datapy/issues/new?title=Issue%20on%20page%20%2Fpydata03_python_basics_5.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/codingalzi/datapy/master?urlpath=tree/jupyter-book/pydata03_python_basics_5.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a">
+   A. 자료형과 메서드 정의 예제: 집합 클래스 구현하기
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     매직 메서드
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     클래스와 인스턴스
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#init">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       __init__()
+      </span>
+     </code>
+     함수의 역할
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     기타 메서드 활용
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#b">
+   B. 도구 상자 모둠 예제: 클릭수 세기
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     인스턴스 변수
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     클래스 상속
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>클래스와 자료형</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a">
+   A. 자료형과 메서드 정의 예제: 집합 클래스 구현하기
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     매직 메서드
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     클래스와 인스턴스
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#init">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       __init__()
+      </span>
+     </code>
+     함수의 역할
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     기타 메서드 활용
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#b">
+   B. 도구 상자 모둠 예제: 클릭수 세기
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     인스턴스 변수
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     클래스 상속
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1>클래스와 자료형<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>파이썬은 소위 <strong>객체 지향 프로그래밍</strong>을 지원하는 언어이다.
+이 강좌에서는 객체 지행 프로그래밍의 정체를 논하지 않는다.
+다만, 객체 지향 프로그래밍의 핵심 요소인 클래스(class)와 인스턴스(instance)를
+어떻게 정의하고 활용하는지 예제 두 개를 이용하여 보여준다.</p>
+<p>앞으로 클래스와 인스턴스를 수 없이 보고 사용할 것이다.
+사실, 지금까지도 많은 클래스와 인스턴스를 살펴 보았다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">str</span></code>: 문자열 클래스</p>
+<ul>
+<li><p>인스턴스: <code class="docutils literal notranslate"><span class="pre">&quot;abc&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;홍길동&quot;</span></code> 등</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">list</span></code>: 리스트 클래스</p>
+<ul>
+<li><p>인스턴스: <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>, <code class="docutils literal notranslate"><span class="pre">['ab',</span> <span class="pre">1,</span> <span class="pre">[0,</span> <span class="pre">1]]</span></code> 등</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">set</span></code>: 집합 클래스</p>
+<ul>
+<li><p>인스턴스: <code class="docutils literal notranslate"><span class="pre">set(),</span> <span class="pre">{1,</span> <span class="pre">2,</span> <span class="pre">3}</span></code>, <code class="docutils literal notranslate"><span class="pre">{'ab',</span> <span class="pre">1,</span> <span class="pre">[0,</span> <span class="pre">1]}</span></code> 등</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dict</span></code>: 사전 클래스</p>
+<ul>
+<li><p>인스턴스: <code class="docutils literal notranslate"><span class="pre">{&quot;이름&quot;:&quot;홍길동&quot;,</span> <span class="pre">&quot;출신&quot;:&quot;한양&quot;}</span></code> 등</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>클래스의 활용</strong></p>
+<p>클래스는 크게 세 가지 방식으로 사용된다.</p>
+<ol class="simple">
+<li><p>자료형 및 관련 메서드 정의: 여기에서 주로 사용되는 방식이며, 앞서 언급한 클래스들이 여기에 해당한다.</p></li>
+<li><p>서로 관련된 기능을 갖는 변수와 함수들의 모둠, 일종의 도구 상자</p></li>
+<li><p>동일한 기능을 갖는 객체를 쉽고 다양한 방식으로 생성할 수 있도록 도와주는 기계틀 역할을 수행하는 도구:
+게임 프로그래밍 등에서 게임 캐릭터, 배경, 도구 등을 쉽게 생성할 때 기본적으로 사용되는 방식이며,
+여기서는 다루지 않는다.</p></li>
+</ol>
+<div class="section" id="a">
+<h2>A. 자료형과 메서드 정의 예제: 집합 클래스 구현하기<a class="headerlink" href="#a" title="Permalink to this headline">¶</a></h2>
+<p>집합 자료형인 <code class="docutils literal notranslate"><span class="pre">set</span></code>이 없다고 가정하고 직접 집합 자료형을 <code class="docutils literal notranslate"><span class="pre">MySet</span></code> 클래스를 이용하여 정의해보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MySet</span><span class="p">:</span> 
+    <span class="sd">&quot;&quot;&quot;집합 자료형을 간단한 기능과 함께 직접 구현한다.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># 생성자</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;초기 설정 메서드, 소위 생성자. </span>
+<span class="sd">        자바의 경우와는 달리 모든 클래스의 초기 설정 메서드는 동일한 이름 사용</span>
+<span class="sd">        아래 형식으로 활용:</span>
+<span class="sd">        s1 = MySet()               # 공집합 생성</span>
+<span class="sd">        s2 = MySet([1,2,2,3])      # 원소를 지정하면서 집합 생성</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">dict</span> <span class="o">=</span> <span class="p">{}</span>            <span class="c1"># 사전 객체를 이용하여 원소 저장</span>
+            
+        <span class="k">if</span> <span class="n">values</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>    <span class="c1"># values에 이터러블 자료형 기대</span>
+            <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>   <span class="c1"># 아래에 정의된 add() 메서드 활용</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;MySet 객체를 출력할 때 사용되는 메서드</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s2">&quot;Set(&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()))</span> <span class="o">+</span> <span class="s2">&quot;)&quot;</span>
+    
+    <span class="c1"># 원소 추가</span>
+    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span> 
+        <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="n">value</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>        <span class="c1"># 항목은 키(key), 해당 값은 True</span>
+        
+    <span class="c1"># 원소 포함여부</span>
+    <span class="k">def</span> <span class="nf">isin</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span> 
+        <span class="k">return</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span>
+    
+    <span class="c1"># 원소 제거</span>
+    <span class="k">def</span> <span class="nf">remove</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span> 
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">dict</span><span class="p">[</span><span class="n">value</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>매직 메서드<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>이닛(<code class="docutils literal notranslate"><span class="pre">__init__()</span></code>), 레퍼(<code class="docutils literal notranslate"><span class="pre">__repr__()</span></code>) 메서드처럼 두 개의 밑줄(underscores)로 감싸인 메서드를
+<strong>매직 메서드</strong>(magic methods)라 부르며, 모든 파이썬 클래스에 동일한 이름으로 포함되어 있다.
+기타 많은 매직 메서드가 존재하며 명시적으로 선언되지 않은 매직 메서드는 모든 클래스에서
+동일하게 사용되는 기본 함수가 자동으로 지정된다. (대부분은 아무 것도 하지 않는 함수로 지정됨.)</p>
+</div>
+<div class="section" id="id3">
+<h3>클래스와 인스턴스<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>1, 2, 3을 원소로 갖는 <code class="docutils literal notranslate"><span class="pre">MySet</span></code>을 다음처럼 리스트를 이용하여 생성한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">MySet</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>사실 거의 임의의 이터러블 자료형을 이용하여 <code class="docutils literal notranslate"><span class="pre">MySet</span></code> 객체를 만들 수 있다.
+아래 코드는 집합을 이용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">MySet</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>여기서 변수 <code class="docutils literal notranslate"><span class="pre">s</span></code>에 할당된 값을 <code class="docutils literal notranslate"><span class="pre">MySet</span></code> 클래스의 객체 또는 인스턴스라 부르며,
+이 경우에는 특별히 <code class="docutils literal notranslate"><span class="pre">MySet</span></code> 자료형이라 부를 수 있다.
+<code class="docutils literal notranslate"><span class="pre">set</span></code> 클래스의 인스턴스를 집합 자료형이라 부르는 것과 동일하다.</p>
+</div>
+<div class="section" id="init">
+<h3><code class="docutils literal notranslate"><span class="pre">__init__()</span></code> 함수의 역할<a class="headerlink" href="#init" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">MySet</span></code> 클래스의 객체를 선언하면
+파이썬 내부에서 <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> 메서드가 호출된다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">self</span></code>에 대한 인자 지정하지 않아도 내부적으로 생성된 객체를 가리키는 역할이 지정됨.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Values=None</span></code> 키워드 인자 사용</p></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>기타 메서드 활용<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>이제 <code class="docutils literal notranslate"><span class="pre">MySet</span></code> 자료형인 <code class="docutils literal notranslate"><span class="pre">s</span></code>에 원소를 추가/삭제하는 방법과 결과를 확인해보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Set({1, 2, 3})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Set({1, 2, 3})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Set({1, 2, 4})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="b">
+<h2>B. 도구 상자 모둠 예제: 클릭수 세기<a class="headerlink" href="#b" title="Permalink to this headline">¶</a></h2>
+<p>웹페이지의 방문자 수를 확인하는 앱을 구현하고자 할 때 아래 도구들이 필요하다.</p>
+<ul class="simple">
+<li><p>클릭수를 저장할 변수</p></li>
+<li><p>클릭수를 1씩 키워주는 도구</p></li>
+<li><p>현재 클릭수를 읽어주는 도구</p></li>
+<li><p>클릭수를 초기화하는 도구</p></li>
+</ul>
+<p>언급한 변수 한 개와 네 개의 도구를 포함한 일종의 도구상자를
+아래 <code class="docutils literal notranslate"><span class="pre">CountingClicker</span></code> 클래스로 구현한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CountingClicker</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot; 웹페이지 방문자 수 확인 도구 모음 클래스</span>
+<span class="sd">        - 클릭수를 저장할 변수</span>
+<span class="sd">        - 클릭수를 1씩 키워주는 도구</span>
+<span class="sd">        - 현재 클릭수를 읽어주는 도구</span>
+<span class="sd">        - 클릭수를 초기화하는 도구</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># 클래스 변수: 인스턴스 생성 횟수를 기억함.</span>
+    <span class="n">_total_count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># 생성자: 클릭수 초기값을 0으로 지정</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">_count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">=</span> <span class="n">_count</span>                  <span class="c1"># 인스턴스 변수</span>
+        <span class="n">CountingClicker</span><span class="o">.</span><span class="n">_total_count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;CountingClicker(count=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_count</span><span class="si">}</span><span class="s2">)&quot;</span>
+    
+    <span class="k">def</span> <span class="nf">click</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_times</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;클릭할 때마다 카운드 올리기&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">+=</span> <span class="n">num_times</span>
+
+    <span class="c1"># 현재 클릭수를 읽어주는 도구 역할 함수</span>
+    <span class="nd">@property</span>                               <span class="c1"># 속성 변수 취급</span>
+    <span class="k">def</span> <span class="nf">read_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_count</span>
+    
+    <span class="c1"># 클릭수를 초기화하는 도구 역할 함수</span>
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_count</span> <span class="o">=</span> <span class="mi">0</span>
+        
+    <span class="c1"># 클릭수를 초기화하는 도구 역할 함수</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">reset_total</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="bp">cls</span><span class="o">.</span><span class="n">_total_count</span> <span class="o">=</span> <span class="mi">0</span>        
+</pre></div>
+</div>
+</div>
+</div>
+<p>아래 코드를 실행하면 <code class="docutils literal notranslate"><span class="pre">CountingClass</span></code>의 인스턴스를 하나 생성하면 앞서 언급한 변수 한 개와 네 개의 도구를
+포함한 하나의 도구상자를 얻게 되며, 도구상자의 이름은 <code class="docutils literal notranslate"><span class="pre">clicker</span></code>이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clicker</span> <span class="o">=</span> <span class="n">CountingClicker</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">clicker</span></code> 도구상자에 포함된 도구, 즉 특정 메서드를 이용하려면 아래와 같이 실행한다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">clicker</span><span class="o">.</span><span class="n">메서드이름</span><span class="p">(</span><span class="n">인자</span><span class="p">,</span><span class="o">....</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>먼저 클릭수가 0으로 초기화되어 있음을 확인하자.
+이유는 아무도 클릭하지 않았기 때문이다.
+실제로 <code class="docutils literal notranslate"><span class="pre">clicker</span></code> 도구상자를 생성할 때 호출되는 <code class="docutils literal notranslate"><span class="pre">__init__</span></code> 메서드의 인자가 지정되지 않아서
+<code class="docutils literal notranslate"><span class="pre">count</span></code> 매개변수의 키워드 인자로 기본값인 0이 사용되어, <code class="docutils literal notranslate"><span class="pre">self.count</span></code> 변수에 할당되었다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">clicker</span><span class="o">.</span><span class="n">read_count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;클릭수는 0부터 시작해야 합니다.&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>인스턴스 변수<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">self.count</span></code>와 같은 변수를 <strong>인스턴스 변수</strong>라 부른다.</p></li>
+<li><p>이유는 인스턴스가 생성되어야만 존재의미를 갖는 변수이기 때문이다.</p></li>
+<li><p>인스턴스 변수 이외에 <strong>클래스 변수</strong>가 클래스를 선언할 때 사용될 수 있다.
+클래스 변수는 인스턴스가 생성되지 않아도 존재의미를 갖는다.
+이에 대해서는 나중에 기회 있을 때 자세히 설명한다.</p></li>
+</ul>
+<p>이제 클릭을 두 번 했다가 가정하자.
+즉, <code class="docutils literal notranslate"><span class="pre">click</span></code> 메서드를 두 번 호출되어야 한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clicker</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">clicker</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>그러면 클릭수가 2가 되어 있어야 한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">clicker</span><span class="o">.</span><span class="n">read_count</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;두 번 클릭했으니 클릭수는 2이어야 함.&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>이제 클릭수를 초기화하자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clicker</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>그러면 클릭수가 다시 0이 되어야 한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">clicker</span><span class="o">.</span><span class="n">read_count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;클릭수를 초기화하면 0이 된다.&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>클릭수를 지정하면서 <code class="docutils literal notranslate"><span class="pre">CountingClicker</span></code>의 인스턴스를 생성할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clicker50</span> <span class="o">=</span> <span class="n">CountingClicker</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>클릭수가 50으로 설정되었음을 확인할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clicker50</span><span class="o">.</span><span class="n">read_count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50
+</pre></div>
+</div>
+</div>
+</div>
+<p>지금까지 <code class="docutils literal notranslate"><span class="pre">CountingClicker</span></code>의 인스턴스는 두 번 생성되었음을 아래 결과가 보여준다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CountingClicker</span><span class="o">.</span><span class="n">_total_count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>클래스 상속<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>부모 클래스로부터 모든 기능을 물려받을 수 있는 자식 클래스를 상속을 이용하여 선언할 수 있다.</p>
+<p>예를 들어, 클릭수를 초기화할 수 없는 자식 클래스 <code class="docutils literal notranslate"><span class="pre">NoResetClicker</span></code>를 아래와 같이 선언한다.
+클릭수 초기화 기능을 없애기 위해서는 <code class="docutils literal notranslate"><span class="pre">reset</span></code> 메서드를 재정의(overriding)해야 한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NoResetClicker</span><span class="p">(</span><span class="n">CountingClicker</span><span class="p">):</span>
+    <span class="c1"># 부모 클래스인 CountingClicker의 모든 메서드를 물려 받는다.</span>
+    <span class="c1"># 다만, read_count 함수와 reset 함수를 오버라이딩(재정의) 한다.</span>
+    <span class="c1"># 재정의하지 않는 메서드는 부모 클래스에서 정의된 그대로 물려 받는다.</span>
+    
+    <span class="c1"># 부모 클래스의 read_count 함수의 반환값을 두 배해서 반환한다.</span>
+    <span class="c1"># 부모 클래스를 가리키는 super()의 용법에 주의한다.</span>
+    
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">read_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">read_count</span><span class="p">)</span>
+
+    <span class="c1"># reset 함수의 초기화 기능을 없앤다.</span>
+    <span class="k">def</span> <span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">pass</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<p>이제 <code class="docutils literal notranslate"><span class="pre">NoResetClicker</span></code>의 인스턴스를 생성한 후 클릭수 초기화가 이루어지지 않을 확인할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clicker2</span> <span class="o">=</span> <span class="n">NoResetClicker</span><span class="p">()</span>
+<span class="n">clicker2</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">clicker2</span><span class="o">.</span><span class="n">click</span><span class="p">()</span>
+<span class="n">clicker2</span><span class="o">.</span><span class="n">read_count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<p>리셋이 작동하지 않습니다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clicker2</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+<span class="n">clicker2</span><span class="o">.</span><span class="n">read_count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<p>자식 클래스의 인스턴스가 만들어져도 부모 클래스의 인스턴스 카운트가 올라간다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CountingClicker</span><span class="o">.</span><span class="n">_total_count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<p>객체 생성횟수를 초기화하면 <code class="docutils literal notranslate"><span class="pre">_total_count</span></code>의 값이 0으로 된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CountingClicker</span><span class="o">.</span><span class="n">reset_total</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CountingClicker</span><span class="o">.</span><span class="n">_total_count</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By 코딩알지<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

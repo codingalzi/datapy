@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>7. 고급 넘파이 &#8212; 파이썬 데이터 분석</title>
+    <title>11. 고급 넘파이 &#8212; 파이썬 데이터 분석</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -38,22 +38,24 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="8. 판다스 데이터프레임" href="pandas_dataframe.html" />
-    <link rel="prev" title="6. 어레이 중심 프로그래밍" href="array_oriented.html" />
+    <link rel="next" title="12. 판다스 데이터프레임" href="pandas_dataframe.html" />
+    <link rel="prev" title="10. 어레이 중심 프로그래밍" href="array_oriented.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -87,23 +89,50 @@
     <div class="bd-toc-item active">
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  파이썬 기초
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_datatypes.html">
+   1. 파이썬 프로그래밍 기초 1부 1편
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="control_flow.html">
+   2. 파이썬 프로그래밍 기초 1부 2편
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="collections.html">
+   3. 파이썬 프로그래밍 기초 2부 1편
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions_files.html">
+   4. 파이썬 프로그래밍 기초 2부 3편
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   밑바닥부터
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="type_annotations.html">
-   1. 자료형 힌트
+   5. 자료형 힌트
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="linear_algebra_basics.html">
-   2. 선형대수 기초
+   6. 선형대수 기초
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="statistics_basics.html">
-   3. 통계 기초
+   7. 통계 기초
   </a>
  </li>
 </ul>
@@ -115,22 +144,22 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="numpy_array.html">
-   4. 넘파이 어레이
+   8. 넘파이 어레이
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="array_indexing.html">
-   5. 어레이 인덱싱
+   9. 어레이 인덱싱
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="array_oriented.html">
-   6. 어레이 중심 프로그래밍
+   10. 어레이 중심 프로그래밍
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   7. 고급 넘파이
+   11. 고급 넘파이
   </a>
  </li>
 </ul>
@@ -142,17 +171,17 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_dataframe.html">
-   8. 판다스 데이터프레임
+   12. 판다스 데이터프레임
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="dataframe_core.html">
-   9. 데이터프레임 핵심
+   13. 데이터프레임 핵심
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_stats.html">
-   10. 판다스 활용: 통계 기초
+   14. 판다스 활용: 통계 기초
   </a>
  </li>
 </ul>
@@ -164,17 +193,17 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="data_visualization_pyplot1.html">
-   11. matplotlib.pyplot 1부
+   15. matplotlib.pyplot 1부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="data_visualization_pyplot2.html">
-   12. matplotlib.pyplot 2부
+   16. matplotlib.pyplot 2부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="data_visualization_seaborn.html">
-   13. seaborn
+   17. seaborn
   </a>
  </li>
 </ul>
@@ -283,41 +312,41 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   7.1. 어레이 조작 고급 기법
+   11.1. 어레이 조작 고급 기법
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     7.1.1. 어레이 모양 변형
+     11.1.1. 어레이 모양 변형
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     7.1.2. 차원 추가
+     11.1.2. 차원 추가
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     7.1.3. 어레이 쪼개기/쌓기
+     11.1.3. 어레이 쪼개기/쌓기
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   7.2. 브로드캐스팅
+   11.2. 브로드캐스팅
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     7.2.1. 브로드캐스팅으로 어레이에 값 대입하기
+     11.2.1. 브로드캐스팅으로 어레이에 값 대입하기
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id8">
-   7.3. 연습문제
+   11.3. 연습문제
   </a>
  </li>
 </ul>
@@ -342,41 +371,41 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   7.1. 어레이 조작 고급 기법
+   11.1. 어레이 조작 고급 기법
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     7.1.1. 어레이 모양 변형
+     11.1.1. 어레이 모양 변형
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     7.1.2. 차원 추가
+     11.1.2. 차원 추가
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id5">
-     7.1.3. 어레이 쪼개기/쌓기
+     11.1.3. 어레이 쪼개기/쌓기
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   7.2. 브로드캐스팅
+   11.2. 브로드캐스팅
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     7.2.1. 브로드캐스팅으로 어레이에 값 대입하기
+     11.2.1. 브로드캐스팅으로 어레이에 값 대입하기
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id8">
-   7.3. 연습문제
+   11.3. 연습문제
   </a>
  </li>
 </ul>
@@ -389,7 +418,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="ch-advanced-numpy">
-<span id="id1"></span><h1><span class="section-number">7. </span>고급 넘파이<a class="headerlink" href="#ch-advanced-numpy" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1><span class="section-number">11. </span>고급 넘파이<a class="headerlink" href="#ch-advanced-numpy" title="Permalink to this headline">¶</a></h1>
 <p>넘파이 어레이를 조작하는 고급 기능 일부를 예제를 이용하여 살펴본다.</p>
 <p><strong>주요 내용</strong></p>
 <ul class="simple">
@@ -417,10 +446,10 @@
 </div>
 </div>
 <div class="section" id="id2">
-<h2><span class="section-number">7.1. </span>어레이 조작 고급 기법<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">11.1. </span>어레이 조작 고급 기법<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>어레이를 조작하는 몇 가지 중요한 고급 기법을 살펴본다.</p>
 <div class="section" id="id3">
-<h3><span class="section-number">7.1.1. </span>어레이 모양 변형<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.1.1. </span>어레이 모양 변형<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p><strong><code class="docutils literal notranslate"><span class="pre">reshape()</span></code> 메서드</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">reshape()</span></code> 메서드를 활용하여 지정된 튜플의 모양으로 주어진 어레이의 모양을 변형한다.
 단, 항목의 수가 변하지 않도록 모양을 지정해야 한다.</p>
@@ -556,7 +585,7 @@
 </div>
 </div>
 <div class="section" id="id4">
-<h3><span class="section-number">7.1.2. </span>차원 추가<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.1.2. </span>차원 추가<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>어레이에 임의의 축을 추가하는 방식으로 1차원 커진 어레이를 생성할 수 있다.
 어느 축을 지정하느냐에 따라 다른 모양을 갖게 된다.</p>
 <p><strong>예제</strong></p>
@@ -805,7 +834,7 @@
 </div>
 </div>
 <div class="section" id="id5">
-<h3><span class="section-number">7.1.3. </span>어레이 쪼개기/쌓기<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.1.3. </span>어레이 쪼개기/쌓기<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p><strong><code class="docutils literal notranslate"><span class="pre">np.split()</span></code> 함수</strong></p>
 <p>어레이를 지정된 기준에 따라 여러 개의 어레이로 쪼갠다.
 반환값은 쪼개진 어레이들의 리스트다.</p>
@@ -1181,7 +1210,7 @@
 </div>
 </div>
 <div class="section" id="id6">
-<h2><span class="section-number">7.2. </span>브로드캐스팅<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">11.2. </span>브로드캐스팅<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>모양이 서로 다른 두 어레이의 연산이 가능한 경우 브로드캐스팅이 작동한다.
 예를 들어, 하나의 어레이와 하나의 정수의 곱셈이 항목별로 작동한다.</p>
 <div class="cell docutils container">
@@ -1510,7 +1539,7 @@
 </div>
 </div>
 <div class="section" id="id7">
-<h3><span class="section-number">7.2.1. </span>브로드캐스팅으로 어레이에 값 대입하기<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.2.1. </span>브로드캐스팅으로 어레이에 값 대입하기<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
@@ -1585,7 +1614,7 @@
 </div>
 </div>
 <div class="section" id="id8">
-<h2><span class="section-number">7.3. </span>연습문제<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">11.3. </span>연습문제<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-advanced_numpy.ipynb">(실습) 고급 넘파이</a></p>
 </div>
 </div>
@@ -1619,13 +1648,13 @@
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">6. </span>어레이 중심 프로그래밍</p>
+            <p class="prev-next-title"><span class="section-number">10. </span>어레이 중심 프로그래밍</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="pandas_dataframe.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">8. </span>판다스 데이터프레임</p>
+        <p class="prev-next-title"><span class="section-number">12. </span>판다스 데이터프레임</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
