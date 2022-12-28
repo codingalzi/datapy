@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # 파이썬 프로그래밍 기초 1부 2편
+# # 제어문
 
 # ## 주요 내용 
 
