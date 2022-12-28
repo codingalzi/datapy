@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>파이썬 프로그래밍 기초 2부 4편 &#8212; 파이썬 데이터 분석</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -40,12 +38,13 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -61,7 +60,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -70,9 +83,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
       
@@ -92,23 +106,28 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="environment.html">
+   1. 프로그래밍 개발 환경
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="basic_datatypes.html">
-   1. 파이썬 프로그래밍 기초 1부 1편
+   2. 기본 자료형
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="control_flow.html">
-   2. 파이썬 프로그래밍 기초 1부 2편
+   3. 제어문
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="collections.html">
-   3. 파이썬 프로그래밍 기초 2부 1편
+   4. 모음 자료형
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="functions_files.html">
-   4. 파이썬 프로그래밍 기초 2부 3편
+   5. 함수와 파일
   </a>
  </li>
 </ul>
@@ -120,17 +139,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="type_annotations.html">
-   5. 자료형 힌트
+   6. 자료형 힌트
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="linear_algebra_basics.html">
-   6. 선형대수 기초
+   7. 선형대수 기초
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="statistics_basics.html">
-   7. 통계 기초
+   8. 통계 기초
   </a>
  </li>
 </ul>
@@ -142,22 +161,22 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="numpy_array.html">
-   8. 넘파이 어레이
+   9. 넘파이 어레이
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="array_indexing.html">
-   9. 어레이 인덱싱
+   10. 어레이 인덱싱
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="array_oriented.html">
-   10. 어레이 중심 프로그래밍
+   11. 어레이 중심 프로그래밍
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="advanced_numpy.html">
-   11. 고급 넘파이
+   12. 고급 넘파이
   </a>
  </li>
 </ul>
@@ -169,17 +188,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_dataframe.html">
-   12. 판다스 데이터프레임
+   13. 판다스 데이터프레임
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="dataframe_core.html">
-   13. 데이터프레임 핵심
+   14. 데이터프레임 핵심
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_stats.html">
-   14. 판다스 활용: 통계 기초
+   15. 판다스 활용: 통계 기초
   </a>
  </li>
 </ul>
@@ -191,123 +210,225 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="data_visualization_pyplot1.html">
-   15. matplotlib.pyplot 1부
+   16. matplotlib.pyplot 1부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="data_visualization_pyplot2.html">
-   16. matplotlib.pyplot 2부
+   17. matplotlib.pyplot 2부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="data_visualization_seaborn.html">
-   17. seaborn
+   18. seaborn
   </a>
  </li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/pydata03_python_basics_4.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/codingalzi/datapy"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/codingalzi/datapy/issues/new?title=Issue%20on%20page%20%2Fpydata03_python_basics_4.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/codingalzi/datapy/master?urlpath=tree/jupyter-book/pydata03_python_basics_4.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/codingalzi/datapy/master?urlpath=tree/jupyter-book/pydata03_python_basics_4.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/codingalzi/datapy"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/codingalzi/datapy/issues/new?title=Issue%20on%20page%20%2Fpydata03_python_basics_4.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/pydata03_python_basics_4.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
    주요 내용
@@ -465,12 +586,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>파이썬 프로그래밍 기초 2부 4편</h1>
@@ -644,23 +764,24 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1>파이썬 프로그래밍 기초 2부 4편<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id2">
-<h2>주요 내용<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>파이썬 프로그래밍 기초 2부 4편<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<section id="id2">
+<h2>주요 내용<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>이터러블, 이터레이터, 제너레이터</p></li>
 <li><p>오류 및 예외 처리</p></li>
 <li><p>파일</p></li>
 </ul>
-</div>
-<div class="section" id="id3">
-<h2>이터러블, 이터레이터, 제너레이터<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id4">
-<h3>이터러블<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id3">
+<h2>이터러블, 이터레이터, 제너레이터<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<section id="id4">
+<h3>이터러블<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <p><strong>이터러블</strong>(iterables)  객체는 쉽게 말해서 <code class="docutils literal notranslate"><span class="pre">for</span></code> 반복문에서 값들의 순환 대상으로 사용될 수 있는 객체이다.
 지금까지 살펴본 문자열, 리스트, 튜플, 사전, 집합을 포함해서, 아래에서
 소개할 파일 객체 등도 이터러블 자료형이다.
@@ -672,17 +793,17 @@ const thebe_selector_output = ".output, .cell_output"
     <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id5">
-<h3>이터레이터<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id5">
+<h3>이터레이터<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
 <p>위 반복문을 실행하면 리스트의 <code class="docutils literal notranslate"><span class="pre">__iter__()</span></code> 메서드는 <strong>이터레이터</strong>(iterator) 객체를 반환한다.
 그리고 이터레이터의 <code class="docutils literal notranslate"><span class="pre">__next__()</span></code> 메서드는 해당 리스트의 항목을 하나씩 <code class="docutils literal notranslate"><span class="pre">item</span></code> 변수에 전달하는
 역할을 수행한다.</p>
 <p>두 메서드가 사용되는 과정을 아래 그림이 잘 묘사한다.</p>
 <img src="./images/iterable-vs-iterator.png" style="width:500px;">
 <p>&lt;그림 출처: <a class="reference external" href="https://nvie.com/posts/iterators-vs-generators/">Iterables vs. Iterators vs. Generators</a>&gt;</p>
-<div class="section" id="id6">
-<h4>예제<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<section id="id6">
+<h4>예제<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h4>
 <p>사전을 <code class="docutils literal notranslate"><span class="pre">for</span></code> 반복문에 사용하면 키(key)를 대상으로 순회한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -713,7 +834,7 @@ c
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;dict_keyiterator at 0x7fbb58801ea0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;dict_keyiterator at 0x7f6ff393a180&gt;
 </pre></div>
 </div>
 </div>
@@ -731,10 +852,10 @@ c
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="id7">
-<h3>제너레이터<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="id7">
+<h3>제너레이터<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
 <p><strong>제너레이터</strong>(generator)는 특별한 이터레이터이다.
 제너레이터는 <code class="docutils literal notranslate"><span class="pre">__iter()__</span></code>와 <code class="docutils literal notranslate"><span class="pre">__next__()</span></code> 메서드를 구체적으로 구현할 필요없이
 매우 간단하게 이터레이터를 정의하는 도구이다.</p>
@@ -743,8 +864,8 @@ c
 <li><p>함수 정의 방식 활용</p></li>
 <li><p>조건제시법 표현식 활용</p></li>
 </ul>
-<div class="section" id="id8">
-<h4>함수 정의 방식 활용<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<section id="id8">
+<h4>함수 정의 방식 활용<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h4>
 <p>아래 코드는 1부터 10까지의 정수의 제곱을 생성하는 제너레이터를 정의한다.
 함수 정의와 유사한 방식을 사용한다.
 차이점은 <code class="docutils literal notranslate"><span class="pre">return</span></code> 예약어 대신 <code class="docutils literal notranslate"><span class="pre">yield</span></code> 예약어를 사용하여,
@@ -767,7 +888,7 @@ c
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;generator object squares at 0x7fbb587fb890&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;generator object squares at 0x7f6ff396aeb0&gt;
 </pre></div>
 </div>
 </div>
@@ -814,10 +935,10 @@ c
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="id9">
-<h3>조건제시법 표현식 활용<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="id9">
+<h3>조건제시법 표현식 활용<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
 <p>조건제시법 표현식을 소괄호로 감싸면 제너레이터가 된다.
 예를 들어, 아래 코드는 0부터 99까지의 수의 제곱을 차례대로 생성하는 제너레이터이다.</p>
 <p><strong>주의사항:</strong> 튜플 자료형이 아니다.</p>
@@ -830,7 +951,7 @@ c
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;generator object &lt;genexpr&gt; at 0x7fbb587fbac0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;generator object &lt;genexpr&gt; at 0x7f6ff006c190&gt;
 </pre></div>
 </div>
 </div>
@@ -867,8 +988,8 @@ c
 </div>
 </div>
 </div>
-<div class="section" id="id10">
-<h4>예제<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<section id="id10">
+<h4>예제<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h4>
 <p>조건제시법 표현식 방식은 리스트를 인자로 받는 모든 함수와 함께 사용될 수 있다.
 예를 들어, 0부터 99까지의 수의 제곱의 합은 아래와 같다.</p>
 <div class="cell docutils container">
@@ -883,9 +1004,9 @@ c
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id11">
-<h4>예제<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="id11">
+<h4>예제<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h4>
 <p>0부터 4까지의 수를 키(key)로, 제곱을 값(value)으로 갖는 사전은 다음과 같이 정의할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -899,10 +1020,10 @@ c
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="itertools">
-<h3>itertools 모듈<a class="headerlink" href="#itertools" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="itertools">
+<h3>itertools 모듈<a class="headerlink" href="#itertools" title="Permalink to this headline">#</a></h3>
 <p>파이선의 표준 라이브러리인 <code class="docutils literal notranslate"><span class="pre">itertools</span></code> 모듈은 다양한 제너레이터를 제공한다.
 아래에 가장 유용한 제너레이터를 언급하였으며, 우선은 그런 게 있다는 것만 기억해 두면 좋다.
 필요한 경우
@@ -928,10 +1049,10 @@ c
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-<div class="section" id="id12">
-<h2>오류 및 예외 처리<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id12">
+<h2>오류 및 예외 처리<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h2>
 <p>오류 없는 완벽한 프로그램은 현실적으로 불가능하며,
 프로그램을 구현하고 실행하면 거의 항상 오류가 발생한다.
 프로그래밍 단계에서부터 발생할 수 있는 오류(error)의 종류와 원인,
@@ -939,8 +1060,8 @@ c
 <p>발생할 수 있는 오류에 미리 대비하는 것을 <strong>예외 처리</strong>(exception handling)라 한다.
 여기서는 함수에 적절하지 않은 인자가 사용될 때 발생하는 오류를 이용하여
 예외 처리의 사용법을 간단하게 살펴본다.</p>
-<div class="section" id="id13">
-<h3>오류<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<section id="id13">
+<h3>오류<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
 <p>파이썬 함수는 인자의 자료형을 명시하지 않기 때문에
 자료형이 다른 인자를 사용하는 실수를 범하기 쉽다.
 그리고 적절하지 않은 인자를 사용할 경우 <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>가 발생한다.
@@ -991,7 +1112,7 @@ c
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_527</span><span class="o">/</span><span class="mf">3608335619.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="nn">Input In [17],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;123f2&#39;</span><span class="p">)</span>
 
 <span class="ne">ValueError</span>: could not convert string to float: &#39;123f2&#39;
@@ -999,9 +1120,9 @@ c
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id14">
-<h3>예외 처리<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id14">
+<h3>예외 처리<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">float()</span></code>를 사용할 때 오류가 발생하여 바로 실행이 멈추게 하는 것을 방지하려면
 예외 처리를 해주면 된다.
 예외 처리의 기본 형식은 다음과 같다.</p>
@@ -1016,8 +1137,8 @@ c
 실행 과정 중에 오류가 발생하지 않으면 <code class="docutils literal notranslate"><span class="pre">code2</span></code> 부분은 건너 뛴다.</p></li>
 <li><p>반면에 <code class="docutils literal notranslate"><span class="pre">code1</span></code> 실행중에 오류가 발생하면 <code class="docutils literal notranslate"><span class="pre">code2</span></code> 를 실행한다.</p></li>
 </ul>
-<div class="section" id="id15">
-<h4>예제<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+<section id="id15">
+<h4>예제<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;123f2&#39;</span>
@@ -1035,9 +1156,9 @@ c
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id16">
-<h4>예제<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="id16">
+<h4>예제<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h4>
 <p>아래 함수는 부동소수점 모양이 아닌 문자열이 인자로 사용되면 해당 문자열을 그대로 반환하도록 한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1147,9 +1268,9 @@ c
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id17">
-<h4>예제<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="id17">
+<h4>예제<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h4>
 <p>아래 코드는 <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>가 발생하면 입력된 인자를 그대로 반환한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1198,9 +1319,9 @@ c
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="finally">
-<h4>finally 블록<a class="headerlink" href="#finally" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="finally">
+<h4>finally 블록<a class="headerlink" href="#finally" title="Permalink to this headline">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">try</span></code> 블록에서의 오류 발생 여부와 상관 없이 특정 코드를 실행하기 위해 <code class="docutils literal notranslate"><span class="pre">finally</span></code> 블록을 사용한다.
 물론 오류가 발생하면 <code class="docutils literal notranslate"><span class="pre">finally</span></code> 블록 이후 실행이 바로 멈춘다.</p>
 <div class="cell docutils container">
@@ -1256,9 +1377,9 @@ c
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="else">
-<h4>else 블록<a class="headerlink" href="#else" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="else">
+<h4>else 블록<a class="headerlink" href="#else" title="Permalink to this headline">#</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">try</span></code> 블록이 성공적으로 실행되었을 때만 특정 코드를 실행시키고자 할 때 <code class="docutils literal notranslate"><span class="pre">else</span></code> 블록을 사용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1286,11 +1407,11 @@ c
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="id18">
-<h2>파일<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+</section>
+<section id="id18">
+<h2>파일<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h2>
 <p>앞으로 다룰 대부분의 데이터 파일은 csv 파일이며 기본적으로 <code class="docutils literal notranslate"><span class="pre">pandas.read_csv()</span></code> 함수를
 이용하여 불러(loading)와서 데이터로 사용한다.
 하지만 파일을 일반적으로 다루는 기본 방식을 이해하는 것도 중요하다.</p>
@@ -1324,8 +1445,8 @@ c
 </div>
 </div>
 </div>
-<div class="section" id="id19">
-<h3>파일 불러오기<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<section id="id19">
+<h3>파일 불러오기<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h3>
 <p>텍스트 문서를 파일 데이터로 불러오려면 <code class="docutils literal notranslate"><span class="pre">open()</span></code>를 사용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1335,9 +1456,9 @@ c
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id20">
-<h3>파일 데이터 내용 읽기<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id20">
+<h3>파일 데이터 내용 읽기<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">segismundo.txt</span></code> 파일엔 스페인어로 작성된 시를 저장되어 있으며 ñ, á 등의
 특수 문자가 사용된다.
 따라서 한글 윈도우 운영체제에서는 일부 표현이 깨질 수 있다.</p>
@@ -1535,8 +1656,8 @@ aunque ninguno lo entiende.
 </div>
 </div>
 </div>
-<div class="section" id="with-as">
-<h4><code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">...</span> <span class="pre">as</span> <span class="pre">...</span></code> 형식<a class="headerlink" href="#with-as" title="Permalink to this headline">¶</a></h4>
+<section id="with-as">
+<h4><code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">...</span> <span class="pre">as</span> <span class="pre">...</span></code> 형식<a class="headerlink" href="#with-as" title="Permalink to this headline">#</a></h4>
 <p>파일을 불러와 일을 처리한 다음에 파일닫기를 자동으로 진행하게 하려면
 아래에서 처럼 <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">...</span> <span class="pre">as</span> <span class="pre">...</span></code> 형식을 사용한다.</p>
 <div class="cell docutils container">
@@ -1587,9 +1708,9 @@ aunque ninguno lo entiende.
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="readline-readlines">
-<h4>readline(), readlines() 메서드<a class="headerlink" href="#readline-readlines" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="readline-readlines">
+<h4>readline(), readlines() 메서드<a class="headerlink" href="#readline-readlines" title="Permalink to this headline">#</a></h4>
 <p>열려 있는 파일이 이터레이터이기에 <code class="docutils literal notranslate"><span class="pre">for</span></code> 반복문으로 모든 줄을 순회하하면서 내용을 확인할 수 있었다.
 반면에 아래 두 메서드를 이용하면 <code class="docutils literal notranslate"><span class="pre">for</span></code> 반복문 없이 줄 단위로 내용을 확인할 수 있다.</p>
 <table class="colwidths-auto table">
@@ -1688,10 +1809,10 @@ aunque ninguno lo entiende.
 </div>
 </div>
 <p><strong>참고:</strong> <code class="docutils literal notranslate"><span class="pre">readlines()</span></code>의 결과를 보면 각 줄의 끝에 줄바꿈 기호가 사용되었음을 볼 수 있다.</p>
-</div>
-</div>
-<div class="section" id="id21">
-<h3>파일 생성 및 작성하기<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="id21">
+<h3>파일 생성 및 작성하기<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h3>
 <p>아래 두 가지 방식으로 파일을 생성하거나 작성할 수 있다.</p>
 <ul class="simple">
 <li><p>방식 1: <code class="docutils literal notranslate"><span class="pre">open('파일명',</span> <span class="pre">'w')</span></code></p>
@@ -1798,9 +1919,9 @@ aunque ninguno lo entiende.
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1824,28 +1945,34 @@ aunque ninguno lo entiende.
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
 <div class='prev-next-area'>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By 코딩알지<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By 코딩알지<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
