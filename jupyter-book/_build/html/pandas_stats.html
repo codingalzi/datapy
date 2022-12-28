@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>10. 판다스 활용: 통계 기초 &#8212; 파이썬 데이터 분석</title>
+    <title>14. 판다스 활용: 통계 기초 &#8212; 파이썬 데이터 분석</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -38,24 +38,26 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="11. matplotlib.pyplot 1부" href="data_visualization_pyplot1.html" />
-    <link rel="prev" title="9. 데이터프레임 핵심" href="dataframe_core.html" />
+    <link rel="next" title="15. matplotlib.pyplot 1부" href="data_visualization_pyplot1.html" />
+    <link rel="prev" title="13. 데이터프레임 핵심" href="dataframe_core.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -89,23 +91,50 @@
     <div class="bd-toc-item active">
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  파이썬 기초
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_datatypes.html">
+   1. 파이썬 프로그래밍 기초 1부 1편
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="control_flow.html">
+   2. 파이썬 프로그래밍 기초 1부 2편
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="collections.html">
+   3. 파이썬 프로그래밍 기초 2부 1편
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions_files.html">
+   4. 파이썬 프로그래밍 기초 2부 3편
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   밑바닥부터
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="type_annotations.html">
-   1. 자료형 힌트
+   5. 자료형 힌트
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="linear_algebra_basics.html">
-   2. 선형대수 기초
+   6. 선형대수 기초
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="statistics_basics.html">
-   3. 통계 기초
+   7. 통계 기초
   </a>
  </li>
 </ul>
@@ -117,22 +146,22 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="numpy_array.html">
-   4. 넘파이 어레이
+   8. 넘파이 어레이
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="array_indexing.html">
-   5. 어레이 인덱싱
+   9. 어레이 인덱싱
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="array_oriented.html">
-   6. 어레이 중심 프로그래밍
+   10. 어레이 중심 프로그래밍
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="advanced_numpy.html">
-   7. 고급 넘파이
+   11. 고급 넘파이
   </a>
  </li>
 </ul>
@@ -144,17 +173,17 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_dataframe.html">
-   8. 판다스 데이터프레임
+   12. 판다스 데이터프레임
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="dataframe_core.html">
-   9. 데이터프레임 핵심
+   13. 데이터프레임 핵심
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   10. 판다스 활용: 통계 기초
+   14. 판다스 활용: 통계 기초
   </a>
  </li>
 </ul>
@@ -166,17 +195,17 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="data_visualization_pyplot1.html">
-   11. matplotlib.pyplot 1부
+   15. matplotlib.pyplot 1부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="data_visualization_pyplot2.html">
-   12. matplotlib.pyplot 2부
+   16. matplotlib.pyplot 2부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="data_visualization_seaborn.html">
-   13. seaborn
+   17. seaborn
   </a>
  </li>
 </ul>
@@ -285,27 +314,27 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   10.1. 합, 평균, 표준편차
+   14.1. 합, 평균, 표준편차
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   10.2. 상관관계와 공분산
+   14.2. 상관관계와 공분산
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   10.3. 중복과 빈도
+   14.3. 중복과 빈도
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   10.4. 미니 프로젝트: 붓꽃 데이터셋 표준화
+   14.4. 미니 프로젝트: 붓꽃 데이터셋 표준화
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   10.5. 연습문제
+   14.5. 연습문제
   </a>
  </li>
 </ul>
@@ -330,27 +359,27 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   10.1. 합, 평균, 표준편차
+   14.1. 합, 평균, 표준편차
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   10.2. 상관관계와 공분산
+   14.2. 상관관계와 공분산
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   10.3. 중복과 빈도
+   14.3. 중복과 빈도
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   10.4. 미니 프로젝트: 붓꽃 데이터셋 표준화
+   14.4. 미니 프로젝트: 붓꽃 데이터셋 표준화
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   10.5. 연습문제
+   14.5. 연습문제
   </a>
  </li>
 </ul>
@@ -363,7 +392,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">10. </span>판다스 활용: 통계 기초<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">14. </span>판다스 활용: 통계 기초<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p><strong>주요 내용</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">Series</span></code>와 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> 객체를로부터 기초 통계 자료를 추출하는 방식을 다룬다.</p>
 <ul class="simple">
@@ -404,7 +433,7 @@
 </div>
 </div>
 <div class="section" id="id2">
-<h2><span class="section-number">10.1. </span>합, 평균, 표준편차<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">14.1. </span>합, 평균, 표준편차<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>기초 통계에서 사용되는 주요 메서드들의 활용법을 살펴본다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">sum()</span></code></p></li>
@@ -968,7 +997,7 @@ dtype: object
 </div>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">10.2. </span>상관관계와 공분산<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">14.2. </span>상관관계와 공분산<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>금융 사이트에서 구한 4 개 회사의 주가(price)와 거래량(volume)을 담고 있는 두 개의 데이터를 이용하여
 상관계수와 공분산을 계산해본다.</p>
 <p>이를 위해 먼저 바이너리 파일 두 개를 다운로드해서 지정된 하위 디렉토리에 저장한다.</p>
@@ -1402,7 +1431,7 @@ Var(Y) &amp; = \dfrac{\sum (X-\mu_Y)^2}{n}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.49976361144151144
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4997636114415114
 </pre></div>
 </div>
 </div>
@@ -1428,7 +1457,7 @@ Var(Y) &amp; = \dfrac{\sum (X-\mu_Y)^2}{n}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.49976361144151144
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4997636114415114
 </pre></div>
 </div>
 </div>
@@ -1599,7 +1628,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">10.3. </span>중복과 빈도<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">14.3. </span>중복과 빈도<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p><strong><code class="docutils literal notranslate"><span class="pre">unique()</span></code> 메서드</strong></p>
 <p>시리즈에서 사용된 값을 중복 없이 확인하려면 <code class="docutils literal notranslate"><span class="pre">unique()</span></code> 메서드를 이용한다.
 <code class="docutils literal notranslate"><span class="pre">set()</span></code> 함수와 유사하게 작동하며, 넘파이 어레이를 반환한다.</p>
@@ -1674,7 +1703,7 @@ dtype: int64
 </div>
 </div>
 <div class="section" id="id5">
-<h2><span class="section-number">10.4. </span>미니 프로젝트: 붓꽃 데이터셋 표준화<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">14.4. </span>미니 프로젝트: 붓꽃 데이터셋 표준화<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>아래 코드는 인터넷 데이터 저장소로부터 아이리스(붓꽃) 데이터(<code class="docutils literal notranslate"><span class="pre">iris.data</span></code>)를
 2차원 넘파이 어레이로 불러온다.</p>
 <div class="cell docutils container">
@@ -3092,7 +3121,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="id6">
-<h2><span class="section-number">10.5. </span>연습문제<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">14.5. </span>연습문제<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-pandas_stats.ipynb">(실습) 판다스 활용: 통계 기초</a></p>
 </div>
 </div>
@@ -3126,13 +3155,13 @@ dtype: float64
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">9. </span>데이터프레임 핵심</p>
+            <p class="prev-next-title"><span class="section-number">13. </span>데이터프레임 핵심</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="data_visualization_pyplot1.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">11. </span>matplotlib.pyplot 1부</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>matplotlib.pyplot 1부</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

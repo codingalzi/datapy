@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5. 어레이 인덱싱 &#8212; 파이썬 데이터 분석</title>
+    <title>9. 어레이 인덱싱 &#8212; 파이썬 데이터 분석</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -38,24 +38,26 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="6. 어레이 중심 프로그래밍" href="array_oriented.html" />
-    <link rel="prev" title="4. 넘파이 어레이" href="numpy_array.html" />
+    <link rel="next" title="10. 어레이 중심 프로그래밍" href="array_oriented.html" />
+    <link rel="prev" title="8. 넘파이 어레이" href="numpy_array.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -89,23 +91,50 @@
     <div class="bd-toc-item active">
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  파이썬 기초
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="basic_datatypes.html">
+   1. 파이썬 프로그래밍 기초 1부 1편
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="control_flow.html">
+   2. 파이썬 프로그래밍 기초 1부 2편
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="collections.html">
+   3. 파이썬 프로그래밍 기초 2부 1편
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions_files.html">
+   4. 파이썬 프로그래밍 기초 2부 3편
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   밑바닥부터
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="type_annotations.html">
-   1. 자료형 힌트
+   5. 자료형 힌트
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="linear_algebra_basics.html">
-   2. 선형대수 기초
+   6. 선형대수 기초
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="statistics_basics.html">
-   3. 통계 기초
+   7. 통계 기초
   </a>
  </li>
 </ul>
@@ -117,22 +146,22 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="numpy_array.html">
-   4. 넘파이 어레이
+   8. 넘파이 어레이
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   5. 어레이 인덱싱
+   9. 어레이 인덱싱
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="array_oriented.html">
-   6. 어레이 중심 프로그래밍
+   10. 어레이 중심 프로그래밍
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="advanced_numpy.html">
-   7. 고급 넘파이
+   11. 고급 넘파이
   </a>
  </li>
 </ul>
@@ -144,17 +173,17 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_dataframe.html">
-   8. 판다스 데이터프레임
+   12. 판다스 데이터프레임
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="dataframe_core.html">
-   9. 데이터프레임 핵심
+   13. 데이터프레임 핵심
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_stats.html">
-   10. 판다스 활용: 통계 기초
+   14. 판다스 활용: 통계 기초
   </a>
  </li>
 </ul>
@@ -166,17 +195,17 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="data_visualization_pyplot1.html">
-   11. matplotlib.pyplot 1부
+   15. matplotlib.pyplot 1부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="data_visualization_pyplot2.html">
-   12. matplotlib.pyplot 2부
+   16. matplotlib.pyplot 2부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="data_visualization_seaborn.html">
-   13. seaborn
+   17. seaborn
   </a>
  </li>
 </ul>
@@ -285,78 +314,78 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   5.1. 인덱싱과 슬라이싱
+   9.1. 인덱싱과 슬라이싱
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     5.1.1. 1차원 어레이 인덱싱, 슬라이싱
+     9.1.1. 1차원 어레이 인덱싱, 슬라이싱
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     5.1.2. 2차원 어레이 인덱싱
+     9.1.2. 2차원 어레이 인덱싱
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   5.2. 3차원 어레이 인덱싱
+   9.2. 3차원 어레이 인덱싱
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     5.2.1. 2차원 어레이 슬라이싱
+     9.2.1. 2차원 어레이 슬라이싱
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     5.2.2. 3차원 어레이 인덱싱/슬라이싱
+     9.2.2. 3차원 어레이 인덱싱/슬라이싱
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     5.2.3. 이미지 크기 조정
+     9.2.3. 이미지 크기 조정
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id9">
-   5.3. 부울 인덱싱
+   9.3. 부울 인덱싱
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id10">
-     5.3.1. 1차원 부울 어레이 활용
+     9.3.1. 1차원 부울 어레이 활용
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id11">
-     5.3.2. 항목 업데이트
+     9.3.2. 항목 업데이트
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id12">
-     5.3.3. 부울 인덱싱 활용 변수 선언
+     9.3.3. 부울 인덱싱 활용 변수 선언
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id13">
-     5.3.4. 다차원 부울 어레이 활용
+     9.3.4. 다차원 부울 어레이 활용
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id14">
-   5.4. 팬시 인덱싱
+   9.4. 팬시 인덱싱
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id15">
-   5.5. 연습문제
+   9.5. 연습문제
   </a>
  </li>
 </ul>
@@ -381,78 +410,78 @@
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   5.1. 인덱싱과 슬라이싱
+   9.1. 인덱싱과 슬라이싱
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     5.1.1. 1차원 어레이 인덱싱, 슬라이싱
+     9.1.1. 1차원 어레이 인덱싱, 슬라이싱
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     5.1.2. 2차원 어레이 인덱싱
+     9.1.2. 2차원 어레이 인덱싱
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   5.2. 3차원 어레이 인덱싱
+   9.2. 3차원 어레이 인덱싱
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id6">
-     5.2.1. 2차원 어레이 슬라이싱
+     9.2.1. 2차원 어레이 슬라이싱
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     5.2.2. 3차원 어레이 인덱싱/슬라이싱
+     9.2.2. 3차원 어레이 인덱싱/슬라이싱
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     5.2.3. 이미지 크기 조정
+     9.2.3. 이미지 크기 조정
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id9">
-   5.3. 부울 인덱싱
+   9.3. 부울 인덱싱
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id10">
-     5.3.1. 1차원 부울 어레이 활용
+     9.3.1. 1차원 부울 어레이 활용
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id11">
-     5.3.2. 항목 업데이트
+     9.3.2. 항목 업데이트
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id12">
-     5.3.3. 부울 인덱싱 활용 변수 선언
+     9.3.3. 부울 인덱싱 활용 변수 선언
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id13">
-     5.3.4. 다차원 부울 어레이 활용
+     9.3.4. 다차원 부울 어레이 활용
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id14">
-   5.4. 팬시 인덱싱
+   9.4. 팬시 인덱싱
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id15">
-   5.5. 연습문제
+   9.5. 연습문제
   </a>
  </li>
 </ul>
@@ -465,7 +494,7 @@
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">5. </span>어레이 인덱싱<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">9. </span>어레이 인덱싱<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p><strong>주요 내용</strong></p>
 <ul class="simple">
 <li><p>어레이 인덱싱, 슬라이싱</p></li>
@@ -494,11 +523,11 @@
 </div>
 </div>
 <div class="section" id="id2">
-<h2><span class="section-number">5.1. </span>인덱싱과 슬라이싱<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.1. </span>인덱싱과 슬라이싱<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>리스트의 인덱스, 인덱싱, 슬라이싱 개념을 넘파이 어레이에 확장시킨다.
 리스트의 경우보다 보다 다양한 기능을 제공하며 데이터 분석에서 매우 중요한 역할을 수행한다.</p>
 <div class="section" id="id3">
-<h3><span class="section-number">5.1.1. </span>1차원 어레이 인덱싱, 슬라이싱<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.1.1. </span>1차원 어레이 인덱싱, 슬라이싱<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>1차원 어레이의 경우 리스트의 경우와 거의 동일하게 작동한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -679,7 +708,7 @@
 </div>
 </div>
 <div class="section" id="id4">
-<h3><span class="section-number">5.1.2. </span>2차원 어레이 인덱싱<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.1.2. </span>2차원 어레이 인덱싱<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>2차원 이상의 다차원 어레이는 보다 다양한 인덱싱, 슬라이싱 기능을 제공한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -747,7 +776,7 @@
 <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy146.png" style="width:300px;"></div></div>
 </div>
 <div class="section" id="id5">
-<h2><span class="section-number">5.2. </span>3차원 어레이 인덱싱<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.2. </span>3차원 어레이 인덱싱<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">arr3d</span></code>는 (2, 2, 3) 모양의 3차원 어레이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -908,7 +937,7 @@
 </div>
 </div>
 <div class="section" id="id6">
-<h3><span class="section-number">5.2.1. </span>2차원 어레이 슬라이싱<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.2.1. </span>2차원 어레이 슬라이싱<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr2d</span>
@@ -1099,7 +1128,7 @@
 </div>
 </div>
 <div class="proof example admonition" id="array_indexing_slicing">
-<p class="admonition-title"><span class="caption-number">Example 5.1 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 9.1 </span></p>
 <div class="example-content section" id="proof-content">
 <p>먼저 아래 그림 모양의 2차원 어레이를 생성한다.
 길이가 36인 1차원 어레이를 (6, 6) 모양의 2차원 어레이로 항목을 재배열하기 위해
@@ -1160,7 +1189,7 @@
 </div>
 </div></div>
 <div class="section" id="id7">
-<h3><span class="section-number">5.2.2. </span>3차원 어레이 인덱싱/슬라이싱<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.2.2. </span>3차원 어레이 인덱싱/슬라이싱<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>기본적으로 2차원 어레이 슬라이싱 기능과 동일하게 작동한다.
 여기서는 칼라 이미지 데이터를 3차원 어레이로, 흑백 이미지를 2차원 어레이로 다루면서
 인덱싱과 슬라이싱을 이용하여 이미지를 조작하는 간단한 방법을 설명한다.</p>
@@ -1314,7 +1343,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="section" id="id8">
-<h3><span class="section-number">5.2.3. </span>이미지 크기 조정<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.2.3. </span>이미지 크기 조정<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>이미지 크기 조정은 픽셀 수를 조절하는 방식으로 이루어진다.
 가장 단순한 방식은 행과 열에서 각각 2개씩 건너뛰며 픽셀을 선택하는 것이다.
 일부 데이터가 상실되지만 작은 이미지에는 눈으로 보일 정도로 영향을 받지는 않는다.</p>
@@ -1446,11 +1475,11 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="section" id="id9">
-<h2><span class="section-number">5.3. </span>부울 인덱싱<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.3. </span>부울 인덱싱<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>부울 인덱싱은 앞서 설명한 인덱싱/슬라이싱 기법이 처리하지 못하는
 인덱싱/슬라이싱을 지원한다.</p>
 <div class="section" id="id10">
-<h3><span class="section-number">5.3.1. </span>1차원 부울 어레이 활용<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.3.1. </span>1차원 부울 어레이 활용<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>1차원 부울 어레이를 이용한 인덱싱을 설명하기 위해 아래 두 개의 어레이를 이용한다.</p>
 <ul class="simple">
 <li><p>중복된 이름을 포함하면서 길이가 7인 1차원 어레이.</p></li>
@@ -1642,7 +1671,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="section" id="id11">
-<h3><span class="section-number">5.3.2. </span>항목 업데이트<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.3.2. </span>항목 업데이트<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <p>1차원 부울 배열을 이용하여 전체 행 또는 전체 열을 특정 값으로 변경할 수 있다.</p>
 <p>아래 코드는 <code class="docutils literal notranslate"><span class="pre">names</span></code>에서 Joe가 사용되지 않은 항목의 인덱스에 해당하는 행에 포함된 항목을 모두 7로 변경한다.</p>
 <div class="cell docutils container">
@@ -1679,7 +1708,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="section" id="id12">
-<h3><span class="section-number">5.3.3. </span>부울 인덱싱 활용 변수 선언<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.3.3. </span>부울 인덱싱 활용 변수 선언<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <p>부울 인덱싱은 뷰를 이용하지 않고 항상 새로운 어레이를 생성한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1731,7 +1760,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="section" id="id13">
-<h3><span class="section-number">5.3.4. </span>다차원 부울 어레이 활용<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">9.3.4. </span>다차원 부울 어레이 활용<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <p>아래 표현식은 <code class="docutils literal notranslate"><span class="pre">data</span></code>와 동일한 모양의 부울 어레이를 생성한다.
 이유는 부등호 연산이 항목별로 작동하기 때문이다.</p>
 <div class="cell docutils container">
@@ -1792,7 +1821,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="section" id="id14">
-<h2><span class="section-number">5.4. </span>팬시 인덱싱<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.4. </span>팬시 인덱싱<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
 <p><strong>팬시 인덱싱</strong><font size='2'>fancy indexing</font>은 정수 배열을 이용한다.
 아래 (8, 4) 모양의 2차원 어레이를 이용해서 팬시 인덱싱을 설명한다.
 팬시 인덱싱은 객체를 항상 새로 생성한다. 즉, 뷰 기능을 이용하지 않는다.</p>
@@ -1910,7 +1939,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="proof example admonition" id="fancy_indexing">
-<p class="admonition-title"><span class="caption-number">Example 5.2 </span></p>
+<p class="admonition-title"><span class="caption-number">Example 9.2 </span></p>
 <div class="example-content section" id="proof-content">
 <p>아래 이미지 모양의 2차원 어레이에서 색깔로 구분된 1차원 또는 2차원 어레이를 추출해보자.</p>
 <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/fancy_indexing.png" style="width:250px;"></div>
@@ -1953,7 +1982,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div></div>
 <div class="section" id="id15">
-<h2><span class="section-number">5.5. </span>연습문제<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.5. </span>연습문제<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-array_indexing.ipynb">(실습) 어레이 인덱싱</a></p>
 </div>
 </div>
@@ -1987,13 +2016,13 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">4. </span>넘파이 어레이</p>
+            <p class="prev-next-title"><span class="section-number">8. </span>넘파이 어레이</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="array_oriented.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">6. </span>어레이 중심 프로그래밍</p>
+        <p class="prev-next-title"><span class="section-number">10. </span>어레이 중심 프로그래밍</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
