@@ -4,13 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>파이썬 프로그래밍 기초 2부 2편 &#8212; 파이썬 데이터 분석</title>
     
-  <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -20,31 +18,31 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
+    
+      
+
+    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -60,21 +58,7 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
-
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -83,10 +67,9 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
       
@@ -226,17 +209,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
-    </div>
-    <div id="rtd-footer-container"></div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
 </div>
 
 
@@ -244,191 +222,94 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="header-article row sticky-top noprint">
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
         
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/codingalzi/datapy/master?urlpath=tree/jupyter-book/pydata03_python_basics_2.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/codingalzi/datapy"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/codingalzi/datapy/issues/new?title=Issue%20on%20page%20%2Fpydata03_python_basics_2.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/pydata03_python_basics_2.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/pydata03_python_basics_2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/codingalzi/datapy"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/codingalzi/datapy/issues/new?title=Issue%20on%20page%20%2Fpydata03_python_basics_2.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
     </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/codingalzi/datapy/master?urlpath=tree/jupyter-book/pydata03_python_basics_2.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
    주요 내용
@@ -622,11 +503,12 @@ title="Print to PDF"
  </li>
 </ul>
 
-    </nav>
-</div>
+            </nav>
+        </div>
     </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>파이썬 프로그래밍 기초 2부 2편</h1>
@@ -836,25 +718,24 @@ title="Print to PDF"
                     </div>
                 </div>
             </div>
-            <main id="main-content" role="main">
-                
+            
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>파이썬 프로그래밍 기초 2부 2편<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
-<section id="id2">
-<h2>주요 내용<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+  <div class="tex2jax_ignore mathjax_ignore section" id="id1">
+<h1>파이썬 프로그래밍 기초 2부 2편<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>주요 내용<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>모음 자료형 2편: 사전, 집합</p></li>
 <li><p>조건제시법(Comprehension)</p></li>
 </ul>
-</section>
-<section id="id3">
-<h2>모음 자료형 2편<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="id3">
+<h2>모음 자료형 2편<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>튜플과 리스트에 이어 사전과 집합에 대해 설명한다.</p>
-</section>
-<section id="id4">
-<h2>사전<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="id4">
+<h2>사전<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>현대 프로그래밍 언어 분야에서 가장 중요하게 사용되는 자료형이 사전(<code class="docutils literal notranslate"><span class="pre">dict</span></code>)이다.
 특히, 데이터 분석 분야에서 더욱 그러하다.
 언어에 따라 해시맵(hash map), 연관배열(associative array) 등으로 불리기도 하며,
@@ -869,8 +750,8 @@ title="Print to PDF"
 집합에 사용되는 기호와 동일하지만 항목이 <code class="docutils literal notranslate"><span class="pre">키:값</span></code> 형식이라면 사전 객체로 인식된다.</p>
 <p><strong>주의:</strong> <code class="docutils literal notranslate"><span class="pre">키:값</span></code> 형식의 사전 항목은 파이썬에서 인정하는 제1종 객체가 아니며,
 따라서 사전 객체의 항목으로만 사용된다.</p>
-<section id="id5">
-<h3>비어 있는 사전<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<div class="section" id="id5">
+<h3>비어 있는 사전<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>항목이 전혀 없는 빈 사전은 아래와 같이 표기한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -911,9 +792,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
-<section id="id6">
-<h3>항목 추가<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="id6">
+<h3>항목 추가<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p>사전은 변경 가능하다.</p>
 <p>예를 들어, <code class="docutils literal notranslate"><span class="pre">d1</span></code>은 아래와 같이 두 개의 항목을 갖는 사전을 가리킨다.</p>
 <div class="cell docutils container">
@@ -965,9 +846,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
-<section id="id7">
-<h3>항목 확인<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="id7">
+<h3>항목 확인<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>특정 키가 사전에 사용되었는지 여부를 확인할 때 <code class="docutils literal notranslate"><span class="pre">in</span></code> 연산자를 활용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -989,7 +870,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  Input In [10]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  File &quot;/tmp/ipykernel_1656/2848468265.py&quot;, line 1
     `c` in d1
     ^
 SyntaxError: invalid syntax
@@ -1071,8 +952,8 @@ SyntaxError: invalid syntax
 </div>
 <p>결론적으로, 인덱싱 방식으로 키와 관련된 값을 확인하는 것 보다는 <code class="docutils literal notranslate"><span class="pre">get()</span></code> 메서드를 사용하면
 오류 발생 가능성을 줄일 수 있다.</p>
-<section id="defaultdict">
-<h4><code class="docutils literal notranslate"><span class="pre">defaultdict</span></code> 클래스<a class="headerlink" href="#defaultdict" title="Permalink to this headline">#</a></h4>
+<div class="section" id="defaultdict">
+<h4><code class="docutils literal notranslate"><span class="pre">defaultdict</span></code> 클래스<a class="headerlink" href="#defaultdict" title="Permalink to this headline">¶</a></h4>
 <p>문자열 맨 처음에 위치한 알파벳을 기준으로 하여 문자열을 정리하고자 한다.
 주어진 단어는 다음과 같다.</p>
 <div class="cell docutils container">
@@ -1216,10 +1097,10 @@ SyntaxError: invalid syntax
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="id8">
-<h3>항목 삭제<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>항목 삭제<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">del</span></code> 예약어와 <code class="docutils literal notranslate"><span class="pre">pop()</span></code> 메서드를 이용하여 특정 키가 사용된 항목을 삭제할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1291,8 +1172,8 @@ SyntaxError: invalid syntax
 </div>
 </div>
 </div>
-<section id="keys">
-<h4><code class="docutils literal notranslate"><span class="pre">keys()</span></code> 메서드<a class="headerlink" href="#keys" title="Permalink to this headline">#</a></h4>
+<div class="section" id="keys">
+<h4><code class="docutils literal notranslate"><span class="pre">keys()</span></code> 메서드<a class="headerlink" href="#keys" title="Permalink to this headline">¶</a></h4>
 <p>키만 모아 놓은 리스트를 구할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1306,9 +1187,9 @@ SyntaxError: invalid syntax
 </div>
 </div>
 </div>
-</section>
-<section id="values">
-<h4><code class="docutils literal notranslate"><span class="pre">values()</span></code> 메서드<a class="headerlink" href="#values" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="values">
+<h4><code class="docutils literal notranslate"><span class="pre">values()</span></code> 메서드<a class="headerlink" href="#values" title="Permalink to this headline">¶</a></h4>
 <p>값만 모아 놓은 리스트를 구할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1322,10 +1203,10 @@ SyntaxError: invalid syntax
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="id9">
-<h3>사전 합치기<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>사전 합치기<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>하나의 사전에 포함된 항목 전체를 다른 사전에 추가할 수 있다.
 아래 코드는 <code class="docutils literal notranslate"><span class="pre">d1</span></code> 사전에 두 개의 항목을 추가한다.</p>
 <p><strong>주의사항:</strong> 동일한 키가 추가될 경우 기존에 사용된 값이 새로운 값으로 업데이트 된다.</p>
@@ -1343,9 +1224,9 @@ SyntaxError: invalid syntax
 </div>
 </div>
 </div>
-</section>
-<section id="id10">
-<h3>항목 업데이트<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="id10">
+<h3>항목 업데이트<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>기존에 포함된 키-값 에서 값을 변경하려면 다음과 같이 한다.
 리스트에서 항목을 수정하는 방식과 유사하며,
 인덱스 대신에 키를 이용한다.
@@ -1368,9 +1249,9 @@ SyntaxError: invalid syntax
 </div>
 </div>
 </div>
-</section>
-<section id="dict">
-<h3><code class="docutils literal notranslate"><span class="pre">dict()</span></code> 함수<a class="headerlink" href="#dict" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="dict">
+<h3><code class="docutils literal notranslate"><span class="pre">dict()</span></code> 함수<a class="headerlink" href="#dict" title="Permalink to this headline">¶</a></h3>
 <p>모든 항목이 길이가 2인 튜플 또는 리스트인 모음 자료형을 인자로 사용하여
 새로운 사전을 생성한다.</p>
 <div class="cell docutils container">
@@ -1411,8 +1292,8 @@ SyntaxError: invalid syntax
 </div>
 </div>
 </div>
-<section id="id11">
-<h4>키로 사용될 수 있는 자료형<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h4>
+<div class="section" id="id11">
+<h4>키로 사용될 수 있는 자료형<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
 <p>변경 불가능한 객체만 사전의 키로 사용될 수 있다.
 예를 들어, 문자열, 정수, 실수, 튜플 등이다.
 단, 튜플의 항목에 리스트 등 변경 가능한 값이 사용되지 않아야 한다.</p>
@@ -1497,11 +1378,11 @@ SyntaxError: invalid syntax
 </div>
 </div>
 </div>
-</section>
-</section>
-</section>
-<section id="id12">
-<h2>집합<a class="headerlink" href="#id12" title="Permalink to this headline">#</a></h2>
+</div>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>집합<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
 <p>집합 자료형은 수학에서 배운 집합과 동일한 개념이다.
 중괄호 기호를 사용하지만 사전 자료형과 혼동되지는 않을 것이다.
 집합의 항목들 사이에는 순서가 없으며, 중복도 허용하지 않는다.</p>
@@ -1531,8 +1412,8 @@ SyntaxError: invalid syntax
 </div>
 </div>
 </div>
-<section id="set">
-<h3><code class="docutils literal notranslate"><span class="pre">set()</span></code> 함수<a class="headerlink" href="#set" title="Permalink to this headline">#</a></h3>
+<div class="section" id="set">
+<h3><code class="docutils literal notranslate"><span class="pre">set()</span></code> 함수<a class="headerlink" href="#set" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">set()</span></code> 함수를 이용하여 리스트, 튜플 등을 집합으로 변환시킬 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1583,9 +1464,9 @@ SyntaxError: invalid syntax
 </div>
 </div>
 </div>
-</section>
-<section id="id13">
-<h3>항목 추가/삭제<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="id13">
+<h3>항목 추가/삭제<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <p>집합은 변경이 가능하다.
 항목 추가는 <code class="docutils literal notranslate"><span class="pre">add()</span></code> 메서드를 활용한다.</p>
 <div class="cell docutils container">
@@ -1643,11 +1524,11 @@ SyntaxError: invalid syntax
 </div>
 </div>
 </div>
-</section>
-<section id="id14">
-<h3>집합 연산<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h3>
-<section id="id15">
-<h4>합집합 연산<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="id14">
+<h3>집합 연산<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id15">
+<h4>합집합 연산<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">union()</span></code> 메서드는 두 집합의 합집합을 반환한다.</p>
 <p><strong>참고:</strong> 엄밀히 따지면 <code class="docutils literal notranslate"><span class="pre">a.union(b)</span></code>는 집합 <code class="docutils literal notranslate"><span class="pre">a</span></code>에 집합 <code class="docutils literal notranslate"><span class="pre">b</span></code>의 원소를 추가하는 방식으로
 새로운 집합을 생성한다.</p>
@@ -1684,9 +1565,9 @@ SyntaxError: invalid syntax
 </div>
 </div>
 </div>
-</section>
-<section id="id16">
-<h4>교집합 연산<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="id16">
+<h4>교집합 연산<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">intersection()</span></code> 메서드는 두 집합의 교집합을 반환한다.</p>
 <p><strong>참고:</strong> 엄밀히 따지면 <code class="docutils literal notranslate"><span class="pre">a.intersection(b)</span></code>는 집합 <code class="docutils literal notranslate"><span class="pre">a</span></code>의 원소 중에서 집합 <code class="docutils literal notranslate"><span class="pre">b</span></code>에 속한
 원소만을 모아 새로운 집합을 생성한다.</p>
@@ -1740,9 +1621,9 @@ SyntaxError: invalid syntax
 </div>
 </div>
 </div>
-</section>
-<section id="id17">
-<h4>부분집합 여부 판단<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="id17">
+<h4>부분집합 여부 판단<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
 <p><code class="docutils literal notranslate"><span class="pre">issubset()</span></code> 메서드를 이용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1770,10 +1651,10 @@ SyntaxError: invalid syntax
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="id18">
-<h3>원소의 자료형<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h3>
+</div>
+</div>
+<div class="section" id="id18">
+<h3>원소의 자료형<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <p>사전의 키의 경우처럼 집합의 원소는 모두 해시 가능이어야 한다.
 즉, 리스트는 집합의 원소가 될 수 없다.</p>
 <div class="cell docutils container">
@@ -1795,14 +1676,14 @@ SyntaxError: invalid syntax
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="id19">
-<h2>조건제시법<a class="headerlink" href="#id19" title="Permalink to this headline">#</a></h2>
+</div>
+</div>
+<div class="section" id="id19">
+<h2>조건제시법<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
 <p>리스트, 집합, 사전을 수학 시간에 배운 조건제시법(comprehension)을 이용하여 정의할 수 있다.
 이 기법은 특히 리스트와 함께 매우 유용하게 활용된다.</p>
-<section id="id20">
-<h3>리스트 조건제시법<a class="headerlink" href="#id20" title="Permalink to this headline">#</a></h3>
+<div class="section" id="id20">
+<h3>리스트 조건제시법<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
 <p>예를 들어, 0부터 9 까지의 자연수 중에서 짝수로 이루어진 집합을 수학에서
 조건제시법으로 아래와 같이 정의한다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="n">x</span> <span class="o">|</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">,</span> <span class="n">단</span> <span class="n">x는</span> <span class="n">짝수</span> <span class="p">}</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span> <span class="p">}</span>
@@ -1862,9 +1743,9 @@ SyntaxError: invalid syntax
 </div>
 </div>
 </div>
-</section>
-<section id="id21">
-<h3>집합 조건제시법<a class="headerlink" href="#id21" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="id21">
+<h3>집합 조건제시법<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <p>집합에 대한 조건제시법 사용도 유사하다.
 아래 코드는 앞서 사용된 문자열들의 길이를 원소로 갖는 집합을 생성한다.</p>
 <div class="cell docutils container">
@@ -1881,9 +1762,9 @@ SyntaxError: invalid syntax
 </div>
 </div>
 </div>
-</section>
-<section id="id22">
-<h3>사전 조건제시법<a class="headerlink" href="#id22" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="id22">
+<h3>사전 조건제시법<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <p>조건제시법을 이용하여 사전을 생성하는 과정도 유사하다.
 아래 코드는 앞서 사용된 문자열을 키로, 문자열의 길이를 값으로 하는 사전을 생성한다.</p>
 <div class="cell docutils container">
@@ -1915,11 +1796,11 @@ SyntaxError: invalid syntax
 </div>
 </div>
 </div>
-</section>
-<section id="id23">
-<h3>중첩 조건제시법<a class="headerlink" href="#id23" title="Permalink to this headline">#</a></h3>
-<section id="id24">
-<h4>예제<a class="headerlink" href="#id24" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="id23">
+<h3>중첩 조건제시법<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id24">
+<h4>예제<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
 <p>아래 리스트는 중첩 리스트이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1995,9 +1876,9 @@ SyntaxError: invalid syntax
 </div>
 </div>
 </div>
-</section>
-<section id="id25">
-<h4>예제<a class="headerlink" href="#id25" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="id25">
+<h4>예제<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h4>
 <p>중첩 리스트, 중첩 튜플, 또는 아래와 같이 튜플과 리스트가 중첩으로 사용된 경우
 모든 중첩을 제거하고 사용된 항목으로만 이루어진 리스트 또는 튜플을 생성할 때
 중첩 조건제시법이 매우 유용하다.</p>
@@ -2035,9 +1916,9 @@ SyntaxError: invalid syntax
 </div>
 </div>
 </div>
-</section>
-<section id="id26">
-<h4>예제<a class="headerlink" href="#id26" title="Permalink to this headline">#</a></h4>
+</div>
+<div class="section" id="id26">
+<h4>예제<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h4>
 <p>아래 코드는 항목으로 사용된 튜플을 모두 리스트로 변환하여 중첩 리스트를 생성한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2051,10 +1932,10 @@ SyntaxError: invalid syntax
 </div>
 </div>
 </div>
-</section>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -2078,34 +1959,28 @@ SyntaxError: invalid syntax
 
               </div>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'>
 </div>
-            </footer>
+            
         </div>
     </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By 코딩알지<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+    <footer class="footer">
+  <p>
     
-</div>
+      By 코딩알지<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
 
 
       </div>
     </div>
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
   </body>
 </html>
