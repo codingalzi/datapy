@@ -45,6 +45,8 @@
 # <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/anaconda_prompt.jpg" style="width:750px"></div>
 # 
 
+# 아래 그림은 Andconda Prompt (anaconda3) 터미널에서 `conda config --add channels conda-forge` 명령어를 입력한 것을 보여준다.
+
 # <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/anaconda_prompt-3.jpg" style="width:750px"></div>
 
 # :::{admonition} 쉘과 터미널
@@ -127,6 +129,10 @@
 
 # <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/anaconda_prompt-4.jpg" style="width:750px"></div>
 
+# 아래 그림은 주피터 노트북의 코드 셀에서 `IPython`이 작동하는 형식을 보여준다.
+
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/jupyter-1.png" style="width:750px"></div>
+
 # 반면에 파이썬 자체가 지원하는 `python` 콘솔은 다음 모양의 대화식 코딩을 지원한다.
 
 # <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/anaconda_prompt-5.jpg" style="width:750px"></div>
@@ -139,7 +145,7 @@
 # 
 # 아래 사진은 무작위로 생성된 1000x1000 크기의 넘파이 행렬의 각 항목을 두 배하는 코드의 실행시간을 측정하는 `%timeit` 매직 명령문의 활용을 보여준다.
 
-# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/anaconda_prompt-6.jpg" style="width:750px"></div>
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/jupyter-2.png" style="width:750px"></div>
 
 # 다양한 매직 명령어의 활용법은 앞으로 필요할 때 하나씩 소개한다.
 
