@@ -73,9 +73,9 @@
 #     * [케라스<font size='2'>Keras</font>](https://keras.io/)
 #     * [파이토치<font size='2'>PyTorch</font>](https://keras.io/)    
 
-# 여기서 가장 많이 다루는 라이브러리는 넘파이<font size='2'>NumPy</font>, 
+# 여기서는 넘파이<font size='2'>NumPy</font>, 
 # 판다스<font size='2'>Pandas</font>, 
-# 맷플롯립<font size='2'>matplotlib</font>이다.
+# 맷플롯립<font size='2'>matplotlib</font>을 주로 다룬다.
 
 # - 넘파이: 효율적이고 빠른 다차원 배열<font size='2'>array</font>을 다룰 수 있는 객체와 API를 지원한다.
 # - 판다스: 테이블 데이터를 매우 효율적으로 다룰 수 있는 객체와 API를 지원한다.

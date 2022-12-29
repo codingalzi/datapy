@@ -17,7 +17,7 @@
 # 콘다 환경<font size='2'>conda environment</font>으로 가상 환경<font size='2'>virtual environment</font>을 설정하여 
 # 파이썬 코드 실행에 필요한 모든 패키지를 설치하고 관리한다.
 
-# :::{admonition} 콘다 환경
+# :::{admonition} 가상 환경과 콘다
 # :class: info
 # 
 # 가상 환경 개념과 아나콘다를 활용한 파이썬 가상환경을 설정하는 방법에 대한 간략한 소개는
@@ -29,15 +29,23 @@
 # 임의의 터미널<font size='2'>terminal</font>에서 
 # 아래 쉘<font size='2'>shell</font> 명령을 차례대로 실행하면 
 # `pydata-book` 콘다 환경을 설정한다.
+# 
+# **주의:** 달러 기호($) 이후의 명령문만 입력한다.
 
 # ```bash
 # (base) $ conda config --add channels conda-forge
 # (base) $ conda config --set channel_priority strict
 # (base) $ conda create -y -n pydata-book python=3.10
 # (base) $ conda activate pydata-book
-# (pydata-book) $ conda install -y pandas jupyter matplotlib
-# (pydata-book) $ conda install lxml beautifulsoup4 html5lib openpyxl requests sqlalchemy seaborn scipy statsmodels patsy scikit-learn pyarrow pytables numba
+# (pydata-book) $ conda install -y pandas jupyter matplotlib lxml beautifulsoup4 html5lib openpyxl requests sqlalchemy seaborn scipy statsmodels patsy scikit-learn pyarrow pytables numba
 # ```
+
+# 윈도우 사용자의 경우 아나콘다 패키지와 함께 설치된 `Anaconda Prompt (anaconda3)` 터미널을 이용할 수 있다.
+
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/anaconda_prompt.jpg" style="width:750px"></div>
+# 
+
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/anaconda_prompt-3.jpg" style="width:750px"></div>
 
 # :::{admonition} 쉘과 터미널
 # :class: info
@@ -48,21 +56,16 @@
 # 즉, 사용자와 컴퓨터 커널<font size='2'>kernel</font>을 연결하는 다리 역할을 수행한다.
 # 쉘이 실행하는 명령문을 쉘 스크립트<font size='2'>shell script</font>라 부른다.
 # 다양한 종류의 쉘이 존재하지만, 
-# 리눅스의 기본 쉘인 bash(배시 쉘)와 맥 OSX의 zsh(Z쉘)이 가장 많이 사용된다.
+# 리눅스의 기본 쉘인 bash(배시)와 맥 OSX의 zsh(Z 쉘)이 가장 많이 사용된다.
 # 
 # 반면에 터미널<font size='2'>terminal</font>은 쉘 스크립트를 작성하고 실행시킬 수 있는 
 # 사용자 인터페이스<font size='2'>user interface</font>(UI)이며
 # 콘솔<font size='2'>console</font>이라고도 불린다.
 # :::
 
-# 윈도우 사용자의 경우 아나콘다 패키지와 함께 설치된 `Anaconda Prompt (anaconda3)` 터미널을 이용할 수 있다.
-
-# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/anaconda_prompt.jpg" style="width:750px"></div>
-# 
-
 # ### 주피터 노트북 실행
 
-# `Anaconda Prompt (anaconda3)` 등 임의의 터미널에서 아래 명령을 차례대로 실행하면 주피터 노트북을 열거나 새로 작성할 수 있다.
+# `Anaconda Prompt (anaconda3)` 등 임의의 터미널에서 아래 명령을 차례대로 실행하면 주피터 노트북<font size="2">Jupyter notebook</font>을 열거나 새로 작성할 수 있다.
 
 # ```bash
 # (base) $ conda activate pydata-book
@@ -116,4 +119,33 @@
 
 # ## IPython 기초
 
-# 참고: https://compmath.korea.ac.kr/appmath/index.html
+# ### 대화식 프로그래밍
+
+# 주피터 노트북의 코드 셀<font size="2">code cell</font>은 대화식 프로그래밍<font size="2">interactive programming</font>을 지원하는 
+# [IPython](https://ipython.org) 활용한다.
+# Anaconda Prompt (anaconda3) 터미널에서 `IPython` 콘솔을 사용하는 방식은 다음과 같다.
+
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/anaconda_prompt-4.jpg" style="width:750px"></div>
+
+# 반면에 파이썬 자체가 지원하는 `python` 콘솔은 다음 모양의 대화식 코딩을 지원한다.
+
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/anaconda_prompt-5.jpg" style="width:750px"></div>
+
+# ### 매직 명령어
+
+# `IPython` 콘솔은 파이썬 프로그래밍 이외에 보다 다양한 기능을 지원한다.
+# 예를 들어 매직 명령어<font size='2'>magic commands</font>라는 명령어를
+# 이용하여 파이썬 프로그래밍을 도와주는 특별한 기능을 수행할 수 있다.
+# 
+# 아래 사진은 무작위로 생성된 1000x1000 크기의 넘파이 행렬의 각 항목을 두 배하는 코드의 실행시간을 측정하는 `%timeit` 매직 명령문의 활용을 보여준다.
+
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/anaconda_prompt-6.jpg" style="width:750px"></div>
+
+# 다양한 매직 명령어의 활용법은 앞으로 필요할 때 하나씩 소개한다.
+
+# ### matplotlib 통합
+
+# IPython은 주피터 노트북과 함께 사용될 때 장점이 극대화된다. 
+# 특히 `matplotlib` 라이브러리를 이용한 데이터 시각화가 바로 지원된다.
+
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/jupyter-matplotlib-1.png" style="width:750px"></div>
