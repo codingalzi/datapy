@@ -38,12 +38,9 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -524,10 +521,19 @@ greater: [3, 5, 4]
 </div>
 </div>
 </div>
-<div class="admonition- admonition">
-<p class="admonition-title">탭 키 활용</p>
-<p>들여쓰기는 <kbd>Tab</kbd> 키를 이용한다.
-보통 스페이스 네 개에 해당하지만, 편집기에 따라 다를 수 있다.</p>
+<div class="admonition-kbd-tab-kbd admonition">
+<p class="admonition-title"><kbd>Tab</kbd> 키 활용</p>
+<p>코딩할 때 <kbd>Tab</kbd> 키는 두 가지 기능으로 유용하게 사용된다.</p>
+<p>첫째, <strong>들여쓰기</strong>. 커서가 줄 맨 왼쪽에 위치했을 때 <kbd>Tab</kbd> 키를 누르면
+보통 스페이스 네 개에 해당하는 만큼 들여쓰기가 이뤄진다.
+대부분의 편집기는 <kbd>Enter</kbd> 키를 치면 들여쓰기를 적절하게 대신 실행하지만
+사용자가 직접 <kbd>Tab</kbd> 키를 이용하여 들여쓰기 정도를 조절해야 할 필요가 있다.
+들여쓰기를 반대로 실행하려면 <kbd>Shift</kbd> + <kbd>Tab</kbd> 조합을 이용한다.</p>
+<p>둘째, <strong>탭 완성</strong>. 함수, 변수, 객체 등을 작성하다가 <kbd>Tab</kbd> 키를 누르면
+이름을 자동으로 완성해준다.
+대부분의 편집키는 또한 탭키를 누르면 적절한 함수, 변수, 객체를 추천하기도 한다.
+<kbd>Tab</kbd> 키는 보다 빠른 코딩을 지원하는 것 뿐만 아니라,
+코드 작성 오타 또는 오류를 줄여 준다.</p>
 </div>
 <p><strong>세미콜론</strong></p>
 <p>모든 명령문은 한 줄에 완성하는 것이 기본이며,
@@ -587,12 +593,12 @@ c: 7
 예를 들어 아래 코드에서 주석은 코드 일부를 실행 해제하는 기능으로 사용되었다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;radio&quot;</span><span class="p">,</span> <span class="s2">&quot;tv&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;phone&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;라디오&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;tv&quot;</span><span class="p">,</span> <span class="s2">&quot;전화&quot;</span><span class="p">]</span>
 <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
-    <span class="c1"># if len(item) == 0:</span>
-    <span class="c1">#   continue</span>
+    <span class="c1"># if len(item) == 0:  # 코드 실행 해제</span>
+    <span class="c1">#   continue          # 코드 실행 해제</span>
     <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
@@ -600,7 +606,7 @@ c: 7
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;radio&#39;, &#39;tv&#39;, &#39;&#39;, &#39;phone&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;라디오&#39;, &#39;&#39;, &#39;tv&#39;, &#39;전화&#39;]
 </pre></div>
 </div>
 </div>
@@ -610,7 +616,7 @@ c: 7
 무시되기 때문이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;radio&quot;</span><span class="p">,</span> <span class="s2">&quot;tv&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;phone&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;라디오&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;tv&quot;</span><span class="p">,</span> <span class="s2">&quot;전화&quot;</span><span class="p">]</span>
 <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">items</span><span class="p">:</span>
@@ -623,7 +629,7 @@ c: 7
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;radio&#39;, &#39;tv&#39;, &#39;phone&#39;]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;라디오&#39;, &#39;tv&#39;, &#39;전화&#39;]
 </pre></div>
 </div>
 </div>
@@ -647,18 +653,19 @@ c: 7
 예를 들어, 아래와 같이 세 개의 인자를 받는 함수를 정의한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="n">z</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>함수 <code class="docutils literal notranslate"><span class="pre">f()</span></code>를 호출하려면 인자 세 개를 지정해야 한다.
-아래 코드에서는 정수 세 개를 이용하여 함수를 호출하고
-함수가 실행하면서 반환한 값을 변수 <code class="docutils literal notranslate"><span class="pre">result</span></code>에 할당하였다.</p>
+<p>함수 <code class="docutils literal notranslate"><span class="pre">fun()</span></code>를 호출하려면 세 개의 매개 변수 <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code>에 해당하는
+세 개의 인자를 지정해야 한다.
+아래 코드에서는 2, 3, 4를 각각 <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code>의 인자로 지정하여 <code class="docutils literal notranslate"><span class="pre">fun()</span></code> 함수를 호출하고
+실행 후 반환된 값을 변수 <code class="docutils literal notranslate"><span class="pre">result</span></code>에 할당하였다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="c1"># x=2, y=3, z=4</span>
 </pre></div>
 </div>
 </div>
@@ -679,7 +686,7 @@ c: 7
 <p>아래와 같이 함수의 반환값을 바로 확인할 수도 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fun</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -688,6 +695,18 @@ c: 7
 </pre></div>
 </div>
 </div>
+</div>
+<div class="info admonition">
+<p class="admonition-title">함수의 매개 변수와 인자</p>
+<p>매개 변수, 영어로 parameter(파라미터)는 함수를 선언할 때 사용되는 변수를 가리킨다.
+<code class="docutils literal notranslate"><span class="pre">fun()</span></code> 함수는 <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code> 세 개의 매개 변수를 사용한다.
+매개 변수는 함수를 호출할 때 지정되는 인자를 함수의 본문에 전달하는 역할을 수행한다.
+참고로 인자는 영어로 argument(아규먼트)라 한다.</p>
+<p>매개 변수는 함수를 정의할 때 사용되는 특별한 변수이며,
+함수 내부에서만 의미를 갖기에 대표적인 <strong>지역 변수</strong><font size='2'>local variable</font>이다.</p>
+<p>프로그래밍에서 파라미터<font size='2'>parameter</font>는 다양한 의미로 사용된다.
+데이터 분석, 특히 머신러닝에서는 모델의 파라미터 개념이
+매우 중요하다.</p>
 </div>
 <p><strong>메서드 호출</strong></p>
 <p>특정 객체의 메서드를 호출하는 방식도 기본적으로 동일하다.
@@ -711,10 +730,11 @@ c: 7
 <p><strong>함수 인자 종류</strong></p>
 <p>파이썬 함수의 인자는 두 종류로 나뉜다.</p>
 <ul class="simple">
-<li><p><strong>위치 인자</strong><font size='2'>positional argments</font>: 인자를 지정된 위치에 사용해야 함. 키워드 인자보다 먼저 지정되어야 함.</p></li>
+<li><p><strong>위치 인자</strong><font size='2'>positional argments</font>: 인자를 지정된 위치에 사용해야 함.</p></li>
 <li><p><strong>키워드 인자</strong><font size='2'>keyword arguments</font>: 키워드와 함께 지정되는 인자. 해당 인자의 기본값을 미리 지정한 후에
 상황에 따라 다른 인자를 사용하는 것을 허용하고자 할 때 사용하는 인자.
-위치 인자가 키워드 인자 다음에 위치할 수 없음.</p></li>
+위치 인자를 받는 매개 변수는 키워드 인자를 받는 키워드 매개 변수보다
+먼저 선언되어야 한다.</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">print()</span></code> 함수를 이용하여 위치 인자와 키워드 인자를 살펴보자.
 <code class="docutils literal notranslate"><span class="pre">print()</span></code> 함수의 인자의 종류를 확인하기 위해 <code class="docutils literal notranslate"><span class="pre">help()</span></code> 함수를 이용한다.
@@ -757,7 +777,7 @@ print(...)
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">sep</span></code> 키워드는 2 개 이상의 값을 출력할 때 값들을 구분하는 방식을 지정한다.
+<p><code class="docutils literal notranslate"><span class="pre">sep</span></code> 키워드 매개 변수는 2 개 이상의 값을 출력할 때 값들을 구분하는 방식을 지정한다.
 기본값으로 지정한 <code class="docutils literal notranslate"><span class="pre">sep='</span> <span class="pre">'</span></code>의 의미는 값들을 한 개의 스페이스로 구분한다는 의미이다.
 예를 들어 두 개의 하이픈으로 값들을 분리하려면 <code class="docutils literal notranslate"><span class="pre">sep='--'</span></code>로 지정하면 된다.</p>
 <div class="cell docutils container">
@@ -772,7 +792,7 @@ print(...)
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">end</span></code> 키워드는 출력을 마친 후에 추가로 할 일을 지정한다.
+<p><code class="docutils literal notranslate"><span class="pre">end</span></code> 키워드 매개 변수는 출력을 마친 후에 추가로 할 일을 지정한다.
 기본값 <code class="docutils literal notranslate"><span class="pre">end='\n'</span></code>은 줄바꿈을 의미한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -802,6 +822,8 @@ print(...)
 </div>
 </div>
 </div>
+<div class="warning admonition">
+<p class="admonition-title">문법 오류</p>
 <p>반드시 위치 인자를 모두 지정한 다음에 키워드 인자를 지정해야 한다.
 그렇지 않으면 문법 오류인 <code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>가 발생한다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">16</span><span class="p">]:</span> <span class="nb">print</span><span class="p">(</span><span class="n">end</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
@@ -810,6 +832,7 @@ print(...)
                      <span class="o">^</span>
 <span class="ne">SyntaxError</span><span class="p">:</span> <span class="n">positional</span> <span class="n">argument</span> <span class="n">follows</span> <span class="n">keyword</span> <span class="n">argument</span>
 </pre></div>
+</div>
 </div>
 <p>반면에 키워드 인자들 사이의 순서는 중요하지 않다.</p>
 <div class="cell docutils container">
@@ -825,20 +848,16 @@ print(...)
 </div>
 </div>
 </div>
-<p><strong>키워드 인자를 갖는 함수 정의</strong></p>
+<p><strong>키워드 인자를 사용하는 함수의 정의</strong></p>
 <p>키워드 인자는 파이썬 프로그래밍언어의 주요 특징 중에 하나이다.
-예를 들어, 자바<font size='2'>Java</font>, C, C++ 등은 키워드 인자 기능을 지원하지 않는다.
+반면에 자바<font size='2'>Java</font>, C, C++ 등은 키워드 인자 기능을 지원하지 않는다.
 파이썬 이외에 자바스크립트<font size='2'>JavaScript</font>, C# 등은 키워드 인자를 지원한다.</p>
-<p>파이썬에서 키워드 인자는 매우 중요하다.
-나중에 다룰 넘파이, 판다스 라이브러리에 포함된 대다수의 함수가 키워드 인자를 활용한다.
+<p>앞으로 살펴보게 될 넘파이, 판다스 라이브러리에 포함된 대다수의 함수가 키워드 인자를 활용한다.
 여기서는 키워드 인자를 사용하는 함수를 정의하는 방식을 간단한 예제를 통해 살펴본다.</p>
 <p>온라인 서점에서는 책을 정가의 10%를 할인해서 판매하는데
 특별한 날엔 정가의 20%를 할인해주는 행사를 진행한다고 가정하자.
-이때, 일반적으로 10%의 할인을 적용하다가 행사가 진행되는 20%를 할인하는 함수를 다음과 같이 정의할 수 있다.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">price</span></code>: 정가</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">discount=0.1</span></code>: 할인율. 10%가 기본.</p></li>
-</ul>
+이때, 일반적으로 10%의 할인을 적용하다가 행사가 진행되는 20%를 할인하는 함수를 다음과 같이
+정의할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">book_price</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
@@ -847,9 +866,14 @@ print(...)
 </div>
 </div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">book_price()</span></code> 함수의 정의에 사용되는 두 매개 변수<font size='2'>parameter</font>는
+<code class="docutils literal notranslate"><span class="pre">price</span></code>와 <code class="docutils literal notranslate"><span class="pre">discount</span></code>이다.
+<code class="docutils literal notranslate"><span class="pre">price</span></code>는 책의 정가를 위치 인자로 받는 매개 변수이다.
+반면에 <code class="docutils literal notranslate"><span class="pre">discount</span></code>는 책값 할인율을 인자로 받는 매개 변수이며
+10% 할인이 기본 키워드 인자로 지정되었다.</p>
 <p>이제 정가 23,000원인 책을 구입할 때 실제로 지급해야 하는 값은 10% 할인된 20,700원이다.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">book_price(23000)</span></code>: 위치 인자를 받는 <code class="docutils literal notranslate"><span class="pre">price</span></code> 매개변수에 대한 인자 23000 만 지정한다.
+<li><p><code class="docutils literal notranslate"><span class="pre">book_price(23000)</span></code>: 위치 인자를 받는 <code class="docutils literal notranslate"><span class="pre">price</span></code> 매개 변수에 대한 인자 23000 만 지정한다.
 반면에 할인율은 10% 기본값을 사용하기에 별도로 지정하지 않는다.</p></li>
 </ul>
 <div class="cell docutils container">
@@ -882,9 +906,9 @@ print(...)
 </div>
 </div>
 </div>
-<p><strong>참조 변수</strong></p>
+<p><strong>참조</strong></p>
 <p>변수가 가리키는 값이 리스트와 같이 좀 복잡한 객체일 때는 파이썬 실행기 내부에서
-변수가 해당 값을 **참조(reference)**한다.
+변수가 해당 값을 <strong>참조</strong>(reference)한다.
 참조는 변수가 단순히 하나의 값을 가리키는 것 이외에 부가적인 기능도 수행한다.</p>
 <p>예를 들어 변수 <code class="docutils literal notranslate"><span class="pre">a</span></code>가 리스트 <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>을 참조하도록 하자.</p>
 <div class="cell docutils container">
@@ -949,7 +973,7 @@ b = 4
 <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/variables-a-b-5.png" style="width:360px;"></div><div class="section" id="id3">
 <h3><span class="section-number">2.1.1. </span>전역 변수와 지역 변수<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>함수 밖에서 선언된 <strong>전역 변수</strong>(global variables)는 함수 내에서 사용할 수 있지만,
-함수의 매개변수 또는 함수 본문 내에서 선언된 <strong>지역 변수</strong>(local variables)는 함수 밖에서 사용할 수 없다.</p>
+함수의 매개 변수 또는 함수 본문 내에서 선언된 <strong>지역 변수</strong>(local variables)는 함수 밖에서 사용할 수 없다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">append_element</span><span class="p">(</span><span class="n">some_list</span><span class="p">,</span> <span class="n">element</span><span class="p">):</span>
@@ -991,7 +1015,7 @@ b = 4
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_413</span><span class="o">/</span><span class="mf">2081847797.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_797</span><span class="o">/</span><span class="mf">2081847797.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
 
 <span class="ne">NameError</span>: name &#39;element&#39; is not defined
