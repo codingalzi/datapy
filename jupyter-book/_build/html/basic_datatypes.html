@@ -904,7 +904,7 @@ print(...)
 </div>
 <p>아래 그림에서에서처럼 <code class="docutils literal notranslate"><span class="pre">a</span></code>와 <code class="docutils literal notranslate"><span class="pre">b</span></code>가 화살표로 동일한 리스트를 가리키는 방식으로
 참조를 표현할 수 있다.</p>
-<img src="https://github.com/codingalzi/pydata/blob/master/notebooks/images/variables-a-b-1.png?raw=1" style="width:300px;"><p><code class="docutils literal notranslate"><span class="pre">a</span></code>와 <code class="docutils literal notranslate"><span class="pre">b</span></code>가 동일한 값을 참조하기에 <code class="docutils literal notranslate"><span class="pre">a</span></code>가 참조하는 값을 변화시키면 <code class="docutils literal notranslate"><span class="pre">b</span></code>도 영향을 받는다.
+<div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/variables-a-b-1.png" style="width:340px;"></div><p><code class="docutils literal notranslate"><span class="pre">a</span></code>와 <code class="docutils literal notranslate"><span class="pre">b</span></code>가 동일한 값을 참조하기에 <code class="docutils literal notranslate"><span class="pre">a</span></code>가 참조하는 값을 변화시키면 <code class="docutils literal notranslate"><span class="pre">b</span></code>도 영향을 받는다.
 아래 코드는 <code class="docutils literal notranslate"><span class="pre">a</span></code>가 가리키는 리스트에 항목을 추가하면 <code class="docutils literal notranslate"><span class="pre">b</span></code>가 동일한 리스트를 가리키기에
 <code class="docutils literal notranslate"><span class="pre">b</span></code>가 가리키는 값도 함께 변하는 것을 보여준다.</p>
 <div class="cell docutils container">
@@ -921,7 +921,7 @@ print(...)
 </div>
 </div>
 <p>그림으로 표현하면 다음과 같다.</p>
-<img src="https://github.com/codingalzi/pydata/blob/master/notebooks/images/variables-a-b-2.png?raw=1" style="width:330px;"><p>반면에 정수와 같이 보다 간단한 객체를 변수에 할당하는 경우는 다르게 작동한다.</p>
+<div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/variables-a-b-2.png" style="width:340px;"></div><p>반면에 정수와 같이 보다 간단한 객체를 변수에 할당하는 경우는 다르게 작동한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">4</span>
@@ -930,7 +930,7 @@ print(...)
 </div>
 </div>
 </div>
-<p>변수 <code class="docutils literal notranslate"><span class="pre">a</span></code>가 가리키는 값을 변경하더라도 변수 <code class="docutils literal notranslate"><span class="pre">b</span></code>가 가리키는 값은 영향을 받지 않는다.</p>
+<div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/variables-a-b-4.png" style="width:360px;"></div><p>변수 <code class="docutils literal notranslate"><span class="pre">a</span></code>가 가리키는 값을 변경하더라도 변수 <code class="docutils literal notranslate"><span class="pre">b</span></code>가 가리키는 값은 영향을 받지 않는다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>
@@ -946,7 +946,7 @@ b = 4
 </div>
 </div>
 </div>
-<div class="section" id="id3">
+<div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/variables-a-b-5.png" style="width:360px;"></div><div class="section" id="id3">
 <h3><span class="section-number">2.1.1. </span>전역 변수와 지역 변수<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>함수 밖에서 선언된 <strong>전역 변수</strong>(global variables)는 함수 내에서 사용할 수 있지만,
 함수의 매개변수 또는 함수 본문 내에서 선언된 <strong>지역 변수</strong>(local variables)는 함수 밖에서 사용할 수 없다.</p>
@@ -991,7 +991,7 @@ b = 4
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_284</span><span class="o">/</span><span class="mf">2081847797.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_413</span><span class="o">/</span><span class="mf">2081847797.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
 
 <span class="ne">NameError</span>: name &#39;element&#39; is not defined

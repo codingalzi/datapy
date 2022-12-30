@@ -343,7 +343,7 @@ b = a
 # 아래 그림에서에서처럼 `a`와 `b`가 화살표로 동일한 리스트를 가리키는 방식으로
 # 참조를 표현할 수 있다.
 
-# <img src="https://github.com/codingalzi/pydata/blob/master/notebooks/images/variables-a-b-1.png?raw=1" style="width:300px;">
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/variables-a-b-1.png" style="width:340px;"></div>
 
 # `a`와 `b`가 동일한 값을 참조하기에 `a`가 참조하는 값을 변화시키면 `b`도 영향을 받는다.
 # 아래 코드는 `a`가 가리키는 리스트에 항목을 추가하면 `b`가 동일한 리스트를 가리키기에
@@ -358,7 +358,7 @@ b
 
 # 그림으로 표현하면 다음과 같다.
 
-# <img src="https://github.com/codingalzi/pydata/blob/master/notebooks/images/variables-a-b-2.png?raw=1" style="width:330px;">
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/variables-a-b-2.png" style="width:340px;"></div>
 
 # 반면에 정수와 같이 보다 간단한 객체를 변수에 할당하는 경우는 다르게 작동한다.
 
@@ -369,6 +369,8 @@ a = 4
 b = a
 
 
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/variables-a-b-4.png" style="width:360px;"></div>
+
 # 변수 `a`가 가리키는 값을 변경하더라도 변수 `b`가 가리키는 값은 영향을 받지 않는다.
 
 # In[26]:
@@ -378,6 +380,8 @@ a = a + 1
 
 print(f"a = {a}", f"b = {b}", sep="\n")
 
+
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/variables-a-b-5.png" style="width:360px;"></div>
 
 # ### 전역 변수와 지역 변수
 
