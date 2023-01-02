@@ -1,0 +1,1568 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5.1. matplotlib.pyplot 1부 &#8212; 파이썬 데이터 분석</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="5.2. matplotlib.pyplot 2부" href="visualization_2.html" />
+    <link rel="prev" title="5. 데이터 시각화" href="visualization_intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">파이썬 데이터 분석</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="python_intro.html">
+   1. 파이썬 기초
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="python_basic_1.html">
+     1.1. 프로그래밍 개발 환경
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="python_basic_2.html">
+     1.2. 기초 문법
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="python_basic_3.html">
+     1.3. 기초 자료형
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="python_basic_4.html">
+     1.4. 제어문
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="python_basic_5.html">
+     1.5. 모음 자료형
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="python_basic_6.html">
+     1.6. 함수와 파일
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="from_scratch.html">
+   2. 밑바닥부터
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="from_scratch_1.html">
+     2.1. 자료형 힌트
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="from_scratch_2.html">
+     2.2. 선형대수 기초
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="from_scratch_3.html">
+     2.3. 통계 기초
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="numpy_intro.html">
+   3. 넘파이
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="numpy_1.html">
+     3.1. 넘파이 어레이
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="numpy_2.html">
+     3.2. 어레이 인덱싱
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="numpy_3.html">
+     3.3. 어레이 중심 프로그래밍
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="numpy_4.html">
+     3.4. 고급 넘파이
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="pandas_intro.html">
+   4. 판다스
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pandas_1.html">
+     4.1. 판다스 데이터프레임
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pandas_2.html">
+     4.2. 데이터프레임 핵심
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pandas_3.html">
+     4.3. 판다스 활용: 통계 기초
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="visualization_intro.html">
+   5. 데이터 시각화
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     5.1. matplotlib.pyplot 1부
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="visualization_2.html">
+     5.2. matplotlib.pyplot 2부
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="visualization_3.html">
+     5.3. seaborn
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/visualization_1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/codingalzi/datapy"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/codingalzi/datapy/issues/new?title=Issue%20on%20page%20%2Fvisualization_1.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/codingalzi/datapy/master?urlpath=tree/jupyter-book/visualization_1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot">
+   5.1.1.
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     plot()
+    </span>
+   </code>
+   함수
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   5.1.2. 마커
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   5.1.3. 선분
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   5.1.4. 라벨과 제목
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   5.1.5. 격자 무늬 배경
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   5.1.6. 축의 범위와 척도
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   5.1.7. 산점도
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   5.1.8. 연습문제
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>matplotlib.pyplot 1부</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot">
+   5.1.1.
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     plot()
+    </span>
+   </code>
+   함수
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   5.1.2. 마커
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   5.1.3. 선분
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   5.1.4. 라벨과 제목
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   5.1.5. 격자 무늬 배경
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   5.1.6. 축의 범위와 척도
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   5.1.7. 산점도
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   5.1.8. 연습문제
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="matplotlib-pyplot-1">
+<span id="sec-visualization-1"></span><h1><span class="section-number">5.1. </span>matplotlib.pyplot 1부<a class="headerlink" href="#matplotlib-pyplot-1" title="Permalink to this headline">¶</a></h1>
+<p><strong>기본 설정</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>맷플롯립<font size='2'>Matplotlib</font>은 간단한 그래프 도구를 제공하는 라이브러리다.
+맷플롯립의 대부분의 함수는 파이플롯<font size='2'>pyplot</font> 모듈에 포함되어 있으며
+관행적으로 <code class="docutils literal notranslate"><span class="pre">plt</span></code> 별칭으로 불러온다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="plot">
+<h2><span class="section-number">5.1.1. </span><code class="docutils literal notranslate"><span class="pre">plot()</span></code> 함수<a class="headerlink" href="#plot" title="Permalink to this headline">¶</a></h2>
+<p><strong>선분 그리기</strong></p>
+<p>2차원 평면의 두 점이 주어졌을 때 두 점을 잇는 선분을 그린다.
+두 점의 좌표는 x 축 기준으로 두 개의 값을,
+y 축 기준으로 두 개의 값을 지정하면
+순서대로 쌍을 지어 사용된다.</p>
+<p>예를 들어 (0, 0), (2, 100), (4, 60), (5, 200) 네 점을 잇는 선분을 그리려면
+다음처럼 <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">2,</span> <span class="pre">4,</span> <span class="pre">6]</span></code> 를 x 좌표들의 어레이로,
+<code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">100,</span> <span class="pre">60,</span> <span class="pre">200]</span></code> 을 y 자표들의 어레이로 선언하고
+<code class="docutils literal notranslate"><span class="pre">plot()</span></code> 함수의 두 인자로 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xpoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">200</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xpoints</span><span class="p">,</span> <span class="n">ypoints</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_8_0.png" src="_images/visualization_1_8_0.png" />
+</div>
+</div>
+<p>선분 색깔을 빨강으로 바꾸려면 셋째 인자로 <code class="docutils literal notranslate"><span class="pre">'r'</span></code> 을 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xpoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">200</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xpoints</span><span class="p">,</span> <span class="n">ypoints</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_10_0.png" src="_images/visualization_1_10_0.png" />
+</div>
+</div>
+<p><strong>점만 그리기</strong></p>
+<p>두 점을 잇는 선분을 그리지 않으려면 셋째 인자로 <code class="docutils literal notranslate"><span class="pre">'o'</span></code> 를 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xpoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">200</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xpoints</span><span class="p">,</span> <span class="n">ypoints</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_13_0.png" src="_images/visualization_1_13_0.png" />
+</div>
+</div>
+<p>빨간 덧셈 기호로 표기하고 싶으면 <code class="docutils literal notranslate"><span class="pre">r+</span></code> 를 셋째 인자로 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xpoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">120</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">200</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xpoints</span><span class="p">,</span> <span class="n">ypoints</span><span class="p">,</span> <span class="s1">&#39;+r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_15_0.png" src="_images/visualization_1_15_0.png" />
+</div>
+</div>
+<p><strong>x 좌표 생략하기</strong></p>
+<p>x 좌표를 생략할 수 있다.
+그러면 y 좌표에 사용된 개수만큼의 인덱스가 자동으로 x 좌표로 사용된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_18_0.png" src="_images/visualization_1_18_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2><span class="section-number">5.1.2. </span>마커<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>각 점을 강조하기 위해 모양을 지정하고 싶을 때 <code class="docutils literal notranslate"><span class="pre">marker</span></code> 옵션 인자를 사용한다.
+예를 들어, 작은 원으로 각 점을 표시하고 싶으면 <code class="docutils literal notranslate"><span class="pre">market='o'</span></code> 로 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_21_0.png" src="_images/visualization_1_21_0.png" />
+</div>
+</div>
+<p>별표를 사용하려면 <code class="docutils literal notranslate"><span class="pre">marker='*'</span></code> 를 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_23_0.png" src="_images/visualization_1_23_0.png" />
+</div>
+</div>
+<p><strong>마커 종류</strong></p>
+<p><a class="reference external" href="https://matplotlib.org/stable/api/markers_api.html">다양한 종류의 마커<font size='2'>marker</font></a>가
+제공된다.
+그중 일부는 다음과 같다.</p>
+<div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/pyplot-marker.png" width="40%"></div>
+<p>출처: <a class="reference external" href="https://matplotlib.org/stable/api/markers_api.html">Matplotlib</a></p>
+<p><strong>선-마커 형식 문자열</strong></p>
+<p>점 모양, 선분 사용 여부 등을 한꺼번에 지정할 수 있다.
+예를 들어, 빨간 점을 잇는 선분을 사용하려면 셋째 인자로 선과 마커의 속성을 지정하는
+형식 문자열로 <code class="docutils literal notranslate"><span class="pre">o-r</span></code> 을 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">,</span> <span class="s1">&#39;o-r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_29_0.png" src="_images/visualization_1_29_0.png" />
+</div>
+</div>
+<p>초록 점선을 사용하려면 형식 문자열 <code class="docutils literal notranslate"><span class="pre">o:g</span></code> 를 셋째 인자로 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">,</span> <span class="s1">&#39;o:g&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_31_0.png" src="_images/visualization_1_31_0.png" />
+</div>
+</div>
+<p>형식 문자열은 세 개의 요소로 구성되며, 각 요소는 생략될 수 있다.</p>
+<ul class="simple">
+<li><p>점 모양</p></li>
+<li><p>선분 모양</p></li>
+<li><p>색</p></li>
+</ul>
+<p>점 모양은 앞서 소개한 마커<font size='2'>marker</font>에 의해 정해진다.
+지정되지 않으면 점이 표기되지 않는다.</p>
+<p><strong>선분 모양</strong></p>
+<p>선 모양은 다음 중 하나를 선택한다.
+지정되지 않으면 선이 그려지지 않는다.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>선 기호</p></th>
+<th class="text-align:left head"><p>선 모양</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>‘-‘</p></td>
+<td class="text-align:left"><p>실선</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>‘:’</p></td>
+<td class="text-align:left"><p>점선</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>‘–’</p></td>
+<td class="text-align:left"><p>파선</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>‘-.’</p></td>
+<td class="text-align:left"><p>1점 쇄선</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">,</span> <span class="s1">&#39;ok&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_36_0.png" src="_images/visualization_1_36_0.png" />
+</div>
+</div>
+<p>1점 쇄선은 아래 모양이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">,</span> <span class="s1">&#39;o-.g&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_38_0.png" src="_images/visualization_1_38_0.png" />
+</div>
+</div>
+<p><strong>색 선택</strong></p>
+<p>색은 다음 중 하나를 선택한다.
+생략되면 파랑이 기본값으로 사용된다.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>색 기호</p></th>
+<th class="text-align:left head"><p>색</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>‘r’</p></td>
+<td class="text-align:left"><p>빨강</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>‘g’</p></td>
+<td class="text-align:left"><p>초록</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>‘b’</p></td>
+<td class="text-align:left"><p>파랑</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>‘c’</p></td>
+<td class="text-align:left"><p>청록</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>‘m’</p></td>
+<td class="text-align:left"><p>심홍</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>‘y’</p></td>
+<td class="text-align:left"><p>노랑</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>‘k’</p></td>
+<td class="text-align:left"><p>검정</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>‘w’</p></td>
+<td class="text-align:left"><p>하양</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>마커 크기</strong></p>
+<p>마커의 크기는 <code class="docutils literal notranslate"><span class="pre">markersize</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">ms</span></code> 옵션 인자로 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">,</span> <span class="s1">&#39;o--g&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_43_0.png" src="_images/visualization_1_43_0.png" />
+</div>
+</div>
+<p><strong>마커 테두리 색</strong></p>
+<p>마커의 테두리 색을 <code class="docutils literal notranslate"><span class="pre">markeredgecolor</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">mec</span></code> 옵션 인자로 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">,</span> <span class="s1">&#39;o--g&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">mec</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_46_0.png" src="_images/visualization_1_46_0.png" />
+</div>
+</div>
+<p><strong>마커 내부 색</strong></p>
+<p>마커의 내부의 색을 <code class="docutils literal notranslate"><span class="pre">markerfacecolor</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">mfc</span></code> 옵션 인자로 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">,</span> <span class="s1">&#39;o--g&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_49_0.png" src="_images/visualization_1_49_0.png" />
+</div>
+</div>
+<p><strong>마커 색</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">mec</span></code> 와 <code class="docutils literal notranslate"><span class="pre">mfc</span></code> 인자를 동일한 값으로 지정하면 마커의 색을 선분의 색과 다르게 지정할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">,</span> <span class="s1">&#39;o--g&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">mec</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_52_0.png" src="_images/visualization_1_52_0.png" />
+</div>
+</div>
+<p><strong>헥스 코드 활용</strong></p>
+<p>색을 지정하기 위해 <a class="reference external" href="https://www.w3schools.com/colors/colors_hexadecimal.asp">헥스 코드</a>를
+사용할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">,</span> <span class="s1">&#39;o-.g&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;#ab2b54&#39;</span><span class="p">,</span> <span class="n">mec</span><span class="o">=</span><span class="s1">&#39;#ab2b54&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_55_0.png" src="_images/visualization_1_55_0.png" />
+</div>
+</div>
+<p><strong>색 이름 활용</strong></p>
+<p><a class="reference external" href="https://www.w3schools.com/colors/colors_names.asp">140개의 색 이름</a>을
+직접 사용할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">,</span> <span class="s1">&#39;o:g&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">mfc</span><span class="o">=</span><span class="s1">&#39;blueviolet&#39;</span><span class="p">,</span> <span class="n">mec</span><span class="o">=</span><span class="s1">&#39;blueviolet&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_58_0.png" src="_images/visualization_1_58_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">5.1.3. </span>선분<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">linestyle</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">ls</span></code> 옵션 인자로 선 모양을 지정할 수 있다.
+앞서 언급한 선 기호를 사용하거나 다음 문자열 중에 하나를 사용한다.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>선 기호</p></th>
+<th class="text-align:left head"><p>문자열</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>‘-‘</p></td>
+<td class="text-align:left"><p>‘solid’</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>‘:’</p></td>
+<td class="text-align:left"><p>‘dotted’</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>‘–’</p></td>
+<td class="text-align:left"><p>‘dashed’</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>‘-.’</p></td>
+<td class="text-align:left"><p>‘dashdot</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;dotted&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_62_0.png" src="_images/visualization_1_62_0.png" />
+</div>
+</div>
+<p><strong>선 색깔</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">color</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">c</span></code> 옵션 인자로 선의 색을 지정하며,
+인자로 사용되는 값은 앞서 마커의 색에서 설명한 방식과 동일하게 지정한다.</p>
+<p><strong>선 두께</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">linewidth</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">lw</span></code> 옵션 인자로 선의 두께를 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="s1">&#39;15&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_67_0.png" src="_images/visualization_1_67_0.png" />
+</div>
+</div>
+<p><strong>여러 개의 선 그리기</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.plot()</span></code> 함수를 여러 번 호출하면 여러 개의 선이 그려진다.
+단. <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> 함수를 항상 맨 나중에 호출해야 한다.
+선들을 구분하기 위해 자동으로 다른 색이 사용된다.
+물론 선의 색을 따로따로 지정할 수도 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_70_0.png" src="_images/visualization_1_70_0.png" />
+</div>
+</div>
+<p>두 개 이상의 선을 함께 그릴 수도 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y3</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_72_0.png" src="_images/visualization_1_72_0.png" />
+</div>
+</div>
+<p>각 선의 x 좌표가 다르다면 아래 방식으로 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_74_0.png" src="_images/visualization_1_74_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">5.1.4. </span>라벨과 제목<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p><strong>축 라벨</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.xlabel()</span></code>, <code class="docutils literal notranslate"><span class="pre">plt.ylabel()</span></code> 함수를 이용하여
+x 축, y 축에 표시 라벨을 붙일 수 있다.</p>
+<p>아래 그래프는 파이썬 점수와 머신러닝 점수 사이의 연관성을 보여준다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="mi">44</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">35</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">45</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Python score&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Machine Learning Score&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_78_0.png" src="_images/visualization_1_78_0.png" />
+</div>
+</div>
+<div class="info admonition">
+<p class="admonition-title">한글 라벨과 타이틀</p>
+<p>한글 라벨을 사용하려면 시스템에 폰트 설치 등 추가 설정을 해야 한다. 하지만 여기서는 사용하지 않는다.
+자세한 설정법은
+<a class="reference external" href="https://github.com/codingalzi/datapy/blob/master/matplotlib-korean.md">matplotlib에서 한글 지원하기</a>를
+참고할 수 있다.</p>
+</div>
+<p><strong>그래프 제목</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.tittle()</span></code> 함수를 이용하여 그래프에 제목을 추가할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="mi">44</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">35</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">45</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Python score&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Machine Learning Score&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Python and ML&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_82_0.png" src="_images/visualization_1_82_0.png" />
+</div>
+</div>
+<p><strong>글자 크기, 색, 글꼴</strong></p>
+<p>라벨과 타이틀의 글자 설정을 <code class="docutils literal notranslate"><span class="pre">fontdict</span></code> 옵션인자를 이용하여 지정할 수 있다.
+단, 사전 자료형을 이용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="mi">44</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">35</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">45</span><span class="p">])</span>
+
+<span class="n">font1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span><span class="s1">&#39;serif&#39;</span><span class="p">,</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">20</span><span class="p">}</span>
+<span class="n">font2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span><span class="s1">&#39;serif&#39;</span><span class="p">,</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;darkred&#39;</span><span class="p">,</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">14</span><span class="p">}</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Python score&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">font2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Machine Learning Score&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">font2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Python and ML&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">font1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_85_0.png" src="_images/visualization_1_85_0.png" />
+</div>
+</div>
+<p><strong>타이틀 위치</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">loc</span></code> 옵션인자를 이용하여 타이의 위치를 왼쪽(<code class="docutils literal notranslate"><span class="pre">left</span></code>), 오른쪽(<code class="docutils literal notranslate"><span class="pre">right</span></code>),
+또는 중앙(<code class="docutils literal notranslate"><span class="pre">center</span></code>)에 위치시킬 수 있다. 기본값은 중앙이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="mi">44</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">35</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">45</span><span class="p">])</span>
+
+<span class="n">font1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span><span class="s1">&#39;serif&#39;</span><span class="p">,</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">20</span><span class="p">}</span>
+<span class="n">font2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span><span class="s1">&#39;serif&#39;</span><span class="p">,</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;darkred&#39;</span><span class="p">,</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">14</span><span class="p">}</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Python score&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">font2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Machine Learning Score&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">font2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Python and ML&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">font1</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_88_0.png" src="_images/visualization_1_88_0.png" />
+</div>
+</div>
+<p><strong>범례</strong></p>
+<p>그래프에 사용된 데이터의 정보를 범례<font size='2'>legend</font> 로 전달할 수 있다.
+이를 위해 <code class="docutils literal notranslate"><span class="pre">plot()</span></code> 함수에 <code class="docutils literal notranslate"><span class="pre">label</span></code> 옵션 인자를 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Python&#39;</span><span class="p">)</span> <span class="c1"># 범례에 사용된 라벨 지정</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ML&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;DL&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span> <span class="c1"># 범례 설정</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Counts&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">font2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Scores&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">font2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Data Analysis&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">font1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_91_0.png" src="_images/visualization_1_91_0.png" />
+</div>
+</div>
+<p>범례는 적절한 곳에 자동으로 위치하지만,
+<code class="docutils literal notranslate"><span class="pre">loc</span></code> 옵션 인자 다음 중 하나를 선택하여 위치를 지정할 수도 있다.
+문자열 또는 코드를 사용한다.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>위치 문자열</p></th>
+<th class="text-align:left head"><p>위치 코드</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>‘best’</p></td>
+<td class="text-align:left"><p>0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>‘upper right’</p></td>
+<td class="text-align:left"><p>1</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>‘upper left’</p></td>
+<td class="text-align:left"><p>2</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>‘lower left’</p></td>
+<td class="text-align:left"><p>3</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>‘lower right’</p></td>
+<td class="text-align:left"><p>4</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>‘right’</p></td>
+<td class="text-align:left"><p>5</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>‘center left’</p></td>
+<td class="text-align:left"><p>6</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>‘center right’</p></td>
+<td class="text-align:left"><p>7</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>‘lower center’</p></td>
+<td class="text-align:left"><p>8</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>‘upper center’</p></td>
+<td class="text-align:left"><p>9</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>‘center’</p></td>
+<td class="text-align:left"><p>10</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Python&#39;</span><span class="p">)</span> <span class="c1"># 범례에 사용된 라벨 지정</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ML&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;DL&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span> <span class="c1"># 범례 설정</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Counts&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">font2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Scores&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">font2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Data Analysis&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">font1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_93_0.png" src="_images/visualization_1_93_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">5.1.5. </span>격자 무늬 배경<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>격자 무늬를 그래프의 배경에 넣기 위해 <code class="docutils literal notranslate"><span class="pre">plt.grid()</span></code> 함수를 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_96_0.png" src="_images/visualization_1_96_0.png" />
+</div>
+</div>
+<p>축을 지정하여 격자를 선택할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_98_0.png" src="_images/visualization_1_98_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_99_0.png" src="_images/visualization_1_99_0.png" />
+</div>
+</div>
+<p>격자 무늬의 선 속성을 그래프의 선 속성과 유사한 방식으로 변경할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_101_0.png" src="_images/visualization_1_101_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">5.1.6. </span>축의 범위와 척도<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>x 축, y 축의 범위와 척도는 <code class="docutils literal notranslate"><span class="pre">plt.plot()</span></code> 함수가 데이터에 맞춰 자동으로 지정한다.
+하자민 경우에 따라 범위와 척도를 수동으로 지정해야할 때가 있다.</p>
+<p><strong>범위 지정</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.axis()</span></code> 함수를 이용한다.
+함수의 인자로 길이가 4인 리스트를 인자로 받으며
+x 축의 최솟값, 최댓값,
+y 축의 최솟값, 최댓값
+순서로 리스트의 항목을 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_106_0.png" src="_images/visualization_1_106_0.png" />
+</div>
+</div>
+<p><strong>척도 지정</strong></p>
+<p>x 축과 y 축에 사용되는 척도를 통일시킬 수 있다.
+<code class="docutils literal notranslate"><span class="pre">plt.gca().set_aspect()</span></code> 함수의 인자로 <code class="docutils literal notranslate"><span class="pre">&quot;equal&quot;</span></code> 을 사용하면 된다.
+<code class="docutils literal notranslate"><span class="pre">plt.gca()</span></code> 함수는 현재 이미지에 사용된 축의 인스턴스를 생성한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_109_0.png" src="_images/visualization_1_109_0.png" />
+</div>
+</div>
+<p>x 축에 대한 y 축의 척도 비율을 함수의 인자로 지정할 수 있다.
+예를 들어 0.5 는 x 축 상에서의 1에 해당하는 길이가 y 축 상에서는 0.5에 해당한다는 의미다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ypoints</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;-.&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_111_0.png" src="_images/visualization_1_111_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><span class="section-number">5.1.7. </span>산점도<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>산점도는 데이터의 분포를 표현할 때 사용된다.
+예를 들어, 아래 그래프는 파이썬 점수가 높으면 머신러닝 점수도 높아짐을
+산점도를 통해 보여준다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="mi">44</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">35</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">45</span><span class="p">])</span>
+
+<span class="n">font1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span><span class="s1">&#39;serif&#39;</span><span class="p">,</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">20</span><span class="p">}</span>
+<span class="n">font2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span><span class="s1">&#39;serif&#39;</span><span class="p">,</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;darkred&#39;</span><span class="p">,</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">14</span><span class="p">}</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Python score&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">font2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Machine Learning Score&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">font2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Python and ML&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">font1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_114_0.png" src="_images/visualization_1_114_0.png" />
+</div>
+</div>
+<p><strong>여러 개의 산점도</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.plot()</span></code> 함수처럼 여러 데이터의 산점도를 동시에 그릴 수 있으며
+자동으로 다른 색깔로 표시된다.
+예를 들어, 다른 반의 파이썬 점수와 머신러닝 점수 데이터를 추가해보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A 반 성적</span>
+<span class="n">xa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="mi">44</span><span class="p">])</span>
+<span class="n">ya</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">35</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">45</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xa</span><span class="p">,</span> <span class="n">ya</span><span class="p">)</span>
+
+<span class="c1"># B 반 성적</span>
+<span class="n">xb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">23</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">94</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">86</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">47</span><span class="p">])</span>
+<span class="n">yb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">38</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">93</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">61</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">45</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xb</span><span class="p">,</span> <span class="n">yb</span><span class="p">)</span>
+
+
+<span class="n">font1</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span><span class="s1">&#39;serif&#39;</span><span class="p">,</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">20</span><span class="p">}</span>
+<span class="n">font2</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;family&#39;</span><span class="p">:</span><span class="s1">&#39;serif&#39;</span><span class="p">,</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;darkred&#39;</span><span class="p">,</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">14</span><span class="p">}</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Python score&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">font2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Machine Learning Score&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">font2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Python and ML&quot;</span><span class="p">,</span> <span class="n">fontdict</span><span class="o">=</span><span class="n">font1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_117_0.png" src="_images/visualization_1_117_0.png" />
+</div>
+</div>
+<p><strong>색 지정</strong></p>
+<p>산점도의 색은 <code class="docutils literal notranslate"><span class="pre">plt.scatter()</span></code> 함수의 <code class="docutils literal notranslate"><span class="pre">color</span></code> 옵션 인자로 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A 반 성적</span>
+<span class="n">xa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">33</span><span class="p">,</span> <span class="mi">69</span><span class="p">,</span> <span class="mi">44</span><span class="p">])</span>
+<span class="n">ya</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">35</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">45</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xa</span><span class="p">,</span> <span class="n">ya</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;hotpink&#39;</span><span class="p">)</span>
+
+<span class="c1"># B 반 성적</span>
+<span class="n">xb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">23</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">49</span><span class="p">,</span> <span class="mi">94</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">86</span><span class="p">,</span> <span class="mi">52</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">47</span><span class="p">])</span>
+<span class="n">yb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">38</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">93</span><span class="p">,</span> <span class="mi">87</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">61</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">27</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">45</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xb</span><span class="p">,</span> <span class="n">yb</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#8fc9ff&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_120_0.png" src="_images/visualization_1_120_0.png" />
+</div>
+</div>
+<p>각 점에 대해서도 색을 지정할 수 있다.
+단, 각 점에 대해 색을 리스트 어레이 형식으로 지정해야 한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">25</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">77</span><span class="p">,</span> <span class="mi">88</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">33</span><span class="p">])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">35</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">44</span><span class="p">])</span>
+
+<span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;red&quot;</span><span class="p">,</span><span class="s2">&quot;green&quot;</span><span class="p">,</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span><span class="s2">&quot;yellow&quot;</span><span class="p">,</span><span class="s2">&quot;pink&quot;</span><span class="p">,</span><span class="s2">&quot;black&quot;</span><span class="p">,</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span>
+                   <span class="s2">&quot;purple&quot;</span><span class="p">,</span><span class="s2">&quot;beige&quot;</span><span class="p">,</span><span class="s2">&quot;brown&quot;</span><span class="p">,</span><span class="s2">&quot;gray&quot;</span><span class="p">,</span><span class="s2">&quot;cyan&quot;</span><span class="p">,</span><span class="s2">&quot;magenta&quot;</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_122_0.png" src="_images/visualization_1_122_0.png" />
+</div>
+</div>
+<p><strong>색지도</strong></p>
+<p>색지도<font size='2'>colormap</font>는 일종의 색 리스트다.
+리스트에 포함된 색은 특정 온도를 가리키며,
+온도는 0도에서 100도 사이를 움직인다.
+즉, 0에서 100 사이의 값으로 이루어진 리스트가 색지도 역할을 수행한다.</p>
+<p>그런데 색지도에 포함된 수가 가리키는 색은 선택된 색지도에 따라 다르다.
+예를 들어 <code class="docutils literal notranslate"><span class="pre">'magma'</span></code> 색지도를 선택하면 각 수가 가리키는 색은 다음과 같다.</p>
+<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/colormap-magma.png" style="width:40px;"></div><p><code class="docutils literal notranslate"><span class="pre">'viridis'</span></code> 를 색지도로 선택하면 다음과 같은 색을 사용한다.</p>
+<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/colormap-viridis.png" style="width:40px;"></div><p>반면에 <code class="docutils literal notranslate"><span class="pre">'gray'</span></code> 는 흑백 색지도를 사용한다.</p>
+<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/colormap-gray.png" style="width:40px;"></div><div class="info admonition">
+<p class="admonition-title">색지도 목록</p>
+<p>제공되는 색지도의 목록은 <a class="reference external" href="https://matplotlib.org/3.5.0/tutorials/colors/colormaps.html">Choosing Colormaps in Matplotlib</a>에서 확인한다.</p>
+</div>
+<p>100개의 점과 100개의 색을 무작위로 선택한 다음
+<code class="docutils literal notranslate"><span class="pre">magma</span></code> 색지도를 사용한 결과는 다음과 같다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cmap='Pastel1'</span></code>: 색지도 선택</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.colorbar()</span></code>: 색막대 표시</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;magma&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_132_0.png" src="_images/visualization_1_132_0.png" />
+</div>
+</div>
+<p>가로 세로 비율을 맞추면 좀 다르게 보인다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;magma&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s2">&quot;equal&quot;</span><span class="p">)</span> <span class="c1"># 가로, 세로 비율 맞추기</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_134_0.png" src="_images/visualization_1_134_0.png" />
+</div>
+</div>
+<p><strong>점 크기</strong></p>
+<p>점들의 크기를 지정할 수 있으며 <code class="docutils literal notranslate"><span class="pre">s</span></code> 옵션 인자를 활용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,))</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">sizes</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_137_0.png" src="_images/visualization_1_137_0.png" />
+</div>
+</div>
+<p>색지도와 혼용하면 많이 달라 보인다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,))</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">sizes</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_139_0.png" src="_images/visualization_1_139_0.png" />
+</div>
+</div>
+<p><strong>투명도</strong></p>
+<p>색의 투명도는 알파<font size='2'>alpha</font> 값을 조정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,))</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,))</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">101</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">sizes</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/visualization_1_142_0.png" src="_images/visualization_1_142_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2><span class="section-number">5.1.8. </span>연습문제<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-data_visualization_pyplot1.ipynb">(실습) matplotlib.pyplot 1부</a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="visualization_intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>데이터 시각화</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="visualization_2.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5.2. </span>matplotlib.pyplot 2부</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By 코딩알지<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
