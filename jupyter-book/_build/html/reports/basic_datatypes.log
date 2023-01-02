@@ -17,14 +17,18 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-'5' + 5
+a = 'this is a string'
+
+a[10] = 'f'
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mTypeError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipykernel_1214/417106373.py[0m in [0;36m<module>[0;34m[0m
-[0;32m----> 1[0;31m [0;34m'5'[0m [0;34m+[0m [0;36m5[0m[0;34m[0m[0;34m[0m[0m
+[0;32m/tmp/ipykernel_2597/119525120.py[0m in [0;36m<module>[0;34m[0m
+[1;32m      1[0m [0ma[0m [0;34m=[0m [0;34m'this is a string'[0m[0;34m[0m[0;34m[0m[0m
+[1;32m      2[0m [0;34m[0m[0m
+[0;32m----> 3[0;31m [0ma[0m[0;34m[[0m[0;36m10[0m[0;34m][0m [0;34m=[0m [0;34m'f'[0m[0;34m[0m[0;34m[0m[0m
 [0m
-[0;31mTypeError[0m: can only concatenate str (not "int") to str
-TypeError: can only concatenate str (not "int") to str
+[0;31mTypeError[0m: 'str' object does not support item assignment
+TypeError: 'str' object does not support item assignment
 

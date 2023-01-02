@@ -4,40 +4,35 @@
 format: jb-book
 root: intro
 options:
-#   numbered: True
+  numbered: True
 #   only_build_toc_files: true
-parts:
-  - caption: 파이썬 기초
-    numbered: True
-    chapters:
-    - file: environment
-    - file: basic_datatypes
-    - file: control_flow
-    - file: collections
-    - file: functions_files
-  - caption: 밑바닥부터
-    numbered: True
-    chapters:
-    - file: type_annotations
-    - file: linear_algebra_basics
-    - file: statistics_basics
-  - caption: 넘파이
-    numbered: True
-    chapters:
-    - file: numpy_array
-    - file: array_indexing
-    - file: array_oriented
-    - file: advanced_numpy
-  - caption: 판다스
-    numbered: True
-    chapters:
-    - file: pandas_dataframe
-    - file: dataframe_core
-    - file: pandas_stats
-  - caption: 그래프와 시각화
-    numbered: True
-    chapters:
-    - file: data_visualization_pyplot1
-    - file: data_visualization_pyplot2
-    - file: data_visualization_seaborn
-
+chapters:
+- file: python_intro
+  sections:
+  - file: python_basic_1
+  - file: python_basic_2
+  - file: python_basic_3
+  - file: python_basic_4
+  - file: python_basic_5
+  - file: python_basic_6
+- file: from_scratch
+  sections:
+  - file: from_scratch_1
+  - file: from_scratch_2
+  - file: from_scratch_3
+- file: numpy_intro
+  sections:
+  - file: numpy_1
+  - file: numpy_2
+  - file: numpy_3
+  - file: numpy_4
+- file: pandas_intro
+  sections:
+  - file: pandas_1
+  - file: pandas_2
+  - file: pandas_3
+- file: visualization_intro
+  sections:
+  - file: visualization_1
+  - file: visualization_2
+  - file: visualization_3

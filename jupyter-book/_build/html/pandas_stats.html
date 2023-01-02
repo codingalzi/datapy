@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>15. 판다스 활용: 통계 기초 &#8212; 파이썬 데이터 분석</title>
+    <title>16. 판다스 활용: 통계 기초 &#8212; 파이썬 데이터 분석</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,8 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="16. matplotlib.pyplot 1부" href="data_visualization_pyplot1.html" />
-    <link rel="prev" title="14. 데이터프레임 핵심" href="dataframe_core.html" />
+    <link rel="next" title="17. matplotlib.pyplot 1부" href="data_visualization_pyplot1.html" />
+    <link rel="prev" title="15. 데이터프레임 핵심" href="dataframe_core.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -101,23 +101,28 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="python_basic.html">
+   2. 기초 문법
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="basic_datatypes.html">
-   2. 기본 자료형
+   3. 기초 자료형
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="control_flow.html">
-   3. 제어문
+   4. 제어문
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="collections.html">
-   4. 모음 자료형
+   5. 모음 자료형
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="functions_files.html">
-   5. 함수와 파일
+   6. 함수와 파일
   </a>
  </li>
 </ul>
@@ -129,17 +134,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="type_annotations.html">
-   6. 자료형 힌트
+   7. 자료형 힌트
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="linear_algebra_basics.html">
-   7. 선형대수 기초
+   8. 선형대수 기초
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="statistics_basics.html">
-   8. 통계 기초
+   9. 통계 기초
   </a>
  </li>
 </ul>
@@ -151,22 +156,22 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="numpy_array.html">
-   9. 넘파이 어레이
+   10. 넘파이 어레이
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="array_indexing.html">
-   10. 어레이 인덱싱
+   11. 어레이 인덱싱
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="array_oriented.html">
-   11. 어레이 중심 프로그래밍
+   12. 어레이 중심 프로그래밍
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="advanced_numpy.html">
-   12. 고급 넘파이
+   13. 고급 넘파이
   </a>
  </li>
 </ul>
@@ -178,17 +183,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_dataframe.html">
-   13. 판다스 데이터프레임
+   14. 판다스 데이터프레임
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="dataframe_core.html">
-   14. 데이터프레임 핵심
+   15. 데이터프레임 핵심
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   15. 판다스 활용: 통계 기초
+   16. 판다스 활용: 통계 기초
   </a>
  </li>
 </ul>
@@ -200,17 +205,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="data_visualization_pyplot1.html">
-   16. matplotlib.pyplot 1부
+   17. matplotlib.pyplot 1부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="data_visualization_pyplot2.html">
-   17. matplotlib.pyplot 2부
+   18. matplotlib.pyplot 2부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="data_visualization_seaborn.html">
-   18. seaborn
+   19. seaborn
   </a>
  </li>
 </ul>
@@ -319,27 +324,27 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   15.1. 합, 평균, 표준편차
+   16.1. 합, 평균, 표준편차
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   15.2. 상관관계와 공분산
+   16.2. 상관관계와 공분산
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   15.3. 중복과 빈도
+   16.3. 중복과 빈도
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   15.4. 미니 프로젝트: 붓꽃 데이터셋 표준화
+   16.4. 미니 프로젝트: 붓꽃 데이터셋 표준화
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   15.5. 연습문제
+   16.5. 연습문제
   </a>
  </li>
 </ul>
@@ -364,27 +369,27 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   15.1. 합, 평균, 표준편차
+   16.1. 합, 평균, 표준편차
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   15.2. 상관관계와 공분산
+   16.2. 상관관계와 공분산
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   15.3. 중복과 빈도
+   16.3. 중복과 빈도
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   15.4. 미니 프로젝트: 붓꽃 데이터셋 표준화
+   16.4. 미니 프로젝트: 붓꽃 데이터셋 표준화
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   15.5. 연습문제
+   16.5. 연습문제
   </a>
  </li>
 </ul>
@@ -397,7 +402,7 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="id1">
-<h1><span class="section-number">15. </span>판다스 활용: 통계 기초<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">16. </span>판다스 활용: 통계 기초<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p><strong>주요 내용</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">Series</span></code>와 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> 객체를로부터 기초 통계 자료를 추출하는 방식을 다룬다.</p>
 <ul class="simple">
@@ -438,7 +443,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="id2">
-<h2><span class="section-number">15.1. </span>합, 평균, 표준편차<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.1. </span>합, 평균, 표준편차<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>기초 통계에서 사용되는 주요 메서드들의 활용법을 살펴본다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">sum()</span></code></p></li>
@@ -1002,7 +1007,7 @@ dtype: object
 </div>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">15.2. </span>상관관계와 공분산<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.2. </span>상관관계와 공분산<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>금융 사이트에서 구한 4 개 회사의 주가(price)와 거래량(volume)을 담고 있는 두 개의 데이터를 이용하여
 상관계수와 공분산을 계산해본다.</p>
 <p>이를 위해 먼저 바이너리 파일 두 개를 다운로드해서 지정된 하위 디렉토리에 저장한다.</p>
@@ -1633,7 +1638,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">15.3. </span>중복과 빈도<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.3. </span>중복과 빈도<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p><strong><code class="docutils literal notranslate"><span class="pre">unique()</span></code> 메서드</strong></p>
 <p>시리즈에서 사용된 값을 중복 없이 확인하려면 <code class="docutils literal notranslate"><span class="pre">unique()</span></code> 메서드를 이용한다.
 <code class="docutils literal notranslate"><span class="pre">set()</span></code> 함수와 유사하게 작동하며, 넘파이 어레이를 반환한다.</p>
@@ -1708,7 +1713,7 @@ dtype: int64
 </div>
 </div>
 <div class="section" id="id5">
-<h2><span class="section-number">15.4. </span>미니 프로젝트: 붓꽃 데이터셋 표준화<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.4. </span>미니 프로젝트: 붓꽃 데이터셋 표준화<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>아래 코드는 인터넷 데이터 저장소로부터 아이리스(붓꽃) 데이터(<code class="docutils literal notranslate"><span class="pre">iris.data</span></code>)를
 2차원 넘파이 어레이로 불러온다.</p>
 <div class="cell docutils container">
@@ -3126,7 +3131,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="id6">
-<h2><span class="section-number">15.5. </span>연습문제<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.5. </span>연습문제<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-pandas_stats.ipynb">(실습) 판다스 활용: 통계 기초</a></p>
 </div>
 </div>
@@ -3160,13 +3165,13 @@ dtype: float64
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">14. </span>데이터프레임 핵심</p>
+            <p class="prev-next-title"><span class="section-number">15. </span>데이터프레임 핵심</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="data_visualization_pyplot1.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">16. </span>matplotlib.pyplot 1부</p>
+        <p class="prev-next-title"><span class="section-number">17. </span>matplotlib.pyplot 1부</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
