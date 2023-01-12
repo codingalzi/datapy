@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # (sec:python_basic_6)=
-# # 함수와 파일
+# # 함수
 
 # ## 주요 내용
 # 

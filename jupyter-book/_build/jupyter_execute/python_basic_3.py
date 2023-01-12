@@ -10,6 +10,8 @@
 # 정수, 부동 소수점, 부울값(`True`와 `False`), 문자열, 날짜와 시간 등처럼 
 # 단일한 값의 자료형이 **스칼라**<font size='2'>scalar</font> 자료형이며, 
 # 리스트, 튜플, 사전 등은 **모음**<font size='2'>collections</font> 자료형이다.
+# 
+# 먼저 스칼라 자료형을 살펴 보고 {ref}`sec:python_basic_5`에서 모음 자료형을 소개한다.
 
 # :::{admonition} 문자열 자료형
 # :class: info
