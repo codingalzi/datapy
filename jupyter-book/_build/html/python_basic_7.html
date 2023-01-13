@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>1.7. 파일 &#8212; 파이썬 데이터 분석</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,31 +20,31 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
@@ -60,7 +62,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -69,9 +85,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
       
@@ -248,213 +265,288 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/python_basic_7.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/codingalzi/datapy"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/codingalzi/datapy/issues/new?title=Issue%20on%20page%20%2Fpython_basic_7.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/codingalzi/datapy/master?urlpath=tree/jupyter-book/python_basic_7.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/jupyter-book/python_basic_7.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/codingalzi/datapy/master?urlpath=tree/jupyter-book/python_basic_7.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/jupyter-book/python_basic_7.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/codingalzi/datapy"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/codingalzi/datapy/issues/new?title=Issue%20on%20page%20%2Fpython_basic_7.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/python_basic_7.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   1.7.1. 오류 및 예외 처리
+   1.7.1. 파일의 종류와 경로
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   1.7.2. 파일 다운로드
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   1.7.3. 파일 열기
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     1.7.1.1. 오류
+    <a class="reference internal nav-link" href="#id5">
+     1.7.3.1. 파일 불러오기
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     1.7.1.2. 예외 처리
+    <a class="reference internal nav-link" href="#id6">
+     1.7.3.2. 파일 데이터 내용 읽기
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id5">
-       1.7.1.2.1. 예제
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id6">
-       1.7.1.2.2. 예제
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id7">
-       1.7.1.2.3. 예제
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#finally">
-       1.7.1.2.4. finally 블록
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#else">
-       1.7.1.2.5. else 블록
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     1.7.3.3. 파일 닫기
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#readline-readlines">
+     1.7.3.4.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       readline()
+      </span>
+     </code>
+     와
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       readlines()
+      </span>
+     </code>
+     파일 객체 메서드
+    </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id8">
-   1.7.2. 파일
+   1.7.4. 파일 생성 및 작성하기
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
-     1.7.2.1. 파일 불러오기
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id10">
-     1.7.2.2. 파일 데이터 내용 읽기
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#with-as">
-       1.7.2.2.1.
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         with
-        </span>
-        <span class="pre">
-         ...
-        </span>
-        <span class="pre">
-         as
-        </span>
-        <span class="pre">
-         ...
-        </span>
-       </code>
-       형식
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#readline-readlines">
-       1.7.2.2.2. readline(), readlines() 메서드
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id11">
-     1.7.2.3. 파일 생성 및 작성하기
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>파일</h1>
@@ -469,96 +561,57 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   1.7.1. 오류 및 예외 처리
+   1.7.1. 파일의 종류와 경로
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   1.7.2. 파일 다운로드
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   1.7.3. 파일 열기
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     1.7.1.1. 오류
+    <a class="reference internal nav-link" href="#id5">
+     1.7.3.1. 파일 불러오기
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     1.7.1.2. 예외 처리
+    <a class="reference internal nav-link" href="#id6">
+     1.7.3.2. 파일 데이터 내용 읽기
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id5">
-       1.7.1.2.1. 예제
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id6">
-       1.7.1.2.2. 예제
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id7">
-       1.7.1.2.3. 예제
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#finally">
-       1.7.1.2.4. finally 블록
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#else">
-       1.7.1.2.5. else 블록
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     1.7.3.3. 파일 닫기
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#readline-readlines">
+     1.7.3.4.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       readline()
+      </span>
+     </code>
+     와
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       readlines()
+      </span>
+     </code>
+     파일 객체 메서드
+    </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id8">
-   1.7.2. 파일
+   1.7.4. 파일 생성 및 작성하기
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id9">
-     1.7.2.1. 파일 불러오기
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id10">
-     1.7.2.2. 파일 데이터 내용 읽기
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#with-as">
-       1.7.2.2.1.
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         with
-        </span>
-        <span class="pre">
-         ...
-        </span>
-        <span class="pre">
-         as
-        </span>
-        <span class="pre">
-         ...
-        </span>
-       </code>
-       형식
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#readline-readlines">
-       1.7.2.2.2. readline(), readlines() 메서드
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id11">
-     1.7.2.3. 파일 생성 및 작성하기
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -566,408 +619,197 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="sec-python-basic-7">
-<span id="id1"></span><h1><span class="section-number">1.7. </span>파일<a class="headerlink" href="#sec-python-basic-7" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id2">
-<h2><span class="section-number">1.7.1. </span>오류 및 예외 처리<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>오류 없는 완벽한 프로그램은 현실적으로 불가능하며,
-프로그램을 구현하고 실행하면 거의 항상 오류가 발생한다.
-프로그래밍 단계에서부터 발생할 수 있는 오류(error)의 종류와 원인,
-그리고 오류가 발생할 경우에 시스템이 다운되지 않도록 대비해야 한다.</p>
-<p>발생할 수 있는 오류에 미리 대비하는 것을 <strong>예외 처리</strong>(exception handling)라 한다.
-여기서는 함수에 적절하지 않은 인자가 사용될 때 발생하는 오류를 이용하여
-예외 처리의 사용법을 간단하게 살펴본다.</p>
-<div class="section" id="id3">
-<h3><span class="section-number">1.7.1.1. </span>오류<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>파이썬 함수는 인자의 자료형을 명시하지 않기 때문에
-자료형이 다른 인자를 사용하는 실수를 범하기 쉽다.
-그리고 적절하지 않은 인자를 사용할 경우 <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>가 발생한다.
-예를 들어, <code class="docutils literal notranslate"><span class="pre">float()</span></code> 함수는 부동소수점 형식의 문자열만 부동소수점으로 변환한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;1.2345&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2345
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;1.23e-45&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.23e-45
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;12345&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12345.0
-</pre></div>
-</div>
-</div>
-</div>
-<p>다른 형식의 문자열이 인자로 들어오면 <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>를 발생시킨다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span><span class="p">(</span><span class="s1">&#39;123f2&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_500</span><span class="o">/</span><span class="mf">3608335619.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;123f2&#39;</span><span class="p">)</span>
-
-<span class="ne">ValueError</span>: could not convert string to float: &#39;123f2&#39;
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="id4">
-<h3><span class="section-number">1.7.1.2. </span>예외 처리<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">float()</span></code>를 사용할 때 오류가 발생하여 바로 실행이 멈추게 하는 것을 방지하려면
-예외 처리를 해주면 된다.
-예외 처리의 기본 형식은 다음과 같다.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="n">code1</span>
-<span class="k">except</span><span class="p">:</span>
-    <span class="n">code2</span>
-</pre></div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="sec-python-basic-7">
+<span id="id1"></span><h1><span class="section-number">1.7. </span>파일<a class="headerlink" href="#sec-python-basic-7" title="Permalink to this headline">#</a></h1>
+<p>데이터 분석에서 가장 많이 다루는 파일은 크게 csv 이거나 엑셀 두 종류이며
+판다스 모듈의 적절한 함수를 이용하여 불러올 수 있다.
+하지만 여기서는 임의의 파일을 다운로드, 불러오고, 열어보는 기본적인 방식을 살펴본다.</p>
+<section id="id2">
+<h2><span class="section-number">1.7.1. </span>파일의 종류와 경로<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p><strong>텍스트 파일과 바이너리 파일</strong></p>
+<p>파일은 <strong>텍스트</strong><font size='2'>text</font> 파일과
+<strong>바이너리</strong><font size='2'>binary</font> 파일 두 가지로 나뉜다.</p>
+<p>바이너리 파일은 한컴 오피스의 한글 파일, MS 워드 파일과 파워포인트 파일,
+jpg, png, gif 등의 사진 파일 등 특정 소프트웨어를 사용해야만
+내용을 확인할 수 있는 파일이다.
+그리고 exe 확장자를 갖는 앱 설치 파일 등도 바이너리 파일이다.</p>
+<p>반면에 텍스트 파일은 내용을 확인하기 위해 특별한 기능이 필요 없고
+임의의 텍스트 편집기를 사용해도 내용을 바로 확인할 수 있다.
+여기서는 텍스트 파일만을 대상으로 파이썬 코드를 이용하여
+파일 다운로드, 열기, 수정하기 등을 살펴본다.</p>
+<p><strong>디렉토리와 폴더</strong></p>
+<p>디렉토리<font size='2'>directory</font>와 폴더<font size='2'>folder</font>는 동일한 개념이다.
+다만 리눅스 계열 운영체제에서는 디렉토리를, 윈도우 운영체제에서는 폴더를 선호한다.
+그리고 리눅스 계열 운영체제에서는 디렉토리를 파일이라고 부르기도 한다.
+하지만 여기서는 디렉토리를 폴더 개념으로만 사용하며 파일과는 구분한다.</p>
+<p><strong>경로</strong></p>
+<p>경로는 특정 디렉토리 또는 파일의 위치를 나타내는 문자열이다.
+사용하는 운영체제마다 표현 방법이 다르기에 조심해야 한다.
+예를 들어 현재 파이썬 코드가 실행되는 디렉토리의 경로는
+리눅스와 윈도우의 경우 다음과 같이 다르게 표현된다.</p>
 <ul class="simple">
-<li><p>먼저 <code class="docutils literal notranslate"><span class="pre">code1</span></code> 이 실행된다.
-실행 과정 중에 오류가 발생하지 않으면 <code class="docutils literal notranslate"><span class="pre">code2</span></code> 부분은 건너 뛴다.</p></li>
-<li><p>반면에 <code class="docutils literal notranslate"><span class="pre">code1</span></code> 실행중에 오류가 발생하면 <code class="docutils literal notranslate"><span class="pre">code2</span></code> 를 실행한다.</p></li>
+<li><p>리눅스의 경우: ‘/home/gslee/Documents/GitHub/datapy/jupyter-book’</p></li>
+<li><p>윈도우의 경우: ‘C:\Users\gslee\Documents\GitHub\datapy\jupyter-book’</p></li>
 </ul>
-<div class="section" id="id5">
-<h4><span class="section-number">1.7.1.2.1. </span>예제<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;123f2&#39;</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="k">except</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;부동소수점 모양의 문자열이 아닙니다.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>부동소수점 모양의 문자열이 아닙니다.
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="id6">
-<h4><span class="section-number">1.7.1.2.2. </span>예제<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
-<p>아래 함수는 부동소수점 모양이 아닌 문자열이 인자로 사용되면 해당 문자열을 그대로 반환하도록 한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">attempt_float</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">x</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attempt_float</span><span class="p">(</span><span class="s1">&#39;1.2345&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2345
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attempt_float</span><span class="p">(</span><span class="s1">&#39;부동소수점 모양의 문자열이 아닙니다.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;부동소수점 모양의 문자열이 아닙니다.&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p>예외 처리 과정에서 특정 오류만 처리하도록 지정할 수 있다.
-예를 들어, <code class="docutils literal notranslate"><span class="pre">ValueError</span></code> 만 처리하려면 다음과 같이 지정한다.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="n">code1</span>
-<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="n">code2</span>
-</pre></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;123f2&#39;</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;부동소수점 모양의 문자열이 아닙니다.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>부동소수점 모양의 문자열이 아닙니다.
-</pre></div>
-</div>
-</div>
-</div>
-<p>그런데 오류 종류를 명시하면 다른 종류의 오류는 처리하지 못한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;부동소수점 모양의 문자열이 아닙니다.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">23</span><span class="o">-</span><span class="n">e3c8c4c378a2</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;부동소수점 모양의 문자열이 아닙니다.&#39;</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: float() argument must be a string or a number, not &#39;tuple&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p>이번에 발생하는 오류는 <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> 이기 때문이다.
-즉, <code class="docutils literal notranslate"><span class="pre">float()</span></code> 함수는 기본적으로 문자열을 인자로 사용하도록 정의되었는데
-완전히 다른 자료형(type)이 입력되었기 때문이다.
-해결책은 오류를 명시하지 않거나 아래처럼 여러 오류를 처리하도록 설정하는 것이다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="k">except</span> <span class="p">(</span><span class="ne">ValueError</span><span class="p">,</span> <span class="ne">TypeError</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;사용된 인자에 문제가 있습니다.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>사용된 인자에 문제가 있습니다.
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="id7">
-<h4><span class="section-number">1.7.1.2.3. </span>예제<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
-<p>아래 코드는 <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>가 발생하면 입력된 인자를 그대로 반환한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">attempt_float</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">except</span> <span class="p">(</span><span class="ne">TypeError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">x</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attempt_float</span><span class="p">(</span><span class="s1">&#39;12.3345&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.3345
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attempt_float</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, 2)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attempt_float</span><span class="p">(</span><span class="s1">&#39;123f2&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;123f2&#39;
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="finally">
-<h4><span class="section-number">1.7.1.2.4. </span>finally 블록<a class="headerlink" href="#finally" title="Permalink to this headline">¶</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">try</span></code> 블록에서의 오류 발생 여부와 상관 없이 특정 코드를 실행하기 위해 <code class="docutils literal notranslate"><span class="pre">finally</span></code> 블록을 사용한다.
-물론 오류가 발생하면 <code class="docutils literal notranslate"><span class="pre">finally</span></code> 블록 이후 실행이 바로 멈춘다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="k">finally</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;인자값의 자료형고 형식이 중요합니다.&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>인자값의 자료형고 형식이 중요합니다.
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">30</span><span class="o">-</span><span class="mi">966</span><span class="n">f6e98066e</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">finally</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;인자값의 자료형고 형식이 중요합니다.&#39;</span><span class="p">)</span>
-
-<span class="ne">TypeError</span>: float() argument must be a string or a number, not &#39;tuple&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">except</span></code> 블록에서 예외 처리가 잘 되면 코드 실행은 이어진다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="k">except</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;사용된 인자에 문제가 있습니다.&#39;</span><span class="p">)</span>
-<span class="k">finally</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;인자값의 자료형고 형식이 중요합니다.&#39;</span><span class="p">)</span>
-    
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;프로그램이 계속 실행됩니다.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>사용된 인자에 문제가 있습니다.
-인자값의 자료형고 형식이 중요합니다.
-프로그램이 계속 실행됩니다.
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="else">
-<h4><span class="section-number">1.7.1.2.5. </span>else 블록<a class="headerlink" href="#else" title="Permalink to this headline">¶</a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">try</span></code> 블록이 성공적으로 실행되었을 때만 특정 코드를 실행시키고자 할 때 <code class="docutils literal notranslate"><span class="pre">else</span></code> 블록을 사용한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;123.4567&#39;</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-<span class="k">except</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;사용된 인자에 문제가 있습니다.&#39;</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;올바른 입력값이 사용되었습니다.&#39;</span><span class="p">)</span>
-<span class="k">finally</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;인자값의 자료형고 형식이 중요합니다.&#39;</span><span class="p">)</span>
-    
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;프로그램이 계속 실행됩니다.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>123.4567
-올바른 입력값이 사용되었습니다.
-인자값의 자료형고 형식이 중요합니다.
-프로그램이 계속 실행됩니다.
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="id8">
-<h2><span class="section-number">1.7.2. </span>파일<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<p>앞으로 다룰 대부분의 데이터 파일은 csv 파일이며 기본적으로 <code class="docutils literal notranslate"><span class="pre">pandas.read_csv()</span></code> 함수를
-이용하여 불러(loading)와서 데이터로 사용한다.
-하지만 파일을 일반적으로 다루는 기본 방식을 이해하는 것도 중요하다.</p>
-<p><strong>주의사항:</strong> <code class="docutils literal notranslate"><span class="pre">segismuldo.txt</span></code> 파일이 <code class="docutils literal notranslate"><span class="pre">examples</span></code> 라는 하위 폴더에 있다고 가정한다.
-이를 위해 먼저 해당 디렉토리를 생성하고 파일을 다운로드하도록 아래 코드를 먼저 실행해야한다.
-아래 코드가 바로 이해되지 않아도 상관없다. 다만,
-인터넷 상에 위치한 파일을 특정 디렉토리로 다운로드하는 함수가 필요한 경우 아래 코드를
-수정하여 활용하면 된다는 사실은 기억해 두면 좋다.</p>
+<p>하지만 <code class="docutils literal notranslate"><span class="pre">pathlib</span></code> 모듈의 <code class="docutils literal notranslate"><span class="pre">Path</span></code> 클래스를 이용하면 운영체제를 신경쓰지 않고 경로를 다룰 수 있다.</p>
+<p><strong>현재 작업 디렉토리</strong></p>
+<p>보통 <code class="docutils literal notranslate"><span class="pre">cwd</span></code> 라고 줄여서 사용되는 <strong>현재 작업 디렉토리</strong><font size='2'>current working directory</font>는
+현재 파이썬이 실행되는 디렉토리 경로를 가리킨다.
+현재 작업 디렉토리는 <code class="docutils literal notranslate"><span class="pre">os</span></code> 모듈의 <code class="docutils literal notranslate"><span class="pre">getcwd()</span></code> 함수를 이용하여 확인할 수 있다.
+<code class="docutils literal notranslate"><span class="pre">os</span></code> 모듈은 운영체제를 조작하는 API를 많이 갖고 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">urllib.request</span>
 
-<span class="n">DOWNLOAD_ROOT</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/codingalzi/pydata/master/&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/mnt/c/Users/gslee/Documents/GitHub/datapy/jupyter-book
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>절대경로와 상대경로</strong></p>
+<p>앞서 언급한 두 개의 경로는
+운영체제의 맨 상위 디렉토리를 기준으로 하는 경로라는 의미에서 <strong>절대경로</strong>라 부른다.
+반면에 <strong>상대경로</strong>는 현재 작업 디렉토리(cwd)를 기준으로 경로를 작성한다.
+만약에 cwd가 <code class="docutils literal notranslate"><span class="pre">Documents</span></code> 라면, 위 두 개의 경로의 상대경로는 다음과 같다.</p>
+<ul class="simple">
+<li><p>리눅스의 경우: ‘GitHub/pybook/jupyter-book’</p></li>
+<li><p>윈도우의 경우: ‘GitHub\pybook\jupyter-book’</p></li>
+</ul>
+<p>아래와 같이 사용할 수 있다. 점(<code class="docutils literal notranslate"><span class="pre">.</span></code>)이 현재 작업 디렉토리를 가리킨다.</p>
+<ul class="simple">
+<li><p>리눅스의 경우: ‘./GitHub/pybook/jupyter-book’</p></li>
+<li><p>윈도우의 경우: ‘.\GitHub\pybook\jupyter-book’</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2><span class="section-number">1.7.2. </span>파일 다운로드<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">segismuldo.txt</span></code> 파일을 인터넷에서 다운로드 하여 <code class="docutils literal notranslate"><span class="pre">examples</span></code> 라는 하위 폴더에 저장하려 한다.
+이를 위해 먼저 해당 디렉토리를 생성해야 한다.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">pathlib.Path</span></code> 클래스: 디렉토리 지정</strong></p>
+<p>파일을 저장할 디렉토리를 지정한다.
+이를 위해 <code class="docutils literal notranslate"><span class="pre">pathlib</span></code> 모듈의 <code class="docutils literal notranslate"><span class="pre">Path</span></code> 클래스를 이용한다.
+<code class="docutils literal notranslate"><span class="pre">Path</span></code> 클래스는 지정된 디렉토리 또는 파일의 경로를 담은 객체를 생성한다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Path()</span></code> : 현재 작업 디렉토리를 나타내는 객체. <code class="docutils literal notranslate"><span class="pre">Path('.')</span></code> 과 동일한 의미임.</p></li>
+<li><p>슬래시 연산자 <code class="docutils literal notranslate"><span class="pre">/</span></code>: 두 개의 경로를 이어붙히는 연산자. 왼쪽 인자는 <code class="docutils literal notranslate"><span class="pre">Path</span></code> 객체, 둘째 인자는 문자열.</p></li>
+</ul>
+<p>아래 코드의 <code class="docutils literal notranslate"><span class="pre">data_path</span></code> 변수는 현재 작업 디렉토리에 위치한 <code class="docutils literal notranslate"><span class="pre">examples</span></code> 라는 폴더의 경로를 가리킨다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
-<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">&quot;examples&quot;</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;examples&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Path</span></code> 객체</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">Path</span></code> 객체는 다양한 정보를 다루는 메서드와 속성을 제공한다.
+예를 들어, 현재 작업 디렉토리의 경로를 확인하려면 <code class="docutils literal notranslate"><span class="pre">cwd()</span></code> 메서드를 실행한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PosixPath(&#39;/mnt/c/Users/gslee/Documents/GitHub/datapy/jupyter-book&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">name</span></code> 속성은 경로가 가리키는 디렉토리 또는 파일 이름을 저장한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_path</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;examples&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">parent</span></code> 속성은 지정되 경로가 가리키는 디렉토리 또는 파일이 저장된 부모 디렉토리의 이름을 저장한다.
+<code class="docutils literal notranslate"><span class="pre">data_path</span></code> 가 현재 디렉토리의 하위 디렉토리인 <code class="docutils literal notranslate"><span class="pre">data</span></code>를 가리키기에
+그것의 부모 디렉토리인 현재 디렉토리를 가리키는 점(<code class="docutils literal notranslate"><span class="pre">'.'</span></code>) 이 저장된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_path</span><span class="o">.</span><span class="n">parent</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PosixPath(&#39;.&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Path.mkdir()</span></code> 메서드</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">Path</span></code> 객체의 <code class="docutils literal notranslate"><span class="pre">mkdir()</span></code> 메서드를 이용하여 지정된 경로에 해당하는 폴더를 실제로 생성한다.
+다음 두 개의 옵션 인자를 사용한다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">parent=True</span></code>: 부모 디렉토리가 필요하면 생성할 것.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">exist_ok</span> <span class="pre">=</span> <span class="pre">True</span></code>: 디렉토리 이미 존재하면 그대로 사용할 것.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_path</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">urllib.request</span></code> 모듈</strong></p>
+<p>아래 코드는 인터넷 특정 사이트에 저장되어 있는 <code class="docutils literal notranslate"><span class="pre">segismundo.txt</span></code> 파일을 다운로드 한다.</p>
+<ul class="simple">
+<li><p>사이트 주소: <code class="docutils literal notranslate"><span class="pre">https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/examples/</span></code></p></li>
+<li><p>파일 이름: <code class="docutils literal notranslate"><span class="pre">segismundo.txt</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">urllib.request</span></code> 모듈은 인터넷 사이트를 다루는 다양한 API를 제공한다.
+여기서는 <code class="docutils literal notranslate"><span class="pre">urlretrieve()</span></code> 함수를 이용하여 파일을 다운로드하여 지정된 폴더에 지정된 이름으로 저장한다.</p>
+<ul class="simple">
+<li><p>첫째 인자: 파일 링크 문자열</p></li>
+<li><p>둘째 인자: 파일 저장 위치 경로(파일명 포함) 문자열</p></li>
+<li><p>반환값: 저장된 파일의 경로와 파일 정보. 파일 정보는 중요하지 않음.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">urllib.request</span>
+
+<span class="c1"># 사이트 주소</span>
+<span class="n">DOWNLOAD_ROOT</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/examples/&quot;</span>
+<span class="c1"># 파일명</span>
 <span class="n">filename</span> <span class="o">=</span> <span class="s2">&quot;segismundo.txt&quot;</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;다운로드:&quot;</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
-<span class="n">url</span> <span class="o">=</span> <span class="n">DOWNLOAD_ROOT</span> <span class="o">+</span> <span class="s2">&quot;notebooks/examples/&quot;</span> <span class="o">+</span> <span class="n">filename</span>
+<span class="c1"># 다운로드 파일 링크</span>
+<span class="n">url</span> <span class="o">=</span> <span class="n">DOWNLOAD_ROOT</span> <span class="o">+</span> <span class="n">filename</span>
+<span class="c1"># 다운로드 실행</span>
 <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s2">&quot;examples/&quot;</span> <span class="o">+</span> <span class="n">filename</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>다운로드: segismundo.txt
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;examples/segismundo.txt&#39;, &lt;http.client.HTTPMessage at 0x7fe1a8e7b640&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;examples/segismundo.txt&#39;, &lt;http.client.HTTPMessage at 0x7f2f1c43c6a0&gt;)
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="id9">
-<h3><span class="section-number">1.7.2.1. </span>파일 불러오기<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<p>텍스트 문서를 파일 데이터로 불러오려면 <code class="docutils literal notranslate"><span class="pre">open()</span></code>를 사용한다.</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">1.7.3. </span>파일 열기<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<section id="id5">
+<h3><span class="section-number">1.7.3.1. </span>파일 불러오기<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<p>파일로 저장된 텍스트 문서를 파일 데이터로 불러오려면 <code class="docutils literal notranslate"><span class="pre">open()</span></code> 함수를 사용한다.
+문서의 내용을 담은 파일 객체가 반환된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;examples/segismundo.txt&#39;</span>
@@ -976,48 +818,55 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id10">
-<h3><span class="section-number">1.7.2.2. </span>파일 데이터 내용 읽기<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">segismundo.txt</span></code> 파일엔 스페인어로 작성된 시를 저장되어 있으며 ñ, á 등의
-특수 문자가 사용된다.
-따라서 한글 윈도우 운영체제에서는 일부 표현이 깨질 수 있다.</p>
+<p>반환값의 자료형은 <code class="docutils literal notranslate"><span class="pre">_io.TextIOWrapper</span></code> 라는 특별한 객체이며, 굳이 자세히 알 필요 없다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sueña el rico en su riqueza,
-
-que más cuidados le ofrece;
-
-
-
-sueña el pobre que padece
-
-su miseria y su pobreza;
-
-
-
-sueña el que a medrar empieza,
-
-sueña el que afana y pretende,
-
-sueña el que agravia y ofende,
-
-
-
-y en el mundo, en conclusión,
-
-todos sueñan lo que son,
-
-aunque ninguno lo entiende.
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>_io.TextIOWrapper
 </pre></div>
 </div>
 </div>
+</div>
+</section>
+<section id="id6">
+<h3><span class="section-number">1.7.3.2. </span>파일 데이터 내용 읽기<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<p>파일 객체의 내용은 <code class="docutils literal notranslate"><span class="pre">for</span></code> 반복문을 이용하여 한 줄씩 확인할 수 있다.
+그런데 <code class="docutils literal notranslate"><span class="pre">segismundo.txt</span></code> 파일엔 스페인어로 작성된 시가 저장되어 있으며 ñ, á 등의
+특수 문자가 사용된다.
+따라서 한글 윈도우 운영체제에서는 아래와 같이 일부 표현이 깨질 수 있다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+<span class="n">Sue챰a</span> <span class="n">el</span> <span class="n">rico</span> <span class="n">en</span> <span class="n">su</span> <span class="n">riqueza</span><span class="p">,</span>
+
+<span class="n">que</span> <span class="n">m찼s</span> <span class="n">cuidados</span> <span class="n">le</span> <span class="n">ofrece</span><span class="p">;</span>
+
+
+
+<span class="n">sue챰a</span> <span class="n">el</span> <span class="n">pobre</span> <span class="n">que</span> <span class="n">padece</span>
+
+<span class="n">su</span> <span class="n">miseria</span> <span class="n">y</span> <span class="n">su</span> <span class="n">pobreza</span><span class="p">;</span>
+
+
+
+<span class="n">sue챰a</span> <span class="n">el</span> <span class="n">que</span> <span class="n">a</span> <span class="n">medrar</span> <span class="n">empieza</span><span class="p">,</span>
+
+<span class="n">sue챰a</span> <span class="n">el</span> <span class="n">que</span> <span class="n">afana</span> <span class="n">y</span> <span class="n">pretende</span><span class="p">,</span>
+
+<span class="n">sue챰a</span> <span class="n">el</span> <span class="n">que</span> <span class="n">agravia</span> <span class="n">y</span> <span class="n">ofende</span><span class="p">,</span>
+
+
+
+<span class="n">y</span> <span class="n">en</span> <span class="n">el</span> <span class="n">mundo</span><span class="p">,</span> <span class="n">en</span> <span class="n">conclusi처n</span><span class="p">,</span>
+
+<span class="n">todos</span> <span class="n">sue챰an</span> <span class="n">lo</span> <span class="n">que</span> <span class="n">son</span><span class="p">,</span>
+
+<span class="n">aunque</span> <span class="n">ninguno</span> <span class="n">lo</span> <span class="n">entiende</span><span class="o">.</span>
+</pre></div>
 </div>
 <p>이유는 한글 윈도우 운영체제가 파일을 열거나 생성할 때 기본적으로 <code class="docutils literal notranslate"><span class="pre">cp949</span></code> 인코딩 방식을 사용하는 반면에
 스페인어 등에 사용되는 특수 문자는 기본적으로 <code class="docutils literal notranslate"><span class="pre">utf-8</span></code> 방식으로 인코딩되기 때문이다.
@@ -1025,15 +874,12 @@ aunque ninguno lo entiende.
 모든 유니코드 특수 문자를 제대로 처리한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;examples/segismundo.txt&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 파일 경로를 변수에 할당하면 편리함</span>
+<span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;examples/segismundo.txt&#39;</span>
+
 <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1068,9 +914,7 @@ aunque ninguno lo entiende.
 </div>
 </div>
 </div>
-<p><strong>주의사항:</strong> <code class="docutils literal notranslate"><span class="pre">open()</span></code> 함수의 반환값은 한 번만 순회할 수 있는 이터레이터이다.
-따라서 <code class="docutils literal notranslate"><span class="pre">open()</span></code> 함수를 다시 사용하기 전에는 <code class="docutils literal notranslate"><span class="pre">for</span></code> 반복문을 사용해도 더 이상 읽을 내용이 없어서
-아무 것도 보여주지 않는다.</p>
+<p>한 번 내용을 들여다 본 파일 객체의 내용은 더 이상 확인할 수 없음에 주의하라.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
@@ -1079,6 +923,9 @@ aunque ninguno lo entiende.
 </div>
 </div>
 </div>
+<p>이유는 파일 객체가 이터레이터라는 특수한 객체이기 때문인데 여기서는 자세히 설명하지 않는다.
+암튼, 파일 내용을 다시 확인하려면 <code class="docutils literal notranslate"><span class="pre">open()</span></code> 함수를 실행해야 한다는 점만 기억한다.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">strip()</span></code> 문자열 메서드 활용</strong></p>
 <p>줄 간격이 너무 큰 것으로 보아 줄 끝에 줄바꿈 문자(<code class="docutils literal notranslate"><span class="pre">\n</span></code>)가 포함된 것으로 보인다.
 이와 더불어 <code class="docutils literal notranslate"><span class="pre">print()</span></code> 함수는 기본적으로 줄바꿈을 넣어주기에 줄바꿈을 두 번하게 된다.
 이런 경우 <code class="docutils literal notranslate"><span class="pre">strip()</span></code> 문자열 메서드를 이용하여 문자열 양 끝에 위치한 스페이스, 탭, 줄바꿈 등의 공백 기호를 제거하는 게 좋다.</p>
@@ -1109,36 +956,8 @@ aunque ninguno lo entiende.
 </div>
 </div>
 </div>
-<p>문자열의 오른쪽 끝에 위치한 공백 문자들을 제거하는 것으로 충분할 수 있다.
-왼편과 오른편의 공백을 제거하는 문자열 메서드는 각각 <code class="docutils literal notranslate"><span class="pre">lstrip()</span></code> 과 <code class="docutils literal notranslate"><span class="pre">rstrip()</span></code> 이다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sueña el rico en su riqueza,
-que más cuidados le ofrece;
-
-sueña el pobre que padece
-su miseria y su pobreza;
-
-sueña el que a medrar empieza,
-sueña el que afana y pretende,
-sueña el que agravia y ofende,
-
-y en el mundo, en conclusión,
-todos sueñan lo que son,
-aunque ninguno lo entiende.
-</pre></div>
-</div>
-</div>
-</div>
-<p>아래 코드는 리스트 조건제시법을 이용하여 파일의 내용을 행 단위의 문자열로 가져와 문자열들의 리스트를 생성한다.</p>
+<p>아래 코드는 파일 내용을 단순히 출력하지 않고, 리스트로 저장한다.
+이를 위해 리스트 조건제시법을 이용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
@@ -1167,25 +986,33 @@ aunque ninguno lo entiende.
 </div>
 </div>
 </div>
-<p>저장되어 있는 파일 내용을 불러오고 더 이상 필요 없으면 해당 파일 자체는 닫아 주어야 한다.
+</section>
+<section id="id7">
+<h3><span class="section-number">1.7.3.3. </span>파일 닫기<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
+<p><strong><code class="docutils literal notranslate"><span class="pre">close()</span></code> 파일 객체 메서드</strong></p>
+<p>저장되어 있는 파일 내용을 불러오고 더 이상 필요 없으면 해당 파일 자체를
+<code class="docutils literal notranslate"><span class="pre">close()</span></code> 메서드를 호출하여 닫아야 한다.
 그렇지 않으면 마치 편집기에 해당 파일이 열려 있는 것처럼 의도치 않은 수정이 파일에 가해질 수 있다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">f</span><span class="p">]</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>  <span class="c1"># 파일이 더 이상 열려 있을 필요가 없는 경우</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="with-as">
-<h4><span class="section-number">1.7.2.2.1. </span><code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">...</span> <span class="pre">as</span> <span class="pre">...</span></code> 형식<a class="headerlink" href="#with-as" title="Permalink to this headline">¶</a></h4>
+<p><strong><code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">...</span> <span class="pre">as</span> <span class="pre">...</span></code> 형식</strong></p>
 <p>파일을 불러와 일을 처리한 다음에 파일닫기를 자동으로 진행하게 하려면
-아래에서 처럼 <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">...</span> <span class="pre">as</span> <span class="pre">...</span></code> 형식을 사용한다.</p>
+아래에서 처럼 <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">...</span> <span class="pre">as</span> <span class="pre">...</span></code> 형식을 사용한다.
+아래 코드는 <code class="docutils literal notranslate"><span class="pre">f.close()</span></code> 메서드를 자동으로 마지막에 실행해서 열린 파일을 닫는다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">f</span><span class="p">]</span>
-    
-<span class="n">lines</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lines</span>
 </pre></div>
 </div>
 </div>
@@ -1209,28 +1036,21 @@ aunque ninguno lo entiende.
 </div>
 </div>
 <p>닫은 파일은 더 이상 내용을 들여다 볼 수 없다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">44</span><span class="o">-</span><span class="n">b30473dbc152</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+    
+<span class="o">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span>                                <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+<span class="n">c</span><span class="p">:</span>\<span class="n">Users</span>\<span class="n">gslee</span>\<span class="n">Documents</span>\<span class="n">GitHub</span>\<span class="n">datapy</span>\<span class="n">jupyter</span><span class="o">-</span><span class="n">book</span>\<span class="n">python_basic_7</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">Cell</span> <span class="mi">38</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">cell</span> <span class="n">line</span><span class="p">:</span> <span class="mi">1</span><span class="o">&gt;</span><span class="p">()</span>
+<span class="o">----&gt;</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+      <span class="mi">2</span>     <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 
-<span class="ne">ValueError</span>: I/O operation on closed file.
+<span class="ne">ValueError</span><span class="p">:</span> <span class="n">I</span><span class="o">/</span><span class="n">O</span> <span class="n">operation</span> <span class="n">on</span> <span class="n">closed</span> <span class="n">file</span><span class="o">.</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="readline-readlines">
-<h4><span class="section-number">1.7.2.2.2. </span>readline(), readlines() 메서드<a class="headerlink" href="#readline-readlines" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="readline-readlines">
+<h3><span class="section-number">1.7.3.4. </span><code class="docutils literal notranslate"><span class="pre">readline()</span></code>와 <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> 파일 객체 메서드<a class="headerlink" href="#readline-readlines" title="Permalink to this headline">#</a></h3>
 <p>열려 있는 파일이 이터레이터이기에 <code class="docutils literal notranslate"><span class="pre">for</span></code> 반복문으로 모든 줄을 순회하하면서 내용을 확인할 수 있었다.
 반면에 아래 두 메서드를 이용하면 <code class="docutils literal notranslate"><span class="pre">for</span></code> 반복문 없이 줄 단위로 내용을 확인할 수 있다.</p>
 <table class="colwidths-auto table">
@@ -1329,10 +1149,10 @@ aunque ninguno lo entiende.
 </div>
 </div>
 <p><strong>참고:</strong> <code class="docutils literal notranslate"><span class="pre">readlines()</span></code>의 결과를 보면 각 줄의 끝에 줄바꿈 기호가 사용되었음을 볼 수 있다.</p>
-</div>
-</div>
-<div class="section" id="id11">
-<h3><span class="section-number">1.7.2.3. </span>파일 생성 및 작성하기<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="id8">
+<h2><span class="section-number">1.7.4. </span>파일 생성 및 작성하기<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
 <p>아래 두 가지 방식으로 파일을 생성하거나 작성할 수 있다.</p>
 <ul class="simple">
 <li><p>방식 1: <code class="docutils literal notranslate"><span class="pre">open('파일명',</span> <span class="pre">'w')</span></code></p>
@@ -1439,9 +1259,8 @@ aunque ninguno lo entiende.
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1465,9 +1284,11 @@ aunque ninguno lo entiende.
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="python_basic_6.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1483,24 +1304,28 @@ aunque ninguno lo entiende.
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By 코딩알지<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By 코딩알지<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
