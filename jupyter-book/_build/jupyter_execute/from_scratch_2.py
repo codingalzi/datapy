@@ -2,909 +2,701 @@
 # coding: utf-8
 
 # (sec:from_scratch_2)=
-# # 선형대수 기초
+# # 통계 기초
 
 # **참고** 
 # 
 # 여기서 사용하는 코드는 조엘 그루스(Joel Grus)의 
 # [밑다닥부터 시작하는 데이터 과학](https://github.com/joelgrus/data-science-from-scratch) 
-# 4장에 사용된 소스코드의 일부를 기반으로 작성되었다.
+# 5장에 사용된 소스코드의 일부를 기반으로 작성되었다.
 
 # **주요 내용**
 # 
-# 넘파이 어레이(`numpy.array`)는 길이와 모양에 대한 정보와 함께 어레이를 조작하거나 
-# 어레이로부터 다양한 정보를 추출하는 메서드를 기본으로 제공한다.
-# 반면에 파이썬 리스트(`list`)는 인덱싱과 몇 개의 리스트 조작 기능 이외에 
-# 별 다른 정보와 기능을 제공하지 않는다. 
+# 데이터 분석의 기본이 바로 통계 분야의 주요 개념과 기법이다.
+# 여기서는 앞으로 우리에게 필요한 정도의 통계의 기본 개념과 기법을 간단하게 소개한다.
 # 
-# 여기서는 벡터와 행렬을 각각 1차원과 2차원 리스트로 구현하여 실용적으로 사용하는 과정을 살펴본다.
-# 보다 구체적으로는 벡터와 행렬의 자료형 정의에서 출발하여 벡터와 행렬의 연산 등을 모두 
-# 리스트와 기본 파이썬만을 이용하여 구현한다. 
+# 다루는 주제는 다음과 같다.
 # 
-# 이를 통해 넘파이 어레이가 제공하는 다양한 기능에 대한 보다 깊은 이해와 함께 파이썬 데이터 분석 관련
-# 프로그래밍 실력 향상에 도움을 주고자 한다.
+# 1. 중심경향성
+# 1. 산포도
+# 1. 상관관계
+# 1. 심슨의 역설
+# 1. 상관관계와 인과관계
 
-# **주의사항** 
-# 
-# 아래 코드는 {ref}`자료형 힌트 <sec:from_scratch_1>`와
-# [리스트 조건제시법](https://codingalzi.github.io/pybook/collections2.html#sec-comprehension)을 
-# 활용한다. 
+# ## 데이터셋 설명하기
 
-# ## 벡터
-
-# 벡터는 유한 개의 숫자를 담고 있으며, 벡터의 길이를 **차원**(dimension)이라 부른다.
-# 
-# __주의사항:__ 넘파이 어레이의 차원과 다른 개념임에 주의하라.
-# 
-# 벡터는 수학과 통계에서 많이 사용된다.
-# 
-# * 수학 예제: 2차원 평면 공간에서 방향과 크기를 표현하는 2차원 벡터 `(x, y)`
-# 
-# * 통계 예제: 사람들의 키, 몸무게, 나이로 이루어진 3차원 벡터 `(키, 몸무게, 나이)`
-# 
-# * 통계 예제: 네 번의 시험 점수로 이루어진 4차원 벡터 `(1차점수, 2차점수, 3차점수, 4차점수)`
-
-# **벡터 자료형**
-
-# 벡터 자료형은 부동소수점들로 이루어진 리스트로 정의될 수 있다. 
+# 총 204명의 사용자 각각의 친구수에 데이터가 다음과 같이 주어졌다고 가정한다.
+# 즉, 사용자별 최대 친구수는 100명이고, 최소 1명이다. 
 
 # In[1]:
 
 
-from typing import List
+num_friends = [100.0,49,41,40,25,21,21,19,19,18,18,16,15,
+               15,15,15,14,14,13,13,13,13,12,12,11,10,10,
+               10,10,10,10,10,10,10,10,10,10,10,10,10,9,
+               9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,8,8,8,
+               8,8,8,8,8,8,8,8,8,8,7,7,7,7,7,7,7,7,7,7,
+               7,7,7,7,7,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,
+               6,6,6,6,6,6,6,5,5,5,5,5,5,5,5,5,5,5,5,5,5,
+               5,5,5,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,
+               4,4,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,
+               3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,1,
+               1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 
-Vector = List[float]
 
-
-# * 예제: 키, 몸무게, 나이로 구성된 3차원 벡터
+# 사용자 수는 204명이고, 사용자별 최대 친구수는 100명, 최소 친구수는 1명이다. 
 
 # In[2]:
 
 
-# (키, 몸무게, 나이)
+print(f"사용자 수:\t{len(num_friends)}", 
+      f"최대 친구 수:\t{max(num_friends)}", 
+      f"최소 친구 수:\t{min(num_friends)}", sep='\n')
 
-height_weight_age1 : Vector = [70, 170, 50]
-height_weight_age2 : Vector = [66, 163, 50]
-
-
-# * 예제: 1차부터 4차까지의 시험 점수로 구성된 4차원 벡터
 
 # In[3]:
 
 
-# (1차점수, 2차점수, 3차점수, 4차점수)
+from collections import Counter
+import matplotlib.pyplot as plt
 
-grades1 : Vector = [95, 80, 75, 62]
-grades2 : Vector = [85, 82, 79, 82]
-
-
-# **벡터 덧셈**
-# 
-# 차원이 같은 벡터 두 개의 덧셈은 같은 위치에 있는 항목끼기 더한 결과로 이루어진 벡터를 생성한다.
-
-# $$
-# \begin{align*}
-# (1, 2) + (2, 1) &= (1+2, 2+1) \\
-# &= (3, 3) \\[1ex]
-# (6, 3, 2) + (1, 7, 9) & = (6+1, 3+7, 2+9) \\
-# &= (7, 10, 11)
-# \end{align*}
-# $$
-
-# **벡터 덧셈의 기하적 의미**
-# 
-# 벡터 $a$와 벡터 $b$의 합 $a+b$의 의미를 아래 그래프에서처럼 해석할 수 있다.
-
-# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/vector_addition.png" width="40%"></div>
-# 
-# 출처: [위키백과](https://en.wikipedia.org/wiki/Euclidean_vector)
-
-# **벡터 덧셈 함수**
-# 
-# 차원이 같은 두 벡터의 항목별 합을 항목으로 같은 벡터를 반환하는 함수는 다음과 같다.
 
 # In[4]:
 
 
-def addV(v: Vector, w: Vector) -> Vector:
-    assert len(v) == len(w)   # 두 벡터의 길이가 같아야 함
+friend_counts = Counter(num_friends)
+xs = range(101)                         # largest value is 100
+ys = [friend_counts[x] for x in xs]     # height is just # of friends
+plt.bar(xs, ys)
+plt.axis([0, 101, 0, 25])
+plt.title("Histogram of Friend Counts")
+plt.xlabel("# of friends")
+plt.ylabel("# of people")
+plt.show()
 
-    return [v_i + w_i for v_i, w_i in zip(v, w)]
 
+# 위 히스토그램에서 보여지는 것은 다음과 같다.
+# 
+# * 많은 사람들이 10명 이내의 친구를 갖는다.
+# * 100명의 친구를 가진 사용자도 있다.
+# 
+# 다른 정보를 어떻게 구할 수 있을까? 
+# 
+# 예를 들어, 대다수 사람들의 친구 수는 어딘가로 쏠리는 경향이 있어 보인다.
+# 이것을 전문용어로 표현하면 **중심 경향성**이다.
+# 즉, 일반적으로 사용자들의 친구 수를 대표하는 중심이 존재한다는 의미이다.
 
 # In[5]:
 
 
-addV(height_weight_age1, height_weight_age2)
+friend_counts
 
+
+# ## 중심 경향성
+
+# 중심 경향성은 데이터의 중심의 위치를 알려주며, 중심 경향성을 지정하기 위해 보통 세 종류의 평균(average)을 사용한다.
+# 
+# 1. 평균값(mean)
+# 1. 중앙값(median)
+# 1. 최빈값(mode)
+# 
+# **주의:** 평균(average)과 평균값(mean)를 혼동하지 말아야 한다. 
+
+# **전제**
+# 
+# $X$를 데이터셋이라 하고, $X$의 크기, 즉, 테이터 개수를 $n$이라 하자.
+
+# ### 평균값
+
+# 평균값(mean)은 우리가 보통 평균이라 부르는 값이며 모든 데이터의 합을 데이터 개수로 나눈다.
+# 그러면, 데이터셋 $X$의 평균값은 보통 그리스 알파벳 뮤($\mu$) 또는 $E(X)$로 표시하며 값은 아래와 같다.
+# 
+# $$
+# E(X) = \mu = \frac{\sum X}{n}
+# $$
+
+# $X=$ `num_friends` 일 때 사용자들의 평균 친구수는 7.33명이다.
 
 # In[6]:
 
 
-addV(grades1, grades2)
+from typing import List
+
+def mean(xs: List[float]) -> float:
+    return sum(xs) / len(xs)
+
+mean(num_friends)
 
 
-# **벡터 덧셈 함수 일반화**
+# ### 중앙값
+
+# 중앙값(median) 말 그대로, 데이터의 중앙위치에 자리잡은 값이다. 
+# 단, 데이터를 크기순으로 정렬했을 때 중앙위치에 있는 값이다.
+# 따라서 중앙값을 구하려면 먼저 데이터를 크기순으로 정렬해야 한다.
+# 그 다음에 중앙위치를 찾아내어 그곳에 위치한 값을 확인한다.
 # 
-# 동일한 차원의 임의의 개수의 벡터를 더하는 함수를 다음과 같이 정의할 수 있다.
+# 그런데 $n$이 짝수이면 중앙위치에 두 수 사이에 있기 때문에 두 수의 평균값을 중앙값으로 사용한다. 
+
+# <img src="https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/images/median.png" width="30%">
+# 
+# 출처: [위키백과](https://en.wikipedia.org/wiki/Median)
+
+# 친구수의 중앙값은 6명이다.
 
 # In[7]:
 
 
-def vector_sum(vectors: List[Vector]) -> Vector:
-    """
-    인자: 동일한 차원의 벡터들의 리스트
-    반환값: 각 항목의 합으로 이루어진 동일한 차원의 벡터
-    """
-    
-    assert vectors                   # 1개 이상의 벡터가 주어져야 함
+def _median_odd(xs: List[float]) -> float:
+    """길이가 홀수일 때"""
+    return sorted(xs)[len(xs) // 2]
 
-    num_elements = len(vectors[0])   # 벡터 개수
-    
-    assert all(len(v) == num_elements for v in vectors)   # 모든 벡터의 크기가 같아야 함
+def _median_even(xs: List[float]) -> float:
+    """길이가 짝수일 때"""
+    sorted_xs = sorted(xs)
+    hi_midpoint = len(xs) // 2  # e.g. length 4 => hi_midpoint 2
+    return (sorted_xs[hi_midpoint - 1] + sorted_xs[hi_midpoint]) / 2
 
-    # 동일한 위치의 항목을 모두 더한 값들로 이루어진 벡터 반환
-    return [sum(vector[i] for vector in vectors)
-            for i in range(num_elements)]
+def median(v: List[float]) -> float:
+    """중앙값 찾기"""
+    return _median_even(v) if len(v) % 2 == 0 else _median_odd(v)
+
+median(num_friends)
 
 
-# 예를 들어, 2차원 벡터 네 개를 더한 결과는 다음과 같다.
+# **평균값과 중앙값의 차이**
+# 
+# 평균값은 데이터에 민감한 반면에 중앙값은 그렇지 않다. 
+# 예를 들어, `num_friends`에서 최대 친구수를 100명에서 200명으로 바꾸면
+# 그러면 평균값은 7.33명에서 7.82명으로 올라간다.
 
 # In[8]:
 
 
-vector_sum([[1, 2], [3, 4], [5, 6], [7, 8]])
+Y = num_friends.copy()
+Y[0]=200
+mean(Y)
 
 
-# **벡터 뺄셈**
-# 
-# 차원이 같은 벡터 두 개의 덧셈은 같은 위치에 있는 항목끼기 뺀 결과로 이루어진 벡터를 생성한다.
-
-# $$
-# \begin{align*}
-# (1, 2) - (2, 1) &= (1-2, 2-1) \\
-# &= (-1, 1) \\[1ex]
-# (6, 3, 2) - (1, 7, 9) & = (6-1, 3-7, 2-9) \\
-# &= (5, -4, -7)
-# \end{align*}
-# $$
-
-# **벡터 뺄셈의 기하적 의미**
-# 
-# 벡터 $a$와 벡터 $b$의 합 $a-b$의 의미를 아래 그래프에서처럼 해석할 수 있다.
-
-# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/vector_subtraction.png" width="20%"></div>
-# 
-# 출처: [위키백과](https://en.wikipedia.org/wiki/Euclidean_vector)
-
-# **벡터 뺄셈 함수**
-# 
-# 차원이 같은 두 벡터의 항목별 차를 항목으로 같은 벡터를 반환하는 함수는 다음과 같다.
+# 하지만 중앙값은 변하지 않는다.
 
 # In[9]:
 
 
-def subtractV(v: Vector, w: Vector) -> Vector:
-    assert len(v) == len(w)   # 두 벡터의 길이가 같아야 함
+median(Y)
 
-    return [v_i - w_i for v_i, w_i in zip(v, w)]
 
+# **이상치**
+# 
+# 앞서 살펴보았듯 평균값은 특정 값에 민감하게 반응한다. 
+# `num_friends`의 경우 친구수가 평규 7.33명인데 100명의 친구가 있는 경우는 매우 특이하다고 할 수 있다.
+# 이런 데이터를 **이상치**(outlier)라 부른다. 
+# 따라서 이상치가 존재하면 평균값이 데이터에 대한 잘못된 정보를 전달할 수 있다. 
+# 
+# 예를 들어, 2013년 3월 당시, 국회의원들의 평균재산은 94억 9000만원이었다.
+# 하지만 이상치값을 보인 두 의원을 제외하면 23억 3000만원이다. 
+# 두 개의 이상치는 현대중공업의 대주주인 정몽준의 약 2조원 가량의 재산과 다른 한 명의 약 2000억원 가량의 재산이었다.
+
+# **사분위수**
+# 
+# 중앙값은 중앙위치에 있는 값이며, 세 개의 사분위수(quantile) 중에 하나이다.
+# 다룬 두 개의 사분위수는 하위 25% 위치에 있는 제1사분위수와
+# 상위 25% 위치에 있는 제3사분위수이다. 
+# 즉, 중앙값은 상위 50%에 해당하는 제2사분위수에 해당한다.
+
+# <img src="https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/images/quantile.png" width="60%">
+
+# `num_friends`의 제1사분위수와 제3사분위수는 각각 3명과 9명이다.
 
 # In[10]:
 
 
-subtractV(height_weight_age1, height_weight_age2)
+def quantile(xs: List[float], p: float) -> float:
+    """p% 위치값 차기"""
+    p_index = int(p * len(xs))
+    return sorted(xs)[p_index]
 
+print("제1사분위수:", quantile(num_friends, 0.25))
+print("제3사분위수:", quantile(num_friends, 0.75))
+
+
+# ### 최빈값
+
+# 데이터에서 가장 자주 나오는 값을 최빈값(mode)라 부르며, 
+# 경우에 따라 평균값, 중앙값 대신에 중심을 대표하는 값으로 사용된다. 
+# 
+# `num_friends`의 최빈값은 1과 6이다.
 
 # In[11]:
 
 
-subtractV(grades1, grades2)
+def mode(x: List[float]) -> List[float]:
+    """최빈값"""
+    counts = Counter(x)
+    max_count = max(counts.values())
+    return [x_i for x_i, count in counts.items()
+            if count == max_count]
 
+set(mode(num_friends))
 
-# **벡터 스칼라 곱셈**
-# 
-# 숫자 하나와 벡터의 곱셈을 스칼라 곱셈이라 부른다. 
-# 스칼라 곱셈은 벡터의 각 항목을 지정된 숫자로 곱해 새로운 벡터를 생성한다. 
-
-# $$
-# \begin{align*}
-# 3\cdot (1, 2) &= (3\cdot 1, 3\cdot 2) \\
-# &= (3, 6) \\[1ex]
-# 2\cdot (6, 3, 2) & = (2\cdot 6, 2\cdot 3, 2\cdot 2) \\
-# &= (12, 6, 4)
-# \end{align*}
-# $$
-
-# **스칼라 곱셈의 기하적 의미**
-# 
-# <table>
-# <tr>
-#     <td><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Scalar_mult_3.png" width="60%"></td>
-#     <td><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Scalar_mult_2.png" width="60%"></td>
-# </tr>
-# </table>
-# 
-# 출처: [위키백과](https://en.wikipedia.org/wiki/Euclidean_vector)
-
-# **벡터 스칼라 곱셈 함수**
-# 
-# 벡터의 각 항목에 동일한 부동소수점을 곱한 결과를 반화하는 함수는 다음과 같다.
 
 # In[12]:
 
 
-def scalar_multV(c: float, v: Vector) -> Vector:
-    return [c * v_i for v_i in v]
+counts = Counter(num_friends)
+counts
 
 
 # In[13]:
 
 
-scalar_multV(2, [1, 2, 3])
+max_count = max(counts.values())
+max_count
 
-
-# **항목별 평균 벡터**
-# 
-# 동일한 차원의 여러 벡터가 주어졌을 때 항목별 평균을 구할 수 있다.
-# 항목별 평균은 항목끼리 모두 더한 후 벡터의 개수로 나눈다.
-# 따라서 벡터의 덧셈과 스칼라 곱셈을 이용할 수 있다.
-
-# $$
-# \begin{align*}
-# \frac 1 3 \cdot \left ((1, 2) + (2, 1) + (2, 3) \right) 
-# &=  \frac 1 3 \cdot (1+2+2, 2+1+3) \\
-# &= \left (\frac 5 3, 2 \right)
-# \end{align*}
-# $$
-
-# **항목별 평균 벡터 함수**
-# 
-# 동일한 차원의 여러 벡터가 주어졌을 때 항목별 평균으로 이루어진 벡터를 반환하는 함수는 다음과 같다.
 
 # In[14]:
 
 
-def vector_mean(vectors: List[Vector]) -> Vector:
-    n = len(vectors)
-    return scalar_multV(1/n, vector_sum(vectors))
+[x_i for x_i, count in counts.items() if count == max_count]
 
 
-# **참고:** 5/3은 약 1.666666이다. 
+# ## 산포도
+
+# 산포도는 데이터가 얼마나 퍼져 있는지를 측정한다. 
+# 산포도가 0에 가까운 값이면 퍼져있지 않고 한 값 주위에 뭉쳐있다는 의미이고,
+# 0에서 멀어질 수록 퍼져있는 정도가 커진다는 의미이다. 
+# 
+# 산포도를 측정하는 기준은 보통 다음과 같다.
+# 
+# 1. 범위(range)
+# 1. 사분범위(interquntile range)
+# 1. 분산(variance)
+# 1. 표준편차(standard deviation)
+
+# ### 범위
+
+# 범위는 데이터셋의 최대값과 최소값의 차이를 가리킨다. 
+# 일반적으로 범위가 크다는 것은 데이터의 퍼짐 정도가 크다는 것을 의미한다. 
+# 
+# 그런데 범위는 최대, 최소값에만 의존한다. 
+# 예를 들어, 최대값 100, 최소값 1인 데이터는 모두 `num_friends`와 동일한 범위를 갖는다.
+# 따라서 데이터의 특성을 제대로 반영하지 못할 수가 있다.
+
+# <img src="https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/images/num_friends.png" width="60%">
+
+# `num_friends`의 범위는 99임을 다시 한 번 확인할 수 있다.
 
 # In[15]:
 
 
-vector_mean([[1, 2], [2, 1], [2, 3]])
+def data_range(xs: List[float]) -> float:
+    return max(xs) - min(xs)
+
+data_range(num_friends)
 
 
-# **벡터 내적**
-# 
-# 차원이 같은 벡터 두 개의 내적은 같은 위치에 있는 항목끼기 곱한 후 모두 더한 값이다.
-# 벡터 $u = (u_1, \cdots, u_n)$와 벡터 $v = (v_1, \cdots, v_n)$가 주어졌을 때
-# 두 벡터의 내적은 아래와 같다. 
-# 
-# $$
-# \begin{align*}
-# u \cdot v &= \sum_{i=1}^n u_i\cdot v_i \\
-# &= u_1\cdot v_1 + \cdots + u_n\cdot v_n
-# \end{align*}
-# $$
+# ### 사분범위
 
-# **벡터 내적의 기하적 의미**
+# 평균, 분산, 표준편차와 함께 범위도 이상치에 민감하다.
+# 이런 점을 해소하기 위해 제1사분위수와 제3사분위수 사이의 범위인 사분범위를 사용하기도 한다. 
 # 
-# 두 개의 벡터 $A$와 $B$가 주어졌고, 벡터 $B$의 길이가 1이라고 가정하자.
-# 그러면 내적 $A \cdot B$는 벡터 $A$가 벡터 $B$ 방향으로 사영되었을 때의 길이를 나타낸다. 
-
-# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/dot_product.png" width="20%"></div>
-# 
-# 출처: [위키백과](https://en.wikipedia.org/wiki/Dot_product)
-
-# 임의의 벡터 $B$에 대한 내적 $A \cdot B$는 다음과 같다. ($\theta$ 두 벡터가 이루는 각을 나타낸다.)
-# 
-# $$
-# A \cdot B = \vert A\vert\cdot \vert B\vert \cdot \cos\theta
-# $$
-
-# **벡터 내적 함수**
-# 
-# 동일 차원의 두 벡터의 내적을 반환하는 함수는 다음과 같다.
+# 예를 들어, `num_friends`의 사분범위는 6이다.
+# 범위가 99였던 것에 비해 매우 작은 산포도를 의미한다.
 
 # In[16]:
 
 
-def dot(v: Vector, w: Vector) -> float:
-    assert len(v) == len(w), "벡터들의 길이가 동일해야 함"""
+def interquartile_range(xs: List[float]) -> float:
+    """제3사분위수 - 제1사분위수"""
+    return quantile(xs, 0.75) - quantile(xs, 0.25)
 
-    return sum(v_i * w_i for v_i, w_i in zip(v, w))
+interquartile_range(num_friends)
 
+
+# ### 분산
+
+# 데이터 평균값과의 차이의 제곱들의 평균값이 분산이다.
+# 쉽게 말하면, 데이터가 평균값으로부터 얼마나 떨어져 있는가를 알려주는 값이며,
+# 정확한 계산식은 다음과 같으며, 
+# 데이터셋 $X$의 분산은 보통 $\textit{Var}(X)$ 기호로 나타낸다.
+
+# $$
+# \textit{Var}(X) = \frac{\sum (X - \mu)^2}{n-1}
+# $$
+
+# **주의:** 일반적으로 분모를 $n$으로 한다. 
+# 하지만 데이터 표본으로부터 전체에 대한 분산을 추정하는 경우 $(n-1)$을 사용한다.
+# 실제로 데이터분석에 다루는 데이터는 거의 표본 데이터이다.
+
+# `num_friends` 데이터의 분산값은 81.54이다.
 
 # In[17]:
 
 
-dot([1, 2, 3], [4, 5, 6]) == 32
+def dot(v: List[float], w: List[float]) -> float:
+    """Computes v_1 * w_1 + ... + v_n * w_n"""
+    assert len(v) == len(w), "List[float]s must be same length"
+
+    return sum(v_i * w_i for v_i, w_i in zip(v, w))
+
+def sum_of_squares(v: List[float]) -> float:
+    """반환값: v_1 * v_1 + ... + v_n * v_n"""
+    return dot(v, v)
+
+def de_mean(xs: List[float]) -> List[float]:
+    """평균값과의 차이 계산"""
+    x_bar = mean(xs)
+    return [x - x_bar for x in xs]
+
+def variance(xs: List[float]) -> float:
+    """분산값 계산. 단, 2개 이상의 데이터가 있어야 함."""
+    assert len(xs) >= 2, "두 개 이상의 데이터 필요"
+
+    n = len(xs)
+    deviations = de_mean(xs)
+    return sum_of_squares(deviations) / (n - 1)
+
+variance(num_friends)
 
 
-# **벡터의 크기**
+# ### 표준편차
+
+# 분간값의 단위는 원래 단위의 제곱이다.
+# 따라서 분산값 보다는 분산값의 제곱근을 보다 많이 사용한다. 
 # 
-# 벡터 $v = (v_1, \cdots, v_n)$가 주어졌을 때 각 항목별 제곱의 합은 $v$와 $v$ 자신의 내적과 같다.
+# 표본의 표준편차를 나타내는 기호는 보통 $s$이다. 
 # 
-# $$v \cdot v = v_1^2 + \cdots + v_n^2$$
+# $$s_X = \sqrt{\textit{Var}(X)}$$
 # 
-# 그런데 이 값은 정확하게 벡터 $v$의 크기 $\vert v\vert$의 제곱이다. 
-# 따라서 다음이 성립한다. 
-# 
-# $$\vert v\vert = \sqrt{v \cdot v} = \sqrt{v_1^2 + \cdots + v_n^2}$$
-# 
-# 예를 들어 벡터 $(3, 4)$의 크기는 다음과 같다.
-# 
-# $$\vert (3, 4)\vert  = \sqrt{3^2 + 4^2} = \sqrt{5^2} = 5$$
+# `num_friends`의 표준편차는 9.03이다.
 
 # In[18]:
 
 
 import math
 
-def sum_of_squares(v: Vector) -> float:
+def standard_deviation(xs: List[float]) -> float:
+    return math.sqrt(variance(xs))
 
-    return dot(v, v)
+standard_deviation(num_friends)
 
-def magnitude(v: Vector) -> float:
-    return math.sqrt(sum_of_squares(v))
 
+# **이상치의 영향**
+# 
+# 앞서 평균값이 이상치의 영향을 크게 받는다는 것을 보았다.
+# 따라서 분산과 표준편차 역시 이상치의 영향을 받는다.
+
+# ## 상관관계
+
+# 두 데이터셋이 서로 상관이 있는가를 알고자 할 때 상관관계를 파악하며, 
+# 상관관계의 정도는 보통 공분산(covariance) 또는 피어슨 상관계수(correlation)로 측정한다. 
+# 
+# 예를 들어, 사용자가 사이트에서 보내는 시간과 친구 수 사이의 연관성을 파악하고자 한다.
 
 # In[19]:
 
 
-magnitude([3, 4])
+print(num_friends)
 
-
-# **벡터 사이의 거리**
-# 
-# 벡터 $v = (v_1, \cdots, v_n)$와 벡터 $w = (w_1, \cdots, w_n)$ 사이의 거리는 
-# 벡터 $v-w$의 크기, 즉 아래처럼 정의된 $\vert v - w \vert$이다.
-# 
-# $$
-# \begin{align*}
-# \vert v - w\vert &= \sqrt{(v-w) \cdot (v-w)} \\[.5ex]
-# &= \sqrt{(v_1-w_1)^2 + \cdots + (v_n-w_n)^2}
-# \end{align*}
-# $$
-# 
-# 
-# 예를 들어, 두 벡터 $(1, 2)$와 $(2, 1)$ 사이의 거리는 다음과 같다.
-# 
-# $$\vert (1, 2) - (2, 1)\vert  = \sqrt{(-1)^2 + 1^2} = \sqrt{2}$$
 
 # In[20]:
 
 
-def squared_distance(v: Vector, w: Vector) -> float:
-    return sum_of_squares(subtractV(v, w))
+daily_minutes = [1,68.77,51.25,52.08,38.36,44.54,57.13,51.4,41.42,
+                 31.22,34.76,54.01,38.79,47.59,49.1,27.66,41.03,
+                 36.73,48.65,28.12,46.62,35.57,32.98,35,26.07,
+                 23.77,39.73,40.57,31.65,31.21,36.32,20.45,21.93,
+                 26.02,27.34,23.49,46.94,30.5,33.8,24.23,21.4,
+                 27.94,32.24,40.57,25.07,19.42,22.39,18.42,46.96,
+                 23.72,26.41,26.97,36.76,40.32,35.02,29.47,30.2,
+                 31,38.11,38.18,36.31,21.03,30.86,36.07,28.66,
+                 29.08,37.28,15.28,24.17,22.31,30.17,25.53,19.85,
+                 35.37,44.6,17.23,13.47,26.33,35.02,32.09,24.81,
+                 19.33,28.77,24.26,31.98,25.73,24.86,16.28,34.51,
+                 15.23,39.72,40.8,26.06,35.76,34.76,16.13,44.04,
+                 18.03,19.65,32.62,35.59,39.43,14.18,35.24,40.13,
+                 41.82,35.45,36.07,43.67,24.61,20.9,21.9,18.79,27.61,
+                 27.21,26.61,29.77,20.59,27.53,13.82,33.2,25,33.1,
+                 36.65,18.63,14.87,22.2,36.81,25.53,24.62,26.25,18.21,
+                 28.08,19.42,29.79,32.8,35.99,28.32,27.79,35.88,29.06,
+                 36.28,14.1,36.63,37.49,26.9,18.58,38.48,24.48,18.95,
+                 33.55,14.24,29.04,32.51,25.63,22.22,19,32.73,15.16,
+                 13.9,27.2,32.01,29.27,33,13.74,20.42,27.32,18.23,35.35,
+                 28.48,9.08,24.62,20.12,35.26,19.92,31.02,16.49,12.16,
+                 30.7,31.22,34.65,13.13,27.51,33.2,31.57,14.1,33.42,
+                 17.44,10.12,24.42,9.82,23.39,30.93,15.03,21.67,31.09,
+                 33.29,22.61,26.89,23.48,8.38,27.81,32.35,23.84]
 
-# 버전 1
-def distance(v: Vector, w: Vector) -> float:
-    return math.sqrt(squared_distance(v, w))
 
-# 버전 2
-def distance(v: Vector, w: Vector) -> float:
-    return magnitude(subtractV(v, w))
+# `num_friends`와 `daily_minutes`는 각각 
+# 사용자별 친구수와 사이트에서 머무르는 시간을 순서에 맞게 데이터로 담고 있다.
 
+# ### 공분산
 
-# **참고:** $\sqrt{2} = 1.41421356237...$
+# 두 데이터셋의 공분산은 각 데이터넷의 변수가 각각의 평균값으로부터 떨어져 있는 정도를 계산하며,
+# 수식은 다음과 같다. 
+# 두 데이터셋 $X$와 $Y$를 크기를 $n$이라 하자.
+# 그러면, $X$와 $Y$의 공분산 $Cov(X, Y)$는 다음과 같다.
+# 
+# $$
+# Cov(X,Y) = \frac{\sum (X- E(X))(Y- E(Y))}{n-1}
+# $$
+# 
+# 친구수와 사용시간 사이의 공분산은 22.43이다.
 
 # In[21]:
 
 
-distance([1,2], [2,1])
+def covariance(xs: List[float], ys: List[float]) -> float:
+    assert len(xs) == len(ys), "xs and ys must have same number of elements"
+
+    return dot(de_mean(xs), de_mean(ys)) / (len(xs) - 1)
+
+covariance(num_friends, daily_minutes)
 
 
-# ## 행렬
-
-# 행렬(matrix)은 보통 숫자들을 직사각형 형태로 배열한 것이다. 
+# **공분산의 특징과 한계**
 # 
-# 예를 들어, $1, 2, 3, 4, 5, 6$ 여섯 개의 항목을 가진 
-# 행렬의 모양(shape)은 네 종류가 있다. 
-# 이유는 6을 두 개의 양의 정수의 곱셈으로 표현하는 방법이 네 가지이기 때문이다. 
+# 어떤 사용자에 대해 친구수와 사용시간 모두 평균보다 작거나 모두 크면 공분산에 양수의 값이 더해진다.
+# 반면에 친구수가 평균보다 작지만, 사용시간은 평균보다 크면 음수의 값이 공분산에 더해진다. 
+# 따라서 친구수와 사용시간이 평균을 기준으로 동일한 방향(크거나 작다 기준)이냐 아니냐가 공분산 값에 영향을 미친다.
 # 
-# $$ 6 = 1\times6 = 2\times 3 = 3 \times 2 = 6 \times 1$$
+# 그런데 친구수는 그대로인데 사용시간만 늘면 공분산은 증가한다. 
+# 하지만 그렇다고 해서 친구수와 사용시간의 연관성이 어떻게 변한 것인지를 판단하기는 어렵다.
+# 즉, 공분산이 크다, 작다의 기준을 잡기가 어렵다. 
 
-# * $1\times 6$ 행렬: 한 개의 행과 여섯 개의 열
+# ### 피어슨 상관계수
+
+# 공분산의 한계를 해결하기 위해 피어슨 상관계수가 제시되었다. 
+# 피어슨 상관계수는 공분산을 각 데이터셋의 표준편차의 곱으로 나누어
+# 두 데이터셋 사이의 **선형** 상관관계를 수치로 계산한다.
 # 
-# \begin{bmatrix}
-#     1 & 2 & 3 & 4 & 5 & 6
-# \end{bmatrix}
+# 두 데이터셋 $X, Y$의 피어슨 상관계수 계산은 다음과 같다.
 
-# * $2 \times 3$ 행렬: 두 개의 행과 세 개의 열
+# $$
+# Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
+# $$
+
+# **피어슨 상관계수의 특징**
 # 
-# \begin{bmatrix}
-#     1 & 2 & 3\\
-#     4 & 5 & 6
-# \end{bmatrix}
+# * 피어슨 상관계수는 -1과 1 사이의 실수이다.
+# * 1에 가까울 수록 양의 선형관계가 성립한다.
+# * -1에 가까울 수록 음의 선형관계가 성립한다.
+# * 0에 가깔울 수록 선형관계가 약해진다.
 
-# * $3 \times 2$ 행렬: 세 개의 행과 두 개의 열
+# <img src="https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/images/Correlation.png" width="70%">
 # 
-# \begin{bmatrix}
-#     1 & 2 \\
-#     3 & 4 \\
-#     5 & 6
-# \end{bmatrix}
+# 출처: [위키백과](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)
 
-# * $6 \times 1$ 행렬: 여섯 개의 행과 한 개의 열
-# 
-# \begin{bmatrix}
-#     1 \\
-#     2 \\
-#     3 \\
-#     4 \\
-#     5 \\
-#     6
-# \end{bmatrix}
-
-# **행렬 자료형**
-
-# 행렬을 리스트의 리스트, 즉 2중 리스트로 구현한다.
+# 친구수와 사용시간 사이의 상관관계는 0.25이며, 
+# 이는 두 데이터셋 사이의 상관 정도가 크지 않음을 의미한다. 
 
 # In[22]:
 
 
-Matrix = List[List[float]]
+def correlation(xs: List[float], ys: List[float]) -> float:
+    """공분산 계산"""
+    stdev_x = standard_deviation(xs)
+    stdev_y = standard_deviation(ys)
+    if stdev_x > 0 and stdev_y > 0:
+        return covariance(xs, ys) / stdev_x / stdev_y
+    else:
+        return 0    # if no variation, correlation is zero
 
+correlation(num_friends, daily_minutes)
 
-# 예를 들어, 아래 `A`와 `B`는 각각 (2, 3), (3, 2) 모양의 행렬을 나타낸다.
 
 # In[23]:
 
 
-A = [[1, 2, 3],  # 2 x 3 행렬
-     [4, 5, 6]]
+plt.scatter(num_friends, daily_minutes)
 
-B = [[1, 2],     # 3 x 2 행렬
-     [3, 4],
-     [5, 6]]
+plt.title("Correlation with an Outlier")
+plt.xlabel("# of friends")
+plt.ylabel("minutes per day")
+plt.show()
 
 
-# **행렬의 모양(shape)**
+# **이상치와 상관관계**
 # 
-# $n$ 개의 행과 $k$ 개의 열로 구성된 행렬을 $n \times k$ 행렬이라 부르며,
-# $(n,k)$를 해당 행렬의 모양(shape)라 부른다.
-# 아래 함수 `shape()`는 주어진 행렬의 모양을 튜플로 반환한다.
+# 이상치가 상관관계에도 영향을 준다. 
+# 
+# 위 예제에서 100명의 친구를 가진 사용자의 사이트 사용시간이 1분이며,
+# 이 사용자의 데이터는 확실히 이상치라고 할 수 있다. 
+# 이제 이 사용자의 데이터를 제거하고 상관관계를 계산하면, 이번에는 상관계수가 0.57이 된다.
+# 두 데이터셋의 상관정도가 두 배이상 커졌다.
 
 # In[24]:
 
 
-from typing import Tuple
+outlier = num_friends.index(100)    # 이상치의 인덱스
 
-def shape(A: Matrix) -> Tuple[int, int]:
-    num_rows = len(A)
-    num_cols = len(A[0]) if A else 0   # number of elements in first row
-    return num_rows, num_cols
+num_friends_good = [x
+                    for i, x in enumerate(num_friends)
+                    if i != outlier]
 
+daily_minutes_good = [x
+                      for i, x in enumerate(daily_minutes)
+                      if i != outlier]
+
+correlation(num_friends_good, daily_minutes_good)
+
+
+# 이상치의 존재여부에 따른 두 데이터셋의 그래프도 모양이 달라지며,
+# 이상치를 제거한 후의 그래프의 선형 상관관계가 보다 명확하게 보여진다.
+
+# **이상치 제거 후**
 
 # In[25]:
 
 
-shape(A)
+plt.scatter(num_friends_good, daily_minutes_good)
 
+plt.title("Correlation after Removing the Outlier")
+plt.xlabel("# of friends")
+plt.ylabel("minutes per day")
+plt.show()
+
+
+# ## 심슨의 역설
+
+# 상관계수를 계산할 때 소위 혼재변수(confounding variable)를 고려하지 않으면 잘못된 결과를 얻는다.
+# 
+# 예를 들어, 
+# 모든 데이터 과학자를 서부와 동부로 구분할 수 있다고 가정하자.
+# 그리고 각 데이터 과학자들의 친구수를 확인해 보았다.
+# 
+# | 지역 | 데이터 과학자 수 | 평균 친구 수|
+# | --- | -------------| -------- |
+# | 서부 | 101          | 8.2명     |
+# | 동부 | 103          | 6.5명     |
+
+# 위 표에 의하면 서부에 사는 데이터 과학자들이 보다 사교적이다.
+# 그런데 이번엔 박사학위 소유여부를 포함하여 데이터를 조사하였다.
+# 
+# | 지역 | 학위 | 데이터 과학자 수 | 평균 친구 수|
+# | --- | --- | -------------| -------- |
+# | 서부 | 박사 | 35          | 3.1명     |
+# | 동부 | 박사 | 70          | 3.2명     |
+# | 서부 | 기타 | 66          | 10.9명     |
+# | 동부 | 기타 | 33          | 13.4명     |
+# 
+
+# 그랬더니 박사학위가 있거나 없거나 동부 지역의 데이터 과학자가 평균적으로 보다 많은 친구관계를 맺고 있다.
+# 앞서 박사학위 여부를 따지지 않을 때와 서로 모순되는 결과를 보여준다.
+# 왜 그럴까?
+# 
+# 정답은 두 데이터셋 사이의 상관계수를 측정할 때 주어진 데이터셋 이외의 
+# 다른 조건들은 모두 동일하다고 전제하는 데에 있다.
+# 그런데 위 데이터 과학자들의 경우 박사학위 소지 여부가 평균 친구 수에 영향을 준다. 
+# 
+# 따라서 단순히 서부와 동부로 구분해서 친구 수를 비교하여 상관계수를 구하면 
+# 다른 조건이 동일해야 한다는 전제조건을 어긴 조건에서 결과를 유도한 것이다.
+
+# 박사학위 소지 여부를 조건으로 첨가하면 동부 지역의 데이터 과학자가 보다 사교적으로 나오지만
+# 그렇지 않은 경우에는 반대의 결과가 나오는 이유는 
+# 두 가지이다.
+# 
+# 1. 박사들의 친구 수가 상대적으로 적다.
+# 1. 동부 지역에 박사 데이터 과학자가 보다 많이 산다.
+# 
+# 따라서 서부 지역의 경우 박사학위가 없는 사람들이 보다 많고 그들이 보다 많은 친구를 가지고 있기에
+# 전체 데이터 과학자들의 평균 친구수가 동부 보다 높아게 된다.
+
+# ## 상관계수 관련 추가 주의사항
+
+# 상관관계가 0 또는 1에 아주 가깝다고 해서 반드시 어떤 관계도 없다거나 
+# 매우 밀접합 선형관계이다라고 섣부르게 결론 내리면 위험하다. 
+
+# **예제 1**
+# 
+# 다음 두 개의 데이터셋 x와 y를 살펴보자. 
+# 
+# <table>
+# <tr>
+#     <td>x</td>
+#     <td>-2</td>
+#     <td>-1</td>
+#     <td>0</td>
+#     <td>1</td>
+#     <td>2</td>
+# </tr>
+# <tr>
+#     <td>y</td>
+#     <td>2</td>
+#     <td>1</td>
+#     <td>0</td>
+#     <td>1</td>
+#     <td>2</td>
+# </tr>
+# </table>
+
+# x와 y의 상관계수는 0이다. 
 
 # In[26]:
 
 
-shape(B)
+x = [-2, -1, 0, 1, 2]
+y = [ 2,  1, 0, 1, 2]
+
+correlation(x,y)
 
 
-# **행벡터와 열벡터**
+# 하지만 y는 x의 항목의 절댓값을 항목으로 갖는다. 
+# 즉, 이런 데이터는 상관계수로 두 데이터셋의 연관성을 측정할 수 없다.
+
+# **예제 2**
 # 
-# 아래 두 함수는 각각 지정된 행와 지정된 열의 항목들로 구성된 행벡터와 열벡터를 반환한다.
+# 다음 두 개의 데이터셋 x와 y를 살펴보자. 
+# 
+# <table>
+# <tr>
+#     <td>x</td>
+#     <td>-2</td>
+#     <td>-1</td>
+#     <td>0</td>
+#     <td>1</td>
+#     <td>2</td>
+# </tr>
+# <tr>
+#     <td>y</td>
+#     <td>99.98</td>
+#     <td>99.99</td>
+#     <td>100</td>
+#     <td>100.01</td>
+#     <td>100.02</td>
+# </tr>
+# </table>
+
+# x와 y의 상관계수는 1이다. 
 
 # In[27]:
 
 
-# 행벡터 계산
-def get_row(A: Matrix, i: int) -> Vector:
-    return A[i]             
+x = [-2, -1, 0, 1, 2]
+y = [99.98, 99.99, 100, 100.01, 100.02]
 
-# 열벡터 계산
-def get_column(A: Matrix, j: int) -> Vector:
-    return [A_i[j] for A_i in A]
+correlation(x,y)
 
 
-# 행렬 `A`의 0번 행은 다음과 같다.
+# 하지만 두 데이터셋 사이의 선형관계가 정말로 완벽하게 선형인지에 대해서는 장담할 수 없다.
 
-# In[28]:
+# ## 상관관계와 인과관계
 
-
-get_row(A, 0)
-
-
-# 행렬 `B`의 1번 열은 다음과 같다.
-
-# In[29]:
-
-
-get_column(B, 1)
-
-
-# **행렬 생성 함수**
+# 두 데이터셋 사이에 상관관계가 있다고 해서 한 쪽이 다른 쪽에 영향을 주는 인과관계가 있다고 주장할 수 없다. 
+# 왜냐하면 두 데이터셋에 영향을 주는 다른 외부 요소가 존재할 수 있기 때문이다.
 # 
-# 아래 함수는 지정된 모양의 행렬을 생성한다.
-# 셋째 인자는 지정된 위치의 항목을 계산하는 함수이다. 
+# 예를 들어, 친구 수를 담은 `num_friends`와 사이트 사용시간을 담은 `daily_minutes`의 관계를 살펴보자.
+# 그러면 최소 세 가지 시나리오가 가능하다.
 # 
-# * 인자
-#     * `num_rows`: 행의 수
-#     * `num_rows`: 열의 수
-#     * `entry_fn`: i, j가 주어지면 i행, j열에 위치한 값 계산
-# * 반환값: 지정된 방식으로 계산된 (i, j) 모양의 행렬
-
-# In[30]:
-
-
-from typing import Callable
-
-def make_matrix(num_rows: int,
-                num_cols: int,
-                entry_fn: Callable[[int, int], float]) -> Matrix:
-    return [ [entry_fn(i, j) for j in range(num_cols)] for i in range(num_rows)]   
-
-
-# **영행렬**
+# 1. 사이트에서 많은 시간을 보낼 수록 많은 친구를 사귄다.
+# 1. 많은 친구가 있으니까 사이트에서 시간을 보다 많이 보낸다.
+# 1. 사이트에서 많은 정보를 얻을 수 있으니까 사용시간이 길어지고, 그러다 보니까 친구가 늘어난다.
 # 
-# 영행렬(zero matrix)이란 행렬의 모든 원소의 값이 0인 행렬을 말한다.
-# 예를 들어 아래 행렬은 (3, 2) 모양의 영행렬이다.
-# 
-# $$
-# \begin{bmatrix}
-#     0 & 0 \\
-#     0 & 0 \\
-#     0 & 0
-# \end{bmatrix}
-# $$
-
-# 지정된 모양의 영행렬을 생성하는 함수는 다음과 같다.
-
-# In[31]:
-
-
-def zero_matrix(n: int, m:int) -> Matrix:
-    return make_matrix(n, m, lambda i, j: 0)
-
-
-# In[32]:
-
-
-zero_matrix(5,7)
-
-
-# **단위행렬**
-# 
-# 단위행렬(identity matrix)은 정사각형 모양의 행렬 중에서 대각선 상에 위치한 항목은 1이고
-# 나머지는 0인 행렬을 말한다. 
-# 예를 들어 아래 행렬은 (5, 5) 모양의 단위행렬이다.
-# 
-# \begin{bmatrix}
-#     1&0&0&0&0 \\
-#     0&1&0&0&0 \\
-#     0&0&1&0&0 \\
-#     0&0&0&1&0 \\
-#     0&0&0&0&1
-# \end{bmatrix}
-# 
-# 단위행렬은 행과 열의 개수가 동일한 정방행렬이며,
-# 지정된 모양의 단위행렬을 생성하는 함수는 다음과 같다.
-
-# In[33]:
-
-
-def identity_matrix(n: int) -> Matrix:
-    return make_matrix(n, n, lambda i, j: 1 if i == j else 0)
-
-
-# In[34]:
-
-
-identity_matrix(5)
-
-
-# **행렬 덧셈과 뺄셈**
-# 
-# 모양이 같은 두 행렬의 덧셈/뺄셈은 항목별로 더한/뺀 결과로 이루어진 행렬이다. 
-# 즉, 벡터의 덧셈/뺄셈과 동일한 방식이다.
-# 예를 들어, $2 \times 3$ 행렬의 덧셈/뺄셈은 다음과 같다.
-
-# $$
-# \begin{align*}
-# \begin{bmatrix}1&3&7\\1&0&0\end{bmatrix} 
-# + \begin{bmatrix}0&0&5\\7&5&0\end{bmatrix}
-# &= \begin{bmatrix}1+0&3+0&7+5\\1+7&0+5&0+0\end{bmatrix} \\[.5ex]
-# &= \begin{bmatrix}1&3&12\\8&5&0\end{bmatrix}\\[2ex]
-# \begin{bmatrix}1&3&7\\1&0&0\end{bmatrix} 
-# - \begin{bmatrix}0&0&5\\7&5&0\end{bmatrix}
-# &= \begin{bmatrix}1-0&3-0&7-5\\1-7&0-5&0-0\end{bmatrix} \\[.5ex]
-# &= \begin{bmatrix}1&3&2\\-6&-5&0\end{bmatrix}
-# \end{align*}
-# $$
-
-# 행렬의 덧셈과 뺄셈을 계산하는 함수는 다음과 같다.
-
-# In[35]:
-
-
-def addM(A: Matrix, B: Matrix) -> Matrix:
-    assert shape(A) == shape(B)
-    
-    m, n = shape(A)
-    
-    return make_matrix(m, n, lambda i, j: A[i][j] + B[i][j])
-
-def subtractM(A: Matrix, B: Matrix) -> Matrix:
-    assert shape(A) == shape(B)
-    
-    m, n = shape(A)
-    
-    return make_matrix(m, n, lambda i, j: A[i][j] - B[i][j])
-
-
-# In[36]:
-
-
-C = [[1, 3, 7],
-     [1, 0, 0]]
-
-D = [[0, 0, 5], 
-     [7, 5, 0]]
-
-
-# In[37]:
-
-
-addM(C, D)
-
-
-# In[38]:
-
-
-subtractM(C, D)
-
-
-# **행렬의 스칼라 곱셈**
-# 
-# 숫자 하나와 행렬의 곱셈을 행렬 스칼라 곱셈이라 부른다. 
-# 스칼라 곱셈은 행렬의 각 항목을 지정된 숫자로 곱해 새로운 행렬을 생성한다.
-# 즉, 벡터의 스칼라 곱셈과 동일한 방식이다. 
-# 
-# 예를 들어, (2, 3) 모양의 행렬의 스칼라 곱셈은 다음과 같다.
-# 
-# $$
-# \begin{align*}
-# 2\cdot 
-# \begin{bmatrix}1&8&-3\\4&-2&5\end{bmatrix}
-# &= \begin{bmatrix}2\cdot 1&2\cdot 8&2\cdot -3\\2\cdot 4&2\cdot -2&2\cdot 5\end{bmatrix} \\[.5ex]
-# &= \begin{bmatrix}2&16&-6\\8&-4&10\end{bmatrix}
-# \end{align*}
-# $$
-
-# **행렬 곱셈**
-# 
-# $m \times n$ 행렬 $A$와 $n \times p$ 행렬 $B$의 곱은 $m \times p$ 행렬이며, 
-# 각 $(i, j)$번째 항목은 다음과 같이 정의된다.
-
-# $$
-# \begin{align*}
-# (A B)_{ij}
-# &= \sum _{k=0}^{n-1} A_{ik} \cdot B_{kj} \\
-# &= A_{i0} \cdot B_{0j} + A_{i2} \cdot B_{2j} + \cdots + A_{i(n-1)} \cdot B_{(n-1)j}
-# \end{align*}
-# $$
-
-# 그림으로 나타내면 다음과 같다.
-
-# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Matrix_mult_diagram.png" width="30%"></div>
-# 
-# 출처: [위키백과](https://en.wikipedia.org/wiki/Dot_product)
-
-# 즉, 좌측 행렬 열의 수 $n$과 우측 행렬 행의 수 $n$이 같은 경우에만 곱셈이 가능하다.
-# 예를 들어, $2 \times 3$ 행렬과 $3 \times 2$ 행렬의 곱셈은 다음과 같다.
-# 
-# $$
-# \begin{align*}
-# \begin{bmatrix}
-#     1&0&2\\-1&3&1
-# \end{bmatrix}
-# \begin{bmatrix}
-#     3&1\\2&1\\1&0
-# \end{bmatrix}
-# &=
-# \begin{bmatrix}
-#     (1\cdot 3+0\cdot 2+2\cdot 1)&(1\cdot 1+0\cdot 1+2\cdot 0)\\(-1\cdot 3+3\cdot 2+1\cdot 1)&(-1\cdot 1+3\cdot 1+1\cdot 0)
-# \end{bmatrix} \\[.5ex]
-# &= 
-# \begin{bmatrix}
-#     5&1\\4&2
-# \end{bmatrix}
-# \end{align*}
-# $$
-
-# **행렬 곱셈과 벡터 내적**
-# 
-# 행렬 $A B$의 $(i, j)$번째 항목 $(A B)_{ij}$는
-# 벡터 내적과 깊이 연관되어 있다.
-# 
-# 먼저, $m \times n$ 행렬 $A$와 $n \times p$ 행렬 $B$의 곱 $A \times B$의
-# $(i, j)$ 번째 항목은 다음과 같다.
-
-# $$
-# \begin{align*}
-# (A B)_{ij}
-# &= \sum _{k=0}^{n-1} A_{ik} \cdot B_{kj} \\
-# &= A_{i0} \cdot B_{0j} + A_{i2} \cdot B_{2j} + \cdots + A_{i(n-1)} \cdot B_{(n-1)j}
-# \end{align*}
-# $$
-
-# 반면에 행렬 $A$의 $i$ 행벡터를 
-# 
-# $$A^0_i = (A_{i0},\dots, A_{i(n-1)}),$$
-# 
-# 행렬 $B$의 $j$ 열벡터를 
-# 
-# $$B^1_j = (B_{0j},\dots, B_{(n-1)j})$$
-# 
-# 라 할 때, 다음이 성립한다.
-# 
-# $$
-# A^0_i \cdot B^1_j
-# = A_{i0} \cdot B_{0j} + A_{i2} \cdot B_{2j} + \cdots + A_{i(n-1)} \cdot B_{(n-1)j}
-# $$
-# 
-# 즉, $(A B)_{ij}$는 $A$의 $i$ 행벡터와 $B$의 $j$ 열벡터의 **내적**으로 정의된다.
-
-# 예를 들어 $2 \times 3$ 행렬과 $3 \times 2$ 행렬의 곱셈을 다시 살펴보자.
-
-# $$
-# \begin{align*}
-# \begin{bmatrix}
-#     1&0&2\\-1&3&1
-# \end{bmatrix}
-# \cdot 
-# \begin{bmatrix}
-#     3&1\\2&1\\1&0
-# \end{bmatrix}
-# &=
-# \begin{bmatrix}
-#     (1\cdot 3+0\cdot 2+2\cdot 1)&(1\cdot 1+0\cdot 1+2\cdot 0)\\(-1\cdot 3+3\cdot 2+1\cdot 1)&(-1\cdot 1+3\cdot 1+1\cdot 0)
-# \end{bmatrix} \\[.5ex]
-# &= 
-# \begin{bmatrix}
-#     5&1\\4&2
-# \end{bmatrix}
-# \end{align*}
-# $$
-
-# 위 계산을 벡터 내적으로 표현해보자.
-# 먼저 두 행렬 $A$와 $B$를 지정한다.
-
-# $$
-# A = \begin{bmatrix}
-#     1&0&2\\-1&3&1
-# \end{bmatrix} \text{,}
-# \qquad
-# B = \begin{bmatrix}
-#     3&1\\2&1\\1&0
-# \end{bmatrix}
-# $$
-
-# 그러면 
-# 
-# $$(A\cdot B)_{11} = -1\cdot 1+3\cdot 1+1\cdot 0 = 2$$
-# 
-# 이고, 이것은 아래 결과와 동일하다.
-
-# $$
-# \begin{align*}
-# A^0_1 \cdot B^1_1
-# &= 
-# \begin{bmatrix}
-#     -1&3&1
-# \end{bmatrix}
-# \cdot
-# \begin{bmatrix}
-#     1 & 1 & 0
-# \end{bmatrix} \\[.5ex]
-# &=
-# -1\cdot 1+3\cdot 1+1\cdot 0 \\
-# &=
-# 2
-# \end{align*}
-# $$
-
-# **항등원**
-# 
-# 영행렬은 행렬 덧셈의 항등원이며, 단위행렬은 행렬 곱셈의 항등원이다.
-
-# $$
-# \begin{align*}
-# \begin{bmatrix}
-#     3&1 \\
-#     2&1 \\
-#     1&0
-# \end{bmatrix}
-# +
-# \begin{bmatrix}
-#     0&0 \\ 
-#     0&0 \\
-#     0&0
-# \end{bmatrix}
-# &= 
-# \begin{bmatrix}
-#     (3+0)&(1+0)\\
-#     (2+0)&(1+0)\\
-#     (1+0)&(0+0)
-# \end{bmatrix} \\[.5ex]
-# &= 
-# \begin{bmatrix}
-#     3&1\\
-#     2&1\\
-#     1&0
-# \end{bmatrix}\\[2ex]
-# \begin{bmatrix}
-#     3&1 \\
-#     2&1 \\
-#     1&0
-# \end{bmatrix}
-# \begin{bmatrix}
-#     1&0 \\ 
-#     0&1
-# \end{bmatrix}
-# &=
-# \begin{bmatrix}
-#     (3\cdot 1+1\cdot 0)&(3\cdot 0+1\cdot 1) \\
-#     (2\cdot 1+1\cdot 0)&(2\cdot 0+1\cdot 1) \\
-#     (1\cdot 1+0\cdot 0)&(1\cdot 0+0\cdot 1) \\
-# \end{bmatrix} \\[.5ex]
-# &= 
-# \begin{bmatrix}
-#     3&1\\
-#     2&1\\
-#     1&0
-# \end{bmatrix}
-# \end{align*}
-# $$
-
-# **전치행렬**
-
-# 행렬의 **전치**란 행과 열을 바꾸는 것으로, 행렬 $A$의 전치는 $A^T$로 나타낸다. 
-# 즉, $A$가 $m \times n$ 행렬이면 $A^T$는 $n \times m$ 행렬이며,
-# 그리고 $A^T$의 $i$행의 $j$열번째 값은 $A$의 $j$행의 $i$열번째 값이다. 
-# 즉,
-# 
-# $$
-# A ^{T}_{ij} = A_{ji}
-# $$
-
-# 예를 들어, $2\times 3$ 행렬의 전치는 $3 \times 2$ 행렬이 되며 다음과 같이 작동한다.
-# 
-# $$
-# \begin{bmatrix}
-#     9&8&7\\
-#     -1&3&4
-# \end{bmatrix}^{T}
-# =
-# \begin{bmatrix}
-#     9&-1\\
-#     8&3\\
-#     7&4
-# \end{bmatrix}
-# $$
-
-# **전치행렬의 성질**
-
-# $a$를 스칼라, $A, B$를 크기가 같은 행렬이라 하자. 이때 다음이 성립한다.
-# 
-# * $(A^T)^T = A$
-# * $(A + B)^T = A^T + B^T$
-# * $(A - B)^T = A^T - B^T$
-# * $(a\cdot A)^T = a\cdot A^T$
-# * $(A B)^T = B^T A^T$
+# 이 중에 어떤 것이 맞는지는 다른 방법으로 확인해봐야 한다. 
+# 예를 들어, 사용자 집단을 임의로 두 모둠으로 나누고, 한쪽 모둠에만 특정 친구들의 글만 보여주는 것과 같이,
+# 한 쪽 모둠에만 영향을 주는 실험을 하고 그 결과를 비교한다.
+# 이런 식으로 해서 상관관계의 진짜 근거를 얻어내도록 해야 한다.
 
 # ## 연습문제
 
-# 참고: [(실습) 선형대수 기초 밑바닥부터](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-linear_algebra_basics.ipynb)
+# 참고: [(실습) 통계 기초 밑바닥부터](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-statistics_basics.ipynb)
