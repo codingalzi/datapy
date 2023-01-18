@@ -84,7 +84,9 @@ grades1 = [95, 80, 75, 62]
 grades2 = [85, 82, 79, 82]
 
 
-# ### 벡터 덧셈
+# ### 벡터 연산
+
+# **벡터 덧셈**
 
 # 차원이 같은 벡터 두 개를 더할 수 있다.
 # 두 벡터의 덧셈은 같은 위치에 있는 항목끼기 더한 결과로 이루어진 벡터를 생성한다.
@@ -161,7 +163,7 @@ def vector_sum(vectors):
 vector_sum([[1, 2], [3, 4], [5, 6], [7, 8]])
 
 
-# ### 벡터 뺄셈
+# **벡터 뺄셈**
 
 # 차원이 같은 벡터에 대해 뺄셈을 정의할 수 있다.
 # 차원이 같은 벡터 두 개의 덧셈은 같은 위치에 있는 항목끼기 뺀 결과로 이루어진 벡터를 생성한다.
@@ -204,7 +206,7 @@ subtractV(height_weight_age1, height_weight_age2)
 subtractV(grades1, grades2)
 
 
-# ### 벡터 스칼라 곱셈
+# **벡터 스칼라 곱셈**
 
 # 하나 수와 하나의 벡터의 곱셈을 스칼라 곱셈이라 부른다. 
 # 스칼라 곱셈은 벡터의 각 항목을 지정된 수로 곱한다.
@@ -233,7 +235,7 @@ def scalar_multV(c, v):
 scalar_multV(2, [1, 2, 3])
 
 
-# ### 항목별 평균 벡터
+# **항목별 평균 벡터**
 
 # 동일한 차원의 벡터가 여러 개 주어졌을 때 항목별 평균을 구할 수 있다.
 # 항목별 평균은 항목끼리 모두 더한 후 벡터의 개수로 나눈다.
@@ -266,7 +268,7 @@ def vector_mean(vectors):
 vector_mean([[3, 2], [2, 5], [7, 5], [6, 3]])
 
 
-# ### 벡터 내적
+# ### 벡터 내적과 크기
 
 # 차원이 같은 벡터 두 개의 내적은 같은 위치에 있는 항목끼기 곱한 후 모두 더한 값이다.
 # 벡터 $u = (u_1, \cdots, u_n)$와 벡터 $v = (v_1, \cdots, v_n)$가 주어졌을 때
@@ -297,7 +299,7 @@ def dot(v, w):
 dot([1, 2, 3], [4, 5, 6])
 
 
-# ### 벡터의 크기
+# **벡터의 크기**
 
 # 벡터 $v = (v_1, \cdots, v_n)$가 주어졌을 때 
 # 벡터 $v$의 크기 $\| v\|$는 $v$ 자신과의 내적의 제곱근이다.
@@ -331,117 +333,93 @@ def magnitude(v):
 magnitude([3, 4])
 
 
-# ### 벡터 사이의 거리
+# ## 행렬
 
-# 벡터 $v = (v_1, \cdots, v_n)$와 벡터 $w = (w_1, \cdots, w_n)$ 사이의 거리는 
-# 벡터 $v-w$의 크기로 정의된다.
-# 
-# $$
-# \| v - w\| 
-# = \sqrt{(v-w) \cdot (v-w)}
-# = \sqrt{(v_1-w_1)^2 + \cdots + (v_n-w_n)^2}
-# $$
-
-# **예제**
-# 
-# 두 벡터 $(1, 2)$와 $(2, 1)$ 사이의 거리는 다음과 같다.
-# 
-# $$\| (1, 2) - (2, 1)\|  = \sqrt{(-1)^2 + 1^2} = \sqrt{2}$$
-
-# 두 벡터 사이의 거리를 계산하는 함수는 다음과 같다.
+# **행렬**<font size='2'>matrix</font>은 숫자를 행과 열로 구성된 직사각형 모양으로 나열한 것이다. 
+# $n$ 개의 행과 $k$ 개의 열로 구성된 행렬을 $n \times k$ 행렬이라 부른다.
+# 대부분의 프로그래밍 언어에서 행렬을 리스트의 리스트, 즉 2중 리스트로 구현한다.
+# 예를 들어 아래 코드에서 `A`는 $2 \times 3$ 행렬이고, `B`는 $3 \times 2$ 행렬이다.
 
 # In[22]:
 
 
-def distance(v, w):
-    return magnitude(subtractV(v, w))
+# 2x3 행렬
 
-
-# In[23]:
-
-
-distance([1,2], [2,1])
-
-
-# ## 행렬
-
-# 행렬(matrix)은 보통 숫자들을 직사각형 형태로 배열한 것이다. 
-# 
-# 예를 들어, $1, 2, 3, 4, 5, 6$ 여섯 개의 항목을 가진 
-# 행렬의 모양(shape)은 네 종류가 있다. 
-# 이유는 6을 두 개의 양의 정수의 곱셈으로 표현하는 방법이 네 가지이기 때문이다. 
-# 
-# $$ 6 = 1\times6 = 2\times 3 = 3 \times 2 = 6 \times 1$$
-
-# * $1\times 6$ 행렬: 한 개의 행과 여섯 개의 열
-# 
-# \begin{bmatrix}
-#     1 & 2 & 3 & 4 & 5 & 6
-# \end{bmatrix}
-
-# * $2 \times 3$ 행렬: 두 개의 행과 세 개의 열
-# 
-# \begin{bmatrix}
-#     1 & 2 & 3\\
-#     4 & 5 & 6
-# \end{bmatrix}
-
-# * $3 \times 2$ 행렬: 세 개의 행과 두 개의 열
-# 
-# \begin{bmatrix}
-#     1 & 2 \\
-#     3 & 4 \\
-#     5 & 6
-# \end{bmatrix}
-
-# * $6 \times 1$ 행렬: 여섯 개의 행과 한 개의 열
-# 
-# \begin{bmatrix}
-#     1 \\
-#     2 \\
-#     3 \\
-#     4 \\
-#     5 \\
-#     6
-# \end{bmatrix}
-
-# **행렬 자료형**
-
-# 행렬을 리스트의 리스트, 즉 2중 리스트로 구현한다.
-
-# In[24]:
-
-
-Matrix = List[List[float]]
-
-
-# 예를 들어, 아래 `A`와 `B`는 각각 (2, 3), (3, 2) 모양의 행렬을 나타낸다.
-
-# In[23]:
-
-
-A = [[1, 2, 3],  # 2 x 3 행렬
+A = [[1, 2, 3],
      [4, 5, 6]]
 
-B = [[1, 2],     # 3 x 2 행렬
+
+# In[23]:
+
+
+# 3x2 행렬
+
+B = [[1, 2],
      [3, 4],
      [5, 6]]
 
 
-# **행렬의 모양(shape)**
+# **행렬의 모양**
+
+# $n \times k$ 행렬의 **모양**<font size='2'>shape</font>을 $(n,k)$로 표기한다.
+# 예를 들어, $1, 2, 3, 4, 5, 6$ 여섯 개의 항목을 가진 행렬의 모양은 네 종류인데, 
+# 이유는 6을 두 개의 양의 정수의 곱셈으로 표현하는 방법이 네 가지이기 때문이다. 
+
+# * (1, 6) 모양의 행렬: 한 개의 행과 여섯 개의 열
 # 
-# $n$ 개의 행과 $k$ 개의 열로 구성된 행렬을 $n \times k$ 행렬이라 부르며,
-# $(n,k)$를 해당 행렬의 모양(shape)라 부른다.
-# 아래 함수 `shape()`는 주어진 행렬의 모양을 튜플로 반환한다.
+#     $$
+#     \begin{bmatrix}
+#         1 & 2 & 3 & 4 & 5 & 6
+#     \end{bmatrix}
+#     $$
+
+# * (2, 3) 모양의 행렬: 두 개의 행과 세 개의 열
+# 
+#     $$
+#     \begin{bmatrix}
+#         1 & 2 & 3\\
+#         4 & 5 & 6
+#     \end{bmatrix}
+#     $$
+
+# * (3, 2) 모양의 행렬: 세 개의 행과 두 개의 열
+# 
+#     $$
+#     \begin{bmatrix}
+#         1 & 2 \\
+#         3 & 4 \\
+#         5 & 6
+#     \end{bmatrix}
+#     $$
+
+# * (6, 1) 모양의 행렬: 여섯 개의 행과 한 개의 열
+# 
+#     $$
+#     \begin{bmatrix}
+#         1 \\
+#         2 \\
+#         3 \\
+#         4 \\
+#         5 \\
+#         6
+#     \end{bmatrix}
+#     $$
+
+# **행렬의 모양 확인 함수**
+
+# 아래 코드의 `shape()` 함수는 주어진 행렬의 모양을 튜플로 반환한다.
 
 # In[24]:
 
 
-from typing import Tuple
+def shape(A):
+    """
+    A: 행렬
+    A[i]의 길이가 일정하다고 가정
+    """
 
-def shape(A: Matrix) -> Tuple[int, int]:
-    num_rows = len(A)
-    num_cols = len(A[0]) if A else 0   # number of elements in first row
+    num_rows = len(A)    # 행의 수
+    num_cols = len(A[0]) # 열의 수
     return num_rows, num_cols
 
 
@@ -464,12 +442,22 @@ shape(B)
 # In[27]:
 
 
-# 행벡터 계산
-def get_row(A: Matrix, i: int) -> Vector:
+# i번 행벡터
+def get_row(A, i):
+    """
+    A: 행렬
+    i: 행 인덱스
+    """
+
     return A[i]             
 
-# 열벡터 계산
-def get_column(A: Matrix, j: int) -> Vector:
+# j번 열벡터
+def get_column(A, j):
+    """
+    A: 행렬
+    j: 열 인덱스
+    """
+
     return [A_i[j] for A_i in A]
 
 
@@ -503,17 +491,19 @@ get_column(B, 1)
 # In[30]:
 
 
-from typing import Callable
-
-def make_matrix(num_rows: int,
-                num_cols: int,
-                entry_fn: Callable[[int, int], float]) -> Matrix:
-    return [ [entry_fn(i, j) for j in range(num_cols)] for i in range(num_rows)]   
+def make_matrix(num_rows, num_cols, entry_fn):
+    """
+    num_rows: 행의 수
+    num_cols: 열의 수
+    entry_fn: (i, j)에 대해 i행, j열에 위치한 항목 계산
+    """
+    
+    return [ [entry_fn(i, j) for j in range(num_cols)] for i in range(num_rows) ]   
 
 
 # **영행렬**
 # 
-# 영행렬(zero matrix)이란 행렬의 모든 원소의 값이 0인 행렬을 말한다.
+# 영행렬<font size='2'>zero matrix</font>이란 행렬의 모든 원소의 값이 0인 행렬을 말한다.
 # 예를 들어 아래 행렬은 (3, 2) 모양의 영행렬이다.
 # 
 # $$
@@ -529,8 +519,14 @@ def make_matrix(num_rows: int,
 # In[31]:
 
 
-def zero_matrix(n: int, m:int) -> Matrix:
-    return make_matrix(n, m, lambda i, j: 0)
+def zero_matrix(n, m):
+    """
+    n, m: 양의 정수
+    """
+
+    zero_function = lambda i, j: 0
+    
+    return make_matrix(n, m, zero_function)
 
 
 # In[32]:
@@ -541,7 +537,7 @@ zero_matrix(5,7)
 
 # **단위행렬**
 # 
-# 단위행렬(identity matrix)은 정사각형 모양의 행렬 중에서 대각선 상에 위치한 항목은 1이고
+# 단위행렬<font size='2'>identity matrix</font>은 정사각형 모양의 행렬 중에서 대각선 상에 위치한 항목은 1이고
 # 나머지는 0인 행렬을 말한다. 
 # 예를 들어 아래 행렬은 (5, 5) 모양의 단위행렬이다.
 # 
@@ -559,8 +555,13 @@ zero_matrix(5,7)
 # In[33]:
 
 
-def identity_matrix(n: int) -> Matrix:
-    return make_matrix(n, n, lambda i, j: 1 if i == j else 0)
+def identity_matrix(n):
+    """
+    n: 양의 정수
+    """
+    one_function = lambda i, j: 1 if i == j else 0
+    
+    return make_matrix(n, n, one_function)
 
 
 # In[34]:
@@ -569,24 +570,35 @@ def identity_matrix(n: int) -> Matrix:
 identity_matrix(5)
 
 
-# **행렬 덧셈과 뺄셈**
+# ### 행렬 연산
+
+# **행렬의 덧셈과 뺄셈**
 # 
-# 모양이 같은 두 행렬의 덧셈/뺄셈은 항목별로 더한/뺀 결과로 이루어진 행렬이다. 
+# 모양이 같은 두 행렬의 덧셈/뺄셈은 항목별로 더한/뺀 결과로 이루어진 행렬이다.
 # 즉, 벡터의 덧셈/뺄셈과 동일한 방식이다.
 # 예를 들어, $2 \times 3$ 행렬의 덧셈/뺄셈은 다음과 같다.
 
-# $$
-# \begin{align*}
-# \begin{bmatrix}1&3&7\\1&0&0\end{bmatrix} 
-# + \begin{bmatrix}0&0&5\\7&5&0\end{bmatrix}
-# &= \begin{bmatrix}1+0&3+0&7+5\\1+7&0+5&0+0\end{bmatrix} \\[.5ex]
-# &= \begin{bmatrix}1&3&12\\8&5&0\end{bmatrix}\\[2ex]
-# \begin{bmatrix}1&3&7\\1&0&0\end{bmatrix} 
-# - \begin{bmatrix}0&0&5\\7&5&0\end{bmatrix}
-# &= \begin{bmatrix}1-0&3-0&7-5\\1-7&0-5&0-0\end{bmatrix} \\[.5ex]
-# &= \begin{bmatrix}1&3&2\\-6&-5&0\end{bmatrix}
-# \end{align*}
-# $$
+# * 행렬 덧셈
+# 
+#     $$
+#     \begin{align*}
+#     \begin{bmatrix}1&3&7\\1&0&0\end{bmatrix} 
+#     + \begin{bmatrix}0&0&5\\7&5&0\end{bmatrix}
+#     &= \begin{bmatrix}1+0&3+0&7+5\\1+7&0+5&0+0\end{bmatrix} \\[.5ex]
+#     &= \begin{bmatrix}1&3&12\\8&5&0\end{bmatrix}
+#     \end{align*}
+#     $$
+
+# * 행렬 뺄셈
+# 
+#     $$
+#     \begin{align*}
+#     \begin{bmatrix}1&3&7\\1&0&0\end{bmatrix} 
+#     - \begin{bmatrix}0&0&5\\7&5&0\end{bmatrix}
+#     &= \begin{bmatrix}1-0&3-0&7-5\\1-7&0-5&0-0\end{bmatrix} \\[.5ex]
+#     &= \begin{bmatrix}1&3&2\\-6&-5&0\end{bmatrix}
+#     \end{align*}
+#     $$
 
 # 행렬의 덧셈과 뺄셈을 계산하는 함수는 다음과 같다.
 
