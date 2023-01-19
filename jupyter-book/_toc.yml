@@ -5,34 +5,39 @@ format: jb-book
 root: intro
 options:
   numbered: True
-#   only_build_toc_files: true
-chapters:
-- file: python_intro
-  sections:
-  - file: python_basic_1
-  - file: python_basic_2
-  - file: python_basic_3
-  - file: python_basic_4
-  - file: python_basic_5
-  - file: python_basic_6
-  - file: python_basic_7
-- file: from_scratch
-  sections:
-  - file: from_scratch_1
-  - file: from_scratch_2
-- file: numpy_intro
-  sections:
-  - file: numpy_1
-  - file: numpy_2
-  - file: numpy_3
-  - file: numpy_4
-- file: pandas_intro
-  sections:
-  - file: pandas_1
-  - file: pandas_2
-  - file: pandas_3
-- file: visualization_intro
-  sections:
-  - file: visualization_1
-  - file: visualization_2
-  - file: visualization_3
+  # only_build_toc_files: true
+parts:
+  - caption: 파이썬 기초
+    numbered: True
+    chapters:
+    - file: python_basic_1
+    - file: python_basic_2
+    - file: python_basic_3
+    - file: python_basic_4
+    - file: python_basic_5
+    - file: python_basic_6
+    - file: python_basic_7
+  - caption: 기초수학 - 밑바닥부터
+    numbered: True
+    chapters:
+    - file: from_scratch_1
+    - file: from_scratch_2
+  - caption: 넘파이
+    numbered: True
+    chapters:
+    - file: numpy_1
+    - file: numpy_2
+    - file: numpy_3
+    - file: numpy_4
+  - caption: 판다스
+    numbered: True
+    chapters:
+    - file: pandas_1
+    - file: pandas_2
+    - file: pandas_3
+  - caption: 데이터 시각화
+    numbered: True
+    chapters:
+    - file: visualization_1
+    - file: visualization_2
+    - file: visualization_3

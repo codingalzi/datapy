@@ -367,43 +367,43 @@ B = [[1, 2],
 
 # * (1, 6) 모양의 행렬: 한 개의 행과 여섯 개의 열
 # 
-#     $$
-#     \begin{bmatrix}
-#         1 & 2 & 3 & 4 & 5 & 6
-#     \end{bmatrix}
-#     $$
+# $$
+# \begin{bmatrix}
+#     1 & 2 & 3 & 4 & 5 & 6
+# \end{bmatrix}
+# $$
 
 # * (2, 3) 모양의 행렬: 두 개의 행과 세 개의 열
 # 
-#     $$
-#     \begin{bmatrix}
-#         1 & 2 & 3\\
-#         4 & 5 & 6
-#     \end{bmatrix}
-#     $$
+# $$
+# \begin{bmatrix}
+#     1 & 2 & 3\\
+#     4 & 5 & 6
+# \end{bmatrix}
+# $$
 
 # * (3, 2) 모양의 행렬: 세 개의 행과 두 개의 열
 # 
-#     $$
-#     \begin{bmatrix}
-#         1 & 2 \\
-#         3 & 4 \\
-#         5 & 6
-#     \end{bmatrix}
-#     $$
+# $$
+# \begin{bmatrix}
+#     1 & 2 \\
+#     3 & 4 \\
+#     5 & 6
+# \end{bmatrix}
+# $$
 
 # * (6, 1) 모양의 행렬: 여섯 개의 행과 한 개의 열
 # 
-#     $$
-#     \begin{bmatrix}
-#         1 \\
-#         2 \\
-#         3 \\
-#         4 \\
-#         5 \\
-#         6
-#     \end{bmatrix}
-#     $$
+# $$
+# \begin{bmatrix}
+#     1 \\
+#     2 \\
+#     3 \\
+#     4 \\
+#     5 \\
+#     6
+# \end{bmatrix}
+# $$
 
 # **행렬의 모양 확인 함수**
 
@@ -412,14 +412,14 @@ B = [[1, 2],
 # In[24]:
 
 
-def shape(A):
+def shape(M):
     """
-    A: 행렬
-    A[i]의 길이가 일정하다고 가정
+    M: 행렬
+    M[i]의 길이가 일정하다고 가정
     """
 
-    num_rows = len(A)    # 행의 수
-    num_cols = len(A[0]) # 열의 수
+    num_rows = len(M)    # 행의 수
+    num_cols = len(M[0]) # 열의 수
     return num_rows, num_cols
 
 
@@ -443,22 +443,22 @@ shape(B)
 
 
 # i번 행벡터
-def get_row(A, i):
+def get_row(M, i):
     """
-    A: 행렬
+    M: 행렬
     i: 행 인덱스
     """
 
-    return A[i]             
+    return M[i]             
 
 # j번 열벡터
-def get_column(A, j):
+def get_column(M, j):
     """
-    A: 행렬
+    M: 행렬
     j: 열 인덱스
     """
 
-    return [A_i[j] for A_i in A]
+    return [M_i[j] for M_i in M]
 
 
 # 행렬 `A`의 0번 행은 다음과 같다.
@@ -477,34 +477,35 @@ get_row(A, 0)
 get_column(B, 1)
 
 
-# **행렬 생성 함수**
+# ### 행렬 초기화
+
+# 경우에 따라 0으로만, 1로만, 또는 무작위 수로 구성된 특정 모양의 행렬을 필요하다.
+# `make_matrix()` 함수는 행렬의 항목을 생성하는 방식을 지정하면
+# 원하는 모양의 행렬을 생성한다.
 # 
-# 아래 함수는 지정된 모양의 행렬을 생성한다.
-# 셋째 인자는 지정된 위치의 항목을 계산하는 함수이다. 
-# 
-# * 인자
-#     * `num_rows`: 행의 수
-#     * `num_rows`: 열의 수
+# * 인자: 3개의 인자가 사용된다.
+#     * `n`: 행의 수
+#     * `m`: 열의 수
 #     * `entry_fn`: i, j가 주어지면 i행, j열에 위치한 값 계산
 # * 반환값: 지정된 방식으로 계산된 (i, j) 모양의 행렬
 
 # In[30]:
 
 
-def make_matrix(num_rows, num_cols, entry_fn):
+def make_matrix(n, m, entry_fn):
     """
-    num_rows: 행의 수
-    num_cols: 열의 수
+    n: 행의 수
+    m: 열의 수
     entry_fn: (i, j)에 대해 i행, j열에 위치한 항목 계산
     """
     
-    return [ [entry_fn(i, j) for j in range(num_cols)] for i in range(num_rows) ]   
+    return [ [entry_fn(i, j) for j in range(m)] for i in range(n) ]   
 
 
-# **영행렬**
+# **0-행렬**
 # 
-# 영행렬<font size='2'>zero matrix</font>이란 행렬의 모든 원소의 값이 0인 행렬을 말한다.
-# 예를 들어 아래 행렬은 (3, 2) 모양의 영행렬이다.
+# 0-행렬<font size='2'>zero matrix</font>이란 행렬의 모든 원소의 값이 0인 행렬을 말한다.
+# 예를 들어 아래 행렬은 (3, 2) 모양의 0-행렬이다.
 # 
 # $$
 # \begin{bmatrix}
@@ -514,16 +515,19 @@ def make_matrix(num_rows, num_cols, entry_fn):
 # \end{bmatrix}
 # $$
 
-# 지정된 모양의 영행렬을 생성하는 함수는 다음과 같다.
+# 지정된 모양의 0-행렬을 생성하는 함수는 다음과 같다.
 
 # In[31]:
 
 
-def zero_matrix(n, m):
+def zeros(x):
     """
-    n, m: 양의 정수
+    x = (n, m), 단 n, m은 양의 정수
     """
 
+    n = x[0]
+    m = x[1]
+    
     zero_function = lambda i, j: 0
     
     return make_matrix(n, m, zero_function)
@@ -532,15 +536,143 @@ def zero_matrix(n, m):
 # In[32]:
 
 
-zero_matrix(5,7)
+zeros((5,7))
 
 
-# **단위행렬**
+# **1-행렬**
 # 
-# 단위행렬<font size='2'>identity matrix</font>은 정사각형 모양의 행렬 중에서 대각선 상에 위치한 항목은 1이고
+# 1-행렬<font size='2'>one matrix</font>이란 행렬의 모든 원소의 값이 1인 행렬을 말한다.
+# 예를 들어 아래 행렬은 (3, 4) 모양의 1-행렬이다.
+# 
+# $$
+# \begin{bmatrix}
+#     1 & 1 & 1 & 1 \\
+#     1 & 1 & 1 & 1 \\
+#     1 & 1 & 1 & 1
+# \end{bmatrix}
+# $$
+
+# 지정된 모양의 1-행렬을 생성하는 함수는 다음과 같다.
+
+# In[33]:
+
+
+def ones(x):
+    """
+    x = (n, m), 단 n, m은 양의 정수
+    """
+
+    n = x[0]
+    m = x[1]
+    
+    one_function = lambda i, j: 1
+    
+    return make_matrix(n, m, one_function)
+
+
+# In[34]:
+
+
+ones((5,7))
+
+
+# **임의행렬**
+
+# 임의행렬<font size='2'>random matrix</font>은 행렬의 항목이 임의의 수로 구성된 행렬을 가리킨다.
+# 여기서는 0과 1 사이의 임의의 수로만 구성된 임의행렬을 생성한다.
+# 이를 위해 `random` 모듈의 `random()` 함수를 이용한다.
+
+# In[35]:
+
+
+import random
+
+
+# `random.random()` 함수는 [0, 1) 구간에서 임의의 수를 무작위로 생성한다.
+
+# In[36]:
+
+
+random.random()
+
+
+# In[37]:
+
+
+random.random()
+
+
+# 지정된 모양의 임의행렬을 생성하는 함수는 다음과 같다.
+
+# In[38]:
+
+
+def rand(n, m):
+    """
+    n, m: 양의 정수
+    """
+
+    random_function = lambda i, j: random.random()
+
+    return make_matrix(n, m, random_function)
+
+
+# In[39]:
+
+
+rand(5,3)
+
+
+# 부동소수점을 소수점 아래 몇 자리까지만 보이도록 하기 위해 `round()` 함수를 이용할 수 있다.
+# `rand()` 함수를 재정의 한다. 
+# 이때 항목을 생성하는 함수에 필요한 소수점 이하 자릿수를 `ndigits=2` 키워드 매개변수가
+# 받도록 한다. 기본값은 2로 지정한다.
+
+# In[40]:
+
+
+def rand(n, m, ndigits=2):
+    """
+    n, m: 양의 정수
+    """
+
+    random_function = lambda i, j: round(random.random(), ndigits)  # ndigits: 소수점 이하 자릿수
+
+    return make_matrix(n, m, random_function)
+
+
+# 소수점 이하 셋째 자리에서 반올림한 값을 사용하도록 하려면
+# 기본 인자 2를 그대로 사용하면 되기에 굳이 셋째 인자를 지정할 필요가 없다.
+
+# In[41]:
+
+
+rand(5, 3)
+
+
+# 소수점 아래 다섯째 자리까지 보이도록 하려면 셋째 인자를 5로 지정한다.
+
+# In[42]:
+
+
+rand(5, 3, 5)
+
+
+# 키워드 매개변수 이름을 함께 사용해도 된다.
+
+# In[43]:
+
+
+rand(5, 3, ndigits=5)
+
+
+# **항등행렬**
+# 
+# 항등행렬<font size='2'>identity matrix</font>은 정사각형 모양의 행렬 중에서 대각선 상에 위치한 항목은 1이고
 # 나머지는 0인 행렬을 말한다. 
 # 예를 들어 아래 행렬은 (5, 5) 모양의 단위행렬이다.
 # 
+# $$
 # \begin{bmatrix}
 #     1&0&0&0&0 \\
 #     0&1&0&0&0 \\
@@ -548,14 +680,15 @@ zero_matrix(5,7)
 #     0&0&0&1&0 \\
 #     0&0&0&0&1
 # \end{bmatrix}
+# $$
 # 
 # 단위행렬은 행과 열의 개수가 동일한 정방행렬이며,
 # 지정된 모양의 단위행렬을 생성하는 함수는 다음과 같다.
 
-# In[33]:
+# In[44]:
 
 
-def identity_matrix(n):
+def identity(n):
     """
     n: 양의 정수
     """
@@ -564,10 +697,10 @@ def identity_matrix(n):
     return make_matrix(n, n, one_function)
 
 
-# In[34]:
+# In[45]:
 
 
-identity_matrix(5)
+identity(5)
 
 
 # ### 행렬 연산
@@ -602,17 +735,17 @@ identity_matrix(5)
 
 # 행렬의 덧셈과 뺄셈을 계산하는 함수는 다음과 같다.
 
-# In[35]:
+# In[46]:
 
 
-def addM(A: Matrix, B: Matrix) -> Matrix:
+def addM(A, B):
     assert shape(A) == shape(B)
     
     m, n = shape(A)
     
     return make_matrix(m, n, lambda i, j: A[i][j] + B[i][j])
 
-def subtractM(A: Matrix, B: Matrix) -> Matrix:
+def subtractM(A, B):
     assert shape(A) == shape(B)
     
     m, n = shape(A)
@@ -620,7 +753,7 @@ def subtractM(A: Matrix, B: Matrix) -> Matrix:
     return make_matrix(m, n, lambda i, j: A[i][j] - B[i][j])
 
 
-# In[36]:
+# In[47]:
 
 
 C = [[1, 3, 7],
@@ -630,13 +763,13 @@ D = [[0, 0, 5],
      [7, 5, 0]]
 
 
-# In[37]:
+# In[48]:
 
 
 addM(C, D)
 
 
-# In[38]:
+# In[49]:
 
 
 subtractM(C, D)
