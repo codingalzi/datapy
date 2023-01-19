@@ -6,8 +6,36 @@
 
 # 파이썬 프로그래밍 개발 환경은 크게 오프라인 환경과 온라인 환경으로 나뉜다.
 # 
-# - 오프라인 개발 환경: 편집기와 파이썬 실행기를 PC에 직접 설치해서 활용하는 환경
 # - 온라인 개발 환경: 인터넷 브라우저를 이용하여 특정 서버에 접속해서 편집기와 파이썬 실행기를 활용하는 환경
+# - 오프라인 개발 환경: 편집기와 파이썬 실행기를 PC에 직접 설치해서 활용하는 환경
+
+# ## 온라인 개발 환경: 구글 코랩
+
+# [구글 코랩<font size="2">Google Colab</font>](https://colab.research.google.com/?hl=ko)은 
+# 구글에서 제공하는 파이썬 전용 온라인 주피터 노트북이다.
+# 웹브라우저를 이용하여 어떤 준비 없이 바로 파이썬 프로그래밍을 시작할 수 있다.
+
+# [구글 코랩 사용법](https://codingalzi.github.io/pybook/environment_setting.html#sec-google-colab)에서
+# 간단한 사용법을 확인할 수 있다.
+# 보다 자세한 설명은 [유튜버 봉수골 개발자 이선비의 동영상](https://www.youtube.com/watch?v=91E0qenm7W4)을 참고한다.
+# 그리고 입문용은 아니지만 구글 코랩만이 지원하는 유용한 고급 기능을 
+# [TensorFlow 팀의 동영상](https://www.youtube.com/watch?v=rNgswRZ2C1Y)에서 확인할 수 있다.
+
+# 구글 코랩을 사용하다 보면 
+# 특정 라이브러리를 설치해야하는 경우가 발생할 수 있는데 그럴 때는 `pip` 파이썬 라이브러리 관리자를 
+# 이용하여 설치하면 된다.
+# 예를 들어 `beautifulsoup4` 라이브러리를 설치하려면 아래 명령문을 주피터 노트북 코드셀에서 실행한다.
+# 
+# ```bash
+# !pip install beautifulsoup4
+# ```
+
+# :::{admonition} pip 라이브러리 관리자
+# :class: info
+# 
+# `pip`은 파이썬 명령어가 아니라 컴퓨터 운영체제 관리에 사용되는 쉘<font size='2'>shell</font> 명령어이다. 
+# 이런 쉘 명령어를 터미널이 아닌 주피터 노트북 셀에서 실행하려면 느낌표(`!`)를 함께 사용한다.
+# :::
 
 # ## 오프라인 개발 환경: 아나콘다
 
@@ -95,34 +123,6 @@
 # 간단한 사용법을 확인할 수 있다. 
 # 아나콘다의 설치 과정과 주피터 노트북의 기초 사용법에 대한 보다 상세한 설명은 
 # [유튜버 나도코딩의 동영상](https://www.youtube.com/watch?v=dJfq-eCi7KI&t=2298s)을 참고하면 좋다.
-# :::
-
-# ## 온라인 개발 환경: 구글 코랩
-
-# [구글 코랩<font size="2">Google Colab</font>](https://colab.research.google.com/?hl=ko)은 
-# 구글에서 제공하는 파이썬 전용 온라인 주피터 노트북이다.
-# 웹브라우저를 이용하여 어떤 준비 없이 바로 파이썬 프로그래밍을 시작할 수 있다.
-
-# [구글 코랩 사용법](https://codingalzi.github.io/pybook/environment_setting.html#sec-google-colab)에서
-# 간단한 사용법을 확인할 수 있다.
-# 보다 자세한 설명은 [유튜버 봉수골 개발자 이선비의 동영상](https://www.youtube.com/watch?v=91E0qenm7W4)을 참고한다.
-# 그리고 입문용은 아니지만 구글 코랩만이 지원하는 유용한 고급 기능을 
-# [TensorFlow 팀의 동영상](https://www.youtube.com/watch?v=rNgswRZ2C1Y)에서 확인할 수 있다.
-
-# 구글 코랩을 사용하다 보면 
-# 특정 라이브러리를 설치해야하는 경우가 발생할 수 있는데 그럴 때는 `pip` 파이썬 라이브러리 관리자를 
-# 이용하여 설치하면 된다.
-# 예를 들어 `beautifulsoup4` 라이브러리를 설치하려면 아래 명령문을 주피터 노트북 코드셀에서 실행한다.
-# 
-# ```bash
-# !pip install beautifulsoup4
-# ```
-
-# :::{admonition} pip 라이브러리 관리자
-# :class: info
-# 
-# `pip`은 파이썬 명령어가 아니라 컴퓨터 운영체제 관리에 사용되는 쉘<font size='2'>shell</font> 명령어이다. 
-# 이런 쉘 명령어를 터미널이 아닌 주피터 노트북 셀에서 실행하려면 느낌표(`!`)를 함께 사용한다.
 # :::
 
 # ## IPython 소개
