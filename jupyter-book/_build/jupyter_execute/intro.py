@@ -81,6 +81,11 @@
 # - 판다스: 테이블 데이터를 매우 효율적으로 다룰 수 있는 객체와 API를 지원한다.
 # - 맷플롯립: 2 차원 데이터 시각화에 유용한 많은 API를 제공한다.
 
+# [Stack Overflow 개발자 설문조사 2022](https://survey.stackoverflow.co/2022/)에 따르면
+# 개발자로서 가장 배우고 싶어하는 라이브러리로 넘파이와 판다스가 두번째와 세번째 자리를 차지했다.
+
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/wanted_languages.jpg" style="width:450px"></div>
+
 # ## 주요 내용
 
 # 아래 내용을 다룬다.
