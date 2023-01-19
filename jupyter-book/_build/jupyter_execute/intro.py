@@ -96,7 +96,3 @@
 # * 데이터 시각화
 # * 자료 집계와 그룹화
 # * 시계열 데이터
-
-# ## 참고 자료
-
-# - [자료분석을 위한 파이썬](https://compmath.korea.ac.kr/appmath/index.html)
