@@ -468,7 +468,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     8.1.2. 벡터 연산
+     8.1.2. 벡터 항목별 연산
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -490,13 +490,23 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     8.2.2. 행렬 연산
+     8.2.2. 행렬 항목별 연산
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     8.2.3. 행렬 곱셈
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     8.2.4. 전치행렬
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id9">
+  <a class="reference internal nav-link" href="#id11">
    8.3. 연습문제
   </a>
  </li>
@@ -531,7 +541,7 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     8.1.2. 벡터 연산
+     8.1.2. 벡터 항목별 연산
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -553,13 +563,23 @@ title="Print to PDF"
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     8.2.2. 행렬 연산
+     8.2.2. 행렬 항목별 연산
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     8.2.3. 행렬 곱셈
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id10">
+     8.2.4. 전치행렬
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id9">
+  <a class="reference internal nav-link" href="#id11">
    8.3. 연습문제
   </a>
  </li>
@@ -652,14 +672,14 @@ title="Print to PDF"
 </div>
 </section>
 <section id="id4">
-<h3><span class="section-number">8.1.2. </span>벡터 연산<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
-<p><strong>벡터 덧셈</strong></p>
-<p>두 벡터의 덧셈은 같은 위치에 있는 항목끼기 더한 결과로 이루어진 벡터를 생성한다.</p>
+<h3><span class="section-number">8.1.2. </span>벡터 항목별 연산<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<p><strong>벡터 항목별 덧셈</strong></p>
+<p>두 벡터의 항목별 덧셈은 같은 위치에 있는 항목끼기 더한 결과로 이루어진 벡터를 생성한다.</p>
 <div class="math notranslate nohighlight">
 \[
 [u_1, \cdots, u_n] + [v_1, \cdots, v_n] = [u_1 + v_1, \cdots, u_n + v_n]
 \]</div>
-<p>차원이 같은 두 벡터의 항목별 합을 실행하는 함수는 다음과 같다.</p>
+<p>차원이 같은 두 벡터의 항목별 덧셈을 실행하는 함수는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">addV</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
@@ -707,7 +727,7 @@ title="Print to PDF"
 </div>
 </div>
 <p><strong>벡터 리스트의 합</strong></p>
-<p>동일한 차원의 임의의 개수의 벡터를 더하는 함수를 다음과 같이 정의할 수 있다.
+<p>동일한 차원의 임의의 개수의 벡터를 항목별로 더하는 함수를 다음과 같이 정의할 수 있다.
 함수의 본문에 사용된 <code class="docutils literal notranslate"><span class="pre">all()</span></code> 함수는 리스트, 튜플 등에 포함된 모든 항목이 참인 경우에만
 참을 반환한다.</p>
 <div class="cell docutils container">
@@ -742,13 +762,13 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p><strong>벡터 뺄셈</strong></p>
-<p>차원이 같은 벡터 두 개의 뺄셈은 같은 위치에 있는 항목끼기 뺀 결과로 이루어진 벡터를 생성한다.</p>
+<p><strong>벡터 항목별 뺄셈</strong></p>
+<p>차원이 같은 벡터 두 개의 항목별 뺄셈은 같은 위치에 있는 항목끼기 뺀 결과로 이루어진 벡터를 생성한다.</p>
 <div class="math notranslate nohighlight">
 \[
 [u_1, \cdots, u_n] - [v_1, \cdots, v_n] = [u_1 - v_1, \cdots, u_n - v_n]
 \]</div>
-<p>차원이 같은 두 벡터의 항목별 차를 실행하는 함수는 다음과 같다.</p>
+<p>차원이 같은 두 벡터의 항목별 뺄셈을 실행하는 함수는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">subtractV</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
@@ -783,8 +803,8 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p><strong>벡터 곱셈</strong></p>
-<p>차원이 같은 벡터 두 개의 곱셈은 같은 위치에 있는 항목끼기 곱한 결과로 이루어진 벡터를 생성한다.</p>
+<p><strong>벡터 항목별 곱셈</strong></p>
+<p>차원이 같은 벡터 두 개의 항목별 곱셈은 같은 위치에 있는 항목끼기 곱한 결과로 이루어진 벡터를 생성한다.</p>
 <div class="math notranslate nohighlight">
 \[
 [u_1, \cdots, u_n] \ast [v_1, \cdots, v_n] = [u_1 \ast v_1, \cdots, u_n \ast v_n]
@@ -824,8 +844,8 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p><strong>벡터 나눗셈</strong></p>
-<p>차원이 같은 벡터 두 개의 나눗셈은 같은 위치에 있는 항목끼기 나눈 결과로 이루어진 벡터를 생성한다.</p>
+<p><strong>벡터 항목별 나눗셈</strong></p>
+<p>차원이 같은 벡터 두 개의 항목별 나눗셈은 같은 위치에 있는 항목끼기 나눈 결과로 이루어진 벡터를 생성한다.</p>
 <div class="math notranslate nohighlight">
 \[
 [u_1, \cdots, u_n] / [v_1, \cdots, v_n] = [u_1 / v_1, \cdots, u_n / v_n]
@@ -866,7 +886,7 @@ title="Print to PDF"
 </div>
 </div>
 <p><strong>벡터 스칼라 곱셈</strong></p>
-<p>하나 수와 하나의 벡터의 곱셈을 스칼라 곱셈이라 부른다.
+<p>하나의 수와 하나의 벡터의 곱셈을 스칼라 곱셈이라 부른다.
 스칼라 곱셈은 벡터의 각 항목을 지정된 수로 곱한다.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1314,7 +1334,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.33345976982506287
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2161837388197183
 </pre></div>
 </div>
 </div>
@@ -1326,7 +1346,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.33247570216107136
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.23314232562188686
 </pre></div>
 </div>
 </div>
@@ -1360,11 +1380,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.9827547221182152, 0.4909404357892374, 0.5773857493470166],
- [0.5556980122577183, 0.6444493453824246, 0.6423516435637012],
- [0.6691605534151562, 0.8166916492760888, 0.872372327281993],
- [0.36542216384935333, 0.0722347812992763, 0.27059826073740445],
- [0.575774293853793, 0.6298327957974093, 0.31396884504058165]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.5776646924495183, 0.40195108809243096, 0.8732852614236691],
+ [0.5470400341845183, 0.05868935551572996, 0.6303957078844395],
+ [0.2802307599670715, 0.6935457930399754, 0.5256151563569802],
+ [0.1168611413807823, 0.27778156076054383, 0.40760026332641075],
+ [0.17327790058425074, 0.39181128657208364, 0.1638633131692383]]
 </pre></div>
 </div>
 </div>
@@ -1396,11 +1416,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.05, 0.26, 0.07],
- [0.41, 0.36, 0.75],
- [0.3, 0.61, 0.25],
- [0.7, 0.17, 0.94],
- [0.02, 0.64, 0.62]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.4, 0.62, 0.93],
+ [0.02, 0.41, 0.49],
+ [0.77, 0.76, 0.68],
+ [0.69, 0.21, 0.59],
+ [0.3, 0.97, 0.73]]
 </pre></div>
 </div>
 </div>
@@ -1413,11 +1433,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.92534, 0.59275, 0.36881],
- [0.15767, 0.92098, 0.63745],
- [0.2104, 0.50547, 0.88198],
- [0.78795, 0.50969, 0.81583],
- [0.14083, 0.59989, 0.70093]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.6336, 0.02453, 0.01897],
+ [0.58863, 0.8712, 0.60837],
+ [0.69392, 0.86338, 0.56096],
+ [0.50933, 0.41791, 0.10397],
+ [0.62789, 0.9448, 0.09547]]
 </pre></div>
 </div>
 </div>
@@ -1430,11 +1450,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.4837, 0.47587, 0.67021],
- [0.61507, 0.88728, 0.81526],
- [0.13394, 0.47219, 0.42497],
- [0.05674, 0.13045, 0.37177],
- [0.86372, 0.81456, 0.26184]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.44799, 0.12674, 0.61549],
+ [0.67866, 0.07455, 0.50594],
+ [0.37296, 0.7475, 0.52876],
+ [0.30732, 0.66696, 0.61518],
+ [0.13883, 0.70307, 0.23563]]
 </pre></div>
 </div>
 </div>
@@ -1486,10 +1506,10 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </section>
 <section id="id8">
-<h3><span class="section-number">8.2.2. </span>행렬 연산<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
-<p><strong>행렬의 덧셈</strong></p>
-<p>모양이 같은 두 행렬의 덧셈은 항목별로 더한 결과로 이루어진 행렬이다.
-<span class="math notranslate nohighlight">\(2 \times 3\)</span> 행렬의 덧셈은 다음과 같다.</p>
+<h3><span class="section-number">8.2.2. </span>행렬 항목별 연산<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<p><strong>행렬의 항목별 덧셈</strong></p>
+<p>모양이 같은 두 행렬의 항목별 덧셈은 항목별로 더한 결과로 이루어진 행렬이다.
+<span class="math notranslate nohighlight">\(2 \times 3\)</span> 행렬의 항목별 덧셈은 다음과 같다.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -1499,7 +1519,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 &amp;= \begin{bmatrix}1&amp;3&amp;12\\8&amp;5&amp;0\end{bmatrix}
 \end{align*}
 \end{split}\]</div>
-<p>행렬의 덧셈을 계산하는 함수는 다음과 같다.</p>
+<p>행렬의 항목별 덧셈을 계산하는 함수는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">addM</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
@@ -1535,9 +1555,9 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 </div>
-<p><strong>행렬의 뺄셈</strong></p>
-<p>모양이 같은 두 행렬의 뺄셈은 항목별로 뺀 결과로 이루어진 행렬이다.
-<span class="math notranslate nohighlight">\(2 \times 3\)</span> 행렬의 뺄셈은 다음과 같다.</p>
+<p><strong>행렬의 항목별 뺄셈</strong></p>
+<p>모양이 같은 두 행렬의 항복별 뺄셈은 항목별로 뺀 결과로 이루어진 행렬이다.
+<span class="math notranslate nohighlight">\(2 \times 3\)</span> 행렬의 항목별 뺄셈은 다음과 같다.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -1547,7 +1567,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 &amp;= \begin{bmatrix}1&amp;3&amp;2\\-6&amp;-5&amp;0\end{bmatrix}
 \end{align*}
 \end{split}\]</div>
-<p>행렬의 뺄셈을 계산하는 함수는 다음과 같다.</p>
+<p>행렬의 항목별 뺄셈을 계산하는 함수는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">subtractM</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
@@ -1583,7 +1603,9 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 = \begin{bmatrix}2\ast 1&amp;2\ast 8&amp;2\ast -3\\2\ast 4&amp;2\ast -2&amp;2\ast 5\end{bmatrix}
 = \begin{bmatrix}2&amp;16&amp;-6\\8&amp;-4&amp;10\end{bmatrix}
 \end{split}\]</div>
-<p><strong>행렬 곱셈</strong></p>
+</section>
+<section id="id9">
+<h3><span class="section-number">8.2.3. </span>행렬 곱셈<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
 <p>(<span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(n\)</span>) 모양의 <span class="math notranslate nohighlight">\(A\)</span>와 (<span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(p\)</span>) 모양의 행렬 <span class="math notranslate nohighlight">\(B\)</span>의 곱 <span class="math notranslate nohighlight">\(A \cdot B\)</span>는 (<span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(p\)</span>) 모양의 행렬이며,
 <span class="math notranslate nohighlight">\(i\)</span> 행, <span class="math notranslate nohighlight">\(j\)</span> 열의 항목 <span class="math notranslate nohighlight">\((A \cdot B)_{i,j}\)</span>는 다음과 같이 정의된다.</p>
 <div class="math notranslate nohighlight">
@@ -1591,11 +1613,10 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 (A \cdot B)_{i, j}
 = A_{i,0} \ast B_{0,j} + A_{i,2} \ast B_{2,j} + \cdots + A_{i,(n-1)} \ast B_{(n-1),j}
 \]</div>
-<p>그림으로 나타내면 다음과 같다.</p>
-<div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Matrix_mult_diagram.png" width="30%"></div>
+<p>아래 그림으로 (4, 2) 모양의 행렬 <span class="math notranslate nohighlight">\(A\)</span>와 (2, 3) 모양의 행렬 <span class="math notranslate nohighlight">\(B\)</span>의 점곱인 <span class="math notranslate nohighlight">\(A\cdot B\)</span>의 항목을 계산하는 과정을 보여준다.</p>
+<div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Matrix_mult_diagram.jpg" width="50%"></div>
 <p>출처: <a class="reference external" href="https://en.wikipedia.org/wiki/Dot_product">위키백과</a></p>
-<p>즉, 좌측 행렬 열의 수 <span class="math notranslate nohighlight">\(n\)</span>과 우측 행렬 행의 수 <span class="math notranslate nohighlight">\(n\)</span>이 같은 경우에만 곱셈이 가능하다.
-예를 들어, <span class="math notranslate nohighlight">\(2 \times 3\)</span> 행렬과 <span class="math notranslate nohighlight">\(3 \times 2\)</span> 행렬의 곱셈은 다음과 같다.</p>
+<p>예를 들어 <span class="math notranslate nohighlight">\(2 \times 3\)</span> 행렬과 <span class="math notranslate nohighlight">\(3 \times 2\)</span> 행렬의 곱셈은 다음과 같다.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -1615,148 +1636,46 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 \end{bmatrix}
 \end{align*}
 \end{split}\]</div>
-<p><strong>행렬 곱셈과 벡터 내적</strong></p>
-<p>행렬 <span class="math notranslate nohighlight">\(A B\)</span>의 <span class="math notranslate nohighlight">\((i, j)\)</span>번째 항목 <span class="math notranslate nohighlight">\((A B)_{ij}\)</span>는
-벡터 내적과 깊이 연관되어 있다.</p>
-<p>먼저, <span class="math notranslate nohighlight">\(m \times n\)</span> 행렬 <span class="math notranslate nohighlight">\(A\)</span>와 <span class="math notranslate nohighlight">\(n \times p\)</span> 행렬 <span class="math notranslate nohighlight">\(B\)</span>의 곱 <span class="math notranslate nohighlight">\(A \times B\)</span>의
-<span class="math notranslate nohighlight">\((i, j)\)</span> 번째 항목은 다음과 같다.</p>
+<p><strong>항등행렬과 항등원</strong></p>
+<p>임의의 행렬 <span class="math notranslate nohighlight">\(M\)</span>과 항등행렬과의 곱은 <span class="math notranslate nohighlight">\(M\)</span> 자신이다.
+즉 항등행렬은 행렬 곱셈의 항등원이다.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\begin{align*}
-(A B)_{ij}
-&amp;= \sum _{k=0}^{n-1} A_{ik} \cdot B_{kj} \\
-&amp;= A_{i0} \cdot B_{0j} + A_{i2} \cdot B_{2j} + \cdots + A_{i(n-1)} \cdot B_{(n-1)j}
-\end{align*}
-\end{split}\]</div>
-<p>반면에 행렬 <span class="math notranslate nohighlight">\(A\)</span>의 <span class="math notranslate nohighlight">\(i\)</span> 행벡터를</p>
-<div class="math notranslate nohighlight">
-\[A^0_i = (A_{i0},\dots, A_{i(n-1)}),\]</div>
-<p>행렬 <span class="math notranslate nohighlight">\(B\)</span>의 <span class="math notranslate nohighlight">\(j\)</span> 열벡터를</p>
-<div class="math notranslate nohighlight">
-\[B^1_j = (B_{0j},\dots, B_{(n-1)j})\]</div>
-<p>라 할 때, 다음이 성립한다.</p>
-<div class="math notranslate nohighlight">
-\[
-A^0_i \cdot B^1_j
-= A_{i0} \cdot B_{0j} + A_{i2} \cdot B_{2j} + \cdots + A_{i(n-1)} \cdot B_{(n-1)j}
-\]</div>
-<p>즉, <span class="math notranslate nohighlight">\((A B)_{ij}\)</span>는 <span class="math notranslate nohighlight">\(A\)</span>의 <span class="math notranslate nohighlight">\(i\)</span> 행벡터와 <span class="math notranslate nohighlight">\(B\)</span>의 <span class="math notranslate nohighlight">\(j\)</span> 열벡터의 <strong>내적</strong>으로 정의된다.</p>
-<p>예를 들어 <span class="math notranslate nohighlight">\(2 \times 3\)</span> 행렬과 <span class="math notranslate nohighlight">\(3 \times 2\)</span> 행렬의 곱셈을 다시 살펴보자.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
 \begin{bmatrix}
-    1&amp;0&amp;2\\-1&amp;3&amp;1
-\end{bmatrix}
-\cdot 
-\begin{bmatrix}
-    3&amp;1\\2&amp;1\\1&amp;0
-\end{bmatrix}
-&amp;=
-\begin{bmatrix}
-    (1\cdot 3+0\cdot 2+2\cdot 1)&amp;(1\cdot 1+0\cdot 1+2\cdot 0)\\(-1\cdot 3+3\cdot 2+1\cdot 1)&amp;(-1\cdot 1+3\cdot 1+1\cdot 0)
-\end{bmatrix} \\[.5ex]
-&amp;= 
-\begin{bmatrix}
-    5&amp;1\\4&amp;2
-\end{bmatrix}
-\end{align*}
-\end{split}\]</div>
-<p>위 계산을 벡터 내적으로 표현해보자.
-먼저 두 행렬 <span class="math notranslate nohighlight">\(A\)</span>와 <span class="math notranslate nohighlight">\(B\)</span>를 지정한다.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-A = \begin{bmatrix}
-    1&amp;0&amp;2\\-1&amp;3&amp;1
-\end{bmatrix} \text{,}
-\qquad
-B = \begin{bmatrix}
-    3&amp;1\\2&amp;1\\1&amp;0
-\end{bmatrix}
-\end{split}\]</div>
-<p>그러면</p>
-<div class="math notranslate nohighlight">
-\[(A\cdot B)_{11} = -1\cdot 1+3\cdot 1+1\cdot 0 = 2\]</div>
-<p>이고, 이것은 아래 결과와 동일하다.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-A^0_1 \cdot B^1_1
-&amp;= 
-\begin{bmatrix}
-    -1&amp;3&amp;1
+    3&amp;1 \\
+    2&amp;1 \\
+    1&amp;0
 \end{bmatrix}
 \cdot
-\begin{bmatrix}
-    1 &amp; 1 &amp; 0
-\end{bmatrix} \\[.5ex]
-&amp;=
--1\cdot 1+3\cdot 1+1\cdot 0 \\
-&amp;=
-2
-\end{align*}
-\end{split}\]</div>
-<p><strong>항등원</strong></p>
-<p>영행렬은 행렬 덧셈의 항등원이며, 단위행렬은 행렬 곱셈의 항등원이다.</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\begin{bmatrix}
-    3&amp;1 \\
-    2&amp;1 \\
-    1&amp;0
-\end{bmatrix}
-+
-\begin{bmatrix}
-    0&amp;0 \\ 
-    0&amp;0 \\
-    0&amp;0
-\end{bmatrix}
-&amp;= 
-\begin{bmatrix}
-    (3+0)&amp;(1+0)\\
-    (2+0)&amp;(1+0)\\
-    (1+0)&amp;(0+0)
-\end{bmatrix} \\[.5ex]
-&amp;= 
-\begin{bmatrix}
-    3&amp;1\\
-    2&amp;1\\
-    1&amp;0
-\end{bmatrix}\\[2ex]
-\begin{bmatrix}
-    3&amp;1 \\
-    2&amp;1 \\
-    1&amp;0
-\end{bmatrix}
 \begin{bmatrix}
     1&amp;0 \\ 
     0&amp;1
 \end{bmatrix}
-&amp;=
+=
 \begin{bmatrix}
     (3\cdot 1+1\cdot 0)&amp;(3\cdot 0+1\cdot 1) \\
     (2\cdot 1+1\cdot 0)&amp;(2\cdot 0+1\cdot 1) \\
     (1\cdot 1+0\cdot 0)&amp;(1\cdot 0+0\cdot 1) \\
-\end{bmatrix} \\[.5ex]
-&amp;= 
+\end{bmatrix}
+= 
 \begin{bmatrix}
     3&amp;1\\
     2&amp;1\\
     1&amp;0
 \end{bmatrix}
-\end{align*}
 \end{split}\]</div>
-<p><strong>전치행렬</strong></p>
-<p>행렬의 <strong>전치</strong>란 행과 열을 바꾸는 것으로, 행렬 <span class="math notranslate nohighlight">\(A\)</span>의 전치는 <span class="math notranslate nohighlight">\(A^T\)</span>로 나타낸다.
-즉, <span class="math notranslate nohighlight">\(A\)</span>가 <span class="math notranslate nohighlight">\(m \times n\)</span> 행렬이면 <span class="math notranslate nohighlight">\(A^T\)</span>는 <span class="math notranslate nohighlight">\(n \times m\)</span> 행렬이며,
-그리고 <span class="math notranslate nohighlight">\(A^T\)</span>의 <span class="math notranslate nohighlight">\(i\)</span>행의 <span class="math notranslate nohighlight">\(j\)</span>열번째 값은 <span class="math notranslate nohighlight">\(A\)</span>의 <span class="math notranslate nohighlight">\(j\)</span>행의 <span class="math notranslate nohighlight">\(i\)</span>열번째 값이다.
-즉,</p>
+</section>
+<section id="id10">
+<h3><span class="section-number">8.2.4. </span>전치행렬<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
+<p>행렬의 <strong>전치</strong>란 행과 열을 바꾸는 것으로, 행렬 <span class="math notranslate nohighlight">\(A\)</span>의 전치는 <span class="math notranslate nohighlight">\(A^T\)</span>로 표기한다.
+즉, <span class="math notranslate nohighlight">\(A\)</span>가 (<span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(n\)</span>) 모양의 행렬이면 <span class="math notranslate nohighlight">\(A^T\)</span>는 (<span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(m\)</span>) 모양의 행렬이다.
+<span class="math notranslate nohighlight">\(A^T\)</span>의 <span class="math notranslate nohighlight">\(i\)</span>행의 <span class="math notranslate nohighlight">\(j\)</span>열번째 값은 <span class="math notranslate nohighlight">\(A\)</span>의 <span class="math notranslate nohighlight">\(j\)</span>행의 <span class="math notranslate nohighlight">\(i\)</span>열번째 값이다.
+즉 다음이 성립한다.</p>
 <div class="math notranslate nohighlight">
 \[
-A ^{T}_{ij} = A_{ji}
+A ^{T}_{i,j} = A_{j,i}
 \]</div>
-<p>예를 들어, <span class="math notranslate nohighlight">\(2\times 3\)</span> 행렬의 전치는 <span class="math notranslate nohighlight">\(3 \times 2\)</span> 행렬이 되며 다음과 같이 작동한다.</p>
+<p>예를 들어, 다음은 (2, 3) 모양의 행렬의 전치가 (3, 2) 모양의 행렬이 됨을 잘 보여준다.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{bmatrix}
@@ -1771,7 +1690,7 @@ A ^{T}_{ij} = A_{ji}
 \end{bmatrix}
 \end{split}\]</div>
 <p><strong>전치행렬의 성질</strong></p>
-<p><span class="math notranslate nohighlight">\(a\)</span>를 스칼라, <span class="math notranslate nohighlight">\(A, B\)</span>를 크기가 같은 행렬이라 하자. 이때 다음이 성립한다.</p>
+<p><span class="math notranslate nohighlight">\(a\)</span>를 스칼라, <span class="math notranslate nohighlight">\(A\)</span>와 <span class="math notranslate nohighlight">\(B\)</span>를 크기가 같은 행렬이라 하자. 이때 다음이 성립한다.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\((A^T)^T = A\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\((A + B)^T = A^T + B^T\)</span></p></li>
@@ -1781,8 +1700,8 @@ A ^{T}_{ij} = A_{ji}
 </ul>
 </section>
 </section>
-<section id="id9">
-<h2><span class="section-number">8.3. </span>연습문제<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
+<section id="id11">
+<h2><span class="section-number">8.3. </span>연습문제<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-linear_algebra_basics.ipynb">(실습) 선형대수 기초 밑바닥부터</a></p>
 </section>
 </section>
