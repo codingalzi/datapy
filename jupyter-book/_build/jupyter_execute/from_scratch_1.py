@@ -512,6 +512,11 @@ get_row(A, 0)
 get_column(B, 1)
 
 
+# **$i$ 행, $j$ 열의 항목**
+
+# 행렬 $M$의 $i$ 행, $j$ 열의 항목은 $i$ 번 인덱스 행의, $j$ 번 인덱스 열에 위치한 값을 가리키며
+# $M_{i, j}$로 표기한다.
+
 # ### 행렬 초기화
 
 # 경우에 따라 0으로만, 1로만, 또는 임의의 수로 구성된 특정 모양의 행렬을 필요할 수 있다.
@@ -747,35 +752,21 @@ identity(5)
 
 # ### 행렬 연산
 
-# **행렬의 덧셈과 뺄셈**
+# **행렬의 덧셈**
 # 
-# 모양이 같은 두 행렬의 덧셈/뺄셈은 항목별로 더한/뺀 결과로 이루어진 행렬이다.
-# 즉, 벡터의 덧셈/뺄셈과 동일한 방식이다.
-# 예를 들어, $2 \times 3$ 행렬의 덧셈/뺄셈은 다음과 같다.
+# 모양이 같은 두 행렬의 덧셈은 항목별로 더한 결과로 이루어진 행렬이다.
+# $2 \times 3$ 행렬의 덧셈은 다음과 같다.
 
-# * 행렬 덧셈
-# 
-#     $$
-#     \begin{align*}
-#     \begin{bmatrix}1&3&7\\1&0&0\end{bmatrix} 
-#     + \begin{bmatrix}0&0&5\\7&5&0\end{bmatrix}
-#     &= \begin{bmatrix}1+0&3+0&7+5\\1+7&0+5&0+0\end{bmatrix} \\[.5ex]
-#     &= \begin{bmatrix}1&3&12\\8&5&0\end{bmatrix}
-#     \end{align*}
-#     $$
+# $$
+# \begin{align*}
+# \begin{bmatrix}1&3&7\\1&0&0\end{bmatrix} 
+# + \begin{bmatrix}0&0&5\\7&5&0\end{bmatrix}
+# &= \begin{bmatrix}1+0&3+0&7+5\\1+7&0+5&0+0\end{bmatrix} \\[.5ex]
+# &= \begin{bmatrix}1&3&12\\8&5&0\end{bmatrix}
+# \end{align*}
+# $$
 
-# * 행렬 뺄셈
-# 
-#     $$
-#     \begin{align*}
-#     \begin{bmatrix}1&3&7\\1&0&0\end{bmatrix} 
-#     - \begin{bmatrix}0&0&5\\7&5&0\end{bmatrix}
-#     &= \begin{bmatrix}1-0&3-0&7-5\\1-7&0-5&0-0\end{bmatrix} \\[.5ex]
-#     &= \begin{bmatrix}1&3&2\\-6&-5&0\end{bmatrix}
-#     \end{align*}
-#     $$
-
-# 행렬의 덧셈과 뺄셈을 계산하는 함수는 다음과 같다.
+# 행렬의 덧셈을 계산하는 함수는 다음과 같다.
 
 # In[51]:
 
@@ -786,13 +777,6 @@ def addM(A, B):
     m, n = shape(A)
     
     return make_matrix(m, n, lambda i, j: A[i][j] + B[i][j])
-
-def subtractM(A, B):
-    assert shape(A) == shape(B)
-    
-    m, n = shape(A)
-    
-    return make_matrix(m, n, lambda i, j: A[i][j] - B[i][j])
 
 
 # In[52]:
@@ -811,7 +795,34 @@ D = [[0, 0, 5],
 addM(C, D)
 
 
+# **행렬의 뺄셈**
+# 
+# 모양이 같은 두 행렬의 뺄셈은 항목별로 뺀 결과로 이루어진 행렬이다.
+# $2 \times 3$ 행렬의 뺄셈은 다음과 같다.
+
+# $$
+# \begin{align*}
+# \begin{bmatrix}1&3&7\\1&0&0\end{bmatrix} 
+# - \begin{bmatrix}0&0&5\\7&5&0\end{bmatrix}
+# &= \begin{bmatrix}1-0&3-0&7-5\\1-7&0-5&0-0\end{bmatrix} \\[.5ex]
+# &= \begin{bmatrix}1&3&2\\-6&-5&0\end{bmatrix}
+# \end{align*}
+# $$
+
+# 행렬의 뺄셈을 계산하는 함수는 다음과 같다.
+
 # In[54]:
+
+
+def subtractM(A, B):
+    assert shape(A) == shape(B)
+    
+    m, n = shape(A)
+    
+    return make_matrix(m, n, lambda i, j: A[i][j] - B[i][j])
+
+
+# In[55]:
 
 
 subtractM(C, D)
@@ -821,30 +832,23 @@ subtractM(C, D)
 # 
 # 숫자 하나와 행렬의 곱셈을 행렬 스칼라 곱셈이라 부른다. 
 # 스칼라 곱셈은 행렬의 각 항목을 지정된 숫자로 곱해 새로운 행렬을 생성한다.
-# 즉, 벡터의 스칼라 곱셈과 동일한 방식이다. 
-# 
-# 예를 들어, (2, 3) 모양의 행렬의 스칼라 곱셈은 다음과 같다.
+# (2, 3) 모양의 행렬의 스칼라 곱셈은 다음과 같다.
 # 
 # $$
-# \begin{align*}
-# 2\cdot 
+# 2\ast 
 # \begin{bmatrix}1&8&-3\\4&-2&5\end{bmatrix}
-# &= \begin{bmatrix}2\cdot 1&2\cdot 8&2\cdot -3\\2\cdot 4&2\cdot -2&2\cdot 5\end{bmatrix} \\[.5ex]
-# &= \begin{bmatrix}2&16&-6\\8&-4&10\end{bmatrix}
-# \end{align*}
+# = \begin{bmatrix}2\ast 1&2\ast 8&2\ast -3\\2\ast 4&2\ast -2&2\ast 5\end{bmatrix}
+# = \begin{bmatrix}2&16&-6\\8&-4&10\end{bmatrix}
 # $$
 
 # **행렬 곱셈**
 # 
-# $m \times n$ 행렬 $A$와 $n \times p$ 행렬 $B$의 곱은 $m \times p$ 행렬이며, 
-# 각 $(i, j)$번째 항목은 다음과 같이 정의된다.
+# ($m$, $n$) 모양의 $A$와 ($n$, $p$) 모양의 행렬 $B$의 곱 $A \cdot B$는 ($m$, $p$) 모양의 행렬이며,
+# $i$ 행, $j$ 열의 항목 $(A \cdot B)_{i,j}$는 다음과 같이 정의된다.
 
 # $$
-# \begin{align*}
-# (A B)_{ij}
-# &= \sum _{k=0}^{n-1} A_{ik} \cdot B_{kj} \\
-# &= A_{i0} \cdot B_{0j} + A_{i2} \cdot B_{2j} + \cdots + A_{i(n-1)} \cdot B_{(n-1)j}
-# \end{align*}
+# (A \cdot B)_{i, j}
+# = A_{i,0} \ast B_{0,j} + A_{i,2} \ast B_{2,j} + \cdots + A_{i,(n-1)} \ast B_{(n-1),j}
 # $$
 
 # 그림으로 나타내면 다음과 같다.
