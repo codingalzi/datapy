@@ -1666,6 +1666,7 @@ a_set.issuperset({1, 2, 3})
 # TypeError: unhashable type: 'list'
 # ```
 
+# (sec:list-comprehension)=
 # ## 조건제시법
 
 # 리스트, 집합, 사전을 수학 시간에 배운 조건제시법(comprehension)을 이용하여 정의할 수 있다.

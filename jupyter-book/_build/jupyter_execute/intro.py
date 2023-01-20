@@ -25,8 +25,6 @@
 # * 파이썬 프로그래밍
 # * 미적분학, 선형대수, 확률과통계
 
-# **데이터 과학, 인공지능, 머신러닝, 딥러닝**
-
 # 인공지능, 머신러닝, 딥러닝을 간략하게 정의하면 다음과 같다.
 # 
 # * 인공지능: 사고<font size='2'>thinking</font>, 학습<font size='2'>learning</font> 등 
@@ -55,6 +53,8 @@
 # [TIOBE Index](https://www.tiobe.com/tiobe-index/)의 상위 결과를 보여준다.
 # 
 # <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/tiobe-index.jpg" style="width:750px"></div>
+
+# ## 파이썬 주요 라이브러리
 
 # 파이썬이 데이터 과학 분야에서 인기가 높은 이유는 다음과 같다.
 # 
