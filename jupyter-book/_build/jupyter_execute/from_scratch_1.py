@@ -435,6 +435,11 @@ B = [[1, 2],
 # \end{bmatrix}
 # $$
 
+# 아래 그림은 행렬의 행과 열의 인덱스를 보여준다.
+
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Matrix_row-column.jpg" width="50%"></div>
+# <br>
+
 # **행렬의 모양 확인 함수**
 
 # 아래 코드의 `shape()` 함수는 주어진 행렬의 모양을 튜플로 반환한다.
@@ -509,14 +514,14 @@ get_column(B, 1)
 
 # ### 행렬 초기화
 
-# 경우에 따라 0으로만, 1로만, 또는 무작위 수로 구성된 특정 모양의 행렬을 필요하다.
-# `make_matrix()` 함수는 행렬의 항목을 생성하는 방식을 지정하면
+# 경우에 따라 0으로만, 1로만, 또는 임의의 수로 구성된 특정 모양의 행렬을 필요할 수 있다.
+# 아래 `make_matrix()` 함수는 행렬의 항목을 생성하는 방식을 지정하면
 # 원하는 모양의 행렬을 생성한다.
 # 
 # * 인자: 3개의 인자가 사용된다.
 #     * `n`: 행의 수
 #     * `m`: 열의 수
-#     * `entry_fn`: i, j가 주어지면 i행, j열에 위치한 값 계산
+#     * `entry_fn`: i, j가 주어지면 i행, j열에 위치한 항목 계산
 # * 반환값: 지정된 방식으로 계산된 (i, j) 모양의 행렬
 
 # In[35]:
@@ -535,7 +540,7 @@ def make_matrix(n, m, entry_fn):
 # **0-행렬**
 # 
 # 0-행렬<font size='2'>zero matrix</font>이란 행렬의 모든 원소의 값이 0인 행렬을 말한다.
-# 예를 들어 아래 행렬은 (3, 2) 모양의 0-행렬이다.
+# 아래 행렬은 (3, 2) 모양의 0-행렬이다.
 # 
 # $$
 # \begin{bmatrix}
@@ -571,7 +576,7 @@ zeros((5,7))
 # **1-행렬**
 # 
 # 1-행렬<font size='2'>one matrix</font>이란 행렬의 모든 원소의 값이 1인 행렬을 말한다.
-# 예를 들어 아래 행렬은 (3, 4) 모양의 1-행렬이다.
+# 아래 행렬은 (3, 4) 모양의 1-행렬이다.
 # 
 # $$
 # \begin{bmatrix}
@@ -616,7 +621,7 @@ ones((5,7))
 import random
 
 
-# `random.random()` 함수는 [0, 1) 구간에서 임의의 수를 무작위로 생성한다.
+# `random.random()` 함수는 [0, 1) 구간에서 임의의 수를 무작위로 반환한다.
 
 # In[41]:
 
@@ -644,6 +649,15 @@ def rand(n, m):
 
     return make_matrix(n, m, random_function)
 
+
+# :::{admonition} 함수의 인자 형식
+# :class: warning
+# 
+# `zeros()` 함수와 `ones()` 함수는 행렬의 모양을 가리키는 튜플을 인자로 받는다.
+# 반면에 `rand()` 함수는 행과 열의 크기 두 개의 인자를 받는다.
+# 이는 나중에 다룰 {ref}`sec:numpy_1`에서 소개하는 넘파이 모듈에 포함된 동일한 이름의 함수들과
+# 형식을 맞추기 위해서이다.
+# :::
 
 # In[44]:
 
