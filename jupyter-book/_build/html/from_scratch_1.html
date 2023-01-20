@@ -4,13 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>8. 선형대수 기초 &#8212; 파이썬 데이터 분석</title>
     
-  <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -20,17 +18,21 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
+    
+      
+
+    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -38,21 +40,20 @@
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="9. 통계 기초" href="from_scratch_2.html" />
@@ -64,21 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
-
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -87,10 +74,9 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
       
@@ -235,17 +221,12 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
-    </div>
-    <div id="rtd-footer-container"></div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
 </div>
 
 
@@ -253,209 +234,99 @@ const thebe_selector_output = ".output, .cell_output"
 
 
           
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="header-article row sticky-top noprint">
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
         
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/codingalzi/datapy/master?urlpath=tree/jupyter-book/from_scratch_1.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/jupyter-book/from_scratch_1.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Colab"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="_static/images/logo_colab.png">
-  </span>
-<span class="headerbtn__text-container">Colab</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/codingalzi/datapy"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/codingalzi/datapy/issues/new?title=Issue%20on%20page%20%2Ffrom_scratch_1.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/from_scratch_1.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/from_scratch_1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/codingalzi/datapy"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/codingalzi/datapy/issues/new?title=Issue%20on%20page%20%2Ffrom_scratch_1.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
     </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/codingalzi/datapy/master?urlpath=tree/jupyter-book/from_scratch_1.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/jupyter-book/from_scratch_1.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
    8.1. 벡터
@@ -512,11 +383,12 @@ title="Print to PDF"
  </li>
 </ul>
 
-    </nav>
-</div>
+            </nav>
+        </div>
     </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>선형대수 기초</h1>
@@ -589,12 +461,11 @@ title="Print to PDF"
                     </div>
                 </div>
             </div>
-            <main id="main-content" role="main">
-                
+            
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="sec-from-scratch-1">
-<span id="id1"></span><h1><span class="section-number">8. </span>선형대수 기초<a class="headerlink" href="#sec-from-scratch-1" title="Permalink to this headline">#</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="sec-from-scratch-1">
+<span id="id1"></span><h1><span class="section-number">8. </span>선형대수 기초<a class="headerlink" href="#sec-from-scratch-1" title="Permalink to this headline">¶</a></h1>
 <p><strong>참고</strong></p>
 <p>여기서 사용하는 코드는 조엘 그루스(Joel Grus)의
 <a class="reference external" href="https://github.com/joelgrus/data-science-from-scratch">밑다닥부터 시작하는 데이터 과학</a>
@@ -605,8 +476,8 @@ title="Print to PDF"
 이를 위해 <a class="reference internal" href="python_basic_5.html#sec-list-comprehension"><span class="std std-ref">조건제시법</span></a>을 많이 활용한다.
 앞으로 <a class="reference internal" href="numpy_1.html#sec-numpy-1"><span class="std std-ref">넘파이 어레이</span></a>에서 배울 <code class="docutils literal notranslate"><span class="pre">numpy.array</span></code> 자료형이 제공하는 다양한 기능에 대한 보다 깊은 이해에
 도움될 것으로 기대한다.</p>
-<section id="id2">
-<h2><span class="section-number">8.1. </span>벡터<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<div class="section" id="id2">
+<h2><span class="section-number">8.1. </span>벡터<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>벡터는 유한 개의 값으로 구성된다.
 보통 수를 항목으로 사용하며, 항목의 수를 벡터의 <strong>차원</strong><font size='2'>dimension</font>이라 부른다.
 벡터는 수학, 통계, 물리 등 과학 분야에서 많이 사용되며,
@@ -628,8 +499,8 @@ title="Print to PDF"
 </div>
 </li>
 </ul>
-<section id="id3">
-<h3><span class="section-number">8.1.1. </span>리스트와 벡터<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<div class="section" id="id3">
+<h3><span class="section-number">8.1.1. </span>리스트와 벡터<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>리스트를 이용하여 벡터를 구현할 수 있다.</p>
 <ul class="simple">
 <li><p>x축, y축 좌표로 구성된 2차원 벡터</p></li>
@@ -670,9 +541,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
-<section id="id4">
-<h3><span class="section-number">8.1.2. </span>벡터 항목별 연산<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="id4">
+<h3><span class="section-number">8.1.2. </span>벡터 항목별 연산<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p><strong>벡터 항목별 덧셈</strong></p>
 <p>두 벡터의 항목별 덧셈은 같은 위치에 있는 항목끼기 더한 결과로 이루어진 벡터를 생성한다.</p>
 <div class="math notranslate nohighlight">
@@ -812,7 +683,7 @@ title="Print to PDF"
 <p>차원이 같은 두 벡터의 항목별 곱셈을 실행하는 함수는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">multV</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">multiplyV</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>   <span class="c1"># 두 벡터의 길이가 같은 경우만 취급</span>
 
     <span class="k">return</span> <span class="p">[</span><span class="n">v_i</span> <span class="o">*</span> <span class="n">w_i</span> <span class="k">for</span> <span class="n">v_i</span><span class="p">,</span> <span class="n">w_i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)]</span>
@@ -822,7 +693,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multV</span><span class="p">(</span><span class="n">twoDVector1</span><span class="p">,</span> <span class="n">twoDVector2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multiplyV</span><span class="p">(</span><span class="n">twoDVector1</span><span class="p">,</span> <span class="n">twoDVector2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -834,7 +705,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multV</span><span class="p">(</span><span class="n">grades1</span><span class="p">,</span> <span class="n">grades2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multiplyV</span><span class="p">(</span><span class="n">grades1</span><span class="p">,</span> <span class="n">grades2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -853,7 +724,7 @@ title="Print to PDF"
 <p>차원이 같은 두 벡터의 항목별 나눗셈을 실행하는 함수는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">divV</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">divideV</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>   <span class="c1"># 두 벡터의 길이가 같은 경우만 취급</span>
 
     <span class="k">return</span> <span class="p">[</span><span class="n">v_i</span> <span class="o">/</span> <span class="n">w_i</span> <span class="k">for</span> <span class="n">v_i</span><span class="p">,</span> <span class="n">w_i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">)]</span>
@@ -863,7 +734,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">divV</span><span class="p">(</span><span class="n">twoDVector1</span><span class="p">,</span> <span class="n">twoDVector2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">divideV</span><span class="p">(</span><span class="n">twoDVector1</span><span class="p">,</span> <span class="n">twoDVector2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -875,7 +746,7 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">divV</span><span class="p">(</span><span class="n">grades1</span><span class="p">,</span> <span class="n">grades2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">divideV</span><span class="p">(</span><span class="n">grades1</span><span class="p">,</span> <span class="n">grades2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -892,10 +763,10 @@ title="Print to PDF"
 \[
 c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 \]</div>
-<p>벡터의 각 항목에 동일한 부동소수점을 곱한 결과를 반화하는 함수는 다음과 같다.</p>
+<p>벡터의 각 항목에 동일한 부동소수점을 곱한 결과를 반환하는 함수는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scalar_multV</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scalar_multiplyV</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">c</span> <span class="o">*</span> <span class="n">v_i</span> <span class="k">for</span> <span class="n">v_i</span> <span class="ow">in</span> <span class="n">v</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -903,7 +774,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scalar_multV</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scalar_multiplyV</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -918,7 +789,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 항목별 평균은 항목끼리 모두 더한 후 벡터의 개수로 나눈다.</p>
 <div class="proof example admonition" id="exp-twdDVectorsMean">
 <p class="admonition-title"><span class="caption-number">Example 8.1 </span></p>
-<section class="example-content" id="proof-content">
+<div class="example-content section" id="proof-content">
 <p>3개의 2차원 벡터들의 평균은 아래와 같이 작동한다.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -926,22 +797,22 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 =  \frac 1 3 \ast [1+2+2, 2+1+3]
 = [5/3, 2]
 \]</div>
-</section>
+</div>
 </div><p>항목별 평균으로 이루어진 벡터를 반환하는 함수는 다음과 같이
 벡터들의 합을 벡터의 개수로 나눈다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">vector_mean</span><span class="p">(</span><span class="n">vectors</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">meanV</span><span class="p">(</span><span class="n">vectors</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">vectors</span><span class="p">)</span>
     
-    <span class="k">return</span> <span class="n">scalar_multV</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">n</span><span class="p">,</span> <span class="n">vector_sum</span><span class="p">(</span><span class="n">vectors</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">scalar_multiplyV</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">n</span><span class="p">,</span> <span class="n">vector_sum</span><span class="p">(</span><span class="n">vectors</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">vector_mean</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meanV</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
 </pre></div>
 </div>
 </div>
@@ -951,9 +822,9 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 </div>
-</section>
-<section id="id5">
-<h3><span class="section-number">8.1.3. </span>벡터 내적과 크기<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="id5">
+<h3><span class="section-number">8.1.3. </span>벡터 내적과 크기<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p>차원이 같은 벡터 두 개의 내적은 같은 위치에 있는 항목끼기 곱한 후 모두 더한 값이다.
 벡터의 내적은 점곱<font size='2'>dot product</font>를 사용하며 벡터들의 곱과 구별된다.</p>
 <div class="math notranslate nohighlight">
@@ -966,7 +837,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 <p>동일 차원의 두 벡터의 내적을 반환하는 함수는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dotV</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">),</span> <span class="s2">&quot;벡터들의 길이가 동일해야 함&quot;&quot;&quot;</span>
 
     <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">v_i</span> <span class="o">*</span> <span class="n">w_i</span> <span class="k">for</span> <span class="n">v_i</span><span class="p">,</span> <span class="n">w_i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
@@ -976,7 +847,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dotV</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -993,20 +864,19 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 \[\| v\| = \sqrt{v \cdot v} = \sqrt{v_1^2 + \cdots + v_n^2}\]</div>
 <div class="proof example admonition" id="exp-size">
 <p class="admonition-title"><span class="caption-number">Example 8.2 </span></p>
-<section class="example-content" id="proof-content">
+<div class="example-content section" id="proof-content">
 <p>벡터 <span class="math notranslate nohighlight">\([3, 4]\)</span>의 크기는 다음과 같다.</p>
 <div class="math notranslate nohighlight">
 \[\|\, [3, 4] \, \|  = \sqrt{3^2 + 4^2} = \sqrt{5^2} = 5\]</div>
-</section>
+</div>
 </div><p><strong>벡터의 크기 계산 함수</strong></p>
-<p>제곱근은 <code class="docutils literal notranslate"><span class="pre">math</span></code> 모듈의 <code class="docutils literal notranslate"><span class="pre">sqrt()</span></code> 함수를 이용한다.
-참고로 벡터의 크기는 영어로 magnitude로 표기한다.</p>
+<p>제곱근은 <code class="docutils literal notranslate"><span class="pre">math</span></code> 모듈의 <code class="docutils literal notranslate"><span class="pre">sqrt()</span></code> 함수를 이용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 
-<span class="k">def</span> <span class="nf">magnitude</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
-    <span class="n">sum_of_squares</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">norm</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="n">sum_of_squares</span> <span class="o">=</span> <span class="n">dotV</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sum_of_squares</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1014,7 +884,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">magnitude</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">norm</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1024,10 +894,10 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="id6">
-<h2><span class="section-number">8.2. </span>행렬<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><span class="section-number">8.2. </span>행렬<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p><strong>행렬</strong><font size='2'>matrix</font>은 숫자를 행과 열로 구성된 직사각형 모양으로 나열한 것이다.
 <span class="math notranslate nohighlight">\(n\)</span> 개의 행과 <span class="math notranslate nohighlight">\(k\)</span> 개의 열로 구성된 행렬을 <span class="math notranslate nohighlight">\(n \times k\)</span> 행렬이라 부른다.
 대부분의 프로그래밍 언어에서 행렬을 리스트의 리스트, 즉 2중 리스트로 구현한다.
@@ -1198,8 +1068,8 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 <p><strong><span class="math notranslate nohighlight">\(i\)</span> 행, <span class="math notranslate nohighlight">\(j\)</span> 열의 항목</strong></p>
 <p>행렬 <span class="math notranslate nohighlight">\(M\)</span>의 <span class="math notranslate nohighlight">\(i\)</span> 행, <span class="math notranslate nohighlight">\(j\)</span> 열의 항목은 <span class="math notranslate nohighlight">\(i\)</span> 번 인덱스 행의, <span class="math notranslate nohighlight">\(j\)</span> 번 인덱스 열에 위치한 값을 가리키며
 <span class="math notranslate nohighlight">\(M_{i, j}\)</span>로 표기한다.</p>
-<section id="id7">
-<h3><span class="section-number">8.2.1. </span>행렬 초기화<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
+<div class="section" id="id7">
+<h3><span class="section-number">8.2.1. </span>행렬 초기화<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>경우에 따라 0으로만, 1로만, 또는 임의의 수로 구성된 특정 모양의 행렬을 필요할 수 있다.
 아래 <code class="docutils literal notranslate"><span class="pre">make_matrix()</span></code> 함수는 행렬의 항목을 생성하는 방식을 지정하면
 원하는 모양의 행렬을 생성한다.</p>
@@ -1334,7 +1204,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2161837388197183
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8900998771762157
 </pre></div>
 </div>
 </div>
@@ -1346,7 +1216,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.23314232562188686
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9055399706408198
 </pre></div>
 </div>
 </div>
@@ -1380,11 +1250,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.5776646924495183, 0.40195108809243096, 0.8732852614236691],
- [0.5470400341845183, 0.05868935551572996, 0.6303957078844395],
- [0.2802307599670715, 0.6935457930399754, 0.5256151563569802],
- [0.1168611413807823, 0.27778156076054383, 0.40760026332641075],
- [0.17327790058425074, 0.39181128657208364, 0.1638633131692383]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.8171218248834523, 0.3884984795172909, 0.5405984727102023],
+ [0.46895980181893104, 0.23878096131640114, 0.38572487747852635],
+ [0.2797810442357045, 0.589981383209149, 0.3520967472036056],
+ [0.6482175285849783, 0.5567164232718993, 0.9351786363270821],
+ [0.6577824022672892, 0.12636673585601033, 0.035548046962019186]]
 </pre></div>
 </div>
 </div>
@@ -1416,11 +1286,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.4, 0.62, 0.93],
- [0.02, 0.41, 0.49],
- [0.77, 0.76, 0.68],
- [0.69, 0.21, 0.59],
- [0.3, 0.97, 0.73]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.71, 0.61, 0.52],
+ [0.98, 0.4, 0.42],
+ [0.75, 0.48, 0.5],
+ [0.15, 0.53, 0.98],
+ [0.61, 0.31, 0.63]]
 </pre></div>
 </div>
 </div>
@@ -1433,11 +1303,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.6336, 0.02453, 0.01897],
- [0.58863, 0.8712, 0.60837],
- [0.69392, 0.86338, 0.56096],
- [0.50933, 0.41791, 0.10397],
- [0.62789, 0.9448, 0.09547]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.84976, 0.58479, 0.48062],
+ [0.95748, 0.40726, 0.46661],
+ [0.18599, 0.07525, 0.39276],
+ [0.75091, 0.2374, 0.74338],
+ [0.38804, 0.07377, 0.47485]]
 </pre></div>
 </div>
 </div>
@@ -1450,11 +1320,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.44799, 0.12674, 0.61549],
- [0.67866, 0.07455, 0.50594],
- [0.37296, 0.7475, 0.52876],
- [0.30732, 0.66696, 0.61518],
- [0.13883, 0.70307, 0.23563]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.21477, 0.98613, 0.78192],
+ [0.35746, 0.20644, 0.13383],
+ [0.59161, 0.41864, 0.21153],
+ [0.57622, 0.10183, 0.91779],
+ [0.35845, 0.39203, 0.56224]]
 </pre></div>
 </div>
 </div>
@@ -1504,9 +1374,9 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 </div>
-</section>
-<section id="id8">
-<h3><span class="section-number">8.2.2. </span>행렬 항목별 연산<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="id8">
+<h3><span class="section-number">8.2.2. </span>행렬 항목별 연산<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p><strong>행렬의 항목별 덧셈</strong></p>
 <p>모양이 같은 두 행렬의 항목별 덧셈은 항목별로 더한 결과로 이루어진 행렬이다.
 <span class="math notranslate nohighlight">\(2 \times 3\)</span> 행렬의 항목별 덧셈은 다음과 같다.</p>
@@ -1603,15 +1473,36 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 = \begin{bmatrix}2\ast 1&amp;2\ast 8&amp;2\ast -3\\2\ast 4&amp;2\ast -2&amp;2\ast 5\end{bmatrix}
 = \begin{bmatrix}2&amp;16&amp;-6\\8&amp;-4&amp;10\end{bmatrix}
 \end{split}\]</div>
-</section>
-<section id="id9">
-<h3><span class="section-number">8.2.3. </span>행렬 곱셈<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
+<p>행렬의 각 항목에 동일한 부동소수점을 곱한 결과를 반환하는 함수는 다음과 같다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scalar_multiplyM</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">M</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[[</span><span class="n">c</span> <span class="o">*</span> <span class="n">row_i</span> <span class="k">for</span> <span class="n">row_i</span> <span class="ow">in</span> <span class="n">row</span><span class="p">]</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">M</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scalar_multiplyM</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[2, 6, 14], [2, 0, 0]]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id9">
+<h3><span class="section-number">8.2.3. </span>행렬 곱셈<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>(<span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(n\)</span>) 모양의 <span class="math notranslate nohighlight">\(A\)</span>와 (<span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(p\)</span>) 모양의 행렬 <span class="math notranslate nohighlight">\(B\)</span>의 곱 <span class="math notranslate nohighlight">\(A \cdot B\)</span>는 (<span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(p\)</span>) 모양의 행렬이며,
 <span class="math notranslate nohighlight">\(i\)</span> 행, <span class="math notranslate nohighlight">\(j\)</span> 열의 항목 <span class="math notranslate nohighlight">\((A \cdot B)_{i,j}\)</span>는 다음과 같이 정의된다.</p>
 <div class="math notranslate nohighlight">
 \[
 (A \cdot B)_{i, j}
-= A_{i,0} \ast B_{0,j} + A_{i,2} \ast B_{2,j} + \cdots + A_{i,(n-1)} \ast B_{(n-1),j}
+= A_{i,0} \ast B_{0,j} + A_{i,1} \ast B_{1,j} + \cdots + A_{i,(n-1)} \ast B_{(n-1),j}
 \]</div>
 <p>아래 그림으로 (4, 2) 모양의 행렬 <span class="math notranslate nohighlight">\(A\)</span>와 (2, 3) 모양의 행렬 <span class="math notranslate nohighlight">\(B\)</span>의 점곱인 <span class="math notranslate nohighlight">\(A\cdot B\)</span>의 항목을 계산하는 과정을 보여준다.</p>
 <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Matrix_mult_diagram.jpg" width="50%"></div>
@@ -1623,6 +1514,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 \begin{bmatrix}
     1&amp;0&amp;2\\-1&amp;3&amp;1
 \end{bmatrix}
+\cdot
 \begin{bmatrix}
     3&amp;1\\2&amp;1\\1&amp;0
 \end{bmatrix}
@@ -1636,6 +1528,57 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 \end{bmatrix}
 \end{align*}
 \end{split}\]</div>
+<p>행렬의 곱셈을 계산하는 함수는 다음과 같다.
+2중 리스트 조건제시법을 사용하면 간단하게 구현할 수 있다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">A</span></code>: (m, n) 모양의 행렬(2중 리스트)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">B</span></code> 가 (n, p) 모양의 행렬(2중 리스트)</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">*B</span></code>: 리스트 풀어헤치기의 결과. 차원이 p인 리스트 n개.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">zip(*B)</span></code>: 차원이 n인 열벡터 p개.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">matmul</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A: (m, n) 모양의 행렬(2중 리스트)</span>
+<span class="sd">    B: (n, p) 모양의 행렬(2중 리스트)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">mat_mul</span> <span class="o">=</span> <span class="p">[[</span><span class="nb">sum</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span> <span class="k">for</span> <span class="n">a</span><span class="p">,</span><span class="n">b</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">A_row</span><span class="p">,</span> <span class="n">B_col</span><span class="p">))</span> <span class="k">for</span> <span class="n">B_col</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">B</span><span class="p">)]</span> <span class="k">for</span> <span class="n">A_row</span> <span class="ow">in</span> <span class="n">A</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">mat_mul</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3x2 행렬</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]]</span>
+
+<span class="c1"># 2x4 행렬</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matmul</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[38, 51, 65, 11], [40, 57, 49, 13], [67, 96, 79, 22]]
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>항등행렬과 항등원</strong></p>
 <p>임의의 행렬 <span class="math notranslate nohighlight">\(M\)</span>과 항등행렬과의 곱은 <span class="math notranslate nohighlight">\(M\)</span> 자신이다.
 즉 항등행렬은 행렬 곱셈의 항등원이다.</p>
@@ -1664,9 +1607,35 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
     1&amp;0
 \end{bmatrix}
 \end{split}\]</div>
-</section>
-<section id="id10">
-<h3><span class="section-number">8.2.4. </span>전치행렬<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3x2 행렬</span>
+<span class="n">M</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+
+<span class="c1"># 2x2 행렬</span>
+<span class="n">N</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+     <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">matmul</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[3, 1], [2, 1], [1, 0]]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id10">
+<h3><span class="section-number">8.2.4. </span>전치행렬<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>행렬의 <strong>전치</strong>란 행과 열을 바꾸는 것으로, 행렬 <span class="math notranslate nohighlight">\(A\)</span>의 전치는 <span class="math notranslate nohighlight">\(A^T\)</span>로 표기한다.
 즉, <span class="math notranslate nohighlight">\(A\)</span>가 (<span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(n\)</span>) 모양의 행렬이면 <span class="math notranslate nohighlight">\(A^T\)</span>는 (<span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(m\)</span>) 모양의 행렬이다.
 <span class="math notranslate nohighlight">\(A^T\)</span>의 <span class="math notranslate nohighlight">\(i\)</span>행의 <span class="math notranslate nohighlight">\(j\)</span>열번째 값은 <span class="math notranslate nohighlight">\(A\)</span>의 <span class="math notranslate nohighlight">\(j\)</span>행의 <span class="math notranslate nohighlight">\(i\)</span>열번째 값이다.
@@ -1689,22 +1658,163 @@ A ^{T}_{i,j} = A_{j,i}
     7&amp;4
 \end{bmatrix}
 \end{split}\]</div>
+<p>전치 행렬을 계산하는 함수는 다음과 같다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">transpose</span><span class="p">(</span><span class="n">M</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    M: (m, n) 모양의 행렬</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">col</span><span class="p">)</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">M</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+     <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transpose</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[9, -1], [8, 3], [7, 4]]
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>전치행렬의 성질</strong></p>
 <p><span class="math notranslate nohighlight">\(a\)</span>를 스칼라, <span class="math notranslate nohighlight">\(A\)</span>와 <span class="math notranslate nohighlight">\(B\)</span>를 크기가 같은 행렬이라 하자. 이때 다음이 성립한다.</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\((A^T)^T = A\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\((A + B)^T = A^T + B^T\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\((A - B)^T = A^T - B^T\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\((a\cdot A)^T = a\cdot A^T\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\((A B)^T = B^T A^T\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((a\ast A)^T = a\ast A^T\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((A\cdot B)^T = B^T \cdot A^T\)</span></p></li>
 </ul>
-</section>
-</section>
-<section id="id11">
-<h2><span class="section-number">8.3. </span>연습문제<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[2, 7], [4, 5], [7, 8]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">B</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[5, 8, 1, 2], [4, 5, 9, 1]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transpose</span><span class="p">(</span><span class="n">transpose</span><span class="p">(</span><span class="n">A</span><span class="p">))</span> <span class="o">==</span> <span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">C</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1, 3, 7], [1, 0, 0]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">D</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0, 0, 5], [7, 5, 0]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transpose</span><span class="p">(</span><span class="n">addM</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">))</span> <span class="o">==</span> <span class="n">addM</span><span class="p">(</span><span class="n">transpose</span><span class="p">(</span><span class="n">C</span><span class="p">),</span> <span class="n">transpose</span><span class="p">(</span><span class="n">D</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transpose</span><span class="p">(</span><span class="n">subtractM</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="n">D</span><span class="p">))</span> <span class="o">==</span> <span class="n">subtractM</span><span class="p">(</span><span class="n">transpose</span><span class="p">(</span><span class="n">C</span><span class="p">),</span> <span class="n">transpose</span><span class="p">(</span><span class="n">D</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transpose</span><span class="p">(</span><span class="n">scalar_multiplyM</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">A</span><span class="p">))</span> <span class="o">==</span> <span class="n">scalar_multiplyM</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">transpose</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transpose</span><span class="p">(</span><span class="n">matmul</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">))</span> <span class="o">==</span> <span class="n">matmul</span><span class="p">(</span><span class="n">transpose</span><span class="p">(</span><span class="n">B</span><span class="p">),</span> <span class="n">transpose</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id11">
+<h2><span class="section-number">8.3. </span>연습문제<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-linear_algebra_basics.ipynb">(실습) 선형대수 기초 밑바닥부터</a></p>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -1728,11 +1838,9 @@ A ^{T}_{i,j} = A_{j,i}
 
               </div>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="python_basic_7.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1748,28 +1856,24 @@ A ^{T}_{i,j} = A_{j,i}
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            </footer>
+            
         </div>
     </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By 코딩알지<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+    <footer class="footer">
+  <p>
     
-</div>
+      By 코딩알지<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
 
 
       </div>
     </div>
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
-
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
   </body>
 </html>

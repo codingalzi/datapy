@@ -189,7 +189,7 @@ subtractV(height_weight_age1, height_weight_age2)
 # In[13]:
 
 
-def multV(v, w):
+def multiplyV(v, w):
     assert len(v) == len(w)   # 두 벡터의 길이가 같은 경우만 취급
 
     return [v_i * w_i for v_i, w_i in zip(v, w)]
@@ -198,13 +198,13 @@ def multV(v, w):
 # In[14]:
 
 
-multV(twoDVector1, twoDVector2)
+multiplyV(twoDVector1, twoDVector2)
 
 
 # In[15]:
 
 
-multV(grades1, grades2)
+multiplyV(grades1, grades2)
 
 
 # **벡터 항목별 나눗셈**
@@ -220,7 +220,7 @@ multV(grades1, grades2)
 # In[16]:
 
 
-def divV(v, w):
+def divideV(v, w):
     assert len(v) == len(w)   # 두 벡터의 길이가 같은 경우만 취급
 
     return [v_i / w_i for v_i, w_i in zip(v, w)]
@@ -229,13 +229,13 @@ def divV(v, w):
 # In[17]:
 
 
-divV(twoDVector1, twoDVector2)
+divideV(twoDVector1, twoDVector2)
 
 
 # In[18]:
 
 
-divV(grades1, grades2)
+divideV(grades1, grades2)
 
 
 # **벡터 스칼라 곱셈**
@@ -247,19 +247,19 @@ divV(grades1, grades2)
 # c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 # $$
 
-# 벡터의 각 항목에 동일한 부동소수점을 곱한 결과를 반화하는 함수는 다음과 같다.
+# 벡터의 각 항목에 동일한 부동소수점을 곱한 결과를 반환하는 함수는 다음과 같다.
 
 # In[19]:
 
 
-def scalar_multV(c, v):
+def scalar_multiplyV(c, v):
     return [c * v_i for v_i in v]
 
 
 # In[20]:
 
 
-scalar_multV(2, [1, 2, 3])
+scalar_multiplyV(2, [1, 2, 3])
 
 
 # **항목별 평균 벡터**
@@ -285,16 +285,16 @@ scalar_multV(2, [1, 2, 3])
 # In[21]:
 
 
-def vector_mean(vectors):
+def meanV(vectors):
     n = len(vectors)
     
-    return scalar_multV(1/n, vector_sum(vectors))
+    return scalar_multiplyV(1/n, vector_sum(vectors))
 
 
 # In[22]:
 
 
-vector_mean([[3, 2], [2, 5], [7, 5], [6, 3]])
+meanV([[3, 2], [2, 5], [7, 5], [6, 3]])
 
 
 # ### 벡터 내적과 크기
@@ -315,7 +315,7 @@ vector_mean([[3, 2], [2, 5], [7, 5], [6, 3]])
 # In[23]:
 
 
-def dot(v, w):
+def dotV(v, w):
     assert len(v) == len(w), "벡터들의 길이가 동일해야 함"""
 
     return sum(v_i * w_i for v_i, w_i in zip(v, w))
@@ -324,7 +324,7 @@ def dot(v, w):
 # In[24]:
 
 
-dot([1, 2, 3], [4, 5, 6])
+dotV([1, 2, 3], [4, 5, 6])
 
 
 # **벡터의 크기**
@@ -345,22 +345,21 @@ dot([1, 2, 3], [4, 5, 6])
 # **벡터의 크기 계산 함수**
 # 
 # 제곱근은 `math` 모듈의 `sqrt()` 함수를 이용한다.
-# 참고로 벡터의 크기는 영어로 magnitude로 표기한다.
 
 # In[25]:
 
 
 import math
 
-def magnitude(v):
-    sum_of_squares = dot(v, v)
+def norm(v):
+    sum_of_squares = dotV(v, v)
     return math.sqrt(sum_of_squares)
 
 
 # In[26]:
 
 
-magnitude([3, 4])
+norm([3, 4])
 
 
 # ## 행렬
@@ -841,6 +840,21 @@ subtractM(C, D)
 # = \begin{bmatrix}2&16&-6\\8&-4&10\end{bmatrix}
 # $$
 
+# 행렬의 각 항목에 동일한 부동소수점을 곱한 결과를 반환하는 함수는 다음과 같다.
+
+# In[56]:
+
+
+def scalar_multiplyM(c, M):
+    return [[c * row_i for row_i in row] for row in M]
+
+
+# In[57]:
+
+
+scalar_multiplyM(2, C)
+
+
 # ### 행렬 곱셈
 
 # ($m$, $n$) 모양의 $A$와 ($n$, $p$) 모양의 행렬 $B$의 곱 $A \cdot B$는 ($m$, $p$) 모양의 행렬이며,
@@ -848,7 +862,7 @@ subtractM(C, D)
 
 # $$
 # (A \cdot B)_{i, j}
-# = A_{i,0} \ast B_{0,j} + A_{i,2} \ast B_{2,j} + \cdots + A_{i,(n-1)} \ast B_{(n-1),j}
+# = A_{i,0} \ast B_{0,j} + A_{i,1} \ast B_{1,j} + \cdots + A_{i,(n-1)} \ast B_{(n-1),j}
 # $$
 
 # 아래 그림으로 (4, 2) 모양의 행렬 $A$와 (2, 3) 모양의 행렬 $B$의 점곱인 $A\cdot B$의 항목을 계산하는 과정을 보여준다.
@@ -864,6 +878,7 @@ subtractM(C, D)
 # \begin{bmatrix}
 #     1&0&2\\-1&3&1
 # \end{bmatrix}
+# \cdot
 # \begin{bmatrix}
 #     3&1\\2&1\\1&0
 # \end{bmatrix}
@@ -877,6 +892,46 @@ subtractM(C, D)
 # \end{bmatrix}
 # \end{align*}
 # $$
+
+# 행렬의 곱셈을 계산하는 함수는 다음과 같다.
+# 2중 리스트 조건제시법을 사용하면 간단하게 구현할 수 있다.
+# 
+# - `A`: (m, n) 모양의 행렬(2중 리스트)
+# - `B` 가 (n, p) 모양의 행렬(2중 리스트)
+#     - `*B`: 리스트 풀어헤치기의 결과. 차원이 p인 리스트 n개.
+#     - `zip(*B)`: 차원이 n인 열벡터 p개.
+
+# In[58]:
+
+
+def matmul(A, B):
+    """
+    A: (m, n) 모양의 행렬(2중 리스트)
+    B: (n, p) 모양의 행렬(2중 리스트)
+    """
+
+    mat_mul = [[sum(a*b for a,b in zip(A_row, B_col)) for B_col in zip(*B)] for A_row in A]
+    return mat_mul
+
+
+# In[59]:
+
+
+# 3x2 행렬
+A = [[2, 7],
+     [4, 5],
+     [7, 8]]
+
+# 2x4 행렬
+B = [[5, 8, 1, 2],
+     [4, 5, 9, 1]]
+
+
+# In[60]:
+
+
+matmul(A, B)
+
 
 # **항등행렬과 항등원**
 # 
@@ -908,6 +963,25 @@ subtractM(C, D)
 # \end{bmatrix}
 # $$
 
+# In[61]:
+
+
+# 3x2 행렬
+M = [[3, 1],
+     [2, 1],
+     [1, 0]]
+
+# 2x2 행렬
+N = [[1, 0],
+     [0, 1]]
+
+
+# In[62]:
+
+
+matmul(M, N)
+
+
 # ### 전치행렬
 
 # 행렬의 **전치**란 행과 열을 바꾸는 것으로, 행렬 $A$의 전치는 $A^T$로 표기한다. 
@@ -934,6 +1008,32 @@ subtractM(C, D)
 # \end{bmatrix}
 # $$
 
+# 전치 행렬을 계산하는 함수는 다음과 같다.
+
+# In[63]:
+
+
+def transpose(M):
+    """
+    M: (m, n) 모양의 행렬
+    """
+
+    return [list(col) for col in zip(*M)]
+
+
+# In[64]:
+
+
+X = [[9, 8, 7],
+     [-1, 3, 4]]
+
+
+# In[65]:
+
+
+transpose(X)
+
+
 # **전치행렬의 성질**
 
 # $a$를 스칼라, $A$와 $B$를 크기가 같은 행렬이라 하자. 이때 다음이 성립한다.
@@ -941,8 +1041,62 @@ subtractM(C, D)
 # * $(A^T)^T = A$
 # * $(A + B)^T = A^T + B^T$
 # * $(A - B)^T = A^T - B^T$
-# * $(a\cdot A)^T = a\cdot A^T$
-# * $(A B)^T = B^T A^T$
+# * $(a\ast A)^T = a\ast A^T$
+# * $(A\cdot B)^T = B^T \cdot A^T$
+
+# In[66]:
+
+
+A
+
+
+# In[67]:
+
+
+B
+
+
+# In[68]:
+
+
+transpose(transpose(A)) == A
+
+
+# In[69]:
+
+
+C
+
+
+# In[70]:
+
+
+D
+
+
+# In[71]:
+
+
+transpose(addM(C, D)) == addM(transpose(C), transpose(D))
+
+
+# In[72]:
+
+
+transpose(subtractM(C, D)) == subtractM(transpose(C), transpose(D))
+
+
+# In[73]:
+
+
+transpose(scalar_multiplyM(2, A)) == scalar_multiplyM(2, transpose(A))
+
+
+# In[74]:
+
+
+transpose(matmul(A, B)) == matmul(transpose(B), transpose(A))
+
 
 # ## 연습문제
 
