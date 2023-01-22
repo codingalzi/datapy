@@ -439,9 +439,7 @@ B = [[1, 2],
 # <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Matrix_row-column.jpg" width="50%"></div>
 # <br>
 
-# **행렬의 모양 확인 함수**
-
-# 아래 코드의 `shape()` 함수는 주어진 행렬의 모양을 튜플로 반환한다.
+# 아래 `shape()` 함수는 주어진 행렬의 모양을 튜플로 반환한다.
 
 # In[29]:
 
@@ -751,7 +749,7 @@ identity(5)
 
 # ### 행렬 항목별 연산
 
-# **행렬의 항목별 덧셈**
+# **행렬 항목별 덧셈**
 # 
 # 모양이 같은 두 행렬의 항목별 덧셈은 항목별로 더한 결과로 이루어진 행렬이다.
 # $2 \times 3$ 행렬의 항목별 덧셈은 다음과 같다.
@@ -794,7 +792,23 @@ D = [[0, 0, 5],
 addM(C, D)
 
 
-# **행렬의 항목별 뺄셈**
+# **행렬 항목별 덧셈의 항등원**
+
+# 0-행렬은 행렬 항목별 덧셈 연산의 항등원이다.
+
+# In[54]:
+
+
+addM(C, zeros((2, 3))) == C
+
+
+# In[55]:
+
+
+addM(zeros((2, 3)), C) == C
+
+
+# **행렬 항목별 뺄셈**
 # 
 # 모양이 같은 두 행렬의 항복별 뺄셈은 항목별로 뺀 결과로 이루어진 행렬이다.
 # $2 \times 3$ 행렬의 항목별 뺄셈은 다음과 같다.
@@ -810,7 +824,7 @@ addM(C, D)
 
 # 행렬의 항목별 뺄셈을 계산하는 함수는 다음과 같다.
 
-# In[54]:
+# In[56]:
 
 
 def subtractM(A, B):
@@ -821,13 +835,13 @@ def subtractM(A, B):
     return make_matrix(m, n, lambda i, j: A[i][j] - B[i][j])
 
 
-# In[55]:
+# In[57]:
 
 
 subtractM(C, D)
 
 
-# **행렬의 스칼라 곱셈**
+# **행렬 스칼라 곱셈**
 # 
 # 숫자 하나와 행렬의 곱셈을 행렬 스칼라 곱셈이라 부른다. 
 # 스칼라 곱셈은 행렬의 각 항목을 지정된 숫자로 곱해 새로운 행렬을 생성한다.
@@ -842,14 +856,14 @@ subtractM(C, D)
 
 # 행렬의 각 항목에 동일한 부동소수점을 곱한 결과를 반환하는 함수는 다음과 같다.
 
-# In[56]:
+# In[58]:
 
 
 def scalar_multiplyM(c, M):
     return [[c * row_i for row_i in row] for row in M]
 
 
-# In[57]:
+# In[59]:
 
 
 scalar_multiplyM(2, C)
@@ -901,7 +915,7 @@ scalar_multiplyM(2, C)
 #     - `*B`: 리스트 풀어헤치기의 결과. 차원이 p인 리스트 n개.
 #     - `zip(*B)`: 차원이 n인 열벡터 p개.
 
-# In[58]:
+# In[60]:
 
 
 def matmul(A, B):
@@ -914,7 +928,7 @@ def matmul(A, B):
     return mat_mul
 
 
-# In[59]:
+# In[61]:
 
 
 # 3x2 행렬
@@ -927,13 +941,13 @@ B = [[5, 8, 1, 2],
      [4, 5, 9, 1]]
 
 
-# In[60]:
+# In[62]:
 
 
 matmul(A, B)
 
 
-# **항등행렬과 항등원**
+# **행렬 곱셈의 항등원**
 # 
 # 임의의 행렬 $M$과 항등행렬과의 곱은 $M$ 자신이다. 
 # 즉 항등행렬은 행렬 곱셈의 항등원이다.
@@ -963,7 +977,7 @@ matmul(A, B)
 # \end{bmatrix}
 # $$
 
-# In[61]:
+# In[63]:
 
 
 # 3x2 행렬
@@ -971,15 +985,7 @@ M = [[3, 1],
      [2, 1],
      [1, 0]]
 
-# 2x2 행렬
-N = [[1, 0],
-     [0, 1]]
-
-
-# In[62]:
-
-
-matmul(M, N)
+matmul(M, identity(2)) == M
 
 
 # ### 전치행렬
@@ -1010,7 +1016,7 @@ matmul(M, N)
 
 # 전치 행렬을 계산하는 함수는 다음과 같다.
 
-# In[63]:
+# In[64]:
 
 
 def transpose(M):
@@ -1021,14 +1027,14 @@ def transpose(M):
     return [list(col) for col in zip(*M)]
 
 
-# In[64]:
+# In[65]:
 
 
 X = [[9, 8, 7],
      [-1, 3, 4]]
 
 
-# In[65]:
+# In[66]:
 
 
 transpose(X)
@@ -1044,55 +1050,55 @@ transpose(X)
 # * $(a\ast A)^T = a\ast A^T$
 # * $(A\cdot B)^T = B^T \cdot A^T$
 
-# In[66]:
+# In[67]:
 
 
 A
 
 
-# In[67]:
+# In[68]:
 
 
 B
 
 
-# In[68]:
+# In[69]:
 
 
 transpose(transpose(A)) == A
 
 
-# In[69]:
+# In[70]:
 
 
 C
 
 
-# In[70]:
+# In[71]:
 
 
 D
 
 
-# In[71]:
+# In[72]:
 
 
 transpose(addM(C, D)) == addM(transpose(C), transpose(D))
 
 
-# In[72]:
+# In[73]:
 
 
 transpose(subtractM(C, D)) == subtractM(transpose(C), transpose(D))
 
 
-# In[73]:
+# In[74]:
 
 
 transpose(scalar_multiplyM(2, A)) == scalar_multiplyM(2, transpose(A))
 
 
-# In[74]:
+# In[75]:
 
 
 transpose(matmul(A, B)) == matmul(transpose(B), transpose(A))
@@ -1100,4 +1106,4 @@ transpose(matmul(A, B)) == matmul(transpose(B), transpose(A))
 
 # ## 연습문제
 
-# 참고: [(실습) 선형대수 기초 밑바닥부터](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-linear_algebra_basics.ipynb)
+# 참고: [(실습) 선형대수 기초](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-from_scratch_1.ipynb)
