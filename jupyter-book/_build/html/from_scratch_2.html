@@ -329,12 +329,12 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   9.1. 데이터셋 준비
+   9.1. 데이터 준비
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   9.2. 데이터셋 살펴보기
+   9.2. 데이터 살펴보기
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -361,7 +361,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id8">
-   9.4. 산포도
+   9.4. 산포도와 분산
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -440,12 +440,12 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   9.1. 데이터셋 준비
+   9.1. 데이터 준비
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   9.2. 데이터셋 살펴보기
+   9.2. 데이터 살펴보기
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -472,7 +472,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id8">
-   9.4. 산포도
+   9.4. 산포도와 분산
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -593,7 +593,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="id2">
-<h2><span class="section-number">9.1. </span>데이터셋 준비<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.1. </span>데이터 준비<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>어떤 웹사이트의 회원 204명을 대상으로 친구가 몇 명인지를 조사한 결과를 리스트로 저장하였다고 가정한다.
 회원 아이디는 친구가 많은 순서대로 0, 1, 2, … 등으로 정렬되어 있고,
 리스트의 각 항목이 해당 회원의 친구 숫자이다.
@@ -634,7 +634,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">9.2. </span>데이터셋 살펴보기<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">9.2. </span>데이터 살펴보기<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>회원들의 친구 숫자 정보를 다양한 방식으로 파악할 수 있다.</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">collections.Counter</span></code> 클래스</strong></p>
 <p>먼저 정해진 수의 친구를 갖는 회원은 몇 명인지 확인해보자.
@@ -810,13 +810,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="id6">
 <h3><span class="section-number">9.3.2. </span>중앙값<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p><strong>중앙값</strong><font size='2'>median</font>은 데이터셋을
+<p><strong>중앙값</strong><font size='2'>median</font>은 데이터셋에 포함된 모든 데이터 샘플을
 크기 순으로 정렬했을 때 중앙 위치에 자리잡은 값이다.
-따라서 중앙값을 구하려면 먼저 데이터를 크기순으로 정렬해야 한다.
-그 다음에 중앙 위치를 찾아내어 그곳에 위치한 값을 확인한다.
 데이터셋의 크기가 짝수인 경우 중앙에 위치한 두 수의
 평균값을 중앙값으로 사용한다.
-이런 의미에서 중앙값을 <strong>중위수</strong>라 부르기도 한다.</p>
+중앙값을 <strong>중위수</strong>라 부르기도 한다.</p>
 <p><div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/images/median.png" width="30%"></div>
 <p><div style="text-align: center">&lt;그림 출처: <a href="https://en.wikipedia.org/wiki/Median">위키백과</a>&gt;</div></p><p><strong><code class="docutils literal notranslate"><span class="pre">median()</span></code> 함수</strong></p>
 <p>웹사이트 회원들의 친구 수의 중앙값은 6임을 아래 <code class="docutils literal notranslate"><span class="pre">median()</span></code> 함수를 이용하여 확인한다.</p>
@@ -978,44 +976,42 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="id8">
-<h2><span class="section-number">9.4. </span>산포도<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<p>산포도는 데이터가 얼마나 퍼져 있는지를 측정한다.
+<h2><span class="section-number">9.4. </span>산포도와 분산<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p><strong>산포도</strong>는 데이터가 얼마나 퍼져 있는지를 측정한다.
 산포도가 0에 가까운 값이면 퍼져있지 않고 한 값 주위에 뭉쳐있다는 의미이고,
-0에서 멀어질 수록 퍼져있는 정도가 커진다는 의미이다.</p>
-<p>산포도를 측정하는 기준은 보통 다음과 같다.</p>
-<ol class="simple">
-<li><p>범위(range)</p></li>
-<li><p>사분범위(interquntile range)</p></li>
-<li><p>분산(variance)</p></li>
-<li><p>표준편차(standard deviation)</p></li>
-</ol>
+0보다 클 수록 퍼져있는 정도가 커진다는 의미이다.
+산포도를 측정하는 기준은 보통 다음과 같다.</p>
+<ul class="simple">
+<li><p>범위</p></li>
+<li><p>사분범위</p></li>
+<li><p>분산</p></li>
+<li><p>표준편차</p></li>
+</ul>
 <div class="section" id="id9">
 <h3><span class="section-number">9.4.1. </span>범위<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<p>범위는 데이터셋의 최대값과 최소값의 차이를 가리킨다.
+<p><strong>범위</strong><font size='2'>range</font>는 데이터셋에 포함된
+데이터 샘플의 최대값과 최소값의 차이를 가리킨다.
 일반적으로 범위가 크다는 것은 데이터의 퍼짐 정도가 크다는 것을 의미한다.</p>
-<p>그런데 범위는 최대, 최소값에만 의존한다.
-예를 들어, 최대값 100, 최소값 1인 데이터는 모두 <code class="docutils literal notranslate"><span class="pre">num_friends</span></code>와 동일한 범위를 갖는다.
-따라서 데이터의 특성을 제대로 반영하지 못할 수가 있다.</p>
-<img src="https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/images/num_friends.png" width="60%"><p><code class="docutils literal notranslate"><span class="pre">num_friends</span></code>의 범위는 99임을 다시 한 번 확인할 수 있다.</p>
+<p>그런데 범위는 데이터 샘플의 최대, 최소값에만 의존한다.
+예를 들어, 최대값이 100, 최소값이 1인 데이터셋은 모두 <code class="docutils literal notranslate"><span class="pre">num_friends</span></code>와 동일한 범위를 갖는다.
+따라서 데이터의 특성을 제대로 반영하지 못할 수 있다.
+<code class="docutils literal notranslate"><span class="pre">num_friends</span></code>의 범위는 99임을 다시 한 번 확인할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">data_range</span><span class="p">(</span><span class="n">xs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">data_range</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
     <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
-
-<span class="n">data_range</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_range</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_667</span><span class="o">/</span><span class="mf">1546240004.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">data_range</span><span class="p">(</span><span class="n">xs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="k">return</span> <span class="nb">max</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> 
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">data_range</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;List&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>99
 </pre></div>
 </div>
 </div>
@@ -1024,16 +1020,22 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="id10">
 <h3><span class="section-number">9.4.2. </span>사분범위<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>평균, 분산, 표준편차와 함께 범위도 이상치에 민감하다.
-이런 점을 해소하기 위해 제1사분위수와 제3사분위수 사이의 범위인 사분범위를 사용하기도 한다.</p>
+데이터의 산포도를 보다 안정적으로 측정하기 위해 제1사분위수와 제3사분위수 사이의 범위인
+<strong>사분범위</strong><font size='2'>interquantile range</font>를 사용하기도 한다.</p>
 <p>예를 들어, <code class="docutils literal notranslate"><span class="pre">num_friends</span></code>의 사분범위는 6이다.
 범위가 99였던 것에 비해 매우 작은 산포도를 의미한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">interquartile_range</span><span class="p">(</span><span class="n">xs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">interquartile_range</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;제3사분위수 - 제1사분위수&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">quantile</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)</span> <span class="o">-</span> <span class="n">quantile</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
-
-<span class="n">interquartile_range</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interquartile_range</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1046,44 +1048,58 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="id11">
 <h3><span class="section-number">9.4.3. </span>분산<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<p>데이터 평균값과의 차이의 제곱들의 평균값이 분산이다.
+<p>데이터 평균값과의 차이의 제곱들의 평균값이
+<strong>분산</strong><font size='2'>variance</font>이다.
 쉽게 말하면, 데이터가 평균값으로부터 얼마나 떨어져 있는가를 알려주는 값이며,
 정확한 계산식은 다음과 같으며,
-데이터셋 <span class="math notranslate nohighlight">\(X\)</span>의 분산은 보통 <span class="math notranslate nohighlight">\(\textit{Var}(X)\)</span> 기호로 나타낸다.</p>
+데이터셋 <span class="math notranslate nohighlight">\(X\)</span>의 분산은 보통 <span class="math notranslate nohighlight">\(\textit{Var}(X)\)</span> 또는 <span class="math notranslate nohighlight">\(\sigma\)</span>로 나타낸다.</p>
 <div class="math notranslate nohighlight">
 \[
-\textit{Var}(X) = \frac{\sum (X - \mu)^2}{n-1}
+\sigma = \textit{Var}(X) = \frac{\sum (X - \mu)^2}{n-1}
 \]</div>
 <p><strong>주의:</strong> 일반적으로 분모를 <span class="math notranslate nohighlight">\(n\)</span>으로 한다.
 하지만 데이터 표본으로부터 전체에 대한 분산을 추정하는 경우 <span class="math notranslate nohighlight">\((n-1)\)</span>을 사용한다.
 실제로 데이터분석에 다루는 데이터는 거의 표본 데이터이다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">num_friends</span></code> 데이터의 분산값은 81.54이다.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">var()</span></code> 함수</strong></p>
+<p>데이터셋의 분산을 계산하는 <code class="docutils literal notranslate"><span class="pre">var()</span></code> 함수를 정의하기 위해
+<a class="reference internal" href="from_scratch_1.html#sec-from-scratch-1"><span class="std std-ref">선형대수 기초</span></a>에서 정의한 내적 함수 <code class="docutils literal notranslate"><span class="pre">dotV()</span></code>를 활용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dot</span><span class="p">(</span><span class="n">v</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">w</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Computes v_1 * w_1 + ... + v_n * w_n&quot;&quot;&quot;</span>
-    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">),</span> <span class="s2">&quot;List[float]s must be same length&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 벡터 내적 함수</span>
+<span class="k">def</span> <span class="nf">dotV</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">),</span> <span class="s2">&quot;벡터들의 길이가 동일해야 함&quot;&quot;&quot;</span>
 
     <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">v_i</span> <span class="o">*</span> <span class="n">w_i</span> <span class="k">for</span> <span class="n">v_i</span><span class="p">,</span> <span class="n">w_i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">w</span><span class="p">))</span>
 
-<span class="k">def</span> <span class="nf">sum_of_squares</span><span class="p">(</span><span class="n">v</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;반환값: v_1 * v_1 + ... + v_n * v_n&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">dot</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">de_mean</span><span class="p">(</span><span class="n">xs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+<span class="k">def</span> <span class="nf">dev_mean</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;평균값과의 차이 계산&quot;&quot;&quot;</span>
     <span class="n">x_bar</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="n">x_bar</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">]</span>
 
-<span class="k">def</span> <span class="nf">variance</span><span class="p">(</span><span class="n">xs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="k">def</span> <span class="nf">sum_of_squares</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;반환값: v_1 * v_1 + ... + v_n * v_n&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">dotV</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">var</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;분산값 계산. 단, 2개 이상의 데이터가 있어야 함.&quot;&quot;&quot;</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;두 개 이상의 데이터 필요&quot;</span>
 
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
-    <span class="n">deviations</span> <span class="o">=</span> <span class="n">de_mean</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="n">deviations</span> <span class="o">=</span> <span class="n">dev_mean</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">sum_of_squares</span><span class="p">(</span><span class="n">deviations</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="n">variance</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">num_friends</span></code> 데이터의 분산값은 81.54이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1096,20 +1112,28 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="id12">
 <h3><span class="section-number">9.4.4. </span>표준편차<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
-<p>분간값의 단위는 원래 단위의 제곱이다.
-따라서 분산값 보다는 분산값의 제곱근을 보다 많이 사용한다.</p>
-<p>표본의 표준편차를 나타내는 기호는 보통 <span class="math notranslate nohighlight">\(s\)</span>이다.</p>
+<p>분산의 단위는 원래 단위의 제곱이다.
+따라서 분산 보다는 분산의 제곱근인
+<strong>표준편차</strong><font size='2'>standard deviation</font>를 보다 많이 사용한다.
+표본의 표준편차를 나타내는 기호는 보통 <span class="math notranslate nohighlight">\(s\)</span>이다.</p>
 <div class="math notranslate nohighlight">
 \[s_X = \sqrt{\textit{Var}(X)}\]</div>
-<p><code class="docutils literal notranslate"><span class="pre">num_friends</span></code>의 표준편차는 9.03이다.</p>
+<p><span class="math notranslate nohighlight">\(s_X\)</span>에 사용된 아랫첨자 <span class="math notranslate nohighlight">\(X\)</span>는 데이터셋을 명기할 때 사용한다.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">std()</span></code> 함수</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">num_friends</span></code>의 표준편차는 9.03임을 아래 <code class="docutils literal notranslate"><span class="pre">std()</span></code> 함수가 계산한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
 
-<span class="k">def</span> <span class="nf">standard_deviation</span><span class="p">(</span><span class="n">xs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">variance</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span>
-
-<span class="n">standard_deviation</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">std</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">var</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1119,7 +1143,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p><strong>이상치의 영향</strong></p>
+<p><strong>이상치와 분산/표준편차</strong></p>
 <p>앞서 평균값이 이상치의 영향을 크게 받는다는 것을 보았다.
 따라서 분산과 표준편차 역시 이상치의 영향을 받는다.</p>
 </div>
@@ -1136,7 +1160,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[100.0, 49, 41, 40, 25, 21, 21, 19, 19, 18, 18, 16, 15, 15, 15, 15, 14, 14, 13, 13, 13, 13, 12, 12, 11, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[100, 49, 41, 40, 25, 21, 21, 19, 19, 18, 18, 16, 15, 15, 15, 15, 14, 14, 13, 13, 13, 13, 12, 12, 11, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
 </pre></div>
 </div>
 </div>
@@ -1186,10 +1210,10 @@ Cov(X,Y) = \frac{\sum (X- E(X))(Y- E(Y))}{n-1}
 <p>친구 숫자와 사용시간 사이의 공분산은 22.43이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">covariance</span><span class="p">(</span><span class="n">xs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">ys</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">covariance</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">):</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">ys</span><span class="p">),</span> <span class="s2">&quot;xs and ys must have same number of elements&quot;</span>
 
-    <span class="k">return</span> <span class="n">dot</span><span class="p">(</span><span class="n">de_mean</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">de_mean</span><span class="p">(</span><span class="n">ys</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dotV</span><span class="p">(</span><span class="n">dev_mean</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">dev_mean</span><span class="p">(</span><span class="n">ys</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="n">covariance</span><span class="p">(</span><span class="n">num_friends</span><span class="p">,</span> <span class="n">daily_minutes</span><span class="p">)</span>
 </pre></div>
@@ -1232,10 +1256,10 @@ Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
 이는 두 데이터셋 사이의 상관 정도가 크지 않음을 의미한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">correlation</span><span class="p">(</span><span class="n">xs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">ys</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">correlation</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;공분산 계산&quot;&quot;&quot;</span>
-    <span class="n">stdev_x</span> <span class="o">=</span> <span class="n">standard_deviation</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
-    <span class="n">stdev_y</span> <span class="o">=</span> <span class="n">standard_deviation</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
+    <span class="n">stdev_x</span> <span class="o">=</span> <span class="n">std</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="n">stdev_y</span> <span class="o">=</span> <span class="n">std</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">stdev_x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">stdev_y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">covariance</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span> <span class="o">/</span> <span class="n">stdev_x</span> <span class="o">/</span> <span class="n">stdev_y</span>
     <span class="k">else</span><span class="p">:</span>
@@ -1263,7 +1287,7 @@ Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/from_scratch_2_98_0.png" src="_images/from_scratch_2_98_0.png" />
+<img alt="_images/from_scratch_2_105_0.png" src="_images/from_scratch_2_105_0.png" />
 </div>
 </div>
 <p><strong>이상치와 상관관계</strong></p>
@@ -1309,7 +1333,7 @@ Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/from_scratch_2_103_0.png" src="_images/from_scratch_2_103_0.png" />
+<img alt="_images/from_scratch_2_110_0.png" src="_images/from_scratch_2_110_0.png" />
 </div>
 </div>
 </div>
@@ -1410,7 +1434,7 @@ Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
 </div>
 <div class="section" id="id18">
 <h2><span class="section-number">9.8. </span>연습문제<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h2>
-<p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-statistics_basics.ipynb">(실습) 통계 기초 밑바닥부터</a></p>
+<p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-from_scratch_2.ipynb">(실습) 통계 기초</a></p>
 </div>
 </div>
 

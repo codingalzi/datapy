@@ -61,7 +61,7 @@ elif platform.system() == 'Linux': # 우분투 또는 구글 코랩
     plt.rc("axes", unicode_minus=False)
 
 
-# ## 데이터셋 준비
+# ## 데이터 준비
 
 # 어떤 웹사이트의 회원 204명을 대상으로 친구가 몇 명인지를 조사한 결과를 리스트로 저장하였다고 가정한다.
 # 회원 아이디는 친구가 많은 순서대로 0, 1, 2, ... 등으로 정렬되어 있고,
@@ -94,7 +94,7 @@ print(f"회원수:\t{len(num_friends)}명",
       f"최소 친구 숫자:\t{min(num_friends)}명", sep='\n')
 
 
-# ## 데이터셋 살펴보기
+# ## 데이터 살펴보기
 
 # 회원들의 친구 숫자 정보를 다양한 방식으로 파악할 수 있다.
 
@@ -241,13 +241,11 @@ mean(num_friends)
 
 # ### 중앙값
 
-# **중앙값**<font size='2'>median</font>은 데이터셋을
+# **중앙값**<font size='2'>median</font>은 데이터셋에 포함된 모든 데이터 샘플을
 # 크기 순으로 정렬했을 때 중앙 위치에 자리잡은 값이다. 
-# 따라서 중앙값을 구하려면 먼저 데이터를 크기순으로 정렬해야 한다.
-# 그 다음에 중앙 위치를 찾아내어 그곳에 위치한 값을 확인한다.
 # 데이터셋의 크기가 짝수인 경우 중앙에 위치한 두 수의 
 # 평균값을 중앙값으로 사용한다. 
-# 이런 의미에서 중앙값을 **중위수**라 부르기도 한다.
+# 중앙값을 **중위수**라 부르기도 한다.
 
 # <p><div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/images/median.png" width="30%"></div>
 # 
@@ -391,37 +389,38 @@ def mode(xs):
 mode(num_friends)
 
 
-# ## 산포도
+# ## 산포도와 분산
 
-# 산포도는 데이터가 얼마나 퍼져 있는지를 측정한다. 
+# **산포도**는 데이터가 얼마나 퍼져 있는지를 측정한다. 
 # 산포도가 0에 가까운 값이면 퍼져있지 않고 한 값 주위에 뭉쳐있다는 의미이고,
-# 0에서 멀어질 수록 퍼져있는 정도가 커진다는 의미이다. 
-# 
+# 0보다 클 수록 퍼져있는 정도가 커진다는 의미이다. 
 # 산포도를 측정하는 기준은 보통 다음과 같다.
 # 
-# 1. 범위(range)
-# 1. 사분범위(interquntile range)
-# 1. 분산(variance)
-# 1. 표준편차(standard deviation)
+# * 범위
+# * 사분범위
+# * 분산
+# * 표준편차
 
 # ### 범위
 
-# 범위는 데이터셋의 최대값과 최소값의 차이를 가리킨다. 
+# **범위**<font size='2'>range</font>는 데이터셋에 포함된
+# 데이터 샘플의 최대값과 최소값의 차이를 가리킨다. 
 # 일반적으로 범위가 크다는 것은 데이터의 퍼짐 정도가 크다는 것을 의미한다. 
 # 
-# 그런데 범위는 최대, 최소값에만 의존한다. 
-# 예를 들어, 최대값 100, 최소값 1인 데이터는 모두 `num_friends`와 동일한 범위를 갖는다.
-# 따라서 데이터의 특성을 제대로 반영하지 못할 수가 있다.
-
-# <img src="https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/images/num_friends.png" width="60%">
-
+# 그런데 범위는 데이터 샘플의 최대, 최소값에만 의존한다. 
+# 예를 들어, 최대값이 100, 최소값이 1인 데이터셋은 모두 `num_friends`와 동일한 범위를 갖는다.
+# 따라서 데이터의 특성을 제대로 반영하지 못할 수 있다.
 # `num_friends`의 범위는 99임을 다시 한 번 확인할 수 있다.
 
 # In[20]:
 
 
-def data_range(xs: List[float]) -> float:
+def data_range(xs):
     return max(xs) - min(xs)
+
+
+# In[21]:
+
 
 data_range(num_friends)
 
@@ -429,90 +428,117 @@ data_range(num_friends)
 # ### 사분범위
 
 # 평균, 분산, 표준편차와 함께 범위도 이상치에 민감하다.
-# 이런 점을 해소하기 위해 제1사분위수와 제3사분위수 사이의 범위인 사분범위를 사용하기도 한다. 
+# 데이터의 산포도를 보다 안정적으로 측정하기 위해 제1사분위수와 제3사분위수 사이의 범위인 
+# **사분범위**<font size='2'>interquantile range</font>를 사용하기도 한다. 
 # 
 # 예를 들어, `num_friends`의 사분범위는 6이다.
 # 범위가 99였던 것에 비해 매우 작은 산포도를 의미한다.
 
-# In[16]:
+# In[22]:
 
 
-def interquartile_range(xs: List[float]) -> float:
+def interquartile_range(xs):
     """제3사분위수 - 제1사분위수"""
     return quantile(xs, 0.75) - quantile(xs, 0.25)
+
+
+# In[23]:
+
 
 interquartile_range(num_friends)
 
 
 # ### 분산
 
-# 데이터 평균값과의 차이의 제곱들의 평균값이 분산이다.
+# 데이터 평균값과의 차이의 제곱들의 평균값이 
+# **분산**<font size='2'>variance</font>이다.
 # 쉽게 말하면, 데이터가 평균값으로부터 얼마나 떨어져 있는가를 알려주는 값이며,
 # 정확한 계산식은 다음과 같으며, 
-# 데이터셋 $X$의 분산은 보통 $\textit{Var}(X)$ 기호로 나타낸다.
+# 데이터셋 $X$의 분산은 보통 $\textit{Var}(X)$ 또는 $\sigma$로 나타낸다.
 
 # $$
-# \textit{Var}(X) = \frac{\sum (X - \mu)^2}{n-1}
+# \sigma = \textit{Var}(X) = \frac{\sum (X - \mu)^2}{n-1}
 # $$
 
 # **주의:** 일반적으로 분모를 $n$으로 한다. 
 # 하지만 데이터 표본으로부터 전체에 대한 분산을 추정하는 경우 $(n-1)$을 사용한다.
 # 실제로 데이터분석에 다루는 데이터는 거의 표본 데이터이다.
 
-# `num_friends` 데이터의 분산값은 81.54이다.
+# **`var()` 함수**
 
-# In[17]:
+# 데이터셋의 분산을 계산하는 `var()` 함수를 정의하기 위해
+# {ref}`sec:from_scratch_1`에서 정의한 내적 함수 `dotV()`를 활용한다.
+
+# In[24]:
 
 
-def dot(v: List[float], w: List[float]) -> float:
-    """Computes v_1 * w_1 + ... + v_n * w_n"""
-    assert len(v) == len(w), "List[float]s must be same length"
+# 벡터 내적 함수
+def dotV(v, w):
+    assert len(v) == len(w), "벡터들의 길이가 동일해야 함"""
 
     return sum(v_i * w_i for v_i, w_i in zip(v, w))
 
-def sum_of_squares(v: List[float]) -> float:
-    """반환값: v_1 * v_1 + ... + v_n * v_n"""
-    return dot(v, v)
-
-def de_mean(xs: List[float]) -> List[float]:
+def dev_mean(xs):
     """평균값과의 차이 계산"""
     x_bar = mean(xs)
     return [x - x_bar for x in xs]
 
-def variance(xs: List[float]) -> float:
+def sum_of_squares(v):
+    """반환값: v_1 * v_1 + ... + v_n * v_n"""
+    return dotV(v, v)
+
+
+# In[25]:
+
+
+def var(xs):
     """분산값 계산. 단, 2개 이상의 데이터가 있어야 함."""
     assert len(xs) >= 2, "두 개 이상의 데이터 필요"
 
     n = len(xs)
-    deviations = de_mean(xs)
+    deviations = dev_mean(xs)
     return sum_of_squares(deviations) / (n - 1)
 
-variance(num_friends)
+
+# `num_friends` 데이터의 분산값은 81.54이다.
+
+# In[26]:
+
+
+var(num_friends)
 
 
 # ### 표준편차
 
-# 분간값의 단위는 원래 단위의 제곱이다.
-# 따라서 분산값 보다는 분산값의 제곱근을 보다 많이 사용한다. 
-# 
-# 표본의 표준편차를 나타내는 기호는 보통 $s$이다. 
+# 분산의 단위는 원래 단위의 제곱이다.
+# 따라서 분산 보다는 분산의 제곱근인 
+# **표준편차**<font size='2'>standard deviation</font>를 보다 많이 사용한다. 
+# 표본의 표준편차를 나타내는 기호는 보통 $s$이다.
 # 
 # $$s_X = \sqrt{\textit{Var}(X)}$$
 # 
-# `num_friends`의 표준편차는 9.03이다.
+# $s_X$에 사용된 아랫첨자 $X$는 데이터셋을 명기할 때 사용한다.
 
-# In[18]:
+# **`std()` 함수**
+
+# `num_friends`의 표준편차는 9.03임을 아래 `std()` 함수가 계산한다.
+
+# In[27]:
 
 
 import math
 
-def standard_deviation(xs: List[float]) -> float:
-    return math.sqrt(variance(xs))
-
-standard_deviation(num_friends)
+def std(xs):
+    return math.sqrt(var(xs))
 
 
-# **이상치의 영향**
+# In[28]:
+
+
+std(num_friends)
+
+
+# **이상치와 분산/표준편차**
 # 
 # 앞서 평균값이 이상치의 영향을 크게 받는다는 것을 보았다.
 # 따라서 분산과 표준편차 역시 이상치의 영향을 받는다.
@@ -524,13 +550,13 @@ standard_deviation(num_friends)
 # 
 # 예를 들어, 회원가 사이트에서 보내는 시간과 친구 숫자 사이의 연관성을 파악하고자 한다.
 
-# In[19]:
+# In[29]:
 
 
 print(num_friends)
 
 
-# In[20]:
+# In[30]:
 
 
 daily_minutes = [1,68.77,51.25,52.08,38.36,44.54,57.13,51.4,41.42,
@@ -575,13 +601,13 @@ daily_minutes = [1,68.77,51.25,52.08,38.36,44.54,57.13,51.4,41.42,
 # 
 # 친구 숫자와 사용시간 사이의 공분산은 22.43이다.
 
-# In[21]:
+# In[31]:
 
 
-def covariance(xs: List[float], ys: List[float]) -> float:
+def covariance(xs, ys):
     assert len(xs) == len(ys), "xs and ys must have same number of elements"
 
-    return dot(de_mean(xs), de_mean(ys)) / (len(xs) - 1)
+    return dotV(dev_mean(xs), dev_mean(ys)) / (len(xs) - 1)
 
 covariance(num_friends, daily_minutes)
 
@@ -622,13 +648,13 @@ covariance(num_friends, daily_minutes)
 # 친구 숫자와 사용시간 사이의 상관관계는 0.25이며, 
 # 이는 두 데이터셋 사이의 상관 정도가 크지 않음을 의미한다. 
 
-# In[22]:
+# In[32]:
 
 
-def correlation(xs: List[float], ys: List[float]) -> float:
+def correlation(xs, ys):
     """공분산 계산"""
-    stdev_x = standard_deviation(xs)
-    stdev_y = standard_deviation(ys)
+    stdev_x = std(xs)
+    stdev_y = std(ys)
     if stdev_x > 0 and stdev_y > 0:
         return covariance(xs, ys) / stdev_x / stdev_y
     else:
@@ -637,7 +663,7 @@ def correlation(xs: List[float], ys: List[float]) -> float:
 correlation(num_friends, daily_minutes)
 
 
-# In[23]:
+# In[33]:
 
 
 plt.scatter(num_friends, daily_minutes)
@@ -657,7 +683,7 @@ plt.show()
 # 이제 이 회원의 데이터를 제거하고 상관관계를 계산하면, 이번에는 상관계수가 0.57이 된다.
 # 두 데이터셋의 상관정도가 두 배이상 커졌다.
 
-# In[24]:
+# In[34]:
 
 
 outlier = num_friends.index(100)    # 이상치의 인덱스
@@ -678,7 +704,7 @@ correlation(num_friends_good, daily_minutes_good)
 
 # **이상치 제거 후**
 
-# In[25]:
+# In[35]:
 
 
 plt.scatter(num_friends_good, daily_minutes_good)
@@ -719,7 +745,7 @@ plt.show()
 
 # x와 y의 상관계수는 0이다. 
 
-# In[26]:
+# In[36]:
 
 
 x = [-2, -1, 0, 1, 2]
@@ -756,7 +782,7 @@ correlation(x,y)
 
 # x와 y의 상관계수는 1이다. 
 
-# In[27]:
+# In[37]:
 
 
 x = [-2, -1, 0, 1, 2]
@@ -786,4 +812,4 @@ correlation(x,y)
 
 # ## 연습문제
 
-# 참고: [(실습) 통계 기초 밑바닥부터](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-statistics_basics.ipynb)
+# 참고: [(실습) 통계 기초](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-from_scratch_2.ipynb)
