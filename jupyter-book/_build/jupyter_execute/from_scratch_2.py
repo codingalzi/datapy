@@ -202,15 +202,17 @@ plt.show()
 # $X$가 임의의 데이터셋을, $n$은 $X$의 크기, 즉 데이터셋에 포함된 샘플, 즉 항목의 개수를 가리킨다고 가정하자.
 # **평균값**<font size='2'>mean</font>은 모든 데이터 샘플의 합을 데이터셋의 크기로 나눈 값이다.
 # 평균값은 보통 그리스 알파벳 뮤($\mu$) 또는 $E(X)$로 표시하며 아래 식으로 계산된다.
+# $\mu_X$의 아랫첨자 $X$는 평균값을 구분하기 위해 사용한다.
 # 
 # $$
-# \mu = E(X) = \frac{\sum X}{n}
+# \mu_X = E(X) = \frac{\sum^n_{i=1} X_i}{n}
 # $$
 
 # :::{admonition} $\sum X$의 의미
 # :class: info
 # 
-# $\sum X$은 데이터셋 $X$에 포함된 모든 값들의 합을 가리킨다.
+# $\sum^n_{i=1} X_i$은 데이터셋 $X$에 포함된 모든 값 $X_i$들의 합을 가리킨다.
+# $X_i$는 $i$ 번째 값을 가리킨다.
 # :::
 
 # **`mean()` 함수**
@@ -247,7 +249,7 @@ mean(num_friends)
 # 평균값을 중앙값으로 사용한다. 
 # 중앙값을 **중위수**라 부르기도 한다.
 
-# <p><div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/images/median.png" width="30%"></div>
+# <p><div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/median.png" width="30%"></div>
 # 
 # <p><div style="text-align: center">&lt;그림 출처: <a href="https://en.wikipedia.org/wiki/Median">위키백과</a>&gt;</div></p>
 
@@ -328,7 +330,7 @@ median(Y)
 # 상위 25% 위치에 있는 제3사분위수이다. 
 # 즉, 중앙값은 상위 50%에 해당하는 제2사분위수에 해당한다.
 
-# <div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/images/quantile.png" width="50%"></div>
+# <div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/quantile.png" width="50%"></div>
 
 # **`quantile()` 함수**
 
@@ -361,6 +363,10 @@ print("제3사분위수:", quantile(num_friends, 0.75))
 # 데이터셋에 포함된 데이터 샘플 중에서 가장 많이 출현하는 값이 **최빈값**<font size='2'>mode</font>이다.
 # 평균값, 중앙값과는 다르게 여러 개의 최빈값이 존재할 수 있다.
 
+# <p><div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/unimodal-bimodal-multimodal.png" width="70%"></div>
+# 
+# <p><div style="text-align: center">&lt;그림 출처: <a href="https://calcworkshop.com/exploring-data/measures-of-center/">9+ Examples on Mean, Median, Mode</a>&gt;</div></p>
+
 # **`mode()` 함수**
 
 # `num_friends`의 최빈값은 1과 6임을 `mode()` 함수를 이용하여 확인한다.
@@ -388,6 +394,18 @@ def mode(xs):
 
 mode(num_friends)
 
+
+# **비대칭 데이터셋의 평균값, 중앙값, 최빈값**
+
+# 데이터셋이 정규분포를 따르면 평균값, 중앙값, 최빈값이 (거의) 동일하다.
+# 그렇지 않은 경우 비대칭 정도와 방향에 따라 세 값의 순서가 달라진다.
+# 
+# - 왼쪽 꼬리가 긴 경우(아래 왼편 그림): 평균값, 중앙값, 최빈값의 순서
+# - 오른쪽 꼬리가 긴 경우(아래 왼편 그림): 최빈값, 중앙값, 평균값의 순서
+
+# <p><div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/mean_mode_median.jpg" width="70%"></div>
+# 
+# <p><div style="text-align: center">&lt;그림 출처: <a href="https://medium.com/@nhan.tran/mean-median-an-mode-in-statistics-3359d3774b0b">Mean, Median, and Mode in Statistics</a>&gt;</div></p>
 
 # ## 산포도와 분산
 
@@ -454,18 +472,25 @@ iqr(num_friends)
 # ### 분산
 
 # **분산**<font size='2'>variance</font>은 데이터가 평균값<font size='2'>mean</font>을 중심으로
-# 얼마나 퍼져있는가를 측정한다. 
-# 다음과 같이 평균값과의 오차의 제곱의 평균값으로 계산된다.
+# 얼마나 퍼져있는가를 측정한다.
+# 아래 그래프에서 빨강색으로 표시된 데이터셋의 분산에 비해 파랑색으로 표시된 데이터셋의 분산이 훨씬 크다.
+
+# <div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Comparison_standard_deviations.svg.png" width="50%"></div>
+# 
+# <p><div style="text-align: center">&lt;그림 출처: <a href="https://en.wikipedia.org/wiki/Variance">위키백과</a>&gt;</div></p>
+
+# 분산은 다음과 같이 평균값과의 오차의 제곱의 평균값으로 계산된다.
 # 데이터셋 $X$의 분산은 보통 $\sigma$ 또는 $\textit{Var}(X)$로 나타낸다.
 
 # $$
-# \sigma = \textit{Var}(X) = \frac{\sum (X - \mu)^2}{n-1}
+# \sigma = \textit{Var}(X) = \frac{\sum^n_{i=1} (X_i - \mu_X)^2}{n-1}
 # $$
 
 # :::{admonition} 분모 $(n-1)$의 의미
 # :class: info
 # 
-# $\sum (X - \mu)$는 데이터셋 $X$에 포함된 모든 값들에 대해 평균값과의 오차의 제곱의 합을 가리킨다.
+# $\sum^n_{i=1} (X_i - \mu_X)$는 데이터셋 $X$에 포함된 값 $X_i$에 대해 평균값과의 오차를 제곱한 값을
+# 모두 더한 값을 가리킨다.
 # 
 # 분산을 계산할 때 일반적으로 데이터셋의 크기 $n$으로 나눈다.
 # 하지만 표본 데이터를 이용하여 (일반적으로 알지 못하는) 전체 데이터셋에 대한 분산을 추정하는 
@@ -566,17 +591,15 @@ std(num_friends)
 # ## 상관관계
 
 # 두 데이터셋이 서로 상관이 있는가를 알고자 할 때 상관관계를 파악하며, 
-# 상관관계의 정도는 보통 공분산(covariance) 또는 피어슨 상관계수(correlation)로 측정한다. 
+# 상관관계의 정도파악하기 위해 주로 **공분산**<font size='2'>covariance</font> 
+# 또는 **피어슨 상관계수**<font size='2'>correlation</font>를 이용한다.
+# 상관관계를 설명하기 위해 웹사이트 회원이 하루에 해당 웹사이트에서 보내는 시간과 친구 숫자 사이의 연관성을 파악해보자.
 # 
-# 예를 들어, 회원가 사이트에서 보내는 시간과 친구 숫자 사이의 연관성을 파악하고자 한다.
+# 회원들의 친구 숫자는 `num_friends` 변수가 가리키는 값을 그대로 사용하고,
+# 추가로 각 회원이 웹사이트에서 하루에 보내는 시간(분)이 아래 `daily_minutes` 변수가 가리키는 리스트로 주어졌다.
+# 이전과 동일하게 인덱스는 회원의 아이디, 인덱스의 값은 해당 회원이 웹사이트에서 보내는 시간이다. 
 
 # In[29]:
-
-
-print(num_friends)
-
-
-# In[30]:
 
 
 daily_minutes = [1,68.77,51.25,52.08,38.36,44.54,57.13,51.4,41.42,
@@ -605,23 +628,25 @@ daily_minutes = [1,68.77,51.25,52.08,38.36,44.54,57.13,51.4,41.42,
                  33.29,22.61,26.89,23.48,8.38,27.81,32.35,23.84]
 
 
-# `num_friends`와 `daily_minutes`는 각각 
-# 회원별 친구 숫자와 사이트에서 머무르는 시간을 순서에 맞게 데이터로 담고 있다.
-
 # ### 공분산
 
-# 두 데이터셋의 공분산은 각 데이터넷의 변수가 각각의 평균값으로부터 떨어져 있는 정도를 계산하며,
-# 수식은 다음과 같다. 
-# 두 데이터셋 $X$와 $Y$를 크기를 $n$이라 하자.
-# 그러면, $X$와 $Y$의 공분산 $Cov(X, Y)$는 다음과 같다.
+# 동일한 모집단을 대상으로 수집된 두 데이터셋 $X$와 $Y$의 공분산 $Cov(X, Y)$는 
+# 두 종류의 데이터의 상관관계를 측정하며,
+# 두 데이터 $X_i$와 $Y_i$ 각각이 $\mu_X$와 $\mu_Y$를 기준으로
+# 어떻게 다른지를 곱한 값들의 평균값으로 계산된다.
 # 
 # $$
-# Cov(X,Y) = \frac{\sum (X- E(X))(Y- E(Y))}{n-1}
+# Cov(X,Y) = \frac{\sum^n_{i=1} (X_i- \mu_X)(Y_i- \mu_Y)}{n-1}
 # $$
-# 
+
+# 공분산이 양의 값인지, 음의 값인지, 아니면 0에 가까운 값인지에 따라 두 데이터셋 $X$와 $Y$
+# 사이의 관계는 아래 그림과 같이 구분된다.
+
+# <div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/positive_negative_weak_covariance.png" width="50%"></div>
+
 # 친구 숫자와 사용시간 사이의 공분산은 22.43이다.
 
-# In[31]:
+# In[30]:
 
 
 def covariance(xs, ys):
@@ -661,14 +686,14 @@ covariance(num_friends, daily_minutes)
 # * -1에 가까울 수록 음의 선형관계가 성립한다.
 # * 0에 가깔울 수록 선형관계가 약해진다.
 
-# <img src="https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/images/Correlation.png" width="70%">
+# <img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Correlation.png" width="70%">
 # 
 # 출처: [위키백과](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)
 
 # 친구 숫자와 사용시간 사이의 상관관계는 0.25이며, 
 # 이는 두 데이터셋 사이의 상관 정도가 크지 않음을 의미한다. 
 
-# In[32]:
+# In[31]:
 
 
 def correlation(xs, ys):
@@ -683,7 +708,7 @@ def correlation(xs, ys):
 correlation(num_friends, daily_minutes)
 
 
-# In[33]:
+# In[32]:
 
 
 plt.scatter(num_friends, daily_minutes)
@@ -703,7 +728,7 @@ plt.show()
 # 이제 이 회원의 데이터를 제거하고 상관관계를 계산하면, 이번에는 상관계수가 0.57이 된다.
 # 두 데이터셋의 상관정도가 두 배이상 커졌다.
 
-# In[34]:
+# In[33]:
 
 
 outlier = num_friends.index(100)    # 이상치의 인덱스
@@ -724,7 +749,7 @@ correlation(num_friends_good, daily_minutes_good)
 
 # **이상치 제거 후**
 
-# In[35]:
+# In[34]:
 
 
 plt.scatter(num_friends_good, daily_minutes_good)
@@ -765,7 +790,7 @@ plt.show()
 
 # x와 y의 상관계수는 0이다. 
 
-# In[36]:
+# In[35]:
 
 
 x = [-2, -1, 0, 1, 2]
@@ -802,7 +827,7 @@ correlation(x,y)
 
 # x와 y의 상관계수는 1이다. 
 
-# In[37]:
+# In[36]:
 
 
 x = [-2, -1, 0, 1, 2]
