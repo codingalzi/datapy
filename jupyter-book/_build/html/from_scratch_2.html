@@ -902,7 +902,7 @@ const thebe_selector_output = ".output, .cell_output"
 다른 두 개의 사분위수는 하위 25% 위치에 있는 제1사분위수와
 상위 25% 위치에 있는 제3사분위수이다.
 즉, 중앙값은 상위 50%에 해당하는 제2사분위수에 해당한다.</p>
-<img src="https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/images/quantile.png" width="60%"><p><strong><code class="docutils literal notranslate"><span class="pre">quantile()</span></code> 함수</strong></p>
+<div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/images/quantile.png" width="50%"></div><p><strong><code class="docutils literal notranslate"><span class="pre">quantile()</span></code> 함수</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">num_friends</span></code>의 제1사분위수와 제3사분위수는 각각 3명과 9명임을 <code class="docutils literal notranslate"><span class="pre">quantile()</span></code> 함수를 이용하여 확인할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -912,9 +912,10 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="sd">    p: 상위 p% 위치</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     
-    <span class="n">p_index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span>
-    
-    <span class="k">return</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">xs</span><span class="p">)[</span><span class="n">p_index</span><span class="p">]</span>
+    <span class="n">xs_sorted</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="c1"># 정렬</span>
+    <span class="n">p_index</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">p</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span> <span class="c1"># p%에 해당하는 인덱스</span>
+
+    <span class="k">return</span> <span class="n">xs_sorted</span><span class="p">[</span><span class="n">p_index</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -936,9 +937,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="id7">
 <h3><span class="section-number">9.3.3. </span>최빈값<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<p>데이터셋에 가장 자주 출현하는 값을 <strong>최빈값</strong><font size='2'>mode</font>라 부른다.
-즉 사용빈도가 가장 높은 값을 가리킨다.
-평균값, 중앙값과 달리 여러 개의 최빈값이 존재할 수 있다.</p>
+<p>데이터셋에 포함된 데이터 샘플 중에서 가장 많이 출현하는 값이 <strong>최빈값</strong><font size='2'>mode</font>이다.
+평균값, 중앙값과는 다르게 여러 개의 최빈값이 존재할 수 있다.</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">mode()</span></code> 함수</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">num_friends</span></code>의 최빈값은 1과 6임을 <code class="docutils literal notranslate"><span class="pre">mode()</span></code> 함수를 이용하여 확인한다.</p>
 <ul class="simple">
@@ -977,10 +977,10 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="id8">
 <h2><span class="section-number">9.4. </span>산포도와 분산<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<p><strong>산포도</strong>는 데이터가 얼마나 퍼져 있는지를 측정한다.
+<p><strong>산포도</strong>는 데이터가 퍼져있는 정도를 측정한다.
 산포도가 0에 가까운 값이면 퍼져있지 않고 한 값 주위에 뭉쳐있다는 의미이고,
-0보다 클 수록 퍼져있는 정도가 커진다는 의미이다.
-산포도를 측정하는 기준은 보통 다음과 같다.</p>
+반대로 0보다 클 수록 퍼져있는 정도가 커진다는 의미이다.
+산포도를 측정하는 기준은 보통 아래 네 가지를 사용한다.</p>
 <ul class="simple">
 <li><p>범위</p></li>
 <li><p>사분범위</p></li>
@@ -991,11 +991,11 @@ const thebe_selector_output = ".output, .cell_output"
 <h3><span class="section-number">9.4.1. </span>범위<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p><strong>범위</strong><font size='2'>range</font>는 데이터셋에 포함된
 데이터 샘플의 최대값과 최소값의 차이를 가리킨다.
-일반적으로 범위가 크다는 것은 데이터의 퍼짐 정도가 크다는 것을 의미한다.</p>
-<p>그런데 범위는 데이터 샘플의 최대, 최소값에만 의존한다.
+즉, 범위는 데이터 샘플의 최대, 최소값에만 의존한다.
 예를 들어, 최대값이 100, 최소값이 1인 데이터셋은 모두 <code class="docutils literal notranslate"><span class="pre">num_friends</span></code>와 동일한 범위를 갖는다.
-따라서 데이터의 특성을 제대로 반영하지 못할 수 있다.
-<code class="docutils literal notranslate"><span class="pre">num_friends</span></code>의 범위는 99임을 다시 한 번 확인할 수 있다.</p>
+이런 이유로 범위가 데이터셋의 산포도 특성을 제대로 반영하지 못할 수도 있다.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">data_range()</span></code></strong> 함수</p>
+<p><code class="docutils literal notranslate"><span class="pre">num_friends</span></code>의 범위가 99임을 아래 <code class="docutils literal notranslate"><span class="pre">data_range()</span></code> 함수를 이용하여 확인한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">data_range</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
@@ -1022,11 +1022,12 @@ const thebe_selector_output = ".output, .cell_output"
 <p>평균, 분산, 표준편차와 함께 범위도 이상치에 민감하다.
 데이터의 산포도를 보다 안정적으로 측정하기 위해 제1사분위수와 제3사분위수 사이의 범위인
 <strong>사분범위</strong><font size='2'>interquantile range</font>를 사용하기도 한다.</p>
-<p>예를 들어, <code class="docutils literal notranslate"><span class="pre">num_friends</span></code>의 사분범위는 6이다.
-범위가 99였던 것에 비해 매우 작은 산포도를 의미한다.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">iqr()</span></code> 함수</strong></p>
+<p>아래 <code class="docutils literal notranslate"><span class="pre">iqr()</span></code> 함수를 이용해서 <code class="docutils literal notranslate"><span class="pre">num_friends</span></code>의 사분범위가 6임을 확인한다.
+범위가 99였던 것에 비해 매우 사분범위를 기준으로 보면 산포도가 훨씬 작다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">interquartile_range</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">iqr</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;제3사분위수 - 제1사분위수&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">quantile</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">)</span> <span class="o">-</span> <span class="n">quantile</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
 </pre></div>
@@ -1035,7 +1036,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">interquartile_range</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iqr</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1048,18 +1049,22 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="id11">
 <h3><span class="section-number">9.4.3. </span>분산<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<p>데이터 평균값과의 차이의 제곱들의 평균값이
-<strong>분산</strong><font size='2'>variance</font>이다.
-쉽게 말하면, 데이터가 평균값으로부터 얼마나 떨어져 있는가를 알려주는 값이며,
-정확한 계산식은 다음과 같으며,
-데이터셋 <span class="math notranslate nohighlight">\(X\)</span>의 분산은 보통 <span class="math notranslate nohighlight">\(\textit{Var}(X)\)</span> 또는 <span class="math notranslate nohighlight">\(\sigma\)</span>로 나타낸다.</p>
+<p><strong>분산</strong><font size='2'>variance</font>은 데이터가 평균값<font size='2'>mean</font>을 중심으로
+얼마나 퍼져있는가를 측정한다.
+다음과 같이 평균값과의 오차의 제곱의 평균값으로 계산된다.
+데이터셋 <span class="math notranslate nohighlight">\(X\)</span>의 분산은 보통 <span class="math notranslate nohighlight">\(\sigma\)</span> 또는 <span class="math notranslate nohighlight">\(\textit{Var}(X)\)</span>로 나타낸다.</p>
 <div class="math notranslate nohighlight">
 \[
 \sigma = \textit{Var}(X) = \frac{\sum (X - \mu)^2}{n-1}
 \]</div>
-<p><strong>주의:</strong> 일반적으로 분모를 <span class="math notranslate nohighlight">\(n\)</span>으로 한다.
-하지만 데이터 표본으로부터 전체에 대한 분산을 추정하는 경우 <span class="math notranslate nohighlight">\((n-1)\)</span>을 사용한다.
-실제로 데이터분석에 다루는 데이터는 거의 표본 데이터이다.</p>
+<div class="info admonition">
+<p class="admonition-title">분모 <span class="math notranslate nohighlight">\((n-1)\)</span>의 의미</p>
+<p><span class="math notranslate nohighlight">\(\sum (X - \mu)\)</span>는 데이터셋 <span class="math notranslate nohighlight">\(X\)</span>에 포함된 모든 값들에 대해 평균값과의 오차의 제곱의 합을 가리킨다.</p>
+<p>분산을 계산할 때 일반적으로 데이터셋의 크기 <span class="math notranslate nohighlight">\(n\)</span>으로 나눈다.
+하지만 표본 데이터를 이용하여 (일반적으로 알지 못하는) 전체 데이터셋에 대한 분산을 추정하는
+경우 <span class="math notranslate nohighlight">\((n-1)\)</span>을 사용한다.
+실제로 데이터 분석에서 다루는 데이터는 거의 표본 데이터이다.</p>
+</div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">var()</span></code> 함수</strong></p>
 <p>데이터셋의 분산을 계산하는 <code class="docutils literal notranslate"><span class="pre">var()</span></code> 함수를 정의하기 위해
 <a class="reference internal" href="from_scratch_1.html#sec-from-scratch-1"><span class="std std-ref">선형대수 기초</span></a>에서 정의한 내적 함수 <code class="docutils literal notranslate"><span class="pre">dotV()</span></code>를 활용한다.</p>
@@ -1073,8 +1078,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 <span class="k">def</span> <span class="nf">dev_mean</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;평균값과의 차이 계산&quot;&quot;&quot;</span>
-    <span class="n">x_bar</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="n">x_bar</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">]</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">x</span> <span class="o">-</span> <span class="n">mu</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">]</span>
 
 <span class="k">def</span> <span class="nf">sum_of_squares</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;반환값: v_1 * v_1 + ... + v_n * v_n&quot;&quot;&quot;</span>
@@ -1086,12 +1091,16 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">var</span><span class="p">(</span><span class="n">xs</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;분산값 계산. 단, 2개 이상의 데이터가 있어야 함.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    분산값 계산. 단, 2개 이상의 데이터가 있어야 함.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;두 개 이상의 데이터 필요&quot;</span>
 
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
     <span class="n">deviations</span> <span class="o">=</span> <span class="n">dev_mean</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">sum_of_squares</span><span class="p">(</span><span class="n">deviations</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">deviation_sum</span> <span class="o">=</span> <span class="n">sum_of_squares</span><span class="p">(</span><span class="n">deviations</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">deviation_sum</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1112,15 +1121,21 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="id12">
 <h3><span class="section-number">9.4.4. </span>표준편차<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
-<p>분산의 단위는 원래 단위의 제곱이다.
-따라서 분산 보다는 분산의 제곱근인
-<strong>표준편차</strong><font size='2'>standard deviation</font>를 보다 많이 사용한다.
-표본의 표준편차를 나타내는 기호는 보통 <span class="math notranslate nohighlight">\(s\)</span>이다.</p>
+<p>분산을 계산하기 위해 평균값과의 오차의 제곱을 사용한다.
+따라서 계산된 분산의 단위는 원래 데이터에 사용된 단위의 제곱이며
+값도 매우 커질 수 있다.
+이런 이유로 분산의 제곱근인
+<strong>표준편차</strong><font size='2'>standard deviation</font>를
+분산 대신 사용하곤 한다.</p>
+<p>표본의 표준편차를 나타내는 기호는 보통 <span class="math notranslate nohighlight">\(s\)</span>이다.
+<span class="math notranslate nohighlight">\(s_X\)</span>에 사용된 아랫첨자 <span class="math notranslate nohighlight">\(X\)</span>는 데이터셋을 명기할 때 사용한다.</p>
 <div class="math notranslate nohighlight">
 \[s_X = \sqrt{\textit{Var}(X)}\]</div>
-<p><span class="math notranslate nohighlight">\(s_X\)</span>에 사용된 아랫첨자 <span class="math notranslate nohighlight">\(X\)</span>는 데이터셋을 명기할 때 사용한다.</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">std()</span></code> 함수</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">num_friends</span></code>의 표준편차는 9.03임을 아래 <code class="docutils literal notranslate"><span class="pre">std()</span></code> 함수가 계산한다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">math</span></code> 모듈의 <code class="docutils literal notranslate"><span class="pre">sqrt()</span></code> 함수: 제곱근 계산</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -1143,9 +1158,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p><strong>이상치와 분산/표준편차</strong></p>
-<p>앞서 평균값이 이상치의 영향을 크게 받는다는 것을 보았다.
-따라서 분산과 표준편차 역시 이상치의 영향을 받는다.</p>
+<div class="info admonition">
+<p class="admonition-title">이상치와 분산/표준편차</p>
+<p>분산과 표준편차가 평균값에 의존한다.
+따라서 평균값이 이상치에 영향을 받는만큼 분산과 표준편차도 영향을 받는다.</p>
+</div>
 </div>
 </div>
 <div class="section" id="id13">
@@ -1287,7 +1304,7 @@ Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/from_scratch_2_105_0.png" src="_images/from_scratch_2_105_0.png" />
+<img alt="_images/from_scratch_2_109_0.png" src="_images/from_scratch_2_109_0.png" />
 </div>
 </div>
 <p><strong>이상치와 상관관계</strong></p>
@@ -1333,7 +1350,7 @@ Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/from_scratch_2_110_0.png" src="_images/from_scratch_2_110_0.png" />
+<img alt="_images/from_scratch_2_114_0.png" src="_images/from_scratch_2_114_0.png" />
 </div>
 </div>
 </div>

@@ -328,7 +328,7 @@ median(Y)
 # 상위 25% 위치에 있는 제3사분위수이다. 
 # 즉, 중앙값은 상위 50%에 해당하는 제2사분위수에 해당한다.
 
-# <img src="https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/images/quantile.png" width="60%">
+# <div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/pydata/master/notebooks/images/quantile.png" width="50%"></div>
 
 # **`quantile()` 함수**
 
@@ -343,9 +343,10 @@ def quantile(xs, p):
     p: 상위 p% 위치
     """
     
-    p_index = int(p * len(xs))
-    
-    return sorted(xs)[p_index]
+    xs_sorted = sorted(xs) # 정렬
+    p_index = int(p * len(xs)) # p%에 해당하는 인덱스
+
+    return xs_sorted[p_index]
 
 
 # In[17]:
@@ -357,9 +358,8 @@ print("제3사분위수:", quantile(num_friends, 0.75))
 
 # ### 최빈값
 
-# 데이터셋에 가장 자주 출현하는 값을 **최빈값**<font size='2'>mode</font>라 부른다.
-# 즉 사용빈도가 가장 높은 값을 가리킨다.
-# 평균값, 중앙값과 달리 여러 개의 최빈값이 존재할 수 있다.
+# 데이터셋에 포함된 데이터 샘플 중에서 가장 많이 출현하는 값이 **최빈값**<font size='2'>mode</font>이다.
+# 평균값, 중앙값과는 다르게 여러 개의 최빈값이 존재할 수 있다.
 
 # **`mode()` 함수**
 
@@ -391,10 +391,10 @@ mode(num_friends)
 
 # ## 산포도와 분산
 
-# **산포도**는 데이터가 얼마나 퍼져 있는지를 측정한다. 
+# **산포도**는 데이터가 퍼져있는 정도를 측정한다. 
 # 산포도가 0에 가까운 값이면 퍼져있지 않고 한 값 주위에 뭉쳐있다는 의미이고,
-# 0보다 클 수록 퍼져있는 정도가 커진다는 의미이다. 
-# 산포도를 측정하는 기준은 보통 다음과 같다.
+# 반대로 0보다 클 수록 퍼져있는 정도가 커진다는 의미이다. 
+# 산포도를 측정하는 기준은 보통 아래 네 가지를 사용한다.
 # 
 # * 범위
 # * 사분범위
@@ -405,12 +405,13 @@ mode(num_friends)
 
 # **범위**<font size='2'>range</font>는 데이터셋에 포함된
 # 데이터 샘플의 최대값과 최소값의 차이를 가리킨다. 
-# 일반적으로 범위가 크다는 것은 데이터의 퍼짐 정도가 크다는 것을 의미한다. 
-# 
-# 그런데 범위는 데이터 샘플의 최대, 최소값에만 의존한다. 
+# 즉, 범위는 데이터 샘플의 최대, 최소값에만 의존한다. 
 # 예를 들어, 최대값이 100, 최소값이 1인 데이터셋은 모두 `num_friends`와 동일한 범위를 갖는다.
-# 따라서 데이터의 특성을 제대로 반영하지 못할 수 있다.
-# `num_friends`의 범위는 99임을 다시 한 번 확인할 수 있다.
+# 이런 이유로 범위가 데이터셋의 산포도 특성을 제대로 반영하지 못할 수도 있다.
+
+# **`data_range()`** 함수
+
+# `num_friends`의 범위가 99임을 아래 `data_range()` 함수를 이용하여 확인한다.
 
 # In[20]:
 
@@ -430,14 +431,16 @@ data_range(num_friends)
 # 평균, 분산, 표준편차와 함께 범위도 이상치에 민감하다.
 # 데이터의 산포도를 보다 안정적으로 측정하기 위해 제1사분위수와 제3사분위수 사이의 범위인 
 # **사분범위**<font size='2'>interquantile range</font>를 사용하기도 한다. 
-# 
-# 예를 들어, `num_friends`의 사분범위는 6이다.
-# 범위가 99였던 것에 비해 매우 작은 산포도를 의미한다.
+
+# **`iqr()` 함수**
+
+# 아래 `iqr()` 함수를 이용해서 `num_friends`의 사분범위가 6임을 확인한다.
+# 범위가 99였던 것에 비해 매우 사분범위를 기준으로 보면 산포도가 훨씬 작다.
 
 # In[22]:
 
 
-def interquartile_range(xs):
+def iqr(xs):
     """제3사분위수 - 제1사분위수"""
     return quantile(xs, 0.75) - quantile(xs, 0.25)
 
@@ -445,24 +448,30 @@ def interquartile_range(xs):
 # In[23]:
 
 
-interquartile_range(num_friends)
+iqr(num_friends)
 
 
 # ### 분산
 
-# 데이터 평균값과의 차이의 제곱들의 평균값이 
-# **분산**<font size='2'>variance</font>이다.
-# 쉽게 말하면, 데이터가 평균값으로부터 얼마나 떨어져 있는가를 알려주는 값이며,
-# 정확한 계산식은 다음과 같으며, 
-# 데이터셋 $X$의 분산은 보통 $\textit{Var}(X)$ 또는 $\sigma$로 나타낸다.
+# **분산**<font size='2'>variance</font>은 데이터가 평균값<font size='2'>mean</font>을 중심으로
+# 얼마나 퍼져있는가를 측정한다. 
+# 다음과 같이 평균값과의 오차의 제곱의 평균값으로 계산된다.
+# 데이터셋 $X$의 분산은 보통 $\sigma$ 또는 $\textit{Var}(X)$로 나타낸다.
 
 # $$
 # \sigma = \textit{Var}(X) = \frac{\sum (X - \mu)^2}{n-1}
 # $$
 
-# **주의:** 일반적으로 분모를 $n$으로 한다. 
-# 하지만 데이터 표본으로부터 전체에 대한 분산을 추정하는 경우 $(n-1)$을 사용한다.
-# 실제로 데이터분석에 다루는 데이터는 거의 표본 데이터이다.
+# :::{admonition} 분모 $(n-1)$의 의미
+# :class: info
+# 
+# $\sum (X - \mu)$는 데이터셋 $X$에 포함된 모든 값들에 대해 평균값과의 오차의 제곱의 합을 가리킨다.
+# 
+# 분산을 계산할 때 일반적으로 데이터셋의 크기 $n$으로 나눈다.
+# 하지만 표본 데이터를 이용하여 (일반적으로 알지 못하는) 전체 데이터셋에 대한 분산을 추정하는 
+# 경우 $(n-1)$을 사용한다.
+# 실제로 데이터 분석에서 다루는 데이터는 거의 표본 데이터이다.
+# :::
 
 # **`var()` 함수**
 
@@ -480,8 +489,8 @@ def dotV(v, w):
 
 def dev_mean(xs):
     """평균값과의 차이 계산"""
-    x_bar = mean(xs)
-    return [x - x_bar for x in xs]
+    mu = mean(xs)
+    return [x - mu for x in xs]
 
 def sum_of_squares(v):
     """반환값: v_1 * v_1 + ... + v_n * v_n"""
@@ -492,12 +501,16 @@ def sum_of_squares(v):
 
 
 def var(xs):
-    """분산값 계산. 단, 2개 이상의 데이터가 있어야 함."""
+    """
+    분산값 계산. 단, 2개 이상의 데이터가 있어야 함.
+    """
+    
     assert len(xs) >= 2, "두 개 이상의 데이터 필요"
 
     n = len(xs)
     deviations = dev_mean(xs)
-    return sum_of_squares(deviations) / (n - 1)
+    deviation_sum = sum_of_squares(deviations)
+    return deviation_sum / (n - 1)
 
 
 # `num_friends` 데이터의 분산값은 81.54이다.
@@ -510,18 +523,23 @@ var(num_friends)
 
 # ### 표준편차
 
-# 분산의 단위는 원래 단위의 제곱이다.
-# 따라서 분산 보다는 분산의 제곱근인 
-# **표준편차**<font size='2'>standard deviation</font>를 보다 많이 사용한다. 
+# 분산을 계산하기 위해 평균값과의 오차의 제곱을 사용한다.
+# 따라서 계산된 분산의 단위는 원래 데이터에 사용된 단위의 제곱이며
+# 값도 매우 커질 수 있다.
+# 이런 이유로 분산의 제곱근인 
+# **표준편차**<font size='2'>standard deviation</font>를 
+# 분산 대신 사용하곤 한다.
+# 
 # 표본의 표준편차를 나타내는 기호는 보통 $s$이다.
+# $s_X$에 사용된 아랫첨자 $X$는 데이터셋을 명기할 때 사용한다.
 # 
 # $$s_X = \sqrt{\textit{Var}(X)}$$
-# 
-# $s_X$에 사용된 아랫첨자 $X$는 데이터셋을 명기할 때 사용한다.
 
 # **`std()` 함수**
 
 # `num_friends`의 표준편차는 9.03임을 아래 `std()` 함수가 계산한다.
+# 
+# - `math` 모듈의 `sqrt()` 함수: 제곱근 계산
 
 # In[27]:
 
@@ -538,10 +556,12 @@ def std(xs):
 std(num_friends)
 
 
-# **이상치와 분산/표준편차**
+# :::{admonition} 이상치와 분산/표준편차
+# :class: info
 # 
-# 앞서 평균값이 이상치의 영향을 크게 받는다는 것을 보았다.
-# 따라서 분산과 표준편차 역시 이상치의 영향을 받는다.
+# 분산과 표준편차가 평균값에 의존한다.
+# 따라서 평균값이 이상치에 영향을 받는만큼 분산과 표준편차도 영향을 받는다.
+# :::
 
 # ## 상관관계
 
