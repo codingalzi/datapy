@@ -23,7 +23,7 @@
 
 # **필수 모듈**
 
-# `matplotlib.pyplot`은 히스토그램, 산점도 등 데이터를 그래프로 시각화할 때 필요한
+# `matplotlib.pyplot`은 막대그래프, 히스토그램, 산점도 등 데이터를 그래프로 시각화할 때 필요한
 # 다양한 함수를 제공하는 모듈이다.
 
 # In[1]:
@@ -63,7 +63,7 @@ elif platform.system() == 'Linux': # 우분투 또는 구글 코랩
 
 # ## 데이터 준비
 
-# 어떤 웹사이트의 회원 204명을 대상으로 친구가 몇 명인지를 조사한 결과를 리스트로 저장하였다고 가정한다.
+# 어떤 SNS의 회원 204명을 대상으로 친구가 몇 명인지를 조사한 결과를 리스트로 저장하였다고 가정한다.
 # 회원 아이디는 친구가 많은 순서대로 0, 1, 2, ... 등으로 정렬되어 있고,
 # 리스트의 각 항목이 해당 회원의 친구 숫자이다.
 # 회원의 친구 숫자는 최대 100명, 최소 1명이다.
@@ -136,7 +136,7 @@ friend_counts = Counter(num_friends)
 friend_counts
 
 
-# 친구 숫자를 x축에, 해당 친구 숫자 만큼의 친구를 갖는 회원의 수를 y축으로 지정하고 히스토그램을 그려보자.
+# 친구 숫자를 x축에, 해당 친구 숫자 만큼의 친구를 갖는 회원의 수를 y축으로 지정하고 막대그래프를 그려보자.
 
 # In[8]:
 
@@ -145,22 +145,23 @@ xs = range(101)                         # x축: 친구 숫자. 최소 1명에서
 ys = [friend_counts[x] for x in xs]     # y축: 지정된 수 만큼의 친구를 갖는 회원수
 
 
-# `matplotlib.pyplot` 모듈의 `bar()` 함수를 이용하여 x축과 y축에 사용될 값을 지정하면 히스토그램을 그린다.
+# `matplotlib.pyplot` 모듈의 `bar()` 함수를 이용하여 x축과 y축에 사용될 값을 지정하면 막대그래프를 그린다.
 # 그래프 그리기에 대해서는 {ref}`sec:visualization_1`와 {ref}`sec:visualization_2` 에서 보다 자세히 다룰 예정이다.
 
 # In[9]:
 
 
-# 히스토그램 그래프 그리기
+# 막대그래프 그리기
 plt.bar(xs, ys)
-plt.axis([0, 101, 0, 25])
-plt.title("회원의 친구 숫자 분포")
-plt.xlabel("친구 숫자")
-plt.ylabel("회원수")
+
+# 그래프 설정
+plt.axis([0, 100, 0, 25])        # x축은 0부터 100까지, y축은 0부터 25까지 눈금 사용
+plt.xlabel("친구 숫자")           # x축 눈금 설명
+plt.ylabel("회원수")              # y축 눈금 설명
 plt.show()
 
 
-# 위 히스토그램에서 다음 두 가지를 한 눈에 알아볼 수 있다.
+# 위 막대그래프에서 다음 두 가지를 한 눈에 알아볼 수 있다.
 # 
 # * 대다수 회원이 10명 이내의 친구를 갖는다.
 # * 100명의 친구를 가진 회원도 있다.
@@ -217,7 +218,7 @@ plt.show()
 
 # **`mean()` 함수**
 
-# $X$가 웹사이트 회원의 친구 숫자로 이루어진 데이터셋 `num_friends`를 가리킬 때
+# $X$가 SNS 회원의 친구 숫자로 이루어진 데이터셋 `num_friends`를 가리킬 때
 # 회원들의 친구 숫자의 평균값이 7.33명임을 
 # 아래 `mean()` 함수로 구할 수 있다.
 # 
@@ -249,13 +250,13 @@ mean(num_friends)
 # 평균값을 중앙값으로 사용한다. 
 # 중앙값을 **중위수**라 부르기도 한다.
 
-# <p><div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/median.png" width="30%"></div>
+# <p><div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/median.png" width="40%"></div>
 # 
 # <p><div style="text-align: center">&lt;그림 출처: <a href="https://en.wikipedia.org/wiki/Median">위키백과</a>&gt;</div></p>
 
 # **`median()` 함수**
 
-# 웹사이트 회원들의 친구 수의 중앙값은 6임을 아래 `median()` 함수를 이용하여 확인한다.
+# SNS 회원들의 친구 수의 중앙값은 6임을 아래 `median()` 함수를 이용하여 확인한다.
 
 # In[12]:
 
@@ -279,7 +280,7 @@ def median(xs):
     if len(xs) % 2 == 0:
         return _median_even(xs)
     else:
-        return median_odd(xs)
+        return _median_odd(xs)
 
 
 # In[13]:
@@ -330,7 +331,7 @@ median(Y)
 # 상위 25% 위치에 있는 제3사분위수이다. 
 # 즉, 중앙값은 상위 50%에 해당하는 제2사분위수에 해당한다.
 
-# <div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/quantile.png" width="50%"></div>
+# <div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/quantile.png" width="60%"></div>
 
 # **`quantile()` 함수**
 
@@ -361,9 +362,9 @@ print("제3사분위수:", quantile(num_friends, 0.75))
 # ### 최빈값
 
 # 데이터셋에 포함된 데이터 샘플 중에서 가장 많이 출현하는 값이 **최빈값**<font size='2'>mode</font>이다.
-# 평균값, 중앙값과는 다르게 여러 개의 최빈값이 존재할 수 있다.
+# 아래 그림이 보여주듯이 평균값, 중앙값과는 다르게 여러 개의 최빈값이 존재할 수 있다.
 
-# <p><div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/unimodal-bimodal-multimodal.png" width="70%"></div>
+# <p><div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/unimodal-bimodal-multimodal.png" width="80%"></div>
 # 
 # <p><div style="text-align: center">&lt;그림 출처: <a href="https://calcworkshop.com/exploring-data/measures-of-center/">9+ Examples on Mean, Median, Mode</a>&gt;</div></p>
 
@@ -395,17 +396,61 @@ def mode(xs):
 mode(num_friends)
 
 
+# 최대 친구 숫자를 20명으로 제한해서 `num_friends` 데이터셋의 최빈값이 두 개 있음을
+# 보다 쉽게 눈으로 확인할 수 있다.
+# 이전 그래프와는 달리 부드러운 선그래프를 함께 그려서
+# 두 개의 가장 높은 봉우리가 존재함을 보다 쉽게 확인하도록 하였다.
+
+# In[20]:
+
+
+xs = range(21)                      # x축: 친구 숫자. 최소 1명에서 최대 30명.
+ys = [friend_counts[x] for x in xs] # y축: 지정된 수 만큼의 친구를 갖는 회원수
+
+# 막대그래프 그리기
+plt.bar(xs, ys)
+
+# 부드러운 선그래프 그리기
+import numpy as np                               # numpy 라이브러리 활용
+from scipy.interpolate import make_interp_spline # 부드러운 선을 그리기 위해 스플라인 보간법 적용
+
+xs_ys_spline = make_interp_spline(xs, ys)
+xs_ = np.linspace(min(xs), max(ys), 500)
+ys_ = xs_ys_spline(xs_)
+plt.plot(xs_, ys_, c='r')
+
+# 그래프 설정
+plt.axis([0, 20, 0, 25])         # x축은 0부터 20까지, y축은 0부터 25까지 눈금 사용
+plt.xlabel("친구 숫자")           # x축 눈금 설명
+plt.ylabel("회원수")              # y축 눈금 설명
+plt.show()
+
+
 # **비대칭 데이터셋의 평균값, 중앙값, 최빈값**
 
 # 데이터셋이 정규분포를 따르면 평균값, 중앙값, 최빈값이 (거의) 동일하다.
 # 그렇지 않은 경우 비대칭 정도와 방향에 따라 세 값의 순서가 달라진다.
 # 
-# - 왼쪽 꼬리가 긴 경우(아래 왼편 그림): 평균값, 중앙값, 최빈값의 순서
-# - 오른쪽 꼬리가 긴 경우(아래 왼편 그림): 최빈값, 중앙값, 평균값의 순서
+# - 왼쪽 꼬리가 긴 경우(아래 왼편 그림): 평균값 &leq; 중앙값 &leq; 최빈값
+# - 오른쪽 꼬리가 긴 경우(아래 왼편 그림): 최빈값 &leq; 중앙값 &leq; 평균값
 
-# <p><div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/mean_mode_median.jpg" width="70%"></div>
+# <p><div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/mean_mode_median.jpg" width="90%"></div>
 # 
 # <p><div style="text-align: center">&lt;그림 출처: <a href="https://medium.com/@nhan.tran/mean-median-an-mode-in-statistics-3359d3774b0b">Mean, Median, and Mode in Statistics</a>&gt;</div></p>
+
+# **예제**
+
+# 앞서 보았듯이 `num_frieds` 데이터셋은 오른쪽 꼬리가 길며,
+# 최빈값, 중강값, 평균값이 실제로 다음 관계를 만족시킨다.
+# 
+# - 주의: `mode(num_friends)`는 집합 자료형이기에 항목의 최댓값을 선택해서 비교에 사용한다.
+
+# In[21]:
+
+
+# 최빈값 <= 중앙값 <= 평균값
+max(mode(num_friends)) <= median(num_friends) <= mean(num_friends)
+
 
 # ## 산포도와 분산
 
@@ -431,14 +476,14 @@ mode(num_friends)
 
 # `num_friends`의 범위가 99임을 아래 `data_range()` 함수를 이용하여 확인한다.
 
-# In[20]:
+# In[22]:
 
 
 def data_range(xs):
     return max(xs) - min(xs)
 
 
-# In[21]:
+# In[23]:
 
 
 data_range(num_friends)
@@ -455,7 +500,7 @@ data_range(num_friends)
 # 아래 `iqr()` 함수를 이용해서 `num_friends`의 사분범위가 6임을 확인한다.
 # 범위가 99였던 것에 비해 매우 사분범위를 기준으로 보면 산포도가 훨씬 작다.
 
-# In[22]:
+# In[24]:
 
 
 def iqr(xs):
@@ -463,7 +508,7 @@ def iqr(xs):
     return quantile(xs, 0.75) - quantile(xs, 0.25)
 
 
-# In[23]:
+# In[25]:
 
 
 iqr(num_friends)
@@ -475,7 +520,7 @@ iqr(num_friends)
 # 얼마나 퍼져있는가를 측정한다.
 # 아래 그래프에서 빨강색으로 표시된 데이터셋의 분산에 비해 파랑색으로 표시된 데이터셋의 분산이 훨씬 크다.
 
-# <div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Comparison_standard_deviations.svg.png" width="50%"></div>
+# <div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Comparison_standard_deviations.svg.png" width="70%"></div>
 # 
 # <p><div style="text-align: center">&lt;그림 출처: <a href="https://en.wikipedia.org/wiki/Variance">위키백과</a>&gt;</div></p>
 
@@ -503,7 +548,7 @@ iqr(num_friends)
 # 데이터셋의 분산을 계산하는 `var()` 함수를 정의하기 위해
 # {ref}`sec:from_scratch_1`에서 정의한 내적 함수 `dotV()`를 활용한다.
 
-# In[24]:
+# In[26]:
 
 
 # 벡터 내적 함수
@@ -522,7 +567,7 @@ def sum_of_squares(v):
     return dotV(v, v)
 
 
-# In[25]:
+# In[27]:
 
 
 def var(xs):
@@ -540,7 +585,7 @@ def var(xs):
 
 # `num_friends` 데이터의 분산값은 81.54이다.
 
-# In[26]:
+# In[28]:
 
 
 var(num_friends)
@@ -566,7 +611,7 @@ var(num_friends)
 # 
 # - `math` 모듈의 `sqrt()` 함수: 제곱근 계산
 
-# In[27]:
+# In[29]:
 
 
 import math
@@ -575,7 +620,7 @@ def std(xs):
     return math.sqrt(var(xs))
 
 
-# In[28]:
+# In[30]:
 
 
 std(num_friends)
@@ -591,15 +636,15 @@ std(num_friends)
 # ## 상관관계
 
 # 두 데이터셋이 서로 상관이 있는가를 알고자 할 때 상관관계를 파악하며, 
-# 상관관계의 정도파악하기 위해 주로 **공분산**<font size='2'>covariance</font> 
-# 또는 **피어슨 상관계수**<font size='2'>correlation</font>를 이용한다.
-# 상관관계를 설명하기 위해 웹사이트 회원이 하루에 해당 웹사이트에서 보내는 시간과 친구 숫자 사이의 연관성을 파악해보자.
+# 상관관계의 정도를 파악하기 위해 주로 **공분산**<font size='2'>covariance</font> 
+# 또는 **피어슨 상관계수**<font size='2'>Pearson correlation coefficient</font>를 이용한다.
+# 상관관계를 설명하기 위해 SNS 회원이 하루에 해당 SNS에서 보내는 시간과 친구 숫자 사이의 연관성을 파악해보자.
 # 
 # 회원들의 친구 숫자는 `num_friends` 변수가 가리키는 값을 그대로 사용하고,
-# 추가로 각 회원이 웹사이트에서 하루에 보내는 시간(분)이 아래 `daily_minutes` 변수가 가리키는 리스트로 주어졌다.
-# 이전과 동일하게 인덱스는 회원의 아이디, 인덱스의 값은 해당 회원이 웹사이트에서 보내는 시간이다. 
+# 추가로 각 회원이 SNS에서 하루에 보내는 시간(분)이 아래 `daily_minutes` 변수가 가리키는 리스트로 주어졌다.
+# 이전과 동일하게 인덱스는 회원의 아이디를 가리킨다.
 
-# In[29]:
+# In[31]:
 
 
 daily_minutes = [1,68.77,51.25,52.08,38.36,44.54,57.13,51.4,41.42,
@@ -631,9 +676,9 @@ daily_minutes = [1,68.77,51.25,52.08,38.36,44.54,57.13,51.4,41.42,
 # ### 공분산
 
 # 동일한 모집단을 대상으로 수집된 두 데이터셋 $X$와 $Y$의 공분산 $Cov(X, Y)$는 
-# 두 종류의 데이터의 상관관계를 측정하며,
-# 두 데이터 $X_i$와 $Y_i$ 각각이 $\mu_X$와 $\mu_Y$를 기준으로
-# 어떻게 다른지를 곱한 값들의 평균값으로 계산된다.
+# 두 종류의 데이터 사이의 상관관계를 측정한다.
+# 공분산 계산은 두 데이터 샘플 $X_i$와 $Y_i$ 각각이 $\mu_X$와 $\mu_Y$를 기준으로
+# 얼마나 다른가를 곱한 값들의 평균값으로 계산된다.
 # 
 # $$
 # Cov(X,Y) = \frac{\sum^n_{i=1} (X_i- \mu_X)(Y_i- \mu_Y)}{n-1}
@@ -642,39 +687,45 @@ daily_minutes = [1,68.77,51.25,52.08,38.36,44.54,57.13,51.4,41.42,
 # 공분산이 양의 값인지, 음의 값인지, 아니면 0에 가까운 값인지에 따라 두 데이터셋 $X$와 $Y$
 # 사이의 관계는 아래 그림과 같이 구분된다.
 
-# <div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/positive_negative_weak_covariance.png" width="50%"></div>
+# <div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/positive_negative_weak_covariance.png" width="60%"></div>
+# 
+# <br>
 
-# 친구 숫자와 사용시간 사이의 공분산은 22.43이다.
+# 친구 숫자와 사용시간 사이의 공분산은 22.43 정도이다.
 
-# In[30]:
+# In[32]:
 
 
 def covariance(xs, ys):
-    assert len(xs) == len(ys), "xs and ys must have same number of elements"
+    assert len(xs) == len(ys), "xs와 ys의 길이가 같아야 함."
 
     return dotV(dev_mean(xs), dev_mean(ys)) / (len(xs) - 1)
 
 covariance(num_friends, daily_minutes)
 
 
-# **공분산의 특징과 한계**
+# **공분산의 한계**
 # 
 # 어떤 회원에 대해 친구 숫자와 사용시간 모두 평균보다 작거나 모두 크면 공분산에 양수의 값이 더해진다.
 # 반면에 친구 숫자가 평균보다 작지만, 사용시간은 평균보다 크면 음수의 값이 공분산에 더해진다. 
-# 따라서 친구 숫자와 사용시간이 평균을 기준으로 동일한 방향(크거나 작다 기준)이냐 아니냐가 공분산 값에 영향을 미친다.
+# 따라서 친구 숫자와 사용시간 모두 평균값보다 동시에 작느냐 또는 크냐가 공분산에 영향을 미친다.
 # 
-# 그런데 친구 숫자는 그대로인데 사용시간만 늘면 공분산은 증가한다. 
-# 하지만 그렇다고 해서 친구 숫자와 사용시간의 연관성이 어떻게 변한 것인지를 판단하기는 어렵다.
-# 즉, 공분산이 크다, 작다의 기준을 잡기가 어렵다. 
+# 그런데 예를 들어 친구 숫자와 SNS 방문 시간이 평균값과 차이가 커지면 커질 수록 
+# 공분산도 커진다.
+# 하지만 그렇다고 해서 친구 숫자와 사용시간의 연관성이 더 깊어졌다라고 말하기는 어렵다.
+# 즉, 공분산이 양이야 음이냐에 따라 양 또는 음의 상관관계인지를 말할 수는 있지만
+# 공분산이 크다고 해서 상관관계가 더 강하다라고 단정지을 수는 없다.
+# 왜냐하면 친구 숫자가 커진 정도와 사용시간이 커진 정도의 
+# 관계를 공분산이 제대로 반영하지 못하기 때문이다.
 
 # ### 피어슨 상관계수
 
-# 공분산의 한계를 해결하기 위해 피어슨 상관계수가 제시되었다. 
-# 피어슨 상관계수는 공분산을 각 데이터셋의 표준편차의 곱으로 나누어
-# 두 데이터셋 사이의 **선형** 상관관계를 수치로 계산한다.
+# 피어슨 상관계수는 공분산을 각 데이터셋의 표준편차의 곱으로 나눈다.
+# 이렇게 하면 두 데이터셋 사이의 **선형** 상관관계가 계산되며,
+# 따라서 공분산의 한계를 해결한다.
 # 
-# 두 데이터셋 $X, Y$의 피어슨 상관계수 계산은 다음과 같다.
-
+# 두 데이터셋 $X$와 $Y$의 피어슨 상관계수는 다음과 같이 계산한다.
+# 
 # $$
 # Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
 # $$
@@ -686,87 +737,90 @@ covariance(num_friends, daily_minutes)
 # * -1에 가까울 수록 음의 선형관계가 성립한다.
 # * 0에 가깔울 수록 선형관계가 약해진다.
 
-# <img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Correlation.png" width="70%">
+# <div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Correlation.png" width="70%"></div>
 # 
-# 출처: [위키백과](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)
+# <p><div style="text-align: center">&lt;그림 출처: <a href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient">위키백과</a>&gt;</div></p>
 
-# 친구 숫자와 사용시간 사이의 상관관계는 0.25이며, 
+# 친구 숫자와 사용시간 사이의 피어슨 상관계수는 0.25이며, 
 # 이는 두 데이터셋 사이의 상관 정도가 크지 않음을 의미한다. 
-
-# In[31]:
-
-
-def correlation(xs, ys):
-    """공분산 계산"""
-    stdev_x = std(xs)
-    stdev_y = std(ys)
-    if stdev_x > 0 and stdev_y > 0:
-        return covariance(xs, ys) / stdev_x / stdev_y
-    else:
-        return 0    # if no variation, correlation is zero
-
-correlation(num_friends, daily_minutes)
-
-
-# In[32]:
-
-
-plt.scatter(num_friends, daily_minutes)
-
-plt.title("Correlation with an Outlier")
-plt.xlabel("# of friends")
-plt.ylabel("minutes per day")
-plt.show()
-
-
-# **이상치와 상관관계**
-# 
-# 이상치가 상관관계에도 영향을 준다. 
-# 
-# 위 예제에서 100명의 친구를 가진 회원의 사이트 사용시간이 1분이며,
-# 이 회원의 데이터는 확실히 이상치라고 할 수 있다. 
-# 이제 이 회원의 데이터를 제거하고 상관관계를 계산하면, 이번에는 상관계수가 0.57이 된다.
-# 두 데이터셋의 상관정도가 두 배이상 커졌다.
 
 # In[33]:
 
 
-outlier = num_friends.index(100)    # 이상치의 인덱스
+def correlation(xs, ys):
+    assert len(xs) == len(ys), "xs와 ys의 길이가 같아야 함."
 
-num_friends_good = [x
-                    for i, x in enumerate(num_friends)
-                    if i != outlier]
+    stdev_x = std(xs) # xs의 표준편차
+    stdev_y = std(ys) # ys의 표준편차
 
-daily_minutes_good = [x
-                      for i, x in enumerate(daily_minutes)
-                      if i != outlier]
+    if stdev_x > 0 and stdev_y > 0:
+        return covariance(xs, ys) / (stdev_x * stdev_y)
+    else:
+        return 0    # 표준편차가 0인 데이터셋과의 선형 상관관계는 없음.
 
-correlation(num_friends_good, daily_minutes_good)
-
-
-# 이상치의 존재여부에 따른 두 데이터셋의 그래프도 모양이 달라지며,
-# 이상치를 제거한 후의 그래프의 선형 상관관계가 보다 명확하게 보여진다.
-
-# **이상치 제거 후**
 
 # In[34]:
 
 
-plt.scatter(num_friends_good, daily_minutes_good)
+correlation(num_friends, daily_minutes)
 
-plt.title("Correlation after Removing the Outlier")
-plt.xlabel("# of friends")
-plt.ylabel("minutes per day")
+
+# SNS의 친구 숫자와 사용시간 사이의 상관관계를 확인하기 위해
+# 산점도를 그려보면 두 데이터셋 사이의 선형관계가 매우 미약함을 쉽게 볼 수 있다.
+
+# In[35]:
+
+
+plt.scatter(num_friends, daily_minutes) # 산점도 그래프 그리기
+
+# 그래프 설정
+plt.xlabel("친구 숫자")
+plt.ylabel("SNS 사용시간")
 plt.show()
 
 
-# ## 상관계수 관련 추가 주의사항
+# **이상치와 상관관계**
+
+# 상관관계도 이상치로부터 영향을 받는다. 
+# 예를 들어 SNS 상에서 친구가 많으면 해당 SNS의 사용시간이 길이지는 게 일반적이다.
+# 그런데 위 데이터에서 100명의 친구를 가진 회원의 SNS 사용시간이 1분에 불과하다.
+# 이런 회원의 데이터는 확실히 이상치라고 할 수 있다. 
+# 이제 이 회원의 데이터를 제거하고 피어슨 상관계수를 계산하면 0.57이 나온다.
+# 두 데이터셋의 상관정도가 두 배이상 커진다.
+
+# In[36]:
+
+
+outlier = num_friends.index(100)    # 이상치의 인덱스
+
+# 데이터셋에서 이상치 제거
+num_friends_good = [x for i, x in enumerate(num_friends) if i != outlier]
+daily_minutes_good = [x for i, x in enumerate(daily_minutes) if i != outlier]
+
+# 상관계수 계산
+correlation(num_friends_good, daily_minutes_good)
+
+
+# 이상치를 제거한 후의 산점도 그래프는 두 데이터셋의 선형 상관를 보다 뚜렷히 보여준다.
+
+# In[37]:
+
+
+plt.scatter(num_friends_good, daily_minutes_good)
+
+# 데이터 설정
+plt.xlabel("친구 숫자")
+plt.ylabel("SNS 사용시간")
+plt.show()
+
+
+# **피어슨 상관계수의 한계**
 
 # 상관관계가 0 또는 1에 아주 가깝다고 해서 반드시 어떤 관계도 없다거나 
 # 매우 밀접합 선형관계이다라고 섣부르게 결론 내리면 위험하다. 
 
-# **예제 1**
-# 
+# **예제**
+
 # 다음 두 개의 데이터셋 x와 y를 살펴보자. 
 # 
 # <table>
@@ -788,9 +842,10 @@ plt.show()
 # </tr>
 # </table>
 
-# x와 y의 상관계수는 0이다. 
+# x와 y의 상관계수는 0이지만 y는 x의 항목의 절댓값을 항목으로 갖는다. 
+# 즉, 이런 데이터는 상관계수로 두 데이터셋의 연관성을 측정할 수 없다.
 
-# In[35]:
+# In[38]:
 
 
 x = [-2, -1, 0, 1, 2]
@@ -799,11 +854,8 @@ y = [ 2,  1, 0, 1, 2]
 correlation(x,y)
 
 
-# 하지만 y는 x의 항목의 절댓값을 항목으로 갖는다. 
-# 즉, 이런 데이터는 상관계수로 두 데이터셋의 연관성을 측정할 수 없다.
+# **예제**
 
-# **예제 2**
-# 
 # 다음 두 개의 데이터셋 x와 y를 살펴보자. 
 # 
 # <table>
@@ -825,9 +877,9 @@ correlation(x,y)
 # </tr>
 # </table>
 
-# x와 y의 상관계수는 1이다. 
+# x와 y의 상관계수는 1이지만 두 데이터셋 사이의 선형관계가 정말로 완벽하게 선형인지에 대해서는 장담할 수 없다.
 
-# In[36]:
+# In[39]:
 
 
 x = [-2, -1, 0, 1, 2]
@@ -836,11 +888,9 @@ y = [99.98, 99.99, 100, 100.01, 100.02]
 correlation(x,y)
 
 
-# 하지만 두 데이터셋 사이의 선형관계가 정말로 완벽하게 선형인지에 대해서는 장담할 수 없다.
+# ### 상관관계와 인과관계
 
-# ## 상관관계와 인과관계
-
-# 두 데이터셋 사이에 상관관계가 있다고 해서 한 쪽이 다른 쪽에 영향을 주는 인과관계가 있다고 주장할 수 없다. 
+# 두 데이터셋 사이에 상관관계가 있다고 해서 한 쪽이 다른 쪽에 영향을 주는 **인과관계**가 있다고 주장할 수 없다. 
 # 왜냐하면 두 데이터셋에 영향을 주는 다른 외부 요소가 존재할 수 있기 때문이다.
 # 
 # 예를 들어, 친구 숫자를 담은 `num_friends`와 사이트 사용시간을 담은 `daily_minutes`의 관계를 살펴보자.
