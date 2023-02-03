@@ -530,21 +530,16 @@ title="Print to PDF"
      9.5.2. 피어슨 상관계수
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     9.5.3. 상관관계와 인과관계
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id16">
-   9.6. 상관계수 관련 추가 주의사항
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id17">
-   9.7. 상관관계와 인과관계
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id18">
-   9.8. 연습문제
+   9.6. 연습문제
   </a>
  </li>
 </ul>
@@ -640,21 +635,16 @@ title="Print to PDF"
      9.5.2. 피어슨 상관계수
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id16">
+     9.5.3. 상관관계와 인과관계
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id16">
-   9.6. 상관계수 관련 추가 주의사항
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id17">
-   9.7. 상관관계와 인과관계
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id18">
-   9.8. 연습문제
+   9.6. 연습문제
   </a>
  </li>
 </ul>
@@ -684,7 +674,7 @@ title="Print to PDF"
 <li><p>상관관계 대 인과관계</p></li>
 </ul>
 <p><strong>필수 모듈</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>은 히스토그램, 산점도 등 데이터를 그래프로 시각화할 때 필요한
+<p><code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>은 막대그래프, 히스토그램, 산점도 등 데이터를 그래프로 시각화할 때 필요한
 다양한 함수를 제공하는 모듈이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -723,7 +713,7 @@ title="Print to PDF"
 </div>
 <section id="id2">
 <h2><span class="section-number">9.1. </span>데이터 준비<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
-<p>어떤 웹사이트의 회원 204명을 대상으로 친구가 몇 명인지를 조사한 결과를 리스트로 저장하였다고 가정한다.
+<p>어떤 SNS의 회원 204명을 대상으로 친구가 몇 명인지를 조사한 결과를 리스트로 저장하였다고 가정한다.
 회원 아이디는 친구가 많은 순서대로 0, 1, 2, … 등으로 정렬되어 있고,
 리스트의 각 항목이 해당 회원의 친구 숫자이다.
 회원의 친구 숫자는 최대 100명, 최소 1명이다.</p>
@@ -831,7 +821,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>친구 숫자를 x축에, 해당 친구 숫자 만큼의 친구를 갖는 회원의 수를 y축으로 지정하고 히스토그램을 그려보자.</p>
+<p>친구 숫자를 x축에, 해당 친구 숫자 만큼의 친구를 갖는 회원의 수를 y축으로 지정하고 막대그래프를 그려보자.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">101</span><span class="p">)</span>                         <span class="c1"># x축: 친구 숫자. 최소 1명에서 최대 100명.</span>
@@ -840,16 +830,17 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> 모듈의 <code class="docutils literal notranslate"><span class="pre">bar()</span></code> 함수를 이용하여 x축과 y축에 사용될 값을 지정하면 히스토그램을 그린다.
+<p><code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> 모듈의 <code class="docutils literal notranslate"><span class="pre">bar()</span></code> 함수를 이용하여 x축과 y축에 사용될 값을 지정하면 막대그래프를 그린다.
 그래프 그리기에 대해서는 <a class="reference internal" href="visualization_1.html#sec-visualization-1"><span class="std std-ref">matplotlib.pyplot 1부</span></a>와 <a class="reference internal" href="visualization_2.html#sec-visualization-2"><span class="std std-ref">matplotlib.pyplot 2부</span></a> 에서 보다 자세히 다룰 예정이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 히스토그램 그래프 그리기</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 막대그래프 그리기</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;회원의 친구 숫자 분포&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;친구 숫자&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;회원수&quot;</span><span class="p">)</span>
+
+<span class="c1"># 그래프 설정</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">])</span>        <span class="c1"># x축은 0부터 100까지, y축은 0부터 25까지 눈금 사용</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;친구 숫자&quot;</span><span class="p">)</span>           <span class="c1"># x축 눈금 설명</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;회원수&quot;</span><span class="p">)</span>              <span class="c1"># y축 눈금 설명</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -858,7 +849,7 @@ title="Print to PDF"
 <img alt="_images/from_scratch_2_25_0.png" src="_images/from_scratch_2_25_0.png" />
 </div>
 </div>
-<p>위 히스토그램에서 다음 두 가지를 한 눈에 알아볼 수 있다.</p>
+<p>위 막대그래프에서 다음 두 가지를 한 눈에 알아볼 수 있다.</p>
 <ul class="simple">
 <li><p>대다수 회원이 10명 이내의 친구를 갖는다.</p></li>
 <li><p>100명의 친구를 가진 회원도 있다.</p></li>
@@ -907,7 +898,7 @@ title="Print to PDF"
 <span class="math notranslate nohighlight">\(X_i\)</span>는 <span class="math notranslate nohighlight">\(i\)</span> 번째 값을 가리킨다.</p>
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">mean()</span></code> 함수</strong></p>
-<p><span class="math notranslate nohighlight">\(X\)</span>가 웹사이트 회원의 친구 숫자로 이루어진 데이터셋 <code class="docutils literal notranslate"><span class="pre">num_friends</span></code>를 가리킬 때
+<p><span class="math notranslate nohighlight">\(X\)</span>가 SNS 회원의 친구 숫자로 이루어진 데이터셋 <code class="docutils literal notranslate"><span class="pre">num_friends</span></code>를 가리킬 때
 회원들의 친구 숫자의 평균값이 7.33명임을
 아래 <code class="docutils literal notranslate"><span class="pre">mean()</span></code> 함수로 구할 수 있다.</p>
 <ul class="simple">
@@ -946,9 +937,9 @@ title="Print to PDF"
 데이터셋의 크기가 짝수인 경우 중앙에 위치한 두 수의
 평균값을 중앙값으로 사용한다.
 중앙값을 <strong>중위수</strong>라 부르기도 한다.</p>
-<p><div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/median.png" width="30%"></div>
+<p><div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/median.png" width="40%"></div>
 <p><div style="text-align: center">&lt;그림 출처: <a href="https://en.wikipedia.org/wiki/Median">위키백과</a>&gt;</div></p><p><strong><code class="docutils literal notranslate"><span class="pre">median()</span></code> 함수</strong></p>
-<p>웹사이트 회원들의 친구 수의 중앙값은 6임을 아래 <code class="docutils literal notranslate"><span class="pre">median()</span></code> 함수를 이용하여 확인한다.</p>
+<p>SNS 회원들의 친구 수의 중앙값은 6임을 아래 <code class="docutils literal notranslate"><span class="pre">median()</span></code> 함수를 이용하여 확인한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 리스트의 길이가 짝수일 때</span>
@@ -970,7 +961,7 @@ title="Print to PDF"
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">_median_even</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">median_odd</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_median_odd</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1033,7 +1024,7 @@ title="Print to PDF"
 다른 두 개의 사분위수는 하위 25% 위치에 있는 제1사분위수와
 상위 25% 위치에 있는 제3사분위수이다.
 즉, 중앙값은 상위 50%에 해당하는 제2사분위수에 해당한다.</p>
-<div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/quantile.png" width="50%"></div><p><strong><code class="docutils literal notranslate"><span class="pre">quantile()</span></code> 함수</strong></p>
+<div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/quantile.png" width="60%"></div><p><strong><code class="docutils literal notranslate"><span class="pre">quantile()</span></code> 함수</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">num_friends</span></code>의 제1사분위수와 제3사분위수는 각각 3명과 9명임을 <code class="docutils literal notranslate"><span class="pre">quantile()</span></code> 함수를 이용하여 확인할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1069,8 +1060,8 @@ title="Print to PDF"
 <section id="id7">
 <h3><span class="section-number">9.3.3. </span>최빈값<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
 <p>데이터셋에 포함된 데이터 샘플 중에서 가장 많이 출현하는 값이 <strong>최빈값</strong><font size='2'>mode</font>이다.
-평균값, 중앙값과는 다르게 여러 개의 최빈값이 존재할 수 있다.</p>
-<p><div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/unimodal-bimodal-multimodal.png" width="70%"></div>
+아래 그림이 보여주듯이 평균값, 중앙값과는 다르게 여러 개의 최빈값이 존재할 수 있다.</p>
+<p><div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/unimodal-bimodal-multimodal.png" width="80%"></div>
 <p><div style="text-align: center">&lt;그림 출처: <a href="https://calcworkshop.com/exploring-data/measures-of-center/">9+ Examples on Mean, Median, Mode</a>&gt;</div></p><p><strong><code class="docutils literal notranslate"><span class="pre">mode()</span></code> 함수</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">num_friends</span></code>의 최빈값은 1과 6임을 <code class="docutils literal notranslate"><span class="pre">mode()</span></code> 함수를 이용하여 확인한다.</p>
 <ul class="simple">
@@ -1105,15 +1096,67 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<p>최대 친구 숫자를 20명으로 제한해서 <code class="docutils literal notranslate"><span class="pre">num_friends</span></code> 데이터셋의 최빈값이 두 개 있음을
+보다 쉽게 눈으로 확인할 수 있다.
+이전 그래프와는 달리 부드러운 선그래프를 함께 그려서
+두 개의 가장 높은 봉우리가 존재함을 보다 쉽게 확인하도록 하였다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>                      <span class="c1"># x축: 친구 숫자. 최소 1명에서 최대 30명.</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="p">[</span><span class="n">friend_counts</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">]</span> <span class="c1"># y축: 지정된 수 만큼의 친구를 갖는 회원수</span>
+
+<span class="c1"># 막대그래프 그리기</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
+
+<span class="c1"># 부드러운 선그래프 그리기</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>                               <span class="c1"># numpy 라이브러리 활용</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">make_interp_spline</span> <span class="c1"># 부드러운 선을 그리기 위해 스플라인 보간법 적용</span>
+
+<span class="n">xs_ys_spline</span> <span class="o">=</span> <span class="n">make_interp_spline</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
+<span class="n">xs_</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">ys</span><span class="p">),</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">ys_</span> <span class="o">=</span> <span class="n">xs_ys_spline</span><span class="p">(</span><span class="n">xs_</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs_</span><span class="p">,</span> <span class="n">ys_</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="c1"># 그래프 설정</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">])</span>         <span class="c1"># x축은 0부터 20까지, y축은 0부터 25까지 눈금 사용</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;친구 숫자&quot;</span><span class="p">)</span>           <span class="c1"># x축 눈금 설명</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;회원수&quot;</span><span class="p">)</span>              <span class="c1"># y축 눈금 설명</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/from_scratch_2_64_0.png" src="_images/from_scratch_2_64_0.png" />
+</div>
+</div>
 <p><strong>비대칭 데이터셋의 평균값, 중앙값, 최빈값</strong></p>
 <p>데이터셋이 정규분포를 따르면 평균값, 중앙값, 최빈값이 (거의) 동일하다.
 그렇지 않은 경우 비대칭 정도와 방향에 따라 세 값의 순서가 달라진다.</p>
 <ul class="simple">
-<li><p>왼쪽 꼬리가 긴 경우(아래 왼편 그림): 평균값, 중앙값, 최빈값의 순서</p></li>
-<li><p>오른쪽 꼬리가 긴 경우(아래 왼편 그림): 최빈값, 중앙값, 평균값의 순서</p></li>
+<li><p>왼쪽 꼬리가 긴 경우(아래 왼편 그림): 평균값 ≤ 중앙값 ≤ 최빈값</p></li>
+<li><p>오른쪽 꼬리가 긴 경우(아래 왼편 그림): 최빈값 ≤ 중앙값 ≤ 평균값</p></li>
 </ul>
-<p><div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/mean_mode_median.jpg" width="70%"></div>
-<p><div style="text-align: center">&lt;그림 출처: <a href="https://medium.com/@nhan.tran/mean-median-an-mode-in-statistics-3359d3774b0b">Mean, Median, and Mode in Statistics</a>&gt;</div></p></section>
+<p><div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/mean_mode_median.jpg" width="90%"></div>
+<p><div style="text-align: center">&lt;그림 출처: <a href="https://medium.com/@nhan.tran/mean-median-an-mode-in-statistics-3359d3774b0b">Mean, Median, and Mode in Statistics</a>&gt;</div></p><p><strong>예제</strong></p>
+<p>앞서 보았듯이 <code class="docutils literal notranslate"><span class="pre">num_frieds</span></code> 데이터셋은 오른쪽 꼬리가 길며,
+최빈값, 중강값, 평균값이 실제로 다음 관계를 만족시킨다.</p>
+<ul class="simple">
+<li><p>주의: <code class="docutils literal notranslate"><span class="pre">mode(num_friends)</span></code>는 집합 자료형이기에 항목의 최댓값을 선택해서 비교에 사용한다.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 최빈값 &lt;= 중앙값 &lt;= 평균값</span>
+<span class="nb">max</span><span class="p">(</span><span class="n">mode</span><span class="p">(</span><span class="n">num_friends</span><span class="p">))</span> <span class="o">&lt;=</span> <span class="n">median</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">mean</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="id8">
 <h2><span class="section-number">9.4. </span>산포도와 분산<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
@@ -1192,7 +1235,7 @@ title="Print to PDF"
 <p><strong>분산</strong><font size='2'>variance</font>은 데이터가 평균값<font size='2'>mean</font>을 중심으로
 얼마나 퍼져있는가를 측정한다.
 아래 그래프에서 빨강색으로 표시된 데이터셋의 분산에 비해 파랑색으로 표시된 데이터셋의 분산이 훨씬 크다.</p>
-<div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Comparison_standard_deviations.svg.png" width="50%"></div>
+<div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Comparison_standard_deviations.svg.png" width="70%"></div>
 <p><div style="text-align: center">&lt;그림 출처: <a href="https://en.wikipedia.org/wiki/Variance">위키백과</a>&gt;</div></p><p>분산은 다음과 같이 평균값과의 오차의 제곱의 평균값으로 계산된다.
 데이터셋 <span class="math notranslate nohighlight">\(X\)</span>의 분산은 보통 <span class="math notranslate nohighlight">\(\sigma\)</span> 또는 <span class="math notranslate nohighlight">\(\textit{Var}(X)\)</span>로 나타낸다.</p>
 <div class="math notranslate nohighlight">
@@ -1311,12 +1354,12 @@ title="Print to PDF"
 <section id="id13">
 <h2><span class="section-number">9.5. </span>상관관계<a class="headerlink" href="#id13" title="Permalink to this headline">#</a></h2>
 <p>두 데이터셋이 서로 상관이 있는가를 알고자 할 때 상관관계를 파악하며,
-상관관계의 정도파악하기 위해 주로 <strong>공분산</strong><font size='2'>covariance</font>
-또는 <strong>피어슨 상관계수</strong><font size='2'>correlation</font>를 이용한다.
-상관관계를 설명하기 위해 웹사이트 회원이 하루에 해당 웹사이트에서 보내는 시간과 친구 숫자 사이의 연관성을 파악해보자.</p>
+상관관계의 정도를 파악하기 위해 주로 <strong>공분산</strong><font size='2'>covariance</font>
+또는 <strong>피어슨 상관계수</strong><font size='2'>Pearson correlation coefficient</font>를 이용한다.
+상관관계를 설명하기 위해 SNS 회원이 하루에 해당 SNS에서 보내는 시간과 친구 숫자 사이의 연관성을 파악해보자.</p>
 <p>회원들의 친구 숫자는 <code class="docutils literal notranslate"><span class="pre">num_friends</span></code> 변수가 가리키는 값을 그대로 사용하고,
-추가로 각 회원이 웹사이트에서 하루에 보내는 시간(분)이 아래 <code class="docutils literal notranslate"><span class="pre">daily_minutes</span></code> 변수가 가리키는 리스트로 주어졌다.
-이전과 동일하게 인덱스는 회원의 아이디, 인덱스의 값은 해당 회원이 웹사이트에서 보내는 시간이다.</p>
+추가로 각 회원이 SNS에서 하루에 보내는 시간(분)이 아래 <code class="docutils literal notranslate"><span class="pre">daily_minutes</span></code> 변수가 가리키는 리스트로 주어졌다.
+이전과 동일하게 인덱스는 회원의 아이디를 가리킨다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_minutes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mf">68.77</span><span class="p">,</span><span class="mf">51.25</span><span class="p">,</span><span class="mf">52.08</span><span class="p">,</span><span class="mf">38.36</span><span class="p">,</span><span class="mf">44.54</span><span class="p">,</span><span class="mf">57.13</span><span class="p">,</span><span class="mf">51.4</span><span class="p">,</span><span class="mf">41.42</span><span class="p">,</span>
@@ -1350,20 +1393,21 @@ title="Print to PDF"
 <section id="id14">
 <h3><span class="section-number">9.5.1. </span>공분산<a class="headerlink" href="#id14" title="Permalink to this headline">#</a></h3>
 <p>동일한 모집단을 대상으로 수집된 두 데이터셋 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>의 공분산 <span class="math notranslate nohighlight">\(Cov(X, Y)\)</span>는
-두 종류의 데이터의 상관관계를 측정하며,
-두 데이터 <span class="math notranslate nohighlight">\(X_i\)</span>와 <span class="math notranslate nohighlight">\(Y_i\)</span> 각각이 <span class="math notranslate nohighlight">\(\mu_X\)</span>와 <span class="math notranslate nohighlight">\(\mu_Y\)</span>를 기준으로
-어떻게 다른지를 곱한 값들의 평균값으로 계산된다.</p>
+두 종류의 데이터 사이의 상관관계를 측정한다.
+공분산 계산은 두 데이터 샘플 <span class="math notranslate nohighlight">\(X_i\)</span>와 <span class="math notranslate nohighlight">\(Y_i\)</span> 각각이 <span class="math notranslate nohighlight">\(\mu_X\)</span>와 <span class="math notranslate nohighlight">\(\mu_Y\)</span>를 기준으로
+얼마나 다른가를 곱한 값들의 평균값으로 계산된다.</p>
 <div class="math notranslate nohighlight">
 \[
 Cov(X,Y) = \frac{\sum^n_{i=1} (X_i- \mu_X)(Y_i- \mu_Y)}{n-1}
 \]</div>
 <p>공분산이 양의 값인지, 음의 값인지, 아니면 0에 가까운 값인지에 따라 두 데이터셋 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>
 사이의 관계는 아래 그림과 같이 구분된다.</p>
-<div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/positive_negative_weak_covariance.png" width="50%"></div><p>친구 숫자와 사용시간 사이의 공분산은 22.43이다.</p>
+<div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/positive_negative_weak_covariance.png" width="60%"></div>
+<br><p>친구 숫자와 사용시간 사이의 공분산은 22.43 정도이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">covariance</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">):</span>
-    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">ys</span><span class="p">),</span> <span class="s2">&quot;xs and ys must have same number of elements&quot;</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">ys</span><span class="p">),</span> <span class="s2">&quot;xs와 ys의 길이가 같아야 함.&quot;</span>
 
     <span class="k">return</span> <span class="n">dotV</span><span class="p">(</span><span class="n">dev_mean</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">dev_mean</span><span class="p">(</span><span class="n">ys</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
 
@@ -1377,20 +1421,24 @@ Cov(X,Y) = \frac{\sum^n_{i=1} (X_i- \mu_X)(Y_i- \mu_Y)}{n-1}
 </div>
 </div>
 </div>
-<p><strong>공분산의 특징과 한계</strong></p>
+<p><strong>공분산의 한계</strong></p>
 <p>어떤 회원에 대해 친구 숫자와 사용시간 모두 평균보다 작거나 모두 크면 공분산에 양수의 값이 더해진다.
 반면에 친구 숫자가 평균보다 작지만, 사용시간은 평균보다 크면 음수의 값이 공분산에 더해진다.
-따라서 친구 숫자와 사용시간이 평균을 기준으로 동일한 방향(크거나 작다 기준)이냐 아니냐가 공분산 값에 영향을 미친다.</p>
-<p>그런데 친구 숫자는 그대로인데 사용시간만 늘면 공분산은 증가한다.
-하지만 그렇다고 해서 친구 숫자와 사용시간의 연관성이 어떻게 변한 것인지를 판단하기는 어렵다.
-즉, 공분산이 크다, 작다의 기준을 잡기가 어렵다.</p>
+따라서 친구 숫자와 사용시간 모두 평균값보다 동시에 작느냐 또는 크냐가 공분산에 영향을 미친다.</p>
+<p>그런데 예를 들어 친구 숫자와 SNS 방문 시간이 평균값과 차이가 커지면 커질 수록
+공분산도 커진다.
+하지만 그렇다고 해서 친구 숫자와 사용시간의 연관성이 더 깊어졌다라고 말하기는 어렵다.
+즉, 공분산이 양이야 음이냐에 따라 양 또는 음의 상관관계인지를 말할 수는 있지만
+공분산이 크다고 해서 상관관계가 더 강하다라고 단정지을 수는 없다.
+왜냐하면 친구 숫자가 커진 정도와 사용시간이 커진 정도의
+관계를 공분산이 제대로 반영하지 못하기 때문이다.</p>
 </section>
 <section id="id15">
 <h3><span class="section-number">9.5.2. </span>피어슨 상관계수<a class="headerlink" href="#id15" title="Permalink to this headline">#</a></h3>
-<p>공분산의 한계를 해결하기 위해 피어슨 상관계수가 제시되었다.
-피어슨 상관계수는 공분산을 각 데이터셋의 표준편차의 곱으로 나누어
-두 데이터셋 사이의 <strong>선형</strong> 상관관계를 수치로 계산한다.</p>
-<p>두 데이터셋 <span class="math notranslate nohighlight">\(X, Y\)</span>의 피어슨 상관계수 계산은 다음과 같다.</p>
+<p>피어슨 상관계수는 공분산을 각 데이터셋의 표준편차의 곱으로 나눈다.
+이렇게 하면 두 데이터셋 사이의 <strong>선형</strong> 상관관계가 계산되며,
+따라서 공분산의 한계를 해결한다.</p>
+<p>두 데이터셋 <span class="math notranslate nohighlight">\(X\)</span>와 <span class="math notranslate nohighlight">\(Y\)</span>의 피어슨 상관계수는 다음과 같이 계산한다.</p>
 <div class="math notranslate nohighlight">
 \[
 Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
@@ -1402,64 +1450,70 @@ Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
 <li><p>-1에 가까울 수록 음의 선형관계가 성립한다.</p></li>
 <li><p>0에 가깔울 수록 선형관계가 약해진다.</p></li>
 </ul>
-<img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Correlation.png" width="70%">
-<p>출처: <a class="reference external" href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient">위키백과</a></p>
-<p>친구 숫자와 사용시간 사이의 상관관계는 0.25이며,
+<div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Correlation.png" width="70%"></div>
+<p><div style="text-align: center">&lt;그림 출처: <a href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient">위키백과</a>&gt;</div></p><p>친구 숫자와 사용시간 사이의 피어슨 상관계수는 0.25이며,
 이는 두 데이터셋 사이의 상관 정도가 크지 않음을 의미한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">correlation</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;공분산 계산&quot;&quot;&quot;</span>
-    <span class="n">stdev_x</span> <span class="o">=</span> <span class="n">std</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
-    <span class="n">stdev_y</span> <span class="o">=</span> <span class="n">std</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">stdev_x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">stdev_y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">covariance</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span> <span class="o">/</span> <span class="n">stdev_x</span> <span class="o">/</span> <span class="n">stdev_y</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="mi">0</span>    <span class="c1"># if no variation, correlation is zero</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">ys</span><span class="p">),</span> <span class="s2">&quot;xs와 ys의 길이가 같아야 함.&quot;</span>
 
-<span class="n">correlation</span><span class="p">(</span><span class="n">num_friends</span><span class="p">,</span> <span class="n">daily_minutes</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.24736957366478218
+    <span class="n">stdev_x</span> <span class="o">=</span> <span class="n">std</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="c1"># xs의 표준편차</span>
+    <span class="n">stdev_y</span> <span class="o">=</span> <span class="n">std</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span> <span class="c1"># ys의 표준편차</span>
+
+    <span class="k">if</span> <span class="n">stdev_x</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">stdev_y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">covariance</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">stdev_x</span> <span class="o">*</span> <span class="n">stdev_y</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>    <span class="c1"># 표준편차가 0인 데이터셋과의 선형 상관관계는 없음.</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">num_friends</span><span class="p">,</span> <span class="n">daily_minutes</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">correlation</span><span class="p">(</span><span class="n">num_friends</span><span class="p">,</span> <span class="n">daily_minutes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.24736957366478216
+</pre></div>
+</div>
+</div>
+</div>
+<p>SNS의 친구 숫자와 사용시간 사이의 상관관계를 확인하기 위해
+산점도를 그려보면 두 데이터셋 사이의 선형관계가 매우 미약함을 쉽게 볼 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">num_friends</span><span class="p">,</span> <span class="n">daily_minutes</span><span class="p">)</span> <span class="c1"># 산점도 그래프 그리기</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Correlation with an Outlier&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;# of friends&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;minutes per day&quot;</span><span class="p">)</span>
+<span class="c1"># 그래프 설정</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;친구 숫자&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;SNS 사용시간&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/from_scratch_2_116_0.png" src="_images/from_scratch_2_116_0.png" />
+<img alt="_images/from_scratch_2_122_0.png" src="_images/from_scratch_2_122_0.png" />
 </div>
 </div>
 <p><strong>이상치와 상관관계</strong></p>
-<p>이상치가 상관관계에도 영향을 준다.</p>
-<p>위 예제에서 100명의 친구를 가진 회원의 사이트 사용시간이 1분이며,
-이 회원의 데이터는 확실히 이상치라고 할 수 있다.
-이제 이 회원의 데이터를 제거하고 상관관계를 계산하면, 이번에는 상관계수가 0.57이 된다.
-두 데이터셋의 상관정도가 두 배이상 커졌다.</p>
+<p>상관관계도 이상치로부터 영향을 받는다.
+예를 들어 SNS 상에서 친구가 많으면 해당 SNS의 사용시간이 길이지는 게 일반적이다.
+그런데 위 데이터에서 100명의 친구를 가진 회원의 SNS 사용시간이 1분에 불과하다.
+이런 회원의 데이터는 확실히 이상치라고 할 수 있다.
+이제 이 회원의 데이터를 제거하고 피어슨 상관계수를 계산하면 0.57이 나온다.
+두 데이터셋의 상관정도가 두 배이상 커진다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">outlier</span> <span class="o">=</span> <span class="n">num_friends</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>    <span class="c1"># 이상치의 인덱스</span>
 
-<span class="n">num_friends_good</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span>
-                    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span>
-                    <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">outlier</span><span class="p">]</span>
+<span class="c1"># 데이터셋에서 이상치 제거</span>
+<span class="n">num_friends_good</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">num_friends</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">outlier</span><span class="p">]</span>
+<span class="n">daily_minutes_good</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">daily_minutes</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">outlier</span><span class="p">]</span>
 
-<span class="n">daily_minutes_good</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span>
-                      <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">daily_minutes</span><span class="p">)</span>
-                      <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">outlier</span><span class="p">]</span>
-
+<span class="c1"># 상관계수 계산</span>
 <span class="n">correlation</span><span class="p">(</span><span class="n">num_friends_good</span><span class="p">,</span> <span class="n">daily_minutes_good</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1470,31 +1524,26 @@ Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
 </div>
 </div>
 </div>
-<p>이상치의 존재여부에 따른 두 데이터셋의 그래프도 모양이 달라지며,
-이상치를 제거한 후의 그래프의 선형 상관관계가 보다 명확하게 보여진다.</p>
-<p><strong>이상치 제거 후</strong></p>
+<p>이상치를 제거한 후의 산점도 그래프는 두 데이터셋의 선형 상관를 보다 뚜렷히 보여준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">num_friends_good</span><span class="p">,</span> <span class="n">daily_minutes_good</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Correlation after Removing the Outlier&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;# of friends&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;minutes per day&quot;</span><span class="p">)</span>
+<span class="c1"># 데이터 설정</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;친구 숫자&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;SNS 사용시간&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/from_scratch_2_121_0.png" src="_images/from_scratch_2_121_0.png" />
+<img alt="_images/from_scratch_2_127_0.png" src="_images/from_scratch_2_127_0.png" />
 </div>
 </div>
-</section>
-</section>
-<section id="id16">
-<h2><span class="section-number">9.6. </span>상관계수 관련 추가 주의사항<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h2>
+<p><strong>피어슨 상관계수의 한계</strong></p>
 <p>상관관계가 0 또는 1에 아주 가깝다고 해서 반드시 어떤 관계도 없다거나
 매우 밀접합 선형관계이다라고 섣부르게 결론 내리면 위험하다.</p>
-<p><strong>예제 1</strong></p>
+<p><strong>예제</strong></p>
 <p>다음 두 개의 데이터셋 x와 y를 살펴보자.</p>
 <table>
 <tr>
@@ -1513,7 +1562,8 @@ Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
     <td>1</td>
     <td>2</td>
 </tr>
-</table><p>x와 y의 상관계수는 0이다.</p>
+</table><p>x와 y의 상관계수는 0이지만 y는 x의 항목의 절댓값을 항목으로 갖는다.
+즉, 이런 데이터는 상관계수로 두 데이터셋의 연관성을 측정할 수 없다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
@@ -1529,9 +1579,7 @@ Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
 </div>
 </div>
 </div>
-<p>하지만 y는 x의 항목의 절댓값을 항목으로 갖는다.
-즉, 이런 데이터는 상관계수로 두 데이터셋의 연관성을 측정할 수 없다.</p>
-<p><strong>예제 2</strong></p>
+<p><strong>예제</strong></p>
 <p>다음 두 개의 데이터셋 x와 y를 살펴보자.</p>
 <table>
 <tr>
@@ -1550,7 +1598,7 @@ Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
     <td>100.01</td>
     <td>100.02</td>
 </tr>
-</table><p>x와 y의 상관계수는 1이다.</p>
+</table><p>x와 y의 상관계수는 1이지만 두 데이터셋 사이의 선형관계가 정말로 완벽하게 선형인지에 대해서는 장담할 수 없다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
@@ -1566,11 +1614,10 @@ Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
 </div>
 </div>
 </div>
-<p>하지만 두 데이터셋 사이의 선형관계가 정말로 완벽하게 선형인지에 대해서는 장담할 수 없다.</p>
 </section>
-<section id="id17">
-<h2><span class="section-number">9.7. </span>상관관계와 인과관계<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h2>
-<p>두 데이터셋 사이에 상관관계가 있다고 해서 한 쪽이 다른 쪽에 영향을 주는 인과관계가 있다고 주장할 수 없다.
+<section id="id16">
+<h3><span class="section-number">9.5.3. </span>상관관계와 인과관계<a class="headerlink" href="#id16" title="Permalink to this headline">#</a></h3>
+<p>두 데이터셋 사이에 상관관계가 있다고 해서 한 쪽이 다른 쪽에 영향을 주는 <strong>인과관계</strong>가 있다고 주장할 수 없다.
 왜냐하면 두 데이터셋에 영향을 주는 다른 외부 요소가 존재할 수 있기 때문이다.</p>
 <p>예를 들어, 친구 숫자를 담은 <code class="docutils literal notranslate"><span class="pre">num_friends</span></code>와 사이트 사용시간을 담은 <code class="docutils literal notranslate"><span class="pre">daily_minutes</span></code>의 관계를 살펴보자.
 그러면 최소 세 가지 시나리오가 가능하다.</p>
@@ -1584,8 +1631,9 @@ Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
 한 쪽 모둠에만 영향을 주는 실험을 하고 그 결과를 비교한다.
 이런 식으로 해서 상관관계의 진짜 근거를 얻어내도록 해야 한다.</p>
 </section>
-<section id="id18">
-<h2><span class="section-number">9.8. </span>연습문제<a class="headerlink" href="#id18" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="id17">
+<h2><span class="section-number">9.6. </span>연습문제<a class="headerlink" href="#id17" title="Permalink to this headline">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-from_scratch_2.ipynb">(실습) 통계 기초</a></p>
 </section>
 </section>
