@@ -64,7 +64,7 @@ elif platform.system() == 'Linux': # 우분투 또는 구글 코랩
 # :::{admonition} 그래프 관련 코드
 # :class: warning
 # 
-# `matplotlib.pyplot` 관련 코드는 내용의 이해를 위한 그래프를 그리기 위한 용도로만 사용되며
+# `matplotlib.pyplot` 관련 코드는 내용의 이해를 위한 그래프를 그리기 위한 용도로만 사용된다.
 # 관련 코드를 지금 당장 이해할 필요는 없으며 무시하고 넘어가도 된다.
 # :::
 
