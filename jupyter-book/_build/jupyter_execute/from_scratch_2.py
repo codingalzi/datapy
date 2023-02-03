@@ -801,11 +801,12 @@ daily_minutes_good = [x for i, x in enumerate(daily_minutes) if i != outlier]
 correlation(num_friends_good, daily_minutes_good)
 
 
-# 이상치를 제거한 후의 산점도 그래프는 두 데이터셋의 선형 상관를 보다 뚜렷히 보여준다.
+# 이상치를 제거한 후의 산점도 그래프는 두 데이터셋의 선형 상관관계를 보다 뚜렷히 보여준다.
 
 # In[37]:
 
 
+# 산점도 그리기
 plt.scatter(num_friends_good, daily_minutes_good)
 
 # 데이터 설정
@@ -891,19 +892,71 @@ correlation(x,y)
 # ### 상관관계와 인과관계
 
 # 두 데이터셋 사이에 상관관계가 있다고 해서 한 쪽이 다른 쪽에 영향을 주는 **인과관계**가 있다고 주장할 수 없다. 
-# 왜냐하면 두 데이터셋에 영향을 주는 다른 외부 요소가 존재할 수 있기 때문이다.
+# 왜냐하면 두 데이터셋에 영향을 주는 다른 외부 요인이 존재할 수 있기 때문이다.
 # 
-# 예를 들어, 친구 숫자를 담은 `num_friends`와 사이트 사용시간을 담은 `daily_minutes`의 관계를 살펴보자.
+# 예를 들어, 친구 숫자를 담은 `num_friends`와 SNS 사용시간을 담은 `daily_minutes`의 관계를 살펴보자.
 # 그러면 최소 세 가지 시나리오가 가능하다.
 # 
-# 1. 사이트에서 많은 시간을 보낼 수록 많은 친구를 사귄다.
-# 1. 많은 친구가 있으니까 사이트에서 시간을 보다 많이 보낸다.
-# 1. 사이트에서 많은 정보를 얻을 수 있으니까 사용시간이 길어지고, 그러다 보니까 친구가 늘어난다.
+# 1. SNS에서 많은 시간을 보낼 수록 많은 친구를 사귄다.
+# 1. 많은 친구가 있으니까 SNS에서 시간을 보다 많이 보낸다.
+# 1. SNS에서 많은 정보를 얻을 수 있으니까 사용시간이 길어지고, 그러다 보니까 친구가 늘어난다.
 # 
-# 이 중에 어떤 것이 맞는지는 다른 방법으로 확인해봐야 한다. 
-# 예를 들어, 회원 집단을 임의로 두 모둠으로 나누고, 한쪽 모둠에만 특정 친구들의 글만 보여주는 것과 같이,
-# 한 쪽 모둠에만 영향을 주는 실험을 하고 그 결과를 비교한다.
-# 이런 식으로 해서 상관관계의 진짜 근거를 얻어내도록 해야 한다.
+# 이 중에 어떤 것이 맞는지는 다른 방식으로 확인해봐야 한다. 
+# 예를 들어, 회원 집단을 임의로 두 그룹으로 나누고, 한쪽 그룹에만 특정 친구들의 글만 보여주는 것과 같이,
+# 한 쪽 그룹에만 영향을 주는 실험을 하고 그 결과를 비교한다.
+# 이와 비슷한 방식을 이용해서 상관관계의 진짜 원인을 찾아 내야 한다.
+
+# ### 선형회귀
+
+# 친구 숫자와 SNS 사용시간의 선형관계를 보다 정확히 파악하기 위해
+# 머신러닝의 선형회귀 모델을 활용할 수 있다.
+# 아래 코드는 사이킷런<font size='2'>scikit-learn</font> 라이브러리가
+# 제공하는 선형회귀 모델인 `linear_model`을 훈련시켜서
+# 친구 숫자와 SNS 사용시간의 선형관계를 보여주는 직선의 기울기와 절편을 계산한다.
+
+# In[40]:
+
+
+from sklearn import linear_model
+
+xs = np.c_[np.array(num_friends_good)]
+ys = np.c_[np.array(daily_minutes_good)]
+
+lin_model = linear_model.LinearRegression()
+lin_model.fit(xs, ys)
+
+t0, t1 = lin_model.intercept_[0], lin_model.coef_[0][0]
+
+print(f"절편:\t {t0}")
+print(f"기울기:\t {t1}")
+
+
+# :::{admonition} 머신러닝 공부
+# :class: info
+# 
+# 위 코드를 지금 당장 이해할 필요는 없지만, 머신러닝에 관심이 있는 경우
+# [핸즈온 머신러닝(3판) 강의노트](https://codingalzi.github.io/handson-ml3/intro.html)를 추천한다.
+# :::
+
+# 위 코드를 통해 구한 직선의 기울기와 절편을 이용하여 
+# 친구 숫자와 SNS 사용시간 사이의 선형관계를 보여주는 직선을
+# 산포도와 함께 그리면 다음과 같다.
+
+# In[41]:
+
+
+# 산점도 그리기
+plt.scatter(num_friends_good, daily_minutes_good)
+
+# 직선 그리기
+X=np.linspace(0, 50, 100)
+plt.plot(X, t0 + t1*X, "r")
+
+# 데이터 설정
+plt.xlabel("친구 숫자")
+plt.ylabel("SNS 사용시간")
+plt.show()
+
 
 # ## 연습문제
 
