@@ -61,6 +61,13 @@ elif platform.system() == 'Linux': # 우분투 또는 구글 코랩
     plt.rc("axes", unicode_minus=False)
 
 
+# :::{admonition} 그래프 관련 코드
+# :class: warning
+# 
+# `matplotlib.pyplot` 관련 코드는 내용의 이해를 위한 그래프를 그리기 위한 용도로만 사용되며
+# 관련 코드를 지금 당장 이해할 필요는 없으며 무시하고 넘어가도 된다.
+# :::
+
 # ## 데이터 준비
 
 # 어떤 SNS의 회원 204명을 대상으로 친구가 몇 명인지를 조사한 결과를 리스트로 저장하였다고 가정한다.
