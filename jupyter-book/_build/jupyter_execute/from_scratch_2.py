@@ -31,6 +31,9 @@
 
 import matplotlib.pyplot as plt
 
+# 그래프 설정
+plt.rc('figure', figsize=(10, 6))  # 그래프 크기 지정
+
 
 # **matplotlib 한글 설정**
 # 
@@ -42,22 +45,23 @@ import matplotlib.pyplot as plt
 
 
 import platform
-plt.rc('figure', figsize=(10, 6))  # 그림 크기 설정
-if platform.system() == 'Windows': # 윈도우
-    from matplotlib import font_manager, rc
+import matplotlib as mpl
+
+# 윈도우 설정
+if platform.system() == 'Windows':
     font_path = "C:/Windows/Fonts/NGULIM.TTF"
-    font = font_manager.FontProperties(fname=font_path).get_name()
-    rc('font', family=font)
-elif platform.system() == 'Linux': # 우분투 또는 구글 코랩
-    # 우분투의 경우 아래 명령문이 최소 한번 실행했어야 함
+    font = mpl.font_manager.FontProperties(fname=font_path).get_name()
+    plt.rc('font', family=font)
+# 우분투/구글 코랩 설정
+elif platform.system() == 'Linux':
+    # 우분투/구글코랩의 경우 아래 명령문이 최소 한번 실행되어야 함
     # !sudo apt-get install -y fonts-nanum*
     # !fc-cache -fv
     
-    applyfont = "NanumBarunGothic"
-    import matplotlib.font_manager as fm
-    if not any(map(lambda ft: ft.name == applyfont, fm.fontManager.ttflist)):
-        fm.fontManager.addfont("/usr/share/fonts/truetype/nanum/NanumBarunGothic.ttf")
-    plt.rc("font", family=applyfont)
+    font = "NanumBarunGothic"
+    if not any(map(lambda ft: ft.name == font, mpl.font_manager.fontManager.ttflist)):
+        mpl.font_manager.fontManager.addfont("/usr/share/fonts/truetype/nanum/NanumBarunGothic.ttf")
+    plt.rc("font", family=font)
     plt.rc("axes", unicode_minus=False)
 
 
@@ -65,7 +69,7 @@ elif platform.system() == 'Linux': # 우분투 또는 구글 코랩
 # :class: warning
 # 
 # `matplotlib.pyplot` 관련 코드는 내용의 이해를 위한 그래프를 그리기 위한 용도로만 사용된다.
-# 관련 코드를 지금 당장 이해할 필요는 없으며 무시하고 넘어가도 된다.
+# 관련 코드를 지금 이해할 필요 없으며 {ref}`sec:visualization_1`에서 자세히 설명할 때까지 무시해도 된다.
 # :::
 
 # ## 데이터 준비
@@ -322,13 +326,21 @@ median(Y)
 # 
 # 앞서 살펴보았듯 평균값은 데이터셋의 특정 샘플에 민감하게 반응한다. 
 # `num_friends`의 경우 친구 숫자의 평균값이 7.33명인데 100명의 친구가 있는 경우는 매우 특이하다고 할 수 있다.
-# 이런 데이터 샘플을 **이상치**<font size='2'>outlier</font>라 부른다. 
+# 이처럼 어떤 이유때문인지 확실하지 않지만 다른 데이터 샘플들과 확연히 구분되는 데이터 샘플을 **이상치**<font size='2'>outlier</font>라 부른다. 
 # 평균값은 이상치의 민감하게 반응해서, 데이터셋에 대한 잘못된 정보를 전달할 수 있다. 
 # 
 # 예를 들어, [2013년 3월 당시, 국회의원들의 평균재산은 94억 9000만원](https://www.datadata.link/qa08/)이었다.
 # 하지만 이상치값을 보인 두 의원을 제외하면 23억 3000만원이다. 
 # 현대중공업의 대주주인 정몽준의 약 1조 9249만원 가량의 재산과 고희선 의원의 1984억원의 재산 두 이상치 
 # 포함 여부에 따라 당시 국회의원들의 평균 재산이 매우 많이 달라졌다.
+
+# :::{admonition} 이상치 발생 원인
+# :class: info
+# 
+# 이상치가 데이터셋에 포함되는 이유는 다양하다. 
+# 앞서 언급한 국회의원의 평균재산의 이상치는 정말로 특별한 경우가 포함된 경우이다.
+# 하지만 많은 경우 이상치는 측정 기기 또는 방식의 오류, 데이터 처리 오류 등에서 발생한다. 
+# :::
 
 # **중앙값과 사분위수**
 # 
@@ -424,7 +436,7 @@ from scipy.interpolate import make_interp_spline # 부드러운 선을 그리기
 xs_ys_spline = make_interp_spline(xs, ys)
 xs_ = np.linspace(min(xs), max(ys), 500)
 ys_ = xs_ys_spline(xs_)
-plt.plot(xs_, ys_, c='r')
+plt.plot(xs_, ys_, 'r')
 
 # 그래프 설정
 plt.axis([0, 20, 0, 25])         # x축은 0부터 20까지, y축은 0부터 25까지 눈금 사용
@@ -532,10 +544,10 @@ iqr(num_friends)
 # <p><div style="text-align: center">&lt;그림 출처: <a href="https://en.wikipedia.org/wiki/Variance">위키백과</a>&gt;</div></p>
 
 # 분산은 다음과 같이 평균값과의 오차의 제곱의 평균값으로 계산된다.
-# 데이터셋 $X$의 분산은 보통 $\sigma$ 또는 $\textit{Var}(X)$로 나타낸다.
+# 데이터셋 $X$의 분산은 보통 $\sigma$ 또는 $\textit{var}(X)$로 나타낸다.
 
 # $$
-# \sigma = \textit{Var}(X) = \frac{\sum^n_{i=1} (X_i - \mu_X)^2}{n-1}
+# \sigma = \textit{var}(X) = \frac{\sum^n_{i=1} (X_i - \mu_X)^2}{n-1}
 # $$
 
 # :::{admonition} 분모 $(n-1)$의 의미
@@ -610,7 +622,7 @@ var(num_friends)
 # 표본의 표준편차를 나타내는 기호는 보통 $s$이다.
 # $s_X$에 사용된 아랫첨자 $X$는 데이터셋을 명기할 때 사용한다.
 # 
-# $$s_X = \sqrt{\textit{Var}(X)}$$
+# $$s_X = \sqrt{\textit{var}(X)}$$
 
 # **`std()` 함수**
 
@@ -640,13 +652,15 @@ std(num_friends)
 # 따라서 평균값이 이상치에 영향을 받는만큼 분산과 표준편차도 영향을 받는다.
 # :::
 
-# ## 상관관계
+# ## 선형 상관관계
 
-# 두 데이터셋이 서로 상관이 있는가를 알고자 할 때 상관관계를 파악하며, 
+# 두 종류의 데이터가 서로 상관이 있는가를 알고자 할 때 상관관계를 파악한다. 
 # 상관관계의 정도를 파악하기 위해 주로 **공분산**<font size='2'>covariance</font> 
-# 또는 **피어슨 상관계수**<font size='2'>Pearson correlation coefficient</font>를 이용한다.
-# 상관관계를 설명하기 위해 SNS 회원이 하루에 해당 SNS에서 보내는 시간과 친구 숫자 사이의 연관성을 파악해보자.
+# 또는 **피어슨 상관계수**<font size='2'>Pearson correlation coefficient</font>를 이용하는데,
+# 공분산과 피어슨 상관계수 모두 두 데이터 사이의 **선형 상관관계**<font size='2'>linear correlation</font>를 측정한다. 
+# 선형 상관관계는 한 쪽 데이터가 커지거나 줄어들 때 다른 쪽 데이터도 그에 선형적으로 비례해서 커지거나 줄어드는 관계를 의미한다. 
 # 
+# 선형 상관관계를 설명하기 위해 SNS 회원이 하루에 해당 SNS에서 보내는 시간과 친구 숫자 사이의 연관성을 파악해보자.
 # 회원들의 친구 숫자는 `num_friends` 변수가 가리키는 값을 그대로 사용하고,
 # 추가로 각 회원이 SNS에서 하루에 보내는 시간(분)이 아래 `daily_minutes` 변수가 가리키는 리스트로 주어졌다.
 # 이전과 동일하게 인덱스는 회원의 아이디를 가리킨다.
@@ -682,17 +696,21 @@ daily_minutes = [1,68.77,51.25,52.08,38.36,44.54,57.13,51.4,41.42,
 
 # ### 공분산
 
-# 동일한 모집단을 대상으로 수집된 두 데이터셋 $X$와 $Y$의 공분산 $Cov(X, Y)$는 
-# 두 종류의 데이터 사이의 상관관계를 측정한다.
-# 공분산 계산은 두 데이터 샘플 $X_i$와 $Y_i$ 각각이 $\mu_X$와 $\mu_Y$를 기준으로
+# 동일한 모집단을 대상으로 수집된 두 데이터셋 $X$와 $Y$의 공분산 $cov(X, Y)$는
+# 두 데이터 샘플 $X_i$와 $Y_i$ 각각이 $\mu_X$와 $\mu_Y$를 기준으로
 # 얼마나 다른가를 곱한 값들의 평균값으로 계산된다.
 # 
 # $$
-# Cov(X,Y) = \frac{\sum^n_{i=1} (X_i- \mu_X)(Y_i- \mu_Y)}{n-1}
+# cov(X,Y) = \frac{\sum^n_{i=1} (X_i- \mu_X)(Y_i- \mu_Y)}{n-1}
 # $$
 
+# 즉, 공분산은 두 데이터셋 각각의 평균값을 기준으로 얼마나 커지느냐가 상호 어떻게 연관되어 있는지를 계산한다. 
 # 공분산이 양의 값인지, 음의 값인지, 아니면 0에 가까운 값인지에 따라 두 데이터셋 $X$와 $Y$
-# 사이의 관계는 아래 그림과 같이 구분된다.
+# 사이의 상관관계는 아래 그림과 같이 세 종류로 구분된다.
+# 
+# - 음의 공분산: 아래 맨왼쪽 그래프에서처럼 x축의 값이 증가할 수록 y축의 값이 감소하는 경향이 있다. 
+# - 0의 공분산: 아래 가운데 그래프에서처럼 x축 값 증감과 y축 값의 증감 사이에 별 뚜렷한 선형 관계가 없다. 
+# - 양의 공분산: 아래 맨오른쪽 그래프에서처럼 x축의 값이 증가할 수록 y축의 값도 증가하는 경향이 있다. 
 
 # <div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/positive_negative_weak_covariance.png" width="60%"></div>
 # 
@@ -703,12 +721,16 @@ daily_minutes = [1,68.77,51.25,52.08,38.36,44.54,57.13,51.4,41.42,
 # In[32]:
 
 
-def covariance(xs, ys):
+def cov(xs, ys):
     assert len(xs) == len(ys), "xs와 ys의 길이가 같아야 함."
 
     return dotV(dev_mean(xs), dev_mean(ys)) / (len(xs) - 1)
 
-covariance(num_friends, daily_minutes)
+
+# In[33]:
+
+
+cov(num_friends, daily_minutes)
 
 
 # **공분산의 한계**
@@ -730,52 +752,54 @@ covariance(num_friends, daily_minutes)
 # 피어슨 상관계수는 공분산을 각 데이터셋의 표준편차의 곱으로 나눈다.
 # 이렇게 하면 두 데이터셋 사이의 **선형** 상관관계가 계산되며,
 # 따라서 공분산의 한계를 해결한다.
-# 
 # 두 데이터셋 $X$와 $Y$의 피어슨 상관계수는 다음과 같이 계산한다.
 # 
 # $$
-# Correl(X,Y) = \frac{Cov(X,Y)}{s_X \cdot s_Y}
+# \textit{corrcoef}(X,Y) = \frac{cov(X,Y)}{s_X \cdot s_Y}
 # $$
 
 # **피어슨 상관계수의 특징**
 # 
-# * 피어슨 상관계수는 -1과 1 사이의 실수이다.
-# * 1에 가까울 수록 양의 선형관계가 성립한다.
-# * -1에 가까울 수록 음의 선형관계가 성립한다.
-# * 0에 가깔울 수록 선형관계가 약해진다.
+# * -1과 1 사이의 값이다.
+# * 1에 가까울 수록 양의 선형관계가 강해진다.
+# * -1에 가까울 수록 음의 선형관계가 강해진다.
+# * 0에 가까울 수록 선형관계가 매우 약해진다.
 
-# <div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Correlation.png" width="70%"></div>
+# <div style="text-align: center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Correlation.png" width="80%"></div>
 # 
 # <p><div style="text-align: center">&lt;그림 출처: <a href="https://en.wikipedia.org/wiki/Pearson_correlation_coefficient">위키백과</a>&gt;</div></p>
 
-# 친구 숫자와 사용시간 사이의 피어슨 상관계수는 0.25이며, 
+# 친구 숫자와 SNS 사용시간 사이의 피어슨 상관계수는 0.25이며, 
 # 이는 두 데이터셋 사이의 상관 정도가 크지 않음을 의미한다. 
 
-# In[33]:
+# In[34]:
 
 
-def correlation(xs, ys):
+def corrcoef(xs, ys):
     assert len(xs) == len(ys), "xs와 ys의 길이가 같아야 함."
 
     stdev_x = std(xs) # xs의 표준편차
     stdev_y = std(ys) # ys의 표준편차
 
     if stdev_x > 0 and stdev_y > 0:
-        return covariance(xs, ys) / (stdev_x * stdev_y)
+        return cov(xs, ys) / (stdev_x * stdev_y)
     else:
         return 0    # 표준편차가 0인 데이터셋과의 선형 상관관계는 없음.
 
 
-# In[34]:
+# In[35]:
 
 
-correlation(num_friends, daily_minutes)
+corrcoef(num_friends, daily_minutes)
 
 
 # SNS의 친구 숫자와 사용시간 사이의 상관관계를 확인하기 위해
 # 산점도를 그려보면 두 데이터셋 사이의 선형관계가 매우 미약함을 쉽게 볼 수 있다.
+# 근본적인 이유는 그래프 오른쪽 아래의 점에 있다.
+# 즉, 친구가 100명인데 하루 평균 SNS 사용시간이 1분인 사용자로 인해
+# 친구 숫자와 SNS 사용시간 사이의 선형관계가 있다고 말하기 매우 어렵다.
 
-# In[35]:
+# In[36]:
 
 
 plt.scatter(num_friends, daily_minutes) # 산점도 그래프 그리기
@@ -795,7 +819,7 @@ plt.show()
 # 이제 이 회원의 데이터를 제거하고 피어슨 상관계수를 계산하면 0.57이 나온다.
 # 두 데이터셋의 상관정도가 두 배이상 커진다.
 
-# In[36]:
+# In[37]:
 
 
 outlier = num_friends.index(100)    # 이상치의 인덱스
@@ -805,12 +829,12 @@ num_friends_good = [x for i, x in enumerate(num_friends) if i != outlier]
 daily_minutes_good = [x for i, x in enumerate(daily_minutes) if i != outlier]
 
 # 상관계수 계산
-correlation(num_friends_good, daily_minutes_good)
+corrcoef(num_friends_good, daily_minutes_good)
 
 
 # 이상치를 제거한 후의 산점도 그래프는 두 데이터셋의 선형 상관관계를 보다 뚜렷히 보여준다.
 
-# In[37]:
+# In[38]:
 
 
 # 산점도 그리기
@@ -853,13 +877,13 @@ plt.show()
 # x와 y의 상관계수는 0이지만 y는 x의 항목의 절댓값을 항목으로 갖는다. 
 # 즉, 이런 데이터는 상관계수로 두 데이터셋의 연관성을 측정할 수 없다.
 
-# In[38]:
+# In[39]:
 
 
 x = [-2, -1, 0, 1, 2]
 y = [ 2,  1, 0, 1, 2]
 
-correlation(x,y)
+corrcoef(x,y)
 
 
 # **예제**
@@ -887,13 +911,13 @@ correlation(x,y)
 
 # x와 y의 상관계수는 1이지만 두 데이터셋 사이의 선형관계가 정말로 완벽하게 선형인지에 대해서는 장담할 수 없다.
 
-# In[39]:
+# In[40]:
 
 
 x = [-2, -1, 0, 1, 2]
 y = [99.98, 99.99, 100, 100.01, 100.02]
 
-correlation(x,y)
+corrcoef(x,y)
 
 
 # ### 상관관계와 인과관계
@@ -921,7 +945,7 @@ correlation(x,y)
 # 제공하는 선형회귀 모델인 `linear_model`을 훈련시켜서
 # 친구 숫자와 SNS 사용시간의 선형관계를 보여주는 직선의 기울기와 절편을 계산한다.
 
-# In[40]:
+# In[41]:
 
 
 from sklearn import linear_model
@@ -949,7 +973,7 @@ print(f"기울기:\t {t1}")
 # 친구 숫자와 SNS 사용시간 사이의 선형관계를 보여주는 직선을
 # 산포도와 함께 그리면 다음과 같다.
 
-# In[41]:
+# In[42]:
 
 
 # 산점도 그리기
