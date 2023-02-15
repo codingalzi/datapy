@@ -7,78 +7,86 @@
 # In[1]:
 
 
-#! ipython suppress id=1b8eaf74bf6e455ea8440642e23a1745
-get_ipython().run_line_magic('pushd', 'book-materials')
 import numpy as np
 import pandas as pd
+
 np.random.seed(12345)
+
 import matplotlib.pyplot as plt
+
 plt.rc("figure", figsize=(10, 6))
+
 PREVIOUS_MAX_ROWS = pd.options.display.max_rows
 pd.options.display.max_columns = 20
 pd.options.display.max_rows = 20
 pd.options.display.max_colwidth = 80
+
 np.set_printoptions(precision=4, suppress=True)
-
-
-# In[2]:
-
-
-#! ipython id=b8f6434f6f9540249d053d94cee92435
-import numpy as np
-import pandas as pd
 
 
 # ## 날짜와 시간
 
-# In[3]:
+# ### 날짜: `np.datetime64` 자료형
+
+# In[2]:
 
 
 np.datetime64('today')
 
 
+# In[3]:
+
+
+today = str(np.datetime64('today'))
+today
+
+
 # In[4]:
 
 
-str(np.datetime64('today'))
+np.datetime64(today)
 
 
 # In[5]:
 
 
-np.datetime64('2023-02-14')
-
-
-# In[6]:
-
-
-np.datetime64('today') == np.datetime64('2023-02-14')
-
-
-# In[7]:
-
-
 np.datetime64('today') >= np.datetime64('2023-02-14')
 
 
-# In[8]:
+# 년-월 형식도 가능하다.
+
+# In[6]:
 
 
 np.datetime64('2023-02')
 
 
-# In[9]:
+# 년-월 형식에 날짜를 표현하면 1일로 지정된다.
+
+# In[7]:
 
 
 np.datetime64('2023-02', 'D')
 
 
-# In[10]:
+# 년-월-일 에서 월 또는 1일 생략되면 항상 1월, 1일에 해당한다.
+
+# In[8]:
+
+
+np.datetime64('2005') == np.datetime64('2005-01-01')
+
+
+# `datetime64` 어레이로 지정하는 방식은 다음과 같다.
+
+# In[9]:
 
 
 np.array(['2007-07-13', '2006-01-13', '2010-08-13'], dtype='datetime64')
 
 
+# 년, 월, 주, 일 단위를 나타내는 기호는 다음과 같다.
+# 
 # | 코드 | 의미 |
 # | :---: | :---: |
 # | Y | 년 |
@@ -86,861 +94,1161 @@ np.array(['2007-07-13', '2006-01-13', '2010-08-13'], dtype='datetime64')
 # | W | 주 |
 # | D | 일 |
 
+# ### 시간: `np.datetime64` 자료형
+
+# 시간을 시, 분, 초, 밀리초, 마이크로초, 나노초 등의 단위로 표현할 수 있다. 
+
+# - 2023년 3월 2일 11시 30분
+
+# In[10]:
+
+
+np.datetime64('2023-03-02T11:30')
+
+
+# - 2023년 3월 2일 21시 20분 6초 (저녁 9시 20분 6초)
+
 # In[11]:
 
 
-np.arange('2023-02', '2023-03', dtype='datetime64[D]')
+np.datetime64('2023-03-02T21:20:06')
 
+
+# `T` 대신에 공백을 이용해도 된다.
 
 # In[12]:
 
 
-np.arange('2023-02', '2023-05', dtype='datetime64[W]')
+np.datetime64('2023-03-02 11:30')
 
 
 # In[13]:
 
 
-np.arange('2023-02', '2023-05', dtype='datetime64[M]')
+np.datetime64('2023-03-02 21:20:06')
 
+
+# 시, 분, 초 단위를 나타내는 기호는 다음과 같다.
+# 
+# | 코드 | 의미 |
+# | :---: | :---: |
+# | h | 시|
+# | m | 분 |
+# | s | 초 |
+# | ms | 밀리초| 
+# | us | 마이크로초| 
+# | ns | 나노초| 
+# 
+# **참고:** 
+# 
+# - 밀리초(millisecond): 천 분의 1초
+# - 마이크로초(microsecond): 백만 분의 1초
+# - 나노초(nanosecond): 10억 분의 1초
+
+# ### NaT: Not a Time
+
+# 날짜/시간이 아닌 것을 나타내는 값으로 `NaT` 를 사용한다.
 
 # In[14]:
 
 
-np.arange('2023-02', '2032-03', dtype='datetime64[Y]')
+np.datetime64('NaT')
 
+
+# NaT 을 대소문자 구분하지 않아도 모두 Nat로 인식된다.
 
 # In[15]:
 
 
-np.datetime64('2005') == np.datetime64('2005-01-01')
+np.datetime64('nat')
 
 
 # In[16]:
 
 
+np.datetime64('nAT')
+
+
+# `np.isnat()` 함수는 `Nat` 일 때 참을 반환한다.
+# 어레이에 대해서는 항목별로 적용된다.
+
+# In[17]:
+
+
+np.isnat(np.array(["NaT", "2016-01-01"], dtype="datetime64[D]"))
+
+
+# ### 날짜와 시간의 구간
+
+# `np.arange()` 함수와 함께 사용하면 구간에 포함된 날짜로 어레이를 생성한다.
+
+# - 일 단위 구간
+
+# In[18]:
+
+
+np.arange('2023-02', '2023-03', dtype='datetime64[D]')
+
+
+# - 주 단위 구간
+
+# In[19]:
+
+
+np.arange('2023-02', '2023-05', dtype='datetime64[W]')
+
+
+# - 월 단위 구간
+
+# In[20]:
+
+
+np.arange('2023-02', '2023-05', dtype='datetime64[M]')
+
+
+# - 년 단위 구간
+
+# In[21]:
+
+
+np.arange('2023-02', '2032-03', dtype='datetime64[Y]')
+
+
+# ### 시간의 크기: `np.timedelta64` 자료형
+
+# 시간의 크기를 나타내는 자료형이다.
+
+# - 하루의 시간
+
+# In[22]:
+
+
 np.timedelta64(1, 'D')
 
 
-# In[17]:
+# * 4시간
+
+# In[23]:
 
 
 np.timedelta64(4, 'h')
 
 
-# In[18]:
+# ### 날짜와 시간의 연산
+
+# 날짜, 시간, 시간의 크기에 대해 덧셈, 뺄셈, 나눗셈 연산이 가능하다.
+
+# - 시간의 연산은 일(day) 단위로 계산된다.
+# - 2023년 3월 1일과 2022년 3월 1일의 시간 차이는 365일(1년)이다.
+
+# In[24]:
 
 
-np.datetime64('2009-01-01') - np.datetime64('2008-01-01')
+np.datetime64('2023-03-01') - np.datetime64('2022-03-01')
 
 
-# In[19]:
+# - 2023년 1월 1일에 20일을 더하면, 즉, 20일 후는 2023년 1월 21일이다.
+
+# In[25]:
 
 
-np.datetime64('2009') + np.timedelta64(20, 'D')
+np.datetime64('2023') + np.timedelta64(20, 'D')
 
 
-# In[20]:
+# - 2023년 6월 15일, 즉 2023년 6월 15일 0시 0분 0초에 12초를 더하면 2023년 6월 15일 0시 0분 12초를 가리킨다.
+
+# In[26]:
 
 
-np.datetime64('2011-06-15T00:00') + np.timedelta64(12, 'h')
+np.datetime64('2023-06-15') + np.timedelta64(12, 's')
 
 
-# In[21]:
+# - 2023년 6월 15일 0시 0분 12시간을 더하면 2023년 6월 15일 12시 0분을 가리킨다.
+
+# In[27]:
 
 
-np.timedelta64(1,'W') / np.timedelta64(1,'D')
+np.datetime64('2023-06-15T00:00') + np.timedelta64(12, 'h')
 
 
-# In[22]:
+# - 시간의 크기 나눗셈 결과는 부동소수점
+# - 일주일(7일) 나누기 이틀(2일)는 3.5
+
+# In[28]:
+
+
+np.timedelta64(1,'W') / np.timedelta64(2,'D')
+
+
+# - 나눗셈의 나머지 계산은 `np.timedelta64` 자료형
+# - 일주일(7일)을 10일로 나눈 나머지는 7일
+
+# In[29]:
 
 
 np.timedelta64(1,'W') % np.timedelta64(10,'D')
 
 
-# In[23]:
+# - Nat와의 연산은 무조건 NaT!
+
+# In[30]:
 
 
 np.datetime64('nat') - np.datetime64('2009-01-01')
 
 
-# In[24]:
+# In[31]:
 
 
 np.datetime64('2009-01-01') + np.timedelta64('nat')
 
 
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[25]:
-
-
-#! ipython id=77aa02db8c0740baa9d429ef9f9c92c3
-from datetime import datetime
-now = datetime.now()
-now
-now.year, now.month, now.day
-
-
-# In[26]:
-
-
-#! ipython id=7939b9e6813c4810af2eb7d69016ac97
-delta = datetime(2011, 1, 7) - datetime(2008, 6, 24, 8, 15)
-delta
-delta.days
-delta.seconds
-
-
-# In[27]:
-
-
-#! ipython id=62309078c64449508cf0353453566a3b
-from datetime import timedelta
-start = datetime(2011, 1, 7)
-start + timedelta(12)
-start - 2 * timedelta(12)
-
-
-# In[28]:
-
-
-#! ipython id=2e863437108e49619f828b3399a23675
-stamp = datetime(2011, 1, 3)
-str(stamp)
-stamp.strftime("%Y-%m-%d")
-
-
-# In[29]:
-
-
-#! ipython id=504bb23dbed740c697961017072ba0a5
-value = "2011-01-03"
-datetime.strptime(value, "%Y-%m-%d")
-datestrs = ["7/6/2011", "8/6/2011"]
-[datetime.strptime(x, "%m/%d/%Y") for x in datestrs]
-
-
-# In[30]:
-
-
-#! ipython id=66f136014e5e477aba0e773ab3137d23
-datestrs = ["2011-07-06 12:00:00", "2011-08-06 00:00:00"]
-pd.to_datetime(datestrs)
-
-
-# In[31]:
-
-
-#! ipython id=ab30c892b1cd40ee981e793e194fe34e
-idx = pd.to_datetime(datestrs + [None])
-idx
-idx[2]
-pd.isna(idx)
-
+# ## `datetime` 자료형
 
 # In[32]:
 
 
-#! ipython id=c65a386b5ee44b77ae927a17a586fdce
-dates = [datetime(2011, 1, 2), datetime(2011, 1, 5),
-         datetime(2011, 1, 7), datetime(2011, 1, 8),
-         datetime(2011, 1, 10), datetime(2011, 1, 12)]
-ts = pd.Series(np.random.standard_normal(6), index=dates)
-ts
+from datetime import datetime
+now = datetime.now()
 
 
 # In[33]:
 
 
-#! ipython id=b29f5a3e0b3744ac8d9d10b87b10a23d
-ts.index
+now
 
 
 # In[34]:
 
 
-#! ipython id=b345022b87e2494592f0fc50fdc3461a
-ts + ts[::2]
+print(now.year, now.month, now.day)
 
 
 # In[35]:
 
 
-#! ipython id=713bb1b1f7424b228fc940b8ff21adcf
-ts.index.dtype
+delta = datetime(2011, 1, 7) - datetime(2008, 6, 24, 8, 15)
+delta
 
 
 # In[36]:
 
 
-#! ipython id=1de1ab6f38e640c7ae177e117612248f
-stamp = ts.index[0]
-stamp
+delta.days
 
 
 # In[37]:
 
 
-#! ipython id=962135198c7243b9b891d420cf335e69
-stamp = ts.index[2]
-ts[stamp]
+delta.seconds
 
 
 # In[38]:
 
 
-#! ipython id=01e57a024aa849279a3ebacc160772ca
-ts["2011-01-10"]
+from datetime import timedelta
 
 
 # In[39]:
 
 
-#! ipython id=d499c6cab3f64469acf7942aaa7bc5f1
-longer_ts = pd.Series(np.random.standard_normal(1000),
-                      index=pd.date_range("2000-01-01", periods=1000))
-longer_ts
-longer_ts["2001"]
+start = datetime(2011, 1, 7)
 
 
 # In[40]:
 
 
-#! ipython id=4fc49d1ae9fd4f0b8e1a69999896298c
-longer_ts["2001-05"]
+start + timedelta(12)
 
 
 # In[41]:
 
 
-#! ipython id=59f52116836440a88e46e01adf808d35
-ts[datetime(2011, 1, 7):]
-ts[datetime(2011, 1, 7):datetime(2011, 1, 10)]
+start - 2 * timedelta(12)
 
 
 # In[42]:
 
 
-#! ipython id=484c72fd4b744f5bbcb8a6493b45018c
-ts
-ts["2011-01-06":"2011-01-11"]
+stamp = datetime(2011, 1, 3)
 
 
 # In[43]:
 
 
-#! ipython id=a6db533c922e4684a8c267288880f20b
-ts.truncate(after="2011-01-09")
+str(stamp)
 
 
 # In[44]:
 
 
-#! ipython id=7324548996ac413f81d5e7014af682a0
-dates = pd.date_range("2000-01-01", periods=100, freq="W-WED")
-long_df = pd.DataFrame(np.random.standard_normal((100, 4)),
-                       index=dates,
-                       columns=["Colorado", "Texas",
-                                "New York", "Ohio"])
-long_df.loc["2001-05"]
+stamp.strftime("%Y-%m-%d")
 
 
 # In[45]:
 
 
-#! ipython id=b64ec3dd408148cda95729e8c7bd9b47
+value = "2011-01-03"
+datetime.strptime(value, "%Y-%m-%d")
+
+
+# In[46]:
+
+
+datestrs = ["7/6/2011", "8/6/2011"]
+[datetime.strptime(x, "%m/%d/%Y") for x in datestrs]
+
+
+# `pd.to_datetime()` 함수
+
+# In[47]:
+
+
+datestrs = ["2011-07-06 12:00:00", "2011-08-06 00:00:00"]
+pd.to_datetime(datestrs)
+
+
+# In[48]:
+
+
+idx = pd.to_datetime(datestrs + [None])
+idx
+
+
+# In[49]:
+
+
+idx[2]
+
+
+# In[50]:
+
+
+pd.isna(idx)
+
+
+# In[51]:
+
+
+dates = [datetime(2011, 1, 2), datetime(2011, 1, 5),
+         datetime(2011, 1, 7), datetime(2011, 1, 8),
+         datetime(2011, 1, 10), datetime(2011, 1, 12)]
+
+
+# In[52]:
+
+
+ts = pd.Series(np.random.standard_normal(6), index=dates)
+ts
+
+
+# In[53]:
+
+
+ts.index
+
+
+# In[54]:
+
+
+ts + ts[::2]
+
+
+# In[55]:
+
+
+ts.index
+
+
+# In[56]:
+
+
+ts.index.dtype
+
+
+# In[57]:
+
+
+stamp = ts.index[0]
+stamp
+
+
+# In[58]:
+
+
+stamp = ts.index[2]
+ts[stamp]
+
+
+# In[59]:
+
+
+ts["2011-01-10"]
+
+
+# In[60]:
+
+
+longer_ts = pd.Series(np.random.standard_normal(1000),
+                      index=pd.date_range("2000-01-01", periods=1000))
+longer_ts
+
+
+# In[61]:
+
+
+longer_ts["2001"]
+
+
+# In[62]:
+
+
+longer_ts["2001-05"]
+
+
+# In[63]:
+
+
+ts[datetime(2011, 1, 7):]
+
+
+# In[64]:
+
+
+ts[datetime(2011, 1, 7):datetime(2011, 1, 10)]
+
+
+# In[65]:
+
+
+ts
+
+
+# In[66]:
+
+
+ts["2011-01-06":"2011-01-11"]
+
+
+# In[67]:
+
+
+ts.truncate(after="2011-01-09")
+
+
+# In[68]:
+
+
+dates = pd.date_range("2000-01-01", periods=100, freq="W-WED")
+long_df = pd.DataFrame(np.random.standard_normal((100, 4)),
+                       index=dates,
+                       columns=["Colorado", "Texas",
+                                "New York", "Ohio"])
+
+
+# In[69]:
+
+
+long_df.loc["2001-05"]
+
+
+# In[70]:
+
+
 dates = pd.DatetimeIndex(["2000-01-01", "2000-01-02", "2000-01-02",
                           "2000-01-02", "2000-01-03"])
 dup_ts = pd.Series(np.arange(5), index=dates)
 dup_ts
 
 
-# In[46]:
-
-
-#! ipython id=aafe9e9742b74098aac057bb029e620d
-dup_ts.index.is_unique
-
-
-# In[47]:
-
-
-#! ipython id=1963a191266e4095a6ed630a8e606956
-dup_ts["2000-01-03"]  # not duplicated
-dup_ts["2000-01-02"]  # duplicated
-
-
-# In[48]:
-
-
-#! ipython id=7895e016504f421ab8bd9cafeaeffea6
-grouped = dup_ts.groupby(level=0)
-grouped.mean()
-grouped.count()
-
-
-# In[49]:
-
-
-#! ipython id=215d6274cd3e4bc3bcacdd8e5ce9f838
-ts
-resampler = ts.resample("D")
-resampler
-
-
-# In[50]:
-
-
-#! ipython id=c202d9e9284c4fd28200376310af6070
-index = pd.date_range("2012-04-01", "2012-06-01")
-index
-
-
-# In[51]:
-
-
-#! ipython id=19e8a1e8306f4ed2b5329228064c50a6
-pd.date_range(start="2012-04-01", periods=20)
-pd.date_range(end="2012-06-01", periods=20)
-
-
-# In[52]:
-
-
-#! ipython id=8c50f185b572469eb8caa8ca321df712
-pd.date_range("2000-01-01", "2000-12-01", freq="BM")
-
-
-# In[53]:
-
-
-#! ipython id=aa62083a0254482486435a4e2d777694
-pd.date_range("2012-05-02 12:56:31", periods=5)
-
-
-# In[54]:
-
-
-#! ipython id=2fa04c5942ae482d87ef4eba22d7dc24
-pd.date_range("2012-05-02 12:56:31", periods=5, normalize=True)
-
-
-# In[55]:
-
-
-#! ipython id=4a7a44f7b0394f4a8f9fd7bc31aae08f
-from pandas.tseries.offsets import Hour, Minute
-hour = Hour()
-hour
-
-
-# In[56]:
-
-
-#! ipython id=502bfa3bd2b340c7bc8bd5a6e0855c63
-four_hours = Hour(4)
-four_hours
-
-
-# In[57]:
-
-
-#! ipython id=e2b7e93362014fc0a72d5c0675bba1a7
-pd.date_range("2000-01-01", "2000-01-03 23:59", freq="4H")
-
-
-# In[58]:
-
-
-#! ipython id=beef8c7807e34b1ea65756437085bab5
-Hour(2) + Minute(30)
-
-
-# In[59]:
-
-
-#! ipython id=5bb25a584faa49718052115bd3b3ae39
-pd.date_range("2000-01-01", periods=10, freq="1h30min")
-
-
-# In[60]:
-
-
-#! ipython id=db9f1fc3d9a5419994e1adda66c83212
-monthly_dates = pd.date_range("2012-01-01", "2012-09-01", freq="WOM-3FRI")
-list(monthly_dates)
-
-
-# In[61]:
-
-
-#! ipython id=b2397e270f56489e89f63a2c1732d8d5
-ts = pd.Series(np.random.standard_normal(4),
-               index=pd.date_range("2000-01-01", periods=4, freq="M"))
-ts
-ts.shift(2)
-ts.shift(-2)
-
-
-# In[62]:
-
-
-#! ipython id=30cdaeba864a452b894ce82253efcec7
-ts.shift(2, freq="M")
-
-
-# In[63]:
-
-
-#! ipython id=43fd4a3b864347008c9e58579d1318ec
-ts.shift(3, freq="D")
-ts.shift(1, freq="90T")
-
-
-# In[64]:
-
-
-#! ipython id=d3a295c2d66d4ee49501d8e52df4006c
-from pandas.tseries.offsets import Day, MonthEnd
-now = datetime(2011, 11, 17)
-now + 3 * Day()
-
-
-# In[65]:
-
-
-#! ipython id=840a4a58d2444b42b7f71aa5f69af613
-now + MonthEnd()
-now + MonthEnd(2)
-
-
-# In[66]:
-
-
-#! ipython id=947ac8d4eae84bcb9abbd6250957070f
-offset = MonthEnd()
-offset.rollforward(now)
-offset.rollback(now)
-
-
-# In[67]:
-
-
-#! ipython id=efd27228c8f54689b2e1e476204ba317
-ts = pd.Series(np.random.standard_normal(20),
-               index=pd.date_range("2000-01-15", periods=20, freq="4D"))
-ts
-ts.groupby(MonthEnd().rollforward).mean()
-
-
-# In[68]:
-
-
-#! ipython id=b6d6087bdfb4474f91a0cf774283f1d1
-ts.resample("M").mean()
-
-
-# In[69]:
-
-
-#! ipython id=19c326a03d9a4cd783fbcc8cb5ff421c
-import pytz
-pytz.common_timezones[-5:]
-
-
-# In[70]:
-
-
-#! ipython id=81652670d9d84ed1bc65dff261cd0937
-tz = pytz.timezone("America/New_York")
-tz
-
-
 # In[71]:
 
 
-#! ipython id=27a1920372f0414cb335c9ac80c1a883
-dates = pd.date_range("2012-03-09 09:30", periods=6)
-ts = pd.Series(np.random.standard_normal(len(dates)), index=dates)
-ts
+dup_ts.index.is_unique
 
 
 # In[72]:
 
 
-#! ipython id=fd6da4e7623d40babb80385bd6b80a36
-print(ts.index.tz)
+dup_ts["2000-01-03"]  # not duplicated
 
 
 # In[73]:
 
 
-#! ipython id=e03db4a0b6d34d66a88f0be927424a1b
-pd.date_range("2012-03-09 09:30", periods=10, tz="UTC")
+dup_ts["2000-01-02"]  # duplicated
 
 
 # In[74]:
 
 
-#! ipython id=0dd2997562634b6c9161adc215855962
-ts
-ts_utc = ts.tz_localize("UTC")
-ts_utc
-ts_utc.index
+grouped = dup_ts.groupby(level=0)
 
 
 # In[75]:
 
 
-#! ipython id=49c15434eb0c47bf950d42390118f378
-ts_utc.tz_convert("America/New_York")
+grouped.mean()
 
 
 # In[76]:
 
 
-#! ipython id=01e4044008b14d7f9e4990a1e66210e3
-ts_eastern = ts.tz_localize("America/New_York")
-ts_eastern.tz_convert("UTC")
-ts_eastern.tz_convert("Europe/Berlin")
+grouped.count()
 
 
 # In[77]:
 
 
-#! ipython id=1dcc4db3bd4b43138c22293079cafe68
-ts.index.tz_localize("Asia/Shanghai")
+ts
 
 
 # In[78]:
 
 
-#! ipython id=e3618c9788f040a38fac2443dac25892
-stamp = pd.Timestamp("2011-03-12 04:00")
-stamp_utc = stamp.tz_localize("utc")
-stamp_utc.tz_convert("America/New_York")
+resampler = ts.resample("D")
+resampler
 
 
 # In[79]:
 
 
-#! ipython id=8715a838b21f4789a6b58e4ceb0a56e4
-stamp_moscow = pd.Timestamp("2011-03-12 04:00", tz="Europe/Moscow")
-stamp_moscow
+index = pd.date_range("2012-04-01", "2012-06-01")
+index
 
 
 # In[80]:
 
 
-#! ipython id=0aed2bac3c41471899b081a582412f4e
-stamp_utc.value
-stamp_utc.tz_convert("America/New_York").value
+pd.date_range(start="2012-04-01", periods=20)
 
 
 # In[81]:
 
 
-#! ipython id=b778152898374964a084de3b3b63f935
-stamp = pd.Timestamp("2012-03-11 01:30", tz="US/Eastern")
-stamp
-stamp + Hour()
+pd.date_range(end="2012-06-01", periods=20)
 
 
 # In[82]:
 
 
-#! ipython id=c0d18d84985d4ede88ec95727c7fb8e9
-stamp = pd.Timestamp("2012-11-04 00:30", tz="US/Eastern")
-stamp
-stamp + 2 * Hour()
+pd.date_range("2000-01-01", "2000-12-01", freq="BM")
 
 
 # In[83]:
 
 
-#! ipython id=8cde92a79e444f44b5f952eabb4b7491
+pd.date_range("2012-05-02 12:56:31", periods=5)
+
+
+# In[84]:
+
+
+pd.date_range("2012-05-02 12:56:31", periods=5, normalize=True)
+
+
+# In[85]:
+
+
+from pandas.tseries.offsets import Hour, Minute
+
+
+# In[86]:
+
+
+hour = Hour()
+hour
+
+
+# In[87]:
+
+
+four_hours = Hour(4)
+four_hours
+
+
+# In[88]:
+
+
+pd.date_range("2000-01-01", "2000-01-03 23:59", freq="4H")
+
+
+# In[89]:
+
+
+Hour(2) + Minute(30)
+
+
+# In[90]:
+
+
+pd.date_range("2000-01-01", periods=10, freq="1h30min")
+
+
+# In[91]:
+
+
+monthly_dates = pd.date_range("2012-01-01", "2012-09-01", freq="WOM-3FRI")
+list(monthly_dates)
+
+
+# In[92]:
+
+
+ts = pd.Series(np.random.standard_normal(4),
+               index=pd.date_range("2000-01-01", periods=4, freq="M"))
+ts
+
+
+# In[93]:
+
+
+ts.shift(2)
+
+
+# In[94]:
+
+
+ts.shift(-2)
+
+
+# In[95]:
+
+
+ts.shift(2, freq="M")
+
+
+# In[96]:
+
+
+ts.shift(3, freq="D")
+
+
+# In[97]:
+
+
+ts.shift(1, freq="90T")
+
+
+# In[98]:
+
+
+from pandas.tseries.offsets import Day, MonthEnd
+
+
+# In[99]:
+
+
+now = datetime(2011, 11, 17)
+now + 3 * Day()
+
+
+# In[100]:
+
+
+now + MonthEnd()
+
+
+# In[101]:
+
+
+now + MonthEnd(2)
+
+
+# In[102]:
+
+
+offset = MonthEnd()
+offset.rollforward(now)
+
+
+# In[103]:
+
+
+offset.rollback(now)
+
+
+# In[104]:
+
+
+ts = pd.Series(np.random.standard_normal(20),
+               index=pd.date_range("2000-01-15", periods=20, freq="4D"))
+ts
+
+
+# In[105]:
+
+
+ts.groupby(MonthEnd().rollforward).mean()
+
+
+# In[106]:
+
+
+ts.resample("M").mean()
+
+
+# In[107]:
+
+
+import pytz
+
+pytz.common_timezones[-5:]
+
+
+# In[108]:
+
+
+tz = pytz.timezone("America/New_York")
+tz
+
+
+# In[109]:
+
+
+dates = pd.date_range("2012-03-09 09:30", periods=6)
+ts = pd.Series(np.random.standard_normal(len(dates)), index=dates)
+
+ts
+
+
+# In[110]:
+
+
+print(ts.index.tz)
+
+
+# In[111]:
+
+
+pd.date_range("2012-03-09 09:30", periods=10, tz="UTC")
+
+
+# In[112]:
+
+
+ts
+
+
+# In[113]:
+
+
+ts_utc = ts.tz_localize("UTC")
+ts_utc
+
+
+# In[114]:
+
+
+ts_utc.index
+
+
+# In[115]:
+
+
+ts_utc.tz_convert("America/New_York")
+
+
+# In[116]:
+
+
+ts_eastern = ts.tz_localize("America/New_York")
+ts_eastern.tz_convert("UTC")
+
+
+# In[117]:
+
+
+ts_eastern.tz_convert("Europe/Berlin")
+
+
+# In[118]:
+
+
+ts.index.tz_localize("Asia/Shanghai")
+
+
+# In[119]:
+
+
+stamp = pd.Timestamp("2011-03-12 04:00")
+stamp_utc = stamp.tz_localize("utc")
+stamp_utc.tz_convert("America/New_York")
+
+
+# In[120]:
+
+
+stamp_moscow = pd.Timestamp("2011-03-12 04:00", tz="Europe/Moscow")
+stamp_moscow
+
+
+# In[121]:
+
+
+stamp_utc.value
+
+
+# In[122]:
+
+
+stamp_utc.tz_convert("America/New_York").value
+
+
+# In[123]:
+
+
+stamp = pd.Timestamp("2012-03-11 01:30", tz="US/Eastern")
+stamp
+
+
+# In[124]:
+
+
+stamp + Hour()
+
+
+# In[125]:
+
+
+stamp = pd.Timestamp("2012-11-04 00:30", tz="US/Eastern")
+stamp
+
+
+# In[126]:
+
+
+stamp + 2 * Hour()
+
+
+# In[127]:
+
+
 dates = pd.date_range("2012-03-07 09:30", periods=10, freq="B")
 ts = pd.Series(np.random.standard_normal(len(dates)), index=dates)
 ts
+
+
+# In[128]:
+
+
 ts1 = ts[:7].tz_localize("Europe/London")
 ts2 = ts1[2:].tz_convert("Europe/Moscow")
 result = ts1 + ts2
 result.index
 
 
-# In[84]:
+# In[129]:
 
 
-#! ipython id=bae9a7cce5cd496b8b3756412b670013
 p = pd.Period("2011", freq="A-DEC")
 p
 
 
-# In[85]:
+# In[130]:
 
 
-#! ipython id=518401c31bc8419bbf28956e2c9be595
 p + 5
+
+
+# In[131]:
+
+
 p - 2
 
 
-# In[86]:
+# In[132]:
 
 
-#! ipython id=e5ff985e90fe44579705c3d3cdf5e5b7
 pd.Period("2014", freq="A-DEC") - p
 
 
-# In[87]:
+# In[133]:
 
 
-#! ipython id=ef000f892654403b9f476bb7e1d9bacd
 periods = pd.period_range("2000-01-01", "2000-06-30", freq="M")
 periods
 
 
-# In[88]:
+# In[134]:
 
 
-#! ipython id=d3426c6da33b4175891f9d8d4caa4ab8
 pd.Series(np.random.standard_normal(6), index=periods)
 
 
-# In[89]:
+# In[135]:
 
 
-#! ipython id=47db0721ff4a4ca89bdc74daae703a55
 values = ["2001Q3", "2002Q2", "2003Q1"]
 index = pd.PeriodIndex(values, freq="Q-DEC")
 index
 
 
-# In[90]:
+# In[136]:
 
 
-#! ipython id=348880d80dc14062bb80c374d953f7ce
 p = pd.Period("2011", freq="A-DEC")
 p
+
+
+# In[137]:
+
+
 p.asfreq("M", how="start")
+
+
+# In[138]:
+
+
 p.asfreq("M", how="end")
+
+
+# In[139]:
+
+
 p.asfreq("M")
 
 
-# In[91]:
+# In[140]:
 
 
-#! ipython id=669af5f271964c7cbefe3265cde35c6c
 p = pd.Period("2011", freq="A-JUN")
 p
+
+
+# In[141]:
+
+
 p.asfreq("M", how="start")
+
+
+# In[142]:
+
+
 p.asfreq("M", how="end")
 
 
-# In[92]:
+# In[143]:
 
 
-#! ipython id=ec04cdb713554c0fa0b4162e372b9876
 p = pd.Period("Aug-2011", "M")
 p.asfreq("A-JUN")
 
 
-# In[93]:
+# In[144]:
 
 
-#! ipython id=979cb059424a48f6a887fb50fdb66adf
 periods = pd.period_range("2006", "2009", freq="A-DEC")
 ts = pd.Series(np.random.standard_normal(len(periods)), index=periods)
 ts
+
+
+# In[145]:
+
+
 ts.asfreq("M", how="start")
 
 
-# In[94]:
+# In[146]:
 
 
-#! ipython id=51ab6bd5e33e433a8786b0a3fe239dd2
 ts.asfreq("B", how="end")
 
 
-# In[95]:
+# In[147]:
 
 
-#! ipython id=38b59581b62f4808a145d4b5bac7d04c
 p = pd.Period("2012Q4", freq="Q-JAN")
 p
 
 
-# In[96]:
+# In[148]:
 
 
-#! ipython id=03f4b2f382e84260bfccec8df35b5903
 p.asfreq("D", how="start")
+
+
+# In[149]:
+
+
 p.asfreq("D", how="end")
 
 
-# In[97]:
+# In[150]:
 
 
-#! ipython id=629d1fcb8b5d42329da5126f166a028f
 p4pm = (p.asfreq("B", how="end") - 1).asfreq("T", how="start") + 16 * 60
 p4pm
+
+
+# In[151]:
+
+
 p4pm.to_timestamp()
 
 
-# In[98]:
+# In[152]:
 
 
-#! ipython id=2b671198cc014db3bf349878fab5e36a
 periods = pd.period_range("2011Q3", "2012Q4", freq="Q-JAN")
 ts = pd.Series(np.arange(len(periods)), index=periods)
 ts
+
+
+# In[153]:
+
+
 new_periods = (periods.asfreq("B", "end") - 1).asfreq("H", "start") + 16
 ts.index = new_periods.to_timestamp()
 ts
 
 
-# In[99]:
+# In[154]:
 
 
-#! ipython id=debf05cadb0f4a94a7174e2f8859f352
 dates = pd.date_range("2000-01-01", periods=3, freq="M")
 ts = pd.Series(np.random.standard_normal(3), index=dates)
 ts
+
+
+# In[155]:
+
+
 pts = ts.to_period()
 pts
 
 
-# In[100]:
+# In[156]:
 
 
-#! ipython id=6ac8d11fe6a1408cb83be89895617dd6
 dates = pd.date_range("2000-01-29", periods=6)
 ts2 = pd.Series(np.random.standard_normal(6), index=dates)
 ts2
+
+
+# In[157]:
+
+
 ts2.to_period("M")
 
 
-# In[101]:
+# In[158]:
 
 
-#! ipython id=de1111bbae4a4343945546f43c1af706
 pts = ts2.to_period()
 pts
+
+
+# In[159]:
+
+
 pts.to_timestamp(how="end")
 
 
-# In[102]:
+# In[160]:
 
 
-#! ipython id=d14658aeb9db49f090190ba82c255d4e
 data = pd.read_csv("examples/macrodata.csv")
 data.head(5)
+
+
+# In[161]:
+
+
 data["year"]
+
+
+# In[162]:
+
+
 data["quarter"]
 
 
-# In[103]:
+# In[163]:
 
 
-#! ipython id=4b1ab91f7f9d4f958b10ae49617ae6c6
 index = pd.PeriodIndex(year=data["year"], quarter=data["quarter"],
                        freq="Q-DEC")
 index
+
+
+# In[164]:
+
+
 data.index = index
 data["infl"]
 
 
-# In[104]:
+# In[165]:
 
 
-#! ipython id=07232ac59e2a49f18606b1b9422b2889
 dates = pd.date_range("2000-01-01", periods=100)
 ts = pd.Series(np.random.standard_normal(len(dates)), index=dates)
 ts
+
+
+# In[166]:
+
+
 ts.resample("M").mean()
+
+
+# In[167]:
+
+
 ts.resample("M", kind="period").mean()
 
 
-# In[105]:
+# In[168]:
 
 
-#! ipython id=12dad7e46e2449eca9f2482399b82397
 dates = pd.date_range("2000-01-01", periods=12, freq="T")
 ts = pd.Series(np.arange(len(dates)), index=dates)
 ts
 
 
-# In[106]:
+# In[169]:
 
 
-#! ipython id=b187a814d71c4a7bbb8c1c8750d9133f
 ts.resample("5min").sum()
 
 
-# In[107]:
+# In[170]:
 
 
-#! ipython id=450f99fca60945bab78ddf104cedabf9
 ts.resample("5min", closed="right").sum()
 
 
-# In[108]:
+# In[171]:
 
 
-#! ipython id=6587ba3145214dc8b3f50ccb40bc88b8
 ts.resample("5min", closed="right", label="right").sum()
 
 
-# In[109]:
+# In[172]:
 
 
-#! ipython id=c48ee1ea64c2498e8ede907aea647016
 from pandas.tseries.frequencies import to_offset
+
+
+# In[173]:
+
+
 result = ts.resample("5min", closed="right", label="right").sum()
 result.index = result.index + to_offset("-1s")
 result
 
 
-# In[110]:
+# In[174]:
 
 
-#! ipython id=e036e195212b453985a4bc219cd308f3
 ts = pd.Series(np.random.permutation(np.arange(len(dates))), index=dates)
 ts.resample("5min").ohlc()
 
 
-# In[111]:
+# In[175]:
 
 
-#! ipython id=22d7658abb234e16a56b2637142c053c
 frame = pd.DataFrame(np.random.standard_normal((2, 4)),
                      index=pd.date_range("2000-01-01", periods=2,
                                          freq="W-WED"),
@@ -948,68 +1256,70 @@ frame = pd.DataFrame(np.random.standard_normal((2, 4)),
 frame
 
 
-# In[112]:
+# In[176]:
 
 
-#! ipython id=7a564b646cbc45d78d95f6333692fd84
 df_daily = frame.resample("D").asfreq()
 df_daily
 
 
-# In[113]:
+# In[177]:
 
 
-#! ipython id=ecb1c4fc9803419b849c214cddaddae3
 frame.resample("D").ffill()
 
 
-# In[114]:
+# In[178]:
 
 
-#! ipython id=a84044fc3dbe4f0597b997ec51c96490
 frame.resample("D").ffill(limit=2)
 
 
-# In[115]:
+# In[179]:
 
 
-#! ipython id=3f5e6bf2f6844db9ae9ac57ee806df7e
 frame.resample("W-THU").ffill()
 
 
-# In[116]:
+# In[180]:
 
 
-#! ipython id=42a429ef95bc45fdb9c595f3b3ffd163
 frame = pd.DataFrame(np.random.standard_normal((24, 4)),
                      index=pd.period_range("1-2000", "12-2001",
                                            freq="M"),
                      columns=["Colorado", "Texas", "New York", "Ohio"])
 frame.head()
+
+
+# In[181]:
+
+
 annual_frame = frame.resample("A-DEC").mean()
 annual_frame
 
 
-# In[117]:
+# In[182]:
 
 
-#! ipython id=21bc509f9fc340b6882974f3ec17e715
 # Q-DEC: Quarterly, year ending in December
 annual_frame.resample("Q-DEC").ffill()
+
+
+# In[183]:
+
+
 annual_frame.resample("Q-DEC", convention="end").asfreq()
 
 
-# In[118]:
+# In[184]:
 
 
-#! ipython id=9d82a3b714164b4dad4eceaeadeda604
 annual_frame.resample("Q-MAR").ffill()
 
 
-# In[119]:
+# In[185]:
 
 
-#! ipython id=f23204097cbd44b3a899d2cbaa35c2bd
 N = 15
 times = pd.date_range("2017-05-20 00:00", freq="1min", periods=N)
 df = pd.DataFrame({"time": times,
@@ -1017,64 +1327,67 @@ df = pd.DataFrame({"time": times,
 df
 
 
-# In[120]:
+# In[186]:
 
 
-#! ipython id=806fd8e5d2aa413f8c990b6acebde10d
 df.set_index("time").resample("5min").count()
 
 
-# In[121]:
+# In[187]:
 
 
-#! ipython id=9a28095367094308ad46b129e69586aa
 df2 = pd.DataFrame({"time": times.repeat(3),
                     "key": np.tile(["a", "b", "c"], N),
                     "value": np.arange(N * 3.)})
 df2.head(7)
 
 
-# In[122]:
+# In[188]:
 
 
-#! ipython id=0991852576124da587038d8939d3de61
 time_key = pd.Grouper(freq="5min")
 
 
-# In[123]:
+# In[189]:
 
 
-#! ipython id=a7c8d07161384a4385a4d82fffa4e7ae
 resampled = (df2.set_index("time")
              .groupby(["key", time_key])
              .sum())
 resampled
+
+
+# In[190]:
+
+
 resampled.reset_index()
 
 
-# In[124]:
+# In[191]:
 
 
-#! ipython id=3ff50b0ceeef40c4bbe32b4b8cf3824a
 close_px_all = pd.read_csv("examples/stock_px.csv",
                            parse_dates=True, index_col=0)
 close_px = close_px_all[["AAPL", "MSFT", "XOM"]]
 close_px = close_px.resample("B").ffill()
 
 
-# In[125]:
+# In[192]:
 
 
-#! ipython id=3a7907583c5c464eb2d146e8ddcb479f
 close_px["AAPL"].plot()
+
+
+# In[193]:
+
+
 #! figure,id=apple_daily_ma250,title="Apple price with 250-day moving average"
 close_px["AAPL"].rolling(250).mean().plot()
 
 
-# In[126]:
+# In[194]:
 
 
-#! ipython id=cd2ea550f4ab44bebddcdef67fc7990b
 plt.figure()
 std250 = close_px["AAPL"].pct_change().rolling(250, min_periods=10).std()
 std250[5:12]
@@ -1082,47 +1395,32 @@ std250[5:12]
 std250.plot()
 
 
-# In[127]:
+# In[195]:
 
 
-#! ipython id=504b4010407f4edcac81dfa106681206
 expanding_mean = std250.expanding().mean()
 
 
-# In[128]:
+# In[196]:
 
 
-#! ipython suppress id=828830f0853b45388516d1d716305702
 plt.figure()
-
-
-# In[129]:
-
-
-#! ipython id=757ccd62b4c64042add7a055b90d3f79
 plt.style.use('grayscale')
 #! figure,id=stocks_daily_ma60,title="Stock prices 60-day moving average (log y-axis)"
 close_px.rolling(60).mean().plot(logy=True)
 
 
-# In[130]:
+# In[197]:
 
 
-#! ipython id=d1df05357bef4ef5be80524c35b9407a
 close_px.rolling("20D").mean()
 
 
-# In[131]:
+# In[198]:
 
 
-#! ipython suppress id=f65d7f1f960c4466af77c7e80a9fdf4c
 plt.figure()
 
-
-# In[132]:
-
-
-#! ipython id=fac9c661db8a4c77bd6e450f0ca0f082
 aapl_px = close_px["AAPL"]["2006":"2007"]
 
 ma30 = aapl_px.rolling(30, min_periods=20).mean()
@@ -1135,58 +1433,35 @@ ewma30.plot(style="k-", label="EW MA")
 plt.legend()
 
 
-# In[133]:
+# In[199]:
 
 
-#! ipython suppress id=cf8d4580bade4701b8cc6c1b05c4ed97
 plt.figure()
 
-
-# In[134]:
-
-
-#! ipython id=850496d7c94b423f994cbc710002ccf7
 spx_px = close_px_all["SPX"]
 spx_rets = spx_px.pct_change()
 returns = close_px.pct_change()
 
-
-# In[135]:
-
-
-#! ipython id=f065c26f19e7491b8f573f8d0f0d67e3
 corr = returns["AAPL"].rolling(125, min_periods=100).corr(spx_rets)
 #! figure,id=roll_correl_aapl,title="Six-month AAPL return correlation to S&P 500"
 corr.plot()
 
 
-# In[136]:
+# In[200]:
 
 
-#! ipython suppress id=f67e1433110f4a6a8e72034ead461e09
 plt.figure()
 
-
-# In[137]:
-
-
-#! ipython id=e312071fe8a74319afc03f447030c468
 corr = returns.rolling(125, min_periods=100).corr(spx_rets)
 #! figure,id=roll_correl_all,title="Six-month return correlations to S&P 500"
 corr.plot()
 
 
-# In[138]:
+# In[201]:
 
 
-#! ipython suppress id=e0f7372085924896960706add4fa5f56
 plt.figure()
 
-
-# In[139]:
-
-
-#! ipython id=e176480d4d034f1bbaa1b4c09caf9df6
 from scipy.stats import percentileofscore
 def score_at_2percent(x):
     return percentileofscore(x, 0.02)
@@ -1194,18 +1469,4 @@ def score_at_2percent(x):
 result = returns["AAPL"].rolling(250).apply(score_at_2percent)
 #! figure,id=roll_apply_ex,title="Percentile rank of 2% AAPL return over one-year window"
 result.plot()
-
-
-# In[140]:
-
-
-#! ipython suppress id=419d9badc37c41888f19b0fd158061dd
-get_ipython().run_line_magic('popd', '')
-
-
-# In[141]:
-
-
-#! ipython suppress id=1ff3016eeceb4d3e9a95f134c7ab9512
-pd.options.display.max_rows = PREVIOUS_MAX_ROWS
 
