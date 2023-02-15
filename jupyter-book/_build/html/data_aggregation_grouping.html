@@ -1,0 +1,5557 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>20. 데이터 집계와 그룹화 &#8212; 파이썬 데이터 분석</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="21. 시계열 데이터" href="timeseries.html" />
+    <link rel="prev" title="19. seaborn" href="visualization_3.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">파이썬 데이터 분석</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  파이썬 기초
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_basic_1.html">
+   1. 프로그래밍 개발 환경
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_basic_2.html">
+   2. 기초 문법
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_basic_3.html">
+   3. 기초 자료형
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_basic_4.html">
+   4. 제어문
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_basic_5.html">
+   5. 모음 자료형
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_basic_6.html">
+   6. 함수
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_basic_7.html">
+   7. 파일
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  기초수학 - 밑바닥부터
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="from_scratch_1.html">
+   8. 선형대수 기초
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="from_scratch_2.html">
+   9. 통계 기초
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  넘파이
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="numpy_1.html">
+   10. 넘파이 어레이
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="numpy_2.html">
+   11. 어레이 인덱싱
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="numpy_3.html">
+   12. 어레이 중심 프로그래밍
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="numpy_4.html">
+   13. 고급 넘파이
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  판다스
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas_1.html">
+   14. 판다스 데이터프레임
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas_2.html">
+   15. 데이터프레임 핵심
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas_3.html">
+   16. 판다스 활용: 통계 기초
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  데이터 시각화
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualization_1.html">
+   17. matplotlib.pyplot 1부
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualization_2.html">
+   18. matplotlib.pyplot 2부
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="visualization_3.html">
+   19. seaborn
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  데이터 집계와 그룹 만들기
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   20. 데이터 집계와 그룹화
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  시계열 데이터
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="timeseries.html">
+   21. 시계열 데이터
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/data_aggregation_grouping.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/codingalzi/datapy"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/codingalzi/datapy/issues/new?title=Issue%20on%20page%20%2Fdata_aggregation_grouping.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/codingalzi/datapy/master?urlpath=tree/jupyter-book/data_aggregation_grouping.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/jupyter-book/data_aggregation_grouping.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>데이터 집계와 그룹화</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="sec-aggregation">
+<span id="id1"></span><h1><span class="section-number">20. </span>데이터 집계와 그룹화<a class="headerlink" href="#sec-aggregation" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython suppress id=91bf744c97594b79aeaf6a9c84176193</span>
+<span class="o">%</span><span class="k">pushd</span> book-materials
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">PREVIOUS_MAX_ROWS</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_rows</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_columns</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_rows</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_colwidth</span> <span class="o">=</span> <span class="mi">80</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;figure&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Errno 2] No such file or directory: &#39;book-materials&#39;
+/mnt/c/Users/gslee/Documents/GitHub/datapy/jupyter-book
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=a66384a336da4f5e80d115439d896670</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=717f2535751f48a68d977477a3898589</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;key1&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+                   <span class="s2">&quot;key2&quot;</span> <span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Int64&quot;</span><span class="p">),</span>
+                   <span class="s2">&quot;data1&quot;</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+                   <span class="s2">&quot;data2&quot;</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">7</span><span class="p">)})</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>key1</th>
+      <th>key2</th>
+      <th>data1</th>
+      <th>data2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>1</td>
+      <td>-0.204708</td>
+      <td>0.281746</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>a</td>
+      <td>2</td>
+      <td>0.478943</td>
+      <td>0.769023</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>None</td>
+      <td>1</td>
+      <td>-0.519439</td>
+      <td>1.246435</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>b</td>
+      <td>2</td>
+      <td>-0.555730</td>
+      <td>1.007189</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>b</td>
+      <td>1</td>
+      <td>1.965781</td>
+      <td>-1.296221</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>a</td>
+      <td>&lt;NA&gt;</td>
+      <td>1.393406</td>
+      <td>0.274992</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>None</td>
+      <td>1</td>
+      <td>0.092908</td>
+      <td>0.228913</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=24486d99929647449d6208aed5a966ef</span>
+<span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;data1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;key1&quot;</span><span class="p">])</span>
+<span class="n">grouped</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x7f452a1aec40&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=c29f2ae78cd746838c919a3b3d7cb9b0</span>
+<span class="n">grouped</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>key1
+a    0.555881
+b    0.705025
+Name: data1, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=b2f13da1d1db405db2714ce25d08b045</span>
+<span class="n">means</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;data1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;key1&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;key2&quot;</span><span class="p">]])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">means</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>key1  key2
+a     1      -0.204708
+      2       0.478943
+b     1       1.965781
+      2      -0.555730
+Name: data1, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=f6d3464627b6440ab9b6ab5267778ec0</span>
+<span class="n">means</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>key2</th>
+      <th>1</th>
+      <th>2</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>-0.204708</td>
+      <td>0.478943</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>1.965781</td>
+      <td>-0.555730</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=2b0bf87cf09644ee9f1f8ba9d4f2fb10</span>
+<span class="n">states</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;OH&quot;</span><span class="p">,</span> <span class="s2">&quot;CA&quot;</span><span class="p">,</span> <span class="s2">&quot;CA&quot;</span><span class="p">,</span> <span class="s2">&quot;OH&quot;</span><span class="p">,</span> <span class="s2">&quot;OH&quot;</span><span class="p">,</span> <span class="s2">&quot;CA&quot;</span><span class="p">,</span> <span class="s2">&quot;OH&quot;</span><span class="p">])</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2005</span><span class="p">,</span> <span class="mi">2005</span><span class="p">,</span> <span class="mi">2006</span><span class="p">,</span> <span class="mi">2005</span><span class="p">,</span> <span class="mi">2006</span><span class="p">,</span> <span class="mi">2005</span><span class="p">,</span> <span class="mi">2006</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;data1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">states</span><span class="p">,</span> <span class="n">years</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CA  2005    0.936175
+    2006   -0.519439
+OH  2005   -0.380219
+    2006    1.029344
+Name: data1, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=3eace3f65719478aa4e1fcc2002b04c9</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>data1</th>
+      <th>data2</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th>key2</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">a</th>
+      <th>1</th>
+      <td>-0.204708</td>
+      <td>0.281746</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.478943</td>
+      <td>0.769023</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">b</th>
+      <th>1</th>
+      <td>1.965781</td>
+      <td>-1.296221</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.555730</td>
+      <td>1.007189</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=b1a71909137c4bf5a1dadcdc297efc0f</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>key1  key2
+a     1       1
+      2       1
+b     1       1
+      2       1
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=8C7C817AB41E4D5EB6D4E2D8C0FA31EF</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">],</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>key1  key2
+a     1       1
+      2       1
+      NaN     1
+b     1       1
+      2       1
+NaN   1       2
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=ac652b305fef4edda286f9fa9c23f53b</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>key2</th>
+      <th>data1</th>
+      <th>data2</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>2</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>2</td>
+      <td>2</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=37c961ad9c074ba1a2165ce95aabd63c</span>
+<span class="c1">#! blockstart</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+<span class="c1">#! blockend</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a
+  key1  key2     data1     data2
+0    a     1 -0.204708  0.281746
+1    a     2  0.478943  0.769023
+5    a  &lt;NA&gt;  1.393406  0.274992
+b
+  key1  key2     data1     data2
+3    b     2 -0.555730  1.007189
+4    b     1  1.965781 -1.296221
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=8ec5c5d0eb0d431ba238881770479a40</span>
+<span class="c1">#! blockstart</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">),</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">((</span><span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
+<span class="c1">#! blockend</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;a&#39;, 1)
+  key1  key2     data1     data2
+0    a     1 -0.204708  0.281746
+(&#39;a&#39;, 2)
+  key1  key2     data1     data2
+1    a     2  0.478943  0.769023
+(&#39;b&#39;, 1)
+  key1  key2     data1     data2
+4    b     1  1.965781 -1.296221
+(&#39;b&#39;, 2)
+  key1  key2    data1     data2
+3    b     2 -0.55573  1.007189
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=dda859371f47444aab503b4e07658be1</span>
+<span class="n">pieces</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">group</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">)}</span>
+<span class="n">pieces</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>key1</th>
+      <th>key2</th>
+      <th>data1</th>
+      <th>data2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>b</td>
+      <td>2</td>
+      <td>-0.555730</td>
+      <td>1.007189</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>b</td>
+      <td>1</td>
+      <td>1.965781</td>
+      <td>-1.296221</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=b7d6ba2adfc84814b7fd09e6fa274ef4</span>
+<span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">({</span><span class="s2">&quot;key1&quot;</span><span class="p">:</span> <span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">:</span> <span class="s2">&quot;key&quot;</span><span class="p">,</span>
+                      <span class="s2">&quot;data1&quot;</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;data2&quot;</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span><span class="p">},</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=ce2f6ff046f44cad8bafbf15a19a2cd5</span>
+<span class="c1">#! blockstart</span>
+<span class="k">for</span> <span class="n">group_key</span><span class="p">,</span> <span class="n">group_values</span> <span class="ow">in</span> <span class="n">grouped</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">group_key</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">group_values</span><span class="p">)</span>
+<span class="c1">#! blockend</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data
+      data1     data2
+0 -0.204708  0.281746
+1  0.478943  0.769023
+2 -0.519439  1.246435
+3 -0.555730  1.007189
+4  1.965781 -1.296221
+5  1.393406  0.274992
+6  0.092908  0.228913
+key
+   key1  key2
+0     a     1
+1     a     2
+2  None     1
+3     b     2
+4     b     1
+5     a  &lt;NA&gt;
+6  None     1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=548bdde71e8f4741976a2cc620254fb9</span>
+<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">])[[</span><span class="s2">&quot;data2&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>data2</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th>key2</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">a</th>
+      <th>1</th>
+      <td>0.281746</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.769023</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">b</th>
+      <th>1</th>
+      <td>-1.296221</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.007189</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=ba1813aa18c9456db659b05313612c1b</span>
+<span class="n">s_grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">])[</span><span class="s2">&quot;data2&quot;</span><span class="p">]</span>
+<span class="n">s_grouped</span>
+<span class="n">s_grouped</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>key1  key2
+a     1       0.281746
+      2       0.769023
+b     1      -1.296221
+      2       1.007189
+Name: data2, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=78aee68b5f504ff89e6698bd9bbec2b2</span>
+<span class="n">people</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span>
+                      <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">],</span>
+                      <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Joe&quot;</span><span class="p">,</span> <span class="s2">&quot;Steve&quot;</span><span class="p">,</span> <span class="s2">&quot;Wanda&quot;</span><span class="p">,</span> <span class="s2">&quot;Jill&quot;</span><span class="p">,</span> <span class="s2">&quot;Trey&quot;</span><span class="p">])</span>
+<span class="n">people</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="c1"># Add a few NA values</span>
+<span class="n">people</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Joe</th>
+      <td>1.352917</td>
+      <td>0.886429</td>
+      <td>-2.001637</td>
+      <td>-0.371843</td>
+      <td>1.669025</td>
+    </tr>
+    <tr>
+      <th>Steve</th>
+      <td>-0.438570</td>
+      <td>-0.539741</td>
+      <td>0.476985</td>
+      <td>3.248944</td>
+      <td>-1.021228</td>
+    </tr>
+    <tr>
+      <th>Wanda</th>
+      <td>-0.577087</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.523772</td>
+      <td>0.000940</td>
+    </tr>
+    <tr>
+      <th>Jill</th>
+      <td>1.343810</td>
+      <td>-0.713544</td>
+      <td>-0.831154</td>
+      <td>-2.370232</td>
+      <td>-1.860761</td>
+    </tr>
+    <tr>
+      <th>Trey</th>
+      <td>-0.860757</td>
+      <td>0.560145</td>
+      <td>-1.265934</td>
+      <td>0.119827</td>
+      <td>-1.063512</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=4ef4621d217e4c70bdf9c6ea024b6af2</span>
+<span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;d&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span> <span class="p">:</span> <span class="s2">&quot;orange&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=dc0ed8d771324592b997cbb5742ae718</span>
+<span class="n">by_column</span> <span class="o">=</span> <span class="n">people</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span>
+<span class="n">by_column</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>blue</th>
+      <th>red</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Joe</th>
+      <td>-2.373480</td>
+      <td>3.908371</td>
+    </tr>
+    <tr>
+      <th>Steve</th>
+      <td>3.725929</td>
+      <td>-1.999539</td>
+    </tr>
+    <tr>
+      <th>Wanda</th>
+      <td>0.523772</td>
+      <td>-0.576147</td>
+    </tr>
+    <tr>
+      <th>Jill</th>
+      <td>-3.201385</td>
+      <td>-1.230495</td>
+    </tr>
+    <tr>
+      <th>Trey</th>
+      <td>-1.146107</td>
+      <td>-1.364125</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=1cc8cb1b67df408a8bc530c8cef2bf41</span>
+<span class="n">map_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
+<span class="n">map_series</span>
+<span class="n">people</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">map_series</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>blue</th>
+      <th>red</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Joe</th>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>Steve</th>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>Wanda</th>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Jill</th>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>Trey</th>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=45ccbe40ecfe4d29864e091288af57e3</span>
+<span class="n">people</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>1.352917</td>
+      <td>0.886429</td>
+      <td>-2.001637</td>
+      <td>-0.371843</td>
+      <td>1.669025</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.483052</td>
+      <td>-0.153399</td>
+      <td>-2.097088</td>
+      <td>-2.250405</td>
+      <td>-2.924273</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>-1.015657</td>
+      <td>-0.539741</td>
+      <td>0.476985</td>
+      <td>3.772716</td>
+      <td>-1.020287</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=153a6214e5864c5186a8a1d52323c4f8</span>
+<span class="n">key_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">]</span>
+<span class="n">people</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="nb">len</span><span class="p">,</span> <span class="n">key_list</span><span class="p">])</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <th>one</th>
+      <td>1.352917</td>
+      <td>0.886429</td>
+      <td>-2.001637</td>
+      <td>-0.371843</td>
+      <td>1.669025</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <th>two</th>
+      <td>-0.860757</td>
+      <td>-0.713544</td>
+      <td>-1.265934</td>
+      <td>-2.370232</td>
+      <td>-1.860761</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <th>one</th>
+      <td>-0.577087</td>
+      <td>-0.539741</td>
+      <td>0.476985</td>
+      <td>0.523772</td>
+      <td>-1.021228</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=81eb2063b2ae4d7caecf1704255f893c</span>
+<span class="n">columns</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_arrays</span><span class="p">([[</span><span class="s2">&quot;US&quot;</span><span class="p">,</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span> <span class="s2">&quot;JP&quot;</span><span class="p">,</span> <span class="s2">&quot;JP&quot;</span><span class="p">],</span>
+                                    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]],</span>
+                                    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cty&quot;</span><span class="p">,</span> <span class="s2">&quot;tenor&quot;</span><span class="p">])</span>
+<span class="n">hier_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">hier_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>cty</th>
+      <th colspan="3" halign="left">US</th>
+      <th colspan="2" halign="left">JP</th>
+    </tr>
+    <tr>
+      <th>tenor</th>
+      <th>1</th>
+      <th>3</th>
+      <th>5</th>
+      <th>1</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.332883</td>
+      <td>-2.359419</td>
+      <td>-0.199543</td>
+      <td>-1.541996</td>
+      <td>-0.970736</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1.307030</td>
+      <td>0.286350</td>
+      <td>0.377984</td>
+      <td>-0.753887</td>
+      <td>0.331286</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.349742</td>
+      <td>0.069877</td>
+      <td>0.246674</td>
+      <td>-0.011862</td>
+      <td>1.004812</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.327195</td>
+      <td>-0.919262</td>
+      <td>-1.549106</td>
+      <td>0.022185</td>
+      <td>0.758363</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=4d648f35e1f8461a96cad485d324551e</span>
+<span class="n">hier_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">&quot;cty&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>cty</th>
+      <th>JP</th>
+      <th>US</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=643d0ed7414d41f8b5a32867b2539412</span>
+<span class="n">df</span>
+<span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">)</span>
+<span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;data1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nsmallest</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>key1   
+a     0   -0.204708
+      1    0.478943
+b     3   -0.555730
+      4    1.965781
+Name: data1, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=cc3562f5cfeb4a14920643783ecadb69</span>
+<span class="k">def</span> <span class="nf">peak_to_peak</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">arr</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">arr</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">grouped</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">peak_to_peak</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>key2</th>
+      <th>data1</th>
+      <th>data2</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>1</td>
+      <td>1.598113</td>
+      <td>0.494031</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>1</td>
+      <td>2.521511</td>
+      <td>2.303410</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=47959d0bf07b4c4298f729e6af6a3c76</span>
+<span class="n">grouped</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="8" halign="left">key2</th>
+      <th colspan="5" halign="left">data1</th>
+      <th colspan="8" halign="left">data2</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>...</th>
+      <th>75%</th>
+      <th>max</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>2.0</td>
+      <td>1.5</td>
+      <td>0.707107</td>
+      <td>1.0</td>
+      <td>1.25</td>
+      <td>1.5</td>
+      <td>1.75</td>
+      <td>2.0</td>
+      <td>3.0</td>
+      <td>0.555881</td>
+      <td>...</td>
+      <td>0.936175</td>
+      <td>1.393406</td>
+      <td>3.0</td>
+      <td>0.441920</td>
+      <td>0.283299</td>
+      <td>0.274992</td>
+      <td>0.278369</td>
+      <td>0.281746</td>
+      <td>0.525384</td>
+      <td>0.769023</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>2.0</td>
+      <td>1.5</td>
+      <td>0.707107</td>
+      <td>1.0</td>
+      <td>1.25</td>
+      <td>1.5</td>
+      <td>1.75</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>0.705025</td>
+      <td>...</td>
+      <td>1.335403</td>
+      <td>1.965781</td>
+      <td>2.0</td>
+      <td>-0.144516</td>
+      <td>1.628757</td>
+      <td>-1.296221</td>
+      <td>-0.720368</td>
+      <td>-0.144516</td>
+      <td>0.431337</td>
+      <td>1.007189</td>
+    </tr>
+  </tbody>
+</table>
+<p>2 rows × 24 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=ae1e841c962344d6a4ea9cc65da459f4</span>
+<span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;examples/tips.csv&quot;</span><span class="p">)</span>
+<span class="n">tips</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>smoker</th>
+      <th>day</th>
+      <th>time</th>
+      <th>size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>16.99</td>
+      <td>1.01</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.34</td>
+      <td>1.66</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>21.01</td>
+      <td>3.50</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>23.68</td>
+      <td>3.31</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>24.59</td>
+      <td>3.61</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=212326c8b5954ee0b1a9993ba2eeb8d7</span>
+<span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span>
+<span class="n">tips</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>smoker</th>
+      <th>day</th>
+      <th>time</th>
+      <th>size</th>
+      <th>tip_pct</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>16.99</td>
+      <td>1.01</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.059447</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.34</td>
+      <td>1.66</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+      <td>0.160542</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>21.01</td>
+      <td>3.50</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+      <td>0.166587</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>23.68</td>
+      <td>3.31</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.139780</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>24.59</td>
+      <td>3.61</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>4</td>
+      <td>0.146808</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=b5d4697e5fe84be9993099e33b568345</span>
+<span class="n">grouped</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=21d0430d3c794474a8a113cc10c0a59e</span>
+<span class="n">grouped_pct</span> <span class="o">=</span> <span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span>
+<span class="n">grouped_pct</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>day   smoker
+Fri   No        0.151650
+      Yes       0.174783
+Sat   No        0.158048
+      Yes       0.147906
+Sun   No        0.160113
+      Yes       0.187250
+Thur  No        0.160298
+      Yes       0.163863
+Name: tip_pct, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=2203ebe00b9345738e2c1748aeda7873</span>
+<span class="n">grouped_pct</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">peak_to_peak</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>mean</th>
+      <th>std</th>
+      <th>peak_to_peak</th>
+    </tr>
+    <tr>
+      <th>day</th>
+      <th>smoker</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">Fri</th>
+      <th>No</th>
+      <td>0.151650</td>
+      <td>0.028123</td>
+      <td>0.067349</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>0.174783</td>
+      <td>0.051293</td>
+      <td>0.159925</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Sat</th>
+      <th>No</th>
+      <td>0.158048</td>
+      <td>0.039767</td>
+      <td>0.235193</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>0.147906</td>
+      <td>0.061375</td>
+      <td>0.290095</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Sun</th>
+      <th>No</th>
+      <td>0.160113</td>
+      <td>0.042347</td>
+      <td>0.193226</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>0.187250</td>
+      <td>0.154134</td>
+      <td>0.644685</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Thur</th>
+      <th>No</th>
+      <td>0.160298</td>
+      <td>0.038774</td>
+      <td>0.193350</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>0.163863</td>
+      <td>0.039389</td>
+      <td>0.151240</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=331922d6e0b8439fbba2d79df35ae3cb</span>
+<span class="n">grouped_pct</span><span class="o">.</span><span class="n">agg</span><span class="p">([(</span><span class="s2">&quot;average&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;stdev&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>average</th>
+      <th>stdev</th>
+    </tr>
+    <tr>
+      <th>day</th>
+      <th>smoker</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">Fri</th>
+      <th>No</th>
+      <td>0.151650</td>
+      <td>0.028123</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>0.174783</td>
+      <td>0.051293</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Sat</th>
+      <th>No</th>
+      <td>0.158048</td>
+      <td>0.039767</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>0.147906</td>
+      <td>0.061375</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Sun</th>
+      <th>No</th>
+      <td>0.160113</td>
+      <td>0.042347</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>0.187250</td>
+      <td>0.154134</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Thur</th>
+      <th>No</th>
+      <td>0.160298</td>
+      <td>0.038774</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>0.163863</td>
+      <td>0.039389</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=b23e35d113f247f5b4ba6c7b57286cce</span>
+<span class="n">functions</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">grouped</span><span class="p">[[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">,</span> <span class="s2">&quot;total_bill&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">functions</span><span class="p">)</span>
+<span class="n">result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th colspan="3" halign="left">tip_pct</th>
+      <th colspan="3" halign="left">total_bill</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>max</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>day</th>
+      <th>smoker</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">Fri</th>
+      <th>No</th>
+      <td>4</td>
+      <td>0.151650</td>
+      <td>0.187735</td>
+      <td>4</td>
+      <td>18.420000</td>
+      <td>22.75</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>15</td>
+      <td>0.174783</td>
+      <td>0.263480</td>
+      <td>15</td>
+      <td>16.813333</td>
+      <td>40.17</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Sat</th>
+      <th>No</th>
+      <td>45</td>
+      <td>0.158048</td>
+      <td>0.291990</td>
+      <td>45</td>
+      <td>19.661778</td>
+      <td>48.33</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>42</td>
+      <td>0.147906</td>
+      <td>0.325733</td>
+      <td>42</td>
+      <td>21.276667</td>
+      <td>50.81</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Sun</th>
+      <th>No</th>
+      <td>57</td>
+      <td>0.160113</td>
+      <td>0.252672</td>
+      <td>57</td>
+      <td>20.506667</td>
+      <td>48.17</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>19</td>
+      <td>0.187250</td>
+      <td>0.710345</td>
+      <td>19</td>
+      <td>24.120000</td>
+      <td>45.35</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Thur</th>
+      <th>No</th>
+      <td>45</td>
+      <td>0.160298</td>
+      <td>0.266312</td>
+      <td>45</td>
+      <td>17.113111</td>
+      <td>41.19</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>17</td>
+      <td>0.163863</td>
+      <td>0.241255</td>
+      <td>17</td>
+      <td>19.190588</td>
+      <td>43.11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=48aeddf0d8614a9daa16851bf8292777</span>
+<span class="n">result</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>day</th>
+      <th>smoker</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">Fri</th>
+      <th>No</th>
+      <td>4</td>
+      <td>0.151650</td>
+      <td>0.187735</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>15</td>
+      <td>0.174783</td>
+      <td>0.263480</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Sat</th>
+      <th>No</th>
+      <td>45</td>
+      <td>0.158048</td>
+      <td>0.291990</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>42</td>
+      <td>0.147906</td>
+      <td>0.325733</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Sun</th>
+      <th>No</th>
+      <td>57</td>
+      <td>0.160113</td>
+      <td>0.252672</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>19</td>
+      <td>0.187250</td>
+      <td>0.710345</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Thur</th>
+      <th>No</th>
+      <td>45</td>
+      <td>0.160298</td>
+      <td>0.266312</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>17</td>
+      <td>0.163863</td>
+      <td>0.241255</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=696328eaf2a94a9bb379aedc13ece6f0</span>
+<span class="n">ftuples</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;Average&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Variance&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">)]</span>
+<span class="n">grouped</span><span class="p">[[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">,</span> <span class="s2">&quot;total_bill&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">ftuples</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th colspan="2" halign="left">tip_pct</th>
+      <th colspan="2" halign="left">total_bill</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>Average</th>
+      <th>Variance</th>
+      <th>Average</th>
+      <th>Variance</th>
+    </tr>
+    <tr>
+      <th>day</th>
+      <th>smoker</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">Fri</th>
+      <th>No</th>
+      <td>0.151650</td>
+      <td>0.000791</td>
+      <td>18.420000</td>
+      <td>25.596333</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>0.174783</td>
+      <td>0.002631</td>
+      <td>16.813333</td>
+      <td>82.562438</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Sat</th>
+      <th>No</th>
+      <td>0.158048</td>
+      <td>0.001581</td>
+      <td>19.661778</td>
+      <td>79.908965</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>0.147906</td>
+      <td>0.003767</td>
+      <td>21.276667</td>
+      <td>101.387535</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Sun</th>
+      <th>No</th>
+      <td>0.160113</td>
+      <td>0.001793</td>
+      <td>20.506667</td>
+      <td>66.099980</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>0.187250</td>
+      <td>0.023757</td>
+      <td>24.120000</td>
+      <td>109.046044</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Thur</th>
+      <th>No</th>
+      <td>0.160298</td>
+      <td>0.001503</td>
+      <td>17.113111</td>
+      <td>59.625081</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>0.163863</td>
+      <td>0.001551</td>
+      <td>19.190588</td>
+      <td>69.808518</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=9216a59f6365466ab7f76fa04a569de3</span>
+<span class="n">grouped</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;tip&quot;</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span> <span class="p">:</span> <span class="s2">&quot;sum&quot;</span><span class="p">})</span>
+<span class="n">grouped</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;tip_pct&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">],</span>
+             <span class="s2">&quot;size&quot;</span> <span class="p">:</span> <span class="s2">&quot;sum&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th colspan="4" halign="left">tip_pct</th>
+      <th>size</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>min</th>
+      <th>max</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>sum</th>
+    </tr>
+    <tr>
+      <th>day</th>
+      <th>smoker</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">Fri</th>
+      <th>No</th>
+      <td>0.120385</td>
+      <td>0.187735</td>
+      <td>0.151650</td>
+      <td>0.028123</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>0.103555</td>
+      <td>0.263480</td>
+      <td>0.174783</td>
+      <td>0.051293</td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Sat</th>
+      <th>No</th>
+      <td>0.056797</td>
+      <td>0.291990</td>
+      <td>0.158048</td>
+      <td>0.039767</td>
+      <td>115</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>0.035638</td>
+      <td>0.325733</td>
+      <td>0.147906</td>
+      <td>0.061375</td>
+      <td>104</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Sun</th>
+      <th>No</th>
+      <td>0.059447</td>
+      <td>0.252672</td>
+      <td>0.160113</td>
+      <td>0.042347</td>
+      <td>167</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>0.065660</td>
+      <td>0.710345</td>
+      <td>0.187250</td>
+      <td>0.154134</td>
+      <td>49</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Thur</th>
+      <th>No</th>
+      <td>0.072961</td>
+      <td>0.266312</td>
+      <td>0.160298</td>
+      <td>0.038774</td>
+      <td>112</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>0.090014</td>
+      <td>0.241255</td>
+      <td>0.163863</td>
+      <td>0.039389</td>
+      <td>40</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=97bee90edc124121bde0d922a7da360d</span>
+<span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>day</th>
+      <th>smoker</th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>size</th>
+      <th>tip_pct</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Fri</td>
+      <td>No</td>
+      <td>18.420000</td>
+      <td>2.812500</td>
+      <td>2.250000</td>
+      <td>0.151650</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Fri</td>
+      <td>Yes</td>
+      <td>16.813333</td>
+      <td>2.714000</td>
+      <td>2.066667</td>
+      <td>0.174783</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Sat</td>
+      <td>No</td>
+      <td>19.661778</td>
+      <td>3.102889</td>
+      <td>2.555556</td>
+      <td>0.158048</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Sat</td>
+      <td>Yes</td>
+      <td>21.276667</td>
+      <td>2.875476</td>
+      <td>2.476190</td>
+      <td>0.147906</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Sun</td>
+      <td>No</td>
+      <td>20.506667</td>
+      <td>3.167895</td>
+      <td>2.929825</td>
+      <td>0.160113</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Sun</td>
+      <td>Yes</td>
+      <td>24.120000</td>
+      <td>3.516842</td>
+      <td>2.578947</td>
+      <td>0.187250</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Thur</td>
+      <td>No</td>
+      <td>17.113111</td>
+      <td>2.673778</td>
+      <td>2.488889</td>
+      <td>0.160298</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Thur</td>
+      <td>Yes</td>
+      <td>19.190588</td>
+      <td>3.030000</td>
+      <td>2.352941</td>
+      <td>0.163863</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=b74e5bd1d36148bf86a6ae9fb8ac78d6</span>
+<span class="k">def</span> <span class="nf">top</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="n">n</span><span class="p">]</span>
+<span class="n">top</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>smoker</th>
+      <th>day</th>
+      <th>time</th>
+      <th>size</th>
+      <th>tip_pct</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>172</th>
+      <td>7.25</td>
+      <td>5.15</td>
+      <td>Yes</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.710345</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>9.60</td>
+      <td>4.00</td>
+      <td>Yes</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.416667</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>3.07</td>
+      <td>1.00</td>
+      <td>Yes</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>1</td>
+      <td>0.325733</td>
+    </tr>
+    <tr>
+      <th>232</th>
+      <td>11.61</td>
+      <td>3.39</td>
+      <td>No</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.291990</td>
+    </tr>
+    <tr>
+      <th>183</th>
+      <td>23.17</td>
+      <td>6.50</td>
+      <td>Yes</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>4</td>
+      <td>0.280535</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>14.31</td>
+      <td>4.00</td>
+      <td>Yes</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.279525</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=afe083ef07204911ae57dfddc2a784a1</span>
+<span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;smoker&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">top</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>smoker</th>
+      <th>day</th>
+      <th>time</th>
+      <th>size</th>
+      <th>tip_pct</th>
+    </tr>
+    <tr>
+      <th>smoker</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">No</th>
+      <th>232</th>
+      <td>11.61</td>
+      <td>3.39</td>
+      <td>No</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.291990</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>7.51</td>
+      <td>2.00</td>
+      <td>No</td>
+      <td>Thur</td>
+      <td>Lunch</td>
+      <td>2</td>
+      <td>0.266312</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>10.29</td>
+      <td>2.60</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.252672</td>
+    </tr>
+    <tr>
+      <th>185</th>
+      <td>20.69</td>
+      <td>5.00</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>5</td>
+      <td>0.241663</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>24.71</td>
+      <td>5.85</td>
+      <td>No</td>
+      <td>Thur</td>
+      <td>Lunch</td>
+      <td>2</td>
+      <td>0.236746</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">Yes</th>
+      <th>172</th>
+      <td>7.25</td>
+      <td>5.15</td>
+      <td>Yes</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.710345</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>9.60</td>
+      <td>4.00</td>
+      <td>Yes</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.416667</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>3.07</td>
+      <td>1.00</td>
+      <td>Yes</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>1</td>
+      <td>0.325733</td>
+    </tr>
+    <tr>
+      <th>183</th>
+      <td>23.17</td>
+      <td>6.50</td>
+      <td>Yes</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>4</td>
+      <td>0.280535</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>14.31</td>
+      <td>4.00</td>
+      <td>Yes</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.279525</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=0983c697950348288a7c7b9fb5cfdb4b</span>
+<span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>smoker</th>
+      <th>day</th>
+      <th>time</th>
+      <th>size</th>
+      <th>tip_pct</th>
+    </tr>
+    <tr>
+      <th>smoker</th>
+      <th>day</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="4" valign="top">No</th>
+      <th>Fri</th>
+      <th>94</th>
+      <td>22.75</td>
+      <td>3.25</td>
+      <td>No</td>
+      <td>Fri</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.142857</td>
+    </tr>
+    <tr>
+      <th>Sat</th>
+      <th>212</th>
+      <td>48.33</td>
+      <td>9.00</td>
+      <td>No</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>4</td>
+      <td>0.186220</td>
+    </tr>
+    <tr>
+      <th>Sun</th>
+      <th>156</th>
+      <td>48.17</td>
+      <td>5.00</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>6</td>
+      <td>0.103799</td>
+    </tr>
+    <tr>
+      <th>Thur</th>
+      <th>142</th>
+      <td>41.19</td>
+      <td>5.00</td>
+      <td>No</td>
+      <td>Thur</td>
+      <td>Lunch</td>
+      <td>5</td>
+      <td>0.121389</td>
+    </tr>
+    <tr>
+      <th rowspan="4" valign="top">Yes</th>
+      <th>Fri</th>
+      <th>95</th>
+      <td>40.17</td>
+      <td>4.73</td>
+      <td>Yes</td>
+      <td>Fri</td>
+      <td>Dinner</td>
+      <td>4</td>
+      <td>0.117750</td>
+    </tr>
+    <tr>
+      <th>Sat</th>
+      <th>170</th>
+      <td>50.81</td>
+      <td>10.00</td>
+      <td>Yes</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>3</td>
+      <td>0.196812</td>
+    </tr>
+    <tr>
+      <th>Sun</th>
+      <th>182</th>
+      <td>45.35</td>
+      <td>3.50</td>
+      <td>Yes</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+      <td>0.077178</td>
+    </tr>
+    <tr>
+      <th>Thur</th>
+      <th>197</th>
+      <td>43.11</td>
+      <td>5.00</td>
+      <td>Yes</td>
+      <td>Thur</td>
+      <td>Lunch</td>
+      <td>4</td>
+      <td>0.115982</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=04225aab0dd44b12bbac2961aa35254b</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;smoker&quot;</span><span class="p">)[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<span class="n">result</span>
+<span class="n">result</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s2">&quot;smoker&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       smoker
+count  No        151.000000
+       Yes        93.000000
+mean   No          0.159328
+       Yes         0.163196
+std    No          0.039910
+       Yes         0.085119
+min    No          0.056797
+       Yes         0.035638
+25%    No          0.136906
+       Yes         0.106771
+50%    No          0.155625
+       Yes         0.153846
+75%    No          0.185014
+       Yes         0.195059
+max    No          0.291990
+       Yes         0.710345
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=c35103d700ee4488a481eb898f95001b</span>
+<span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">top</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>smoker</th>
+      <th>day</th>
+      <th>time</th>
+      <th>size</th>
+      <th>tip_pct</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>232</th>
+      <td>11.61</td>
+      <td>3.39</td>
+      <td>No</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.291990</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>7.51</td>
+      <td>2.00</td>
+      <td>No</td>
+      <td>Thur</td>
+      <td>Lunch</td>
+      <td>2</td>
+      <td>0.266312</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>10.29</td>
+      <td>2.60</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.252672</td>
+    </tr>
+    <tr>
+      <th>185</th>
+      <td>20.69</td>
+      <td>5.00</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>5</td>
+      <td>0.241663</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>24.71</td>
+      <td>5.85</td>
+      <td>No</td>
+      <td>Thur</td>
+      <td>Lunch</td>
+      <td>2</td>
+      <td>0.236746</td>
+    </tr>
+    <tr>
+      <th>172</th>
+      <td>7.25</td>
+      <td>5.15</td>
+      <td>Yes</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.710345</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>9.60</td>
+      <td>4.00</td>
+      <td>Yes</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.416667</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>3.07</td>
+      <td>1.00</td>
+      <td>Yes</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>1</td>
+      <td>0.325733</td>
+    </tr>
+    <tr>
+      <th>183</th>
+      <td>23.17</td>
+      <td>6.50</td>
+      <td>Yes</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>4</td>
+      <td>0.280535</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>14.31</td>
+      <td>4.00</td>
+      <td>Yes</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.279525</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=b9e64e9337f247c0a408ea0c7a9961c5</span>
+<span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;data1&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span>
+                      <span class="s2">&quot;data2&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">1000</span><span class="p">)})</span>
+<span class="n">frame</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">quartiles</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">frame</span><span class="p">[</span><span class="s2">&quot;data1&quot;</span><span class="p">],</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">quartiles</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     (-1.23, 0.489]
+1     (0.489, 2.208]
+2     (-1.23, 0.489]
+3     (-1.23, 0.489]
+4     (0.489, 2.208]
+5     (0.489, 2.208]
+6     (-1.23, 0.489]
+7     (-1.23, 0.489]
+8    (-2.956, -1.23]
+9     (-1.23, 0.489]
+Name: data1, dtype: category
+Categories (4, interval[float64, right]): [(-2.956, -1.23] &lt; (-1.23, 0.489] &lt; (0.489, 2.208] &lt; (2.208, 3.928]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=ce0b3030e230497c929e7f36b6d4ddb9</span>
+<span class="k">def</span> <span class="nf">get_stats</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="p">{</span><span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
+        <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">mean</span><span class="p">()}</span>
+    <span class="p">)</span>
+
+<span class="n">grouped</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">quartiles</span><span class="p">)</span>
+<span class="n">grouped</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>min</th>
+      <th>max</th>
+      <th>count</th>
+      <th>mean</th>
+    </tr>
+    <tr>
+      <th>data1</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">(-2.956, -1.23]</th>
+      <th>data1</th>
+      <td>-2.949343</td>
+      <td>-1.230179</td>
+      <td>94</td>
+      <td>-1.658818</td>
+    </tr>
+    <tr>
+      <th>data2</th>
+      <td>-3.399312</td>
+      <td>1.670835</td>
+      <td>94</td>
+      <td>-0.033333</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">(-1.23, 0.489]</th>
+      <th>data1</th>
+      <td>-1.228918</td>
+      <td>0.488675</td>
+      <td>598</td>
+      <td>-0.329524</td>
+    </tr>
+    <tr>
+      <th>data2</th>
+      <td>-2.989741</td>
+      <td>3.260383</td>
+      <td>598</td>
+      <td>-0.002622</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">(0.489, 2.208]</th>
+      <th>data1</th>
+      <td>0.489965</td>
+      <td>2.200997</td>
+      <td>298</td>
+      <td>1.065727</td>
+    </tr>
+    <tr>
+      <th>data2</th>
+      <td>-3.745356</td>
+      <td>2.954439</td>
+      <td>298</td>
+      <td>0.078249</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">(2.208, 3.928]</th>
+      <th>data1</th>
+      <td>2.212303</td>
+      <td>3.927528</td>
+      <td>10</td>
+      <td>2.644253</td>
+    </tr>
+    <tr>
+      <th>data2</th>
+      <td>-1.929776</td>
+      <td>1.765640</td>
+      <td>10</td>
+      <td>0.024750</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=32b18bf4409a4743ac83db5969bc6006</span>
+<span class="n">grouped</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="4" halign="left">data1</th>
+      <th colspan="4" halign="left">data2</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>min</th>
+      <th>max</th>
+      <th>count</th>
+      <th>mean</th>
+      <th>min</th>
+      <th>max</th>
+      <th>count</th>
+      <th>mean</th>
+    </tr>
+    <tr>
+      <th>data1</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>(-2.956, -1.23]</th>
+      <td>-2.949343</td>
+      <td>-1.230179</td>
+      <td>94</td>
+      <td>-1.658818</td>
+      <td>-3.399312</td>
+      <td>1.670835</td>
+      <td>94</td>
+      <td>-0.033333</td>
+    </tr>
+    <tr>
+      <th>(-1.23, 0.489]</th>
+      <td>-1.228918</td>
+      <td>0.488675</td>
+      <td>598</td>
+      <td>-0.329524</td>
+      <td>-2.989741</td>
+      <td>3.260383</td>
+      <td>598</td>
+      <td>-0.002622</td>
+    </tr>
+    <tr>
+      <th>(0.489, 2.208]</th>
+      <td>0.489965</td>
+      <td>2.200997</td>
+      <td>298</td>
+      <td>1.065727</td>
+      <td>-3.745356</td>
+      <td>2.954439</td>
+      <td>298</td>
+      <td>0.078249</td>
+    </tr>
+    <tr>
+      <th>(2.208, 3.928]</th>
+      <td>2.212303</td>
+      <td>3.927528</td>
+      <td>10</td>
+      <td>2.644253</td>
+      <td>-1.929776</td>
+      <td>1.765640</td>
+      <td>10</td>
+      <td>0.024750</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=acb41e66e6624f45a52c701f7188b2a9</span>
+<span class="n">quartiles_samp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">frame</span><span class="p">[</span><span class="s2">&quot;data1&quot;</span><span class="p">],</span> <span class="mi">4</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">quartiles_samp</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">grouped</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">quartiles_samp</span><span class="p">)</span>
+<span class="n">grouped</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>min</th>
+      <th>max</th>
+      <th>count</th>
+      <th>mean</th>
+    </tr>
+    <tr>
+      <th>data1</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">0</th>
+      <th>data1</th>
+      <td>-2.949343</td>
+      <td>-0.685484</td>
+      <td>250</td>
+      <td>-1.212173</td>
+    </tr>
+    <tr>
+      <th>data2</th>
+      <td>-3.399312</td>
+      <td>2.628441</td>
+      <td>250</td>
+      <td>-0.027045</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">1</th>
+      <th>data1</th>
+      <td>-0.683066</td>
+      <td>-0.030280</td>
+      <td>250</td>
+      <td>-0.368334</td>
+    </tr>
+    <tr>
+      <th>data2</th>
+      <td>-2.630247</td>
+      <td>3.260383</td>
+      <td>250</td>
+      <td>-0.027845</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">2</th>
+      <th>data1</th>
+      <td>-0.027734</td>
+      <td>0.618965</td>
+      <td>250</td>
+      <td>0.295812</td>
+    </tr>
+    <tr>
+      <th>data2</th>
+      <td>-3.056990</td>
+      <td>2.458842</td>
+      <td>250</td>
+      <td>0.014450</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">3</th>
+      <th>data1</th>
+      <td>0.623587</td>
+      <td>3.927528</td>
+      <td>250</td>
+      <td>1.248875</td>
+    </tr>
+    <tr>
+      <th>data2</th>
+      <td>-3.745356</td>
+      <td>2.954439</td>
+      <td>250</td>
+      <td>0.115899</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=a5f76377f0184195828c907897eb39d1</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">s</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">s</span>
+<span class="n">s</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   -0.767366
+1    0.227290
+2   -0.767366
+3   -2.153545
+4   -0.767366
+5   -0.375842
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=b4f45efcbdd0491f906ca6a4847bab1e</span>
+<span class="n">states</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Ohio&quot;</span><span class="p">,</span> <span class="s2">&quot;New York&quot;</span><span class="p">,</span> <span class="s2">&quot;Vermont&quot;</span><span class="p">,</span> <span class="s2">&quot;Florida&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;Oregon&quot;</span><span class="p">,</span> <span class="s2">&quot;Nevada&quot;</span><span class="p">,</span> <span class="s2">&quot;California&quot;</span><span class="p">,</span> <span class="s2">&quot;Idaho&quot;</span><span class="p">]</span>
+<span class="n">group_key</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;East&quot;</span><span class="p">,</span> <span class="s2">&quot;East&quot;</span><span class="p">,</span> <span class="s2">&quot;East&quot;</span><span class="p">,</span> <span class="s2">&quot;East&quot;</span><span class="p">,</span>
+             <span class="s2">&quot;West&quot;</span><span class="p">,</span> <span class="s2">&quot;West&quot;</span><span class="p">,</span> <span class="s2">&quot;West&quot;</span><span class="p">,</span> <span class="s2">&quot;West&quot;</span><span class="p">]</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">states</span><span class="p">)</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ohio          0.329939
+New York      0.981994
+Vermont       1.105913
+Florida      -1.613716
+Oregon        1.561587
+Nevada        0.406510
+California    0.359244
+Idaho        -0.614436
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=72f2656d298f413f8720b68b62b51674</span>
+<span class="n">data</span><span class="p">[[</span><span class="s2">&quot;Vermont&quot;</span><span class="p">,</span> <span class="s2">&quot;Nevada&quot;</span><span class="p">,</span> <span class="s2">&quot;Idaho&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">data</span>
+<span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">group_key</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">group_key</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">group_key</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>East   -0.100594
+West    0.960416
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=dfc55860e6ea449aadb99677fc0e2986</span>
+<span class="k">def</span> <span class="nf">fill_mean</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">group</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">group</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+
+<span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">group_key</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">fill_mean</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ohio          0.329939
+New York      0.981994
+Vermont      -0.100594
+Florida      -1.613716
+Oregon        1.561587
+Nevada        0.960416
+California    0.359244
+Idaho         0.960416
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=4abfc8bfccfd41ea8d64ac98443dac45</span>
+<span class="n">fill_values</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;East&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;West&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">}</span>
+<span class="k">def</span> <span class="nf">fill_func</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">group</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">fill_values</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">name</span><span class="p">])</span>
+
+<span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">group_key</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">fill_func</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ohio          0.329939
+New York      0.981994
+Vermont       0.500000
+Florida      -1.613716
+Oregon        1.561587
+Nevada       -1.000000
+California    0.359244
+Idaho        -1.000000
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython verbatim id=05397b351c8e498c947d802a1cb48677</span>
+<span class="n">suits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">]</span>  <span class="c1"># Hearts, Spades, Clubs, Diamonds</span>
+<span class="n">card_val</span> <span class="o">=</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span> <span class="o">+</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span>
+<span class="n">base_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;J&quot;</span><span class="p">,</span> <span class="s2">&quot;K&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">]</span>
+<span class="n">cards</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">suit</span> <span class="ow">in</span> <span class="n">suits</span><span class="p">:</span>
+    <span class="n">cards</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">+</span> <span class="n">suit</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">base_names</span><span class="p">)</span>
+
+<span class="n">deck</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">card_val</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">cards</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=d54e45a5b95f4e84ab900beaeffc032e</span>
+<span class="n">deck</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AH      1
+2H      2
+3H      3
+4H      4
+5H      5
+6H      6
+7H      7
+8H      8
+9H      9
+10H    10
+JH     10
+KH     10
+QH     10
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=1793b875d18f4a9c8eaf378979a65b8e</span>
+<span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="n">deck</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">deck</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">deck</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4D     4
+QH    10
+8S     8
+7D     7
+9C     9
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=5f9eadad6e6b4033a68f0cb222e87013</span>
+<span class="k">def</span> <span class="nf">get_suit</span><span class="p">(</span><span class="n">card</span><span class="p">):</span>
+    <span class="c1"># last letter is suit</span>
+    <span class="k">return</span> <span class="n">card</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">deck</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">get_suit</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">draw</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C  6C     6
+   KC    10
+D  7D     7
+   3D     3
+H  7H     7
+   9H     9
+S  2S     2
+   QS    10
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=56e0c862e6984555a30a33d3800ccf1e</span>
+<span class="n">deck</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">get_suit</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">draw</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AC      1
+3C      3
+5D      5
+4D      4
+10H    10
+7H      7
+QS     10
+7S      7
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=2f6291892da840ff9f2cc04ddc89a1a0</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">],</span>
+                   <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
+                   <span class="s2">&quot;weights&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)})</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>category</th>
+      <th>data</th>
+      <th>weights</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>-1.691656</td>
+      <td>0.955905</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>a</td>
+      <td>0.511622</td>
+      <td>0.012745</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>a</td>
+      <td>-0.401675</td>
+      <td>0.137009</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>a</td>
+      <td>0.968578</td>
+      <td>0.763037</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>b</td>
+      <td>-1.818215</td>
+      <td>0.492472</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>b</td>
+      <td>0.279963</td>
+      <td>0.832908</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>b</td>
+      <td>-0.200819</td>
+      <td>0.658331</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>b</td>
+      <td>-0.217221</td>
+      <td>0.612009</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=f3785264a084456e81b4fe42320ecd65</span>
+<span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">get_wavg</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">],</span> <span class="n">weights</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;weights&quot;</span><span class="p">])</span>
+
+<span class="n">grouped</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_wavg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>category
+a   -0.495807
+b   -0.357273
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=1113b4b05f2b495c9fa94c42165ac7a3</span>
+<span class="n">close_px</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;examples/stock_px.csv&quot;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                       <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">close_px</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<span class="n">close_px</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 5472 entries, 1990-02-01 to 2011-10-14
+Data columns (total 9 columns):
+ #   Column  Non-Null Count  Dtype  
+---  ------  --------------  -----  
+ 0   AA      5472 non-null   float64
+ 1   AAPL    5472 non-null   float64
+ 2   GE      5472 non-null   float64
+ 3   IBM     5472 non-null   float64
+ 4   JNJ     5472 non-null   float64
+ 5   MSFT    5472 non-null   float64
+ 6   PEP     5471 non-null   float64
+ 7   SPX     5472 non-null   float64
+ 8   XOM     5472 non-null   float64
+dtypes: float64(9)
+memory usage: 427.5 KB
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AA</th>
+      <th>AAPL</th>
+      <th>GE</th>
+      <th>IBM</th>
+      <th>JNJ</th>
+      <th>MSFT</th>
+      <th>PEP</th>
+      <th>SPX</th>
+      <th>XOM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2011-10-11</th>
+      <td>10.30</td>
+      <td>400.29</td>
+      <td>16.14</td>
+      <td>185.00</td>
+      <td>63.96</td>
+      <td>27.00</td>
+      <td>60.95</td>
+      <td>1195.54</td>
+      <td>76.27</td>
+    </tr>
+    <tr>
+      <th>2011-10-12</th>
+      <td>10.05</td>
+      <td>402.19</td>
+      <td>16.40</td>
+      <td>186.12</td>
+      <td>64.33</td>
+      <td>26.96</td>
+      <td>62.70</td>
+      <td>1207.25</td>
+      <td>77.16</td>
+    </tr>
+    <tr>
+      <th>2011-10-13</th>
+      <td>10.10</td>
+      <td>408.43</td>
+      <td>16.22</td>
+      <td>186.82</td>
+      <td>64.23</td>
+      <td>27.18</td>
+      <td>62.36</td>
+      <td>1203.66</td>
+      <td>76.37</td>
+    </tr>
+    <tr>
+      <th>2011-10-14</th>
+      <td>10.26</td>
+      <td>422.00</td>
+      <td>16.60</td>
+      <td>190.53</td>
+      <td>64.72</td>
+      <td>27.27</td>
+      <td>62.24</td>
+      <td>1224.58</td>
+      <td>78.11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=78ce3a267cfc491e8301e301f8a57342</span>
+<span class="k">def</span> <span class="nf">spx_corr</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">group</span><span class="o">.</span><span class="n">corrwith</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;SPX&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=840cfbfdd33d4b82ba7013ea91095473</span>
+<span class="n">rets</span> <span class="o">=</span> <span class="n">close_px</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=bf0ac26ec88548f9b9bb5e7b5a3e6248</span>
+<span class="k">def</span> <span class="nf">get_year</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">year</span>
+
+<span class="n">by_year</span> <span class="o">=</span> <span class="n">rets</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">get_year</span><span class="p">)</span>
+<span class="n">by_year</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">spx_corr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>AA</th>
+      <th>AAPL</th>
+      <th>GE</th>
+      <th>IBM</th>
+      <th>JNJ</th>
+      <th>MSFT</th>
+      <th>PEP</th>
+      <th>SPX</th>
+      <th>XOM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1990</th>
+      <td>0.595024</td>
+      <td>0.545067</td>
+      <td>0.752187</td>
+      <td>0.738361</td>
+      <td>0.801145</td>
+      <td>0.586691</td>
+      <td>0.783168</td>
+      <td>1.0</td>
+      <td>0.517586</td>
+    </tr>
+    <tr>
+      <th>1991</th>
+      <td>0.453574</td>
+      <td>0.365315</td>
+      <td>0.759607</td>
+      <td>0.557046</td>
+      <td>0.646401</td>
+      <td>0.524225</td>
+      <td>0.641775</td>
+      <td>1.0</td>
+      <td>0.569335</td>
+    </tr>
+    <tr>
+      <th>1992</th>
+      <td>0.398180</td>
+      <td>0.498732</td>
+      <td>0.632685</td>
+      <td>0.262232</td>
+      <td>0.515740</td>
+      <td>0.492345</td>
+      <td>0.473871</td>
+      <td>1.0</td>
+      <td>0.318408</td>
+    </tr>
+    <tr>
+      <th>1993</th>
+      <td>0.259069</td>
+      <td>0.238578</td>
+      <td>0.447257</td>
+      <td>0.211269</td>
+      <td>0.451503</td>
+      <td>0.425377</td>
+      <td>0.385089</td>
+      <td>1.0</td>
+      <td>0.318952</td>
+    </tr>
+    <tr>
+      <th>1994</th>
+      <td>0.428549</td>
+      <td>0.268420</td>
+      <td>0.572996</td>
+      <td>0.385162</td>
+      <td>0.372962</td>
+      <td>0.436585</td>
+      <td>0.450516</td>
+      <td>1.0</td>
+      <td>0.395078</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2007</th>
+      <td>0.642427</td>
+      <td>0.508118</td>
+      <td>0.796945</td>
+      <td>0.603906</td>
+      <td>0.568423</td>
+      <td>0.658770</td>
+      <td>0.651911</td>
+      <td>1.0</td>
+      <td>0.786264</td>
+    </tr>
+    <tr>
+      <th>2008</th>
+      <td>0.781057</td>
+      <td>0.681434</td>
+      <td>0.777337</td>
+      <td>0.833074</td>
+      <td>0.801005</td>
+      <td>0.804626</td>
+      <td>0.709264</td>
+      <td>1.0</td>
+      <td>0.828303</td>
+    </tr>
+    <tr>
+      <th>2009</th>
+      <td>0.735642</td>
+      <td>0.707103</td>
+      <td>0.713086</td>
+      <td>0.684513</td>
+      <td>0.603146</td>
+      <td>0.654902</td>
+      <td>0.541474</td>
+      <td>1.0</td>
+      <td>0.797921</td>
+    </tr>
+    <tr>
+      <th>2010</th>
+      <td>0.745700</td>
+      <td>0.710105</td>
+      <td>0.822285</td>
+      <td>0.783638</td>
+      <td>0.689896</td>
+      <td>0.730118</td>
+      <td>0.626655</td>
+      <td>1.0</td>
+      <td>0.839057</td>
+    </tr>
+    <tr>
+      <th>2011</th>
+      <td>0.882045</td>
+      <td>0.691931</td>
+      <td>0.864595</td>
+      <td>0.802730</td>
+      <td>0.752379</td>
+      <td>0.800996</td>
+      <td>0.592029</td>
+      <td>1.0</td>
+      <td>0.859975</td>
+    </tr>
+  </tbody>
+</table>
+<p>22 rows × 9 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=6dd546477c5548819f3610f8d0ff8987</span>
+<span class="k">def</span> <span class="nf">corr_aapl_msft</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">group</span><span class="p">[</span><span class="s2">&quot;AAPL&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;MSFT&quot;</span><span class="p">])</span>
+<span class="n">by_year</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">corr_aapl_msft</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1990    0.408271
+1991    0.266807
+1992    0.450592
+1993    0.236917
+1994    0.361638
+          ...   
+2007    0.417738
+2008    0.611901
+2009    0.432738
+2010    0.571946
+2011    0.581987
+Length: 22, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython verbatim id=64e6e813b0e948cd8cfa443fcbe485ad</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="k">def</span> <span class="nf">regress</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">yvar</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xvars</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">yvar</span><span class="p">]</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">xvars</span><span class="p">]</span>
+    <span class="n">X</span><span class="p">[</span><span class="s2">&quot;intercept&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">params</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=78fdb9df1f984f3cb2ae8ae664af69f9</span>
+<span class="n">by_year</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">regress</span><span class="p">,</span> <span class="n">yvar</span><span class="o">=</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">xvars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;SPX&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SPX</th>
+      <th>intercept</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1990</th>
+      <td>1.512772</td>
+      <td>0.001395</td>
+    </tr>
+    <tr>
+      <th>1991</th>
+      <td>1.187351</td>
+      <td>0.000396</td>
+    </tr>
+    <tr>
+      <th>1992</th>
+      <td>1.832427</td>
+      <td>0.000164</td>
+    </tr>
+    <tr>
+      <th>1993</th>
+      <td>1.390470</td>
+      <td>-0.002657</td>
+    </tr>
+    <tr>
+      <th>1994</th>
+      <td>1.190277</td>
+      <td>0.001617</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2007</th>
+      <td>1.198761</td>
+      <td>0.003438</td>
+    </tr>
+    <tr>
+      <th>2008</th>
+      <td>0.968016</td>
+      <td>-0.001110</td>
+    </tr>
+    <tr>
+      <th>2009</th>
+      <td>0.879103</td>
+      <td>0.002954</td>
+    </tr>
+    <tr>
+      <th>2010</th>
+      <td>1.052608</td>
+      <td>0.001261</td>
+    </tr>
+    <tr>
+      <th>2011</th>
+      <td>0.806605</td>
+      <td>0.001514</td>
+    </tr>
+  </tbody>
+</table>
+<p>22 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=9d6f36a2555f44f29e689cd6a86c6c8b</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span>
+                   <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">12.</span><span class="p">)})</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>key</th>
+      <th>value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>b</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>c</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>a</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>b</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>c</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>a</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>b</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>c</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>a</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>b</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>c</td>
+      <td>11.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=4f22990eed5f4794981b426d9690a067</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
+<span class="n">g</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>key
+a    4.5
+b    5.5
+c    6.5
+Name: value, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=e3dfd39e3cfb4b45a4d4fd3a0df8ba35</span>
+<span class="k">def</span> <span class="nf">get_mean</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">group</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">get_mean</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     4.5
+1     5.5
+2     6.5
+3     4.5
+4     5.5
+5     6.5
+6     4.5
+7     5.5
+8     6.5
+9     4.5
+10    5.5
+11    6.5
+Name: value, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=df3dbb405f0a418cb8f38b1d693126dc</span>
+<span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     4.5
+1     5.5
+2     6.5
+3     4.5
+4     5.5
+5     6.5
+6     4.5
+7     5.5
+8     6.5
+9     4.5
+10    5.5
+11    6.5
+Name: value, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=7c617bcf7d4c442abda7927077f4501a</span>
+<span class="k">def</span> <span class="nf">times_two</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">group</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">times_two</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      0.0
+1      2.0
+2      4.0
+3      6.0
+4      8.0
+5     10.0
+6     12.0
+7     14.0
+8     16.0
+9     18.0
+10    20.0
+11    22.0
+Name: value, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=f90592bf16b7442097b9e22a099e1c75</span>
+<span class="k">def</span> <span class="nf">get_ranks</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">group</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">get_ranks</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     4.0
+1     4.0
+2     4.0
+3     3.0
+4     3.0
+5     3.0
+6     2.0
+7     2.0
+8     2.0
+9     1.0
+10    1.0
+11    1.0
+Name: value, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=8997dec2bb2e44978c3d39e98d12bec1</span>
+<span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=d06c11e725f744abb0b0309eb2c04526</span>
+<span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">normalize</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">normalize</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    -1.161895
+1    -1.161895
+2    -1.161895
+3    -0.387298
+4    -0.387298
+5    -0.387298
+6     0.387298
+7     0.387298
+8     0.387298
+9     1.161895
+10    1.161895
+11    1.161895
+Name: value, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=36f1cd239f9a4b218ea0d3dc86776890</span>
+<span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<span class="n">normalized</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">))</span> <span class="o">/</span> <span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;std&#39;</span><span class="p">)</span>
+<span class="n">normalized</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    -1.161895
+1    -1.161895
+2    -1.161895
+3    -0.387298
+4    -0.387298
+5    -0.387298
+6     0.387298
+7     0.387298
+8     0.387298
+9     1.161895
+10    1.161895
+11    1.161895
+Name: value, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=2502077543534742bebd6ec88eec4d04</span>
+<span class="n">tips</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">tips</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>size</th>
+      <th>tip</th>
+      <th>tip_pct</th>
+      <th>total_bill</th>
+    </tr>
+    <tr>
+      <th>day</th>
+      <th>smoker</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">Fri</th>
+      <th>No</th>
+      <td>2.250000</td>
+      <td>2.812500</td>
+      <td>0.151650</td>
+      <td>18.420000</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>2.066667</td>
+      <td>2.714000</td>
+      <td>0.174783</td>
+      <td>16.813333</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Sat</th>
+      <th>No</th>
+      <td>2.555556</td>
+      <td>3.102889</td>
+      <td>0.158048</td>
+      <td>19.661778</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>2.476190</td>
+      <td>2.875476</td>
+      <td>0.147906</td>
+      <td>21.276667</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Sun</th>
+      <th>No</th>
+      <td>2.929825</td>
+      <td>3.167895</td>
+      <td>0.160113</td>
+      <td>20.506667</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>2.578947</td>
+      <td>3.516842</td>
+      <td>0.187250</td>
+      <td>24.120000</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Thur</th>
+      <th>No</th>
+      <td>2.488889</td>
+      <td>2.673778</td>
+      <td>0.160298</td>
+      <td>17.113111</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>2.352941</td>
+      <td>3.030000</td>
+      <td>0.163863</td>
+      <td>19.190588</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=5f3d264eb32842e39cca60645b498611</span>
+<span class="n">tips</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span>
+                 <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th colspan="2" halign="left">size</th>
+      <th colspan="2" halign="left">tip_pct</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>smoker</th>
+      <th>No</th>
+      <th>Yes</th>
+      <th>No</th>
+      <th>Yes</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th>day</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="4" valign="top">Dinner</th>
+      <th>Fri</th>
+      <td>2.000000</td>
+      <td>2.222222</td>
+      <td>0.139622</td>
+      <td>0.165347</td>
+    </tr>
+    <tr>
+      <th>Sat</th>
+      <td>2.555556</td>
+      <td>2.476190</td>
+      <td>0.158048</td>
+      <td>0.147906</td>
+    </tr>
+    <tr>
+      <th>Sun</th>
+      <td>2.929825</td>
+      <td>2.578947</td>
+      <td>0.160113</td>
+      <td>0.187250</td>
+    </tr>
+    <tr>
+      <th>Thur</th>
+      <td>2.000000</td>
+      <td>NaN</td>
+      <td>0.159744</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Lunch</th>
+      <th>Fri</th>
+      <td>3.000000</td>
+      <td>1.833333</td>
+      <td>0.187735</td>
+      <td>0.188937</td>
+    </tr>
+    <tr>
+      <th>Thur</th>
+      <td>2.500000</td>
+      <td>2.352941</td>
+      <td>0.160311</td>
+      <td>0.163863</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=f65b89a55539440cac1405a620ed2758</span>
+<span class="n">tips</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span>
+                 <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">],</span> <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th colspan="3" halign="left">size</th>
+      <th colspan="3" halign="left">tip_pct</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>smoker</th>
+      <th>No</th>
+      <th>Yes</th>
+      <th>All</th>
+      <th>No</th>
+      <th>Yes</th>
+      <th>All</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th>day</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="4" valign="top">Dinner</th>
+      <th>Fri</th>
+      <td>2.000000</td>
+      <td>2.222222</td>
+      <td>2.166667</td>
+      <td>0.139622</td>
+      <td>0.165347</td>
+      <td>0.158916</td>
+    </tr>
+    <tr>
+      <th>Sat</th>
+      <td>2.555556</td>
+      <td>2.476190</td>
+      <td>2.517241</td>
+      <td>0.158048</td>
+      <td>0.147906</td>
+      <td>0.153152</td>
+    </tr>
+    <tr>
+      <th>Sun</th>
+      <td>2.929825</td>
+      <td>2.578947</td>
+      <td>2.842105</td>
+      <td>0.160113</td>
+      <td>0.187250</td>
+      <td>0.166897</td>
+    </tr>
+    <tr>
+      <th>Thur</th>
+      <td>2.000000</td>
+      <td>NaN</td>
+      <td>2.000000</td>
+      <td>0.159744</td>
+      <td>NaN</td>
+      <td>0.159744</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Lunch</th>
+      <th>Fri</th>
+      <td>3.000000</td>
+      <td>1.833333</td>
+      <td>2.000000</td>
+      <td>0.187735</td>
+      <td>0.188937</td>
+      <td>0.188765</td>
+    </tr>
+    <tr>
+      <th>Thur</th>
+      <td>2.500000</td>
+      <td>2.352941</td>
+      <td>2.459016</td>
+      <td>0.160311</td>
+      <td>0.163863</td>
+      <td>0.161301</td>
+    </tr>
+    <tr>
+      <th>All</th>
+      <th></th>
+      <td>2.668874</td>
+      <td>2.408602</td>
+      <td>2.569672</td>
+      <td>0.159328</td>
+      <td>0.163196</td>
+      <td>0.160803</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=b597770eae7542cfb95aa7168d4293a8</span>
+<span class="n">tips</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span>
+                 <span class="n">values</span><span class="o">=</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>day</th>
+      <th>Fri</th>
+      <th>Sat</th>
+      <th>Sun</th>
+      <th>Thur</th>
+      <th>All</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th>smoker</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">Dinner</th>
+      <th>No</th>
+      <td>3.0</td>
+      <td>45.0</td>
+      <td>57.0</td>
+      <td>1.0</td>
+      <td>106</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>9.0</td>
+      <td>42.0</td>
+      <td>19.0</td>
+      <td>NaN</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Lunch</th>
+      <th>No</th>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>44.0</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>17.0</td>
+      <td>23</td>
+    </tr>
+    <tr>
+      <th>All</th>
+      <th></th>
+      <td>19.0</td>
+      <td>87.0</td>
+      <td>76.0</td>
+      <td>62.0</td>
+      <td>244</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=307e306fd97449aa96c00b4c1af2887b</span>
+<span class="n">tips</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span>
+                 <span class="n">values</span><span class="o">=</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>day</th>
+      <th>Fri</th>
+      <th>Sat</th>
+      <th>Sun</th>
+      <th>Thur</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th>size</th>
+      <th>smoker</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">Dinner</th>
+      <th rowspan="2" valign="top">1</th>
+      <th>No</th>
+      <td>0.000000</td>
+      <td>0.137931</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>0.000000</td>
+      <td>0.325733</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">2</th>
+      <th>No</th>
+      <td>0.139622</td>
+      <td>0.162705</td>
+      <td>0.168859</td>
+      <td>0.159744</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>0.171297</td>
+      <td>0.148668</td>
+      <td>0.207893</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <th>No</th>
+      <td>0.000000</td>
+      <td>0.154661</td>
+      <td>0.152663</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">Lunch</th>
+      <th>3</th>
+      <th>Yes</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.204952</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">4</th>
+      <th>No</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.138919</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.155410</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <th>No</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.121389</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <th>No</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.173706</td>
+    </tr>
+  </tbody>
+</table>
+<p>21 rows × 4 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=c4ea7c59067e4ed5acce365201cec661</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+<span class="c1">#! blockstart</span>
+<span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Sample  Nationality  Handedness</span>
+<span class="s2">1   USA  Right-handed</span>
+<span class="s2">2   Japan    Left-handed</span>
+<span class="s2">3   USA  Right-handed</span>
+<span class="s2">4   Japan    Right-handed</span>
+<span class="s2">5   Japan    Left-handed</span>
+<span class="s2">6   Japan    Right-handed</span>
+<span class="s2">7   USA  Right-handed</span>
+<span class="s2">8   USA  Left-handed</span>
+<span class="s2">9   Japan    Right-handed</span>
+<span class="s2">10  USA  Right-handed&quot;&quot;&quot;</span>
+<span class="c1">#! blockend</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;\s+&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=d7d271d116954e7d8237cabcbc227c52</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sample</th>
+      <th>Nationality</th>
+      <th>Handedness</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>USA</td>
+      <td>Right-handed</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Japan</td>
+      <td>Left-handed</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>USA</td>
+      <td>Right-handed</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Japan</td>
+      <td>Right-handed</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Japan</td>
+      <td>Left-handed</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>Japan</td>
+      <td>Right-handed</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>USA</td>
+      <td>Right-handed</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>USA</td>
+      <td>Left-handed</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>Japan</td>
+      <td>Right-handed</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>USA</td>
+      <td>Right-handed</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=64e891aa9bc94090b29654b1f44dc426</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;Nationality&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Handedness&quot;</span><span class="p">],</span> <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Handedness</th>
+      <th>Left-handed</th>
+      <th>Right-handed</th>
+      <th>All</th>
+    </tr>
+    <tr>
+      <th>Nationality</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Japan</th>
+      <td>2</td>
+      <td>3</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>USA</th>
+      <td>1</td>
+      <td>4</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>All</th>
+      <td>3</td>
+      <td>7</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=5d0f91726eb748ecaa904c3c703c69cb</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">([</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">],</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">]],</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;smoker&quot;</span><span class="p">],</span> <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>smoker</th>
+      <th>No</th>
+      <th>Yes</th>
+      <th>All</th>
+    </tr>
+    <tr>
+      <th>time</th>
+      <th>day</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="4" valign="top">Dinner</th>
+      <th>Fri</th>
+      <td>3</td>
+      <td>9</td>
+      <td>12</td>
+    </tr>
+    <tr>
+      <th>Sat</th>
+      <td>45</td>
+      <td>42</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <th>Sun</th>
+      <td>57</td>
+      <td>19</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>Thur</th>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Lunch</th>
+      <th>Fri</th>
+      <td>1</td>
+      <td>6</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>Thur</th>
+      <td>44</td>
+      <td>17</td>
+      <td>61</td>
+    </tr>
+    <tr>
+      <th>All</th>
+      <th></th>
+      <td>151</td>
+      <td>93</td>
+      <td>244</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython suppress id=231271ac720a43deadca4fb4fce4b133</span>
+<span class="o">%</span><span class="k">popd</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/mnt/c/Users/gslee/Documents/GitHub/datapy/jupyter-book
+popd -&gt; /mnt/c/Users/gslee/Documents/GitHub/datapy/jupyter-book
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython suppress id=553ffce9df1b4513bff1925e8c5e6c50</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_rows</span> <span class="o">=</span> <span class="n">PREVIOUS_MAX_ROWS</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="visualization_3.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">19. </span>seaborn</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="timeseries.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">21. </span>시계열 데이터</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By 코딩알지<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
