@@ -11,19 +11,14 @@
 # 소중한 소스코드를 공개한 웨스 맥키니(Wes McKinney)와 조엘 그루스(Joel Grus)에게 
 # 진심어린 감사를 전합니다.
 
-# ## 데이터 과학과 파이썬 데이터 분석
+# ## 데이터 과학
 
-# 데이터 과학은 데이터로부터 정보를 추출하는 기법 또는 추출한 정보를 활용하는 연구 분야를 가리킨다.
-# 데이터 추출을 위해 전통적으로는 수학, 통계학, 확률론 등 이론적으로 접근하는 방식을 사용했지만
+# 데이터 과학은 데이터로부터 정보를 추출하는 기법과 추출한 정보를 활용하는 연구 분야를 가리킨다.
+# 데이터로부터 정보를 얻기 위해 전통적으로 수학, 통계학, 확률론을 이용하여 이론적으로 접근하였지만
 # 데이터의 크기가 커지면서 이제는 머신러닝, 딥러닝 등 컴퓨터를 보다 적극적으로 활용한
 # 데이터 분석의 중요도가 절대적으로 커졌다.
-# 특히 파이썬 프로그래밍 언어를 이용한 데이터 분석은 현재 가장 활용도가 높다.
-# 
-# 파이썬 데이터 분석 학습을 위해 아래 분야의 기초지식이 요구되지만
-# 미적분학, 선형대수, 확률과통계 관련 이론은 여기서는 필요한 최소의 내용만 다룬다.
-# 
-# * 파이썬 프로그래밍
-# * 미적분학, 선형대수, 확률과통계
+
+# ## 인공지능, 머신러닝, 딥러닝, 데이터 과학
 
 # 인공지능, 머신러닝, 딥러닝을 간략하게 정의하면 다음과 같다.
 # 
@@ -32,16 +27,27 @@
 # * 머신러닝: 컴퓨터가 데이터로부터 스스로 정보를 추출하도록 하는 기법 또는 관련 연구
 # * 딥러닝: 심층 신경망을 이용하여 복잡한 비선형 문제를 해결하는 머신러닝 기법 또는 관련 연구
 
-# 데이터 과학과 인공지능, 머신러닝, 딥러닝의 관계는 아래 그림으로 설명된다.
-# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/ai-ml-relation.png" style="width:500px;"></div>
-# 
-# <p><div style="text-align: center">&lt;그림 출처: <a href="http://www.kyobobook.co.kr/readIT/readITColumnView.laf?thmId=00198&sntnId=14142">교보문고: 에이지 오브 머신러닝</a>&gt;</div></p>
-
 # 역사적 관점에서 바라본 인공지능, 머신러닝, 딥러닝의 관계는 다음과 같다.
 # 
 # <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book//images/ai-ml-relation2.png" style="width:600px;"></div>
 # 
 # <p><div style="text-align: center">&lt;그림 출처: <a href="https://blogs.nvidia.com/blog/2016/07/29/whats-difference-artificial-intelligence-machine-learning-deep-learning-ai/">NVIDIA 블로그</a>&gt;</div></p>
+
+# 데이터 과학과 인공지능, 머신러닝, 딥러닝의 관계는 아래 그림으로 설명된다.
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/ai-ml-relation.png" style="width:500px;"></div>
+# 
+# <p><div style="text-align: center">&lt;그림 출처: <a href="http://www.kyobobook.co.kr/readIT/readITColumnView.laf?thmId=00198&sntnId=14142">교보문고: 에이지 오브 머신러닝</a>&gt;</div></p>
+
+# ## 파이썬 데이터 분석
+
+# 데이터 분석은 파이썬 프로그래밍 언어를 이용한 데이터 분석이
+# 현재 가장 활용도가 높다.
+# 
+# 파이썬 데이터 분석 학습을 위해 아래 분야의 기초지식이 요구된다.
+# 하지만 여기서는 미적분학, 선형대수, 확률과통계 관련 지식은 필요한 최소의 내용만 다룬다.
+# 
+# * 파이썬 프로그래밍
+# * 미적분학, 선형대수, 확률과통계
 
 # ## 파이썬 프로그래밍 언어
 
@@ -49,7 +55,7 @@
 # 가장 많이 사용되는 프로그래밍언어이다.
 # 
 # 또한 수 많은 프로그래밍언어 중에서 현재 가장 많이 사람들 사이에서 회자되고 있다. 
-# 아래 사진은 2022년 12월 기준 인터넷 검색 엔진에서 언급된 빈도를 측정한
+# 아래 사진은 2023년 2월 기준 인터넷 검색 엔진에서 언급된 빈도를 측정한
 # [TIOBE Index](https://www.tiobe.com/tiobe-index/)의 상위 결과를 보여준다.
 # 
 # <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/tiobe-index.jpg" style="width:750px"></div>
@@ -85,14 +91,3 @@
 # 개발자로서 가장 배우고 싶어하는 라이브러리로 넘파이와 판다스가 두번째와 세번째 자리를 차지했다.
 
 # <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/wanted_languages.jpg" style="width:450px"></div>
-
-# ## 주요 내용
-
-# 아래 내용을 다룬다.
-# 
-# * 파이썬 프로그래밍 기초
-# * 데이터 불러오기 및 저장
-# * 데이터 다루기: 데이터 정제, 변환, 병합 등
-# * 데이터 시각화
-# * 자료 집계와 그룹화
-# * 시계열 데이터

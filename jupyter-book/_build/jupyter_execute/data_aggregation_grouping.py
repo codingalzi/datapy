@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # (sec:aggregation)=
-# # 데이터 집계와 그룹화 
+# # 데이터 집계와 그룹 생성
 
 # In[1]:
 
