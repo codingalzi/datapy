@@ -17,23 +17,43 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-def covariance(xs: List[float], ys: List[float]) -> float:
-    assert len(xs) == len(ys), "xs and ys must have same number of elements"
+import platform
+import matplotlib as mpl
 
-    return dot(de_mean(xs), de_mean(ys)) / (len(xs) - 1)
-
-covariance(num_friends, daily_minutes)
+# 윈도우 설정
+if platform.system() == 'Windows':
+    font_path = "C:/Windows/Fonts/NGULIM.TTF"
+    font = mpl.font_manager.FontProperties(fname=font_path).get_name()
+    plt.rc('font', family=font)
+# 우분투/구글 코랩 설정
+elif platform.system() == 'Linux':
+    # 우분투/구글코랩의 경우 아래 명령문이 최소 한번 실행되어야 함
+    # !sudo apt-get install -y fonts-nanum*
+    # !fc-cache -fv
+    
+    font = "NanumBarunGothic"
+    if not any(map(lambda ft: ft.name == font, mpl.font_manager.fontManager.ttflist)):
+        mpl.font_manager.fontManager.addfont("/usr/share/fonts/truetype/nanum/NanumBarunGothic.ttf")
+    plt.rc("font", family=font)
+    plt.rc("axes", unicode_minus=False)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mNameError[0m                                 Traceback (most recent call last)
-[0;32m/tmp/ipykernel_115/2785964808.py[0m in [0;36m<module>[0;34m[0m
-[0;32m----> 1[0;31m [0;32mdef[0m [0mcovariance[0m[0;34m([0m[0mxs[0m[0;34m:[0m [0mList[0m[0;34m[[0m[0mfloat[0m[0;34m][0m[0;34m,[0m [0mys[0m[0;34m:[0m [0mList[0m[0;34m[[0m[0mfloat[0m[0;34m][0m[0;34m)[0m [0;34m->[0m [0mfloat[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m      2[0m     [0;32massert[0m [0mlen[0m[0;34m([0m[0mxs[0m[0;34m)[0m [0;34m==[0m [0mlen[0m[0;34m([0m[0mys[0m[0;34m)[0m[0;34m,[0m [0;34m"xs and ys must have same number of elements"[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      3[0m [0;34m[0m[0m
-[1;32m      4[0m     [0;32mreturn[0m [0mdot[0m[0;34m([0m[0mde_mean[0m[0;34m([0m[0mxs[0m[0;34m)[0m[0;34m,[0m [0mde_mean[0m[0;34m([0m[0mys[0m[0;34m)[0m[0;34m)[0m [0;34m/[0m [0;34m([0m[0mlen[0m[0;34m([0m[0mxs[0m[0;34m)[0m [0;34m-[0m [0;36m1[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m      5[0m [0;34m[0m[0m
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+[0;32m/tmp/ipykernel_151/177766349.py[0m in [0;36m<module>[0;34m[0m
+[1;32m     15[0m     [0mfont[0m [0;34m=[0m [0;34m"NanumBarunGothic"[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     16[0m     [0;32mif[0m [0;32mnot[0m [0many[0m[0;34m([0m[0mmap[0m[0;34m([0m[0;32mlambda[0m [0mft[0m[0;34m:[0m [0mft[0m[0;34m.[0m[0mname[0m [0;34m==[0m [0mfont[0m[0;34m,[0m [0mmpl[0m[0;34m.[0m[0mfont_manager[0m[0;34m.[0m[0mfontManager[0m[0;34m.[0m[0mttflist[0m[0;34m)[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 17[0;31m         [0mmpl[0m[0;34m.[0m[0mfont_manager[0m[0;34m.[0m[0mfontManager[0m[0;34m.[0m[0maddfont[0m[0;34m([0m[0;34m"/usr/share/fonts/truetype/nanum/NanumBarunGothic.ttf"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     18[0m     [0mplt[0m[0;34m.[0m[0mrc[0m[0;34m([0m[0;34m"font"[0m[0;34m,[0m [0mfamily[0m[0;34m=[0m[0mfont[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     19[0m     [0mplt[0m[0;34m.[0m[0mrc[0m[0;34m([0m[0;34m"axes"[0m[0;34m,[0m [0municode_minus[0m[0;34m=[0m[0;32mFalse[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mNameError[0m: name 'List' is not defined
-NameError: name 'List' is not defined
+[0;32m~/anaconda3/lib/python3.9/site-packages/matplotlib/font_manager.py[0m in [0;36maddfont[0;34m(self, path)[0m
+[1;32m   1090[0m             [0mself[0m[0;34m.[0m[0mafmlist[0m[0;34m.[0m[0mappend[0m[0;34m([0m[0mprop[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1091[0m         [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1092[0;31m             [0mfont[0m [0;34m=[0m [0mft2font[0m[0;34m.[0m[0mFT2Font[0m[0;34m([0m[0mpath[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1093[0m             [0mprop[0m [0;34m=[0m [0mttfFontProperty[0m[0;34m([0m[0mfont[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m   1094[0m             [0mself[0m[0;34m.[0m[0mttflist[0m[0;34m.[0m[0mappend[0m[0;34m([0m[0mprop[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: '/usr/share/fonts/truetype/nanum/NanumBarunGothic.ttf'
+FileNotFoundError: [Errno 2] No such file or directory: '/usr/share/fonts/truetype/nanum/NanumBarunGothic.ttf'
 
