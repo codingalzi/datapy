@@ -904,3 +904,9 @@ a_list
 # 
 # TypeError: 'str' object does not support item assignment
 # ```
+
+# ## 연습문제
+
+# 1. [(실습) 프로그래밍 시작하기](https://colab.research.google.com/github/codingalzi/pybook/blob/master/practices/practice-starting.ipynb)
+# 1. [(실습) 변수, 값, 표현식](https://colab.research.google.com/github/codingalzi/pybook/blob/master/practices/practice-variables_expressions.ipynb)
+# 1. [(실습) 사례 연구: 프로그램 구상](https://colab.research.google.com/github/codingalzi/pybook/blob/master/practices/practice-casestudy_planning.ipynb)

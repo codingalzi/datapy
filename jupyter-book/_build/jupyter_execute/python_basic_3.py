@@ -782,3 +782,7 @@ dt
 
 dt + delta == dt2
 
+
+# ## 연습문제
+
+# 1. [(실습) 기초 자료형](https://colab.research.google.com/github/codingalzi/pybook/blob/master/practices/practice-datatypes.ipynb)

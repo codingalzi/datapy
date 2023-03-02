@@ -498,3 +498,7 @@ with open('tmp.txt', encoding='utf-8') as handle:
     
 lines
 
+
+# ## 연습문제
+
+# 1. [(실습) 파일](https://colab.research.google.com/github/codingalzi/pybook/blob/master/practices/practice-files.ipynb)

@@ -38,12 +38,9 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -128,6 +125,11 @@ const thebe_selector_output = ".output, .cell_output"
    7. 파일
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="python_basic_8.html">
+   8. 모듈
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -137,12 +139,12 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="from_scratch_1.html">
-   8. 선형대수 기초
+   9. 선형대수 기초
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="from_scratch_2.html">
-   9. 통계 기초
+   10. 통계 기초
   </a>
  </li>
 </ul>
@@ -154,22 +156,22 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="numpy_1.html">
-   10. 넘파이 어레이
+   11. 넘파이 어레이
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="numpy_2.html">
-   11. 어레이 인덱싱
+   12. 어레이 인덱싱
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="numpy_3.html">
-   12. 어레이 중심 프로그래밍
+   13. 어레이 중심 프로그래밍
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="numpy_4.html">
-   13. 고급 넘파이
+   14. 고급 넘파이
   </a>
  </li>
 </ul>
@@ -181,17 +183,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_1.html">
-   14. 판다스 데이터프레임
+   15. 판다스 데이터프레임
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_2.html">
-   15. 데이터프레임 핵심
+   16. 데이터프레임 핵심
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_3.html">
-   16. 판다스 활용: 통계 기초
+   17. 판다스 활용: 통계 기초
   </a>
  </li>
 </ul>
@@ -203,17 +205,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="visualization_1.html">
-   17. matplotlib.pyplot 1부
+   18. matplotlib.pyplot 1부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="visualization_2.html">
-   18. matplotlib.pyplot 2부
+   19. matplotlib.pyplot 2부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="visualization_3.html">
-   19. seaborn
+   20. seaborn
   </a>
  </li>
 </ul>
@@ -225,7 +227,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="data_aggregation_grouping.html">
-   20. 데이터 집계와 그룹 생성
+   21. 데이터 집계와 그룹 생성
   </a>
  </li>
 </ul>
@@ -237,7 +239,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="timeseries.html">
-   21. 시계열 데이터
+   22. 시계열 데이터
   </a>
  </li>
 </ul>
@@ -415,6 +417,11 @@ const thebe_selector_output = ".output, .cell_output"
    3.8. 날짜와 시간
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   3.9. 연습문제
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -499,6 +506,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
    3.8. 날짜와 시간
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   3.9. 연습문제
   </a>
  </li>
 </ul>
@@ -1557,6 +1569,12 @@ f-문자열은 문자열 앞에 영어 알파벳 f를 추가하기만 하면 되
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">3.9. </span>연습문제<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><a class="reference external" href="https://colab.research.google.com/github/codingalzi/pybook/blob/master/practices/practice-datatypes.ipynb">(실습) 기초 자료형</a></p></li>
+</ol>
 </div>
 </div>
 

@@ -221,3 +221,8 @@ while x > 0:
     
 print(total)
 
+
+# ## 연습문제
+
+# 1. [(실습) 조건문](https://colab.research.google.com/github/codingalzi/pybook/blob/master/practices/practice-conditionals.ipynb)
+# 1. [(실습) 반복문](https://colab.research.google.com/github/codingalzi/pybook/blob/master/practices/practice-iterations.ipynb)

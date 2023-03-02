@@ -658,3 +658,7 @@ strings
 strings.sort(key=lambda x: len(set(x)))
 strings
 
+
+# ## 연습문제
+
+# 1. [(실습) 함수](https://colab.research.google.com/github/codingalzi/pybook/blob/master/practices/practice-functions.ipynb)
