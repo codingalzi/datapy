@@ -848,6 +848,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
+# :::{admonition} 모듈, 패키지, 라이브러리, 프레임워크
+# :class: info
+# 
+# 하나의 모듈이 독립적으로 제공되기도 하지만 다른 모듈과 함께 하나의 모음집으로 제공되기도 한다.
+# 모음의 크기와 용도에 따라 패키지, 라이브러리, 프레임워크 등 다양한 이름으로 불린다.
+# 보다 자세한 내용은 [파이썬 프로그래밍 기초: 모듈](https://codingalzi.github.io/pybook/modules.html)을 참고한다.
+# :::
+
 # ## 불변 객체 대 가변 객체
 
 # **가변 객체**
