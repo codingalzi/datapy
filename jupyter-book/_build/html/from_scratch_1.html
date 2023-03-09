@@ -580,7 +580,7 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">addV</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span>
     <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>   <span class="c1"># 두 벡터의 길이가 같은 경우만 취급</span>
 
-    <span class="k">return</span> <span class="p">[</span><span class="n">u_i</span> <span class="o">+</span> <span class="n">v_i</span> <span class="k">for</span> <span class="n">u_i</span><span class="p">,</span> <span class="n">v_i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">v</span><span class="p">)]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">u_i</span> <span class="o">+</span> <span class="n">v_i</span> <span class="k">for</span> <span class="n">u_i</span><span class="p">,</span> <span class="n">v_i</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -592,7 +592,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-4, 10]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 6]
 </pre></div>
 </div>
 </div>
@@ -604,7 +604,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[132, 326, 100]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[136, 333, 100]
 </pre></div>
 </div>
 </div>
@@ -616,7 +616,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[170, 164, 158, 164]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[180, 162, 154, 144]
 </pre></div>
 </div>
 </div>
@@ -1227,7 +1227,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.914588363483487
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.426816246941929
 </pre></div>
 </div>
 </div>
@@ -1239,7 +1239,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6087188984788354
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5822532467952878
 </pre></div>
 </div>
 </div>
@@ -1273,11 +1273,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.89935835178381, 0.5996600226392395, 0.47777178468341985],
- [0.7471887634305603, 0.6355475853859575, 0.509421064315888],
- [0.23539521781586048, 0.5294332135180552, 0.9599734506079116],
- [0.5317845950781236, 0.8497998528328882, 0.582188659070022],
- [0.7435298489693514, 0.2945681337188899, 0.200372951020236]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.4250345294261465, 0.591234539081121, 0.7286566060089472],
+ [0.5551896008914404, 0.21710340191101063, 0.9569002575266226],
+ [0.8684535343441199, 0.5265097086276581, 0.6807747022507631],
+ [0.4992862731197627, 0.753308241740813, 0.29338279514180865],
+ [0.9168969643821445, 0.880962192463817, 0.7291531687748021]]
 </pre></div>
 </div>
 </div>
@@ -1309,11 +1309,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.05, 0.99, 0.06],
- [0.8, 0.59, 0.86],
- [0.19, 0.57, 0.25],
- [0.73, 0.07, 0.61],
- [0.47, 0.28, 0.51]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.31, 0.13, 0.66],
+ [0.08, 0.98, 0.67],
+ [0.96, 0.59, 0.77],
+ [0.81, 0.87, 0.15],
+ [0.32, 0.84, 0.37]]
 </pre></div>
 </div>
 </div>
@@ -1326,11 +1326,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.48465, 0.50702, 0.5237],
- [0.71128, 0.84274, 0.39961],
- [0.92051, 0.39044, 0.28672],
- [0.45261, 0.30788, 0.85678],
- [0.95789, 0.64125, 0.37333]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.21757, 0.21694, 0.9153],
+ [0.06699, 0.36234, 0.54452],
+ [0.32412, 0.61217, 0.4515],
+ [0.04484, 0.89316, 0.02576],
+ [0.53168, 0.30809, 0.49588]]
 </pre></div>
 </div>
 </div>
@@ -1343,11 +1343,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.651, 0.58245, 0.36457],
- [0.50894, 0.71434, 0.4685],
- [0.3403, 0.78649, 0.70961],
- [0.05645, 0.322, 0.45045],
- [0.97949, 0.60153, 0.77189]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.59103, 0.59203, 0.97158],
+ [0.03603, 0.74182, 0.31813],
+ [0.12868, 0.65413, 0.83056],
+ [0.76011, 0.51462, 0.93321],
+ [0.42066, 0.46243, 0.39069]]
 </pre></div>
 </div>
 </div>

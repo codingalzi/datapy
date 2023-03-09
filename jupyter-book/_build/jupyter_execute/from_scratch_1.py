@@ -92,7 +92,7 @@ grades2 = [85, 82, 79, 82]
 def addV(u, v):
     assert len(u) == len(v)   # 두 벡터의 길이가 같은 경우만 취급
 
-    return [u_i + v_i for u_i, v_i in zip(v, v)]
+    return [u_i + v_i for u_i, v_i in zip(u, v)]
 
 
 # In[5]:
