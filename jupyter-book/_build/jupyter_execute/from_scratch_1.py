@@ -7,7 +7,7 @@
 # **참고** 
 # 
 # 여기서 사용하는 코드는 조엘 그루스(Joel Grus)의 
-# [밑다닥부터 시작하는 데이터 과학](https://github.com/joelgrus/data-science-from-scratch) 
+# [밑바닥부터 시작하는 데이터 과학](https://github.com/joelgrus/data-science-from-scratch) 
 # 4장에 사용된 소스코드의 일부를 기반으로 작성되었다.
 
 # **주요 내용**

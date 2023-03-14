@@ -1529,130 +1529,6 @@ list(set([2, 2, 2, 1, 3, 3]))
 tuple(set((2, 2, 2, 1, 3, 3)))
 
 
-# **집합의 항목 추가/삭제**
-
-# 집합은 변경이 가능하다. 
-# 항목 추가는 `add()` 메서드를 활용한다.
-
-# In[141]:
-
-
-a_set = {1, 2, 3}
-a_set.add(4)
-
-a_set
-
-
-# 항목 삭제는 `remove()` 메서드를 이용한다.
-# `remove()` 메서드는 원소를 삭제하지만, 삭제된 값을 반환하지는 않는다.
-# 실제 반환값은 `None`이다.
-
-# In[142]:
-
-
-a_set.remove(4)
-
-
-# In[143]:
-
-
-a_set
-
-
-# 없는 항목을 삭제하려 하면 오류가 발생한다.
-
-# ```python
-# In [13]: a_set.remove(4)
-# ---------------------------------------------------------------------------
-# KeyError                                  Traceback (most recent call last)
-# Input In [13], in <cell line: 1>()
-# ----> 1 a_set.remove(4)
-# 
-# KeyError: 4
-# ```
-
-# **합집합 연산**
-
-# `union()` 메서드는 두 집합의 합집합을 반환한다.
-# 
-# __참고:__ 엄밀히 따지면 `a.union(b)`는 집합 `a`에 집합 `b`의 원소를 추가하는 방식으로
-# 새로운 집합을 생성한다.
-
-# In[144]:
-
-
-a = {1, 2, 3, 4, 5}
-b = {3, 4, 5, 6, 7, 8}
-
-
-# In[145]:
-
-
-a.union(b)
-
-
-# 이항 연산자 `|`가 합집합 연산을수행한다.
-
-# In[146]:
-
-
-a | b
-
-
-# **교집합 연산**
-
-# `intersection()` 메서드는 두 집합의 교집합을 반환한다.
-# 
-# __참고:__ 엄밀히 따지면 `a.intersection(b)`는 집합 `a`의 원소 중에서 집합 `b`에 속한
-# 원소만을 모아 새로운 집합을 생성한다.
-
-# In[147]:
-
-
-a.intersection(b)
-
-
-# 이항 연산자 `&`가 교집합 연산을수행한다.
-
-# In[148]:
-
-
-a & b
-
-
-# 합집합, 교집합 연산은 기존의 집합은 변경하지 않으면서 새로운 집합을 생성한다.
-
-# In[149]:
-
-
-a
-
-
-# In[150]:
-
-
-b
-
-
-# **부분집합 여부 판단**
-
-# `issubset()` 메서드를 이용한다.
-
-# In[151]:
-
-
-a_set = {1, 2, 3, 4, 5}
-{1, 2, 3}.issubset(a_set)
-
-
-# `issuperset()` 메서드는 상위집합(superset) 여부를 판단한다.
-
-# In[152]:
-
-
-a_set.issuperset({1, 2, 3})
-
-
 # **집합 원소의 자료형**
 
 # 사전의 키의 경우처럼 집합의 원소는 모두 해시 가능이어야 한다.
@@ -1687,7 +1563,7 @@ a_set.issuperset({1, 2, 3})
 # 
 # 여기서 집합 기호를 대괄호로 바꾸면 거의 바로 리스트 조건제시법이 된다.
 
-# In[153]:
+# In[141]:
 
 
 a_list = [x for x in range(0, 10) if x%2 == 0]
@@ -1697,7 +1573,7 @@ a_list
 
 # '위 조건제시법은 아래 `for` 반복문을 활용한 아래 코드와 동일하다.
 
-# In[154]:
+# In[142]:
 
 
 a_list = []
@@ -1716,7 +1592,7 @@ a_list
 # 
 # * '단', 즉, 조건에 해당하는 부분은 `if` 조건문으로 처리한다.
 
-# In[155]:
+# In[143]:
 
 
 strings = ['a', 'as', 'bat', 'car', 'dove', 'python']
@@ -1729,7 +1605,7 @@ strings = ['a', 'as', 'bat', 'car', 'dove', 'python']
 # 집합에 대한 조건제시법 사용도 유사하다.
 # 아래 코드는 앞서 사용된 문자열들의 길이를 원소로 갖는 집합을 생성한다.
 
-# In[156]:
+# In[144]:
 
 
 unique_lengths = {len(x) for x in strings}
@@ -1742,7 +1618,7 @@ unique_lengths
 # 조건제시법을 이용하여 사전을 생성하는 과정도 유사하다.
 # 아래 코드는 앞서 사용된 문자열을 키로, 문자열의 길이를 값으로 하는 사전을 생성한다.
 
-# In[157]:
+# In[145]:
 
 
 len_mapping = {val : len(val) for val in strings}
@@ -1752,7 +1628,7 @@ len_mapping
 
 # 아래 코드는 앞서 사용된 문자열을 키로, 문자열의 인덱스를 값으로 하는 사전을 생성한다.
 
-# In[158]:
+# In[146]:
 
 
 loc_mapping = {val : index for index, val in enumerate(strings)}
@@ -1766,7 +1642,7 @@ loc_mapping
 
 # 아래 리스트는 중첩 리스트이다.
 
-# In[159]:
+# In[147]:
 
 
 all_data = [['John', 'Emily', 'Michael', 'Mary', 'Steven'],
@@ -1778,7 +1654,7 @@ all_data = [['John', 'Emily', 'Michael', 'Mary', 'Steven'],
 # 
 # 먼저, 첫째 리스트를 대상으로 한다.
 
-# In[160]:
+# In[148]:
 
 
 [name for name in all_data[0] if name.count('n') >= 1]
@@ -1786,7 +1662,7 @@ all_data = [['John', 'Emily', 'Michael', 'Mary', 'Steven'],
 
 # 둘째 리스트가 대상이면 다음과 같다.
 
-# In[161]:
+# In[149]:
 
 
 [name for name in all_data[1] if name.count('n') >= 1]
@@ -1797,7 +1673,7 @@ all_data = [['John', 'Emily', 'Michael', 'Mary', 'Steven'],
 # 
 # * `all_data[i]` 대신에 `item`을 사용하여 `all_data` 의 항목을 순환하도록 한다.
 
-# In[162]:
+# In[150]:
 
 
 result = []
@@ -1811,7 +1687,7 @@ result
 # 이와 같이 `for` 반복문 안에 리스트 조건제시법이 사용된 경우 
 # 이중 조건제시법을 사용할 수 있다.
 
-# In[163]:
+# In[151]:
 
 
 result = [name for item in all_data for name in item if name.count('n') >= 1]
@@ -1826,13 +1702,13 @@ result
 # 중첩 조건제시법이 매우 유용하다.
 # 이렇게 중첩 사용된 모음 자료형을 1차원 리스트로 단순화 시키는 작업을 영어로 **flatten**이라 한다.
 
-# In[164]:
+# In[152]:
 
 
 some_tuples = [(1, 2, 3), (4, 5, 6), (7, 8, 9)]
 
 
-# In[165]:
+# In[153]:
 
 
 flattened = [x for tup in some_tuples for x in tup]
@@ -1842,7 +1718,7 @@ flattened
 
 # 위 조건제시법이 작동하는 과정을 아래 `for` 반복문이 설명한다.
 
-# In[166]:
+# In[154]:
 
 
 flattened = []
@@ -1856,7 +1732,7 @@ for tup in some_tuples:
 
 # 아래 코드는 항목으로 사용된 튜플을 모두 리스트로 변환하여 중첩 리스트를 생성한다.
 
-# In[167]:
+# In[155]:
 
 
 [[x for x in tup] for tup in some_tuples]

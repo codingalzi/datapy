@@ -38,12 +38,9 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -492,7 +489,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span id="id1"></span><h1><span class="section-number">8. </span>선형대수 기초<a class="headerlink" href="#sec-from-scratch-1" title="Permalink to this headline">¶</a></h1>
 <p><strong>참고</strong></p>
 <p>여기서 사용하는 코드는 조엘 그루스(Joel Grus)의
-<a class="reference external" href="https://github.com/joelgrus/data-science-from-scratch">밑다닥부터 시작하는 데이터 과학</a>
+<a class="reference external" href="https://github.com/joelgrus/data-science-from-scratch">밑바닥부터 시작하는 데이터 과학</a>
 4장에 사용된 소스코드의 일부를 기반으로 작성되었다.</p>
 <p><strong>주요 내용</strong></p>
 <p>선형대수의 주요 개념인 벡터와 행렬을 각각 1차원과 2차원 리스트로 구현하여 실용적으로 사용하는 과정을 살펴본다.
@@ -1227,7 +1224,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.426816246941929
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.08595500895319907
 </pre></div>
 </div>
 </div>
@@ -1239,7 +1236,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5822532467952878
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3363147858781321
 </pre></div>
 </div>
 </div>
@@ -1273,11 +1270,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.4250345294261465, 0.591234539081121, 0.7286566060089472],
- [0.5551896008914404, 0.21710340191101063, 0.9569002575266226],
- [0.8684535343441199, 0.5265097086276581, 0.6807747022507631],
- [0.4992862731197627, 0.753308241740813, 0.29338279514180865],
- [0.9168969643821445, 0.880962192463817, 0.7291531687748021]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.018922415779722646, 0.3675245682770609, 0.8212549461859239],
+ [0.27179872692727947, 0.0832167357583331, 0.6716343128863317],
+ [0.0437014993759296, 0.790498916333811, 0.7837234843530347],
+ [0.9575612356969287, 0.23003618634601442, 0.9239225472626141],
+ [0.9697247886599982, 0.8816749651258681, 0.6005372307875246]]
 </pre></div>
 </div>
 </div>
@@ -1309,11 +1306,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.31, 0.13, 0.66],
- [0.08, 0.98, 0.67],
- [0.96, 0.59, 0.77],
- [0.81, 0.87, 0.15],
- [0.32, 0.84, 0.37]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.42, 0.02, 0.13],
+ [0.99, 0.04, 0.23],
+ [0.22, 0.34, 0.65],
+ [0.09, 0.12, 0.74],
+ [0.67, 0.73, 0.41]]
 </pre></div>
 </div>
 </div>
@@ -1326,11 +1323,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.21757, 0.21694, 0.9153],
- [0.06699, 0.36234, 0.54452],
- [0.32412, 0.61217, 0.4515],
- [0.04484, 0.89316, 0.02576],
- [0.53168, 0.30809, 0.49588]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.58767, 0.46949, 0.33359],
+ [0.89593, 0.08803, 0.34226],
+ [0.61963, 0.81201, 0.06536],
+ [0.92388, 0.30337, 0.70452],
+ [0.14596, 0.51416, 0.28228]]
 </pre></div>
 </div>
 </div>
@@ -1343,11 +1340,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.59103, 0.59203, 0.97158],
- [0.03603, 0.74182, 0.31813],
- [0.12868, 0.65413, 0.83056],
- [0.76011, 0.51462, 0.93321],
- [0.42066, 0.46243, 0.39069]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.02237, 0.47037, 0.57951],
+ [0.52982, 0.05289, 0.18138],
+ [0.14614, 0.42926, 0.4669],
+ [0.09143, 0.07445, 0.56448],
+ [0.79536, 0.94913, 0.8367]]
 </pre></div>
 </div>
 </div>
