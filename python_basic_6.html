@@ -1022,8 +1022,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="id6">
 <h2><span class="section-number">6.5. </span>고계 함수<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
-<p>함수가 제1종 객체이기 때문에 함수를 다른 함수의 인자 또는 반환값으로 사용할 수 있다.
-예를 들어, 아래 함수는 인자로 들어오는 함수를 정수 1과 함께 호출하여 반환된 값에 1을 더한 값을 반환한다.</p>
+<p>함수가 제1종 객체이기 때문에 함수를 다른 함수의 인자 또는 반환값으로 사용할 수 있다.</p>
+<p><strong>예제</strong></p>
+<p>아래 함수는 인자로 들어오는 함수를 정수 1과 함께 호출하여 반환된 값에 1을 더한 값을 반환한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">higher_func1</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
@@ -1054,46 +1055,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">higher_func1()</span></code> 처럼 함수를 인자로 받거나 반환하는 함수를 <strong>고계 함수</strong>(higher-order function)라 한다.</p>
-</div>
-<div class="section" id="id7">
-<h2><span class="section-number">6.6. </span>람다 함수<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<p>람다 함수는 이름 없이 정의된 함수를 의미한다.
-k개의 인자를 받는 함수를 람다 함수로 정의하는 양식은 아래와 같다.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">lambda</span> <span class="n">변수1</span><span class="p">,</span> <span class="n">변수2</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">변수k</span><span class="p">:</span> <span class="n">반환값</span>
-</pre></div>
-</div>
-<p><strong>주의사항:</strong> 반환값을 지정할 때 <code class="docutils literal notranslate"><span class="pre">return</span></code> 키워드가 사용되지 않는다.</p>
 <p><strong>예제</strong></p>
-<p>예를 들어 두 수의 합을 반환하는 함수는 다음과 같이 정의한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.&lt;lambda&gt;(x, y)&gt;
-</pre></div>
-</div>
-</div>
-</div>
-<p>람다 함수는 이름이 없기 때문에 사용하려면 항상 람다 함수 자체를 하나의 이름처럼 사용해야 한다.
-예를 들어, 2와 4를 더하려면 다음과 같이 사용한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>예제</strong></p>
-<p>예를 들어, 아래 고계 함수는 숫자 <code class="docutils literal notranslate"><span class="pre">x</span></code>가 인자로 들어오면
+<p>아래 함수는 숫자 <code class="docutils literal notranslate"><span class="pre">x</span></code>가 인자로 들어오면
 그 <code class="docutils literal notranslate"><span class="pre">x</span></code>를 자신의 인자 <code class="docutils literal notranslate"><span class="pre">y</span></code>와 더한 값을 반환하는 함수 <code class="docutils literal notranslate"><span class="pre">f()</span></code>를 반환한다.
 즉, 함수 내에서 다른 함수를 정의하고 그 함수를 반환값으로 지정한다.</p>
 <div class="cell docutils container">
@@ -1139,7 +1102,47 @@ k개의 인자를 받는 함수를 람다 함수로 정의하는 양식은 아�
 </div>
 </div>
 </div>
-<p>그런데 <code class="docutils literal notranslate"><span class="pre">higher_func2()</span></code> 함수의 본문에서
+<p><code class="docutils literal notranslate"><span class="pre">higher_func1()</span></code>과 <code class="docutils literal notranslate"><span class="pre">higher_func2()</span></code> 처럼 함수를 인자로 받거나 반환하는 함수를
+<strong>고계 함수</strong><font size='2'>higher-order function</font>라 한다.</p>
+</div>
+<div class="section" id="id7">
+<h2><span class="section-number">6.6. </span>람다 함수<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p>람다 함수는 이름 없이 정의된 함수를 의미한다.
+k개의 인자를 받는 함수를 람다 함수로 정의하는 양식은 아래와 같다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">lambda</span> <span class="n">변수1</span><span class="p">,</span> <span class="n">변수2</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">변수k</span><span class="p">:</span> <span class="n">반환값</span>
+</pre></div>
+</div>
+<p><strong>주의사항:</strong> 반환값을 지정할 때 <code class="docutils literal notranslate"><span class="pre">return</span></code> 키워드가 사용되지 않는다.</p>
+<p><strong>예제</strong></p>
+<p>예를 들어 두 수의 합을 반환하는 함수는 다음과 같이 정의한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.&lt;lambda&gt;(x, y)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>람다 함수는 이름이 없기 때문에 사용하려면 항상 람다 함수 자체를 하나의 이름처럼 사용해야 한다.
+예를 들어, 2와 4를 더하려면 다음과 같이 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>예제</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">higher_func2()</span></code> 함수의 본문에서
 정의된 함수 <code class="docutils literal notranslate"><span class="pre">f()</span></code>는 함수의 리턴값으로만 사용되며
 다른 곳에서는 전혀 사용할 수 없다.
 이처럼 한 번만 사용할 함수를 정의하기 위해 굳이 이름을 줄 필요가 없으며,
