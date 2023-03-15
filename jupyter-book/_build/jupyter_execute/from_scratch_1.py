@@ -181,7 +181,7 @@ subtractV(height_weight_age1, height_weight_age2)
 # 차원이 같은 벡터 두 개의 항목별 곱셈은 같은 위치에 있는 항목끼기 곱한 결과로 이루어진 벡터를 생성한다.
 # 
 # $$
-# [u_1, \cdots, u_n] \cdot [v_1, \cdots, v_n] = [u_1 \cdot v_1, \cdots, u_n \cdot v_n]
+# [u_1, \cdots, u_n] \ast [v_1, \cdots, v_n] = [u_1 \ast v_1, \cdots, u_n \ast v_n]
 # $$
 # 
 # 차원이 같은 두 벡터의 항목별 곱셈을 실행하는 함수는 다음과 같다.
@@ -244,7 +244,7 @@ divideV(grades1, grades2)
 # 스칼라 곱셈은 벡터의 각 항목을 지정된 수로 곱한다.
 # 
 # $$
-# c \cdot [u_1, \cdots, u_n] = [c\cdot u_1, \cdots, c\cdot u_n]
+# c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 # $$
 
 # 벡터의 각 항목에 동일한 부동소수점을 곱한 결과를 반환하는 함수는 다음과 같다.
@@ -273,8 +273,8 @@ scalar_multiplyV(2, [1, 2, 3])
 # 3개의 2차원 벡터들의 평균은 아래와 같이 작동한다.
 # 
 # $$
-# \frac 1 3 \cdot (\, [1, 2] + [2, 1] + [2, 3]\, ) 
-# =  \frac 1 3 \cdot [1+2+2, 2+1+3]
+# \frac 1 3 \ast (\, [1, 2] + [2, 1] + [2, 3]\, ) 
+# =  \frac 1 3 \ast [1+2+2, 2+1+3]
 # = [5/3, 2]
 # $$
 # :::
@@ -310,8 +310,8 @@ meanV([[3, 2, 6], [2, 5, 9], [7, 5, 1], [6, 3, 4]])
 # 
 # $$
 # [u_1, \cdots, u_n] \cdot [v_1, \cdots, v_n]
-# = \sum_{i=1}^n u_i\cdot v_i 
-# = u_1\cdot v_1 + \cdots + u_n\cdot v_n
+# = \sum_{i=1}^n u_i\ast v_i 
+# = u_1\ast v_1 + \cdots + u_n\ast v_n
 # $$
 
 # **벡터 내적 함수**
@@ -515,10 +515,12 @@ get_row(A, 0)
 get_column(B, 1)
 
 
-# **$i$ 행, $j$ 열의 항목**
-
+# :::{admonition} $i$ 행, $j$ 열의 항목
+# :class: info
+# 
 # 행렬 $M$의 $i$ 행, $j$ 열의 항목은 $i$ 번 인덱스 행의, $j$ 번 인덱스 열에 위치한 값을 가리키며
 # $M_{i, j}$로 표기한다.
+# :::
 
 # ### 행렬 초기화
 
@@ -838,9 +840,9 @@ subtractM(C, D)
 # (2, 3) 모양의 행렬의 스칼라 곱셈은 다음과 같다.
 # 
 # $$
-# 2\cdot 
+# 2\ast 
 # \begin{bmatrix}1&8&-3\\4&-2&5\end{bmatrix}
-# = \begin{bmatrix}2\cdot 1&2\cdot 8&2\cdot -3\\2\cdot 4&2\cdot -2&2\cdot 5\end{bmatrix}
+# = \begin{bmatrix}2\ast 1&2\ast 8&2\ast -3\\2\ast 4&2\ast -2&2\ast 5\end{bmatrix}
 # = \begin{bmatrix}2&16&-6\\8&-4&10\end{bmatrix}
 # $$
 
@@ -888,7 +890,7 @@ scalar_multiplyM(2, C)
 # \end{bmatrix}
 # &=
 # \begin{bmatrix}
-#     (1\cdot 3+0\cdot 2+2\cdot 1)&(1\cdot 1+0\cdot 1+2\cdot 0)\\(-1\cdot 3+3\cdot 2+1\cdot 1)&(-1\cdot 1+3\cdot 1+1\cdot 0)
+#     (1\ast 3+0\ast 2+2\ast 1)&(1\ast 1+0\ast 1+2\ast 0)\\(-1\ast 3+3\ast 2+1\ast 1)&(-1\ast 1+3\ast 1+1\ast 0)
 # \end{bmatrix} \\[.5ex]
 # &= 
 # \begin{bmatrix}
@@ -946,7 +948,7 @@ matmul(A, B)
 # \begin{bmatrix}
 #     3&1 \\
 #     2&1 \\
-#     1&0
+# 1&0
 # \end{bmatrix}
 # \cdot
 # \begin{bmatrix}
@@ -955,9 +957,9 @@ matmul(A, B)
 # \end{bmatrix}
 # =
 # \begin{bmatrix}
-#     (3\cdot 1+1\cdot 0)&(3\cdot 0+1\cdot 1) \\
-#     (2\cdot 1+1\cdot 0)&(2\cdot 0+1\cdot 1) \\
-#     (1\cdot 1+0\cdot 0)&(1\cdot 0+0\cdot 1) \\
+#     (3\ast 1+1\ast 0)&(3\ast 0+1\ast 1) \\
+#     (2\ast 1+1\ast 0)&(2\ast 0+1\ast 1) \\
+#     (1\ast 1+0\ast 0)&(1\ast 0+0\ast 1) \\
 # \end{bmatrix}
 # = 
 # \begin{bmatrix}
