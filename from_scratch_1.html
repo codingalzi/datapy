@@ -629,6 +629,8 @@ title="Print to PDF"
 이를 위해 <a class="reference internal" href="python_basic_5.html#sec-list-comprehension"><span class="std std-ref">조건제시법</span></a>을 많이 활용한다.
 앞으로 <a class="reference internal" href="numpy_1.html#sec-numpy-1"><span class="std std-ref">넘파이 어레이</span></a>에서 배울 <code class="docutils literal notranslate"><span class="pre">numpy.array</span></code> 자료형이 제공하는 다양한 기능에 대한 보다 깊은 이해에
 도움될 것으로 기대한다.</p>
+<p><strong>슬라이드</strong></p>
+<p>본문 내용을 요약한 <a class="reference external" href="https://github.com/codingalzi/datapy/raw/master/slides/slides-from_scratch_1.pdf">슬라이드</a>를 다운로드할 수 있다.</p>
 <section id="id2">
 <h2><span class="section-number">8.1. </span>벡터<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>벡터는 유한 개의 값으로 구성된다.
@@ -1370,7 +1372,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8092514452085526
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7093394873194429
 </pre></div>
 </div>
 </div>
@@ -1382,7 +1384,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.35100022729776426
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6605190903563884
 </pre></div>
 </div>
 </div>
@@ -1416,11 +1418,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.0373348976992498, 0.2621386723020315, 0.3614480927553141],
- [0.5364873042071814, 0.9647468606423002, 0.2557627774244623],
- [0.8336164281032853, 0.5400712507415031, 0.9453411038921531],
- [0.6049152550249094, 0.22022218615768985, 0.757816622841065],
- [0.24549197917102683, 0.36321586866871514, 0.5612752342001703]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.7289043930494561, 0.041834789552394835, 0.35768364925977214],
+ [0.8689413356595899, 0.7930571982788922, 0.2602859201357388],
+ [0.5983177167557423, 0.6401402989375592, 0.6988911057354407],
+ [0.6320848184716835, 0.5920392501519827, 0.9492955520719671],
+ [0.8219432127708189, 0.5194982837912838, 0.7164027077540822]]
 </pre></div>
 </div>
 </div>
@@ -1452,11 +1454,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.68, 0.15, 0.47],
- [0.71, 0.54, 0.57],
- [0.7, 0.11, 0.7],
- [0.1, 0.12, 0.4],
- [0.25, 0.92, 0.14]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.66, 0.02, 0.83],
+ [0.43, 0.87, 0.74],
+ [0.43, 0.65, 0.02],
+ [0.04, 0.7, 0.94],
+ [0.29, 0.35, 0.64]]
 </pre></div>
 </div>
 </div>
@@ -1469,11 +1471,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.96222, 0.2608, 0.85533],
- [0.01929, 0.16334, 0.67247],
- [0.33845, 0.17006, 0.73965],
- [0.99898, 0.9152, 0.03188],
- [0.50984, 0.19533, 0.25513]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.44607, 0.14389, 0.77314],
+ [0.5996, 0.82834, 0.71421],
+ [0.36324, 0.36335, 0.19402],
+ [0.97861, 0.52015, 0.92721],
+ [0.26341, 0.47157, 0.06554]]
 </pre></div>
 </div>
 </div>
@@ -1486,11 +1488,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.87152, 0.79893, 0.22998],
- [0.10916, 0.85397, 0.26927],
- [0.2832, 0.36815, 0.29853],
- [0.74386, 0.33105, 0.39323],
- [0.63881, 0.38489, 0.46085]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.45094, 0.90726, 0.95005],
+ [0.32634, 0.97357, 0.73976],
+ [0.25033, 0.67482, 0.31495],
+ [0.96976, 0.37136, 0.43849],
+ [0.75078, 0.45576, 0.14547]]
 </pre></div>
 </div>
 </div>
