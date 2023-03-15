@@ -181,7 +181,7 @@ subtractV(height_weight_age1, height_weight_age2)
 # 차원이 같은 벡터 두 개의 항목별 곱셈은 같은 위치에 있는 항목끼기 곱한 결과로 이루어진 벡터를 생성한다.
 # 
 # $$
-# [u_1, \cdots, u_n] \ast [v_1, \cdots, v_n] = [u_1 \ast v_1, \cdots, u_n \ast v_n]
+# [u_1, \cdots, u_n] \cdot [v_1, \cdots, v_n] = [u_1 \cdot v_1, \cdots, u_n \cdot v_n]
 # $$
 # 
 # 차원이 같은 두 벡터의 항목별 곱셈을 실행하는 함수는 다음과 같다.
@@ -244,7 +244,7 @@ divideV(grades1, grades2)
 # 스칼라 곱셈은 벡터의 각 항목을 지정된 수로 곱한다.
 # 
 # $$
-# c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
+# c \cdot [u_1, \cdots, u_n] = [c\cdot u_1, \cdots, c\cdot u_n]
 # $$
 
 # 벡터의 각 항목에 동일한 부동소수점을 곱한 결과를 반환하는 함수는 다음과 같다.
@@ -273,8 +273,8 @@ scalar_multiplyV(2, [1, 2, 3])
 # 3개의 2차원 벡터들의 평균은 아래와 같이 작동한다.
 # 
 # $$
-# \frac 1 3 \ast (\, [1, 2] + [2, 1] + [2, 3]\, ) 
-# =  \frac 1 3 \ast [1+2+2, 2+1+3]
+# \frac 1 3 \cdot (\, [1, 2] + [2, 1] + [2, 3]\, ) 
+# =  \frac 1 3 \cdot [1+2+2, 2+1+3]
 # = [5/3, 2]
 # $$
 # :::
@@ -297,6 +297,12 @@ def meanV(vectors):
 meanV([[3, 2], [2, 5], [7, 5], [6, 3]])
 
 
+# In[23]:
+
+
+meanV([[3, 2, 6], [2, 5, 9], [7, 5, 1], [6, 3, 4]])
+
+
 # ### 벡터 내적과 크기
 
 # 차원이 같은 벡터 두 개의 내적은 같은 위치에 있는 항목끼기 곱한 후 모두 더한 값이다.
@@ -304,15 +310,15 @@ meanV([[3, 2], [2, 5], [7, 5], [6, 3]])
 # 
 # $$
 # [u_1, \cdots, u_n] \cdot [v_1, \cdots, v_n]
-# = \sum_{i=1}^n u_i\ast v_i 
-# = u_1\ast v_1 + \cdots + u_n\ast v_n
+# = \sum_{i=1}^n u_i\cdot v_i 
+# = u_1\cdot v_1 + \cdots + u_n\cdot v_n
 # $$
 
 # **벡터 내적 함수**
 # 
 # 동일 차원의 두 벡터의 내적을 반환하는 함수는 다음과 같다.
 
-# In[23]:
+# In[24]:
 
 
 def dotV(v, w):
@@ -321,7 +327,7 @@ def dotV(v, w):
     return sum(v_i * w_i for v_i, w_i in zip(v, w))
 
 
-# In[24]:
+# In[25]:
 
 
 dotV([1, 2, 3], [4, 5, 6])
@@ -346,7 +352,7 @@ dotV([1, 2, 3], [4, 5, 6])
 # 
 # 제곱근은 `math` 모듈의 `sqrt()` 함수를 이용한다.
 
-# In[25]:
+# In[26]:
 
 
 import math
@@ -356,7 +362,7 @@ def norm(v):
     return math.sqrt(sum_of_squares)
 
 
-# In[26]:
+# In[27]:
 
 
 norm([3, 4])
@@ -369,7 +375,7 @@ norm([3, 4])
 # 대부분의 프로그래밍 언어에서 행렬을 리스트의 리스트, 즉 2중 리스트로 구현한다.
 # 예를 들어 아래 코드에서 `A`는 $2 \times 3$ 행렬이고, `B`는 $3 \times 2$ 행렬이다.
 
-# In[27]:
+# In[28]:
 
 
 # 2x3 행렬
@@ -378,7 +384,7 @@ A = [[1, 2, 3],
      [4, 5, 6]]
 
 
-# In[28]:
+# In[29]:
 
 
 # 3x2 행렬
@@ -434,14 +440,9 @@ B = [[1, 2],
 # \end{bmatrix}
 # $$
 
-# 아래 그림은 행렬의 행과 열의 인덱스를 보여준다.
-
-# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Matrix_row-column.jpg" width="50%"></div>
-# <br>
-
 # 아래 `shape()` 함수는 주어진 행렬의 모양을 튜플로 반환한다.
 
-# In[29]:
+# In[30]:
 
 
 def shape(M):
@@ -455,23 +456,28 @@ def shape(M):
     return num_rows, num_cols
 
 
-# In[30]:
+# In[31]:
 
 
 shape(A)
 
 
-# In[31]:
+# In[32]:
 
 
 shape(B)
 
 
 # **행벡터와 열벡터**
-# 
-# 아래 두 함수는 각각 지정된 행와 지정된 열의 항목들로 구성된 행벡터와 열벡터를 반환한다.
 
-# In[32]:
+# 아래 그림은 행렬의 행과 열의 인덱스를 보여준다.
+
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/Matrix_row-column.jpg" width="50%"></div>
+# <br>
+
+# 아래 두 함수는 각각 지정된 인덱스의 행과 지정된 인덱스의 열의 항목들로 구성된 행벡터와 열벡터를 반환한다.
+
+# In[33]:
 
 
 # i번 행벡터
@@ -495,7 +501,7 @@ def get_column(M, j):
 
 # 행렬 `A`의 0번 행은 다음과 같다.
 
-# In[33]:
+# In[34]:
 
 
 get_row(A, 0)
@@ -503,7 +509,7 @@ get_row(A, 0)
 
 # 행렬 `B`의 1번 열은 다음과 같다.
 
-# In[34]:
+# In[35]:
 
 
 get_column(B, 1)
@@ -526,7 +532,7 @@ get_column(B, 1)
 #     * `entry_fn`: i, j가 주어지면 i행, j열에 위치한 항목 계산
 # * 반환값: 지정된 방식으로 계산된 (i, j) 모양의 행렬
 
-# In[35]:
+# In[36]:
 
 
 def make_matrix(n, m, entry_fn):
@@ -541,7 +547,7 @@ def make_matrix(n, m, entry_fn):
 
 # **0-행렬**
 # 
-# 0-행렬<font size='2'>zero matrix</font>이란 행렬의 모든 원소의 값이 0인 행렬을 말한다.
+# 0-행렬<font size='2'>zero matrix</font>은 0으로 채워진 행렬이다.
 # 아래 행렬은 (3, 2) 모양의 0-행렬이다.
 # 
 # $$
@@ -554,7 +560,7 @@ def make_matrix(n, m, entry_fn):
 
 # 지정된 모양의 0-행렬을 생성하는 함수는 다음과 같다.
 
-# In[36]:
+# In[37]:
 
 
 def zeros(x):
@@ -569,7 +575,7 @@ def zeros(x):
     return make_matrix(n, m, zero_function)
 
 
-# In[37]:
+# In[38]:
 
 
 zeros((5,7))
@@ -590,7 +596,7 @@ zeros((5,7))
 
 # 지정된 모양의 1-행렬을 생성하는 함수는 다음과 같다.
 
-# In[38]:
+# In[39]:
 
 
 def ones(x):
@@ -605,19 +611,19 @@ def ones(x):
     return make_matrix(n, m, one_function)
 
 
-# In[39]:
+# In[40]:
 
 
 ones((5,7))
 
 
-# **임의행렬**
+# **임의 행렬**
 
-# 임의행렬<font size='2'>random matrix</font>은 행렬의 항목이 임의의 수로 구성된 행렬을 가리킨다.
-# 여기서는 0과 1 사이의 임의의 수로만 구성된 임의행렬을 생성한다.
+# 임의 행렬<font size='2'>random matrix</font>은 행렬의 항목이 임의의 수로 구성된 행렬을 가리킨다.
+# 여기서는 0과 1 사이의 임의의 수로만 구성된 임의 행렬을 생성한다.
 # 이를 위해 `random` 모듈의 `random()` 함수를 이용한다.
 
-# In[40]:
+# In[41]:
 
 
 import random
@@ -625,21 +631,21 @@ import random
 
 # `random.random()` 함수는 [0, 1) 구간에서 임의의 수를 무작위로 반환한다.
 
-# In[41]:
-
-
-random.random()
-
-
 # In[42]:
 
 
 random.random()
 
 
-# 지정된 모양의 임의행렬을 생성하는 함수는 다음과 같다.
-
 # In[43]:
+
+
+random.random()
+
+
+# 지정된 모양의 임의 행렬을 생성하는 함수는 다음과 같다.
+
+# In[44]:
 
 
 def rand(n, m):
@@ -661,7 +667,7 @@ def rand(n, m):
 # 형식을 맞추기 위해서이다.
 # :::
 
-# In[44]:
+# In[45]:
 
 
 rand(5,3)
@@ -672,7 +678,7 @@ rand(5,3)
 # 이때 항목을 생성하는 함수에 필요한 소수점 이하 자릿수를 `ndigits=2` 키워드 매개변수가
 # 받도록 한다. 기본값은 2로 지정한다.
 
-# In[45]:
+# In[46]:
 
 
 def rand(n, m, ndigits=2):
@@ -688,7 +694,7 @@ def rand(n, m, ndigits=2):
 # 소수점 이하 셋째 자리에서 반올림한 값을 사용하도록 하려면
 # 기본 인자 2를 그대로 사용하면 되기에 굳이 셋째 인자를 지정할 필요가 없다.
 
-# In[46]:
+# In[47]:
 
 
 rand(5, 3)
@@ -696,7 +702,7 @@ rand(5, 3)
 
 # 소수점 아래 다섯째 자리까지 보이도록 하려면 셋째 인자를 5로 지정한다.
 
-# In[47]:
+# In[48]:
 
 
 rand(5, 3, 5)
@@ -704,7 +710,7 @@ rand(5, 3, 5)
 
 # 키워드 매개변수 이름을 함께 사용해도 된다.
 
-# In[48]:
+# In[49]:
 
 
 rand(5, 3, ndigits=5)
@@ -729,7 +735,7 @@ rand(5, 3, ndigits=5)
 # 단위행렬은 행과 열의 개수가 동일한 정방행렬이며,
 # 지정된 모양의 단위행렬을 생성하는 함수는 다음과 같다.
 
-# In[49]:
+# In[50]:
 
 
 def identity(n):
@@ -741,7 +747,7 @@ def identity(n):
     return make_matrix(n, n, one_function)
 
 
-# In[50]:
+# In[51]:
 
 
 identity(5)
@@ -765,7 +771,7 @@ identity(5)
 
 # 행렬의 항목별 덧셈을 계산하는 함수는 다음과 같다.
 
-# In[51]:
+# In[52]:
 
 
 def addM(A, B):
@@ -776,7 +782,7 @@ def addM(A, B):
     return make_matrix(m, n, lambda i, j: A[i][j] + B[i][j])
 
 
-# In[52]:
+# In[53]:
 
 
 C = [[1, 3, 7],
@@ -786,26 +792,10 @@ D = [[0, 0, 5],
      [7, 5, 0]]
 
 
-# In[53]:
-
-
-addM(C, D)
-
-
-# **행렬 항목별 덧셈의 항등원**
-
-# 0-행렬은 행렬 항목별 덧셈 연산의 항등원이다.
-
 # In[54]:
 
 
-addM(C, zeros((2, 3))) == C
-
-
-# In[55]:
-
-
-addM(zeros((2, 3)), C) == C
+addM(C, D)
 
 
 # **행렬 항목별 뺄셈**
@@ -824,7 +814,7 @@ addM(zeros((2, 3)), C) == C
 
 # 행렬의 항목별 뺄셈을 계산하는 함수는 다음과 같다.
 
-# In[56]:
+# In[55]:
 
 
 def subtractM(A, B):
@@ -835,7 +825,7 @@ def subtractM(A, B):
     return make_matrix(m, n, lambda i, j: A[i][j] - B[i][j])
 
 
-# In[57]:
+# In[56]:
 
 
 subtractM(C, D)
@@ -848,22 +838,22 @@ subtractM(C, D)
 # (2, 3) 모양의 행렬의 스칼라 곱셈은 다음과 같다.
 # 
 # $$
-# 2\ast 
+# 2\cdot 
 # \begin{bmatrix}1&8&-3\\4&-2&5\end{bmatrix}
-# = \begin{bmatrix}2\ast 1&2\ast 8&2\ast -3\\2\ast 4&2\ast -2&2\ast 5\end{bmatrix}
+# = \begin{bmatrix}2\cdot 1&2\cdot 8&2\cdot -3\\2\cdot 4&2\cdot -2&2\cdot 5\end{bmatrix}
 # = \begin{bmatrix}2&16&-6\\8&-4&10\end{bmatrix}
 # $$
 
 # 행렬의 각 항목에 동일한 부동소수점을 곱한 결과를 반환하는 함수는 다음과 같다.
 
-# In[58]:
+# In[57]:
 
 
 def scalar_multiplyM(c, M):
     return [[c * row_i for row_i in row] for row in M]
 
 
-# In[59]:
+# In[58]:
 
 
 scalar_multiplyM(2, C)
@@ -876,7 +866,7 @@ scalar_multiplyM(2, C)
 
 # $$
 # (A \cdot B)_{i, j}
-# = A_{i,0} \ast B_{0,j} + A_{i,1} \ast B_{1,j} + \cdots + A_{i,(n-1)} \ast B_{(n-1),j}
+# = A_{i,0} \cdot B_{0,j} + A_{i,1} \cdot B_{1,j} + \cdots + A_{i,(n-1)} \cdot B_{(n-1),j}
 # $$
 
 # 아래 그림으로 (4, 2) 모양의 행렬 $A$와 (2, 3) 모양의 행렬 $B$의 점곱인 $A\cdot B$의 항목을 계산하는 과정을 보여준다.
@@ -915,7 +905,7 @@ scalar_multiplyM(2, C)
 #     - `*B`: 리스트 풀어헤치기의 결과. 차원이 p인 리스트 n개.
 #     - `zip(*B)`: 차원이 n인 열벡터 p개.
 
-# In[60]:
+# In[59]:
 
 
 def matmul(A, B):
@@ -928,7 +918,7 @@ def matmul(A, B):
     return mat_mul
 
 
-# In[61]:
+# In[60]:
 
 
 # 3x2 행렬
@@ -941,7 +931,7 @@ B = [[5, 8, 1, 2],
      [4, 5, 9, 1]]
 
 
-# In[62]:
+# In[61]:
 
 
 matmul(A, B)
@@ -977,7 +967,7 @@ matmul(A, B)
 # \end{bmatrix}
 # $$
 
-# In[63]:
+# In[62]:
 
 
 # 3x2 행렬
@@ -1016,7 +1006,7 @@ matmul(M, identity(2)) == M
 
 # 전치 행렬을 계산하는 함수는 다음과 같다.
 
-# In[64]:
+# In[63]:
 
 
 def transpose(M):
@@ -1027,14 +1017,14 @@ def transpose(M):
     return [list(col) for col in zip(*M)]
 
 
-# In[65]:
+# In[64]:
 
 
 X = [[9, 8, 7],
      [-1, 3, 4]]
 
 
-# In[66]:
+# In[65]:
 
 
 transpose(X)
@@ -1047,58 +1037,58 @@ transpose(X)
 # * $(A^T)^T = A$
 # * $(A + B)^T = A^T + B^T$
 # * $(A - B)^T = A^T - B^T$
-# * $(a\ast A)^T = a\ast A^T$
+# * $(a\cdot A)^T = a\cdot A^T$
 # * $(A\cdot B)^T = B^T \cdot A^T$
 
-# In[67]:
+# In[66]:
 
 
 A
 
 
-# In[68]:
+# In[67]:
 
 
 B
 
 
-# In[69]:
+# In[68]:
 
 
 transpose(transpose(A)) == A
 
 
-# In[70]:
+# In[69]:
 
 
 C
 
 
-# In[71]:
+# In[70]:
 
 
 D
 
 
-# In[72]:
+# In[71]:
 
 
 transpose(addM(C, D)) == addM(transpose(C), transpose(D))
 
 
-# In[73]:
+# In[72]:
 
 
 transpose(subtractM(C, D)) == subtractM(transpose(C), transpose(D))
 
 
-# In[74]:
+# In[73]:
 
 
 transpose(scalar_multiplyM(2, A)) == scalar_multiplyM(2, transpose(A))
 
 
-# In[75]:
+# In[74]:
 
 
 transpose(matmul(A, B)) == matmul(transpose(B), transpose(A))
