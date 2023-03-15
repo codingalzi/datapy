@@ -18,6 +18,10 @@
 # 앞으로 {ref}`sec:numpy_1`에서 배울 `numpy.array` 자료형이 제공하는 다양한 기능에 대한 보다 깊은 이해에
 # 도움될 것으로 기대한다. 
 
+# **슬라이드**
+# 
+# 본문 내용을 요약한 [슬라이드](https://github.com/codingalzi/datapy/raw/master/slides/slides-from_scratch_1.pdf)를 다운로드할 수 있다.
+
 # ## 벡터
 
 # 벡터는 유한 개의 값으로 구성된다.
