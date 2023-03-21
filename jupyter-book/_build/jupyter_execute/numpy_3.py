@@ -25,16 +25,17 @@
 
 # 넘파이
 import numpy as np
-
 # 램덤 시드
 np.random.seed(12345)
-
 # 어레이 사용되는 부동소수점들의 정확도 지정
 np.set_printoptions(precision=4, suppress=True)
 
+
+# In[2]:
+
+
 # 파이플롯
 import matplotlib.pyplot as plt
-
 # 도표 크기 지정
 plt.rc('figure', figsize=(10, 6))
 
@@ -53,7 +54,7 @@ plt.rc('figure', figsize=(10, 6))
 
 # 먼저 (2, 5) 모양의 어레이를 하나 생성하자.
 
-# In[2]:
+# In[3]:
 
 
 arr = np.arange(10).reshape((2,5))
@@ -64,7 +65,7 @@ arr
 # 
 # 주어진 어레이 각 항목의 제곱근으로 이루어진 어레이가 반환된다.
 
-# In[3]:
+# In[4]:
 
 
 np.sqrt(arr)
@@ -75,7 +76,7 @@ np.sqrt(arr)
 # 주어진 어레이 각 항목을 지수로 사용하는 지수승의 값으로 이루어진 어레이가 반환된다.
 # 단, 밑은 오일러 상수 `e`가 사용된다.
 
-# In[4]:
+# In[5]:
 
 
 np.exp(arr)
@@ -86,26 +87,26 @@ np.exp(arr)
 # 여러 개의 어레이를 인자로 받는 함수에 대해서도 동일한 방식으로 작동한다.
 # 예를 들어, `maximum()` 함수는 항목별 최댓값으로 이루어진 어레이를 반환한다.
 
-# In[5]:
+# In[6]:
 
 
 x = np.random.randn(8).reshape((4, 2))
 y = np.random.randn(8).reshape((4, 2))
 
 
-# In[6]:
+# In[7]:
 
 
 x
 
 
-# In[7]:
+# In[8]:
 
 
 y
 
 
-# In[8]:
+# In[9]:
 
 
 np.maximum(x, y)
@@ -119,7 +120,7 @@ np.maximum(x, y)
 
 # 먼저 (2,4) 모양의 어레이를 하나 만들자.
 
-# In[9]:
+# In[10]:
 
 
 arr = np.arange(10,32, 3).reshape((2,4))
@@ -129,7 +130,7 @@ arr
 # 위 어레이를 3으로 나누면 모든 항목 각각에 대한 몫과 나머지를 각각 따로 모아 두 개의 어레이로 이루어진 튜플을 
 # 반환한다.
 
-# In[10]:
+# In[11]:
 
 
 np.divmod(arr, 3)
@@ -137,14 +138,14 @@ np.divmod(arr, 3)
 
 # 두 어레이의 나눗셈도 가능하다.
 
-# In[11]:
+# In[12]:
 
 
 arr2 = np.arange(2, 10).reshape((2,4))
 arr2
 
 
-# In[12]:
+# In[13]:
 
 
 np.divmod(arr, arr2)
@@ -152,21 +153,21 @@ np.divmod(arr, arr2)
 
 # 부동소수점의 나눗셈에 대해서도 몫과 나머지를 구한다.
 
-# In[13]:
+# In[14]:
 
 
 arr3 = np.arange(10,30, 2.5).reshape((2,4))
 arr3
 
 
-# In[14]:
+# In[15]:
 
 
 arr4 = np.arange(2, 4.3, 0.3).reshape((2,4))
 arr4
 
 
-# In[15]:
+# In[16]:
 
 
 np.divmod(arr3, arr4)
@@ -191,7 +192,7 @@ np.divmod(arr3, arr4)
 # 나누는 어레이를 생성하려면
 # 아래에서 처럼 -1에서 1.1 이전까지 0.1 스텝으로 증가하는 값들로 이루어진 어레이를 생성하면 된다.
 
-# In[16]:
+# In[17]:
 
 
 points = np.arange(-1, 1.1, 0.1) # -1부터 1.1 전까지 0.1 스텝으로 증가하는 값들의 어레이 생성
@@ -204,19 +205,19 @@ points
 # `meshgrid()` 함수는 지정된 1차원 어레이 두 개를 이용하여 격자무늬의 좌표를 생성한다.
 # 즉, 격자에 사용되는 점들의 x 좌표와 y 좌표를 따로따로 모아 두 개의 어레이를 반환한다.
 
-# In[17]:
+# In[18]:
 
 
 xs, ys = np.meshgrid(points, points)
 
 
-# In[18]:
+# In[19]:
 
 
 xs
 
 
-# In[19]:
+# In[20]:
 
 
 ys
@@ -224,7 +225,7 @@ ys
 
 # xs와 ys를 이용하여 산점도를 그리면 원하는 격자무늬가 얻어진다. 
 
-# In[20]:
+# In[21]:
 
 
 # 도표 크기 지정
@@ -239,13 +240,13 @@ plt.show()
 
 # xs와 ys 각각의 제곱을 합하여 제곱근을 구하면 21x21 크기의 대칭 어레이가 얻어진다. 
 
-# In[21]:
+# In[22]:
 
 
 z = np.sqrt(xs ** 2 + ys ** 2)
 
 
-# In[22]:
+# In[23]:
 
 
 z.shape
@@ -254,7 +255,7 @@ z.shape
 # `z`를 흑백사진으로 표현하면 다음과 같다.
 # `21x21` 크기의 해상도를 가진 흑백사진의 명암 대비를 쉽게 알아볼 수 있는 사진이 생성된다.
 
-# In[23]:
+# In[24]:
 
 
 # 도표 크기 지정(기본값으로 되돌림)
@@ -277,13 +278,13 @@ plt.show()
 # -1부터 1사이의 구간은 0.02 크기로 총 100개의 구간으로 구성한 다음에 동일한 그래프를 그리면 훨씬 더 
 # 섬세한 사진을 얻는다.
 
-# In[24]:
+# In[25]:
 
 
 points = np.arange(-1, 1.01, 0.02) # -1부터 1.1 전까지 0.02 스텝으로 증가하는 101 개의 값들로 이루어진 어레이 생성
 
 
-# In[25]:
+# In[26]:
 
 
 points.shape
@@ -291,7 +292,7 @@ points.shape
 
 # `meshgrid()` 함수를 이용하여 메쉬 생성에 필요한 x 좌표와 y 좌표 모음을 만든다.
 
-# In[26]:
+# In[27]:
 
 
 xs, ys = np.meshgrid(points, points)
@@ -299,13 +300,13 @@ xs, ys = np.meshgrid(points, points)
 
 # `xs` 와 `ys` 각각 (101, 101) 모양의 2차원 어레이다. 
 
-# In[27]:
+# In[28]:
 
 
 xs.shape
 
 
-# In[28]:
+# In[29]:
 
 
 ys.shape
@@ -314,7 +315,7 @@ ys.shape
 # xs와 ys를 이용하여 산점도를 그리면 한 장의 색종이를 얻는다.
 # 이유는 픽셀이 촘촘하기 때문이다. 
 
-# In[29]:
+# In[30]:
 
 
 # 도표 크기 지정
@@ -328,13 +329,13 @@ plt.show()
 # 등고선 모양의 이미지를 생성하기 위해 xs와 ys 각각의 제곱을 합하여 제곱근을 구하면 101x101 모양의
 # 2차원 대칭 어레이가 얻어진다. 
 
-# In[30]:
+# In[31]:
 
 
 z = np.sqrt(xs ** 2 + ys ** 2)
 
 
-# In[31]:
+# In[32]:
 
 
 z.shape
@@ -342,7 +343,7 @@ z.shape
 
 # `z`를 흑백사진으로 표현하면 다음과 같다.
 
-# In[32]:
+# In[33]:
 
 
 # 도표 크기 지정(기본값으로 되돌림)
@@ -363,7 +364,7 @@ plt.show()
 # 
 # 연습을 위해 먼저 (3, 3) 모양의 어레이를 무작위로 생성한다.
 
-# In[33]:
+# In[34]:
 
 
 arr = np.arange(1, 7).reshape(2, 3)
@@ -374,7 +375,7 @@ arr
 # 
 # 어레이에 포함된 모든 값들의 평균값을 계산한다.
 
-# In[34]:
+# In[35]:
 
 
 arr.mean()
@@ -382,7 +383,7 @@ arr.mean()
 
 # __참고:__ `np.mean()` 함수를 호출하면 어레이 객체에 포함된 `mean()` 메서드가 사용된다.
 
-# In[35]:
+# In[36]:
 
 
 np.mean(arr)
@@ -392,7 +393,7 @@ np.mean(arr)
 # 
 # 어레이에 포함된 모든 값들의 합을 계산한다.
 
-# In[36]:
+# In[37]:
 
 
 arr.sum()
@@ -402,7 +403,7 @@ arr.sum()
 # 
 # 어레이에 포함된 모든 값들의 누적합을 계산한다.
 
-# In[37]:
+# In[38]:
 
 
 arr.cumsum()
@@ -412,7 +413,7 @@ arr.cumsum()
 # 
 # 어레이에 포함된 모든 값들의 누적곱을 계산한다.
 
-# In[38]:
+# In[39]:
 
 
 arr.cumprod()
@@ -431,7 +432,7 @@ arr.cumprod()
 
 # * 열별 평균값 계산: 행을 따라 평균값을 계산해야 하기에 `axis=0` 지정.
 
-# In[39]:
+# In[40]:
 
 
 arr.mean(axis=0)
@@ -439,7 +440,7 @@ arr.mean(axis=0)
 
 # * 행별 평균값 계산: 열을 따라 평균값을 계산해야 하기에 `axis=1` 지정.
 
-# In[40]:
+# In[41]:
 
 
 arr.mean(axis=1)
@@ -449,7 +450,7 @@ arr.mean(axis=1)
 
 # * 열별 항목의 합 계산: 행을 따라 항목들의 합을 계산해야 하기에 `axis=0` 지정.
 
-# In[41]:
+# In[42]:
 
 
 arr.sum(axis=0)
@@ -457,7 +458,7 @@ arr.sum(axis=0)
 
 # * 행별 항목의 합 계산: 열을 따라 항목들의 합을 계산해야 하기에 `axis=1` 지정.
 
-# In[42]:
+# In[43]:
 
 
 arr.sum(axis=1)
@@ -467,7 +468,7 @@ arr.sum(axis=1)
 
 # * 열별 항목의 누적합 계산: 행을 따라 항목들의 누적합을 계산해야 하기에 `axis=0` 지정.
 
-# In[43]:
+# In[44]:
 
 
 arr.cumsum(axis=0)
@@ -475,7 +476,7 @@ arr.cumsum(axis=0)
 
 # * 행별 항목의 누적합 계산: 열을 따라 항목들의 누적합을 계산해야 하기에 `axis=1` 지정.
 
-# In[44]:
+# In[45]:
 
 
 arr.cumsum(axis=1)
@@ -485,7 +486,7 @@ arr.cumsum(axis=1)
 
 # * 열별 항목의 누적곱 계산: 행을 따라 항목들의 누적곱을 계산해야 하기에 `axis=0` 지정.
 
-# In[45]:
+# In[46]:
 
 
 arr.cumprod(axis=0)
@@ -493,7 +494,7 @@ arr.cumprod(axis=0)
 
 # * 행별 항목의 누적곱 계산: 열을 따라 항목들의 누적곱을 계산해야 하기에 `axis=1` 지정.
 
-# In[46]:
+# In[47]:
 
 
 arr.cumprod(axis=1)
@@ -510,13 +511,13 @@ arr.cumprod(axis=1)
 # 
 # 아래 코드는 임의로 생성된 100개의 부동소수점 중에서 양수의 개수를 계산한다.
 
-# In[47]:
+# In[48]:
 
 
 arr = np.random.randn(100)
 
 
-# In[48]:
+# In[49]:
 
 
 (arr > 0).sum()
@@ -527,19 +528,19 @@ arr = np.random.randn(100)
 # * `any()` 메서드: 부울 어레이에 포함된 항목이 하나라도 참이면 참을 반환
 # * `all()` 메서드: 부울 어레이에 포함된 항목이 모두 참일 때만 참을 반환
 
-# In[49]:
+# In[50]:
 
 
 bools = np.array([False, False, True, False])
 
 
-# In[50]:
+# In[51]:
 
 
 bools.any()
 
 
-# In[51]:
+# In[52]:
 
 
 bools.all()
@@ -552,14 +553,14 @@ bools.all()
 # 정해진 축을 기준으로 오름차순으로 정열할 때 사용한다. 
 # 물론 1차원 어레이는 축을 지정할 필요가 없다.
 
-# In[52]:
+# In[53]:
 
 
 arr = np.random.randn(6)
 arr
 
 
-# In[53]:
+# In[54]:
 
 
 arr.sort()
@@ -568,7 +569,7 @@ arr
 
 # 다차원 어레이는 축을 이용하여 행 또는 열 기준으로 정렬할 수 있다.
 
-# In[54]:
+# In[55]:
 
 
 arr = np.random.randn(5, 3)
@@ -577,7 +578,7 @@ arr
 
 # 행을 따라 정렬하려면 인자 0을 사용한다.
 
-# In[55]:
+# In[56]:
 
 
 arr.sort(0)
@@ -587,7 +588,7 @@ arr
 # __주의사항:__ (책의 설명과는 달리) `sort()` 메서드는 기존의 어레이를 직접 변환한다. 
 # 즉, `arr`이 직접 변경된다. 
 
-# In[56]:
+# In[57]:
 
 
 arr
@@ -595,7 +596,7 @@ arr
 
 # 열을 따라 정렬하려면 인자 1을 사용한다.
 
-# In[57]:
+# In[58]:
 
 
 arr.sort(1)
@@ -608,7 +609,7 @@ arr
 # 
 # 예를 들어, 임의로 생성된 1,000개의 부동 소수점들 중에서 하위 5%에 해당하는 수를 구해보자.
 
-# In[58]:
+# In[59]:
 
 
 large_arr = np.random.randn(1000)
@@ -616,7 +617,7 @@ large_arr = np.random.randn(1000)
 
 # 먼저 정렬 한 다음에 하위 5%에 해당하는 위치를 구하여 인덱싱하면 바로 답이 나온다.
 
-# In[59]:
+# In[60]:
 
 
 large_arr.sort()
@@ -626,7 +627,7 @@ large_arr.sort()
 # 인덱스로 사용해야 하기에 정수로 형변환해주면 되며,
 # 예상한 대로 50번 인덱스의 값을 가리킨다.
 
-# In[60]:
+# In[61]:
 
 
 five_from_bottom = int(0.05 * len(large_arr))
@@ -635,7 +636,7 @@ five_from_bottom
 
 # 따라서 하위 5%에 해당하는 값은 아래와 같다.
 
-# In[61]:
+# In[62]:
 
 
 large_arr[five_from_bottom]
@@ -645,7 +646,7 @@ large_arr[five_from_bottom]
 
 # 각각 지정된 축을 기준으로 항목들을 가장 큰/작은 값의 항목이 위치한 인덱스를 반환한다.
 
-# In[62]:
+# In[63]:
 
 
 np.random.seed(18)
@@ -658,13 +659,13 @@ arr
 # 
 # 아래 결과인 5는 5번 인덱스, 여기서는 마지막에 사용된 항목을 가리킨다.
 
-# In[63]:
+# In[64]:
 
 
 arr.argmax()
 
 
-# In[64]:
+# In[65]:
 
 
 arr.argmin()
@@ -675,13 +676,13 @@ arr.argmin()
 # 예를 들어, 열별 최대 값이 위치한 인덱스는 당연히 1이 나온다.
 # 이유는 1번 행(둘쨋줄)의 값이 0번 행(첫째줄)의 값들보다 모두 크기 때문이다.
 
-# In[65]:
+# In[66]:
 
 
 arr.argmax(0)
 
 
-# In[66]:
+# In[67]:
 
 
 arr.argmin(0)
@@ -689,13 +690,13 @@ arr.argmin(0)
 
 # 반면에 행별 최대 값이 위치한 인덱스는 비슷한 이유로 2이다. 
 
-# In[67]:
+# In[68]:
 
 
 arr.argmax(1)
 
 
-# In[68]:
+# In[69]:
 
 
 arr.argmin(1)
@@ -706,7 +707,7 @@ arr.argmin(1)
 # 붓꽃(아이리스) 데이터를 이용하여 활용법을 살펴 보기 위해
 # 먼저 데이터를 인터넷 상에서 가져온다. 
 
-# In[69]:
+# In[70]:
 
 
 url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
@@ -714,7 +715,7 @@ url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 
 # 위 주소의 `iris.data` 파일을 `data`라는 하위 디렉토리에 저장한다.
 
-# In[70]:
+# In[71]:
 
 
 import os
@@ -738,7 +739,7 @@ urllib.request.urlretrieve(url, PATH+'iris.data')
 # 꽃받침 길이, 꽃받침 너비, 꽃잎 길이, 꽃잎 너비, 품종
 # ```
 
-# In[71]:
+# In[72]:
 
 
 get_ipython().system('cat data/iris.data | head -n 5')
@@ -747,17 +748,17 @@ get_ipython().system('cat data/iris.data | head -n 5')
 # 이 중에 마지막 품종 특성은 문자열이고 나머지 특성은 부동소수점, 즉 수치형 데이터이다. 
 # 여기서는 연습을 위해 수치형 데이터를 담고 있는 네 개의 특성만 가져온다.
 # 
-# * `genfromtxt()` 함수: 인터넷 또는 로컬에 저장된 텍스트 데이터를 적절한 모양의 어레이로 불러오는 함수
+# * `genfromtxt()` 함수: 인터넷 또는 컴퓨터에 파일로 저장된 데이터를 적절한 모양의 어레이로 불러오는 함수
 # * `delimiter=','`: 쉼표를 특성값들을 구분하는 기준으로 지정
 # * `usecols=[0,1,2,3]`: 리스트에 지정된 인덱스의 특성만 가져오기
 
-# In[72]:
+# In[73]:
 
 
 iris_2d = np.genfromtxt(PATH+'iris.data', delimiter=',', dtype='float', usecols=[0,1,2,3])
 
 
-# In[73]:
+# In[74]:
 
 
 iris_2d.shape
@@ -766,7 +767,7 @@ iris_2d.shape
 # 처음 5개의 샘플은 앞서 살펴본 것과 동일하다.
 # 이번에는 다만 2차원 어레이로 보일 뿐이다.
 
-# In[74]:
+# In[75]:
 
 
 iris_2d[:5]
@@ -783,7 +784,7 @@ iris_2d[:5]
 # 
 # `np.isnan()` 함수는 누락치가 있는 위치는 `True`, 나머지 위치는 `False`를 갖는 부울 어레이를 생성한다.
 
-# In[75]:
+# In[76]:
 
 
 np.isnan(iris_2d)[:5]
@@ -792,7 +793,7 @@ np.isnan(iris_2d)[:5]
 # 만약 결측치가 있다면 `True`가 한 번 이상 사용되었기에 `any()` 메서드를 이용하여 
 # 누착치의 존재 여부를 판단할 수 있다.
 
-# In[76]:
+# In[77]:
 
 
 np.isnan(iris_2d).any()
@@ -801,13 +802,13 @@ np.isnan(iris_2d).any()
 # 그런데 누락치가 전혀 없다. 따라서 하나의 누락치를 임의로 만들어 보자.
 # 예를 들어, 처음 5개 샘플의 꽃잎 너비(3번 열)의 값을 `nan`으로 대체하자.
 
-# In[77]:
+# In[78]:
 
 
 iris_2d[:5,3] = None
 
 
-# In[78]:
+# In[79]:
 
 
 iris_2d[:10]
@@ -815,7 +816,7 @@ iris_2d[:10]
 
 # 이제 누락치가 존재하기에 `any()` 메서드는 `True`를 반환한다.
 
-# In[79]:
+# In[80]:
 
 
 np.isnan(iris_2d).any()
@@ -825,7 +826,7 @@ np.isnan(iris_2d).any()
 # 
 # * `sum()` 함수: `True`는 1, `False`는 0으로 처리한다.
 
-# In[80]:
+# In[81]:
 
 
 np.sum(np.isnan(iris_2d))
@@ -833,7 +834,7 @@ np.sum(np.isnan(iris_2d))
 
 # `sum()` 메서드를 사용할 수도 있다.
 
-# In[81]:
+# In[82]:
 
 
 np.isnan(iris_2d).sum()
@@ -842,7 +843,7 @@ np.isnan(iris_2d).sum()
 # 행 단위로 누락치의 존재를 찾기 위해 행별로 `sum()` 함수를 실행한다. 
 # 즉, 축을 1로 지정한다.
 
-# In[82]:
+# In[83]:
 
 
 np.sum(np.isnan(iris_2d), axis=1)[:10]
@@ -850,7 +851,7 @@ np.sum(np.isnan(iris_2d), axis=1)[:10]
 
 # 정확히 150개의 행에 대한 누락치 존재 여부를 보여준다.
 
-# In[83]:
+# In[84]:
 
 
 np.sum(np.isnan(iris_2d), axis=1).shape
@@ -858,13 +859,13 @@ np.sum(np.isnan(iris_2d), axis=1).shape
 
 # 이제 위 코드와 부울 인덱싱을 활용하여 누락치가 없는 행만 추출할 수 있다.
 
-# In[84]:
+# In[85]:
 
 
 mask = np.sum(np.isnan(iris_2d), axis=1) == 0
 
 
-# In[85]:
+# In[86]:
 
 
 iris_2d[mask].shape
@@ -872,7 +873,7 @@ iris_2d[mask].shape
 
 # 위 어레이의 처음 5개의 샘플 데이터는 `iris_2d` 어레이에서 5번에서 9번 인덱스에 위치한 샘플 데이터와 동일하다.
 
-# In[86]:
+# In[87]:
 
 
 iris_2d[mask][:5]
@@ -880,7 +881,7 @@ iris_2d[mask][:5]
 
 # 이제 `drop_2d()` 함수를 다음과 같이 정의할 수 있다.
 
-# In[87]:
+# In[88]:
 
 
 def drop_2d(arr_2d):
@@ -890,7 +891,7 @@ def drop_2d(arr_2d):
 
 # `iris_2d`에 위 함수를 적용하면 이전과 동일한 결과를 얻는다.
 
-# In[88]:
+# In[89]:
 
 
 drop_2d(iris_2d)[:5]
@@ -900,7 +901,7 @@ drop_2d(iris_2d)[:5]
 # 
 # iris_2d 데이터셋에 사용된 붓꽃들의 품종은 아래 세 개이다.
 
-# In[89]:
+# In[90]:
 
 
 a = np.array(['Iris-setosa', 'Iris-versicolor', 'Iris-virginica'])
@@ -915,7 +916,7 @@ a = np.array(['Iris-setosa', 'Iris-versicolor', 'Iris-virginica'])
 # `np.random.choice()` 함수의 `p` 키워드 인자를 이용한다.
 # 사용되는 인자는 `[0.5, 0.25, 0.25]` 이다.
 
-# In[90]:
+# In[91]:
 
 
 np.random.seed(42)  # 무작위성 시드 지정
@@ -924,7 +925,7 @@ species_out = np.random.choice(a, 150, p=[0.5, 0.25, 0.25])
 
 # 세 개의 이름 중에서 무작위로 150개의 이름을 선택하였다.
 
-# In[91]:
+# In[92]:
 
 
 species_out.shape
@@ -932,7 +933,7 @@ species_out.shape
 
 # 품종별 비율은 대략적으로 2:1:1 이다.
 
-# In[92]:
+# In[93]:
 
 
 setosa_ratio = (species_out == 'Iris-setosa').sum()/150
@@ -960,7 +961,7 @@ print(f"세토사, 버시컬러, 비르지니카 세 품종의 비율은 {setosa
 # \end{bmatrix}
 # $$
 
-# In[93]:
+# In[94]:
 
 
 x = np.array([[1., 2., 3.], [4., 5., 6.]])
@@ -978,7 +979,7 @@ x
 # \end{bmatrix}
 # $$
 
-# In[94]:
+# In[95]:
 
 
 y = np.array([[6., 23.], [-1, 7], [8, 9]])
@@ -1006,7 +1007,7 @@ y
 # \end{bmatrix}
 # $$
 
-# In[95]:
+# In[96]:
 
 
 x.dot(y)
@@ -1014,7 +1015,7 @@ x.dot(y)
 
 # `np.dot()` 함수를 이용해도 동일한 결과를 얻는다.
 
-# In[96]:
+# In[97]:
 
 
 np.dot(x, y)
@@ -1024,7 +1025,7 @@ np.dot(x, y)
 
 # `np.dot()` 함수 대신 `@` 기호를 중위 연산자로 사용할 수 있다.
 
-# In[97]:
+# In[98]:
 
 
 x @ y
@@ -1049,7 +1050,7 @@ x @ y
 # 
 # 위 전치 행렬에 사용된 2차원 어레이는 아래처럼 생성할 수 있다.
 
-# In[98]:
+# In[99]:
 
 
 x = np.arange(1, 7).reshape((3, 2))
@@ -1060,20 +1061,20 @@ x
 # 전치 어레이는 기존 어레이의 축을 교환하며, 뷰를 이용한다.
 # 즉, 새로운 어레이를 생성하지 않고 기존 어레이를 읽어오는 방식을 달리한다.
 
-# In[99]:
+# In[100]:
 
 
 x.T
 
 
-# In[100]:
+# In[101]:
 
 
 y = np.arange(-6, 0).reshape((2, 3))
 y
 
 
-# In[101]:
+# In[102]:
 
 
 y.T
@@ -1081,7 +1082,7 @@ y.T
 
 # `x y`의 전치 행렬은 `y`의 전치 행렬과 `x`의 전치 행렬의 곱이다.
 
-# In[102]:
+# In[103]:
 
 
 ((x @ y).T == y.T @ x.T).all()
@@ -1091,7 +1092,7 @@ y.T
 
 # 역행렬은 `numpy.linalg` 모듈에 포함된 `inv()` 함수를 이용하여 구한다.
 
-# In[103]:
+# In[104]:
 
 
 from numpy.linalg import inv
@@ -1100,7 +1101,7 @@ X = np.random.randn(5, 5)
 X
 
 
-# In[104]:
+# In[105]:
 
 
 inv(X)
@@ -1110,7 +1111,7 @@ inv(X)
 # 
 # __참고:__ 컴퓨터를 이용한 부동소수점 연산은 완벽함과 거리가 아주 멀다.
 
-# In[105]:
+# In[106]:
 
 
 X @ (inv(X))
@@ -1127,7 +1128,7 @@ X @ (inv(X))
 
 # 임의의 부동소수점을 표준 정규 분포를 따르면서 지정된 수만큼 생성한다.
 
-# In[106]:
+# In[107]:
 
 
 samples = np.random.randn(10000)
@@ -1139,7 +1140,7 @@ plt.show()
 
 # 0과 1사의 임의의 부동소수점을 균등 분포를 따르면서 지정된 수만큼 생성한다.
 
-# In[107]:
+# In[108]:
 
 
 samples = np.random.rand(10000)
@@ -1151,7 +1152,7 @@ plt.show()
 
 # 지정된 구간 사이에서 임의의 정수를 균등 분포를 따르면서 지정된 수만큼 생성한다.
 
-# In[108]:
+# In[109]:
 
 
 samples = np.random.randint(0,100,10000)
@@ -1165,7 +1166,7 @@ plt.show()
 # 하지만 시드를 지정하면 무작위 수도 동일하게 결정된다.
 # 시드는 컴퓨터가 사용하는 난수표(random number table)의 특정 지점을 지정하는 역할을 수행한다.
 
-# In[109]:
+# In[110]:
 
 
 np.random.seed(1234)
@@ -1175,7 +1176,7 @@ plt.hist(samples, bins=100)
 plt.show()
 
 
-# In[110]:
+# In[111]:
 
 
 np.random.seed(1234)
@@ -1185,7 +1186,7 @@ plt.hist(samples, bins=100)
 plt.show()
 
 
-# In[111]:
+# In[112]:
 
 
 np.random.seed(1234)

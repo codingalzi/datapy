@@ -507,7 +507,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dtype">
-   10.3. 어레이 항목의 자료형:
+   10.3. 어레이 항목 자료형:
    <code class="docutils literal notranslate">
     <span class="pre">
      dtype
@@ -596,7 +596,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dtype">
-   10.3. 어레이 항목의 자료형:
+   10.3. 어레이 항목 자료형:
    <code class="docutils literal notranslate">
     <span class="pre">
      dtype
@@ -651,7 +651,7 @@ title="Print to PDF"
 <span id="id1"></span><h1><span class="section-number">10. </span>넘파이 어레이<a class="headerlink" href="#sec-numpy-1" title="Permalink to this headline">#</a></h1>
 <p><strong>주요 내용</strong></p>
 <ul class="simple">
-<li><p>넘파이(numpy) 어레이 소개</p></li>
+<li><p>넘파이 어레이 소개</p></li>
 <li><p>어레이 기초 연산</p></li>
 </ul>
 <p><strong>기본 설정</strong></p>
@@ -660,16 +660,18 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 넘파이</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
 <span class="c1"># 램덤 시드</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
-
 <span class="c1"># 어레이 사용되는 부동소수점들의 정확도 지정</span>
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># 파이플롯</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 파이플롯</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
 <span class="c1"># 도표 크기 지정</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 </pre></div>
@@ -678,15 +680,15 @@ title="Print to PDF"
 </div>
 <section id="id2">
 <h2><span class="section-number">10.1. </span>넘파이란?<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
-<p><strong>넘파이</strong><font size='2'>numpy</font>는 numerical python의 줄임말이며,
+<p><strong>넘파이</strong><font size='2'>numpy</font>는 NUMerical PYthon의 줄임말이며,
 파이썬 데이터 과학에서 가장 중요한 도구를 제공하는 패키지이다.
-넘파이가 제공하는 가장 중 요소는 아래 두 가지이다.</p>
+넘파이가 제공하는 가장 중요한 요소는 아래 두 가지이다.</p>
 <ul class="simple">
 <li><p>다차원 어레이(배열)</p></li>
 <li><p>메모리 효율적인 빠른 어레이 연산</p></li>
 </ul>
 <p>넘파이의 기능을 잘 이해한다면 이어서 다룰 <strong>판다스</strong><font size='2'>pandas</font> 패키지가 지원하는
-모델링이나 통계 등 데이터 과학에 필요한 도구를 매우 쉽게 활용할 수 있다.</p>
+데이터프레임<font size='2'>Dataframe</font> 자료형의 기능을 매우 쉽게 활용할 수 있다.</p>
 <p>리스트 연산과 넘파이 어레이 연산의 속도 차이를 아래 코드가 보여준다.
 아래 코드는 0부터 999,999까지의 숫자를 각각 두 배하는 연산에 필요한 시간을 측정한다.
 결과적으로 넘파이 어레이를 이용한 연산이 50배 정도 빠르다.</p>
@@ -710,8 +712,8 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 3.55 ms, sys: 22.1 ms, total: 25.6 ms
-Wall time: 25.2 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 10.6 ms, sys: 10.2 ms, total: 20.8 ms
+Wall time: 20.4 ms
 </pre></div>
 </div>
 </div>
@@ -723,8 +725,8 @@ Wall time: 25.2 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 271 ms, sys: 258 ms, total: 529 ms
-Wall time: 529 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 272 ms, sys: 360 ms, total: 632 ms
+Wall time: 632 ms
 </pre></div>
 </div>
 </div>
@@ -892,21 +894,17 @@ Wall time: 529 ms
 <p>(n, m, p) 모양의 3차원 어레이를 이해하는 두 가지 방법은 다음과 같다.</p>
 <ul class="simple">
 <li><p>방법 1: 바둑판을 (n, m) 크기의 격자로 나누고 각각의 칸에 길이가 p 인 1차원 어레이가
-위치하는 것으로 이해하기.
-이미지 데이터를 이해하는 최선의 방법임.
+위치하는 것으로 이해한다.
 아래 그림은 (3, 3, 3) 모양의 어레이이며, (3, 3) 모양의 바둑판에
-(R, G, B) 색상 정보를 담은 길이 3인 튜플을 표현함.
-(RGB 정보는 각각 0과 1 사이의 부동소수점으로 구현됨)</p></li>
+0과 1사이의 부동소수점으로 구성된 (R, G, B) 색상 정보를 담은 길이가 3인 튜플을 표현한다.</p></li>
 </ul>
 <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/impixelregion.png" style="width:5=700px;"></div>
-<p>&lt;그림 출처: <a class="reference external" href="http://maprabu.blogspot.com/2013/08/dont-photoshop-just-matlab-it.html">Big Data &amp; Image Processing</a>&gt;</p>
-<ul class="simple">
+<p><div style="text-align: center">&lt;그림 출처: <a href="http://maprabu.blogspot.com/2013/08/dont-photoshop-just-matlab-it.html">Big Data & Image Processing</a>&gt;</div></p><ul class="simple">
 <li><p>방법 2: (m, p) 모양의 2차원 어레이 n 개를 항목으로 갖는 1차원 어레이로 이해하기.
 아래 그림 참조.</p></li>
 </ul>
 <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/np-array.png" style="width:500px;"></div>
-<p>&lt;그림 출처: <a class="reference external" href="https://www.reallifeedublogging.com/2020/07/numpy-arrays-and-data-analysis.html">NumPy Arrays and Data Analysis</a>&gt;</p>
-<p>위 이미지를 직접 구현하면 다음과 같다.</p>
+<p><div style="text-align: center">&lt;그림 출처: <a href="https://www.reallifeedublogging.com/2020/07/numpy-arrays-and-data-analysis.html">NumPy Arrays and Data Analysis</a>&gt;</div></p><p>위 이미지를 직접 구현하면 다음과 같다.</p>
 <ul class="simple">
 <li><p>1D 어레이</p></li>
 </ul>
@@ -1063,13 +1061,13 @@ Wall time: 529 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[0., 0.],
-        [0., 0.],
-        [0., 0.]],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[1.1406e-313, 0.0000e+000],
+        [0.0000e+000, 0.0000e+000],
+        [6.8984e-310, 2.6794e+184]],
 
-       [[0., 0.],
-        [0., 0.],
-        [0., 0.]]])
+       [[1.5187e-047, 1.2802e+161],
+        [3.9370e-062, 8.9766e-067],
+        [2.5790e-057, 4.0333e+175]]])
 </pre></div>
 </div>
 </div>
@@ -1115,7 +1113,7 @@ Wall time: 529 ms
 </section>
 </section>
 <section id="dtype">
-<h2><span class="section-number">10.3. </span>어레이 항목의 자료형: <code class="docutils literal notranslate"><span class="pre">dtype</span></code><a class="headerlink" href="#dtype" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">10.3. </span>어레이 항목 자료형: <code class="docutils literal notranslate"><span class="pre">dtype</span></code><a class="headerlink" href="#dtype" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">dtype</span></code> 속성은 어레이 항목의 자료형을 담고 있으며, 파이썬 표준 라이브러리에서 제공하는
 <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code> 등을 보다 세분화시킨 자료형을 제공한다.</p>
 <section id="id7">
