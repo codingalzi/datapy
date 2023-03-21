@@ -598,16 +598,18 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 넘파이</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
 <span class="c1"># 램덤 시드</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
-
 <span class="c1"># 어레이 사용되는 부동소수점들의 정확도 지정</span>
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># 파이플롯</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 파이플롯</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
 <span class="c1"># 도표 크기 지정</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 </pre></div>
@@ -993,7 +995,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_42_0.png" src="_images/numpy_3_42_0.png" />
+<img alt="_images/numpy_3_43_0.png" src="_images/numpy_3_43_0.png" />
 </div>
 </div>
 <p><strong>예제:</strong> 2차원 이미지 그리기</p>
@@ -1035,7 +1037,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_48_0.png" src="_images/numpy_3_48_0.png" />
+<img alt="_images/numpy_3_49_0.png" src="_images/numpy_3_49_0.png" />
 </div>
 </div>
 <p><strong>참고:</strong> 위 두 예제를 넘파이 어레이가 아니라 리스트와 <code class="docutils literal notranslate"><span class="pre">for</span></code> 반복문을 이용하여 구현하려고
@@ -1109,7 +1111,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_59_0.png" src="_images/numpy_3_59_0.png" />
+<img alt="_images/numpy_3_60_0.png" src="_images/numpy_3_60_0.png" />
 </div>
 </div>
 <p>등고선 모양의 이미지를 생성하기 위해 xs와 ys 각각의 제곱을 합하여 제곱근을 구하면 101x101 모양의
@@ -1150,7 +1152,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_64_0.png" src="_images/numpy_3_64_0.png" />
+<img alt="_images/numpy_3_65_0.png" src="_images/numpy_3_65_0.png" />
 </div>
 </div>
 </section>
@@ -1712,7 +1714,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;./data/iris.data&#39;, &lt;http.client.HTTPMessage at 0x7f9c2d789760&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;./data/iris.data&#39;, &lt;http.client.HTTPMessage at 0x7f75bc15b190&gt;)
 </pre></div>
 </div>
 </div>
@@ -1745,7 +1747,7 @@ title="Print to PDF"
 <p>이 중에 마지막 품종 특성은 문자열이고 나머지 특성은 부동소수점, 즉 수치형 데이터이다.
 여기서는 연습을 위해 수치형 데이터를 담고 있는 네 개의 특성만 가져온다.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">genfromtxt()</span></code> 함수: 인터넷 또는 로컬에 저장된 텍스트 데이터를 적절한 모양의 어레이로 불러오는 함수</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">genfromtxt()</span></code> 함수: 인터넷 또는 컴퓨터에 파일로 저장된 데이터를 적절한 모양의 어레이로 불러오는 함수</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">delimiter=','</span></code>: 쉼표를 특성값들을 구분하는 기준으로 지정</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">usecols=[0,1,2,3]</span></code>: 리스트에 지정된 인덱스의 특성만 가져오기</p></li>
 </ul>
@@ -2314,7 +2316,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_229_0.png" src="_images/numpy_3_229_0.png" />
+<img alt="_images/numpy_3_230_0.png" src="_images/numpy_3_230_0.png" />
 </div>
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">np.random.rand()</span></code> 함수</strong></p>
@@ -2328,7 +2330,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_232_0.png" src="_images/numpy_3_232_0.png" />
+<img alt="_images/numpy_3_233_0.png" src="_images/numpy_3_233_0.png" />
 </div>
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">np.random.randint()</span></code> 함수</strong></p>
@@ -2342,7 +2344,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_235_0.png" src="_images/numpy_3_235_0.png" />
+<img alt="_images/numpy_3_236_0.png" src="_images/numpy_3_236_0.png" />
 </div>
 </div>
 <p><strong>시드(seed)</strong></p>
@@ -2360,7 +2362,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_238_0.png" src="_images/numpy_3_238_0.png" />
+<img alt="_images/numpy_3_239_0.png" src="_images/numpy_3_239_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2374,7 +2376,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_239_0.png" src="_images/numpy_3_239_0.png" />
+<img alt="_images/numpy_3_240_0.png" src="_images/numpy_3_240_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2388,7 +2390,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_240_0.png" src="_images/numpy_3_240_0.png" />
+<img alt="_images/numpy_3_241_0.png" src="_images/numpy_3_241_0.png" />
 </div>
 </div>
 <p>구간의 오른쪽 끝은 포함되지 않으며, 구간의 왼쪽 끝은 생략되면 0이 기본값으로 사용된다.</p>
