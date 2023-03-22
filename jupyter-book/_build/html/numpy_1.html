@@ -374,20 +374,26 @@ const thebe_selector_output = ".output, .cell_output"
      10.2.3. 3차원 어레이
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     10.2.4. 어레이 객체 생성 함수
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dtype">
-   10.3. 어레이 항목 자료형:
+   10.3.
    <code class="docutils literal notranslate">
     <span class="pre">
      dtype
     </span>
    </code>
+   종류
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
+    <a class="reference internal nav-link" href="#id8">
      10.3.1. 기본
      <code class="docutils literal notranslate">
       <span class="pre">
@@ -410,12 +416,12 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
+  <a class="reference internal nav-link" href="#id9">
    10.4. 어레이 연산
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id9">
+  <a class="reference internal nav-link" href="#id10">
    10.5. 연습문제
   </a>
  </li>
@@ -464,20 +470,26 @@ const thebe_selector_output = ".output, .cell_output"
      10.2.3. 3차원 어레이
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id7">
+     10.2.4. 어레이 객체 생성 함수
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#dtype">
-   10.3. 어레이 항목 자료형:
+   10.3.
    <code class="docutils literal notranslate">
     <span class="pre">
      dtype
     </span>
    </code>
+   종류
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id7">
+    <a class="reference internal nav-link" href="#id8">
      10.3.1. 기본
      <code class="docutils literal notranslate">
       <span class="pre">
@@ -500,12 +512,12 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
+  <a class="reference internal nav-link" href="#id9">
    10.4. 어레이 연산
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id9">
+  <a class="reference internal nav-link" href="#id10">
    10.5. 연습문제
   </a>
  </li>
@@ -552,13 +564,13 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="id2">
 <h2><span class="section-number">10.1. </span>넘파이란?<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p><strong>넘파이</strong><font size='2'>numpy</font>는 NUMerical PYthon의 줄임말이며,
-파이썬 데이터 과학에서 가장 중요한 도구를 제공하는 패키지이다.
+파이썬 데이터 과학에서 가장 중요한 도구를 제공하는 라이브러리이다.
 넘파이가 제공하는 가장 중요한 요소는 아래 두 가지이다.</p>
 <ul class="simple">
 <li><p>다차원 어레이(배열)</p></li>
 <li><p>메모리 효율적인 빠른 어레이 연산</p></li>
 </ul>
-<p>넘파이의 기능을 잘 이해한다면 이어서 다룰 <strong>판다스</strong><font size='2'>pandas</font> 패키지가 지원하는
+<p>넘파이의 기능을 잘 이해한다면 이어서 다룰 <strong>판다스</strong><font size='2'>pandas</font> 라이브러리가 지원하는
 데이터프레임<font size='2'>Dataframe</font> 자료형의 기능을 매우 쉽게 활용할 수 있다.</p>
 <p>리스트 연산과 넘파이 어레이 연산의 속도 차이를 아래 코드가 보여준다.
 아래 코드는 0부터 999,999까지의 숫자를 각각 두 배하는 연산에 필요한 시간을 측정한다.
@@ -583,8 +595,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 6.36 ms, sys: 8.92 ms, total: 15.3 ms
-Wall time: 16.2 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 9.56 ms, sys: 9.55 ms, total: 19.1 ms
+Wall time: 20.3 ms
 </pre></div>
 </div>
 </div>
@@ -596,8 +608,8 @@ Wall time: 16.2 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 310 ms, sys: 43.8 ms, total: 354 ms
-Wall time: 383 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 286 ms, sys: 219 ms, total: 505 ms
+Wall time: 547 ms
 </pre></div>
 </div>
 </div>
@@ -660,7 +672,7 @@ Wall time: 383 ms
 </div>
 <div class="section" id="id5">
 <h3><span class="section-number">10.2.2. </span>2차원 어레이<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>중첩된 리스트나 어레이는 2차원 어레이로 변환된다.
+<p>중첩된 리스트를 2차원 어레이로 변환할 수 있다.
 단, 항목으로 사용된 리스트의 길이가 모두 동일해야 한다.
 즉, 2차원 어레이는 어레이의 모든 항목이 동일한 크기의 1차원 어레이이다.</p>
 <div class="cell docutils container">
@@ -694,6 +706,19 @@ Wall time: 383 ms
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 4)
+</pre></div>
+</div>
+</div>
+</div>
+<p>1차원 어레이의 모양은 어레이의 길이 정보를 길이가 1인 튜플로 저장한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr1</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5,)
 </pre></div>
 </div>
 </div>
@@ -740,19 +765,6 @@ Wall time: 383 ms
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
-</pre></div>
-</div>
-</div>
-</div>
-<p>1차원 어레이의 모양은 어레이의 길이 정보를 길이가 1인 튜플로 저장한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr1</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5,)
 </pre></div>
 </div>
 </div>
@@ -851,21 +863,13 @@ Wall time: 383 ms
 </div>
 </div>
 </div>
-<p><strong>어레이 객체 생성 함수</strong></p>
+</div>
+<div class="section" id="id7">
+<h3><span class="section-number">10.2.4. </span>어레이 객체 생성 함수<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>배열을 쉽게 생성할 수 있는 함수는 다음과 같으며,
 각 함수의 기능은
 <a class="reference external" href="https://ipgp.github.io/scientific_python_cheat_sheet/?utm_content=buffer7d821&amp;utm_medium=social&amp;utm_source=twitter.com&amp;utm_campaign=buffer#numpy-import-numpy-as-np">numpy cheat sheet</a>를
 참고한다.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">array()</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">asarray()</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">arange()</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">ones()</span></code>, <code class="docutils literal notranslate"><span class="pre">ones_lke()</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">zeros()</span></code>, <code class="docutils literal notranslate"><span class="pre">zeros_lke()</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">empty()</span></code>, <code class="docutils literal notranslate"><span class="pre">empty_lke()</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">full()</span></code>, <code class="docutils literal notranslate"><span class="pre">full_lke()</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">eye()</span></code>, <code class="docutils literal notranslate"><span class="pre">identity()</span></code></p></li>
-</ul>
 <p><strong><code class="docutils literal notranslate"><span class="pre">zeros()</span></code> 함수</strong></p>
 <p>0으로 이루어진 어레이를 생성한다.
 1차원인 경우 정수를 인자로 사용한다.</p>
@@ -951,11 +955,11 @@ Wall time: 383 ms
 </div>
 </div>
 <div class="section" id="dtype">
-<h2><span class="section-number">10.3. </span>어레이 항목 자료형: <code class="docutils literal notranslate"><span class="pre">dtype</span></code><a class="headerlink" href="#dtype" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.3. </span><code class="docutils literal notranslate"><span class="pre">dtype</span></code> 종류<a class="headerlink" href="#dtype" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">dtype</span></code> 속성은 어레이 항목의 자료형을 담고 있으며, 파이썬 표준 라이브러리에서 제공하는
 <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code> 등을 보다 세분화시킨 자료형을 제공한다.</p>
-<div class="section" id="id7">
-<h3><span class="section-number">10.3.1. </span>기본 <code class="docutils literal notranslate"><span class="pre">dtype</span></code><a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id8">
+<h3><span class="section-number">10.3.1. </span>기본 <code class="docutils literal notranslate"><span class="pre">dtype</span></code><a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>여기서는 세분화된 자료형을 일일이 설명하기 보다는 예제를 이용하여 세분화된 자료형의 형식을
 살펴본다.
 자료형 세분화는 주로 자료형의 객체가 사용하는 메모리 용량을 제한하는 형식으로 이루어진다.
@@ -1143,7 +1147,7 @@ Wall time: 383 ms
 </div>
 </div>
 <ul class="simple">
-<li><p>숫자 형식의 문자열을 숫자로 형변환하기</p></li>
+<li><p>숫자 형식의 문자열을 숫자로 형변환하기: 문자열 자료형의 크기는 넘파이가 알아서 정함</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1170,8 +1174,6 @@ Wall time: 383 ms
 </div>
 </div>
 </div>
-<p><strong>주의사항:</strong> 문자열 자료형의 크기는 넘파이가 알아서 임의로 정하며, 부동소수점으로 형변환하면
-지정된 정밀도에 따라 소수점 이하를 자른다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numeric_strings2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;1.25345&#39;</span><span class="p">,</span> <span class="s1">&#39;-9.673811345&#39;</span><span class="p">,</span> <span class="s1">&#39;42&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">string_</span><span class="p">)</span>
@@ -1185,10 +1187,10 @@ Wall time: 383 ms
 </div>
 </div>
 </div>
-<p>앞서 부동소수점 정밀도를 4로 지정했기 때문에 어레이 항목은 모두 소수점 이하 네 자리까지만 보여준다.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
+<ul class="simple">
+<li><p>부동소수점으로 형변환하면
+지정된 정밀도에 따라 소수점 이하를 자른다.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numeric_strings2</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
@@ -1200,6 +1202,10 @@ Wall time: 383 ms
 </pre></div>
 </div>
 </div>
+</div>
+<p><strong>주의사항:</strong> 앞서 부동소수점 정밀도를 4로 지정했기 때문에 어레이 항목은 모두 소수점 이하 네 자리까지만 보여준다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
 </div>
 <p>부동소수점 정밀도를 변경하면 그에 따라 다르게 결정된다.</p>
 <div class="cell docutils container">
@@ -1270,8 +1276,8 @@ Wall time: 383 ms
 </div>
 </div>
 </div>
-<div class="section" id="id8">
-<h2><span class="section-number">10.4. </span>어레이 연산<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h2><span class="section-number">10.4. </span>어레이 연산<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>넘파이 어레이 연산은 기본적으로 항목별로 이루어진다.
 즉, 지정된 연산을 동일한 위치의 항목끼리 실행하여 새로운, 동일한 모양의 어레이를 생성한다.</p>
 <div class="cell docutils container">
@@ -1305,13 +1311,13 @@ Wall time: 383 ms
 <p><strong>덧셈</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">*</span> <span class="n">arr2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">+</span> <span class="n">arr2</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 3.,  8.,  3.],
-       [28., 10., 72.]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 4.,  6.,  4.],
+       [11.,  7., 18.]])
 </pre></div>
 </div>
 </div>
@@ -1319,13 +1325,13 @@ Wall time: 383 ms
 <p>숫자와의 연산은 모든 항목에 동일한 값을 사용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">*</span> <span class="mf">2.4</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">+</span> <span class="mf">2.4</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2.4,  4.8,  7.2],
-       [ 9.6, 12. , 14.4]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3.4, 4.4, 5.4],
+       [6.4, 7.4, 8.4]])
 </pre></div>
 </div>
 </div>
@@ -1439,7 +1445,7 @@ Wall time: 383 ms
 </div>
 </div>
 </div>
-<p><strong>비교</strong></p>
+<p><strong>비교 연산</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr2</span> <span class="o">&gt;</span> <span class="n">arr</span>
@@ -1518,7 +1524,8 @@ Wall time: 383 ms
 </div>
 </div>
 </div>
-<p>사용 가능한 부울 연산은 아래 세 가지이다.</p>
+<p><strong>논리 연산</strong></p>
+<p>사용 가능한 논리 연산은 아래 세 가지이다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">~</span></code>: 부정(not) 연산자</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">&amp;</span></code>: 논리곱(and) 연산자</p></li>
@@ -1564,8 +1571,8 @@ Wall time: 383 ms
 </div>
 </div>
 </div>
-<div class="section" id="id9">
-<h2><span class="section-number">10.5. </span>연습문제<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<h2><span class="section-number">10.5. </span>연습문제<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-numpy_array.ipynb">(실습) 넘파이 어레이</a></p>
 </div>
 </div>

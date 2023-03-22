@@ -36,13 +36,13 @@ plt.rc('figure', figsize=(10, 6))
 # ## 넘파이란?
 
 # **넘파이**<font size='2'>numpy</font>는 NUMerical PYthon의 줄임말이며, 
-# 파이썬 데이터 과학에서 가장 중요한 도구를 제공하는 패키지이다.
+# 파이썬 데이터 과학에서 가장 중요한 도구를 제공하는 라이브러리이다.
 # 넘파이가 제공하는 가장 중요한 요소는 아래 두 가지이다.
 # 
 # * 다차원 어레이(배열)
 # * 메모리 효율적인 빠른 어레이 연산
 # 
-# 넘파이의 기능을 잘 이해한다면 이어서 다룰 **판다스**<font size='2'>pandas</font> 패키지가 지원하는
+# 넘파이의 기능을 잘 이해한다면 이어서 다룰 **판다스**<font size='2'>pandas</font> 라이브러리가 지원하는
 # 데이터프레임<font size='2'>Dataframe</font> 자료형의 기능을 매우 쉽게 활용할 수 있다. 
 
 # 리스트 연산과 넘파이 어레이 연산의 속도 차이를 아래 코드가 보여준다.
@@ -116,7 +116,7 @@ type(arr1)
 
 # ### 2차원 어레이
 
-# 중첩된 리스트나 어레이는 2차원 어레이로 변환된다.
+# 중첩된 리스트를 2차원 어레이로 변환할 수 있다.
 # 단, 항목으로 사용된 리스트의 길이가 모두 동일해야 한다.
 # 즉, 2차원 어레이는 어레이의 모든 항목이 동일한 크기의 1차원 어레이이다.
 
@@ -143,6 +143,14 @@ arr2
 arr2.shape
 
 
+# 1차원 어레이의 모양은 어레이의 길이 정보를 길이가 1인 튜플로 저장한다.
+
+# In[11]:
+
+
+arr1.shape
+
+
 # **`dtype`** 속성
 # 
 # 어레이 객체의 `dtype` 속성은 어레이에 사용된 항목들의 자료형을 저장한다.
@@ -153,7 +161,7 @@ arr2.shape
 
 # `arr2` 항목의 자료형은 `int64`, 즉, 64비트로 구현된 정수 자료형이다.
 
-# In[11]:
+# In[12]:
 
 
 arr2.dtype
@@ -163,7 +171,7 @@ arr2.dtype
 
 # 차원은 `ndim` 속성에 저장되며, `shape`에 저정된 튜플의 길이와 동일하다.
 
-# In[12]:
+# In[13]:
 
 
 arr2.ndim
@@ -171,18 +179,10 @@ arr2.ndim
 
 # 1차원 어레이의 차원은 1이다.
 
-# In[13]:
-
-
-arr1.ndim
-
-
-# 1차원 어레이의 모양은 어레이의 길이 정보를 길이가 1인 튜플로 저장한다.
-
 # In[14]:
 
 
-arr1.shape
+arr1.ndim
 
 
 # ### 3차원 어레이
@@ -249,21 +249,12 @@ np.array([[[1, 2],
            [9, 8]]])
 
 
-# **어레이 객체 생성 함수**
-# 
+# ### 어레이 객체 생성 함수
+
 # 배열을 쉽게 생성할 수 있는 함수는 다음과 같으며, 
 # 각 함수의 기능은 
 # [numpy cheat sheet](https://ipgp.github.io/scientific_python_cheat_sheet/?utm_content=buffer7d821&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer#numpy-import-numpy-as-np)를 
 # 참고한다.
-# 
-# * `array()`
-# * `asarray()`
-# * `arange()`
-# * `ones()`, `ones_lke()`
-# * `zeros()`, `zeros_lke()`
-# * `empty()`, `empty_lke()`
-# * `full()`, `full_lke()`
-# * `eye()`, `identity()`
 
 # **`zeros()` 함수**
 # 
@@ -306,7 +297,7 @@ np.arange(15)
 np.arange(0, 1, 0.1)
 
 
-# ## 어레이 항목 자료형: `dtype`
+# ## `dtype` 종류
 
 # `dtype` 속성은 어레이 항목의 자료형을 담고 있으며, 파이썬 표준 라이브러리에서 제공하는 
 # `int`, `float`, `str`, `bool` 등을 보다 세분화시킨 자료형을 제공한다.
@@ -406,7 +397,7 @@ arr
 arr.astype(np.int32)
 
 
-# * 숫자 형식의 문자열을 숫자로 형변환하기
+# * 숫자 형식의 문자열을 숫자로 형변환하기: 문자열 자료형의 크기는 넘파이가 알아서 정함
 
 # In[31]:
 
@@ -421,9 +412,6 @@ numeric_strings.dtype
 numeric_strings.astype(float)
 
 
-# **주의사항:** 문자열 자료형의 크기는 넘파이가 알아서 임의로 정하며, 부동소수점으로 형변환하면 
-# 지정된 정밀도에 따라 소수점 이하를 자른다.
-
 # In[33]:
 
 
@@ -431,11 +419,8 @@ numeric_strings2 = np.array(['1.25345', '-9.673811345', '42'], dtype=np.string_)
 numeric_strings2.dtype
 
 
-# 앞서 부동소수점 정밀도를 4로 지정했기 때문에 어레이 항목은 모두 소수점 이하 네 자리까지만 보여준다.
-# 
-# ```python
-# np.set_printoptions(precision=4, suppress=True)
-# ```
+# * 부동소수점으로 형변환하면 
+#     지정된 정밀도에 따라 소수점 이하를 자른다.
 
 # In[34]:
 
@@ -443,6 +428,12 @@ numeric_strings2.dtype
 numeric_strings2.astype(float)
 
 
+# **주의사항:** 앞서 부동소수점 정밀도를 4로 지정했기 때문에 어레이 항목은 모두 소수점 이하 네 자리까지만 보여준다.
+# 
+# ```python
+# np.set_printoptions(precision=4, suppress=True)
+# ```
+# 
 # 부동소수점 정밀도를 변경하면 그에 따라 다르게 결정된다.
 
 # In[35]:
@@ -511,7 +502,7 @@ arr2
 # In[43]:
 
 
-arr * arr2
+arr + arr2
 
 
 # 숫자와의 연산은 모든 항목에 동일한 값을 사용한다.
@@ -519,7 +510,7 @@ arr * arr2
 # In[44]:
 
 
-arr * 2.4
+arr + 2.4
 
 
 # **뺄셈**
@@ -579,7 +570,7 @@ arr ** arr2
 arr ** 0.5
 
 
-# **비교**
+# **비교 연산**
 
 # In[53]:
 
@@ -617,7 +608,9 @@ arr == arr
 arr != arr2
 
 
-# 사용 가능한 부울 연산은 아래 세 가지이다.
+# **논리 연산**
+
+# 사용 가능한 논리 연산은 아래 세 가지이다.
 # 
 # * `~`: 부정(not) 연산자
 # * `&`: 논리곱(and) 연산자
