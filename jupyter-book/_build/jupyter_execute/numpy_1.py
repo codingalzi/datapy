@@ -9,6 +9,10 @@
 # - 넘파이 어레이 소개
 # - 어레이 기초 연산
 
+# **슬라이드**
+# 
+# 본문 내용을 요약한 [슬라이드](https://github.com/codingalzi/datapy/raw/master/slides/slides-numpy_1.pdf)를 다운로드할 수 있다.
+
 # **기본 설정**
 # 
 # `numpy` 모듈과 시각화 도구 모듈인 `matplotlib.pyplot`에 대한 기본 설정을 지정한다.
@@ -310,19 +314,19 @@ np.arange(0, 1, 0.1)
 # 이를 통해 보다 메모리 효율적이며 빠른 계산이 가능해졌다.
 
 # | 자료형 | 자료형 코드 | 설명 |
-# | --- | --- | --- |
-# | int8, uint8 | i1, u1 | signed/unsigned 8 비트 정수|
-# | int16, uint16 | i2, u2 | signed/unsigned 16 비트 정수|
-# | int32, uint32 | i4, u4 | signed/unsigned 32 비트 정수|
-# | int64, uint64 | i8, u8 | signed/unsigned 64 비트 정수|
+# | :--- | :--- | :--- |
+# | int8 / uint8 | i1 / u1 | signed / unsigned 8 비트 정수|
+# | int16 / uint16 | i2 / u2 | signed / unsigned 16 비트 정수|
+# | int32 / uint32 | i4 / u4 | signed / unsigned 32 비트 정수|
+# | int64 / uint64 | i8 / u8 | signed / unsigned 64 비트 정수|
 # | float16 | f2 | 16비트(반 정밀도) 부동소수점 |
 # | float32 | f4 또는 f | 32비트(단 정밀도) 부동소수점 |
 # | float64 | f8 또는 d | 64비트(배 정밀도) 부동소수점 |
 # | float128 | f16 또는 g | 64비트(배 정밀도) 부동소수점 |
 # | bool | ? | 부울 값 |
 # | object | O | 임의의 파이썬 객체 |
-# | string_ | S | 고정 길이 아스키 문자열, 예) `S8`, `S10` |
-# | unicode_ | U | 고정 길이 유니코드 문자열, 예) `U8`, `U10`|
+# | string_ | S | 고정 길이 아스키 문자열 / 예) `S8`, `S10` |
+# | unicode_ | U | 고정 길이 유니코드 문자열 / 예) `U8`, `U10`|
 
 # **`float64` 자료형**
 
@@ -493,7 +497,7 @@ arr
 # In[42]:
 
 
-arr2 = np.array([[3., 4., 1.], [7., 2., 12.]])
+arr2 = np.array([[3., 2., 1.], [4., 2., 12.]])
 arr2
 
 
