@@ -38,12 +38,9 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -618,6 +615,27 @@ const thebe_selector_output = ".output, .cell_output"
         <span class="n">mpl</span><span class="o">.</span><span class="n">font_manager</span><span class="o">.</span><span class="n">fontManager</span><span class="o">.</span><span class="n">addfont</span><span class="p">(</span><span class="s2">&quot;/usr/share/fonts/truetype/nanum/NanumBarunGothic.ttf&quot;</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;font&quot;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;axes&quot;</span><span class="p">,</span> <span class="n">unicode_minus</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_146</span><span class="o">/</span><span class="mf">177766349.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="n">font</span> <span class="o">=</span> <span class="s2">&quot;NanumBarunGothic&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">any</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">ft</span><span class="p">:</span> <span class="n">ft</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">font</span><span class="p">,</span> <span class="n">mpl</span><span class="o">.</span><span class="n">font_manager</span><span class="o">.</span><span class="n">fontManager</span><span class="o">.</span><span class="n">ttflist</span><span class="p">)):</span>
+<span class="ne">---&gt; </span><span class="mi">17</span>         <span class="n">mpl</span><span class="o">.</span><span class="n">font_manager</span><span class="o">.</span><span class="n">fontManager</span><span class="o">.</span><span class="n">addfont</span><span class="p">(</span><span class="s2">&quot;/usr/share/fonts/truetype/nanum/NanumBarunGothic.ttf&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span>     <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;font&quot;</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span>     <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s2">&quot;axes&quot;</span><span class="p">,</span> <span class="n">unicode_minus</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nn">~/anaconda3/lib/python3.9/site-packages/matplotlib/font_manager.py</span> in <span class="ni">addfont</span><span class="nt">(self, path)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1090</span>             <span class="bp">self</span><span class="o">.</span><span class="n">afmlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prop</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1091</span>         <span class="k">else</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1092</span>             <span class="n">font</span> <span class="o">=</span> <span class="n">ft2font</span><span class="o">.</span><span class="n">FT2Font</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1093</span>             <span class="n">prop</span> <span class="o">=</span> <span class="n">ttfFontProperty</span><span class="p">(</span><span class="n">font</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1094</span>             <span class="bp">self</span><span class="o">.</span><span class="n">ttflist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prop</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/usr/share/fonts/truetype/nanum/NanumBarunGothic.ttf&#39;
 </pre></div>
 </div>
 </div>
@@ -1595,8 +1613,8 @@ cov(X,Y) = \frac{\sum^n_{i=1} (X_i- \mu_X)(Y_i- \mu_Y)}{n-1}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>절편:	 22.947552413468973
-기울기:	 0.9038659456058729
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>절편:	 22.947552413468976
+기울기:	 0.9038659456058721
 </pre></div>
 </div>
 </div>
