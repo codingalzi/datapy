@@ -38,9 +38,12 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -1240,7 +1243,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.34324254975535295
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8989608965641592
 </pre></div>
 </div>
 </div>
@@ -1252,7 +1255,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8806938630320066
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.14865621126450868
 </pre></div>
 </div>
 </div>
@@ -1286,11 +1289,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.8530542688911357, 0.5551906193363878, 0.2506734356756988],
- [0.41529049102158055, 0.42798694836629303, 0.965638626500375],
- [0.8903384637619918, 0.41590628743862, 0.6352122347406212],
- [0.5871180605894322, 0.9188032617263108, 0.8372331254846728],
- [0.17953562916110966, 0.5651085540732674, 0.39924440263754646]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.911589748365993, 0.1473556619637575, 0.1084572625076049],
+ [0.1727317523405999, 0.0574743126678412, 0.7698946695852987],
+ [0.665276684041382, 0.27288290196820186, 0.320733800939761],
+ [0.8593350893488707, 0.5609649554017986, 0.43082311828571684],
+ [0.2735245090170151, 0.7970795047015276, 0.9138762723175092]]
 </pre></div>
 </div>
 </div>
@@ -1322,11 +1325,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.83, 0.77, 0.58],
- [0.51, 0.74, 0.09],
- [0.42, 0.91, 0.59],
- [0.55, 0.85, 0.21],
- [0.01, 0.88, 0.83]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.01, 0.33, 0.83],
+ [0.66, 0.53, 0.8],
+ [0.16, 0.05, 0.94],
+ [0.25, 0.56, 0.92],
+ [0.71, 0.13, 0.68]]
 </pre></div>
 </div>
 </div>
@@ -1339,11 +1342,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.80801, 0.08093, 0.33301],
- [0.07924, 0.84191, 0.26309],
- [0.99569, 0.12716, 0.40897],
- [0.69465, 0.81685, 0.26485],
- [0.73498, 0.96956, 0.08274]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.53818, 0.87188, 0.80015],
+ [0.11857, 0.95984, 0.10504],
+ [0.47615, 0.65995, 0.83294],
+ [0.03485, 0.9342, 0.30406],
+ [0.26805, 0.88531, 0.57588]]
 </pre></div>
 </div>
 </div>
@@ -1356,11 +1359,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.77701, 0.24863, 0.3105],
- [0.02408, 0.7182, 0.93189],
- [0.23746, 0.75339, 0.79941],
- [0.43661, 0.09166, 0.61925],
- [0.80703, 0.19105, 0.24254]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.48695, 0.6979, 0.6628],
+ [0.34853, 0.38237, 0.35613],
+ [0.92039, 0.15708, 0.04537],
+ [0.74761, 0.76456, 0.79243],
+ [0.78941, 0.49636, 0.84518]]
 </pre></div>
 </div>
 </div>

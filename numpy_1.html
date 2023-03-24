@@ -38,9 +38,12 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -594,8 +597,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 4.89 ms, sys: 8.8 ms, total: 13.7 ms
-Wall time: 13 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 14.5 ms, sys: 11 ms, total: 25.4 ms
+Wall time: 27.2 ms
 </pre></div>
 </div>
 </div>
@@ -607,8 +610,8 @@ Wall time: 13 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 290 ms, sys: 70 ms, total: 360 ms
-Wall time: 359 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 361 ms, sys: 87.3 ms, total: 448 ms
+Wall time: 485 ms
 </pre></div>
 </div>
 </div>
@@ -691,7 +694,7 @@ Wall time: 359 ms
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">shape</span></code></strong> 속성</p>
 <p>어레이 객체의 <code class="docutils literal notranslate"><span class="pre">shape</span></code> 속성은 생성된 어레이의 모양을 저장한다.
-행렬 모양의 어레이는 행과 열의 크기를 이용한 튜플로 보여준다.
+2차원 어레이는 행과 열의 크기를 이용한 튜플로 보여준다.
 위 어레이의 모양(shape)은 (2, 4)이다.</p>
 <ul class="simple">
 <li><p>2: 항목이 두개</p></li>
@@ -869,6 +872,16 @@ Wall time: 359 ms
 각 함수의 기능은
 <a class="reference external" href="https://ipgp.github.io/scientific_python_cheat_sheet/?utm_content=buffer7d821&amp;utm_medium=social&amp;utm_source=twitter.com&amp;utm_campaign=buffer#numpy-import-numpy-as-np">numpy cheat sheet</a>를
 참고한다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.array()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.arange()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.ones()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.zeros()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">np.empty()</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">np.array()</span></code> 함수는 앞서 소개하였으며
+추가로 <code class="docutils literal notranslate"><span class="pre">np.zeros()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> 두 함수를 간략하게 다룬다.
+나머지 함수들은 연습문제를 통해 학습하도록 한다.</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">zeros()</span></code> 함수</strong></p>
 <p>0으로 이루어진 어레이를 생성한다.
 1차원인 경우 정수를 인자로 사용한다.</p>
@@ -972,51 +985,51 @@ Wall time: 359 ms
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-align:left"><p>int8 / uint8</p></td>
-<td class="text-align:left"><p>i1 / u1</p></td>
+<td class="text-align:left"><p>‘i1’ / ‘u1’</p></td>
 <td class="text-align:left"><p>signed / unsigned 8 비트 정수</p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:left"><p>int16 / uint16</p></td>
-<td class="text-align:left"><p>i2 / u2</p></td>
+<td class="text-align:left"><p>‘i2’ / ‘u2’</p></td>
 <td class="text-align:left"><p>signed / unsigned 16 비트 정수</p></td>
 </tr>
 <tr class="row-even"><td class="text-align:left"><p>int32 / uint32</p></td>
-<td class="text-align:left"><p>i4 / u4</p></td>
+<td class="text-align:left"><p>‘i4’ / ‘u4’</p></td>
 <td class="text-align:left"><p>signed / unsigned 32 비트 정수</p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:left"><p>int64 / uint64</p></td>
-<td class="text-align:left"><p>i8 / u8</p></td>
+<td class="text-align:left"><p>‘i8’ / ‘u8’</p></td>
 <td class="text-align:left"><p>signed / unsigned 64 비트 정수</p></td>
 </tr>
 <tr class="row-even"><td class="text-align:left"><p>float16</p></td>
-<td class="text-align:left"><p>f2</p></td>
+<td class="text-align:left"><p>‘f2’</p></td>
 <td class="text-align:left"><p>16비트(반 정밀도) 부동소수점</p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:left"><p>float32</p></td>
-<td class="text-align:left"><p>f4 또는 f</p></td>
+<td class="text-align:left"><p>‘f4’ 또는 ‘f’</p></td>
 <td class="text-align:left"><p>32비트(단 정밀도) 부동소수점</p></td>
 </tr>
 <tr class="row-even"><td class="text-align:left"><p>float64</p></td>
-<td class="text-align:left"><p>f8 또는 d</p></td>
+<td class="text-align:left"><p>‘f8’ 또는 ‘d’</p></td>
 <td class="text-align:left"><p>64비트(배 정밀도) 부동소수점</p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:left"><p>float128</p></td>
-<td class="text-align:left"><p>f16 또는 g</p></td>
+<td class="text-align:left"><p>‘f16’ 또는 ‘g’</p></td>
 <td class="text-align:left"><p>64비트(배 정밀도) 부동소수점</p></td>
 </tr>
 <tr class="row-even"><td class="text-align:left"><p>bool</p></td>
-<td class="text-align:left"><p>?</p></td>
+<td class="text-align:left"><p>‘?’</p></td>
 <td class="text-align:left"><p>부울 값</p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:left"><p>object</p></td>
-<td class="text-align:left"><p>O</p></td>
+<td class="text-align:left"><p>‘O’</p></td>
 <td class="text-align:left"><p>임의의 파이썬 객체</p></td>
 </tr>
 <tr class="row-even"><td class="text-align:left"><p>string_</p></td>
-<td class="text-align:left"><p>S</p></td>
+<td class="text-align:left"><p>‘S’</p></td>
 <td class="text-align:left"><p>고정 길이 아스키 문자열 / 예) <code class="docutils literal notranslate"><span class="pre">S8</span></code>, <code class="docutils literal notranslate"><span class="pre">S10</span></code></p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:left"><p>unicode_</p></td>
-<td class="text-align:left"><p>U</p></td>
+<td class="text-align:left"><p>‘U’</p></td>
 <td class="text-align:left"><p>고정 길이 유니코드 문자열 / 예) <code class="docutils literal notranslate"><span class="pre">U8</span></code>, <code class="docutils literal notranslate"><span class="pre">U10</span></code></p></td>
 </tr>
 </tbody>
@@ -1075,6 +1088,46 @@ Wall time: 359 ms
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;int32&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>문자열 자료형</strong></p>
+<p>문자열은 기본적으로 유니코드로 처리되며 크기는 최장 길이의 문자열에 맞춰 결정된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;python&#39;</span><span class="p">,</span> <span class="s1">&#39;data&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;&lt;U6&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numeric_strings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;1.25&#39;</span><span class="p">,</span> <span class="s1">&#39;-9.6&#39;</span><span class="p">,</span> <span class="s1">&#39;42&#39;</span><span class="p">])</span>
+<span class="n">numeric_strings</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;&lt;U4&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">bool</span></code> 자료형</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;?&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;bool&#39;)
 </pre></div>
 </div>
 </div>
@@ -1150,13 +1203,13 @@ Wall time: 359 ms
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numeric_strings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;1.25&#39;</span><span class="p">,</span> <span class="s1">&#39;-9.6&#39;</span><span class="p">,</span> <span class="s1">&#39;42&#39;</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">string_</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numeric_strings</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;1.25&#39;</span><span class="p">,</span> <span class="s1">&#39;-9.6&#39;</span><span class="p">,</span> <span class="s1">&#39;42&#39;</span><span class="p">])</span>
 <span class="n">numeric_strings</span><span class="o">.</span><span class="n">dtype</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;S4&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;&lt;U4&#39;)
 </pre></div>
 </div>
 </div>
