@@ -37,7 +37,7 @@ plt.rc('figure', figsize=(10, 6))
 
 # ## 어레이의 축
 
-# <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy-array_axis.png" style="width:60%;"></div>
+# <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy-array_axis.jpg" style="width:50%;"></div>
 # 
 # <p><div style="text-align: center">&lt;그림 출처: <a href="https://www.reallifeedublogging.com/2020/07/numpy-arrays-and-data-analysis.html">NumPy Arrays and Data Analysis</a>&gt;</div></p>
 
