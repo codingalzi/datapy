@@ -726,8 +726,8 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 4.86 ms, sys: 11.9 ms, total: 16.7 ms
-Wall time: 16.4 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 5.98 ms, sys: 12.2 ms, total: 18.2 ms
+Wall time: 17.9 ms
 </pre></div>
 </div>
 </div>
@@ -739,8 +739,8 @@ Wall time: 16.4 ms
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 278 ms, sys: 243 ms, total: 521 ms
-Wall time: 521 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 330 ms, sys: 190 ms, total: 519 ms
+Wall time: 519 ms
 </pre></div>
 </div>
 </div>
@@ -906,90 +906,43 @@ Wall time: 521 ms
 <p>3차원 이상의 어레이는 처음에는 매우 생소하게 다가올 수 있다.
 하지만 이미지 데이터 분석에서 가장 기본으로 사용되는 차원이기에 3차원 어레이에 익숙해져야 한다.</p>
 <p>(n, m, p) 모양의 3차원 어레이를 이해하는 두 가지 방법은 다음과 같다.</p>
-<ul class="simple">
-<li><p>방법 1: 바둑판을 (n, m) 크기의 격자로 나누고 각각의 칸에 길이가 p 인 1차원 어레이가
+<p>첫째, 바둑판을 (n, m) 크기의 격자로 나누고 각각의 칸에 길이가 p 인 1차원 어레이가
 위치하는 것으로 이해한다.
 아래 그림은 (3, 3, 3) 모양의 어레이이며, (3, 3) 모양의 바둑판에
-0과 1사이의 부동소수점으로 구성된 (R, G, B) 색상 정보를 담은 길이가 3인 튜플을 표현한다.</p></li>
-</ul>
+0과 1사이의 부동소수점으로 구성된 (R, G, B) 색상 정보를 담은 길이가 3인 튜플을 표현한다.</p>
 <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/impixelregion.png" style="width:5=700px;"></div>
-<p><div style="text-align: center">&lt;그림 출처: <a href="http://maprabu.blogspot.com/2013/08/dont-photoshop-just-matlab-it.html">Big Data & Image Processing</a>&gt;</div></p><ul class="simple">
-<li><p>방법 2: (m, p) 모양의 2차원 어레이 n 개를 항목으로 갖는 1차원 어레이로 이해하기.
-아래 그림 참조.</p></li>
-</ul>
-<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/np-array.png" style="width:500px;"></div>
-<p><div style="text-align: center">&lt;그림 출처: <a href="https://www.reallifeedublogging.com/2020/07/numpy-arrays-and-data-analysis.html">NumPy Arrays and Data Analysis</a>&gt;</div></p><p>위 이미지를 직접 구현하면 다음과 같다.</p>
-<ul class="simple">
-<li><p>1D 어레이</p></li>
-</ul>
+<p><div style="text-align: center">&lt;그림 출처: <a href="http://maprabu.blogspot.com/2013/08/dont-photoshop-just-matlab-it.html">Big Data & Image Processing</a>&gt;</div></p><p>둘째, (m, p) 모양의 2차원 어레이 n 개를 항목으로 갖는 1차원 어레이로 이해한다.
+아래 <code class="docutils literal notranslate"><span class="pre">threeD_array</span></code> 변수가 가리키는 3차원 어레이는 (3, 2) 모양의 2차원 어레이를 4개 포함한 1차원 어레이로 이해할 수 있다.</p>
+<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy-array.svg" style="width:30%;"></div>
+<p><div style="text-align: center">&lt;그림 출처: <a href="https://www.reallifeedublogging.com/2020/07/numpy-arrays-and-data-analysis.html">NumPy Arrays and Data Analysis</a>&gt;</div></p><div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">threeD_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                          <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> 
+                          <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]],</span>
+   
+                         <span class="p">[[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+                          <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> 
+                          <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span>
+
+                         <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> 
+                          <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> 
+                          <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">]],</span>
+
+                         <span class="p">[[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> 
+                          <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> 
+                          <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]])</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">threeD_array</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 7,  2,  9, 10])
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>2D 어레이</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">5.2</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">],</span> 
-          <span class="p">[</span><span class="mf">9.1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[5.2, 3. , 4.5],
-       [9.1, 0.1, 0.3]])
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>3D 어레이</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
-           <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> 
-           <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span>
-          
-          <span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> 
-           <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> 
-           <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">]],</span>
-          
-          <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> 
-           <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> 
-           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]],</span>
-          
-          <span class="p">[[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> 
-           <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> 
-           <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">]]])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[ 1,  2],
-        [ 4,  3],
-        [ 7,  4]],
-
-       [[ 2,  3],
-        [ 9, 10],
-        [ 7,  5]],
-
-       [[ 1,  2],
-        [ 3,  4],
-        [ 0,  2]],
-
-       [[ 9, 11],
-        [ 6,  5],
-        [ 9,  8]]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4, 3, 2)
 </pre></div>
 </div>
 </div>
