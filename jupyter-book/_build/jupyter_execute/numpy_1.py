@@ -196,61 +196,46 @@ arr1.ndim
 # 
 # (n, m, p) 모양의 3차원 어레이를 이해하는 두 가지 방법은 다음과 같다.
 # 
-# * 방법 1: 바둑판을 (n, m) 크기의 격자로 나누고 각각의 칸에 길이가 p 인 1차원 어레이가 
-#     위치하는 것으로 이해한다. 
-#     아래 그림은 (3, 3, 3) 모양의 어레이이며, (3, 3) 모양의 바둑판에 
-#     0과 1사이의 부동소수점으로 구성된 (R, G, B) 색상 정보를 담은 길이가 3인 튜플을 표현한다.
+# 첫째, 바둑판을 (n, m) 크기의 격자로 나누고 각각의 칸에 길이가 p 인 1차원 어레이가 
+# 위치하는 것으로 이해한다. 
+# 아래 그림은 (3, 3, 3) 모양의 어레이이며, (3, 3) 모양의 바둑판에 
+# 0과 1사이의 부동소수점으로 구성된 (R, G, B) 색상 정보를 담은 길이가 3인 튜플을 표현한다.
 
 # <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/impixelregion.png" style="width:5=700px;"></div>
 # 
 # <p><div style="text-align: center">&lt;그림 출처: <a href="http://maprabu.blogspot.com/2013/08/dont-photoshop-just-matlab-it.html">Big Data & Image Processing</a>&gt;</div></p>
 
-# * 방법 2: (m, p) 모양의 2차원 어레이 n 개를 항목으로 갖는 1차원 어레이로 이해하기.
-#     아래 그림 참조.
+# 둘째, (m, p) 모양의 2차원 어레이 n 개를 항목으로 갖는 1차원 어레이로 이해한다.
+# 아래 `threeD_array` 변수가 가리키는 3차원 어레이는 (3, 2) 모양의 2차원 어레이를 4개 포함한 1차원 어레이로 이해할 수 있다.
 
-# <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/np-array.png" style="width:500px;"></div>
+# <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy-array.svg" style="width:30%;"></div>
 # 
 # <p><div style="text-align: center">&lt;그림 출처: <a href="https://www.reallifeedublogging.com/2020/07/numpy-arrays-and-data-analysis.html">NumPy Arrays and Data Analysis</a>&gt;</div></p>
-
-# 위 이미지를 직접 구현하면 다음과 같다.
-# 
-# * 1D 어레이
 
 # In[15]:
 
 
-np.array([7, 2, 9, 10])
+threeD_array = np.array([[[7, 1],
+                          [9, 4], 
+                          [2, 3]],
+   
+                         [[4, 3],
+                          [0, 1], 
+                          [8, 0]],
 
+                         [[1, 2], 
+                          [3, 4], 
+                          [6, 9]],
 
-# * 2D 어레이
+                         [[5, 11], 
+                          [8, 5], 
+                          [4, 7]]])
+
 
 # In[16]:
 
 
-np.array([[5.2, 3.0, 4.5], 
-          [9.1, 0.1, 0.3]])
-
-
-# * 3D 어레이
-
-# In[17]:
-
-
-np.array([[[1, 2],
-           [4, 3], 
-           [7, 4]],
-          
-          [[2, 3], 
-           [9, 10], 
-           [7, 5]],
-          
-          [[1, 2], 
-           [3, 4], 
-           [0, 2]],
-          
-          [[9, 11], 
-           [6, 5], 
-           [9, 8]]])
+threeD_array.shape
 
 
 # ### 어레이 객체 생성 함수
@@ -276,7 +261,7 @@ np.array([[[1, 2],
 # 0으로 이루어진 어레이를 생성한다. 
 # 1차원인 경우 정수를 인자로 사용한다.
 
-# In[18]:
+# In[17]:
 
 
 np.zeros(10)
@@ -284,13 +269,13 @@ np.zeros(10)
 
 # 2차원부터는 정수들의 튜플로 모양을 지정한다.
 
-# In[19]:
+# In[18]:
 
 
 np.zeros((3, 6))
 
 
-# In[20]:
+# In[19]:
 
 
 np.zeros((4, 3, 2))
@@ -300,13 +285,13 @@ np.zeros((4, 3, 2))
 # 
 # `range()` 함수와 유사하게 작동하며 부동소수점 스텝도 지원한다.
 
-# In[21]:
+# In[20]:
 
 
 np.arange(15)
 
 
-# In[22]:
+# In[21]:
 
 
 np.arange(0, 1, 0.1)
@@ -341,7 +326,7 @@ np.arange(0, 1, 0.1)
 
 # **`float64` 자료형**
 
-# In[23]:
+# In[22]:
 
 
 arr1 = np.array([1, 2, 3], dtype=np.float64)
@@ -349,7 +334,7 @@ arr1 = np.array([1, 2, 3], dtype=np.float64)
 arr1.dtype
 
 
-# In[24]:
+# In[23]:
 
 
 arr1 = np.array([1, 2, 3], dtype='f8')
@@ -359,7 +344,7 @@ arr1.dtype
 
 # **`int32` 자료형**
 
-# In[25]:
+# In[24]:
 
 
 arr2 = np.array([1, 2, 3], dtype=np.int32)
@@ -367,7 +352,7 @@ arr2 = np.array([1, 2, 3], dtype=np.int32)
 arr2.dtype
 
 
-# In[26]:
+# In[25]:
 
 
 arr2 = np.array([1, 2, 3], dtype='i4')
@@ -379,13 +364,13 @@ arr2.dtype
 
 # 문자열은 기본적으로 유니코드로 처리되며 크기는 최장 길이의 문자열에 맞춰 결정된다.
 
-# In[27]:
+# In[26]:
 
 
 np.array(['python', 'data']).dtype
 
 
-# In[28]:
+# In[27]:
 
 
 numeric_strings = np.array(['1.25', '-9.6', '42'])
@@ -394,7 +379,7 @@ numeric_strings.dtype
 
 # **`bool` 자료형**
 
-# In[29]:
+# In[28]:
 
 
 np.array([True, False], dtype='?').dtype
@@ -407,14 +392,14 @@ np.array([True, False], dtype='?').dtype
 # 
 # * `int` 자료형을 `float` 자료형으로 형변환하기
 
-# In[30]:
+# In[29]:
 
 
 arr = np.array([1, 2, 3, 4, 5])
 arr.dtype
 
 
-# In[31]:
+# In[30]:
 
 
 float_arr = arr.astype(np.float64)
@@ -424,14 +409,14 @@ float_arr.dtype
 # * `float` 자료형을 `int` 자료형으로 형변환하기
 #     - 소수점 이하는 버림.
 
-# In[32]:
+# In[31]:
 
 
 arr = np.array([3.7, -1.2, -2.6, 0.5, 12.9, 10.1])
 arr
 
 
-# In[33]:
+# In[32]:
 
 
 arr.astype(np.int32)
@@ -439,20 +424,20 @@ arr.astype(np.int32)
 
 # * 숫자 형식의 문자열을 숫자로 형변환하기: 문자열 자료형의 크기는 넘파이가 알아서 정함
 
-# In[34]:
+# In[33]:
 
 
 numeric_strings = np.array(['1.25', '-9.6', '42'])
 numeric_strings.dtype
 
 
-# In[35]:
+# In[34]:
 
 
 numeric_strings.astype(float)
 
 
-# In[36]:
+# In[35]:
 
 
 numeric_strings2 = np.array(['1.25345', '-9.673811345', '42'], dtype=np.string_)
@@ -462,7 +447,7 @@ numeric_strings2.dtype
 # * 부동소수점으로 형변환하면 
 #     지정된 정밀도에 따라 소수점 이하를 자른다.
 
-# In[37]:
+# In[36]:
 
 
 numeric_strings2.astype(float)
@@ -476,13 +461,13 @@ numeric_strings2.astype(float)
 # 
 # 부동소수점 정밀도를 변경하면 그에 따라 다르게 결정된다.
 
-# In[38]:
+# In[37]:
 
 
 np.set_printoptions(precision=6, suppress=True)
 
 
-# In[39]:
+# In[38]:
 
 
 numeric_strings2.astype(float)
@@ -490,20 +475,20 @@ numeric_strings2.astype(float)
 
 # `astype()` 메서드의 인자로 다른 배열의 `dtype` 정보를 이용할 수도 있다.
 
-# In[40]:
+# In[39]:
 
 
 int_array = np.arange(10)
 int_array.dtype
 
 
-# In[41]:
+# In[40]:
 
 
 calibers = np.array([.22, .270, .357, .380, .44, .50], dtype=np.float64)
 
 
-# In[42]:
+# In[41]:
 
 
 int_array.astype(calibers.dtype)
@@ -511,7 +496,7 @@ int_array.astype(calibers.dtype)
 
 # 자료형 코드를 이용하여 `dtype`을 지정할 수 있다. (위 테이블 참조)
 
-# In[43]:
+# In[42]:
 
 
 empty_uint32 = np.empty(8, dtype='u4')
@@ -523,14 +508,14 @@ empty_uint32.dtype
 # 넘파이 어레이 연산은 기본적으로 항목별로 이루어진다. 
 # 즉, 지정된 연산을 동일한 위치의 항목끼리 실행하여 새로운, 동일한 모양의 어레이를 생성한다.
 
-# In[44]:
+# In[43]:
 
 
 arr = np.array([[1., 2., 3.], [4., 5., 6.]])
 arr
 
 
-# In[45]:
+# In[44]:
 
 
 arr2 = np.array([[3., 2., 1.], [4., 2., 12.]])
@@ -539,7 +524,7 @@ arr2
 
 # **덧셈**
 
-# In[46]:
+# In[45]:
 
 
 arr + arr2
@@ -547,7 +532,7 @@ arr + arr2
 
 # 숫자와의 연산은 모든 항목에 동일한 값을 사용한다.
 
-# In[47]:
+# In[46]:
 
 
 arr + 2.4
@@ -555,13 +540,13 @@ arr + 2.4
 
 # **뺄셈**
 
-# In[48]:
+# In[47]:
 
 
 arr - arr2
 
 
-# In[49]:
+# In[48]:
 
 
 3.78 - arr
@@ -572,19 +557,19 @@ arr - arr2
 # 나눗셈 또한 항목별로 연산이 이루어진다. 
 # 따라서 0이 항목으로 포함되면 오류가 발생한다.
 
-# In[50]:
+# In[49]:
 
 
 arr / arr2
 
 
-# In[51]:
+# In[50]:
 
 
 1 / arr
 
 
-# In[52]:
+# In[51]:
 
 
 arr / 3.2
@@ -592,19 +577,19 @@ arr / 3.2
 
 # **거듭제곱(지수승)**
 
-# In[53]:
+# In[52]:
 
 
 arr ** arr2
 
 
-# In[54]:
+# In[53]:
 
 
 2 ** arr
 
 
-# In[55]:
+# In[54]:
 
 
 arr ** 0.5
@@ -612,37 +597,37 @@ arr ** 0.5
 
 # **비교 연산**
 
-# In[56]:
+# In[55]:
 
 
 arr2 > arr
 
 
-# In[57]:
+# In[56]:
 
 
 arr2 <= arr
 
 
-# In[58]:
+# In[57]:
 
 
 1.2 < arr
 
 
-# In[59]:
+# In[58]:
 
 
 1.2 >= arr2
 
 
-# In[60]:
+# In[59]:
 
 
 arr == arr
 
 
-# In[61]:
+# In[60]:
 
 
 arr != arr2
@@ -656,19 +641,19 @@ arr != arr2
 # * `&`: 논리곱(and) 연산자
 # * `|`: 논리합(or) 연산자
 
-# In[62]:
+# In[61]:
 
 
 ~(arr == arr)
 
 
-# In[63]:
+# In[62]:
 
 
 (arr == arr) & (arr2 == arr2)
 
 
-# In[64]:
+# In[63]:
 
 
 ~(arr == arr) | (arr2 != arr)

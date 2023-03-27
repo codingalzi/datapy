@@ -6,6 +6,7 @@
 
 # **주요 내용**
 # 
+# - 어레이의 축
 # - 인덱싱과 슬라이싱
 # - 부울 인덱싱
 # - 팬시 인덱싱
@@ -33,6 +34,12 @@ import matplotlib.pyplot as plt
 # 도표 크기 지정
 plt.rc('figure', figsize=(10, 6))
 
+
+# ## 어레이의 축
+
+# <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy-array_axis.png" style="width:60%;"></div>
+# 
+# <p><div style="text-align: center">&lt;그림 출처: <a href="https://www.reallifeedublogging.com/2020/07/numpy-arrays-and-data-analysis.html">NumPy Arrays and Data Analysis</a>&gt;</div></p>
 
 # ## 인덱싱과 슬라이싱
 
@@ -616,7 +623,7 @@ plt.show()
 # 참고로 `_r`은 선택된 색지도를 역순으로 적용한다는 의미이다.
 # 
 # <br>
-# <div align="center" border="1px"><img src="https://matplotlib.org/stable/_images/sphx_glr_colormaps_002_2_0x.png" style="width:70%;"></div>
+# <div align="center" border="1px"><img src="https://matplotlib.org/stable/_images/sphx_glr_colormaps_002_2_0x.png" style="width:80%;"></div>
 # 
 # 보다 다양한 색지도는 [Matplotlib: Choosing Colormaps](https://matplotlib.org/stable/tutorials/colors/colormaps.html)를 
 # 참고한다.
@@ -629,7 +636,7 @@ plt.show()
 # 
 # $$
 # [R, G, B]\cdot[0.2989, 0.5870, 0.1140]
-# = 0.2989 \cdot R + 0.5870 \cdot G + 0.1140 \cdot B
+# = R \cdot 0.2989 + G \cdot 0.5870 + B \cdot 0.1140
 # $$
 # 
 # 벡터 내적 연산은 `dot()` 함수를 이용한 어레이의 내적 연산으로 쉽게 계산된다.
@@ -637,7 +644,7 @@ plt.show()
 # In[52]:
 
 
-face_gray = np.dot(face, [0.2989, 0.5870,0.114])
+face_gray = np.dot(face, [0.2989, 0.5870, 0.114])
 
 
 # `np.dot()` 함수가 컬러 사진 3차원 어레이이와 3차원 벡터(1차원 어레이)의 점곱을
@@ -670,7 +677,7 @@ plt.show()
 
 # 이미지 크기 조정은 픽셀 수를 조절하는 방식으로 이루어진다. 
 # 가장 단순한 방식은 행과 열에서 각각 2개씩 건너뛰며 픽셀을 선택하는 것이다.
-# 일부 데이터가 상실되지만 작은 이미지에는 눈으로 보일 정도로 영향을 받지는 않는다.
+# 일부 데이터가 상실되지만 눈으로 확인될 정도까지는 아니다.
 # 
 # 아래 코드는 행과 열에 대해 모두 스텝 2를 지정하고 슬라이싱을 적용한다. 
 # 즉, `2x2` 모양을 이루는 네 개의 픽셀 중에 상단 왼편에 있는 픽셀만 선택한다.
@@ -702,9 +709,9 @@ plt.show()
 
 # **보간법**
 
-# 가장 일반적으로 사용되는 이미지 변경 방법은 __보간법__(interpolation)이다. 
+# 가장 일반적으로 사용되는 이미지 변경 방법은 **보간법**<font size='2'>interpolation</font>이다. 
 # 이미지 크기 변경에 사용되는 다양한 보간법 기법이 있지만 여기서는 두 픽셀 사이의 평균값을 취하는 방식을 이용한다.
-# 보간법의 다양한 방식에 대한 설명은 [OpenCV 보간법](https://m.blog.naver.com/vps32/221762092250)을 참조한다.
+# 보간법의 다양한 방식에 대한 설명은 [OpenCV 보간법](https://m.blog.naver.com/vps32/221762092250)을 참고한다.
 # 
 # 아래 코드는 짝수 인덱스의 값과 홀수 인덱스의 값의 평균을 취하는 방식으로 보간법을 활용한다.
 
@@ -731,21 +738,21 @@ plt.show()
 
 # 4분의 1 크기의 두 이미지 데이터가 조금 다르기는 하지만 이미지 상으로 차이점을 발견하기 어렵다.
 
+# - 단순 크기 조정 이미지의 처음 2행
+
 # In[62]:
-
-
-face_half_interpolation[:2]
-
-
-# In[63]:
 
 
 face_half_simple[:2]
 
 
-# 4차원 이상의 어레이에 대해서는 기본적으로 2, 3차원 어레이 대상과 동일하게 작동한다.
-# 하지만 시각화가 기본적으로 불가능하고, 사람이 직접 4차원 이상의 슬라이싱을 조작하는 것도 매우 어렵다.
-# 따라서 2, 3차원 어레이 슬라이싱의 기본 아이디어만 이해했다면 그것으로 충분하다는 점만 언급한다.
+# - 보간법 적용 이미지의 처음 2행
+
+# In[63]:
+
+
+face_half_interpolation[:2]
+
 
 # ## 부울 인덱싱
 
@@ -767,7 +774,7 @@ names
 
 # * (7, 4) 모양의 2차원 어레이 무작위 생성
 #     - `randn()` 함수는 표준 정규 분포를 이용하여 임의의 부동소수점으로 이루어진 어레이 생성.
-#     - __주의사항:__ 인자로 하나의 튜플이 아닌 여러 개의 인자 사용. 
+#     - **주의사항:** 인자로 하나의 튜플이 아닌 여러 개의 인자 사용. 
 #         각각의 인자가 각각의 행(축 0), 열(축 1) 등에 사용되는 항목의 개수 지정.
 
 # In[65]:
