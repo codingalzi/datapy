@@ -665,8 +665,9 @@ title="Print to PDF"
 <span id="id1"></span><h1><span class="section-number">11. </span>어레이 인덱싱<a class="headerlink" href="#sec-numpy-2" title="Permalink to this headline">#</a></h1>
 <p><strong>주요 내용</strong></p>
 <ul class="simple">
-<li><p>어레이 인덱싱, 슬라이싱</p></li>
+<li><p>인덱싱과 슬라이싱</p></li>
 <li><p>부울 인덱싱</p></li>
+<li><p>팬시 인덱싱</p></li>
 </ul>
 <p><strong>기본 설정</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">numpy</span></code> 모듈과 시각화 도구 모듈인 <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>에 대한 기본 설정을 지정한다.</p>
@@ -695,7 +696,7 @@ title="Print to PDF"
 <section id="id2">
 <h2><span class="section-number">11.1. </span>인덱싱과 슬라이싱<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>리스트의 인덱스, 인덱싱, 슬라이싱 개념을 넘파이 어레이에 확장시킨다.
-리스트의 경우보다 보다 다양한 기능을 제공하며 데이터 분석에서 매우 중요한 역할을 수행한다.</p>
+리스트의 경우보다 다양한 기능을 제공하며 데이터 분석에서 매우 중요한 역할을 수행한다.</p>
 <section id="id3">
 <h3><span class="section-number">11.1.1. </span>1차원 어레이 인덱싱, 슬라이싱<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <p>1차원 어레이의 경우 리스트의 경우와 거의 동일하게 작동한다.</p>
@@ -758,31 +759,31 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p><strong>주의사항:</strong> 위 기능은 리스트에서는 제공되지 않는다.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">aList</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span>
-<span class="n">aList</span>
-
-<span class="n">aList</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span>
-<span class="n">aList</span>
-<span class="ne">TypeError</span>                                 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
+<div class="warning admonition">
+<p class="admonition-title">주의사항</p>
+<p>위 기능은 리스트에서는 제공되지 않는다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ne">TypeError</span>                                 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">14</span><span class="o">-</span><span class="n">f584977ee941</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="o">----&gt;</span> <span class="mi">1</span> <span class="n">aList</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span>
-      <span class="mi">2</span> <span class="n">aList</span>
+<span class="o">----&gt;</span> <span class="mi">1</span> <span class="n">arr</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span>
+      <span class="mi">2</span> <span class="n">arr</span>
 
 <span class="ne">TypeError</span><span class="p">:</span> <span class="n">can</span> <span class="n">only</span> <span class="n">assign</span> <span class="n">an</span> <span class="n">iterable</span>
 </pre></div>
 </div>
-<p>아래와 같이 리스트를 값으로 지정하면 작동한다.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">aList</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
+<p>대신에 아래와 같이 리스트를 값으로 지정해야 한다.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">]</span>
 </pre></div>
 </div>
-<p><strong>뷰(view) 이해</strong></p>
+</div>
+<p><strong>뷰<font size='2'>view</font> 이해</strong></p>
 <p>넘파이 어레이에 대해 슬라이싱을 실행하면 지정된 구간에 해당하는 어레이를 새로 생성하는 게 아니라
 지정된 구간의 정보를 이용만 한다.
-이렇게 작동하는 기능이 <strong>뷰</strong>(view)이다.
+이렇게 작동하는 기능이 <strong>뷰</strong>이다.
 즉, 어레이를 새로 생성하지 않고 기존 어레이를 적절하게 활용한다.
-넘파이 어레이와 관련된 많은 기능이 뷰 기능을 이용한다. 이전에 소개한 전치 어레이를
-구하는 과정도 뷰를 이용한다.</p>
+넘파이 어레이와 관련된 많은 기능이 뷰 기능을 이용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr_slice</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span>
@@ -796,6 +797,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">arr</span></code> 변수가 가리키는 어레이의 항목도 함께 달라진다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr_slice</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3450</span>
@@ -823,6 +825,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">arr</span></code> 변수가 가리키는 어레이의 항목도 함께 달라진다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span>
@@ -1387,7 +1390,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_2_97_0.png" src="_images/numpy_2_97_0.png" />
+<img alt="_images/numpy_2_96_0.png" src="_images/numpy_2_96_0.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">face</span></code>는 아래 모양의 3차원 어레이를 가리킨다.</p>
@@ -1409,6 +1412,67 @@ title="Print to PDF"
 <li><p>열: 1024개</p></li>
 <li><p>각각의 픽셀에 길이가 3인 1차원 어레이 포함.</p></li>
 </ul>
+<p>3차원 넘파이 어레이로 불러온 너구리 사진의 실제 값은 다음과 같다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">face</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[121, 112, 131],
+        [138, 129, 148],
+        [153, 144, 165],
+        ...,
+        [119, 126,  74],
+        [131, 136,  82],
+        [139, 144,  90]],
+
+       [[ 89,  82, 100],
+        [110, 103, 121],
+        [130, 122, 143],
+        ...,
+        [118, 125,  71],
+        [134, 141,  87],
+        [146, 153,  99]],
+
+       [[ 73,  66,  84],
+        [ 94,  87, 105],
+        [115, 108, 126],
+        ...,
+        [117, 126,  71],
+        [133, 142,  87],
+        [144, 153,  98]],
+
+       ...,
+
+       [[ 87, 106,  76],
+        [ 94, 110,  81],
+        [107, 124,  92],
+        ...,
+        [120, 158,  97],
+        [119, 157,  96],
+        [119, 158,  95]],
+
+       [[ 85, 101,  72],
+        [ 95, 111,  82],
+        [112, 127,  96],
+        ...,
+        [121, 157,  96],
+        [120, 156,  94],
+        [120, 156,  94]],
+
+       [[ 85, 101,  74],
+        [ 97, 113,  84],
+        [111, 126,  97],
+        ...,
+        [120, 156,  95],
+        [119, 155,  93],
+        [118, 154,  92]]], dtype=uint8)
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>RGB 색상 정보</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">768x1024</span></code> 개의 픽셀에 포함된 길이 3인 어레이는
 R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
@@ -1454,7 +1518,8 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 <p>여기서는 픽셀 정보를 0과 1사이의 부동소수점으로 변경해서 사용한다.
 이유는 여러 이미지 변환을 시도할 때 0과 1사이의 부동소수점의 값들이 나올 때
 정확하게 기능하기 때문이다.</p>
-<p>RGB 정보의 최댓값이 255이기에 모든 항목을 255로 나누어 0과 1사이의 값으로 정규화시킨다.</p>
+<p>RGB 정보의 최댓값이 255이기에 모든 항목을 255로 나누어 0과 1사이의 값으로
+정규화<font size='2'>normalization</font>시킨다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">face</span> <span class="o">=</span> <span class="n">face</span><span class="o">/</span><span class="mi">255</span>
@@ -1462,37 +1527,62 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 </div>
-<p><strong>흑백 이미지 변환</strong></p>
-<p>흑백 이미지는 보통 하나의 RGB 정보만 가져오는 것으로 구할 수 있다.
-예를 들어, 빨강색 정보만 가져오려면 아래처럼 3차원 인덱싱을 실행한다.
-아래 코드는 이미지의 행과 열은 그대로 두고 RGB 정보에서 R(빨강)에 대한 정보만 인덱싱으로 가져온다.</p>
+<p><strong>RGB 색상 확인</strong></p>
+<p>빨강(Red)색 요소는 각 픽셀의 0번 인덱스로 구성된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">face_gray_red</span> <span class="o">=</span> <span class="n">face</span><span class="p">[:,:,</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>흑백사진으로 보여주려면 <code class="docutils literal notranslate"><span class="pre">imshow()</span></code> 함수의 <code class="docutils literal notranslate"><span class="pre">cmap</span></code> 키워드 인자를 그레이(회색) 스타일을
-사용하도록 지정해야 한다.
-<code class="docutils literal notranslate"><span class="pre">cmap</span></code> 은 색상 지도(color map)을 가리키는 매개변수이며, <code class="docutils literal notranslate"><span class="pre">'gray'</span></code>를 인자로 지정하면 흑백사진으로 출력한다.
-색상 지도에 대한 자세한 안내는
-<a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">Matplotlib: Choosing Colormaps</a>를
-참조한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">face_gray_red</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">face_red</span> <span class="o">=</span> <span class="n">face</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">face_red</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds_r&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_2_113_0.png" src="_images/numpy_2_113_0.png" />
+<img alt="_images/numpy_2_112_0.png" src="_images/numpy_2_112_0.png" />
+</div>
+</div>
+<p>초록(Green)색 요소는 각 픽셀의 1번 인덱스로 구성된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">face_green</span> <span class="o">=</span> <span class="n">face</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">face_green</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greens_r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/numpy_2_114_0.png" src="_images/numpy_2_114_0.png" />
+</div>
+</div>
+<p>파랑(Blue)색 요소는 각 픽셀의 2번 인덱스로 구성된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">face_blue</span> <span class="o">=</span> <span class="n">face</span><span class="p">[:,</span> <span class="p">:,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">face_blue</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues_r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/numpy_2_116_0.png" src="_images/numpy_2_116_0.png" />
 </div>
 </div>
 <div class="info admonition">
-<p class="admonition-title">흑백 사진 변환</p>
-<p>진정한 흑백사진으로 변경하려면 RGB 정보를 전부 이용하여 하나의 값을 계산해야 한다.
+<p class="admonition-title">색지도<font size='2'>color map</font></p>
+<p>matplotlib 라이브러리에서 이미지를 출력할 때 색지도<font size='2'>color map</font>를 선택해야 한다.
+색지도는 <code class="docutils literal notranslate"><span class="pre">cmap</span></code> 옵션으로 지정하며 앞서 R, G, B에 해당하는 색지도는 각각 <code class="docutils literal notranslate"><span class="pre">Reds</span></code>, <code class="docutils literal notranslate"><span class="pre">Greens</span></code>, <code class="docutils literal notranslate"><span class="pre">Blues</span></code>가
+사용되었으며 아래 이미지 중에서 선택되었다.
+참고로 <code class="docutils literal notranslate"><span class="pre">_r</span></code>은 선택된 색지도를 역순으로 적용한다는 의미이다.</p>
+<br>
+<div align="center" border="1px"><img src="https://matplotlib.org/stable/_images/sphx_glr_colormaps_002_2_0x.png" style="width:70%;"></div>
+<p>보다 다양한 색지도는 <a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">Matplotlib: Choosing Colormaps</a>를
+참고한다.</p>
+</div>
+<p><strong>흑백 이미지 변환</strong></p>
+<p>흑백사진으로 변경하려면 RGB 정보를 전부 이용하여 하나의 값을 계산해야 한다.
 흑백 이미지의 명암을 구현하는 <strong>벡터 내적</strong> 수식은 다음과 같다.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1500,16 +1590,58 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 = 0.2989 \cdot R + 0.5870 \cdot G + 0.1140 \cdot B
 \]</div>
 <p>벡터 내적 연산은 <code class="docutils literal notranslate"><span class="pre">dot()</span></code> 함수를 이용한 어레이의 내적 연산으로 쉽게 계산된다.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">face_gray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">face</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.2989</span><span class="p">,</span> <span class="mf">0.5870</span><span class="p">,</span><span class="mf">0.114</span><span class="p">])</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">face_gray</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">face</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.2989</span><span class="p">,</span> <span class="mf">0.5870</span><span class="p">,</span><span class="mf">0.114</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>결과는 2차원 어레이며, 흑백 이미지의 정보를 모두 갖고 있다.
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">np.dot()</span></code> 함수가 컬러 사진 3차원 어레이이와 3차원 벡터(1차원 어레이)의 점곱을
+처리하는 방식 3차원 어레이의 마지막 축의 항목들과의 내적으로 계산된다.
+따라서 결과는 2차원 어레이며, 흑백 이미지의 정보를 모두 갖고 있다.
 따라서 보다 선명한 명암을 보여주는 이미지가 결과로 나온다.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">face_gray</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;gray&#39;</span><span class="p">))</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">face_gray</span>
 </pre></div>
 </div>
-<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/face_black_white.png" style="width:500px;"></div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.4582, 0.5249, 0.5846, ..., 0.4626, 0.5033, 0.5346],
+       [0.3378, 0.4201, 0.4971, ..., 0.4578, 0.5205, 0.5676],
+       [0.275 , 0.3574, 0.4397, ..., 0.4589, 0.5217, 0.5648],
+       ...,
+       [0.38  , 0.3996, 0.452 , ..., 0.5477, 0.5438, 0.5457],
+       [0.3643, 0.4035, 0.4665, ..., 0.5462, 0.5418, 0.5418],
+       [0.3652, 0.4114, 0.4635, ..., 0.5422, 0.5379, 0.5339]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">face_gray</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(768, 1024)
+</pre></div>
+</div>
+</div>
+</div>
+<p>흑백 사진으로 출력하려면 색지도 인자로 <code class="docutils literal notranslate"><span class="pre">gray</span></code>를 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">face_gray</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/numpy_2_125_0.png" src="_images/numpy_2_125_0.png" />
+</div>
 </div>
 </section>
 <section id="id8">
@@ -1548,7 +1680,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_2_122_0.png" src="_images/numpy_2_122_0.png" />
+<img alt="_images/numpy_2_133_0.png" src="_images/numpy_2_133_0.png" />
 </div>
 </div>
 <p><strong>보간법</strong></p>
@@ -1583,7 +1715,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_2_128_0.png" src="_images/numpy_2_128_0.png" />
+<img alt="_images/numpy_2_139_0.png" src="_images/numpy_2_139_0.png" />
 </div>
 </div>
 <p>4분의 1 크기의 두 이미지 데이터가 조금 다르기는 하지만 이미지 상으로 차이점을 발견하기 어렵다.</p>

@@ -6,8 +6,9 @@
 
 # **주요 내용**
 # 
-# - 어레이 인덱싱, 슬라이싱
+# - 인덱싱과 슬라이싱
 # - 부울 인덱싱
+# - 팬시 인덱싱
 
 # **기본 설정**
 # 
@@ -36,7 +37,7 @@ plt.rc('figure', figsize=(10, 6))
 # ## 인덱싱과 슬라이싱
 
 # 리스트의 인덱스, 인덱싱, 슬라이싱 개념을 넘파이 어레이에 확장시킨다.
-# 리스트의 경우보다 보다 다양한 기능을 제공하며 데이터 분석에서 매우 중요한 역할을 수행한다.
+# 리스트의 경우보다 다양한 기능을 제공하며 데이터 분석에서 매우 중요한 역할을 수행한다.
 
 # ### 1차원 어레이 인덱싱, 슬라이싱
 
@@ -74,36 +75,37 @@ arr[5:8] = 12
 arr
 
 
-# **주의사항:** 위 기능은 리스트에서는 제공되지 않는다.
-
-# ```python
-# aList = list(arr)
-# aList
+# :::{admonition} 주의사항
+# :class: warning
 # 
-# aList[5:8] = 12
-# aList
+# 위 기능은 리스트에서는 제공되지 않는다.
+# 
+# ```python
+# arr[5:8] = 12
+# ```
+# ```python
 # TypeError                                 Traceback (most recent call last)
 # <ipython-input-14-f584977ee941> in <module>
-# ----> 1 aList[5:8] = 12
-#       2 aList
+# ----> 1 arr[5:8] = 12
+#       2 arr
 # 
 # TypeError: can only assign an iterable
 # ```
-
-# 아래와 같이 리스트를 값으로 지정하면 작동한다.
-
+# 
+# 대신에 아래와 같이 리스트를 값으로 지정해야 한다.
+# 
 # ```
-# aList[5:8] = [12, 12, 12]
+# arr[5:8] = [12, 12, 12]
 # ```
+# :::
 
-# **뷰(view) 이해**
+# **뷰<font size='2'>view</font> 이해**
 # 
 # 넘파이 어레이에 대해 슬라이싱을 실행하면 지정된 구간에 해당하는 어레이를 새로 생성하는 게 아니라
 # 지정된 구간의 정보를 이용만 한다. 
-# 이렇게 작동하는 기능이 __뷰__(view)이다. 
+# 이렇게 작동하는 기능이 **뷰**이다. 
 # 즉, 어레이를 새로 생성하지 않고 기존 어레이를 적절하게 활용한다.
-# 넘파이 어레이와 관련된 많은 기능이 뷰 기능을 이용한다. 이전에 소개한 전치 어레이를 
-# 구하는 과정도 뷰를 이용한다.
+# 넘파이 어레이와 관련된 많은 기능이 뷰 기능을 이용한다.
 
 # In[7]:
 
@@ -111,6 +113,8 @@ arr
 arr_slice = arr[5:8]
 arr_slice
 
+
+# `arr` 변수가 가리키는 어레이의 항목도 함께 달라진다.
 
 # In[8]:
 
@@ -127,6 +131,8 @@ arr
 arr_slice[:] = 64
 arr_slice
 
+
+# `arr` 변수가 가리키는 어레이의 항목도 함께 달라진다.
 
 # In[10]:
 
@@ -517,6 +523,14 @@ face.shape
 # * 열: 1024개
 # * 각각의 픽셀에 길이가 3인 1차원 어레이 포함. 
 
+# 3차원 넘파이 어레이로 불러온 너구리 사진의 실제 값은 다음과 같다.
+
+# In[44]:
+
+
+face
+
+
 # **RGB 색상 정보**
 
 # `768x1024` 개의 픽셀에 포함된 길이 3인 어레이는 
@@ -525,19 +539,19 @@ face.shape
 # 
 # 어레이에 사용된 값들의 정확한 자료형은 `uint8`, 즉, 8바이트로 표현된 양의 정수 자료형이다.
 
-# In[44]:
+# In[45]:
 
 
 face.dtype
 
 
-# In[45]:
+# In[46]:
 
 
 face.min()
 
 
-# In[46]:
+# In[47]:
 
 
 face.max()
@@ -549,44 +563,68 @@ face.max()
 # 이유는 여러 이미지 변환을 시도할 때 0과 1사이의 부동소수점의 값들이 나올 때
 # 정확하게 기능하기 때문이다.
 # 
-# RGB 정보의 최댓값이 255이기에 모든 항목을 255로 나누어 0과 1사이의 값으로 정규화시킨다.
+# RGB 정보의 최댓값이 255이기에 모든 항목을 255로 나누어 0과 1사이의 값으로 
+# 정규화<font size='2'>normalization</font>시킨다.
 
-# In[47]:
+# In[48]:
 
 
 face = face/255
 
 
-# **흑백 이미지 변환**
+# **RGB 색상 확인**
 
-# 흑백 이미지는 보통 하나의 RGB 정보만 가져오는 것으로 구할 수 있다.
-# 예를 들어, 빨강색 정보만 가져오려면 아래처럼 3차원 인덱싱을 실행한다.
-# 아래 코드는 이미지의 행과 열은 그대로 두고 RGB 정보에서 R(빨강)에 대한 정보만 인덱싱으로 가져온다.
-
-# In[48]:
-
-
-face_gray_red = face[:,:,0]
-
-
-# 흑백사진으로 보여주려면 `imshow()` 함수의 `cmap` 키워드 인자를 그레이(회색) 스타일을 
-# 사용하도록 지정해야 한다.
-# `cmap` 은 색상 지도(color map)을 가리키는 매개변수이며, `'gray'`를 인자로 지정하면 흑백사진으로 출력한다.
-# 색상 지도에 대한 자세한 안내는 
-# [Matplotlib: Choosing Colormaps](https://matplotlib.org/stable/tutorials/colors/colormaps.html)를
-# 참조한다.
+# 빨강(Red)색 요소는 각 픽셀의 0번 인덱스로 구성된다.
 
 # In[49]:
 
 
-plt.imshow(face_gray_red, cmap='gray')
+face_red = face[:, :, 0]
+
+plt.imshow(face_red, cmap='Reds_r')
 plt.show()
 
 
-# :::{admonition} 흑백 사진 변환
+# 초록(Green)색 요소는 각 픽셀의 1번 인덱스로 구성된다.
+
+# In[50]:
+
+
+face_green = face[:, :, 1]
+
+plt.imshow(face_green, cmap='Greens_r')
+plt.show()
+
+
+# 파랑(Blue)색 요소는 각 픽셀의 2번 인덱스로 구성된다.
+
+# In[51]:
+
+
+face_blue = face[:, :, 2]
+
+plt.imshow(face_blue, cmap='Blues_r')
+plt.show()
+
+
+# :::{admonition} 색지도<font size='2'>color map</font>
 # :class: info
 # 
-# 진정한 흑백사진으로 변경하려면 RGB 정보를 전부 이용하여 하나의 값을 계산해야 한다.
+# matplotlib 라이브러리에서 이미지를 출력할 때 색지도<font size='2'>color map</font>를 선택해야 한다.
+# 색지도는 `cmap` 옵션으로 지정하며 앞서 R, G, B에 해당하는 색지도는 각각 `Reds`, `Greens`, `Blues`가
+# 사용되었으며 아래 이미지 중에서 선택되었다.
+# 참고로 `_r`은 선택된 색지도를 역순으로 적용한다는 의미이다.
+# 
+# <br>
+# <div align="center" border="1px"><img src="https://matplotlib.org/stable/_images/sphx_glr_colormaps_002_2_0x.png" style="width:70%;"></div>
+# 
+# 보다 다양한 색지도는 [Matplotlib: Choosing Colormaps](https://matplotlib.org/stable/tutorials/colors/colormaps.html)를 
+# 참고한다.
+# :::
+
+# **흑백 이미지 변환**
+
+# 흑백사진으로 변경하려면 RGB 정보를 전부 이용하여 하나의 값을 계산해야 한다.
 # 흑백 이미지의 명암을 구현하는 **벡터 내적** 수식은 다음과 같다.
 # 
 # $$
@@ -595,21 +633,38 @@ plt.show()
 # $$
 # 
 # 벡터 내적 연산은 `dot()` 함수를 이용한 어레이의 내적 연산으로 쉽게 계산된다.
-# 
-# ```python
-# >>> face_gray = np.dot(face, [0.2989, 0.5870,0.114])
-# ```
-# 
-# 결과는 2차원 어레이며, 흑백 이미지의 정보를 모두 갖고 있다.
+
+# In[52]:
+
+
+face_gray = np.dot(face, [0.2989, 0.5870,0.114])
+
+
+# `np.dot()` 함수가 컬러 사진 3차원 어레이이와 3차원 벡터(1차원 어레이)의 점곱을
+# 처리하는 방식 3차원 어레이의 마지막 축의 항목들과의 내적으로 계산된다.
+# 따라서 결과는 2차원 어레이며, 흑백 이미지의 정보를 모두 갖고 있다.
 # 따라서 보다 선명한 명암을 보여주는 이미지가 결과로 나온다.
-# 
-# ```python
-# >>> plt.imshow(face_gray, cmap=plt.get_cmap('gray'))
-# >>> plt.show()
-# ```
-# 
-# <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/face_black_white.png" style="width:500px;"></div>
-# :::
+
+# In[53]:
+
+
+face_gray
+
+
+# In[54]:
+
+
+face_gray.shape
+
+
+# 흑백 사진으로 출력하려면 색지도 인자로 `gray`를 지정한다.
+
+# In[55]:
+
+
+plt.imshow(face_gray, cmap='gray')
+plt.show()
+
 
 # ### 이미지 크기 조정
 
@@ -622,7 +677,7 @@ plt.show()
 
 # <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/interpolation01.png" style="width:150px;"></div>
 
-# In[50]:
+# In[56]:
 
 
 face_half_simple = face[::2, ::2,:]
@@ -630,7 +685,7 @@ face_half_simple = face[::2, ::2,:]
 
 # 행과 열의 픽셀 수가 모두 절반으로 줄었다.
 
-# In[51]:
+# In[57]:
 
 
 face_half_simple.shape
@@ -638,7 +693,7 @@ face_half_simple.shape
 
 # 이미지를 확인하면 살짝 흐려진 느낌을 받는다.
 
-# In[52]:
+# In[58]:
 
 
 plt.imshow(face_half_simple)
@@ -655,19 +710,19 @@ plt.show()
 
 # <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/interpolation02.png" style="width:150px;"></div>
 
-# In[53]:
+# In[59]:
 
 
 face_half_interpolation = (face[::2, ::2, :] + face[1::2, 1::2, :])/2
 
 
-# In[54]:
+# In[60]:
 
 
 face_half_interpolation.shape
 
 
-# In[55]:
+# In[61]:
 
 
 plt.imshow(face_half_interpolation)
@@ -676,13 +731,13 @@ plt.show()
 
 # 4분의 1 크기의 두 이미지 데이터가 조금 다르기는 하지만 이미지 상으로 차이점을 발견하기 어렵다.
 
-# In[56]:
+# In[62]:
 
 
 face_half_interpolation[:2]
 
 
-# In[57]:
+# In[63]:
 
 
 face_half_simple[:2]
@@ -703,7 +758,7 @@ face_half_simple[:2]
 # 
 # * 중복된 이름을 포함하면서 길이가 7인 1차원 어레이.
 
-# In[58]:
+# In[64]:
 
 
 names = np.array(['Bob', 'Joe', 'Will', 'Bob', 'Will', 'Joe', 'Joe'])
@@ -715,7 +770,7 @@ names
 #     - __주의사항:__ 인자로 하나의 튜플이 아닌 여러 개의 인자 사용. 
 #         각각의 인자가 각각의 행(축 0), 열(축 1) 등에 사용되는 항목의 개수 지정.
 
-# In[59]:
+# In[65]:
 
 
 np.random.seed(3)
@@ -727,7 +782,7 @@ data
 # `names`에 포함된 이름이 Bob인지 여부를 확인하면 부울 값으로 이루어진 길이가 7인 어레이가 생성된다.
 # 즉, 항목별 비교 연산이 이루어진다.
 
-# In[60]:
+# In[66]:
 
 
 name_Bob = names == 'Bob'
@@ -744,7 +799,7 @@ name_Bob
 # 결과는 `data`에서 0번행과 3번행만 가져온다.
 # 이유는 `name_Bob`에서 0번, 3번 인덱스의 항목만 `True`이기 때문이다.
 
-# In[61]:
+# In[67]:
 
 
 data[name_Bob]
@@ -757,7 +812,7 @@ data[name_Bob]
 # * 행 기준: Bob이 포함된 행의 인덱스를 갖는 행
 # * 열 기준: 2번 열 이후 전체
 
-# In[62]:
+# In[68]:
 
 
 data[name_Bob, 2:]
@@ -766,7 +821,7 @@ data[name_Bob, 2:]
 # * 행 기준: Bob이 포함된 행의 인덱스를 갖는 행
 # * 열 기준: 3번 열
 
-# In[63]:
+# In[69]:
 
 
 data[name_Bob, 3]
@@ -777,13 +832,13 @@ data[name_Bob, 3]
 # 예를 들어, 이름이 Bob 아닌 이름이 위치한 인덱스에 해당하는 행만 가져오려면
 # `==` 대신에 `~=`를 이용하거나 `==`와 `~` 연산자를 함께 이용한다.
 
-# In[64]:
+# In[70]:
 
 
 data[names != 'Bob']
 
 
-# In[65]:
+# In[71]:
 
 
 data[~name_Bob]
@@ -791,14 +846,14 @@ data[~name_Bob]
 
 # 다음은 Bob 또는 Will 이 위치한 인덱스에 해당하는 행만 가져온다.
 
-# In[66]:
+# In[72]:
 
 
 mask = (names == 'Bob') | (names == 'Will')
 mask
 
 
-# In[67]:
+# In[73]:
 
 
 data[mask]
@@ -817,14 +872,14 @@ data[mask]
 # 
 # 아래 코드는 `names`에서 Joe가 사용되지 않은 항목의 인덱스에 해당하는 행에 포함된 항목을 모두 7로 변경한다.
 
-# In[68]:
+# In[74]:
 
 
 mask = names != 'Joe'
 mask
 
 
-# In[69]:
+# In[75]:
 
 
 data[mask] = 7
@@ -835,7 +890,7 @@ data
 # 
 # 부울 인덱싱은 뷰를 이용하지 않고 항상 새로운 어레이를 생성한다.
 
-# In[70]:
+# In[76]:
 
 
 data2 = data[names == 'Bob']
@@ -844,7 +899,7 @@ data2
 
 # `data2`의 0번 행을 모두 -1로 변경해도 `data`는 변하지 않는다.
 
-# In[71]:
+# In[77]:
 
 
 data2[0] = -1
@@ -853,7 +908,7 @@ data2
 
 # 하지만 `data`는 변경되지 않았다.
 
-# In[72]:
+# In[78]:
 
 
 data
@@ -864,7 +919,7 @@ data
 # 아래 표현식은 `data`와 동일한 모양의 부울 어레이를 생성한다.
 # 이유는 부등호 연산이 항목별로 작동하기 때문이다.
 
-# In[73]:
+# In[79]:
 
 
 mask = data < 0
@@ -873,7 +928,7 @@ mask
 
 # 음수 항목만 끄집어 내면 1차원 어레이가 된다.
 
-# In[74]:
+# In[80]:
 
 
 data[mask]
@@ -882,7 +937,7 @@ data[mask]
 # `mask`를 이용하여 모든 음수 항목을 0으로 변경할 수도 있다.
 # 방식은 리스트의 인덱싱을 이용하여 항목을 변경하는 방식과 매우 유사하다.
 
-# In[75]:
+# In[81]:
 
 
 data[mask] = 0
@@ -896,13 +951,13 @@ data
 # 아래 (8, 4) 모양의 2차원 어레이를 이용해서 팬시 인덱싱을 설명한다.
 # 팬시 인덱싱은 객체를 항상 새로 생성한다. 즉, 뷰 기능을 이용하지 않는다. 
 
-# In[76]:
+# In[82]:
 
 
 arr = np.empty((8, 4))
 
 
-# In[77]:
+# In[83]:
 
 
 for i in range(8):
@@ -913,7 +968,7 @@ arr
 
 # 아래 코드는 `arr` 의 4번, 3번, 0번, 6번 인덱스에 해당하는 항목을 모아서 새로운 어레이를 생성한다.
 
-# In[78]:
+# In[84]:
 
 
 arr[[4, 3, 0, 6]]
@@ -922,7 +977,7 @@ arr[[4, 3, 0, 6]]
 # 음수를 인덱스로 사용하면 맨 아래에 위치한 행부터 순서를 매긴다. 
 # 밑에서 셋째, 다섯째, 일곱째 항목으로 이루어진 어레이는 다음과 같이 구한다.
 
-# In[79]:
+# In[85]:
 
 
 arr[[-3, -5, -7]]
@@ -931,7 +986,7 @@ arr[[-3, -5, -7]]
 # 여러 개의 인덱스 어레이를 사용하면 1차원 어레이가 생성된다. 
 # 이유는 각각의 인덱스 어레이가 각 축의 좌표로 사용되기 때문이다.
 
-# In[80]:
+# In[86]:
 
 
 arr = np.arange(32).reshape((8, 4))
@@ -941,7 +996,7 @@ arr
 # (1, 0), (5, 3), (7, 2), (2, 2) 좌표에 위치한 항목으로 이루어진 어레이는 다음과 같이 
 # 축별로 항목을 모아놓은 두 개의 어레이를 사용해서 패신 인덱싱을 진행한다.
 
-# In[81]:
+# In[87]:
 
 
 arr[[1, 5, 7, 2], [0, 3, 1, 2]]
@@ -949,7 +1004,7 @@ arr[[1, 5, 7, 2], [0, 3, 1, 2]]
 
 # 2차원 어레이를 얻고자 한다면 다음과 같이 해야 한다.
 
-# In[82]:
+# In[88]:
 
 
 arr[[1, 5, 7, 2]][:, [0, 3, 1, 2]]
