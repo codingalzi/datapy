@@ -11,6 +11,11 @@
 # - 부울 인덱싱
 # - 팬시 인덱싱
 
+# **슬라이드**
+# 
+# 본문 내용을 요약한 [슬라이드 1부](https://github.com/codingalzi/datapy/raw/master/slides/slides-numpy_2-1.pdf),
+# [슬라이드 2부](https://github.com/codingalzi/datapy/raw/master/slides/slides-numpy_2-2.pdf)를 다운로드할 수 있다.
+
 # **기본 설정**
 # 
 # `numpy` 모듈과 시각화 도구 모듈인 `matplotlib.pyplot`에 대한 기본 설정을 지정한다.
@@ -103,6 +108,7 @@ arr
 # 위 기능은 리스트에서는 제공되지 않는다.
 # 
 # ```python
+# arr = list(arr)
 # arr[5:8] = 12
 # ```
 # ```python
