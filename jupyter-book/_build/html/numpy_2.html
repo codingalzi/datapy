@@ -419,12 +419,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id15">
-     11.4.1. 1개의 인덱스 어레이 활용
+     11.4.1. 인덱스 리스트 활용
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id16">
-     11.4.2. 여러 개의 인덱스 어레이 활용
+     11.4.2. 축과 팬시 인덱싱
     </a>
    </li>
   </ul>
@@ -525,12 +525,12 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id15">
-     11.4.1. 1개의 인덱스 어레이 활용
+     11.4.1. 인덱스 리스트 활용
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id16">
-     11.4.2. 여러 개의 인덱스 어레이 활용
+     11.4.2. 축과 팬시 인덱싱
     </a>
    </li>
   </ul>
@@ -2043,99 +2043,11 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 <div class="section" id="id14">
 <h2><span class="section-number">11.4. </span>팬시 인덱싱<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
-<p><strong>팬시 인덱싱</strong><font size='2'>fancy indexing</font>은 인덱스로 구성된 1차원 어레이를 이용한다.
-팬시 인덱싱 또한 부울 인덱싱처럼 객체를 항상 새로 생성한다.
-즉, 뷰 기능을 이용하지 않는다.</p>
+<p><strong>팬시 인덱싱</strong><font size='2'>fancy indexing</font>은 인덱스로 구성된 1차원 리스트와 튜플을 이용한다.
+팬시 인덱싱 또한 부울 인덱싱처럼 뷰를 이용하지 않고 객체를 항상 새로 생성한다.</p>
 <div class="section" id="id15">
-<h3><span class="section-number">11.4.1. </span>1개의 인덱스 어레이 활용<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">11.4.1. </span>인덱스 리스트 활용<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <p>아래 코드는 0으로 채워진 (8, 4) 모양의 2차원 어레이를 생성한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">arr</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.],
-       [0., 0., 0., 0.]])
-</pre></div>
-</div>
-</div>
-</div>
-<p>아래 코드는 행별로 항목을 행의 인덱스로 채운다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
-    <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span>
-    
-<span class="n">arr</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 0., 0., 0.],
-       [1., 1., 1., 1.],
-       [2., 2., 2., 2.],
-       [3., 3., 3., 3.],
-       [4., 4., 4., 4.],
-       [5., 5., 5., 5.],
-       [6., 6., 6., 6.],
-       [7., 7., 7., 7.]])
-</pre></div>
-</div>
-</div>
-</div>
-<p>아래 두 예제는 1차원 정수 어레이를 이용한 전형적인 팬시 인덱싱의 활용을 보여준다.</p>
-<ul class="simple">
-<li><p>예제 1: <code class="docutils literal notranslate"><span class="pre">arr</span></code> 의 4번, 3번, 0번, 6번 인덱스에 해당하는 항목을 모아서 새로운 어레이를 생성한다.</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[4., 4., 4., 4.],
-       [3., 3., 3., 3.],
-       [0., 0., 0., 0.],
-       [6., 6., 6., 6.]])
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>예제 2: 음수를 인덱스로 사용하면 맨 아래에 위치한 행부터 순서를 매긴다.
-밑에서 셋째, 다섯째, 일곱째 항목으로 이루어진 어레이는 다음과 같이 구한다.</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">]]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[5., 5., 5., 5.],
-       [3., 3., 3., 3.],
-       [1., 1., 1., 1.]])
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="id16">
-<h3><span class="section-number">11.4.2. </span>여러 개의 인덱스 어레이 활용<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
-<p>여러 개의 인덱스 어레이를 사용할 수도 있다.
-그러면 사용되는 어레이 인덱스의 순서에 해당하는 축에 대해 각각의 인덱싱이 적용된다.</p>
-<p><strong>예제 1</strong></p>
-<p>예를 들어 설명하기 위해 아래 2차원 어레이를 이용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">32</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
@@ -2156,22 +2068,70 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 </div>
-<p>이제 <code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">0)</span></code>, <code class="docutils literal notranslate"><span class="pre">(5,</span> <span class="pre">3)</span></code>, <code class="docutils literal notranslate"><span class="pre">(7,</span> <span class="pre">2)</span></code>, <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">2)</span></code> 좌표에 위치한 항목으로 이루어진 어레이는 다음과 같이
-축별로 항목을 모아놓은 두 개의 인덱스 어레이를 사용해서 팬시 인덱싱을 진행한다.</p>
+<p><strong>0번 축 팬시 인덱싱</strong></p>
+<p>아래 두 예제는 하나의 인덱스 리스트를 이용한 전형적인 팬시 인덱싱의 활용을 보여준다.
+0번 축에 대해 인덱싱이 적용됨을 주목한다.</p>
+<ul class="simple">
+<li><p>예제 1: <code class="docutils literal notranslate"><span class="pre">arr</span></code> 의 4번, 3번, 0번, 6번 인덱스에 해당하는 항목을 모아서 새로운 어레이를 생성한다.
+정해진 순서대로 항목을 재배열한다는 점에 주의한다.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 4, 23, 29, 10])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[16, 17, 18, 19],
+       [12, 13, 14, 15],
+       [ 0,  1,  2,  3],
+       [24, 25, 26, 27]])
 </pre></div>
 </div>
 </div>
 </div>
-<p>2차원 어레이를 생성할 수도 있다.
-예를 들어 아래 코드는 1번, 5번, 7번, 2번 행에서 각각 0번, 3번, 1번 항목을
+<ul class="simple">
+<li><p>예제 2: 음수 인덱스도 사용할 수 있다.
+밑에서 셋째, 다섯째, 일곱째 항목으로 이루어진 어레이는 다음과 같이 구한다.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[20, 21, 22, 23],
+       [12, 13, 14, 15],
+       [ 4,  5,  6,  7]])
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>1번 축 팬시 인덱싱</strong></p>
+<p>2차원 어레이의 1번 축에 팬시 인덱싱을 적용하려면 모든 행을 선택하는 기능을 함께 사용한다.
+아래 코드는 전체 행을 대상으로 0번, 3번, 1번 열을 추출해서 2차원 어레이를 생성한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0,  3,  1],
+       [ 4,  7,  5],
+       [ 8, 11,  9],
+       [12, 15, 13],
+       [16, 19, 17],
+       [20, 23, 21],
+       [24, 27, 25],
+       [28, 31, 29]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>축별 팬시 인덱싱을 연속으로 실행할 수도 있다.
+아래 코드는 1번, 5번, 7번, 2번 행에서 각각 0번, 3번, 1번 항목을
 추출하여 2차원 어레이를 생성한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2188,7 +2148,27 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 </div>
-<p><strong>예제 2</strong></p>
+</div>
+<div class="section" id="id16">
+<h3><span class="section-number">11.4.2. </span>축과 팬시 인덱싱<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<p>여러 개의 인덱스 리스트를 사용할 수도 있다.
+단, 모든 리스트의 길이가 동일해야 하며, 각 리스트의 동일한 위치의 항목의 튜플이 가리키는 값을 차례대로 추출한다.
+즉, 여기서도 축이 중요한 역할을 수행한다.</p>
+<p>아래 코드는 <code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">0)</span></code>, <code class="docutils literal notranslate"><span class="pre">(5,</span> <span class="pre">3)</span></code>, <code class="docutils literal notranslate"><span class="pre">(7,</span> <span class="pre">2)</span></code>, <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">2)</span></code> 좌표에 위치한 항목으로 이루어진 어레이는 다음과 같이
+축별로 항목을 모아놓은 두 개의 인덱스 어레이를 사용해서 팬시 인덱싱을 진행한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 4, 23, 29, 10])
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>예제 1</strong></p>
 <p>아래 이미지 모양의 2차원 어레이에서 색깔로 구분된 1차원 또는 2차원 어레이를 추출해보자.</p>
 <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/fancy_indexing.png" style="width:250px;"></div>
 <p><div style="text-align: center">&lt;그림 출처: <a href="https://scipy-lectures.org/intro/numpy/array_object.html#indexing-and-slicing">Scipy Lecture Notes</a>&gt;</div></p>
@@ -2212,11 +2192,11 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <ul class="simple">
-<li><p>초록색 1차원 어레이</p></li>
+<li><p>초록색 1차원 어레이: 0번 축과 1번 축의 팬시 인덱싱 조합</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -2227,12 +2207,11 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <ul class="simple">
-<li><p>빨강색 1차원 어레이</p></li>
+<li><p>빨강색 1차원 어레이: 0번 축 팬시 인덱싱과 1번 축 인덱싱</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
-<span class="n">arr</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2243,11 +2222,11 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <ul class="simple">
-<li><p>파랑색 2차원 어레이</p></li>
+<li><p>파랑색 2차원 어레이: 0번 축 슬라이싱과 1번 축 팬시 인덱싱</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[</span><span class="mi">3</span><span class="p">:,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -2259,7 +2238,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 </div>
-<p><strong>예제 3</strong></p>
+<p><strong>예제 2</strong></p>
 <p>3차원 어레이에 대해서도 동일한 방식으로 팬시 인덱싱을 적용할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
