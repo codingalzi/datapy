@@ -1096,4 +1096,4 @@ arr[[1, 2], [0, 1]]
 
 # ## 연습문제
 
-# 참고: [(실습) 어레이 인덱싱](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-array_indexing.ipynb)
+# 참고: [(실습) 어레이 인덱싱](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-numpy_2.ipynb)
