@@ -236,87 +236,23 @@ arr2[0] = -7
 arr
 
 
-# ### 어레이 쪼개기/쌓기
-
-# **`np.split()` 함수**
-
-# 어레이를 지정된 기준에 따라 여러 개의 어레이로 쪼갠다.
-# 반환값은 쪼개진 어레이들의 리스트다.
-# 
-# 아래 예제를 살펴보자.
-
-# In[25]:
-
-
-arr = np.random.randn(7, 5)
-arr
-
-
-# `np.split()` 함수의 인자는 정수이거나 정수들의 리스트가 사용된다.
-# 먼저, 정수 리스트가 들어오면 축이 정한 방향으로 리스트에 포함된 정수를 이용하여 여러 개의 구간으로 쪼갠다.
-# 
-# 아래 코드는 행을 기준으로 행의 인덱스를 0-1, 2, 3-4, 5-7 네 개의 구간으로 쪼갠다.
-# 따라서 결과는 네 개의 어레이로 이루어진 리스트가 되며,
-# 각 어레의 모양은 다음과 같다.
-# 
-# ```python
-# (2, 5), (1, 5), (2, 5), (2, 5)
-# ```
-
-# In[26]:
-
-
-np.split(arr, [2, 3, 5],axis=0)
-
-
-# 반면에 열을 기준으로 0, 1-2, 3-4 3개의 구간으로 쪼개면 다음과 같으며,
-# 각 어레이의 모양은 다음과 같다.
-# 
-# ```python
-# (7, 1) (7, 2), (7, 2)
-# ```
-
-# In[27]:
-
-
-np.split(arr, [1, 3],axis=1)
-
-
-# **`np.vsplit()`/`np.hsplit()` 함수**
-
-# 두 함수는 `np.split()` 함수에 축을 각각 0과 1로 지정한 함수이다.
-
-# * `np.vsplit(arr, z)` = `np.split(arr, z, axis=0)`
-
-# In[28]:
-
-
-np.vsplit(arr, [2, 3, 5])
-
-
-# * `np.hsplit(arr, z)` = `np.split(arr, z, axis=1)`
-
-# In[29]:
-
-
-np.hsplit(arr, [1, 3])
-
+# ### 어레이 이어붙이기
 
 # **`np.concatenate()` 함수**
 
-# 두 개의 어레이를 이어 붙이다.
+# 두 개의 어레이를 이어붙인다.
 # 지정되는 축에 따라 좌우로 또는 상하로 이어붙인다.
 # 
 # 아래 두 어레이가 주어졌다고 가정하다.
 
-# In[30]:
+# In[25]:
 
 
 arr1 = np.array([[1, 2, 3], [4, 5, 6]])
 arr1
 
 
-# In[31]:
+# In[26]:
 
 
 arr2 = np.array([[7, 8, 9], [10, 11, 12]])
@@ -327,7 +263,7 @@ arr2
 # 
 # **주의사항:** 인자가 길이가 2인 리스트이다.
 
-# In[32]:
+# In[27]:
 
 
 np.concatenate([arr1, arr2], axis=0)
@@ -335,7 +271,7 @@ np.concatenate([arr1, arr2], axis=0)
 
 # 좌우로 이어붙이려면 축을 1로 정한다.
 
-# In[33]:
+# In[28]:
 
 
 np.concatenate([arr1, arr2], axis=1)
@@ -344,20 +280,19 @@ np.concatenate([arr1, arr2], axis=1)
 # **`np.vstack()`/`np.hstack()` 함수**
 
 # 두 함수는 `np.concatenate()` 함수에 축을 각각 0과 1로 지정한 함수이다.
-# 
-# **주의사항:** 인자가 길이가 2인 튜플이다.
+# 2인 튜플이 인자로 사용됨에 주의한다.
 
-# * `np.vstack((x, y))` = `np.concatenate([x, y], axis=0)`
+# * `np.vstack((x, y))` := `np.concatenate([x, y], axis=0)`
 
-# In[34]:
+# In[29]:
 
 
 np.vstack((arr1, arr2))
 
 
-# * `np.hstack((x, y))` = `np.concatenate([x, y], axis=1)`
+# * `np.hstack((x, y))` := `np.concatenate([x, y], axis=1)`
 
-# In[35]:
+# In[30]:
 
 
 np.hstack((arr1, arr2))
@@ -369,21 +304,21 @@ np.hstack((arr1, arr2))
 # 
 # 아래 세 개의 어레이를 이용하여 사용법을 살펴본다.
 
-# In[36]:
+# In[31]:
 
 
 arr = np.arange(6)
 arr
 
 
-# In[37]:
+# In[32]:
 
 
 arr1 = np.arange(6).reshape((3, 2))
 arr1
 
 
-# In[38]:
+# In[33]:
 
 
 arr2 = np.random.randn(3, 2)
@@ -392,13 +327,13 @@ arr2
 
 # 아래 코드는 `np.vstack((arr1, arr2))`와 동일하다.
 
-# In[39]:
+# In[34]:
 
 
 np.r_[arr1, arr2]
 
 
-# In[40]:
+# In[35]:
 
 
 np.vstack([arr1, arr2])
@@ -406,13 +341,13 @@ np.vstack([arr1, arr2])
 
 # 아래 코드는 `np.hstack((arr1, arr2))`와 동일하다.
 
-# In[41]:
+# In[36]:
 
 
 np.c_[arr1, arr2]
 
 
-# In[42]:
+# In[37]:
 
 
 np.hstack((arr1, arr2))
@@ -420,7 +355,7 @@ np.hstack((arr1, arr2))
 
 # 행 또는 열의 크기를 적절하게 맞출 수 있는 어떤 조합도 가능하다.
 
-# In[43]:
+# In[38]:
 
 
 np.c_[np.r_[arr1, arr2], arr]
@@ -431,7 +366,7 @@ np.c_[np.r_[arr1, arr2], arr]
 # 모양이 서로 다른 두 어레이의 연산이 가능한 경우 브로드캐스팅이 작동한다. 
 # 예를 들어, 하나의 어레이와 하나의 정수의 곱셈이 항목별로 작동한다. 
 
-# In[44]:
+# In[39]:
 
 
 arr = np.arange(6).reshape((2,3))
@@ -443,7 +378,7 @@ arr
 
 # <img src="https://github.com/codingalzi/pydata/blob/master/notebooks/images/broadcasting14.png?raw=true" style="width:300px;">
 
-# In[45]:
+# In[40]:
 
 
 arr * 4
@@ -453,21 +388,21 @@ arr * 4
 
 # 라애 코드는 1차원 어레이를 2차원 어레이로 확장하여 다른 어레이와 모양을 맞춘 후 연산을 실행하는 것을 보여준다.
 
-# In[46]:
+# In[41]:
 
 
 arr2 = np.arange(4).reshape((4,1)).repeat(3,axis=1)
 arr2
 
 
-# In[47]:
+# In[42]:
 
 
 arr3 = np.arange(1, 4)
 arr3
 
 
-# In[48]:
+# In[43]:
 
 
 arr2 + arr3
@@ -475,14 +410,14 @@ arr2 + arr3
 
 # <img src="https://github.com/codingalzi/pydata/blob/master/notebooks/images/broadcasting10.png?raw=true" style="width:400px;">
 
-# In[49]:
+# In[44]:
 
 
 arr3a = np.arange(1, 4).reshape((1,3))
 arr3a
 
 
-# In[50]:
+# In[45]:
 
 
 arr2 + arr3a
@@ -494,14 +429,14 @@ arr2 + arr3a
 
 # 아래 예제는 2차원 어레이의 칸을 복제하여 모양을 맞춘 후 연산을 실행한다.
 
-# In[51]:
+# In[46]:
 
 
 arr4 = np.arange(1, 5).reshape((4,1))
 arr4
 
 
-# In[52]:
+# In[47]:
 
 
 arr2 + arr4
@@ -513,21 +448,21 @@ arr2 + arr4
 
 # 아래 예제는 2차원 어레이를 3차원으로 확장한 후에 연산을 진행하는 것을 보여준다. 
 
-# In[53]:
+# In[48]:
 
 
 arr6 = np.arange(24).reshape((3, 4, 2))
 arr6
 
 
-# In[54]:
+# In[49]:
 
 
 arr7 = np.arange(8).reshape((4, 2))
 arr7
 
 
-# In[55]:
+# In[50]:
 
 
 arr6 + arr7
@@ -537,27 +472,27 @@ arr6 + arr7
 
 # **예제**
 
-# In[56]:
+# In[51]:
 
 
 arr = np.random.randn(4, 3)
 arr
 
 
-# In[57]:
+# In[52]:
 
 
 arr.mean(0)
 
 
-# In[58]:
+# In[53]:
 
 
 demeaned = arr - arr.mean(0)
 demeaned
 
 
-# In[59]:
+# In[54]:
 
 
 demeaned.mean(0)
@@ -565,32 +500,32 @@ demeaned.mean(0)
 
 # **예제**
 
-# In[60]:
+# In[55]:
 
 
 arr
 
 
-# In[61]:
+# In[56]:
 
 
 row_means = arr.mean(1)
 row_means
 
 
-# In[62]:
+# In[57]:
 
 
 row_means.reshape((4, 1))
 
 
-# In[63]:
+# In[58]:
 
 
 demeaned = arr - row_means.reshape((4, 1))
 
 
-# In[64]:
+# In[59]:
 
 
 demeaned.mean(1)
@@ -598,34 +533,34 @@ demeaned.mean(1)
 
 # ### 브로드캐스팅으로 어레이에 값 대입하기
 
-# In[65]:
+# In[60]:
 
 
 arr = np.zeros((4, 3))
 arr
 
 
-# In[66]:
+# In[61]:
 
 
 arr[:] = 5
 arr
 
 
-# In[67]:
+# In[62]:
 
 
 col = np.array([1.28, -0.42, 0.44, 1.6])
 
 
-# In[68]:
+# In[63]:
 
 
 arr[:] = col[:, np.newaxis]
 arr
 
 
-# In[69]:
+# In[64]:
 
 
 arr[:2] = [[-1.37], [0.509]]
