@@ -25,8 +25,10 @@
 
 # 넘파이
 import numpy as np
+
 # 램덤 시드
 np.random.seed(12345)
+
 # 어레이 사용되는 부동소수점들의 정확도 지정
 np.set_printoptions(precision=4, suppress=True)
 
@@ -36,6 +38,7 @@ np.set_printoptions(precision=4, suppress=True)
 
 # 파이플롯
 import matplotlib.pyplot as plt
+
 # 도표 크기 지정
 plt.rc('figure', figsize=(10, 6))
 
@@ -1106,28 +1109,28 @@ arr[[1, 2], [0, 1]]
 # In[99]:
 
 
-arr = np.random.randn(7, 5)
+arr = np.random.randn(6, 5)
 arr
 
 
 # `np.split()` 함수의 인자는 하나의 인덱스이거나 여러 인덱스들의 리스트가 사용된다.
 # 먼저, 정수 리스트가 들어오면 축이 정한 방향으로 리스트에 포함된 정수를 이용하여 여러 개의 구간으로 쪼갠다.
 # 
-# 아래 코드는 행을 기준으로 행의 인덱스를 0-1, 2, 3-4, 5-6 네 개의 구간으로 쪼갠다.
+# 아래 코드는 행을 기준으로 행의 인덱스를 0-1, 2, 3-5 세 개의 구간으로 쪼갠다.
 # 따라서 결과는 네 개의 어레이로 이루어진 리스트가 되며,
 # 각 어레의 모양은 다음과 같다.
 # 
 # ```python
-# (2, 5), (1, 5), (2, 5), (2, 5)
+# (2, 5), (1, 5), (3, 5)
 # ```
 
 # In[100]:
 
 
-np.split(arr, [2, 3, 5],axis=0)
+np.split(arr, [2, 3]) # np.split(arr, [2, 3],axis=0)
 
 
-# 반면에 열을 기준으로 0, 1-2, 3-4 3개의 구간으로 쪼개면 다음과 같으며,
+# 반면에 열을 기준으로 0, 1-2, 3-4 세 개의 구간으로 쪼개면 다음과 같으며,
 # 각 어레이의 모양은 다음과 같다.
 # 
 # ```python
@@ -1137,8 +1140,40 @@ np.split(arr, [2, 3, 5],axis=0)
 # In[101]:
 
 
-np.split(arr, [1, 3],axis=1)
+np.split(arr, [1, 3], axis=1)
 
+
+# 둘때 인자로 하나의 정수를 사용하면 행 또는 열을 기준으로 등분한다.
+# 아래 코드는 6개의 3등분 한다.
+
+# In[102]:
+
+
+np.split(arr, 3)
+
+
+# 등분을 위해서는 행 또는 열의 약수만 둘째 인자로 사용할 수 있다. 그렇지 않으면 오류가 발생한다.
+# 예를 들어, 아래 코드처럼 열을 2등분 하려 하면 오류가 발생한다.
+# 이유는 5개의 열을 2등분 할 수 없기 때문이다.
+
+# ```python
+# >>> np.split(arr, 2, axis=1)
+# ---------------------------------------------------------------------------
+# ValueError                                Traceback (most recent call last)
+# Input In [16], in <module>
+# ----> 1 np.split(arr, 2, axis=1)
+# 
+# File <__array_function__ internals>:180, in split(*args, **kwargs)
+# 
+# File ~\miniconda3\envs\homl3\lib\site-packages\numpy\lib\shape_base.py:872, in split(ary, indices_or_sections, axis)
+#     870     N = ary.shape[axis]
+#     871     if N % sections:
+# --> 872         raise ValueError(
+#     873             'array split does not result in an equal division') from None
+#     874 return array_split(ary, indices_or_sections, axis)
+# 
+# ValueError: array split does not result in an equal division
+# ```
 
 # **`np.vsplit()`/`np.hsplit()` 함수**
 
@@ -1146,7 +1181,7 @@ np.split(arr, [1, 3],axis=1)
 
 # * `np.vsplit(arr, z)` := `np.split(arr, z, axis=0)`
 
-# In[102]:
+# In[103]:
 
 
 np.vsplit(arr, [2, 3, 5])
@@ -1154,7 +1189,7 @@ np.vsplit(arr, [2, 3, 5])
 
 # * `np.hsplit(arr, z)` := `np.split(arr, z, axis=1)`
 
-# In[103]:
+# In[104]:
 
 
 np.hsplit(arr, [1, 3])
