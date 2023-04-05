@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>15. 데이터프레임 핵심 &#8212; 파이썬 데이터 분석</title>
+    <title>16. 데이터프레임 핵심 &#8212; 파이썬 데이터 분석</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="16. 판다스 활용: 통계 기초" href="pandas_3.html" />
-    <link rel="prev" title="14. 판다스 데이터프레임" href="pandas_1.html" />
+    <link rel="next" title="17. 판다스 활용: 통계 기초" href="pandas_3.html" />
+    <link rel="prev" title="15. 판다스 데이터프레임" href="pandas_1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -166,7 +166,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="numpy_4.html">
-   13. 고급 넘파이
+   13. 실전 예제: 어레이 중심 프로그래밍
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="numpy_5.html">
+   14. 고급 넘파이
   </a>
  </li>
 </ul>
@@ -178,17 +183,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_1.html">
-   14. 판다스 데이터프레임
+   15. 판다스 데이터프레임
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   15. 데이터프레임 핵심
+   16. 데이터프레임 핵심
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_3.html">
-   16. 판다스 활용: 통계 기초
+   17. 판다스 활용: 통계 기초
   </a>
  </li>
 </ul>
@@ -200,17 +205,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="visualization_1.html">
-   17. matplotlib.pyplot 1부
+   18. matplotlib.pyplot 1부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="visualization_2.html">
-   18. matplotlib.pyplot 2부
+   19. matplotlib.pyplot 2부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="visualization_3.html">
-   19. seaborn
+   20. seaborn
   </a>
  </li>
 </ul>
@@ -222,7 +227,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="data_aggregation_grouping.html">
-   20. 데이터 집계와 그룹 생성
+   21. 데이터 집계와 그룹 생성
   </a>
  </li>
 </ul>
@@ -234,7 +239,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="timeseries.html">
-   21. 시계열 데이터
+   22. 시계열 데이터
   </a>
  </li>
 </ul>
@@ -348,44 +353,44 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   15.1. 리인덱싱
+   16.1. 리인덱싱
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     15.1.1. 시리즈 리인덱싱
+     16.1.1. 시리즈 리인덱싱
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     15.1.2. 데이터프레임 리인덱싱
+     16.1.2. 데이터프레임 리인덱싱
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   15.2. 결측치 처리
+   16.2. 결측치 처리
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   15.3. 인덱싱, 슬라이싱, 필터링
+   16.3. 인덱싱, 슬라이싱, 필터링
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     15.3.1. 시리즈의 인덱싱, 슬라이싱, 필터링
+     16.3.1. 시리즈의 인덱싱, 슬라이싱, 필터링
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     15.3.2. 데이터프레임의 인덱싱, 슬라이싱, 필터링
+     16.3.2. 데이터프레임의 인덱싱, 슬라이싱, 필터링
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#drop">
-     15.3.3.
+     16.3.3.
      <code class="docutils literal notranslate">
       <span class="pre">
        drop()
@@ -398,34 +403,34 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id9">
-   15.4. 산술 연산
+   16.4. 산술 연산
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id10">
-     15.4.1. 연산과 결측치
+     16.4.1. 연산과 결측치
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id11">
-     15.4.2. 브로드캐스팅
+     16.4.2. 브로드캐스팅
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id12">
-     15.4.3. 유니버설 함수
+     16.4.3. 유니버설 함수
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id13">
-   15.5. 정렬
+   16.5. 정렬
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id14">
-   15.6. 연습문제
+   16.6. 연습문제
   </a>
  </li>
 </ul>
@@ -450,44 +455,44 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   15.1. 리인덱싱
+   16.1. 리인덱싱
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     15.1.1. 시리즈 리인덱싱
+     16.1.1. 시리즈 리인덱싱
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     15.1.2. 데이터프레임 리인덱싱
+     16.1.2. 데이터프레임 리인덱싱
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   15.2. 결측치 처리
+   16.2. 결측치 처리
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   15.3. 인덱싱, 슬라이싱, 필터링
+   16.3. 인덱싱, 슬라이싱, 필터링
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id7">
-     15.3.1. 시리즈의 인덱싱, 슬라이싱, 필터링
+     16.3.1. 시리즈의 인덱싱, 슬라이싱, 필터링
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     15.3.2. 데이터프레임의 인덱싱, 슬라이싱, 필터링
+     16.3.2. 데이터프레임의 인덱싱, 슬라이싱, 필터링
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#drop">
-     15.3.3.
+     16.3.3.
      <code class="docutils literal notranslate">
       <span class="pre">
        drop()
@@ -500,34 +505,34 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id9">
-   15.4. 산술 연산
+   16.4. 산술 연산
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id10">
-     15.4.1. 연산과 결측치
+     16.4.1. 연산과 결측치
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id11">
-     15.4.2. 브로드캐스팅
+     16.4.2. 브로드캐스팅
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id12">
-     15.4.3. 유니버설 함수
+     16.4.3. 유니버설 함수
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id13">
-   15.5. 정렬
+   16.5. 정렬
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id14">
-   15.6. 연습문제
+   16.6. 연습문제
   </a>
  </li>
 </ul>
@@ -540,7 +545,7 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="sec-pandas-2">
-<span id="id1"></span><h1><span class="section-number">15. </span>데이터프레임 핵심<a class="headerlink" href="#sec-pandas-2" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1><span class="section-number">16. </span>데이터프레임 핵심<a class="headerlink" href="#sec-pandas-2" title="Permalink to this headline">¶</a></h1>
 <p><strong>주요 내용</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">Series</span></code>와 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> 객체를 다루는 다양한 도구를 살펴본다.</p>
 <ul class="simple">
@@ -594,9 +599,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="id2">
-<h2><span class="section-number">15.1. </span>리인덱싱<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.1. </span>리인덱싱<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id3">
-<h3><span class="section-number">15.1.1. </span>시리즈 리인덱싱<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.1.1. </span>시리즈 리인덱싱<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">7.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.3</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
@@ -653,7 +658,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="id4">
-<h3><span class="section-number">15.1.2. </span>데이터프레임 리인덱싱<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.1.2. </span>데이터프레임 리인덱싱<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>데이터프레임은 (행의) <code class="docutils literal notranslate"><span class="pre">index</span></code>와 (열의) <code class="docutils literal notranslate"><span class="pre">columns</span></code> 속성에 대해
 리인덱싱이 가능하며 작동법은 시리지의 인덱싱과 동일하다.</p>
 <div class="cell docutils container">
@@ -832,7 +837,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="id5">
-<h2><span class="section-number">15.2. </span>결측치 처리<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.2. </span>결측치 처리<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p><strong>결측치 채우기 1: <code class="docutils literal notranslate"><span class="pre">method</span></code> 키워드 인자</strong></p>
 <p>리인덱싱 과정에서 결측치가 발생할 때 여러 방식으로 채울 수 있다.
 <code class="docutils literal notranslate"><span class="pre">method='fill'</span></code> 키워드 인자는 결측치를 위쪽에 위치한 값으로 채운다.</p>
@@ -973,9 +978,9 @@ dtype: object
 </div>
 </div>
 <div class="section" id="id6">
-<h2><span class="section-number">15.3. </span>인덱싱, 슬라이싱, 필터링<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.3. </span>인덱싱, 슬라이싱, 필터링<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id7">
-<h3><span class="section-number">15.3.1. </span>시리즈의 인덱싱, 슬라이싱, 필터링<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.3.1. </span>시리즈의 인덱싱, 슬라이싱, 필터링<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <p>시리즈의 경우 1차원 넘파이 어레이와 거의 동일하게 작동한다.
 다만 정수 대신에 지정된 인덱스를 사용할 때 조금 차이가 있다.</p>
 <div class="cell docutils container">
@@ -1162,7 +1167,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="id8">
-<h3><span class="section-number">15.3.2. </span>데이터프레임의 인덱싱, 슬라이싱, 필터링<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.3.2. </span>데이터프레임의 인덱싱, 슬라이싱, 필터링<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>2차원 넘파이 어레이와 거의 유사하게 작동한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1814,7 +1819,7 @@ Name: two, dtype: int64
 </div>
 </div>
 <div class="section" id="drop">
-<h3><span class="section-number">15.3.3. </span><code class="docutils literal notranslate"><span class="pre">drop()</span></code> 메서드<a class="headerlink" href="#drop" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.3.3. </span><code class="docutils literal notranslate"><span class="pre">drop()</span></code> 메서드<a class="headerlink" href="#drop" title="Permalink to this headline">¶</a></h3>
 <p>특정 행 또는 열의 인덱스를 제외한 나머지로 이루어진 시리즈/데이터프레임을 구할 때 사용한다.</p>
 <p>시리즈의 경우 인덱스를 한 개 또는 여러 개 지정하면 나머지로 이루어진 시리즈를 얻는다.</p>
 <div class="cell docutils container">
@@ -2213,7 +2218,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="id9">
-<h2><span class="section-number">15.4. </span>산술 연산<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.4. </span>산술 연산<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
 <p>시리즈/데이터프레임의 사칙 연산은 기본적으로 아래 원칙을 따른다.</p>
 <ul class="simple">
 <li><p>연산에 사용된 모든 인덱스는 포함</p></li>
@@ -2491,7 +2496,7 @@ dtype: float64
 </tbody>
 </table>
 <div class="section" id="id10">
-<h3><span class="section-number">15.4.1. </span>연산과 결측치<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.4.1. </span>연산과 결측치<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>공통 인덱스가 아니거나 결측치가 이미 존재하는 경우 기본적으로 결측치로 처리된다.
 하지만 <code class="docutils literal notranslate"><span class="pre">fill_value</span></code> 키워드 인자를 이용하여 지정된 값으로 처리하게 만들 수도 있다.
 다만, 연산 기호 대신에 해당 연산의 메서드를 활용해야 한다.</p>
@@ -2568,7 +2573,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="id11">
-<h3><span class="section-number">15.4.2. </span>브로드캐스팅<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.4.2. </span>브로드캐스팅<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <p>넘파이에서 2차원 어레이와 1차원 어레이 사이에
 브로드캐스팅이 가능한 경우,
 즉, 차원을 맞출 수 있는 경우에 연산이 가능했다.</p>
@@ -3033,7 +3038,7 @@ Name: d, dtype: float64
 </div>
 </div>
 <div class="section" id="id12">
-<h3><span class="section-number">15.4.3. </span>유니버설 함수<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">16.4.3. </span>유니버설 함수<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <p>유니버설 함수는 넘파이의 경우와 동일하게 작동한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3387,7 +3392,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="id13">
-<h2><span class="section-number">15.5. </span>정렬<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.5. </span>정렬<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
 <p>행과 열의 인덱스 또는 항목을 대상으로 정렬할 수 있다.</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">sort_index()</span></code> 메서드</strong></p>
 <p>시리즈의 경우 인덱스를 기준으로 정렬한다.</p>
@@ -4000,7 +4005,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="id14">
-<h2><span class="section-number">15.6. </span>연습문제<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">16.6. </span>연습문제<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-dataframe_core.ipynb">(실습) 데이터프레임 핵심</a></p>
 </div>
 </div>
@@ -4034,13 +4039,13 @@ dtype: float64
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">14. </span>판다스 데이터프레임</p>
+            <p class="prev-next-title"><span class="section-number">15. </span>판다스 데이터프레임</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="pandas_3.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">16. </span>판다스 활용: 통계 기초</p>
+        <p class="prev-next-title"><span class="section-number">17. </span>판다스 활용: 통계 기초</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
