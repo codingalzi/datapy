@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>16. 판다스 활용: 통계 기초 &#8212; 파이썬 데이터 분석</title>
+    <title>17. 판다스 활용: 통계 기초 &#8212; 파이썬 데이터 분석</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
   <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="17. matplotlib.pyplot 1부" href="visualization_1.html" />
-    <link rel="prev" title="15. 데이터프레임 핵심" href="pandas_2.html" />
+    <link rel="next" title="18. matplotlib.pyplot 1부" href="visualization_1.html" />
+    <link rel="prev" title="16. 데이터프레임 핵심" href="pandas_2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -171,6 +171,11 @@ const thebe_selector_output = ".output, .cell_output"
    13. 고급 넘파이
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="numpy_5.html">
+   14. 실전 예제: 어레이 활용
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -180,17 +185,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_1.html">
-   14. 판다스 데이터프레임
+   15. 판다스 데이터프레임
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_2.html">
-   15. 데이터프레임 핵심
+   16. 데이터프레임 핵심
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   16. 판다스 활용: 통계 기초
+   17. 판다스 활용: 통계 기초
   </a>
  </li>
 </ul>
@@ -202,17 +207,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="visualization_1.html">
-   17. matplotlib.pyplot 1부
+   18. matplotlib.pyplot 1부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="visualization_2.html">
-   18. matplotlib.pyplot 2부
+   19. matplotlib.pyplot 2부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="visualization_3.html">
-   19. seaborn
+   20. seaborn
   </a>
  </li>
 </ul>
@@ -224,7 +229,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="data_aggregation_grouping.html">
-   20. 데이터 집계와 그룹 생성
+   21. 데이터 집계와 그룹 생성
   </a>
  </li>
 </ul>
@@ -236,7 +241,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="timeseries.html">
-   21. 시계열 데이터
+   22. 시계열 데이터
   </a>
  </li>
 </ul>
@@ -350,27 +355,27 @@ const thebe_selector_output = ".output, .cell_output"
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   16.1. 합, 평균, 표준편차
+   17.1. 합, 평균, 표준편차
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   16.2. 상관관계와 공분산
+   17.2. 상관관계와 공분산
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   16.3. 중복과 빈도
+   17.3. 중복과 빈도
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   16.4. 미니 프로젝트: 붓꽃 데이터셋 표준화
+   17.4. 미니 프로젝트: 붓꽃 데이터셋 표준화
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   16.5. 연습문제
+   17.5. 연습문제
   </a>
  </li>
 </ul>
@@ -395,27 +400,27 @@ const thebe_selector_output = ".output, .cell_output"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   16.1. 합, 평균, 표준편차
+   17.1. 합, 평균, 표준편차
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   16.2. 상관관계와 공분산
+   17.2. 상관관계와 공분산
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   16.3. 중복과 빈도
+   17.3. 중복과 빈도
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   16.4. 미니 프로젝트: 붓꽃 데이터셋 표준화
+   17.4. 미니 프로젝트: 붓꽃 데이터셋 표준화
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   16.5. 연습문제
+   17.5. 연습문제
   </a>
  </li>
 </ul>
@@ -428,7 +433,7 @@ const thebe_selector_output = ".output, .cell_output"
               <div>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="sec-pandas-3">
-<span id="id1"></span><h1><span class="section-number">16. </span>판다스 활용: 통계 기초<a class="headerlink" href="#sec-pandas-3" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1><span class="section-number">17. </span>판다스 활용: 통계 기초<a class="headerlink" href="#sec-pandas-3" title="Permalink to this headline">¶</a></h1>
 <p><strong>주요 내용</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">Series</span></code>와 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> 객체를로부터 기초 통계 자료를 추출하는 방식을 다룬다.</p>
 <ul class="simple">
@@ -481,7 +486,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="id2">
-<h2><span class="section-number">16.1. </span>합, 평균, 표준편차<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">17.1. </span>합, 평균, 표준편차<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>기초 통계에서 사용되는 주요 메서드들의 활용법을 살펴본다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">sum()</span></code></p></li>
@@ -1045,7 +1050,7 @@ dtype: object
 </div>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">16.2. </span>상관관계와 공분산<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">17.2. </span>상관관계와 공분산<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>금융 사이트에서 구한 4 개 회사의 주가(price)와 거래량(volume)을 담고 있는 두 개의 데이터를 이용하여
 상관계수와 공분산을 계산해본다.</p>
 <p>이를 위해 먼저 바이너리 파일 두 개를 다운로드해서 지정된 하위 디렉토리에 저장한다.</p>
@@ -1676,7 +1681,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">16.3. </span>중복과 빈도<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">17.3. </span>중복과 빈도<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p><strong><code class="docutils literal notranslate"><span class="pre">unique()</span></code> 메서드</strong></p>
 <p>시리즈에서 사용된 값을 중복 없이 확인하려면 <code class="docutils literal notranslate"><span class="pre">unique()</span></code> 메서드를 이용한다.
 <code class="docutils literal notranslate"><span class="pre">set()</span></code> 함수와 유사하게 작동하며, 넘파이 어레이를 반환한다.</p>
@@ -1751,7 +1756,7 @@ dtype: int64
 </div>
 </div>
 <div class="section" id="id5">
-<h2><span class="section-number">16.4. </span>미니 프로젝트: 붓꽃 데이터셋 표준화<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">17.4. </span>미니 프로젝트: 붓꽃 데이터셋 표준화<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>아래 코드는 인터넷 데이터 저장소로부터 아이리스(붓꽃) 데이터(<code class="docutils literal notranslate"><span class="pre">iris.data</span></code>)를
 2차원 넘파이 어레이로 불러온다.</p>
 <div class="cell docutils container">
@@ -3169,7 +3174,7 @@ dtype: float64
 </div>
 </div>
 <div class="section" id="id6">
-<h2><span class="section-number">16.5. </span>연습문제<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">17.5. </span>연습문제<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-pandas_stats.ipynb">(실습) 판다스 활용: 통계 기초</a></p>
 </div>
 </div>
@@ -3203,13 +3208,13 @@ dtype: float64
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">15. </span>데이터프레임 핵심</p>
+            <p class="prev-next-title"><span class="section-number">16. </span>데이터프레임 핵심</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="visualization_1.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">17. </span>matplotlib.pyplot 1부</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>matplotlib.pyplot 1부</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
