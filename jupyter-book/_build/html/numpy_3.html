@@ -858,7 +858,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p><strong>누적합</strong></p>
+<div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/ufunc-sum.png" style="width:330px;"></div>
+<p><div style="text-align: center">&lt;그림 출처: <a href="https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d">NumPy Illustrated: The Visual Guide to NumPy</a>&gt;</div></p><p><strong>누적합</strong></p>
 <ul class="simple">
 <li><p>열별 항목의 누적합 계산: 행을 따라 항목들의 누적합을 계산해야 하기에 <code class="docutils literal notranslate"><span class="pre">axis=0</span></code> 지정.</p></li>
 </ul>
@@ -989,18 +990,17 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<p>예를 들어, 0에서 5까지의 정수로 구성된 <code class="docutils literal notranslate"><span class="pre">arr2</span></code> 어레이가 짝수만 포함하고 있는지 알고 싶을 때 아래와 같이 실행한다.</p>
+<p>예를 들어, 1에서 6까지의 정수로 구성된 어레이가 짝수만 포함하고 있는지 알고 싶을 때 아래와 같이 실행한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">arr2</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 0],
-       [4, 0],
-       [3, 1]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 2, 3],
+       [4, 5, 6]])
 </pre></div>
 </div>
 </div>
@@ -1030,7 +1030,57 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<p>축 별로 확인할 수도 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">arr2</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([False, False, False])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">arr2</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([False, False])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">arr2</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ True,  True,  True])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">arr2</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ True,  True])
+</pre></div>
+</div>
+</div>
+</div>
+<div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/ufunc-any.png" style="width:400px;"></div>
+<p><div style="text-align: center">&lt;그림 출처: <a href="https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d">NumPy Illustrated: The Visual Guide to NumPy</a>&gt;</div></p></div>
 <div class="section" id="id5">
 <h2><span class="section-number">12.4. </span>정렬<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p><strong><code class="docutils literal notranslate"><span class="pre">sort()</span></code> 메서드</strong></p>
@@ -1044,7 +1094,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.957 , -0.2221, -1.1014,  0.9616, -0.6413,  2.6132])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.2205, -0.1934,  0.6692, -1.649 , -2.2528, -1.1668])
 </pre></div>
 </div>
 </div>
@@ -1057,7 +1107,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-1.1014, -0.6413, -0.2221,  0.957 ,  0.9616,  2.6132])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-2.2528, -1.649 , -1.1668, -0.1934,  0.2205,  0.6692])
 </pre></div>
 </div>
 </div>
@@ -1071,11 +1121,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.0527, -0.1995,  1.7647],
-       [-1.459 ,  0.935 ,  0.4739],
-       [-0.4837,  1.3617,  0.2131],
-       [ 0.1596,  0.4502,  0.6871],
-       [ 0.8358, -0.3149, -0.2505]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.3536,  0.7021, -0.2746],
+       [-0.1391,  0.1077, -0.6065],
+       [-0.4171, -0.017 , -1.2241],
+       [-1.8008,  1.6347,  0.989 ],
+       [ 0.4579,  0.5552,  1.3067]])
 </pre></div>
 </div>
 </div>
@@ -1089,11 +1139,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.459 , -0.3149, -0.2505],
-       [-0.4837, -0.1995,  0.2131],
-       [-0.0527,  0.4502,  0.4739],
-       [ 0.1596,  0.935 ,  0.6871],
-       [ 0.8358,  1.3617,  1.7647]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.8008, -0.017 , -1.2241],
+       [-0.4171,  0.1077, -0.6065],
+       [-0.1391,  0.5552, -0.2746],
+       [ 0.3536,  0.7021,  0.989 ],
+       [ 0.4579,  1.6347,  1.3067]])
 </pre></div>
 </div>
 </div>
@@ -1107,11 +1157,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.459 , -0.3149, -0.2505],
-       [-0.4837, -0.1995,  0.2131],
-       [-0.0527,  0.4502,  0.4739],
-       [ 0.1596,  0.935 ,  0.6871],
-       [ 0.8358,  1.3617,  1.7647]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.8008, -0.017 , -1.2241],
+       [-0.4171,  0.1077, -0.6065],
+       [-0.1391,  0.5552, -0.2746],
+       [ 0.3536,  0.7021,  0.989 ],
+       [ 0.4579,  1.6347,  1.3067]])
 </pre></div>
 </div>
 </div>
@@ -1125,11 +1175,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.459 , -0.3149, -0.2505],
-       [-0.4837, -0.1995,  0.2131],
-       [-0.0527,  0.4502,  0.4739],
-       [ 0.1596,  0.6871,  0.935 ],
-       [ 0.8358,  1.3617,  1.7647]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.8008, -1.2241, -0.017 ],
+       [-0.6065, -0.4171,  0.1077],
+       [-0.2746, -0.1391,  0.5552],
+       [ 0.3536,  0.7021,  0.989 ],
+       [ 0.4579,  1.3067,  1.6347]])
 </pre></div>
 </div>
 </div>
@@ -1176,7 +1226,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.5577952581036658
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.4995034502869655
 </pre></div>
 </div>
 </div>
@@ -1230,7 +1280,7 @@ const thebe_selector_output = ".output, .cell_output"
 이유는 1번 행(둘쨋줄)의 값이 0번 행(첫째줄)의 값들보다 모두 크기 때문이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1242,7 +1292,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1255,7 +1305,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p>반면에 행별 최대 값이 위치한 인덱스는 비슷한 이유로 2이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1267,7 +1317,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1277,7 +1327,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
+<p><strong>참고</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">min</span></code>() 메서드 작동법</p></li>
+</ul>
+<div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/ufunc-min.png" style="width:400px;"></div>
+<p><div style="text-align: center">&lt;그림 출처: <a href="https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d">NumPy Illustrated: The Visual Guide to NumPy</a>&gt;</div></p><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">argmin()</span></code> 메서드 작동법</p></li>
+</ul>
+<div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/ufunc-argmin.png" style="width:400px;"></div>
+<p><div style="text-align: center">&lt;그림 출처: <a href="https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d">NumPy Illustrated: The Visual Guide to NumPy</a>&gt;</div></p></div>
 <div class="section" id="id6">
 <h2><span class="section-number">12.5. </span>선형 대수 기초<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>행렬 곱셈, 전치 행렬, 역행렬 등을 2차원 어레이로 계산하는 방식을
@@ -1554,7 +1613,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_148_0.png" src="_images/numpy_3_148_0.png" />
+<img alt="_images/numpy_3_160_0.png" src="_images/numpy_3_160_0.png" />
 </div>
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">np.random.rand()</span></code> 함수</strong></p>
@@ -1568,7 +1627,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_151_0.png" src="_images/numpy_3_151_0.png" />
+<img alt="_images/numpy_3_163_0.png" src="_images/numpy_3_163_0.png" />
 </div>
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">np.random.randint()</span></code> 함수</strong></p>
@@ -1582,7 +1641,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_154_0.png" src="_images/numpy_3_154_0.png" />
+<img alt="_images/numpy_3_166_0.png" src="_images/numpy_3_166_0.png" />
 </div>
 </div>
 <p><strong>시드(seed)</strong></p>
@@ -1600,7 +1659,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_157_0.png" src="_images/numpy_3_157_0.png" />
+<img alt="_images/numpy_3_169_0.png" src="_images/numpy_3_169_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1614,7 +1673,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_158_0.png" src="_images/numpy_3_158_0.png" />
+<img alt="_images/numpy_3_170_0.png" src="_images/numpy_3_170_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1628,14 +1687,14 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_159_0.png" src="_images/numpy_3_159_0.png" />
+<img alt="_images/numpy_3_171_0.png" src="_images/numpy_3_171_0.png" />
 </div>
 </div>
 <p>구간의 오른쪽 끝은 포함되지 않으며, 구간의 왼쪽 끝은 생략되면 0이 기본값으로 사용된다.</p>
 </div>
 <div class="section" id="id8">
 <h2><span class="section-number">12.7. </span>연습문제<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-array_oriented.ipynb">(실습) 어레이 중심 프로그래밍</a></p>
+<p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-numpy_3.ipynb">(실습) 어레이 중심 프로그래밍</a></p>
 </div>
 </div>
 

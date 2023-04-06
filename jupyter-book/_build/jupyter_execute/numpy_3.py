@@ -273,6 +273,10 @@ arr.sum(axis=0)
 arr.sum(axis=1)
 
 
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/ufunc-sum.png" style="width:330px;"></div>
+# 
+# <p><div style="text-align: center">&lt;그림 출처: <a href="https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d">NumPy Illustrated: The Visual Guide to NumPy</a>&gt;</div></p>
+
 # **누적합**
 
 # * 열별 항목의 누적합 계산: 행을 따라 항목들의 누적합을 계산해야 하기에 `axis=0` 지정.
@@ -355,12 +359,12 @@ bools.any()
 bools.all()
 
 
-# 예를 들어, 0에서 5까지의 정수로 구성된 `arr2` 어레이가 짝수만 포함하고 있는지 알고 싶을 때 아래와 같이 실행한다.
+# 예를 들어, 1에서 6까지의 정수로 구성된 어레이가 짝수만 포함하고 있는지 알고 싶을 때 아래와 같이 실행한다.
 
 # In[35]:
 
 
-arr2 = np.random.randint(5, size=(3, 2))
+arr2 = np.arange(1, 7).reshape(2, 3)
 arr2
 
 
@@ -378,6 +382,36 @@ arr2
 (arr2 % 2 == 0).any()
 
 
+# 축 별로 확인할 수도 있다.
+
+# In[38]:
+
+
+(arr2 % 2 == 0).all(axis=0)
+
+
+# In[39]:
+
+
+(arr2 % 2 == 0).all(axis=1)
+
+
+# In[40]:
+
+
+(arr2 % 2 == 0).any(axis=0)
+
+
+# In[41]:
+
+
+(arr2 % 2 == 0).any(axis=1)
+
+
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/ufunc-any.png" style="width:400px;"></div>
+# 
+# <p><div style="text-align: center">&lt;그림 출처: <a href="https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d">NumPy Illustrated: The Visual Guide to NumPy</a>&gt;</div></p>
+
 # ## 정렬
 
 # **`sort()` 메서드**
@@ -385,14 +419,14 @@ arr2
 # 정해진 축을 기준으로 오름차순으로 정열할 때 사용한다. 
 # 물론 1차원 어레이는 축을 지정할 필요가 없다.
 
-# In[38]:
+# In[42]:
 
 
 arr = np.random.randn(6)
 arr
 
 
-# In[39]:
+# In[43]:
 
 
 arr.sort()
@@ -401,7 +435,7 @@ arr
 
 # 다차원 어레이는 축을 이용하여 행 또는 열 기준으로 정렬할 수 있다.
 
-# In[40]:
+# In[44]:
 
 
 arr = np.random.randn(5, 3)
@@ -410,7 +444,7 @@ arr
 
 # 행을 따라 정렬하려면 인자 0을 사용한다.
 
-# In[41]:
+# In[45]:
 
 
 arr.sort(0)
@@ -420,7 +454,7 @@ arr
 # __주의사항:__ (책의 설명과는 달리) `sort()` 메서드는 기존의 어레이를 직접 변환한다. 
 # 즉, `arr`이 직접 변경된다. 
 
-# In[42]:
+# In[46]:
 
 
 arr
@@ -428,7 +462,7 @@ arr
 
 # 열을 따라 정렬하려면 인자 1을 사용한다.
 
-# In[43]:
+# In[47]:
 
 
 arr.sort(1)
@@ -440,7 +474,7 @@ arr
 # 어레이에 사용된 값들의 백분위수를 정렬을 이용하여 쉽게 구할 수 있다.
 # 예를 들어, 임의로 생성된 1,000개의 부동 소수점들 중에서 하위 5%에 해당하는 수를 구해보자.
 
-# In[44]:
+# In[48]:
 
 
 large_arr = np.random.randn(1000)
@@ -448,7 +482,7 @@ large_arr = np.random.randn(1000)
 
 # 먼저 정렬 한 다음에 하위 5%에 해당하는 위치를 구하여 인덱싱하면 바로 답이 나온다.
 
-# In[45]:
+# In[49]:
 
 
 large_arr.sort()
@@ -458,7 +492,7 @@ large_arr.sort()
 # 인덱스로 사용해야 하기에 정수로 형변환해주면 되며,
 # 예상한 대로 50번 인덱스의 값을 가리킨다.
 
-# In[46]:
+# In[50]:
 
 
 five_from_bottom = int(0.05 * len(large_arr))
@@ -467,7 +501,7 @@ five_from_bottom
 
 # 따라서 하위 5%에 해당하는 값은 아래와 같다.
 
-# In[47]:
+# In[51]:
 
 
 large_arr[five_from_bottom]
@@ -477,7 +511,7 @@ large_arr[five_from_bottom]
 
 # 지정된 축을 기준으로 가장 큰 또는 가장 작은 값의 항목이 위치한 인덱스를 반환한다.
 
-# In[48]:
+# In[52]:
 
 
 np.random.seed(18)
@@ -490,13 +524,13 @@ arr
 # 
 # 아래 결과인 5는 5번 인덱스, 여기서는 마지막에 사용된 항목을 가리킨다.
 
-# In[49]:
+# In[53]:
 
 
 arr.argmax()
 
 
-# In[50]:
+# In[54]:
 
 
 arr.argmin()
@@ -507,31 +541,45 @@ arr.argmin()
 # 예를 들어, 열별 최대 값이 위치한 인덱스는 당연히 1이 나온다.
 # 이유는 1번 행(둘쨋줄)의 값이 0번 행(첫째줄)의 값들보다 모두 크기 때문이다.
 
-# In[51]:
+# In[55]:
 
 
-arr.argmax(0)
+arr.argmax(axis=0)
 
 
-# In[52]:
+# In[56]:
 
 
-arr.argmin(0)
+arr.argmin(axis=0)
 
 
 # 반면에 행별 최대 값이 위치한 인덱스는 비슷한 이유로 2이다. 
 
-# In[53]:
+# In[57]:
 
 
-arr.argmax(1)
+arr.argmax(axis=1)
 
 
-# In[54]:
+# In[58]:
 
 
-arr.argmin(1)
+arr.argmin(axis=1)
 
+
+# **참고**
+
+# - `min`() 메서드 작동법
+
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/ufunc-min.png" style="width:400px;"></div>
+# 
+# <p><div style="text-align: center">&lt;그림 출처: <a href="https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d">NumPy Illustrated: The Visual Guide to NumPy</a>&gt;</div></p>
+
+# - `argmin()` 메서드 작동법
+
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/ufunc-argmin.png" style="width:400px;"></div>
+# 
+# <p><div style="text-align: center">&lt;그림 출처: <a href="https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d">NumPy Illustrated: The Visual Guide to NumPy</a>&gt;</div></p>
 
 # ## 선형 대수 기초
 
@@ -551,7 +599,7 @@ arr.argmin(1)
 # \end{bmatrix}
 # $$
 
-# In[55]:
+# In[59]:
 
 
 x = np.array([[1., 2., 3.], [4., 5., 6.]])
@@ -569,7 +617,7 @@ x
 # \end{bmatrix}
 # $$
 
-# In[56]:
+# In[60]:
 
 
 y = np.array([[6., 23.], [-1, 7], [8, 9]])
@@ -597,7 +645,7 @@ y
 # \end{bmatrix}
 # $$
 
-# In[57]:
+# In[61]:
 
 
 x.dot(y)
@@ -605,7 +653,7 @@ x.dot(y)
 
 # `np.dot()` 함수를 이용해도 동일한 결과를 얻는다.
 
-# In[58]:
+# In[62]:
 
 
 np.dot(x, y)
@@ -615,7 +663,7 @@ np.dot(x, y)
 
 # `np.dot()` 함수 대신 `@` 기호를 중위 연산자로 사용할 수 있다.
 
-# In[59]:
+# In[63]:
 
 
 x @ y
@@ -640,7 +688,7 @@ x @ y
 # 
 # 위 전치 행렬에 사용된 2차원 어레이는 아래처럼 생성할 수 있다.
 
-# In[60]:
+# In[64]:
 
 
 x = np.arange(1, 7).reshape((3, 2))
@@ -651,20 +699,20 @@ x
 # 전치 어레이는 기존 어레이의 축을 교환하며, 뷰를 이용한다.
 # 즉, 새로운 어레이를 생성하지 않고 기존 어레이를 읽어오는 방식을 달리한다.
 
-# In[61]:
+# In[65]:
 
 
 x.T
 
 
-# In[62]:
+# In[66]:
 
 
 y = np.arange(-6, 0).reshape((2, 3))
 y
 
 
-# In[63]:
+# In[67]:
 
 
 y.T
@@ -672,7 +720,7 @@ y.T
 
 # `x y`의 전치 행렬은 `y`의 전치 행렬과 `x`의 전치 행렬의 곱이다.
 
-# In[64]:
+# In[68]:
 
 
 ((x @ y).T == y.T @ x.T).all()
@@ -682,7 +730,7 @@ y.T
 
 # 역행렬은 `numpy.linalg` 모듈에 포함된 `inv()` 함수를 이용하여 구한다.
 
-# In[65]:
+# In[69]:
 
 
 from numpy.linalg import inv
@@ -691,7 +739,7 @@ X = np.random.randn(5, 5)
 X
 
 
-# In[66]:
+# In[70]:
 
 
 inv(X)
@@ -701,7 +749,7 @@ inv(X)
 # 
 # __참고:__ 컴퓨터를 이용한 부동소수점 연산은 완벽함과 거리가 아주 멀다.
 
-# In[67]:
+# In[71]:
 
 
 X @ (inv(X))
@@ -718,7 +766,7 @@ X @ (inv(X))
 
 # 임의의 부동소수점을 표준 정규 분포를 따르면서 지정된 수만큼 생성한다.
 
-# In[68]:
+# In[72]:
 
 
 samples = np.random.randn(10000)
@@ -730,7 +778,7 @@ plt.show()
 
 # 0과 1사의 임의의 부동소수점을 균등 분포를 따르면서 지정된 수만큼 생성한다.
 
-# In[69]:
+# In[73]:
 
 
 samples = np.random.rand(10000)
@@ -742,7 +790,7 @@ plt.show()
 
 # 지정된 구간 사이에서 임의의 정수를 균등 분포를 따르면서 지정된 수만큼 생성한다.
 
-# In[70]:
+# In[74]:
 
 
 samples = np.random.randint(0,100,10000)
@@ -756,7 +804,7 @@ plt.show()
 # 하지만 시드를 지정하면 무작위 수도 동일하게 결정된다.
 # 시드는 컴퓨터가 사용하는 난수표(random number table)의 특정 지점을 지정하는 역할을 수행한다.
 
-# In[71]:
+# In[75]:
 
 
 np.random.seed(1234)
@@ -766,7 +814,7 @@ plt.hist(samples, bins=100)
 plt.show()
 
 
-# In[72]:
+# In[76]:
 
 
 np.random.seed(1234)
@@ -776,7 +824,7 @@ plt.hist(samples, bins=100)
 plt.show()
 
 
-# In[73]:
+# In[77]:
 
 
 np.random.seed(1234)
@@ -790,4 +838,4 @@ plt.show()
 
 # ## 연습문제
 
-# 참고: [(실습) 어레이 중심 프로그래밍](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-array_oriented.ipynb)
+# 참고: [(실습) 어레이 중심 프로그래밍](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-numpy_3.ipynb)
