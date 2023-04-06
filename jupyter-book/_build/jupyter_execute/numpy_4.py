@@ -375,7 +375,7 @@ arr * 4
 # 결과가 항목별로 곱해지는 이유는 `arr * 4` 가 아래 어레이의 곱셈과 동일하게 작동하기 때문이다. 
 # 즉, 정수 4로 채워진 동일한 모양의 어레이를 먼저 생성한 후에 항목별 곱셈을 진행한다.
 
-# <img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting14.png?raw=true" style="width:300px;">
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting14.png?raw=true" style="width:300px;"></div>
 
 # 이와 같이 어레이의 모양을 확장하여 항목별 연산이 가능해지도록 하는 기능은 두 어레이의 모야을
 # 통일시킬 수 있는 경우 항상 작동한다.
@@ -410,7 +410,7 @@ arr2 + arr3
 
 # 아래 그림이 위 연산이 작동하는 이유를 설명한다.
 
-# <img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting10.png?raw=true" style="width:400px;">
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting10.png?raw=true" style="width:400px;"></div>
 
 # 동일한 이유로 다음 연산도 가능하다.
 
@@ -427,7 +427,7 @@ arr3_a
 arr2 + arr3_a
 
 
-# <img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting10a.png?raw=true" style="width:400px;">
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting10a.png?raw=true" style="width:400px;"></div>
 
 # **예제**
 
@@ -446,7 +446,7 @@ arr4
 arr2 + arr4
 
 
-# <img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting11.png?raw=true" style="width:400px;">
+# <div align="center"></div><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting11.png?raw=true" style="width:400px;"></div>
 
 # 반면에 아래 연산은 오류를 발생시킨다.
 
@@ -477,7 +477,7 @@ arr4_a
 
 # 아래 그림이 이유를 설명한다.
 
-# <img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting11a.png?raw=true" style="width:380px;">
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting11a.png?raw=true" style="width:380px;"></div>
 # 
 # <p><div style="text-align: center">&lt;그림 출처: <a href="https://numpy.org/doc/stable/user/basics.broadcasting.html">NumPy: Broadcasting</a>&gt;</div></p>
 
@@ -505,7 +505,7 @@ arr7
 arr6 + arr7
 
 
-# <img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting12.png?raw=true" style="width:400px;">
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting12.png?raw=true" style="width:400px;"></div>
 
 # **예제**
 
