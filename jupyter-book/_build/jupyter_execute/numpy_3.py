@@ -507,9 +507,9 @@ five_from_bottom
 large_arr[five_from_bottom]
 
 
-# **`argmax()`/`argmin()` 메서드**
+# **`min()/max()` 메서드와 `argmax()`/`argmin()` 메서드**
 
-# 지정된 축을 기준으로 가장 큰 또는 가장 작은 값의 항목이 위치한 인덱스를 반환한다.
+# 설명을 위해 아래 어레이를 이용한다.
 
 # In[52]:
 
@@ -519,18 +519,62 @@ arr= np.random.randint(11, 99, (2,3))
 arr
 
 
+# `max()`/`min()` 메서드는
+# 지정된 축을 기준으로 가장 큰 또는 가장 작은 값을 반환한다.
+# 축을 지정하지 않으면 전체 항목을 대상으로 한다.
+
+# In[53]:
+
+
+arr.max()
+
+
+# In[54]:
+
+
+arr.min()
+
+
+# 축을 지정하면 열별 또는 행별로 최대값/최소값으로 이루어진 어레이를 반환한다.
+
+# In[55]:
+
+
+arr.max(axis=0)
+
+
+# In[56]:
+
+
+arr.min(axis=0)
+
+
+# In[57]:
+
+
+arr.max(axis=1)
+
+
+# In[58]:
+
+
+arr.min(axis=1)
+
+
+# `argmax()`/`argmin()` 메서드는
+# 지정된 축을 기준으로 가장 큰 또는 가장 작은 값의 항목이 위치한 인덱스를 반환한다.
 # 축을 지정하지 않으면 전체 항목을 대상으로 하며,
 # 반환된 값은 어레이를 1차원으로 변환했을 때의 순서를 보여준다.
 # 
 # 아래 결과인 5는 5번 인덱스, 여기서는 마지막에 사용된 항목을 가리킨다.
 
-# In[53]:
+# In[59]:
 
 
 arr.argmax()
 
 
-# In[54]:
+# In[60]:
 
 
 arr.argmin()
@@ -541,13 +585,13 @@ arr.argmin()
 # 예를 들어, 열별 최대 값이 위치한 인덱스는 당연히 1이 나온다.
 # 이유는 1번 행(둘쨋줄)의 값이 0번 행(첫째줄)의 값들보다 모두 크기 때문이다.
 
-# In[55]:
+# In[61]:
 
 
 arr.argmax(axis=0)
 
 
-# In[56]:
+# In[62]:
 
 
 arr.argmin(axis=0)
@@ -555,13 +599,13 @@ arr.argmin(axis=0)
 
 # 반면에 행별 최대 값이 위치한 인덱스는 비슷한 이유로 2이다. 
 
-# In[57]:
+# In[63]:
 
 
 arr.argmax(axis=1)
 
 
-# In[58]:
+# In[64]:
 
 
 arr.argmin(axis=1)
@@ -571,13 +615,13 @@ arr.argmin(axis=1)
 
 # - `min`() 메서드 작동법
 
-# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/ufunc-min.png" style="width:400px;"></div>
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/ufunc-min.png" style="width:350px;"></div>
 # 
 # <p><div style="text-align: center">&lt;그림 출처: <a href="https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d">NumPy Illustrated: The Visual Guide to NumPy</a>&gt;</div></p>
 
 # - `argmin()` 메서드 작동법
 
-# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/ufunc-argmin.png" style="width:400px;"></div>
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/ufunc-argmin.png" style="width:350px;"></div>
 # 
 # <p><div style="text-align: center">&lt;그림 출처: <a href="https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d">NumPy Illustrated: The Visual Guide to NumPy</a>&gt;</div></p>
 
@@ -599,7 +643,7 @@ arr.argmin(axis=1)
 # \end{bmatrix}
 # $$
 
-# In[59]:
+# In[65]:
 
 
 x = np.array([[1., 2., 3.], [4., 5., 6.]])
@@ -617,7 +661,7 @@ x
 # \end{bmatrix}
 # $$
 
-# In[60]:
+# In[66]:
 
 
 y = np.array([[6., 23.], [-1, 7], [8, 9]])
@@ -645,7 +689,7 @@ y
 # \end{bmatrix}
 # $$
 
-# In[61]:
+# In[67]:
 
 
 x.dot(y)
@@ -653,7 +697,7 @@ x.dot(y)
 
 # `np.dot()` 함수를 이용해도 동일한 결과를 얻는다.
 
-# In[62]:
+# In[68]:
 
 
 np.dot(x, y)
@@ -663,7 +707,7 @@ np.dot(x, y)
 
 # `np.dot()` 함수 대신 `@` 기호를 중위 연산자로 사용할 수 있다.
 
-# In[63]:
+# In[69]:
 
 
 x @ y
@@ -688,7 +732,7 @@ x @ y
 # 
 # 위 전치 행렬에 사용된 2차원 어레이는 아래처럼 생성할 수 있다.
 
-# In[64]:
+# In[70]:
 
 
 x = np.arange(1, 7).reshape((3, 2))
@@ -699,20 +743,20 @@ x
 # 전치 어레이는 기존 어레이의 축을 교환하며, 뷰를 이용한다.
 # 즉, 새로운 어레이를 생성하지 않고 기존 어레이를 읽어오는 방식을 달리한다.
 
-# In[65]:
+# In[71]:
 
 
 x.T
 
 
-# In[66]:
+# In[72]:
 
 
 y = np.arange(-6, 0).reshape((2, 3))
 y
 
 
-# In[67]:
+# In[73]:
 
 
 y.T
@@ -720,7 +764,7 @@ y.T
 
 # `x y`의 전치 행렬은 `y`의 전치 행렬과 `x`의 전치 행렬의 곱이다.
 
-# In[68]:
+# In[74]:
 
 
 ((x @ y).T == y.T @ x.T).all()
@@ -730,7 +774,7 @@ y.T
 
 # 역행렬은 `numpy.linalg` 모듈에 포함된 `inv()` 함수를 이용하여 구한다.
 
-# In[69]:
+# In[75]:
 
 
 from numpy.linalg import inv
@@ -739,7 +783,7 @@ X = np.random.randn(5, 5)
 X
 
 
-# In[70]:
+# In[76]:
 
 
 inv(X)
@@ -749,7 +793,7 @@ inv(X)
 # 
 # __참고:__ 컴퓨터를 이용한 부동소수점 연산은 완벽함과 거리가 아주 멀다.
 
-# In[71]:
+# In[77]:
 
 
 X @ (inv(X))
@@ -766,7 +810,7 @@ X @ (inv(X))
 
 # 임의의 부동소수점을 표준 정규 분포를 따르면서 지정된 수만큼 생성한다.
 
-# In[72]:
+# In[78]:
 
 
 samples = np.random.randn(10000)
@@ -778,7 +822,7 @@ plt.show()
 
 # 0과 1사의 임의의 부동소수점을 균등 분포를 따르면서 지정된 수만큼 생성한다.
 
-# In[73]:
+# In[79]:
 
 
 samples = np.random.rand(10000)
@@ -790,7 +834,7 @@ plt.show()
 
 # 지정된 구간 사이에서 임의의 정수를 균등 분포를 따르면서 지정된 수만큼 생성한다.
 
-# In[74]:
+# In[80]:
 
 
 samples = np.random.randint(0,100,10000)
@@ -804,7 +848,7 @@ plt.show()
 # 하지만 시드를 지정하면 무작위 수도 동일하게 결정된다.
 # 시드는 컴퓨터가 사용하는 난수표(random number table)의 특정 지점을 지정하는 역할을 수행한다.
 
-# In[75]:
+# In[81]:
 
 
 np.random.seed(1234)
@@ -814,7 +858,7 @@ plt.hist(samples, bins=100)
 plt.show()
 
 
-# In[76]:
+# In[82]:
 
 
 np.random.seed(1234)
@@ -824,7 +868,7 @@ plt.hist(samples, bins=100)
 plt.show()
 
 
-# In[77]:
+# In[83]:
 
 
 np.random.seed(1234)
