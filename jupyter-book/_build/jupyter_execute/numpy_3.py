@@ -47,7 +47,7 @@ import matplotlib.pyplot as plt
 
 # ## 유니버설 함수
 
-# 유니버설 함수는 어레이의 항목 각각에 대해 적용되는 함수이며, **ufunc**로도 불린다.
+# **유니버설 함수**<font size='2'>universal function</font>는 어레이의 항목 각각에 대해 적용되는 함수이며, **ufunc**로도 불린다.
 # 60개 이상의 유니버설 함수가 존재하며,
 # 그중 상당수가 수학 관련 함수다. 
 # 보다 자세한 내용은 [유니버설 함수 공식문서](https://numpy.org/doc/stable/reference/ufuncs.html#available-ufuncs)에서
@@ -808,26 +808,60 @@ X @ (inv(X))
 
 # 가장 많이 사용된 무작위 수 생성함수 3개와 시드(seed)의 역할을 살펴본다.
 
-# **`np.random.randn()` 함수**
+# **`np.random.randn()`/`np.random.normal()` 함수**
 
 # 임의의 부동소수점을 표준 정규 분포를 따르면서 지정된 수만큼 생성한다.
 
 # In[78]:
 
 
-samples = np.random.randn(10000)
-plt.hist(samples, bins=100)
-plt.show()
+import numpy as np
 
-
-# **`np.random.rand()` 함수**
-
-# 0과 1사의 임의의 부동소수점을 균등 분포를 따르면서 지정된 수만큼 생성한다.
 
 # In[79]:
 
 
+np.random.seed(1000)
+
+samples = np.random.randn(1000)
+plt.hist(samples, bins=100)
+plt.show()
+
+
+# `np.random.randn(n)`은 `np.random.normal(size=n)`과 동일하게 작동한다.
+
+# In[80]:
+
+
+np.random.seed(1000)
+
+samples = np.random.normal(size=1000)
+plt.hist(samples, bins=100)
+plt.show()
+
+
+# **`np.random.rand()`/`np.random.uniform()` 함수**
+
+# 0과 1사의 임의의 부동소수점을 균등 분포를 따르면서 지정된 수만큼 생성한다.
+
+# In[81]:
+
+
+np.random.seed(1000)
+
 samples = np.random.rand(10000)
+plt.hist(samples, bins=100)
+plt.show()
+
+
+# `np.random.rand(n)`은 `np.random.uniform(0, 1, n)`과 동일하게 작동한다.
+
+# In[82]:
+
+
+np.random.seed(1000)
+
+samples = np.random.uniform(0, 1, 10000)
 plt.hist(samples, bins=100)
 plt.show()
 
@@ -836,7 +870,7 @@ plt.show()
 
 # 지정된 구간 사이에서 임의의 정수를 균등 분포를 따르면서 지정된 수만큼 생성한다.
 
-# In[80]:
+# In[83]:
 
 
 samples = np.random.randint(0,100,10000)
@@ -850,7 +884,7 @@ plt.show()
 # 하지만 시드를 지정하면 무작위 수도 동일하게 결정된다.
 # 시드는 컴퓨터가 사용하는 난수표(random number table)의 특정 지점을 지정하는 역할을 수행한다.
 
-# In[81]:
+# In[84]:
 
 
 np.random.seed(1234)
@@ -860,7 +894,7 @@ plt.hist(samples, bins=100)
 plt.show()
 
 
-# In[82]:
+# In[85]:
 
 
 np.random.seed(1234)
@@ -870,7 +904,7 @@ plt.hist(samples, bins=100)
 plt.show()
 
 
-# In[83]:
+# In[86]:
 
 
 np.random.seed(1234)
