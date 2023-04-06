@@ -4,17 +4,19 @@
 # (sec:numpy_3)=
 # # 어레이 중심 프로그래밍
 
-# 연산과 함수 호출에 사용되는 넘파이 어레이는 기본적으로 항목 단위로 연산과 함수 호출이 이루어진다.
-# 넘파이 어레이의 이런 특징을 잘 활용하도록 유도하는 프로그래밍을 
-# __어레이 중심 프로그래밍__(array-oriented programming)이라 한다. 
+# 주어진 어레이로붙 새로운 어레이를 생성하기 위해 
+# 어레이를 조작하는 함수에 집중하는 프로그래밍이
+# **어레이 중심 프로그래밍**<font size='2'>array-oriented programming</font>이다.
+# 어레이 중심 프로그래밍에 가중 중요한 넘파이 함수와 어레이 메서드를 소개한다.
 
 # **주요 내용**
 # 
 # - 유니버설 함수
-# - 통계 기초
-# - 정렬
-# - 선형대수 기초
-# - 난수 생성
+# - 기초 통계 함수
+# - 부울 어레이 활용
+# - 어레이 정렬
+# - 기초 선형대수 함수
+# - 난수 생성 함수
 
 # **기본 설정**
 # 
@@ -174,7 +176,7 @@ arr4
 np.divmod(arr3, arr4)
 
 
-# ## 통계 기초
+# ## 기초 통계 함수
 
 # 넘파이 어레이에 사용된 항목들의 합(sum), 평균값(mean), 표준편차(std) 등 기본 통계를 계산하는 함수를
 # 어레이가 지원한다.
@@ -412,7 +414,7 @@ arr2
 # 
 # <p><div style="text-align: center">&lt;그림 출처: <a href="https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d">NumPy Illustrated: The Visual Guide to NumPy</a>&gt;</div></p>
 
-# ## 정렬
+# ## 어레이 정렬
 
 # **`sort()` 메서드**
 
@@ -625,7 +627,7 @@ arr.argmin(axis=1)
 # 
 # <p><div style="text-align: center">&lt;그림 출처: <a href="https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d">NumPy Illustrated: The Visual Guide to NumPy</a>&gt;</div></p>
 
-# ## 선형 대수 기초
+# ## 기초 선형 대수 함수
 
 # 행렬 곱셈, 전치 행렬, 역행렬 등을 2차원 어레이로 계산하는 방식을 
 # 간단한 예제를 이용하여 소개한다.
