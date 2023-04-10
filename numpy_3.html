@@ -1548,7 +1548,125 @@ title="Print to PDF"
 <li><p><code class="docutils literal notranslate"><span class="pre">argmin()</span></code> 메서드 작동법</p></li>
 </ul>
 <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/ufunc-argmin.png" style="width:350px;"></div>
-<p><div style="text-align: center">&lt;그림 출처: <a href="https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d">NumPy Illustrated: The Visual Guide to NumPy</a>&gt;</div></p></section>
+<p><div style="text-align: center">&lt;그림 출처: <a href="https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d">NumPy Illustrated: The Visual Guide to NumPy</a>&gt;</div></p><p><strong><code class="docutils literal notranslate"><span class="pre">argsort()</span></code> 메서드</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">argsort()</span></code> 메서드는 지정된 축에 따라 정렬했을 때의 각 항목이 자리잡는 위치의 인덱스로
+구성된 어레이를 생성한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1235</span><span class="p">)</span>
+
+<span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">,(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">arr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[11, 34,  2],
+       [47,  3,  7],
+       [35, 40, 16],
+       [16,  2, 15]])
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>열 별로 작은 값에서부터 큰 값이 자리한 위치의 인덱스 확인</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 3, 0],
+       [3, 1, 1],
+       [2, 0, 3],
+       [1, 2, 2]])
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>행 별로 작은 값에서부터 큰 값이 자리한 위치의 인덱스 확인</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2, 0, 1],
+       [1, 2, 0],
+       [2, 0, 1],
+       [1, 2, 0]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>축을 지정하지 않으면 <code class="docutils literal notranslate"><span class="pre">axis=-1</span></code>, 즉 마지막 축을 기본값으로 이용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span> <span class="c1"># arr.argsort(axis=-1)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2, 0, 1],
+       [1, 2, 0],
+       [2, 0, 1],
+       [1, 2, 0]])
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">axis=None</span></code>을 사용하면 모든 항목을 1차원 어레이로 만든 다음에 적용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 2, 10,  4,  5,  0, 11,  8,  9,  1,  6,  7,  3])
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>예제</strong></p>
+<p>0번 열에 위치한 값들의 순서대로 행을 재배치하려면 다음과 같이 먼저
+<code class="docutils literal notranslate"><span class="pre">argsort()</span></code> 메서드를 0번 열에 대해 적용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">argsort</span><span class="p">()</span>
+<span class="n">X</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 3, 2, 1])
+</pre></div>
+</div>
+</div>
+</div>
+<p>이제 0번열을 기준으로 정렬하려면 <code class="docutils literal notranslate"><span class="pre">X</span></code>를 팬시 인덱싱에 활용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[</span><span class="n">X</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[11, 34,  2],
+       [16,  2, 15],
+       [35, 40, 16],
+       [47,  3,  7]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="id6">
 <h2><span class="section-number">12.5. </span>기초 선형 대수 함수<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
 <p>행렬 곱셈, 전치 행렬, 역행렬 등을 2차원 어레이로 계산하는 방식을
@@ -1765,11 +1883,11 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.0327, -0.2185,  1.1416,  0.2258,  2.135 ],
-       [ 1.2383,  0.8959, -1.3972, -0.6551, -0.9048],
-       [-1.4006,  1.5896,  0.8859,  0.1202,  0.719 ],
-       [ 0.0344, -0.8945,  0.9016,  0.4296, -0.0688],
-       [ 0.171 , -1.3612,  1.5464, -0.0718,  0.8127]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.5101, -0.2548, -0.0844,  0.9943, -0.8696],
+       [ 1.6077,  1.5681,  2.8091, -1.0102,  1.598 ],
+       [ 1.1038, -0.1   ,  0.638 ,  1.8843, -0.909 ],
+       [ 0.0082,  0.1794,  0.1683,  0.5103,  1.2377],
+       [-0.5326,  1.2362, -0.3071, -1.2403,  0.4329]])
 </pre></div>
 </div>
 </div>
@@ -1781,11 +1899,11 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.4433,  0.8285,  0.0122,  0.9991, -0.1682],
-       [ 0.1838,  0.5443,  0.4618,  0.5646, -0.2377],
-       [-0.1109,  0.49  ,  0.5088,  0.7383,  0.4493],
-       [ 0.6577,  0.0075, -0.1409,  1.7921, -1.4429],
-       [ 0.4838, -0.1944, -0.2097, -0.5112, -0.1146]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 5.7961,  0.782 , -3.0021,  0.9184, -0.1734],
+       [-0.3822, -0.0827,  0.7235,  0.06  ,  0.8848],
+       [-4.2766, -0.2465,  2.2227, -0.9669, -0.2486],
+       [-1.4003, -0.2999,  1.158 ,  0.199 ,  0.1565],
+       [ 1.1761,  0.164 , -0.8648,  0.8426, -0.1579]])
 </pre></div>
 </div>
 </div>
@@ -1799,11 +1917,11 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.,  0.,  0., -0.,  0.],
-       [-0.,  1.,  0.,  0., -0.],
-       [ 0.,  0.,  1.,  0.,  0.],
-       [-0., -0.,  0.,  1.,  0.],
-       [-0., -0., -0., -0.,  1.]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.,  0.,  0., -0., -0.],
+       [-0.,  1.,  0., -0., -0.],
+       [ 0.,  0.,  1., -0., -0.],
+       [ 0.,  0., -0.,  1., -0.],
+       [-0., -0.,  0.,  0.,  1.]])
 </pre></div>
 </div>
 </div>
@@ -1834,7 +1952,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_169_0.png" src="_images/numpy_3_169_0.png" />
+<img alt="_images/numpy_3_185_0.png" src="_images/numpy_3_185_0.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">np.random.randn(n)</span></code>은 <code class="docutils literal notranslate"><span class="pre">np.random.normal(size=n)</span></code>과 동일하게 작동한다.</p>
@@ -1849,7 +1967,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_171_0.png" src="_images/numpy_3_171_0.png" />
+<img alt="_images/numpy_3_187_0.png" src="_images/numpy_3_187_0.png" />
 </div>
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">np.random.rand()</span></code>/<code class="docutils literal notranslate"><span class="pre">np.random.uniform()</span></code> 함수</strong></p>
@@ -1865,7 +1983,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_174_0.png" src="_images/numpy_3_174_0.png" />
+<img alt="_images/numpy_3_190_0.png" src="_images/numpy_3_190_0.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">np.random.rand(n)</span></code>은 <code class="docutils literal notranslate"><span class="pre">np.random.uniform(0,</span> <span class="pre">1,</span> <span class="pre">n)</span></code>과 동일하게 작동한다.</p>
@@ -1880,7 +1998,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_176_0.png" src="_images/numpy_3_176_0.png" />
+<img alt="_images/numpy_3_192_0.png" src="_images/numpy_3_192_0.png" />
 </div>
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">np.random.randint()</span></code> 함수</strong></p>
@@ -1894,7 +2012,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_179_0.png" src="_images/numpy_3_179_0.png" />
+<img alt="_images/numpy_3_195_0.png" src="_images/numpy_3_195_0.png" />
 </div>
 </div>
 <p><strong>시드(seed)</strong></p>
@@ -1912,7 +2030,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_182_0.png" src="_images/numpy_3_182_0.png" />
+<img alt="_images/numpy_3_198_0.png" src="_images/numpy_3_198_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1926,7 +2044,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_183_0.png" src="_images/numpy_3_183_0.png" />
+<img alt="_images/numpy_3_199_0.png" src="_images/numpy_3_199_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1940,7 +2058,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/numpy_3_184_0.png" src="_images/numpy_3_184_0.png" />
+<img alt="_images/numpy_3_200_0.png" src="_images/numpy_3_200_0.png" />
 </div>
 </div>
 <p>구간의 오른쪽 끝은 포함되지 않으며, 구간의 왼쪽 끝은 생략되면 0이 기본값으로 사용된다.</p>
