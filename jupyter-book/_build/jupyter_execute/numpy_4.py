@@ -446,7 +446,7 @@ arr4
 arr2 + arr4
 
 
-# <div align="center"></div><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting11.png?raw=true" style="width:400px;"></div>
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting11.png?raw=true" style="width:400px;"></div>
 
 # 반면에 아래 연산은 오류를 발생시킨다.
 
