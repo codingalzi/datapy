@@ -330,6 +330,14 @@ np.hstack((arr1, arr2, arr3))
 np.hstack([arr1, arr2, arr3])
 
 
+# **`stack()` 함수와 `split()` 함수**
+
+# 두 함수는 서로 역함수의 관계를 갖는다.
+
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/stack-split01.png?raw=true" style="width:600px;"></div>
+# 
+# <p><div style="text-align: center">&lt;그림 출처: <a href="https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d">NumPy Illustrated</a>&gt;</div></p>
+
 # **`np.r_[]`/`np.c_[]` 객체**
 
 # `vstack()`/`hstack()` 과 동일한 기능을 수행하는 특수한 객체들이다.
