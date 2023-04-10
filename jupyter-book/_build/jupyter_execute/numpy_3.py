@@ -627,6 +627,72 @@ arr.argmin(axis=1)
 # 
 # <p><div style="text-align: center">&lt;그림 출처: <a href="https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d">NumPy Illustrated: The Visual Guide to NumPy</a>&gt;</div></p>
 
+# **`argsort()` 메서드**
+
+# `argsort()` 메서드는 지정된 축에 따라 정렬했을 때의 각 항목이 자리잡는 위치의 인덱스로 
+# 구성된 어레이를 생성한다.
+
+# In[65]:
+
+
+np.random.seed(1235)
+
+arr = np.random.randint(0,50,(4, 3))
+arr
+
+
+# - 열 별로 작은 값에서부터 큰 값이 자리한 위치의 인덱스 확인
+
+# In[66]:
+
+
+arr.argsort(axis=0)
+
+
+# - 행 별로 작은 값에서부터 큰 값이 자리한 위치의 인덱스 확인
+
+# In[67]:
+
+
+arr.argsort(axis=1)
+
+
+# 축을 지정하지 않으면 `axis=-1`, 즉 마지막 축을 기본값으로 이용한다.
+
+# In[68]:
+
+
+arr.argsort() # arr.argsort(axis=-1)
+
+
+# `axis=None`을 사용하면 모든 항목을 1차원 어레이로 만든 다음에 적용한다.
+
+# In[69]:
+
+
+arr.argsort(axis=None)
+
+
+# **예제**
+
+# 0번 열에 위치한 값들의 순서대로 행을 재배치하려면 다음과 같이 먼저
+# `argsort()` 메서드를 0번 열에 대해 적용한다.
+
+# In[70]:
+
+
+X = arr[:, 0].argsort()
+X
+
+
+# 이제 0번열을 기준으로 정렬하려면 `X`를 팬시 인덱싱에 활용한다. 
+
+# In[71]:
+
+
+arr[X]
+
+
 # ## 기초 선형 대수 함수
 
 # 행렬 곱셈, 전치 행렬, 역행렬 등을 2차원 어레이로 계산하는 방식을 
@@ -645,7 +711,7 @@ arr.argmin(axis=1)
 # \end{bmatrix}
 # $$
 
-# In[65]:
+# In[72]:
 
 
 x = np.array([[1., 2., 3.], [4., 5., 6.]])
@@ -663,7 +729,7 @@ x
 # \end{bmatrix}
 # $$
 
-# In[66]:
+# In[73]:
 
 
 y = np.array([[6., 23.], [-1, 7], [8, 9]])
@@ -691,7 +757,7 @@ y
 # \end{bmatrix}
 # $$
 
-# In[67]:
+# In[74]:
 
 
 x.dot(y)
@@ -699,7 +765,7 @@ x.dot(y)
 
 # `np.dot()` 함수를 이용해도 동일한 결과를 얻는다.
 
-# In[68]:
+# In[75]:
 
 
 np.dot(x, y)
@@ -709,7 +775,7 @@ np.dot(x, y)
 
 # `np.dot()` 함수 대신 `@` 기호를 중위 연산자로 사용할 수 있다.
 
-# In[69]:
+# In[76]:
 
 
 x @ y
@@ -734,7 +800,7 @@ x @ y
 # 
 # 위 전치 행렬에 사용된 2차원 어레이는 아래처럼 생성할 수 있다.
 
-# In[70]:
+# In[77]:
 
 
 x = np.arange(1, 7).reshape((3, 2))
@@ -745,20 +811,20 @@ x
 # 전치 어레이는 기존 어레이의 축을 교환하며, 뷰를 이용한다.
 # 즉, 새로운 어레이를 생성하지 않고 기존 어레이를 읽어오는 방식을 달리한다.
 
-# In[71]:
+# In[78]:
 
 
 x.T
 
 
-# In[72]:
+# In[79]:
 
 
 y = np.arange(-6, 0).reshape((2, 3))
 y
 
 
-# In[73]:
+# In[80]:
 
 
 y.T
@@ -766,7 +832,7 @@ y.T
 
 # `x y`의 전치 행렬은 `y`의 전치 행렬과 `x`의 전치 행렬의 곱이다.
 
-# In[74]:
+# In[81]:
 
 
 ((x @ y).T == y.T @ x.T).all()
@@ -776,7 +842,7 @@ y.T
 
 # 역행렬은 `numpy.linalg` 모듈에 포함된 `inv()` 함수를 이용하여 구한다.
 
-# In[75]:
+# In[82]:
 
 
 from numpy.linalg import inv
@@ -785,7 +851,7 @@ X = np.random.randn(5, 5)
 X
 
 
-# In[76]:
+# In[83]:
 
 
 inv(X)
@@ -795,7 +861,7 @@ inv(X)
 # 
 # __참고:__ 컴퓨터를 이용한 부동소수점 연산은 완벽함과 거리가 아주 멀다.
 
-# In[77]:
+# In[84]:
 
 
 X @ (inv(X))
@@ -812,13 +878,13 @@ X @ (inv(X))
 
 # 임의의 부동소수점을 표준 정규 분포를 따르면서 지정된 수만큼 생성한다.
 
-# In[78]:
+# In[85]:
 
 
 import numpy as np
 
 
-# In[79]:
+# In[86]:
 
 
 np.random.seed(1000)
@@ -830,7 +896,7 @@ plt.show()
 
 # `np.random.randn(n)`은 `np.random.normal(size=n)`과 동일하게 작동한다.
 
-# In[80]:
+# In[87]:
 
 
 np.random.seed(1000)
@@ -844,7 +910,7 @@ plt.show()
 
 # 0과 1사의 임의의 부동소수점을 균등 분포를 따르면서 지정된 수만큼 생성한다.
 
-# In[81]:
+# In[88]:
 
 
 np.random.seed(1000)
@@ -856,7 +922,7 @@ plt.show()
 
 # `np.random.rand(n)`은 `np.random.uniform(0, 1, n)`과 동일하게 작동한다.
 
-# In[82]:
+# In[89]:
 
 
 np.random.seed(1000)
@@ -870,7 +936,7 @@ plt.show()
 
 # 지정된 구간 사이에서 임의의 정수를 균등 분포를 따르면서 지정된 수만큼 생성한다.
 
-# In[83]:
+# In[90]:
 
 
 samples = np.random.randint(0,100,10000)
@@ -884,7 +950,7 @@ plt.show()
 # 하지만 시드를 지정하면 무작위 수도 동일하게 결정된다.
 # 시드는 컴퓨터가 사용하는 난수표(random number table)의 특정 지점을 지정하는 역할을 수행한다.
 
-# In[84]:
+# In[91]:
 
 
 np.random.seed(1234)
@@ -894,7 +960,7 @@ plt.hist(samples, bins=100)
 plt.show()
 
 
-# In[85]:
+# In[92]:
 
 
 np.random.seed(1234)
@@ -904,7 +970,7 @@ plt.hist(samples, bins=100)
 plt.show()
 
 
-# In[86]:
+# In[93]:
 
 
 np.random.seed(1234)

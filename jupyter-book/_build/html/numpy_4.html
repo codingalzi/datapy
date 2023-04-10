@@ -1446,6 +1446,70 @@ title="Print to PDF"
 </div>
 <p>아래 그림이 이유를 설명한다.</p>
 <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting11a.png?raw=true" style="width:380px;"></div>
+<p><div style="text-align: center">&lt;그림 출처: <a href="https://numpy.org/doc/stable/user/basics.broadcasting.html">NumPy: Broadcasting</a>&gt;</div></p><p>물론 다음은 실행된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr5</span> <span class="o">+</span> <span class="n">arr4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1,  1,  1],
+       [12, 12, 12],
+       [23, 23, 23],
+       [34, 34, 34]])
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>예제</strong></p>
+<p>아래와 같이 두 어레이에 대해 브로디캐스팅을 먼저 적용한 다음에 연산을 실행하기도 한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr6</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">arr6</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0],
+       [10],
+       [20],
+       [30]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr7</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">arr7</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2, 3])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr6</span> <span class="o">+</span> <span class="n">arr7</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1,  2,  3],
+       [11, 12, 13],
+       [21, 22, 23],
+       [31, 32, 33]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>위 연산이 작동하는 이유를 아래 그림이 설명한다.</p>
+<div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting11b.png?raw=true" style="width:500px;"></div>
 <p><div style="text-align: center">&lt;그림 출처: <a href="https://numpy.org/doc/stable/user/basics.broadcasting.html">NumPy: Broadcasting</a>&gt;</div></p><p><strong>예제</strong></p>
 <p>아래 예제는 2차원 어레이를 3차원으로 확장한 후에 연산을 진행하는 것을 보여준다.</p>
 <div class="cell docutils container">

@@ -481,25 +481,63 @@ arr4_a
 # 
 # <p><div style="text-align: center">&lt;그림 출처: <a href="https://numpy.org/doc/stable/user/basics.broadcasting.html">NumPy: Broadcasting</a>&gt;</div></p>
 
+# 물론 다음은 실행된다.
+
+# In[49]:
+
+
+arr5 + arr4
+
+
+# **예제**
+
+# 아래와 같이 두 어레이에 대해 브로디캐스팅을 먼저 적용한 다음에 연산을 실행하기도 한다.
+
+# In[50]:
+
+
+arr6 = np.arange(0, 31, 10).reshape(4, -1)
+arr6
+
+
+# In[51]:
+
+
+arr7 = np.arange(1, 4)
+arr7
+
+
+# In[52]:
+
+
+arr6 + arr7
+
+
+# 위 연산이 작동하는 이유를 아래 그림이 설명한다.
+
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting11b.png?raw=true" style="width:500px;"></div>
+# 
+# <p><div style="text-align: center">&lt;그림 출처: <a href="https://numpy.org/doc/stable/user/basics.broadcasting.html">NumPy: Broadcasting</a>&gt;</div></p>
+
 # **예제**
 
 # 아래 예제는 2차원 어레이를 3차원으로 확장한 후에 연산을 진행하는 것을 보여준다. 
 
-# In[49]:
+# In[53]:
 
 
 arr6 = np.arange(24).reshape((3, 4, 2))
 arr6
 
 
-# In[50]:
+# In[54]:
 
 
 arr7 = np.arange(8).reshape((4, 2))
 arr7
 
 
-# In[51]:
+# In[55]:
 
 
 arr6 + arr7
@@ -511,7 +549,7 @@ arr6 + arr7
 
 # 아래 코드는 어레이의 열별 평균값이 0이 되도록 하려 한다.
 
-# In[52]:
+# In[56]:
 
 
 arr = np.random.randn(4, 3)
@@ -520,13 +558,13 @@ arr
 
 # 기존 어레이의 열별 평균값을 각각의 열에서 뺀다.
 
-# In[53]:
+# In[57]:
 
 
 arr.mean(0) # arr.mean(axis=0)
 
 
-# In[54]:
+# In[58]:
 
 
 demeaned = arr - arr.mean(0)
@@ -535,7 +573,7 @@ demeaned
 
 # 이제 열별 평균값을 확인하면 0이 된다.
 
-# In[55]:
+# In[59]:
 
 
 demeaned.mean(0)
@@ -545,32 +583,32 @@ demeaned.mean(0)
 
 # 아래 코드는 어레이의 행별 평균값이 0이 되도록 하려 한다.
 
-# In[56]:
+# In[60]:
 
 
 arr
 
 
-# In[57]:
+# In[61]:
 
 
 row_means = arr.mean(1)
 row_means
 
 
-# In[58]:
+# In[62]:
 
 
 row_means.reshape((4, 1))
 
 
-# In[59]:
+# In[63]:
 
 
 demeaned = arr - row_means.reshape((4, 1))
 
 
-# In[60]:
+# In[64]:
 
 
 demeaned.mean(1)
@@ -581,7 +619,7 @@ demeaned.mean(1)
 # 브로드캐스팅으로 어레이의 항목을 대체할 수 있다.
 # 설명을 위해 아래 어레이를 사용한다.
 
-# In[61]:
+# In[65]:
 
 
 arr = np.zeros((4, 3))
@@ -592,7 +630,7 @@ arr
 
 # 모든 항목을 5로 대체한다.
 
-# In[62]:
+# In[66]:
 
 
 arr[:] = 5
@@ -603,14 +641,14 @@ arr
 
 # 모든 열을 지정된 열로 대체한다.
 
-# In[63]:
+# In[67]:
 
 
 col = np.array([1.28, -0.42, 0.44, 1.6])
 col[:, np.newaxis]
 
 
-# In[64]:
+# In[68]:
 
 
 arr[:] = col[:, np.newaxis]
@@ -621,7 +659,7 @@ arr
 
 # 0번, 1번 행을 특정 값으로 대체한다.
 
-# In[65]:
+# In[69]:
 
 
 arr[:2] = [[-1.37], [0.509]]
