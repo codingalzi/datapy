@@ -310,33 +310,13 @@ np.concatenate((arr1, arr2, arr3), axis=1)
 np.vstack((arr1, arr2, arr3))
 
 
-# In[33]:
-
-
-np.vstack([arr1, arr2, arr3])
-
-
 # * `np.hstack((x, y, ...))` := `np.concatenate((x, y, ...) axis=1)`
 
-# In[34]:
+# In[33]:
 
 
 np.hstack((arr1, arr2, arr3))
 
-
-# In[35]:
-
-
-np.hstack([arr1, arr2, arr3])
-
-
-# **`stack()` 함수와 `split()` 함수**
-
-# 두 함수는 서로 역함수의 관계를 갖는다.
-
-# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/stack-split01.png?raw=true" style="width:600px;"></div>
-# 
-# <p><div style="text-align: center">&lt;그림 출처: <a href="https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d">NumPy Illustrated</a>&gt;</div></p>
 
 # **`np.r_[]`/`np.c_[]` 객체**
 
@@ -344,7 +324,7 @@ np.hstack([arr1, arr2, arr3])
 
 # - `np.r_[x, y, ...]` := `np.vstack((x, y, ...))`
 
-# In[36]:
+# In[34]:
 
 
 np.r_[arr1, arr2, arr3]
@@ -352,7 +332,7 @@ np.r_[arr1, arr2, arr3]
 
 # - `np.c_[x, y, ...]` := `np.hstack((x, y, ...))`
 
-# In[37]:
+# In[35]:
 
 
 np.c_[arr1, arr2, arr3]
@@ -365,7 +345,7 @@ np.c_[arr1, arr2, arr3]
 # 도와주는 기능이다.
 # 설명을 위해 하나의 어레이와 하나의 정수의 곱셈이 작동하는 과정을 살펴본다.
 
-# In[38]:
+# In[36]:
 
 
 arr = np.arange(6).reshape((2,3))
@@ -374,7 +354,7 @@ arr
 
 # 위 어레이에 4를 곱한 결과는 다음과 같다.
 
-# In[39]:
+# In[37]:
 
 
 arr * 4
@@ -396,21 +376,21 @@ arr * 4
 
 # 아래 코드는 1차원 어레이를 2차원 어레이로 확장하여 다른 어레이와 모양을 맞춘 후 연산을 실행한 결과를 보여준다.
 
-# In[40]:
+# In[38]:
 
 
 arr2 = np.arange(4).reshape((4,1)).repeat(3,axis=1)
 arr2
 
 
-# In[41]:
+# In[39]:
 
 
 arr3 = np.arange(1, 4)
 arr3
 
 
-# In[42]:
+# In[40]:
 
 
 arr2 + arr3
@@ -422,14 +402,14 @@ arr2 + arr3
 
 # 동일한 이유로 다음 연산도 가능하다.
 
-# In[43]:
+# In[41]:
 
 
 arr3_a = np.arange(1, 4)[np.newaxis, :]
 arr3_a
 
 
-# In[44]:
+# In[42]:
 
 
 arr2 + arr3_a
@@ -441,24 +421,24 @@ arr2 + arr3_a
 
 # 아래 예제는 2차원 어레이의 칸을 복제하여 모양을 맞춘 후 연산을 실행한다.
 
-# In[45]:
+# In[43]:
 
 
 arr4 = np.arange(1, 5).reshape((4,1))
 arr4
 
 
-# In[46]:
+# In[44]:
 
 
 arr2 + arr4
 
 
-# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting11.png?raw=true" style="width:400px;"></div>
+# <div align="center"></div><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting11.png?raw=true" style="width:400px;"></div>
 
 # 반면에 아래 연산은 오류를 발생시킨다.
 
-# In[47]:
+# In[45]:
 
 
 x = np.arange(0, 31, 10)
@@ -466,7 +446,7 @@ arr5 = np.c_[x, x, x]
 arr5
 
 
-# In[48]:
+# In[46]:
 
 
 arr4_a = arr4.flatten()
@@ -489,63 +469,25 @@ arr4_a
 # 
 # <p><div style="text-align: center">&lt;그림 출처: <a href="https://numpy.org/doc/stable/user/basics.broadcasting.html">NumPy: Broadcasting</a>&gt;</div></p>
 
-# 물론 다음은 실행된다.
-
-# In[49]:
-
-
-arr5 + arr4
-
-
-# **예제**
-
-# 아래와 같이 두 어레이에 대해 브로디캐스팅을 먼저 적용한 다음에 연산을 실행하기도 한다.
-
-# In[50]:
-
-
-arr6 = np.arange(0, 31, 10).reshape(4, -1)
-arr6
-
-
-# In[51]:
-
-
-arr7 = np.arange(1, 4)
-arr7
-
-
-# In[52]:
-
-
-arr6 + arr7
-
-
-# 위 연산이 작동하는 이유를 아래 그림이 설명한다.
-
-# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting11b.png?raw=true" style="width:500px;"></div>
-# 
-# <p><div style="text-align: center">&lt;그림 출처: <a href="https://numpy.org/doc/stable/user/basics.broadcasting.html">NumPy: Broadcasting</a>&gt;</div></p>
-
 # **예제**
 
 # 아래 예제는 2차원 어레이를 3차원으로 확장한 후에 연산을 진행하는 것을 보여준다. 
 
-# In[53]:
+# In[47]:
 
 
 arr6 = np.arange(24).reshape((3, 4, 2))
 arr6
 
 
-# In[54]:
+# In[48]:
 
 
 arr7 = np.arange(8).reshape((4, 2))
 arr7
 
 
-# In[55]:
+# In[49]:
 
 
 arr6 + arr7
@@ -557,7 +499,7 @@ arr6 + arr7
 
 # 아래 코드는 어레이의 열별 평균값이 0이 되도록 하려 한다.
 
-# In[56]:
+# In[50]:
 
 
 arr = np.random.randn(4, 3)
@@ -566,13 +508,13 @@ arr
 
 # 기존 어레이의 열별 평균값을 각각의 열에서 뺀다.
 
-# In[57]:
+# In[51]:
 
 
 arr.mean(0) # arr.mean(axis=0)
 
 
-# In[58]:
+# In[52]:
 
 
 demeaned = arr - arr.mean(0)
@@ -581,7 +523,7 @@ demeaned
 
 # 이제 열별 평균값을 확인하면 0이 된다.
 
-# In[59]:
+# In[53]:
 
 
 demeaned.mean(0)
@@ -591,32 +533,32 @@ demeaned.mean(0)
 
 # 아래 코드는 어레이의 행별 평균값이 0이 되도록 하려 한다.
 
-# In[60]:
+# In[54]:
 
 
 arr
 
 
-# In[61]:
+# In[55]:
 
 
 row_means = arr.mean(1)
 row_means
 
 
-# In[62]:
+# In[56]:
 
 
 row_means.reshape((4, 1))
 
 
-# In[63]:
+# In[57]:
 
 
 demeaned = arr - row_means.reshape((4, 1))
 
 
-# In[64]:
+# In[58]:
 
 
 demeaned.mean(1)
@@ -627,7 +569,7 @@ demeaned.mean(1)
 # 브로드캐스팅으로 어레이의 항목을 대체할 수 있다.
 # 설명을 위해 아래 어레이를 사용한다.
 
-# In[65]:
+# In[59]:
 
 
 arr = np.zeros((4, 3))
@@ -638,7 +580,7 @@ arr
 
 # 모든 항목을 5로 대체한다.
 
-# In[66]:
+# In[60]:
 
 
 arr[:] = 5
@@ -649,14 +591,14 @@ arr
 
 # 모든 열을 지정된 열로 대체한다.
 
-# In[67]:
+# In[61]:
 
 
 col = np.array([1.28, -0.42, 0.44, 1.6])
 col[:, np.newaxis]
 
 
-# In[68]:
+# In[62]:
 
 
 arr[:] = col[:, np.newaxis]
@@ -667,7 +609,7 @@ arr
 
 # 0번, 1번 행을 특정 값으로 대체한다.
 
-# In[69]:
+# In[63]:
 
 
 arr[:2] = [[-1.37], [0.509]]
