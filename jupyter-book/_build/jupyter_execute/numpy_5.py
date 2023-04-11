@@ -179,7 +179,7 @@ plt.contourf(xs, ys, z, cmap=plt.cm.gray)
 plt.show()
 
 
-# **예제: 붓꽃 데이터**
+# ## 붓꽃 데이터셋
 
 # 붓꽃(아이리스) 데이터를 이용하여 활용법을 살펴 보기 위해
 # 먼저 데이터를 인터넷 상에서 가져온다. 
@@ -187,7 +187,8 @@ plt.show()
 # In[16]:
 
 
-url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
+url = 'https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/data/iris_nan.data'
+# url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 
 
 # 위 주소의 `iris.data` 파일을 `data`라는 하위 디렉토리에 저장한다.
@@ -195,12 +196,12 @@ url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
 # In[17]:
 
 
-import os
+from pathlib import Path
 import urllib.request
 
-PATH = './data/'
-os.makedirs(PATH, exist_ok=True)
-urllib.request.urlretrieve(url, PATH+'iris.data')
+data_path = Path() / "data"
+data_path.mkdir(parents=True, exist_ok=True)
+urllib.request.urlretrieve(url, data_path / 'iris.data')
 
 
 # 다운로드된 `iris.data` 파일에는 아래 형식의 데이터가 150개 들어 있다. 
@@ -216,12 +217,6 @@ urllib.request.urlretrieve(url, PATH+'iris.data')
 # 꽃받침 길이, 꽃받침 너비, 꽃잎 길이, 꽃잎 너비, 품종
 # ```
 
-# In[18]:
-
-
-get_ipython().system('cat data/iris.data | head -n 5')
-
-
 # 이 중에 마지막 품종 특성은 문자열이고 나머지 특성은 부동소수점, 즉 수치형 데이터이다. 
 # 여기서는 연습을 위해 수치형 데이터를 담고 있는 네 개의 특성만 가져온다.
 # 
@@ -229,156 +224,124 @@ get_ipython().system('cat data/iris.data | head -n 5')
 # * `delimiter=','`: 쉼표를 특성값들을 구분하는 기준으로 지정
 # * `usecols=[0,1,2,3]`: 리스트에 지정된 인덱스의 특성만 가져오기
 
+# In[18]:
+
+
+iris_2d = np.genfromtxt(data_path / 'iris.data', delimiter=',', dtype='float', usecols=[0,1,2,3])
+
+
+# 어레이의 모양은 (150, 4)이다. 
+
 # In[19]:
-
-
-iris_2d = np.genfromtxt(PATH+'iris.data', delimiter=',', dtype='float', usecols=[0,1,2,3])
-
-
-# In[20]:
 
 
 iris_2d.shape
 
 
-# 처음 5개의 샘플은 앞서 살펴본 것과 동일하다.
-# 이번에는 다만 2차원 어레이로 보일 뿐이다.
+# 처음 5개 샘플은 다음과 같다.
 
-# In[21]:
+# In[20]:
 
 
 iris_2d[:5]
 
 
-# **문제** 
-# 
-# 2차원 어레이에서 결측치(`nan`)를 전혀 갖지 않은 행만 선택하는 함수 `drop_2d()`를 정의해보자. 
+# **결측치 처리** 
 
-# **견본 답안**
-
-# `iris_2d` 어레이를 이용하여 `drop_2d()` 함수를 어떻게 정의해야 할지 살펴보자.
-# 먼저 `iris_2d` 어레이에 누락치의 존재 여부를 판단해야 한다.
+# 붓꽃 데이터셋 안에 결측치가 포함되어 있다.
+# 누라치가 있는지 여부를 다음과 같이 확인한다.
 # 
-# `np.isnan()` 함수는 누락치가 있는 위치는 `True`, 나머지 위치는 `False`를 갖는 부울 어레이를 생성한다.
+# - `np.isnan()` 함수: 어레이의 각각의 항목이 결측치인지 여부를 확인하는 부울 어레이 반환
+# - `any()` 어레이 메서드: 부울 어레이의 항목에 `True`가 하나라도 포함되어 있는지 여부 확인
+
+# In[21]:
+
+
+np.isnan(iris_2d).any()
+
+
+# 결측치가 특정 열에만 있는지를 확인하려면 축을 0으로 지정한다.
 
 # In[22]:
 
 
-np.isnan(iris_2d)[:5]
+np.isnan(iris_2d).any(axis=0)
 
 
-# 만약 결측치가 있다면 `True`가 한 번 이상 사용되었기에 `any()` 메서드를 이용하여 
-# 누착치의 존재 여부를 판단할 수 있다.
+# 3번 열에만 결측치가 있음이 확인됐다.
+
+# `sum()` 함수를 이용하여 3개의 누락치가 있음을 바로 확인할 수 있다.
+# 
+# * `sum()` 어레이 메서드: `True`는 1, `False`는 0으로 처리한다.
 
 # In[23]:
-
-
-np.isnan(iris_2d).any()
-
-
-# 그런데 누락치가 전혀 없다. 따라서 하나의 누락치를 임의로 만들어 보자.
-# 예를 들어, 처음 5개 샘플의 꽃잎 너비(3번 열)의 값을 `nan`으로 대체하자.
-
-# In[24]:
-
-
-iris_2d[:5,3] = None
-
-
-# In[25]:
-
-
-iris_2d[:10]
-
-
-# 이제 누락치가 존재하기에 `any()` 메서드는 `True`를 반환한다.
-
-# In[26]:
-
-
-np.isnan(iris_2d).any()
-
-
-# `sum()` 함수를 이용하여 5개의 누락치가 있음을 정확하게 파악할 수도 있다. 
-# 
-# * `sum()` 함수: `True`는 1, `False`는 0으로 처리한다.
-
-# In[27]:
-
-
-np.sum(np.isnan(iris_2d))
-
-
-# `sum()` 메서드를 사용할 수도 있다.
-
-# In[28]:
 
 
 np.isnan(iris_2d).sum()
 
 
-# 행 단위로 누락치의 존재를 찾기 위해 행별로 `sum()` 함수를 실행한다. 
-# 즉, 축을 1로 지정한다.
+# 3번 열에만 결측치가 있기에 아래와 같이 결측치의 수를 확인할 수도 있다.
+
+# In[24]:
+
+
+np.isnan(iris_2d[:, 3]).sum()
+
+
+# 부울 인덱싱을 활용하여 누락치가 없는 행만 추출할 수 있다.
+
+# In[25]:
+
+
+mask = np.isnan(iris_2d[:, 3])
+
+
+# 147개의 행에는 누락치가 없다.
+
+# In[26]:
+
+
+iris_2d[~mask].shape
+
+
+# 누락치를 포함한 데이터 샘플 3개는 다음과 같다.
+
+# In[27]:
+
+
+iris_2d[mask]
+
+
+# `nan`은 결측치를 의미하는 값인 `np.nan`을 가리키는 기호다.
+
+# In[28]:
+
+
+np.nan
+
+
+# 3개의 결측치는 사실 일부러 만들어졌고 원래 모두 0.2였다.
+# 따라서 결측치를 모두 0.2로 바꾸고 다음 과정을 실행한다.
 
 # In[29]:
 
 
-np.sum(np.isnan(iris_2d), axis=1)[:10]
+iris_2d[:, 3][mask] = 0.2
 
 
-# 정확히 150개의 행에 대한 누락치 존재 여부를 보여준다.
+# 결측치가 없음을 다음과 같이 확인한다.
 
 # In[30]:
 
 
-np.sum(np.isnan(iris_2d), axis=1).shape
-
-
-# 이제 위 코드와 부울 인덱싱을 활용하여 누락치가 없는 행만 추출할 수 있다.
-
-# In[31]:
-
-
-mask = np.sum(np.isnan(iris_2d), axis=1) == 0
-
-
-# In[32]:
-
-
-iris_2d[mask].shape
-
-
-# 위 어레이의 처음 5개의 샘플 데이터는 `iris_2d` 어레이에서 5번에서 9번 인덱스에 위치한 샘플 데이터와 동일하다.
-
-# In[33]:
-
-
-iris_2d[mask][:5]
-
-
-# 이제 `drop_2d()` 함수를 다음과 같이 정의할 수 있다.
-
-# In[34]:
-
-
-def drop_2d(arr_2d):
-    mask = np.isnan(arr_2d).sum(axis=1) == 0
-    return arr_2d[mask]
-
-
-# `iris_2d`에 위 함수를 적용하면 이전과 동일한 결과를 얻는다.
-
-# In[35]:
-
-
-drop_2d(iris_2d)[:5]
+np.isnan(iris_2d).any()
 
 
 # **문제** 
 # 
 # iris_2d 데이터셋에 사용된 붓꽃들의 품종은 아래 세 개이다.
 
-# In[36]:
+# In[31]:
 
 
 a = np.array(['Iris-setosa', 'Iris-versicolor', 'Iris-virginica'])
@@ -393,7 +356,7 @@ a = np.array(['Iris-setosa', 'Iris-versicolor', 'Iris-virginica'])
 # `np.random.choice()` 함수의 `p` 키워드 인자를 이용한다.
 # 사용되는 인자는 `[0.5, 0.25, 0.25]` 이다.
 
-# In[37]:
+# In[32]:
 
 
 np.random.seed(42)  # 무작위성 시드 지정
@@ -402,7 +365,7 @@ species_out = np.random.choice(a, 150, p=[0.5, 0.25, 0.25])
 
 # 세 개의 이름 중에서 무작위로 150개의 이름을 선택하였다.
 
-# In[38]:
+# In[33]:
 
 
 species_out.shape
@@ -410,7 +373,7 @@ species_out.shape
 
 # 품종별 비율은 대략적으로 2:1:1 이다.
 
-# In[39]:
+# In[34]:
 
 
 setosa_ratio = (species_out == 'Iris-setosa').sum()/150
