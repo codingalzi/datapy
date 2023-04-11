@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>8. 선형대수 기초 &#8212; 파이썬 데이터 분석</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,39 +20,39 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="9. 통계 기초" href="from_scratch_2.html" />
@@ -62,7 +64,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -71,9 +87,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
       
       
@@ -247,112 +264,227 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/from_scratch_1.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/codingalzi/datapy"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/codingalzi/datapy/issues/new?title=Issue%20on%20page%20%2Ffrom_scratch_1.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/codingalzi/datapy/master?urlpath=tree/jupyter-book/from_scratch_1.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/jupyter-book/from_scratch_1.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
-    </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/codingalzi/datapy/master?urlpath=tree/jupyter-book/from_scratch_1.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/jupyter-book/from_scratch_1.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/codingalzi/datapy"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/codingalzi/datapy/issues/new?title=Issue%20on%20page%20%2Ffrom_scratch_1.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/from_scratch_1.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
    8.1. 벡터
@@ -409,12 +541,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>선형대수 기초</h1>
@@ -487,11 +618,12 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="sec-from-scratch-1">
-<span id="id1"></span><h1><span class="section-number">8. </span>선형대수 기초<a class="headerlink" href="#sec-from-scratch-1" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="sec-from-scratch-1">
+<span id="id1"></span><h1><span class="section-number">8. </span>선형대수 기초<a class="headerlink" href="#sec-from-scratch-1" title="Permalink to this headline">#</a></h1>
 <p><strong>참고</strong></p>
 <p>여기서 사용하는 코드는 조엘 그루스(Joel Grus)의
 <a class="reference external" href="https://github.com/joelgrus/data-science-from-scratch">밑바닥부터 시작하는 데이터 과학</a>
@@ -504,8 +636,8 @@ const thebe_selector_output = ".output, .cell_output"
 도움될 것으로 기대한다.</p>
 <p><strong>슬라이드</strong></p>
 <p>본문 내용을 요약한 <a class="reference external" href="https://github.com/codingalzi/datapy/raw/master/slides/slides-from_scratch_1.pdf">슬라이드</a>를 다운로드할 수 있다.</p>
-<div class="section" id="id2">
-<h2><span class="section-number">8.1. </span>벡터<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<section id="id2">
+<h2><span class="section-number">8.1. </span>벡터<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>벡터는 유한 개의 값으로 구성된다.
 보통 수를 항목으로 사용하며, 항목의 수를 벡터의 <strong>차원</strong><font size='2'>dimension</font>이라 부른다.
 벡터는 수학, 통계, 물리 등 과학 분야에서 많이 사용되며,
@@ -527,8 +659,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </li>
 </ul>
-<div class="section" id="id3">
-<h3><span class="section-number">8.1.1. </span>리스트와 벡터<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<section id="id3">
+<h3><span class="section-number">8.1.1. </span>리스트와 벡터<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <p>리스트를 이용하여 벡터를 구현할 수 있다.</p>
 <ul class="simple">
 <li><p>x축, y축 좌표로 구성된 2차원 벡터</p></li>
@@ -569,9 +701,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id4">
-<h3><span class="section-number">8.1.2. </span>벡터 항목별 연산<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id4">
+<h3><span class="section-number">8.1.2. </span>벡터 항목별 연산<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <p><strong>벡터 항목별 덧셈</strong></p>
 <p>두 벡터의 항목별 덧셈은 같은 위치에 있는 항목끼기 더한 결과로 이루어진 벡터를 생성한다.</p>
 <div class="math notranslate nohighlight">
@@ -817,7 +949,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 항목별 평균은 항목끼리 모두 더한 후 벡터의 개수로 나눈다.</p>
 <div class="proof example admonition" id="exp-twdDVectorsMean">
 <p class="admonition-title"><span class="caption-number">Example 8.1 </span></p>
-<div class="example-content section" id="proof-content">
+<section class="example-content" id="proof-content">
 <p>3개의 2차원 벡터들의 평균은 아래와 같이 작동한다.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -825,7 +957,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 =  \frac 1 3 \ast [1+2+2, 2+1+3]
 = [5/3, 2]
 \]</div>
-</div>
+</section>
 </div><p>항목별 평균으로 이루어진 벡터를 반환하는 함수는 다음과 같이
 벡터들의 합을 벡터의 개수로 나눈다.</p>
 <div class="cell docutils container">
@@ -862,9 +994,9 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id5">
-<h3><span class="section-number">8.1.3. </span>벡터 내적과 크기<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id5">
+<h3><span class="section-number">8.1.3. </span>벡터 내적과 크기<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
 <p>차원이 같은 벡터 두 개의 내적은 같은 위치에 있는 항목끼기 곱한 후 모두 더한 값이다.
 벡터의 내적은 점곱<font size='2'>dot product</font>를 사용하며 벡터들의 곱과 구별된다.</p>
 <div class="math notranslate nohighlight">
@@ -904,11 +1036,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 \[\| v\| = \sqrt{v \cdot v} = \sqrt{v_1^2 + \cdots + v_n^2}\]</div>
 <div class="proof example admonition" id="exp-size">
 <p class="admonition-title"><span class="caption-number">Example 8.2 </span></p>
-<div class="example-content section" id="proof-content">
+<section class="example-content" id="proof-content">
 <p>벡터 <span class="math notranslate nohighlight">\([3, 4]\)</span>의 크기는 다음과 같다.</p>
 <div class="math notranslate nohighlight">
 \[\|\, [3, 4] \, \|  = \sqrt{3^2 + 4^2} = \sqrt{5^2} = 5\]</div>
-</div>
+</section>
 </div><p><strong>벡터의 크기 계산 함수</strong></p>
 <p>제곱근은 <code class="docutils literal notranslate"><span class="pre">math</span></code> 모듈의 <code class="docutils literal notranslate"><span class="pre">sqrt()</span></code> 함수를 이용한다.</p>
 <div class="cell docutils container">
@@ -934,10 +1066,10 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="id6">
-<h2><span class="section-number">8.2. </span>행렬<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id6">
+<h2><span class="section-number">8.2. </span>행렬<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
 <p><strong>행렬</strong><font size='2'>matrix</font>은 숫자를 행과 열로 구성된 직사각형 모양으로 나열한 것이다.
 <span class="math notranslate nohighlight">\(n\)</span> 개의 행과 <span class="math notranslate nohighlight">\(k\)</span> 개의 열로 구성된 행렬을 <span class="math notranslate nohighlight">\(n \times k\)</span> 행렬이라 부른다.
 대부분의 프로그래밍 언어에서 행렬을 리스트의 리스트, 즉 2중 리스트로 구현한다.
@@ -1109,8 +1241,8 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 <p>행렬 <span class="math notranslate nohighlight">\(M\)</span>의 <span class="math notranslate nohighlight">\(i\)</span> 행, <span class="math notranslate nohighlight">\(j\)</span> 열의 항목은 <span class="math notranslate nohighlight">\(i\)</span> 번 인덱스 행의, <span class="math notranslate nohighlight">\(j\)</span> 번 인덱스 열에 위치한 값을 가리키며
 <span class="math notranslate nohighlight">\(M_{i, j}\)</span>로 표기한다.</p>
 </div>
-<div class="section" id="id7">
-<h3><span class="section-number">8.2.1. </span>행렬 초기화<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<section id="id7">
+<h3><span class="section-number">8.2.1. </span>행렬 초기화<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
 <p>경우에 따라 0으로만, 1로만, 또는 임의의 수로 구성된 특정 모양의 행렬을 필요할 수 있다.
 아래 <code class="docutils literal notranslate"><span class="pre">make_matrix()</span></code> 함수는 행렬의 항목을 생성하는 방식을 지정하면
 원하는 모양의 행렬을 생성한다.</p>
@@ -1245,7 +1377,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6300554523173081
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.977007073274236
 </pre></div>
 </div>
 </div>
@@ -1257,7 +1389,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6359964152470694
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8477120482728085
 </pre></div>
 </div>
 </div>
@@ -1291,11 +1423,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.16025141393743014, 0.6287859471943863, 0.6239095567089661],
- [0.7358370948400735, 0.14010676155881585, 0.6940719534822387],
- [0.49979261267330966, 0.8336514056164452, 0.8965504105024857],
- [0.6794841462204524, 0.37681339455306506, 0.5102728297235665],
- [0.1341995957742984, 0.03842451265169833, 0.9187452652098835]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.9488608963632248, 0.6949683085540419, 0.4692631303770237],
+ [0.27258660088444897, 0.5310518048302272, 0.42058045352031115],
+ [0.6348972786542109, 0.6576737176403733, 0.5857660590395142],
+ [0.635982288816922, 0.1314855566191625, 0.7457146653873947],
+ [0.9254243997657415, 0.7741620283765391, 0.8188595544450821]]
 </pre></div>
 </div>
 </div>
@@ -1327,11 +1459,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.25, 0.12, 0.44],
- [0.79, 0.53, 0.69],
- [0.95, 0.59, 0.0],
- [0.99, 0.49, 0.73],
- [0.88, 0.22, 0.86]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.95, 0.27, 0.22],
+ [0.05, 0.6, 0.41],
+ [0.31, 0.17, 0.92],
+ [0.7, 0.71, 0.65],
+ [0.12, 0.62, 0.05]]
 </pre></div>
 </div>
 </div>
@@ -1344,11 +1476,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.98477, 0.58841, 0.27348],
- [0.77808, 0.60351, 0.49976],
- [0.17437, 0.04426, 0.48329],
- [0.05971, 0.79509, 0.10114],
- [0.29243, 0.16354, 0.26404]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.11281, 0.2193, 0.71939],
+ [0.64629, 0.53937, 0.50145],
+ [0.00189, 0.0543, 0.56909],
+ [0.08393, 0.16807, 0.37653],
+ [0.92037, 0.81391, 0.27533]]
 </pre></div>
 </div>
 </div>
@@ -1361,11 +1493,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.60539, 0.23561, 0.15987],
- [0.08679, 0.2377, 0.7736],
- [0.88621, 0.93431, 0.9392],
- [0.4396, 0.77024, 0.41743],
- [0.78129, 0.38975, 0.06769]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.41724, 0.54825, 0.77059],
+ [0.87502, 0.58914, 0.60635],
+ [0.78912, 0.78566, 0.85324],
+ [0.07739, 0.41541, 0.18794],
+ [0.8507, 0.23267, 0.89381]]
 </pre></div>
 </div>
 </div>
@@ -1415,9 +1547,9 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id8">
-<h3><span class="section-number">8.2.2. </span>행렬 항목별 연산<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id8">
+<h3><span class="section-number">8.2.2. </span>행렬 항목별 연산<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
 <p><strong>행렬 항목별 덧셈</strong></p>
 <p>모양이 같은 두 행렬의 항목별 덧셈은 항목별로 더한 결과로 이루어진 행렬이다.
 <span class="math notranslate nohighlight">\(2 \times 3\)</span> 행렬의 항목별 덧셈은 다음과 같다.</p>
@@ -1535,9 +1667,9 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id9">
-<h3><span class="section-number">8.2.3. </span>행렬 곱셈<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id9">
+<h3><span class="section-number">8.2.3. </span>행렬 곱셈<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
 <p>(<span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(n\)</span>) 모양의 <span class="math notranslate nohighlight">\(A\)</span>와 (<span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(p\)</span>) 모양의 행렬 <span class="math notranslate nohighlight">\(B\)</span>의 곱 <span class="math notranslate nohighlight">\(A \cdot B\)</span>는 (<span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(p\)</span>) 모양의 행렬이며,
 <span class="math notranslate nohighlight">\(i\)</span> 행, <span class="math notranslate nohighlight">\(j\)</span> 열의 항목 <span class="math notranslate nohighlight">\((A \cdot B)_{i,j}\)</span>는 다음과 같이 정의된다.</p>
 <div class="math notranslate nohighlight">
@@ -1665,9 +1797,9 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id10">
-<h3><span class="section-number">8.2.4. </span>전치행렬<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id10">
+<h3><span class="section-number">8.2.4. </span>전치행렬<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
 <p>행렬의 <strong>전치</strong>란 행과 열을 바꾸는 것으로, 행렬 <span class="math notranslate nohighlight">\(A\)</span>의 전치는 <span class="math notranslate nohighlight">\(A^T\)</span>로 표기한다.
 즉, <span class="math notranslate nohighlight">\(A\)</span>가 (<span class="math notranslate nohighlight">\(m\)</span>, <span class="math notranslate nohighlight">\(n\)</span>) 모양의 행렬이면 <span class="math notranslate nohighlight">\(A^T\)</span>는 (<span class="math notranslate nohighlight">\(n\)</span>, <span class="math notranslate nohighlight">\(m\)</span>) 모양의 행렬이다.
 <span class="math notranslate nohighlight">\(A^T\)</span>의 <span class="math notranslate nohighlight">\(i\)</span>행의 <span class="math notranslate nohighlight">\(j\)</span>열번째 값은 <span class="math notranslate nohighlight">\(A\)</span>의 <span class="math notranslate nohighlight">\(j\)</span>행의 <span class="math notranslate nohighlight">\(i\)</span>열번째 값이다.
@@ -1840,13 +1972,13 @@ A ^{T}_{i,j} = A_{j,i}
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="id11">
-<h2><span class="section-number">8.3. </span>연습문제<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="id11">
+<h2><span class="section-number">8.3. </span>연습문제<a class="headerlink" href="#id11" title="Permalink to this headline">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-from_scratch_1.ipynb">(실습) 선형대수 기초</a></p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1870,9 +2002,11 @@ A ^{T}_{i,j} = A_{j,i}
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="python_basic_7.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -1888,24 +2022,28 @@ A ^{T}_{i,j} = A_{j,i}
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By 코딩알지<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By 코딩알지<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
