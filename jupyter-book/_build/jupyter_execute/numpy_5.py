@@ -91,6 +91,10 @@ ys
 
 
 # xs와 ys를 이용하여 산점도를 그리면 원하는 격자무늬가 얻어진다. 
+# 
+# - `c='darkgray'` 또는 `color='darkgray'`: 산점도에 사용되는 점들의 색상 지정. 
+#     여기서는 darkgray 사용.
+#     보다 다양한 색상 정보는 [Matplotlib Scatter](https://www.w3schools.com/python/matplotlib_scatter.asp) 참고.
 
 # In[7]:
 
@@ -151,6 +155,8 @@ plt.scatter(xs, ys, c= 'darkgray')
 plt.show()
 
 
+# **등고선 그리기**
+
 # 등고선 모양의 이미지를 생성하기 위해 xs와 ys 각각의 제곱을 합하여 제곱근을 구하면 101x101 모양의
 # 2차원 대칭 어레이가 얻어진다. 
 
@@ -174,6 +180,18 @@ z.shape
 # 도표 크기 지정(기본값으로 되돌림)
 plt.rc('figure', figsize=(6, 6))
 
+plt.contour(xs, ys, z, cmap=plt.cm.gray)
+
+plt.show()
+
+
+# `plt.contourf()` 함수는 등고선을 색으로 구분한다.
+
+# In[16]:
+
+
+plt.rc('figure', figsize=(6, 6))
+
 plt.contourf(xs, ys, z, cmap=plt.cm.gray)
 
 plt.show()
@@ -184,7 +202,7 @@ plt.show()
 # 붓꽃(아이리스) 데이터를 이용하여 활용법을 살펴 보기 위해
 # 먼저 데이터를 인터넷 상에서 가져온다. 
 
-# In[16]:
+# In[17]:
 
 
 url = 'https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/data/iris_nan.data'
@@ -193,7 +211,7 @@ url = 'https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/d
 
 # 위 주소의 `iris.data` 파일을 `data`라는 하위 디렉토리에 저장한다.
 
-# In[17]:
+# In[18]:
 
 
 from pathlib import Path
@@ -222,9 +240,10 @@ urllib.request.urlretrieve(url, data_path / 'iris.data')
 # 
 # * `genfromtxt()` 함수: 인터넷 또는 컴퓨터에 파일로 저장된 데이터를 적절한 모양의 어레이로 불러오는 함수
 # * `delimiter=','`: 쉼표를 특성값들을 구분하는 기준으로 지정
+# * `dtype='float'`: 어레이의 항목을 부동소수점으로 지정
 # * `usecols=[0,1,2,3]`: 리스트에 지정된 인덱스의 특성만 가져오기
 
-# In[18]:
+# In[19]:
 
 
 iris_2d = np.genfromtxt(data_path / 'iris.data', delimiter=',', dtype='float', usecols=[0,1,2,3])
@@ -232,7 +251,7 @@ iris_2d = np.genfromtxt(data_path / 'iris.data', delimiter=',', dtype='float', u
 
 # 어레이의 모양은 (150, 4)이다. 
 
-# In[19]:
+# In[20]:
 
 
 iris_2d.shape
@@ -240,7 +259,7 @@ iris_2d.shape
 
 # 처음 5개 샘플은 다음과 같다.
 
-# In[20]:
+# In[21]:
 
 
 iris_2d[:5]
@@ -249,12 +268,12 @@ iris_2d[:5]
 # **결측치 처리** 
 
 # 붓꽃 데이터셋 안에 결측치가 포함되어 있다.
-# 누라치가 있는지 여부를 다음과 같이 확인한다.
+# 결측치가 있는지 여부를 다음과 같이 확인한다.
 # 
 # - `np.isnan()` 함수: 어레이의 각각의 항목이 결측치인지 여부를 확인하는 부울 어레이 반환
 # - `any()` 어레이 메서드: 부울 어레이의 항목에 `True`가 하나라도 포함되어 있는지 여부 확인
 
-# In[21]:
+# In[22]:
 
 
 np.isnan(iris_2d).any()
@@ -262,7 +281,7 @@ np.isnan(iris_2d).any()
 
 # 결측치가 특정 열에만 있는지를 확인하려면 축을 0으로 지정한다.
 
-# In[22]:
+# In[23]:
 
 
 np.isnan(iris_2d).any(axis=0)
@@ -270,11 +289,11 @@ np.isnan(iris_2d).any(axis=0)
 
 # 3번 열에만 결측치가 있음이 확인됐다.
 
-# `sum()` 함수를 이용하여 3개의 누락치가 있음을 바로 확인할 수 있다.
+# `sum()` 함수를 이용하여 3개의 결측치가 있음을 바로 확인할 수 있다.
 # 
 # * `sum()` 어레이 메서드: `True`는 1, `False`는 0으로 처리한다.
 
-# In[23]:
+# In[24]:
 
 
 np.isnan(iris_2d).sum()
@@ -282,48 +301,43 @@ np.isnan(iris_2d).sum()
 
 # 3번 열에만 결측치가 있기에 아래와 같이 결측치의 수를 확인할 수도 있다.
 
-# In[24]:
+# In[25]:
 
 
 np.isnan(iris_2d[:, 3]).sum()
 
 
-# 부울 인덱싱을 활용하여 누락치가 없는 행만 추출할 수 있다.
-
-# In[25]:
-
-
-mask = np.isnan(iris_2d[:, 3])
-
-
-# 147개의 행에는 누락치가 없다.
+# 부울 인덱싱을 활용하여 결측치가 없는 행만 추출할 수 있으며,
+# 결측치를 포함한 데이터 샘플 3개는 다음과 같다.
 
 # In[26]:
 
 
-iris_2d[~mask].shape
-
-
-# 누락치를 포함한 데이터 샘플 3개는 다음과 같다.
-
-# In[27]:
-
+mask = np.isnan(iris_2d[:, 3])
 
 iris_2d[mask]
 
 
 # `nan`은 결측치를 의미하는 값인 `np.nan`을 가리키는 기호다.
 
-# In[28]:
+# In[27]:
 
 
 np.nan
 
 
-# 3개의 결측치는 사실 일부러 만들어졌고 원래 모두 0.2였다.
-# 따라서 결측치를 모두 0.2로 바꾸고 다음 과정을 실행한다.
+# 원본 `iris_nan.data` 파일에서 결측치는 아래와 같이 그냥 비워져 있다.
+# 
+# ```
+# 5.4, 3.4, 1.7,, Iris-setosa
+# 5. , 3.2, 1.2,, Iris-setosa
+# 4.4, 3.2, 1.3,, Iris-setosa
+# ```
 
-# In[29]:
+# 그런데 3개의 결측치는 사실 일부러 만들어졌고 원래 모두 0.2였다.
+# 부울 인덱싱을 이용하여 결측치를 모두 0.2로 원상회복 시킨다.
+
+# In[28]:
 
 
 iris_2d[:, 3][mask] = 0.2
@@ -331,56 +345,251 @@ iris_2d[:, 3][mask] = 0.2
 
 # 결측치가 없음을 다음과 같이 확인한다.
 
-# In[30]:
+# In[29]:
 
 
 np.isnan(iris_2d).any()
 
 
-# **문제** 
+# **품종 정보** 
 # 
 # iris_2d 데이터셋에 사용된 붓꽃들의 품종은 아래 세 개이다.
+# 
+# ```
+# 'Iris-setosa', 'Iris-versicolor', 'Iris-virginica'
+# ```
+
+# 이 사실을 데이터셋에서 직접 확인할 수 있다.
+# 
+# - `usecols=4`: 품종 정보를 담고 있는 열만 가져오기
+# - `dtype='str`: 문자열로 처리
+
+# In[30]:
+
+
+iris_varieties = np.genfromtxt(data_path / 'iris.data', delimiter=',', dtype='str', usecols=4)
+
+
+# 길이가 150인 1차원 어레이로 가져온다.
 
 # In[31]:
 
 
-a = np.array(['Iris-setosa', 'Iris-versicolor', 'Iris-virginica'])
+iris_varieties.shape
 
 
-# 150개의 품종을 무작위로 선택하되 `Iris-setosa` 품종이 다른 품종들의 두 배로 선택되도록 하라.
-# 
-# 힌트: `np.random.choice()` 함수를 활용하라.
-
-# **견본답안**
-
-# `np.random.choice()` 함수의 `p` 키워드 인자를 이용한다.
-# 사용되는 인자는 `[0.5, 0.25, 0.25]` 이다.
+# 사용되는 품종이 3가지임을 `np.unique()` 함수를 이용해서 확인한다.
 
 # In[32]:
 
 
-np.random.seed(42)  # 무작위성 시드 지정
-species_out = np.random.choice(a, 150, p=[0.5, 0.25, 0.25])
+varieties = np.unique(iris_varieties)
+varieties
 
 
-# 세 개의 이름 중에서 무작위로 150개의 이름을 선택하였다.
+# 품종별로 각각 50개의 샘플이 포함된다.
 
 # In[33]:
 
 
-species_out.shape
+for variety in varieties:
+    count = np.count_nonzero(iris_varieties == 'Iris-setosa')
+    print(f"{variety:<15} 샘플 수: {count}")
 
 
-# 품종별 비율은 대략적으로 2:1:1 이다.
+# **산점도 그리기**
+
+# 꽃잎의 길이(2번 열)와 너비 정보(3번 열)를 이용하여 산점도를 그린다.
+# 먼저 꽃잎 길이를 x-좌표값으로, 꽃잎 너비를 y-좌표 값으로 지정한다.
+# 이때 모든 x-좌표와 모든 y-좌표를 따로따로 지정한다.
 
 # In[34]:
 
 
-setosa_ratio = (species_out == 'Iris-setosa').sum()/150
-versicolor_ratio = (species_out == 'Iris-versicolor').sum()/150
-virginica_ratio = (species_out == 'Iris-virginica').sum()/150
+X = iris_2d[:, 2] # 꽃잎 길이
+Y = iris_2d[:, 3] # 꽃잎 너비
 
-print(f"세토사, 버시컬러, 비르지니카 세 품종의 비율은 {setosa_ratio:.2f}:{versicolor_ratio:.2f}:{virginica_ratio:.2f} 이다.")
+
+# `plt.plot()` 함수를 이용하여 산점도를 그릴 수 있다.
+# 
+# - 셋째 인자: `"bo"` 는 점의 색깔과 모양 지정. `b` 는 blue(파랑)를, `o` 는 동그라미 모양의 점.
+# - `plt.plot(X, Y, "bo")`는 `plt.plot(X, Y, color='blue', marker='o', linesty;e='')`를 줄인 표현
+# - `plt.axis([0.5, 7, 0, 3])`: x-축 구간은 0.5부터 7, y-축 구간은 0부터 3.
+
+# In[35]:
+
+
+plt.figure(figsize=(10, 5))
+
+plt.plot(X, Y, 'bo')
+# plt.plot(X, Y, color='blue', marker='o', linestyle='')
+
+plt.axis([0.5, 7, 0, 3])
+
+
+# 그런데 이렇게 하면 품종이 구별되지 않기에 품종 정보를 함께 활용해야 한다.
+# 예를 들어 세토사 품종 50개의 꽆잎의 길이는 다음과 같이 부울 마스크를 이용해서 구할 수 있다.
+# 
+# - `plt.xlabel("Petal length")`: x-축 레이블 지정
+# - `plt.ylabel("Petal width")`: y-축 레이블 지정
+# - `plt.legend(loc="center left")`: 범례 위치 지정
+# - `plt.show()`: 여러 개의 그래프를 동시에 하나의 캔버스에 그리도록 함
+
+# In[36]:
+
+
+plt.figure(figsize=(10, 5))
+
+# 세토사 품종 산점도: 노랑 동그라미
+plt.plot(X[iris_varieties == 'Iris-setosa'], Y[iris_varieties == 'Iris-setosa'], 'yo', label='Iris setosa')
+# 버시컬러 품종 산점도: 파랑 네모
+plt.plot(X[iris_varieties == 'Iris-versicolor'], Y[iris_varieties == 'Iris-versicolor'], 'bs', label='Iris versicolor')
+# 버지니카 품종 산점도: 초록 세모
+plt.plot(X[iris_varieties == 'Iris-virginica'], Y[iris_varieties == 'Iris-virginica'], 'g^',  label='Iris setosa')
+
+plt.xlabel("Petal length")
+plt.ylabel("Petal width")
+plt.legend(loc="center left")
+
+plt.axis([0.5, 7, 0, 3.])
+plt.show()
+
+
+# **격자 무늬**
+
+# 격자 무늬 배경도 넣을 수 있다.
+# 
+# - `plt.grid()`: 격차 무늬 배경 추가
+
+# In[37]:
+
+
+plt.figure(figsize=(10, 5))
+plt.plot(X[iris_varieties == 'Iris-setosa'], Y[iris_varieties == 'Iris-setosa'], 'yo', label='Iris setosa')
+plt.plot(X[iris_varieties == 'Iris-versicolor'], Y[iris_varieties == 'Iris-versicolor'], 'bs', label='Iris versicolor')
+plt.plot(X[iris_varieties == 'Iris-virginica'], Y[iris_varieties == 'Iris-virginica'], 'g^',  label='Iris setosa')
+
+plt.xlabel("Petal length")
+plt.ylabel("Petal width")
+plt.legend(loc="center left")
+
+plt.axis([0.5, 7, 0, 3.])
+
+plt.grid()
+plt.show()
+
+
+# **배경화면 색**
+
+# `meshgrid()` 함수를 이용하여 배경화면의 색을 지정할 수 있다.
+
+# In[38]:
+
+
+points_x = np.arange(0, 7.01, 0.02)
+points_y = np.arange(0, 3.51, 0.02)
+xs, ys = np.meshgrid(points_x, points_y)
+
+
+# In[39]:
+
+
+plt.figure(figsize=(10, 5))
+
+# 배경화면
+plt.scatter(xs, ys, c= 'ivory') # 아이보리색
+
+# 붓꽃 데이터 산점도
+plt.plot(X[iris_varieties == 'Iris-setosa'], Y[iris_varieties == 'Iris-setosa'], 'yo', label='Iris setosa')
+plt.plot(X[iris_varieties == 'Iris-versicolor'], Y[iris_varieties == 'Iris-versicolor'], 'bs', label='Iris versicolor')
+plt.plot(X[iris_varieties == 'Iris-virginica'], Y[iris_varieties == 'Iris-virginica'], 'g^',  label='Iris setosa')
+
+plt.xlabel("Petal length")
+plt.ylabel("Petal width")
+plt.legend(loc="center left")
+
+plt.axis([0.5, 7, 0, 3.])
+
+plt.grid()
+plt.show()
+
+
+# **품종 분류**
+
+# 품종의 분류를 색으로 구분하기 위해 `plt.contour()` 함수 또는 `plt.contourf()` 를 이용한다.
+# 먼저 등고선을 그리기 위해 `meshgrid()` 함수가 생성한 각 좌표에 해당하는 지점의
+# 값을 담고 있는 어레이 `Z`를 생성한다.
+# 단 x-좌표의 값에 따라 0, 1, 2를 항목으로 갖도록 한다.
+# 
+# - 0: x-좌표가 2.5보다 작은 경우
+# - 1: x-좌표가 2.5보다 같거나 크고 5보다 작은 경우
+# - 2: x-좌표가 5보다 같거나 큰 경우
+
+# In[40]:
+
+
+Z = np.zeros(xs.shape)
+Z[(2.5 <= xs) & (xs < 5)] = 1
+Z[(5. <= xs)] = 2
+
+
+# In[41]:
+
+
+Z
+
+
+# 이제 색으로 등고선을 구분하도록 하면 자연스럽게 품종을 구분해준다.
+# 
+# - `plt.contourf(xs, ys, Z, alpha=0.3, cmap='Wistia')`: 색으로 등고선 구분.
+# - `alpha=0.3`: 투명도를 0.3으로 지정. 0에서 1사이의 값이며 클 수록 불투명해짐
+# - `cmap='Wistia`: 등고선에 사용할 [색 지도](https://matplotlib.org/stable/tutorials/colors/colormaps.html) 지정
+
+# In[42]:
+
+
+plt.figure(figsize=(10, 5))
+
+# 등고선을 색으로 구분
+plt.contourf(xs, ys, Z, alpha=0.3, cmap='Wistia')
+
+# 붓꽃 데이터 산점도
+plt.plot(X[iris_varieties == 'Iris-setosa'], Y[iris_varieties == 'Iris-setosa'], 'yo', label='Iris setosa')
+plt.plot(X[iris_varieties == 'Iris-versicolor'], Y[iris_varieties == 'Iris-versicolor'], 'bs', label='Iris versicolor')
+plt.plot(X[iris_varieties == 'Iris-virginica'], Y[iris_varieties == 'Iris-virginica'], 'g^',  label='Iris setosa')
+
+plt.xlabel("Petal length")
+plt.ylabel("Petal width")
+plt.legend(loc="center left")
+plt.axis([0.5, 7.0, 0, 3])
+
+# plt.grid()
+plt.show()
+
+
+# 아래 코드는 등고선도 함께 그린다.
+
+# In[43]:
+
+
+plt.figure(figsize=(10, 5))
+
+# 등고선도 함께
+plt.contourf(xs, ys, Z, alpha=0.3, cmap='Wistia')
+plt.contour(xs, ys, Z, cmap="Greys")
+
+# 붓꽃 데이터 산점도
+plt.plot(X[iris_varieties == 'Iris-setosa'], Y[iris_varieties == 'Iris-setosa'], 'yo', label='Iris setosa')
+plt.plot(X[iris_varieties == 'Iris-versicolor'], Y[iris_varieties == 'Iris-versicolor'], 'bs', label='Iris versicolor')
+plt.plot(X[iris_varieties == 'Iris-virginica'], Y[iris_varieties == 'Iris-virginica'], 'g^',  label='Iris setosa')
+
+plt.xlabel("Petal length")
+plt.ylabel("Petal width")
+plt.legend(loc="center left")
+plt.axis([0.5, 7, 0, 3])
+
+# plt.grid()
+plt.show()
 
 
 # ## 연습문제
