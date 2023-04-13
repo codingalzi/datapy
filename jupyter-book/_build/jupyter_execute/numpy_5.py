@@ -234,8 +234,12 @@ urllib.request.urlretrieve(url, data_path / 'iris.data')
 # ```
 # 꽃받침 길이, 꽃받침 너비, 꽃잎 길이, 꽃잎 너비, 품종
 # ```
-
+# 
 # 이 중에 마지막 품종 특성은 문자열이고 나머지 특성은 부동소수점, 즉 수치형 데이터이다. 
+# 아래 사진은 붓꽃의 꽃받침<font size='2'>sepal</font>과 꽃잎<font size='2'>petal</font>의 길이와 너비를 측정하는 방법을 보여준다.
+
+# <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book//images/iris_petal-sepal.png" style="width:450px;"></div>
+
 # 여기서는 연습을 위해 수치형 데이터를 담고 있는 네 개의 특성만 가져온다.
 # 
 # * `genfromtxt()` 함수: 인터넷 또는 컴퓨터에 파일로 저장된 데이터를 적절한 모양의 어레이로 불러오는 함수
