@@ -603,7 +603,7 @@ title="Print to PDF"
 <p><strong><code class="docutils literal notranslate"><span class="pre">np.meshgrid()</span></code> 함수</strong></p>
 <p>예를 들어 <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> 모듈의 <code class="docutils literal notranslate"><span class="pre">scatter()</span></code> 함수를 이용하여 위 그림에 있는 총 121(= 11 <span class="math notranslate nohighlight">\(\times\)</span> 11)개의 점을
 산점도로 그리려면 각각 121개의 x-좌표와 y-좌표를 담은 두 개의 리스트가 필요하다.
-그리고 <code class="docutils literal notranslate"><span class="pre">np.meshgrid()</span></code> 함수를 이용하면 손쉽게 두 리스트를 구할 수 있다.</p>
+<code class="docutils literal notranslate"><span class="pre">np.meshgrid()</span></code> 함수를 이용하면 손쉽게 두 리스트를 구할 수 있다.</p>
 <p><code class="docutils literal notranslate"><span class="pre">np.meshgrid()</span></code> 함수는 지정된 1차원 어레이 두 개를 이용하여 그릴 수 있는 격자무늬의
 x-좌표 리스트와 y-좌표 리스트를 생성하며
 아래와 같이 실행한다.</p>
@@ -614,8 +614,9 @@ x-좌표 리스트와 y-좌표 리스트를 생성하며
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">xs</span></code>는 열별x-좌표를 2차원 어레이로 담고 있다.
-열 순서는 왼쪽에서 오른쪽으로 진행한다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">xs</span></code>는 행별x-좌표를 2차원 어레이로 담고 있다.
+행별로 x-좌표는 왼쪽에서 오른쪽으로 진행하며,
+행의 순서는 아랫쪽에서 윗쪽으로 진행한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xs</span>
@@ -823,7 +824,7 @@ x-좌표 리스트와 y-좌표 리스트를 생성하며
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(PosixPath(&#39;data/iris.data&#39;), &lt;http.client.HTTPMessage at 0x7f5553acbc70&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(PosixPath(&#39;data/iris.data&#39;), &lt;http.client.HTTPMessage at 0x7f1f95743370&gt;)
 </pre></div>
 </div>
 </div>
