@@ -246,7 +246,7 @@ urllib.request.urlretrieve(url, data_path / 'iris.data')
 # In[19]:
 
 
-iris_2d = np.genfromtxt(data_path / 'iris.data', delimiter=',', dtype='float', usecols=[0,1,2,3])
+iris_features = np.genfromtxt(data_path / 'iris.data', delimiter=',', dtype='float', usecols=[0,1,2,3])
 
 
 # 어레이의 모양은 (150, 4)이다. 
@@ -254,7 +254,7 @@ iris_2d = np.genfromtxt(data_path / 'iris.data', delimiter=',', dtype='float', u
 # In[20]:
 
 
-iris_2d.shape
+iris_features.shape
 
 
 # 처음 5개 샘플은 다음과 같다.
@@ -262,7 +262,7 @@ iris_2d.shape
 # In[21]:
 
 
-iris_2d[:5]
+iris_features[:5]
 
 
 # **결측치 처리** 
@@ -276,7 +276,7 @@ iris_2d[:5]
 # In[22]:
 
 
-np.isnan(iris_2d).any()
+np.isnan(iris_features).any()
 
 
 # 결측치가 특정 열에만 있는지를 확인하려면 축을 0으로 지정한다.
@@ -284,7 +284,7 @@ np.isnan(iris_2d).any()
 # In[23]:
 
 
-np.isnan(iris_2d).any(axis=0)
+np.isnan(iris_features).any(axis=0)
 
 
 # 3번 열에만 결측치가 있음이 확인됐다.
@@ -296,7 +296,7 @@ np.isnan(iris_2d).any(axis=0)
 # In[24]:
 
 
-np.isnan(iris_2d).sum()
+np.isnan(iris_features).sum()
 
 
 # 3번 열에만 결측치가 있기에 아래와 같이 결측치의 수를 확인할 수도 있다.
@@ -304,7 +304,7 @@ np.isnan(iris_2d).sum()
 # In[25]:
 
 
-np.isnan(iris_2d[:, 3]).sum()
+np.isnan(iris_features[:, 3]).sum()
 
 
 # 부울 인덱싱을 활용하여 결측치가 없는 행만 추출할 수 있으며,
@@ -313,9 +313,9 @@ np.isnan(iris_2d[:, 3]).sum()
 # In[26]:
 
 
-mask = np.isnan(iris_2d[:, 3])
+mask = np.isnan(iris_features[:, 3])
 
-iris_2d[mask]
+iris_features[mask]
 
 
 # `nan`은 결측치를 의미하는 값인 `np.nan`을 가리키는 기호다.
@@ -340,7 +340,7 @@ np.nan
 # In[28]:
 
 
-iris_2d[:, 3][mask] = 0.2
+iris_features[:, 3][mask] = 0.2
 
 
 # 결측치가 없음을 다음과 같이 확인한다.
@@ -348,12 +348,12 @@ iris_2d[:, 3][mask] = 0.2
 # In[29]:
 
 
-np.isnan(iris_2d).any()
+np.isnan(iris_features).any()
 
 
 # **품종 정보** 
 # 
-# iris_2d 데이터셋에 사용된 붓꽃들의 품종은 아래 세 개이다.
+# iris_features 데이터셋에 사용된 붓꽃들의 품종은 아래 세 개이다.
 # 
 # ```
 # 'Iris-setosa', 'Iris-versicolor', 'Iris-virginica'
@@ -367,7 +367,7 @@ np.isnan(iris_2d).any()
 # In[30]:
 
 
-iris_varieties = np.genfromtxt(data_path / 'iris.data', delimiter=',', dtype='str', usecols=4)
+iris_labels = np.genfromtxt(data_path / 'iris.data', delimiter=',', dtype='str', usecols=4)
 
 
 # 길이가 150인 1차원 어레이로 가져온다.
@@ -375,7 +375,7 @@ iris_varieties = np.genfromtxt(data_path / 'iris.data', delimiter=',', dtype='st
 # In[31]:
 
 
-iris_varieties.shape
+iris_labels.shape
 
 
 # 사용되는 품종이 3가지임을 `np.unique()` 함수를 이용해서 확인한다.
@@ -383,7 +383,7 @@ iris_varieties.shape
 # In[32]:
 
 
-varieties = np.unique(iris_varieties)
+varieties = np.unique(iris_labels)
 varieties
 
 
@@ -393,7 +393,7 @@ varieties
 
 
 for variety in varieties:
-    count = np.count_nonzero(iris_varieties == 'Iris-setosa')
+    count = np.count_nonzero(iris_labels == 'Iris-setosa')
     print(f"{variety:<15} 샘플 수: {count}")
 
 
@@ -406,8 +406,8 @@ for variety in varieties:
 # In[34]:
 
 
-X = iris_2d[:, 2] # 꽃잎 길이
-Y = iris_2d[:, 3] # 꽃잎 너비
+X = iris_features[:, 2] # 꽃잎 길이
+Y = iris_features[:, 3] # 꽃잎 너비
 
 
 # `plt.plot()` 함수를 이용하여 산점도를 그릴 수 있다.
@@ -441,11 +441,11 @@ plt.axis([0.5, 7, 0, 3])
 plt.figure(figsize=(10, 5))
 
 # 세토사 품종 산점도: 노랑 동그라미
-plt.plot(X[iris_varieties == 'Iris-setosa'], Y[iris_varieties == 'Iris-setosa'], 'yo', label='Iris setosa')
+plt.plot(X[iris_labels == 'Iris-setosa'], Y[iris_labels == 'Iris-setosa'], 'yo', label='Iris setosa')
 # 버시컬러 품종 산점도: 파랑 네모
-plt.plot(X[iris_varieties == 'Iris-versicolor'], Y[iris_varieties == 'Iris-versicolor'], 'bs', label='Iris versicolor')
+plt.plot(X[iris_labels == 'Iris-versicolor'], Y[iris_labels == 'Iris-versicolor'], 'bs', label='Iris versicolor')
 # 버지니카 품종 산점도: 초록 세모
-plt.plot(X[iris_varieties == 'Iris-virginica'], Y[iris_varieties == 'Iris-virginica'], 'g^',  label='Iris setosa')
+plt.plot(X[iris_labels == 'Iris-virginica'], Y[iris_labels == 'Iris-virginica'], 'g^',  label='Iris setosa')
 
 plt.xlabel("Petal length")
 plt.ylabel("Petal width")
@@ -465,9 +465,9 @@ plt.show()
 
 
 plt.figure(figsize=(10, 5))
-plt.plot(X[iris_varieties == 'Iris-setosa'], Y[iris_varieties == 'Iris-setosa'], 'yo', label='Iris setosa')
-plt.plot(X[iris_varieties == 'Iris-versicolor'], Y[iris_varieties == 'Iris-versicolor'], 'bs', label='Iris versicolor')
-plt.plot(X[iris_varieties == 'Iris-virginica'], Y[iris_varieties == 'Iris-virginica'], 'g^',  label='Iris setosa')
+plt.plot(X[iris_labels == 'Iris-setosa'], Y[iris_labels == 'Iris-setosa'], 'yo', label='Iris setosa')
+plt.plot(X[iris_labels == 'Iris-versicolor'], Y[iris_labels == 'Iris-versicolor'], 'bs', label='Iris versicolor')
+plt.plot(X[iris_labels == 'Iris-virginica'], Y[iris_labels == 'Iris-virginica'], 'g^',  label='Iris setosa')
 
 plt.xlabel("Petal length")
 plt.ylabel("Petal width")
@@ -500,9 +500,9 @@ plt.figure(figsize=(10, 5))
 plt.scatter(xs, ys, c= 'ivory') # 아이보리색
 
 # 붓꽃 데이터 산점도
-plt.plot(X[iris_varieties == 'Iris-setosa'], Y[iris_varieties == 'Iris-setosa'], 'yo', label='Iris setosa')
-plt.plot(X[iris_varieties == 'Iris-versicolor'], Y[iris_varieties == 'Iris-versicolor'], 'bs', label='Iris versicolor')
-plt.plot(X[iris_varieties == 'Iris-virginica'], Y[iris_varieties == 'Iris-virginica'], 'g^',  label='Iris setosa')
+plt.plot(X[iris_labels == 'Iris-setosa'], Y[iris_labels == 'Iris-setosa'], 'yo', label='Iris setosa')
+plt.plot(X[iris_labels == 'Iris-versicolor'], Y[iris_labels == 'Iris-versicolor'], 'bs', label='Iris versicolor')
+plt.plot(X[iris_labels == 'Iris-virginica'], Y[iris_labels == 'Iris-virginica'], 'g^',  label='Iris setosa')
 
 plt.xlabel("Petal length")
 plt.ylabel("Petal width")
@@ -554,9 +554,9 @@ plt.figure(figsize=(10, 5))
 plt.contourf(xs, ys, Z, alpha=0.3, cmap='Wistia')
 
 # 붓꽃 데이터 산점도
-plt.plot(X[iris_varieties == 'Iris-setosa'], Y[iris_varieties == 'Iris-setosa'], 'yo', label='Iris setosa')
-plt.plot(X[iris_varieties == 'Iris-versicolor'], Y[iris_varieties == 'Iris-versicolor'], 'bs', label='Iris versicolor')
-plt.plot(X[iris_varieties == 'Iris-virginica'], Y[iris_varieties == 'Iris-virginica'], 'g^',  label='Iris setosa')
+plt.plot(X[iris_labels == 'Iris-setosa'], Y[iris_labels == 'Iris-setosa'], 'yo', label='Iris setosa')
+plt.plot(X[iris_labels == 'Iris-versicolor'], Y[iris_labels == 'Iris-versicolor'], 'bs', label='Iris versicolor')
+plt.plot(X[iris_labels == 'Iris-virginica'], Y[iris_labels == 'Iris-virginica'], 'g^',  label='Iris setosa')
 
 plt.xlabel("Petal length")
 plt.ylabel("Petal width")
@@ -579,9 +579,9 @@ plt.contourf(xs, ys, Z, alpha=0.3, cmap='Wistia')
 plt.contour(xs, ys, Z, cmap="Greys")
 
 # 붓꽃 데이터 산점도
-plt.plot(X[iris_varieties == 'Iris-setosa'], Y[iris_varieties == 'Iris-setosa'], 'yo', label='Iris setosa')
-plt.plot(X[iris_varieties == 'Iris-versicolor'], Y[iris_varieties == 'Iris-versicolor'], 'bs', label='Iris versicolor')
-plt.plot(X[iris_varieties == 'Iris-virginica'], Y[iris_varieties == 'Iris-virginica'], 'g^',  label='Iris setosa')
+plt.plot(X[iris_labels == 'Iris-setosa'], Y[iris_labels == 'Iris-setosa'], 'yo', label='Iris setosa')
+plt.plot(X[iris_labels == 'Iris-versicolor'], Y[iris_labels == 'Iris-versicolor'], 'bs', label='Iris versicolor')
+plt.plot(X[iris_labels == 'Iris-virginica'], Y[iris_labels == 'Iris-virginica'], 'g^',  label='Iris setosa')
 
 plt.xlabel("Petal length")
 plt.ylabel("Petal width")
