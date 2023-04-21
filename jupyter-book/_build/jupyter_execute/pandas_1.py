@@ -943,3 +943,7 @@ frame3.T
 # ## 연습문제
 
 # 참고: [(실습) 판다스 데이터프레임](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-pandas_dataframe.ipynb)
+
+# ## 참고 자료
+
+# 1. [Pandas Tutor: Using Pyodide to Teach Data Science at Scale](https://blog.pyodide.org/posts/pandastutor/): 데이터프레임 기능 시각화 도구
