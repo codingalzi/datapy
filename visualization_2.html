@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>19. matplotlib.pyplot 2부 &#8212; 파이썬 데이터 분석</title>
+    <title>21. matplotlib.pyplot 2부 &#8212; 파이썬 데이터 분석</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="20. seaborn" href="visualization_3.html" />
-    <link rel="prev" title="18. matplotlib.pyplot 1부" href="visualization_1.html" />
+    <link rel="next" title="22. seaborn" href="visualization_3.html" />
+    <link rel="prev" title="20. matplotlib.pyplot 1부" href="visualization_1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -205,12 +205,22 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_2.html">
-   16. 데이터프레임 핵심
+   16. 데이터프레임 핵심 1부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_3.html">
-   17. 판다스 활용: 통계 기초
+   17. 데이터프레임 핵심 2부
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas_4.html">
+   18. 판다스 활용: 통계 기초
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas_5.html">
+   19. 판다스 실전 활용: 타이타닉 데이터셋 전처리
   </a>
  </li>
 </ul>
@@ -222,17 +232,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="visualization_1.html">
-   18. matplotlib.pyplot 1부
+   20. matplotlib.pyplot 1부
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   19. matplotlib.pyplot 2부
+   21. matplotlib.pyplot 2부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="visualization_3.html">
-   20. seaborn
+   22. seaborn
   </a>
  </li>
 </ul>
@@ -244,7 +254,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="data_aggregation_grouping.html">
-   21. 데이터 집계와 그룹 생성
+   23. 데이터 집계와 그룹 생성
   </a>
  </li>
 </ul>
@@ -256,7 +266,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="timeseries.html">
-   22. 시계열 데이터
+   24. 시계열 데이터
   </a>
  </li>
 </ul>
@@ -485,7 +495,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#figure-subplot">
-   19.1.
+   21.1.
    <code class="docutils literal notranslate">
     <span class="pre">
      Figure
@@ -496,22 +506,22 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   19.2. 눈금과 라벨
+   21.2. 눈금과 라벨
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   19.3. 주석
+   21.3. 주석
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matplotlib">
-   19.4. matplotlib 기본 설정
+   21.4. matplotlib 기본 설정
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   19.5. 연습문제
+   21.5. 연습문제
   </a>
  </li>
 </ul>
@@ -535,7 +545,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#figure-subplot">
-   19.1.
+   21.1.
    <code class="docutils literal notranslate">
     <span class="pre">
      Figure
@@ -546,22 +556,22 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   19.2. 눈금과 라벨
+   21.2. 눈금과 라벨
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   19.3. 주석
+   21.3. 주석
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#matplotlib">
-   19.4. matplotlib 기본 설정
+   21.4. matplotlib 기본 설정
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   19.5. 연습문제
+   21.5. 연습문제
   </a>
  </li>
 </ul>
@@ -575,7 +585,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="matplotlib-pyplot-2">
-<span id="sec-visualization-2"></span><h1><span class="section-number">19. </span>matplotlib.pyplot 2부<a class="headerlink" href="#matplotlib-pyplot-2" title="Permalink to this headline">#</a></h1>
+<span id="sec-visualization-2"></span><h1><span class="section-number">21. </span>matplotlib.pyplot 2부<a class="headerlink" href="#matplotlib-pyplot-2" title="Permalink to this headline">#</a></h1>
 <p><strong>참고</strong></p>
 <p>웨스 맥키니의 <a class="reference external" href="https://github.com/wesm/pydata-book">&lt;파이썬 라이브러리를 활용한 데이터 분석&gt;</a>의
 9장1절에 사용된 소스코드의 일부를 활용한다.</p>
@@ -598,7 +608,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="figure-subplot">
-<h2><span class="section-number">19.1. </span><code class="docutils literal notranslate"><span class="pre">Figure</span></code> 객체와 서브플롯(subplot)<a class="headerlink" href="#figure-subplot" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">21.1. </span><code class="docutils literal notranslate"><span class="pre">Figure</span></code> 객체와 서브플롯(subplot)<a class="headerlink" href="#figure-subplot" title="Permalink to this headline">#</a></h2>
 <p>모든 그래프는 <code class="docutils literal notranslate"><span class="pre">Figure</span></code> 객체 내에 존재하며, <code class="docutils literal notranslate"><span class="pre">plt.figure()</span></code> 함수에 의해 생성된다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 </pre></div>
@@ -652,7 +662,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fc7ffbb0220&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7eff700481c0&gt;]
 </pre></div>
 </div>
 <img alt="_images/visualization_2_17_1.png" src="_images/visualization_2_17_1.png" />
@@ -674,7 +684,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fc7ffa663d0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7eff5c4af760&gt;]
 </pre></div>
 </div>
 <img alt="_images/visualization_2_19_1.png" src="_images/visualization_2_19_1.png" />
@@ -825,7 +835,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="id1">
-<h2><span class="section-number">19.2. </span>눈금과 라벨<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">21.2. </span>눈금과 라벨<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p><strong>이미지 타이틀, 축 이름, 눈금, 눈금 이름 지정</strong></p>
 <p>두 가지 방식으로 진행할 수 있다.</p>
 <p><em>방식 1: 파이플롯 객체의 메서드 활용</em></p>
@@ -916,7 +926,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="id2">
-<h2><span class="section-number">19.3. </span>주석<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">21.3. </span>주석<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>이미지에 주석을 추가할 수 있다.</p>
 <p>설명을 위해 S&amp;P 500 (스탠다드 앤 푸어스, Standard and Poor’s 500)의 미국 500대 기업을 포함한
 주식시장지수 데이터로 그래프를 생성하고 2007-2008년 사이에 있었던
@@ -1144,7 +1154,7 @@ Name: SPX, Length: 5472, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fc7f8fead00&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7eff55f3cdf0&gt;]
 </pre></div>
 </div>
 <img alt="_images/visualization_2_58_1.png" src="_images/visualization_2_58_1.png" />
@@ -1209,7 +1219,7 @@ Name: SPX, Length: 5472, dtype: float64
 </div>
 </section>
 <section id="matplotlib">
-<h2><span class="section-number">19.4. </span>matplotlib 기본 설정<a class="headerlink" href="#matplotlib" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">21.4. </span>matplotlib 기본 설정<a class="headerlink" href="#matplotlib" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">plt.rc()</span></code> 함수를 이용하여 matplot을 이용하여 생성되는 이미지 관련 설정을 전역적으로 지정할 수 있다.
 사용되는 형식은 다음과 같다.</p>
 <ul class="simple">
@@ -1343,7 +1353,7 @@ Name: SPX, Length: 5472, dtype: float64
 </div>
 </section>
 <section id="id3">
-<h2><span class="section-number">19.5. </span>연습문제<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">21.5. </span>연습문제<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-data_visualization_pyplot2.ipynb">(실습) matplotlib.pyplot 2부</a></p>
 </section>
 </section>
@@ -1379,13 +1389,13 @@ Name: SPX, Length: 5472, dtype: float64
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">18. </span>matplotlib.pyplot 1부</p>
+            <p class="prev-next-title"><span class="section-number">20. </span>matplotlib.pyplot 1부</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="visualization_3.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">20. </span>seaborn</p>
+        <p class="prev-next-title"><span class="section-number">22. </span>seaborn</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
