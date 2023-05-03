@@ -2,15 +2,17 @@
 # coding: utf-8
 
 # (sec:pandas_3)=
-# # 판다스 활용: 통계 기초
+# # 데이터프레임 핵심 2부
 
 # **주요 내용**
 
-# `Series`와 `DataFrame` 객체를로부터 기초 통계 자료를 추출하는 방식을 다룬다.
+# `Series`와 `DataFrame` 객체를 다루는 다양한 도구를 살펴본다.
 # 
-# * 합, 평균, 표준편차
-# * 상관관계, 공분산
-# * 중복값 처리
+# * 연산
+# * 정렬
+# * `drop()` 메서드: 행/열 삭제
+# * `fillna()` 메서드: 결측치 처리
+# * `reset_index()` 메서드: 인덱스 초기화
 
 # **기본 설정**
 
@@ -52,823 +54,596 @@ pd.options.display.max_rows # 원래 60이 기본.
 pd.set_option("display.max_rows", 20)
 
 
-# ## 합, 평균, 표준편차
+# ## 연산
 
-# 기초 통계에서 사용되는 주요 메서드들의 활용법을 살펴본다.
+# ### 산술 연산
+
+# 시리즈/데이터프레임의 사칙 연산은 아래 원칙을 따르면서 항목별로 이뤄진다.
 # 
-# * `sum()`
-# * `mean()`
-# * `std()`
-# * `idxmax()`/`idxmin()`
-# * `cumsum()`
-# * `describe()`
+# - 연산에 사용된 모든 행과 열의 라벨 모두 포함
+# - 공통으로 사용되는 행과 열의 라벨에 대해서만 연산 적용. 그렇지 않으면 `NaN`으로 처리.
+# 
+# 브로드캐스팅은 넘파이 어레이 연산처럼 필요한 경우 자동 적용된다.
 
-# 기본적으로 열 단위로 작동하며, 결측치는 행 또는 열의 모든 값이 결측치가 아니라면 기본적으로 무시된다.
-# 행 단위로 작동하게 하려면 축을 `axis=1` 또는 `axis='columns`로 지정하고,
-# 결측치를 무시하지 않으려면 `skipna=False`로 지정한다.
+# **시리즈 산술 연산**
 
 # In[5]:
 
 
-df = pd.DataFrame([[1.4, np.nan], [7.1, -4.5],
-                   [np.nan, np.nan], [0.75, -1.3]],
-                  index=['a', 'b', 'c', 'd'],
-                  columns=['one', 'two'])
-df
+s1 = pd.Series([7.3, -2.5, 3.4, 1.5], index=['a', 'c', 'd', 'e'])
+s1
 
-
-# * `sum()` 메서드: 행/열 단위 합 계산
 
 # In[6]:
 
 
-df.sum()
+s1*2
 
-
-# 결측치를 무시하지 않으면, 결측치가 포함된 행/렬에 대한 계산은 하지 않는다.
 
 # In[7]:
 
 
-df.sum(skipna=False)
+s2 = pd.Series([-2.1, 3.6, -1.5, 4, 3.1],
+               index=['a', 'c', 'e', 'f', 'g'])
+s2
 
 
 # In[8]:
 
 
-df.sum(axis='columns')
+s1 + s2
 
 
-# 시리즈는 하나의 열을 갖는 데이터프레임처럼 작동한다.
+# **데이터프레임 산술 연산**
 
 # In[9]:
 
 
-df['one']
+df1 = pd.DataFrame(np.arange(9.).reshape((3, 3)), 
+                   columns=list('bcd'),
+                   index=['Ohio', 'Texas', 'Colorado'])
+df1
 
 
 # In[10]:
 
 
-df['one'].sum()
+df1 - 3
 
-
-# * `mean()` 메서드: 평균값 계산
 
 # In[11]:
 
 
-df.mean()
+df2 = pd.DataFrame(np.arange(12.).reshape((4, 3)), columns=list('bde'),
+                   index=['Utah', 'Ohio', 'Texas', 'Oregon'])
+df2
 
 
 # In[12]:
 
 
-df.mean(axis='columns')
+df1 + df2
 
 
-# 결측치를 무시하지 않으면, 결측치가 포함된 행/렬에 대한 계산은 하지 않는다.
+# ### 연산과 결측치
+
+# 공통 인덱스가 아니거나 결측치가 이미 존재하는 경우 기본적으로 결측치로 처리된다.
+# 하지만 `fill_value` 키워드 인자를 이용하여 지정된 값으로 처리하게 만들 수도 있다.
+# 다만, 연산 기호 대신에 해당 연산의 메서드를 활용해야 한다.
 
 # In[13]:
 
 
-df.mean(skipna=False)
+df1.add(df2, fill_value=0)
 
+
+# 기본적으로 사용되는 산술 연산 기호에 해당하는 메서드가 존재한다.
+# 아래는 가장 많이 사용되는 연산 메서드들이다.
+# 
+# | 메서드 | 설명 |
+# | :--- | :--- |
+# | `add()` | 덧셈(`+`) 계산 메서드 | 
+# | `sub()` | 뺄셈(`-`) 계산 메서드 | 
+# | `mul()` | 곱셈(`*`) 계산 메서드 | 
+# | `div()` | 나눗셈(`/`) 계산 메서드 | 
+# | `floordiv()` | 몫 (`//`) 계산 메서드 | 
+# | `pow()` | 거듭제곱(`**`) 메서드 | 
+
+# ### 브로드캐스팅
+
+# 넘파이에서 2차원 어레이와 1차원 어레이 사이에
+# 브로드캐스팅이 가능한 경우,
+# 즉, 차원을 맞출 수 있는 경우에 연산이 가능했다.
 
 # In[14]:
 
 
-df.mean(axis='columns', skipna=False)
+arr = np.arange(12.).reshape((3, 4))
+arr
 
-
-# 시리즈의 경우도 동일하게 작동한다.
 
 # In[15]:
 
 
-df['one'].mean()
+arr[0]
 
 
 # In[16]:
 
 
-df['one'].mean(skipna=False)
+arr - arr[0]
 
 
-# * `std()` 메서드: 표준편차 계산
+# 브로드캐스팅이 불가능하면 오류가 발생한다.
 
 # In[17]:
 
 
-df.std()
+arr[:,1]
 
 
 # In[18]:
 
 
-df.std(axis='columns')
+try:
+    arr + arr[:, 1]
+except:
+    print("브로드캐스팅 불가능!")
 
+
+# 물론 아래와 같이 브로드캐스팅이 가능하도록 모양을 변환한 다음엔 연산이 가능하다.
 
 # In[19]:
 
 
-df.std(skipna=False)
+arr_1 = arr[:,1][:, np.newaxis]
+arr_1
 
 
 # In[20]:
 
 
-df.std(axis='columns', skipna=False)
+arr + arr_1
 
 
-# * `idxmax()`/`idxmin()`: 최댓값/최솟값을 갖는 인덱스 확인
-
-# 아래 코드는 열별 최댓값을 갖는 인덱스를 찾아준다.
+# 데이터프레임과 시리즈 사이의 연산도 동일하게 작동한다.
+# 다만, 행 또는 열에 대한 연산 여부를 확실하게 구분해주어야 한다.
 
 # In[21]:
 
 
-df.idxmax()
+frame = pd.DataFrame(np.arange(12.).reshape((4, 3)),
+                     columns=list('bde'),
+                     index=['Utah', 'Ohio', 'Texas', 'Oregon'])
+frame
 
-
-# 아래 코드는 행별 최솟값을 갖는 인덱스를 찾아준다.
 
 # In[22]:
 
 
-df.idxmin(axis=1)
+series = frame.iloc[0]
+series
 
 
-# * `cumsum()`: 누적 합 계산
+# 브로드캐스팅은 기본족으로 행 단위로 이루어진다.
+# 따라서 아래처럼 데이터프레임과 시리즈의 연산을 그냥 적용할 수 있다.
 
 # In[23]:
 
 
-df.cumsum()
+frame - series
 
+
+# 공통 인덱스가 존재하면 두 인자 모두에 대해 브로드캐스팅이 적용된다.
 
 # In[24]:
 
 
-df.cumsum(skipna=False)
+series2 = pd.Series(range(3), index=['b', 'e', 'f'])
+series2
 
-
-# * `describe()`: 요약 통계 보여주기
-
-# 수치형 데이터의 경우 평균값, 표준편차, 사분위수 등의 통계 정보를 요약해서 보여준다.
 
 # In[25]:
 
 
-df.describe()
+frame + series2
 
 
-# 수치형 데이터가 아닐 경우 다른 요약 통계를 보여준다.
+# 열 단위로 데이터프레임과 시리즈를 더하려면 
+# 해당 연산 메서드를 `axis=0` 키워드 인자와 함께 적용해야 한다.
 
 # In[26]:
 
 
-ser = pd.Series(['a', 'a', 'b', 'c'] * 2)
-ser
+series3 = frame['d']
+series3
 
 
 # In[27]:
 
 
-ser.describe()
+frame.sub(series3, axis=0)
 
 
-# ## 상관관계와 공분산
-
-# 금융 사이트에서 구한 4 개 회사의 주가(price)와 거래량(volume)을 담고 있는 두 개의 데이터를 이용하여
-# 상관계수와 공분산을 계산해본다.
-
-# 이를 위해 먼저 바이너리 파일 두 개를 다운로드해서 지정된 하위 디렉토리에 저장한다.
-
-# * 파일 저장 디렉토리 지정 및 생성
+# `axis='index'`를 사용해도 된다.
 
 # In[28]:
 
 
-from pathlib import Path
-
-data_path = Path() / "examples"
-
-data_path.mkdir(parents=True, exist_ok=True)
+frame.sub(series3, axis='index')
 
 
-# * 특정 서버에서 파일 다운로드 함수
+# ### 유니버설 함수
+
+# 유니버설 함수는 넘파이의 경우와 동일하게 작동한다.
 
 # In[29]:
 
 
-import requests
-
-# 파일 서버 기본 주소
-base_url = "https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/examples/"
-    
-def myWget(filename):
-    # 다운로드 대상 파일 경로
-    file_url = base_url + filename
-    
-    # 저장 경로와 파일명
-    target_path = data_path / filename
-
-    data = requests.get(file_url)
-    
-    with open(target_path, 'wb') as f:
-        f.write(data.content)
+frame = pd.DataFrame(np.random.randn(4, 3), columns=list('bde'),
+                     index=['Utah', 'Ohio', 'Texas', 'Oregon'])
+frame
 
 
-# 두 개의 픽클 파일 다운로드한다.
-# - pkl 파일: 판다스에서 제공하는 객체를 `to_pickle()` 메서드를 이용하여 
-#     컴퓨터에 파일로 저장할 때 사용되는 바이너리 파일.
+# 넘파이의 `abs()` 함수를 적용하면 항목별로 이루어진다.
 
 # In[30]:
 
 
-myWget("yahoo_price.pkl")
+np.abs(frame)
 
+
+# 시리즈에 대해서도 동일하다.
 
 # In[31]:
 
 
-myWget("yahoo_volume.pkl")
+np.abs(frame['b'])
 
 
-# 다운로드한 두 개의 데이터를 불러온다.
+# **`map()`과 `applymap()` 메서드**
+
+# 유니버설 함수가 아닌 함수를 시리즈의 항목별로 적용하려면
+# `map()` 메서드를 이용한다.
 # 
-# - `read_pickle()`: 저장된 pkl 파일을 파이썬으로 불러오는 함수
-
-# 아래 코드는 일별 주가 데이터를 불러온다.
-# 2010년 1월 4일부터 2016년 10월 21일까지의 데이터 1714개를 담고 있다.
+# 예를 들어 아래 람다(lambda) 함수는 부동소수점을 소수점 이하 셋째 자리에서 반올림한 값만 보여주도록 
+# 한다.
 
 # In[32]:
 
 
-price = pd.read_pickle('examples/yahoo_price.pkl')
-price
+format = lambda x: '%.2f' % x
 
 
-# 아래 코드는 동일 회사, 동일 날짜의 1일 거래량(volume) 담고 있는 데이터를 불러온다.
+# 시리즈에 적용해보자.
 
 # In[33]:
 
 
-volume = pd.read_pickle('examples/yahoo_volume.pkl')
-volume
+frame['e'].map(format)
 
 
-# 주가의 일단위 변화율을 알아보기 위해 퍼센트 변화율을 확인해보자.
-# 
-# __참고:__ 증권분야에서 return은 이익율을 의미한다.
+# 유니버설 함수가 아닌 함수를 데이터프레임의 항목별로 적용하려면
+# `applymap()` 메서드를 이용한다.
 
 # In[34]:
 
 
-returns = price.pct_change()
-returns.tail()
+frame.applymap(format)
 
 
-# **`corr()`/`cov()` 메서드**
+# **`apply()` 메서드**
 
-# 상관계수와 공분산 모두 두 확률변수 사이의 선형관계를 보여주며
-# 차이점은 다음과 같다.
+# 행 또는 열 단위로 함수를 적용하려면 `apply()` 메서드를 활용한다.
+# 기본은 열 단위로 함수가 적용되며 반환값이 스칼라 값이면 시리즈가 반환된다.
 # 
-# - 공분산: 두 확률변수 $X, Y$ 사이의 선형관계를 계량화 함. 
-#     양수/음수 여부에 따라 양 또는 음의 선형관계이며,
-#     절댓값이 클 수록 강한 선형관계임.
-#     다만, 사용되는 확률변수의 척도(scale)에 많은 영향을 받음.
-#     따라서 보통 정규화한 값인 상관계수를 사용함.
-# 
-# $$
-# \begin{align*}
-# Cov(X, Y) & = E((X-\mu_X)(Y-\mu_Y))\\[2ex]
-# \mu_X & = E(X) = \dfrac{\sum X}{n}\\[1.5ex]
-# \mu_Y & = E(Y) = \dfrac{\sum Y}{n}
-# \end{align*}
-# $$
-# 
-# - 상관계수: 두 확률변수 사이의 선형관계를 -1과 1 사이의 값으로 표현.
-#     양수/음수 여부에 따라 양 또는 음의 선형관계이며,
-#     절댓값이 1에 가까울 수록 강한 선형관계임.
-# $$
-# \begin{align*}
-# \rho & = \frac{Cov(X, Y)}{\sigma_X\cdot \sigma_Y}\\[2ex]
-# \sigma_X & = \sqrt{Var(X)}\\[1.5ex]
-# \sigma_X & = \sqrt{Var(X)}\\[1.5ex]
-# Var(X) & = \dfrac{\sum (X-\mu_X)^2}{n}\\[1.5ex]
-# Var(Y) & = \dfrac{\sum (X-\mu_Y)^2}{n}
-# \end{align*}
-# $$    
-
-# 'MSFT'와 'IBM' 사이의 상관계수는 다음과 같다.
+# 예를 들어 아래 함수는 최댓값과 최소값의 차이를 반환한다.
 
 # In[35]:
 
 
-returns['MSFT'].corr(returns['IBM'])
+f1 = lambda x: x.max() - x.min()
 
 
-# 'MSFT'와 'IBM' 사이의 공분산은 다음과 같다.
+# 데이터프레임에 적용하면 열 별로 최댓값과 최솟값의 차이를 계산하여 시리즈로 반환한다.
 
 # In[36]:
 
 
-returns['MSFT'].cov(returns['IBM'])
+frame.apply(f1)
 
 
-# 아래와 같이 속성으로 처리할 수 있으면 보다 깔금하게 보인다.
+# 행 별로 함수를 적용하려면 `axis=1` 또는 `axis='columls'`를 지정해야 한다.
 
 # In[37]:
 
 
-returns.MSFT.corr(returns.IBM)
+frame.apply(f1, axis='columns')
 
-
-# 전체 회사를 대상으로 하는 상관계수와 공분산을 계산할 수도 있다.
 
 # In[38]:
 
 
-returns.corr()
+frame.apply(f1, axis=1)
 
+
+# 함수의 반환값이 시리즈이면 `apply()` 메서드는 데이터프레임을 반환된다.
+# 예를 들어 아래 함수는 최솟값과 최댓값을 갖는 시리즈를 반환한다.
 
 # In[39]:
 
 
-returns.cov()
+def f2(x):
+    return pd.Series([x.min(), x.max()], index=['min', 'max'])
 
 
-# **`corrwith()` 메서드: 다른 시리즈 또는 데이터프레임과의 상관계수 계산**
-
-# 시리즈를 인자로 사용하면 각 열에 대한 상관계수를 계산한다.
+# `apply()` 메서드와 함께 호출하면 열 별로 최댓값과 최솟값을 계산하여 데이터프레임으로 반환한다.
 
 # In[40]:
 
 
-returns.corrwith(returns.IBM)
+frame.apply(f2)
 
 
-# 데이터프레임을 인자로 사용하면 공통 인덱스를 사용하는 모든 열에 대한 상관계수를 계산한다.
+# __참고:__ 시리즈 객체 또한 `apply()` 메서드를 갖는다. 하지만 
+# 기본적으로 `map()` 메서드처럼 작동한다. 
+# `map()` 메서드보다 좀 더 다야한 기능을 갖지만 여기서는 다루지 않는다.
+
+# ## 정렬
+
+# 행과 열의 인덱스 또는 항목을 대상으로 정렬할 수 있다.
+
+# **`sort_index()` 메서드**
+
+# 시리즈의 경우 인덱스를 기준으로 정렬한다. 
 
 # In[41]:
 
 
-returns.corrwith(volume)
+obj = pd.Series(range(4), index=['d', 'a', 'b', 'c'])
+obj
 
-
-# ## 중복과 빈도
-
-# **`unique()` 메서드**
-
-# 시리즈에서 사용된 값을 중복 없이 확인하려면 `unique()` 메서드를 이용한다.
-# `set()` 함수와 유사하게 작동하며, 넘파이 어레이를 반환한다.
 
 # In[42]:
 
 
-obj = pd.Series(['c', 'a', 'd', 'a', 'a', 'b', 'b', 'c', 'c'])
-obj
+obj.sort_index()
 
+
+# 내림차순으로 정렬하려면 `ascending=False` 키워드 인자를 함께 사용한다.
 
 # In[43]:
 
 
-uniques = obj.unique()
-uniques
+obj.sort_index(ascending=False)
 
 
-# **`value_counts()` 메서드**
-
-# 값들의 빈도수를 확인하기 위해 사용한다.
+# 데이터프레임의 경우 행 또는 열의 인덱스를 기준으로 정렬한다. 
 
 # In[44]:
 
 
-obj.value_counts()
+frame = pd.DataFrame(np.arange(8).reshape((2, 4)),
+                     index=['three', 'one'],
+                     columns=['d', 'a', 'b', 'c'])
+frame
 
+
+# 기본은 행의 인데스를 기준으로 정렬한다.
 
 # In[45]:
 
 
-pd.value_counts(obj.values, sort=False)
+frame.sort_index()
 
 
-# ## 미니 프로젝트: 붓꽃 데이터셋 표준화
-
-# 아래 코드는 인터넷 데이터 저장소로부터 아이리스(붓꽃) 데이터(`iris.data`)를 
-# 2차원 넘파이 어레이로 불러온다.
+# 열의 인덱스를 기준으로 정렬하려면 `axis=1` 또는 `axis='columns'` 키워드 인자를 사용한다.
 
 # In[46]:
 
 
-# 아이리스(붓꽃) 데이터 불러오기
-url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data'
-iris = np.genfromtxt(url, delimiter=',', dtype='str')
+frame.sort_index(axis=1)
 
-
-# `iris.data` 파일에는 아래 형식의 데이터가 150개 들어 있다. 
-# 
-# ```python
-# 5.1,3.5,1.4,0.2,Iris-setosa
-# ```
-# 
-# 하나의 데이터에 사용된 값들은 하나의 아이리스(붓꽃)에 대한 꽃잎, 꽃받침과 관련된 특성(features)과 품종을 나타내며,
-# 보다 구체적으로 아래 순서를 따른다.
-# 
-# ```
-# 꽃받침 길이, 꽃받침 너비, 꽃잎 길이, 꽃잎 너비, 품종
-# ```
 
 # In[47]:
 
 
-type(iris)
+frame.sort_index(axis='columns')
 
+
+# 내림차순으로 정렬하려면 `ascending=False` 키워드 인자를 함께 사용한다.
 
 # In[48]:
 
 
-iris.shape
+frame.sort_index(axis=1, ascending=False)
 
 
-# 길이와 너비를 저장하는 특성들은 숫자로 저장되어 있었지만 위 코드는 문자열로 저장된 품종 특성과의 자료형을 통일시키기 위해
-# 모두 문자열 자료형으로 불러왔다.
-# 처음 5개 데이터를 확인하면 다음과 같다.
-# 
-# __참고:__ `'<U15'`는 길이가 최대 15인 유니코드 문자열 자료형을 나타낸다.
+# **`sort_values()` 메서드**
+
+# 지정된 열 또는 행에 속한 값들을 기준으로 정렬할 때 사용한다.
 
 # In[49]:
 
 
-iris[:5]
+obj = pd.Series([4, 7, -3, 2])
+obj
 
-
-# 수치형 데이터와 품종 데이터를 분리해서 각각 (150,4), (150,) 모양의 어레이를 생성하자.
-# 이때 수치형 데이터는 `'f8'`, 즉 `'float64'` 자료형을 사용하도록 한다.
 
 # In[50]:
 
 
-iris_features = iris[:,:4].astype('f8')
-iris_labels = iris[:, 4]
+obj.sort_values()
 
 
-# 두 어레이를 판다스의 데이터프레임으로 형변환한다.
-# 이때 각 열의 이름을 사용된 데이터 특성을 반영하도록 지정한다.
+# 결측치는 맨 나중에 위치시킨다.
 
 # In[51]:
 
 
-columns = ['꽃받침길이', '꽃받침너비', '꽃잎길이', '꽃잎너비']
-iris_features = pd.DataFrame(iris_features, columns=columns)
-iris_features[:5]
+obj = pd.Series([4, np.nan, 7, np.nan, -3, 2])
+obj
 
-
-# 레이블은 판다스의 시리즈로 변환한다.
 
 # In[52]:
 
 
-iris_labels = pd.Series(iris_labels)
-iris_labels
+obj.sort_values()
 
 
-# 150개의 데이터는 아래 세 개의 품종으로 구분되며, 각각 50개씩 아래 언급된 순서대로 구분되어 있다.
-# 
-# ```
-# 'Iris-setosa', 'Iris-versicolor', 'Iris-virginica'
-# ```
-# 
-# 즉, 0번, 50번, 100번부터 각 품종의 데이터가 시작된다.
-# 넘파이의 경우와는 달리 인덱스를 항상 함께 보여준다.
+# 데이터프레임의 경우 `by` 키워드 인자를 이용하여 열의 라벨을 지정해야 한다.
 
 # In[53]:
 
 
-iris_labels[::50]
+frame = pd.DataFrame({'b': [4, 7, -3, 2], 'a': [0, 1, 0, 1]})
+frame
 
+
+# 예를 들어 `b` 열의 값을 기준으로 정렬한다.
+# 물론 동일한 행의 값은 함께 움직인다.
 
 # In[54]:
 
 
-iris_labels[:5]
+frame.sort_values(by='b')
 
+
+# 여러 열의 값을 기준으로 정렬하려면 라벨의 리스트를 입력한다.
+# 그러면 리스트 항목 순서대로 기준이 정해진다.
+# 
+# 예를 들어 아래 코드는 먼저 `a` 열의 항목들을 순서대로 정렬한 다음에
+# 동등한 값의 경우에는 `b` 열의 항목들 순서대로 정렬한다.
 
 # In[55]:
 
 
-iris_labels[50:55]
+frame.sort_values(by=['a', 'b'])
 
+
+# __참고:__ `axis=1`을 이용하여 특정 행의 값을 기준으로 정렬할 수도 있다.
+# 하지만 데이터프레임은 서로 다른 특성을 열 단위로 담는 목적으로
+# 사용되기에 이런 정렬은 사용할 이유가 별로 없다.
 
 # In[56]:
 
 
-iris_labels[100:105]
+frame.sort_values(by=2, axis=1, ascending=False)
 
 
-# __예제 1.__ 꽃잎 길이(2번 열)가 1.5보다 크거나 꽃받침 길이(0번 열)가 5.0보다 작은 데이터만 추출하라.
+# ## 행/열 삭제: `drop()` 메서드
 
-# 부울 인덱싱은 넘파이의 경우와 기본적으로 동일하다.
+# 특정 행 또는 열의 인덱스를 제외한 나머지로 이루어진 시리즈/데이터프레임을 생성할 때 사용한다.
+
+# **시리즈의 행 삭제**
+
+# 시리즈의 경우 인덱스를 한 개 또는 여러 개 지정하면 나머지로 이루어진 시리즈를 얻는다.
 
 # In[57]:
 
 
-mask = (iris_features.꽃잎길이>1.5) | (iris_features.꽃받침길이<5.0)
-mask
+obj = pd.Series(np.arange(5.), index=['a', 'b', 'c', 'd', 'e'])
+obj
 
-
-# 조건을 만족하는 샘플의 수는 아래와 같다.
 
 # In[58]:
 
 
-mask.sum()
+new_obj = obj.drop('c')
+new_obj
 
-
-# 조건을 만족하는 샘플들은 다음과 같다.
-# 예를 들어 0번 4번 인덱스의 붓꽃은 조건에 맞지 않아 부울 인덱싱에서 걸러진다.
-# 하지만 아래에서 볼 수 있듯이 다른 붓꽃의 인덱스가 조정되지는 않는다.
-# 즉, 인덱스는 한 번 정해지면 절대 변하지 않는다.
 
 # In[59]:
 
 
-iris_features[mask]
+obj.drop(['d', 'c'])
 
 
-# __예제 2.__ 꽃받침 길이(0번 열)와 꽃잎 길이(2번 열) 사이의 피어슨 상관계수를 계산하라.
-# 
-# 힌트: 넘파이의 적절한 함수를 활용한다. 상관계수에 대한 설명은 [위키백과: 상관분석](https://ko.wikipedia.org/wiki/상관_분석)을 참고한다.
-# 상관계수를 구하는 여러 방식이 있지만 판다스의 `corr()` 함수는 피어슨 상관계수를 기본으로 계산한다.
-# 다른 방식의 상관계수를 구하려며 `method` 키워드 인자를 다르게 지정해야 한다. 
-# 보다 자세한 사항은 [판다스: `corr()` 함수 문서](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.corr.html)를 참조하라.
-
-# 데이터프레임의 `corr()` 메서드는 모든 특성들 사이의 피어슨 상관계수로 이루어진 데이터프레임을 반환환다.
+# 원본 시리즈를 직접 건드리지는 않는다.
 
 # In[60]:
 
 
-iris_corr = iris_features.corr()
-iris_corr
+obj
 
 
-# 따라서 '꽃받침길이'와 다른 특성들 사이의 상관계수를 역순으로 정렬하면 다음과 같다.
-# 
-# - 인덱싱: 데이터프레임의 인덱싱은 기본적으로 열(column) 단위로 이루어진다. 
-#     행(row) 단위 인덱싱은 `loc()` 또는 `iloc()` 메서드를 이용한다.
-# - `sort_values()`: 열 단위로 오름차순으로 정렬함. 역순으로 하고자 할 경우 `ascending=False` 키워드 인자 사용.
+# **`inplace=True` 키워드 인자**
+
+# `inplace=True` 키워드 인자를 이용하면 원본을 수정한다.
 
 # In[61]:
 
 
-iris_corr['꽃받침길이'].sort_values(ascending=False)
+obj.drop('c', inplace=True)
 
-
-# 따라서 '꽃받침길이'와 '꽃잎길이' 사이의 상관계수가 가장 높으며 
-# 아래처럼 인덱싱을 두 번 사용하면 해당 값을 확인할 수 있다.
 
 # In[62]:
 
 
-iris_corr['꽃받침길이']['꽃잎길이']
+obj
 
 
-# __예제 3.__ 아래 식으로 계산된 값을 갖는 새로운 열(column)이 추가된 데이터프레임 `iris_features_added`를 생성하라.
-# 열의 이름은 '길이속성1'으로 지정한다.
-# 
-# $$\frac{\text{원주율} \times \text{꽃잎길이} \times \text{꽃받침길이}^2}{3} $$
+# **데이터프레임의 행 삭제**
 
-# 시리즈를 생성하면서 동시에 `name='길이특성1'` 이라는 키워드 인자를 사용하는 이유는
-# 이어서 `iris_features` 데이터프레임과 합칠 때 새로 추가되는 열의 이름으로 
-# 사용되도록 하기 위함이다.
+# 데이터프레임의 경우도 기본적으로 행의 인덱스를 기준으로 작동한다.
 
 # In[63]:
 
 
-# pass와 None을 각각 적절한 코드와 표현식으로 대체하라.
-
-scaled = (3.14 * iris_features['꽃잎길이'] * iris_features['꽃받침길이']**2) / 3
-length_property1 = pd.Series(scaled, name='길이특성1')
+data = pd.DataFrame(np.arange(16).reshape((4, 4)),
+                    index=['Ohio', 'Colorado', 'Utah', 'New York'],
+                    columns=['one', 'two', 'three', 'four'])
+data
 
 
 # In[64]:
 
 
-length_property1
+data.drop(['Colorado', 'Ohio'])
 
+
+# **데이터프레임의 열 삭제**
+
+# 열을 기준으로 작동하게 하려면 `axis=1`로 지정한다.
 
 # In[65]:
 
 
-iris_features_added = pd.concat([iris_features, length_property1], axis=1)
-
-assert iris_features_added.shape == (150, 5)
-iris_features_added
+data.drop('two', axis=1)
 
 
-# __예제 4.__ `Iris_versicolor` 품종에 해당하는 데이터만 `iris_features`로부터 추출하라. 
-
-# 부울 인덱싱을 사용한다.
+# `axis='columns'`로 지정해도 된다.
 
 # In[66]:
 
 
-# None을 적절한 부울 표현식으로 대체하라.
-
-mask = iris_labels == 'Iris-versicolor'
-mask
+data.drop(['two', 'four'], axis='columns')
 
 
-# 정확히 50개의 샘플에 대해서만 `True`이다.
+# **`inplace=True` 키워드 인자**
+
+# `inplace=True` 키워드 인자를 사용하면 이번에도 원본을 수정함에 주의하라.
 
 # In[67]:
 
 
-mask.sum()
+data.drop('two', axis=1, inplace=True)
 
-
-# 보다 정확히는 50번부터 99번까지 붓꽃만 선택된다.
 
 # In[68]:
 
 
-iris_versicolor = iris_features[mask]
-iris_versicolor.head()
+data
 
 
-# In[69]:
+# ## `fillna()` 메서드
 
+# 결측치를 특정 값으로 채우기
 
-iris_versicolor.tail()
+# ## `reset_index()` 메서드
 
+# 행 삭제 또는 정렬 이후 인덱스 재설정하기
 
-# __예제 5.__ 꽃받침 길이(0번 열)의 평균값(mean), 중앙값(median), 표준편차(standard deviation)를 구하라.
-# 
-# __참고:__ 데이터프레임의 메서드는 기본적으로 열(columns)에 대한 속성을 다룬다.
-# 즉, `axis=0`을 기본 축으로 사용한다.
+# ## 연습문제
 
-# In[70]:
-
-
-iris_mean = iris_features.mean()
-iris_mean
-
-
-# In[71]:
-
-
-iris_mean = iris_features.mean(axis=0)
-iris_mean
-
-
-# In[72]:
-
-
-iris_median = iris_features.median()
-iris_median
-
-
-# In[73]:
-
-
-iris_std = iris_features.std()
-iris_std
-
-
-# 따라서 `for` 반복문을 이용하여 간단하게 세 개의 평균을 확인할 수 있다.
-# 
-# __참고:__ 특정 객체의 메소드로 이루어진 리스트에 포함된 메소드에 대한 반복문을 활용할 수 있다.
-# 아래 코드는 통계와 관련해서 데이터프레임 객체가 제공하는 세 개의 메서드에 
-# 대한 반복문을 적용하는 방식을 보여준다.
-
-# In[74]:
-
-
-average_methods = [pd.DataFrame.mean, pd.DataFrame.median, pd.DataFrame.std]
-
-for fun in average_methods:
-    print(fun(iris_features)['꽃받침길이'], end=' ')
-
-
-# __예제 6.__ 세 개의 품종 별 꽃받침 너비(1번 열)의 평균값을 계산하여 아래 모양의  
-# 데이터프레임과 시리즈(Series) `iris_mean_sepal_length`를 생성하라.
-# 
-# |                 | 평균 꽃받침 너비 |
-# | ---:            | ---:             |
-# | Iris-setosa     | 3.418            |
-# | Iris-versicolor | 2.770            |
-# | Iris-virginica  | 2.974            |
-# 
-
-# 데이터프레임을 만들려면 `index`와 `columns` 키워드를 인자를 적절하게 지정해야 한다.
-
-# In[75]:
-
-
-kinds = list(set(iris_labels))
-kinds.sort()                      # 이름 순서를 맞추기 위해
-
-iris_mean_sepal_width = []
-
-for kind in kinds:
-    mask = iris_labels == kind
-    mean_0 = iris_features[mask].mean()['꽃받침너비']
-    iris_mean_sepal_width.append(mean_0)
-    
-pd.DataFrame(iris_mean_sepal_width, index=kinds, columns=['평균 꽃받침 너비'])
-
-
-# 시리즈를 만들려면 `index`와 `name` 키워드를 인자를 적절하게 지정해야 한다.
-
-# In[76]:
-
-
-kinds = list(set(iris_labels))
-kinds.sort()                      # 이름 순서를 맞추기 위해
-
-iris_mean_sepal_width = []
-
-for kind in kinds:
-    mask = iris_labels == kind
-    mean_0 = iris_features[mask].mean()['꽃받침너비']
-    iris_mean_sepal_width.append(mean_0)
-    
-pd.Series(iris_mean_sepal_width, index=kinds, name='평균 꽃받침 너비')
-
-
-# __예제 7.__ 꽃잎 너비(3번 열)에 사용된 값을 모두 0과 1사이의 값으로 변환하라. 
-# 
-# 힌트: 하나의 특성, 여기서는 꽃잎 너비,에 속하는 값을 모두 0과 1사이의 값으로 변환하는 작업을 정규화(normalization)이라 한다.
-# 정규화에 대한 설명은 [정규화/표준화](https://rucrazia.tistory.com/90)을 참고하라.
-
-# In[77]:
-
-
-iris_features[:5]
-
-
-# 넘파이의 경우와 동일하게 작동한다.
-# 하지만 데이터프레임의 메서드는 기본적으로 축을 0으로 지정해서 열 단위로 작동하기에
-# 조금 더 간단하게 구현할 수 있다.
-
-# In[78]:
-
-
-iris_features.min()
-
-
-# In[79]:
-
-
-iris_features.min(axis=0)
-
-
-# In[80]:
-
-
-iris_features_normalized = (iris_features - iris_features.min())/(iris_features.max() - iris_features.min())
-
-iris_features_normalized
-
-
-# 이제 꽃잎 너비에 대한 정보만 인덱싱으로 추출하면 된다.
-
-# In[81]:
-
-
-iris_features_normalized.꽃잎너비
-
-
-# __예제 8.__ `iris_features`에 사용된 모든 값을 특성 별로 표준화(standardization)하라. 
-# 
-# 힌트: 표준화에 대한 설명은 [정규화/표준화](https://rucrazia.tistory.com/90)을 참고하라.
-
-# `mean()`, `std()` 메서드도 기본적으로 축을 0으로 지정해서 작동한다.
-
-# In[82]:
-
-
-iris_features.mean()
-
-
-# In[83]:
-
-
-iris_features.std()
-
-
-# In[84]:
-
-
-# None을 적절한 부울 표현식으로 대체하라.
-
-iris_features_standardized = (iris_features - iris_features.mean()) / iris_features.std()
-
-iris_features_standardized[:5]
-
-
-# ## 연습문제 
-
-# 참고: [(실습) 판다스 활용: 통계 기초](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-pandas_stats.ipynb)
+# 참고: [(실습) 데이터프레임 핵심 2부](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-pandas_3.ipynb)

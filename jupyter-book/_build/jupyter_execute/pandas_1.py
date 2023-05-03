@@ -97,62 +97,6 @@ ojb1 = pd.Series(np.array([4, 7, -5, 3]))
 ojb1
 
 
-# 항목으로 사용된 값들은 `values` 속성이 넘파이 어레이로 저장된다.
-
-# In[7]:
-
-
-ojb1.values
-
-
-# 사용된 인덱스는 `index` 속성이 갖고 있다.
-# 자동으로 생성된 경우 인덱스는 `range`와 유사한 `RangeIndex` 자료형이다.
-
-# In[8]:
-
-
-ojb1.index
-
-
-# 기존에 사용된 인덱스를 완전히 새로운 인덱스로 대체할 수도 있다.
-
-# In[9]:
-
-
-ojb1
-
-
-# In[10]:
-
-
-ojb1.index = ['Bob', 'Steve', 'Jeff', 'Ryan']
-ojb1
-
-
-# **인덱스 지정**
-
-# 인덱스를 지정하면서 시리즈를 생성할 수 있다.
-# 
-# * `index` 키워드 인자: 항목의 수와 동일한 길이를 갖는 리스트. 
-#     리스트에 포함된 항목 순서대로 인덱스 지정.
-#     
-# 인덱스가 지정된 순서대로 사용됨에 주의하라.
-
-# In[11]:
-
-
-obj2 = pd.Series([4, 7, -5, 3], index=['d', 'b', 'a', 'c'])
-obj2
-
-
-# 특정 인덱스를 지정하면 인덱스의 자료형은 `Index` 객체가 된다.
-
-# In[12]:
-
-
-obj2.index
-
-
 # **사전 활용**
 
 # 사전을 이용하여 시리즈를 생성할 수 있다.
@@ -160,7 +104,7 @@ obj2.index
 # * 키 => 인덱스
 # * 값 => 값
 
-# In[13]:
+# In[7]:
 
 
 sdata = {'Ohio': 35000, 'Texas': 71000, 'Oregon': 16000, 'Utah': 5000}
@@ -175,7 +119,7 @@ obj3
 # * `California`: `sdata` 사전에 키로 사용되지 않았기에 `Nan`으로 지정
 # * `Utah`: `states` 리스트에 포함되지 않았기에 생성된 시리즈에 사용되지 않음.
 
-# In[14]:
+# In[8]:
 
 
 states = ['California', 'Ohio', 'Oregon', 'Texas']
@@ -189,7 +133,7 @@ obj4
 # * 인덱스 => 키
 # * 값 => 값
 
-# In[15]:
+# In[9]:
 
 
 dict(obj4)
@@ -208,14 +152,129 @@ dict(obj4)
 # | 중복 없음 | 중복 허용 |
 # :::
 
+# ### `index` 속성과 `index` 키워드
+
+# 사용된 인덱스는 `index` 속성이 갖고 있다.
+# 자동으로 생성된 경우 인덱스는 `range`와 유사한 `RangeIndex` 자료형이다.
+
+# In[10]:
+
+
+ojb1
+
+
+# In[11]:
+
+
+ojb1.index
+
+
+# 기존에 사용된 인덱스를 완전히 새로운 인덱스로 대체할 수도 있다.
+
+# In[12]:
+
+
+ojb1.index = ['Bob', 'Steve', 'Jeff', 'Ryan']
+ojb1
+
+
+# 처음부터 인덱스를 지정하면서 시리즈를 생성할 수 있다.
+# 
+# * `index` 키워드 인자: 항목의 수와 동일한 길이를 갖는 리스트. 
+#     리스트에 포함된 항목 순서대로 인덱스 지정.
+#     
+# 인덱스가 지정된 순서대로 사용됨에 주의하라.
+
+# In[13]:
+
+
+obj2 = pd.Series([4, 7, -5, 3], index=['d', 'b', 'a', 'c'])
+obj2
+
+
+# **중복 인덱스 허용**
+
+# 인덱스를 중복해서 사용할 수도 있다.
+
+# In[14]:
+
+
+dup_labels = pd.Index(['d', 'd', 'a', 'a', 'a'])
+dup_labels
+
+
+# In[15]:
+
+
+obj2
+
+
+# In[16]:
+
+
+pd.Series(obj2, index=dup_labels)
+
+
+# **`Index` 객체**
+
+# `index` 키워드로 지정된 인덱스는 `index` 속성이 가리키며 `Index` 객체로 저장된다.
+
+# In[17]:
+
+
+idx = obj2.index
+idx
+
+
+# 인덱스 객체는 1차원 어레이와 유사하게 동작한다.
+# 예를 들어, 인덱싱과 슬라이싱은 리스트 또는 1차원 어레이의 경우와 동일하게 작동한다.
+
+# In[18]:
+
+
+idx[1]
+
+
+# In[19]:
+
+
+idx[1:]
+
+
+# :::{admonition} 주의사항
+# :class: info
+# 
+# `Index` 자료형은 불변<font size='2'>immutable</font> 자료형이다.
+# 아래처럼 인덱싱을 이용하여 항목을 변경하려 하면 `TypeError`가 발생한다.
+# 
+# ```python
+# idx[1] = 'd'
+# ---------------------------------------------------------------------------
+# TypeError                                 Traceback (most recent call last)
+# Cell In [25], line 1
+# ----> 1 idx[1] = 'd'
+# 
+# File ~\anaconda3\envs\dlp2\lib\site-packages\pandas\core\indexes\base.py:5035, in Index.__setitem__(self, key, value)
+#    5033 @final
+#    5034 def __setitem__(self, key, value):
+# -> 5035     raise TypeError("Index does not support mutable operations")
+# 
+# TypeError: Index does not support mutable operations
+# ```
+# :::
+
+# ### `name` 과 `values`
+
 # **`name` 속성**
 
 # `Series` 객체와 시리즈의 `Index` 객체 모두 `name` 속성을 이용하여
 # 사용되는 값들에 대한 정보를 저장한다.
-# 아래 코드는 시리즈에 대해선 `name='population'`(인구)을, 
-# 시리즈의 인덱스에 대해선 `Index='state'`(주 이름)를 지정한다.
+# 아래 코드 이름 두 개를 지정한다.
+# 
+# - 시리즈 이름은 population(인구): `name='population'`
+# - 시리즈의 인덱스의 이름은 state(주 이름): `Index.name='state'`
 
-# In[16]:
+# In[20]:
 
 
 obj4.name = 'population'
@@ -223,41 +282,31 @@ obj4.index.name = 'state'
 obj4
 
 
-# :::{admonition} 시리즈의 이름 활용
-# :class: info
-# 
-# `name` 에 저장된 정보는 아래에서 소개하는 데이터프레임의 열의 이름으로 활용된다. 
-# :::
+# **`values` 속성**
+
+# `values` 속성이 시리즈의 항목으로 구성된 1차원 어레이를 가리킨다.
+
+# In[21]:
+
+
+ojb1.values
+
 
 # ### 시리즈 연산
 
-# **연산 및 유니버설 함수 적용**
-
-# 연산 및 유니버설 함수 적용 방식도 기본적으로 넘파이 어레이의 경우처럼 항목별로 작동한다.
-
-# In[17]:
-
-
-obj2 * 2
-
-
-# In[18]:
-
-
-np.exp(obj2)
-
+# 시리즈의 항목을 확인하는 기본 기능을 살펴 본다.
 
 # **`in` 연산자**
 
 # `in` 연산자는 인덱스 사용 여부를 사전 자료형의 키(key) 사용 여부와 동일한 방식으로 판단한다.
 
-# In[19]:
+# In[22]:
 
 
 'b' in obj2
 
 
-# In[20]:
+# In[23]:
 
 
 'e' in obj2
@@ -268,7 +317,7 @@ np.exp(obj2)
 # `pd.isnull()` 함수는 누락된 항목은 `True`, 아니면 `False`로 지정하여 단번에 결측치가 포함되었는지 
 # 여부를 확인해준다.
 
-# In[21]:
+# In[24]:
 
 
 pd.isnull(obj4)
@@ -277,7 +326,7 @@ pd.isnull(obj4)
 # `pd.notnull()` 함수는 누락된 항목은 `False`, 아니면 `True`로 지정하여 단번에 결측치가 포함되었는지 
 # 여부를 확인해준다.
 
-# In[22]:
+# In[25]:
 
 
 pd.notnull(obj4)
@@ -285,24 +334,24 @@ pd.notnull(obj4)
 
 # 두 함수를 호출하면 실제로는 시리즈 객체의 메서드인 `isnull()` 또는 `notnull()`이 내부에서 호출된다.
 
-# In[23]:
+# In[26]:
 
 
 obj4.isnull()
 
 
-# In[24]:
+# In[27]:
 
 
 obj4.notnull()
 
 
-# **`any()` 와 `all()`**
+# **`any()` 와 `all()` 메서드**
 
 # `any()` 또는 `all()` 메서드를 활용하면 결측치 사용 여부를 단번에 알 수 있다.
 # 예를 들어, `pd.isnull()` 과 `any()` 메서드의 활용 경과가 `True` 이면 결측치가 있다는 의미이다.
 
-# In[25]:
+# In[28]:
 
 
 obj4.isnull().any()
@@ -310,94 +359,24 @@ obj4.isnull().any()
 
 # 반면에 `pd.notnull()` 과 `all()` 메서드의 활용 경과가 `False` 이면 역시 결측치가 있다는 의미이다.
 
-# In[26]:
+# In[29]:
 
 
 obj4.notnull().all()
 
 
-# 넘파이의 `any()`, `all()` 를 활용해도 동일한 결과를 얻는다.
+# 넘파이의 `np.any()`, `np.all()` 를 활용해도 동일한 결과를 얻는다.
 
-# In[27]:
+# In[30]:
 
 
 np.any(obj4.isnull())
 
 
-# In[28]:
-
-
-np.all(obj4.notnull())
-
-
-# **시리즈 연산과 인덱스**
-
-# 시리즈 연산 과정에서 모든 시리즈에 공동으로 사용되는 인덱스의 항목에 대해서만 연산이 이루어진다.
-# 그렇지 않은 인덱스는 추가되기는 하지만 `NaN`으로 값이 지정된다.
-
-# `obj3` 에 `California` 정보가 없다.
-
-# In[29]:
-
-
-obj3
-
-
-# `obj4` 에 `Utah` 정보가 없다.
-
-# In[30]:
-
-
-obj4
-
-
-# 두 시리즈의 덧셈 결과엔 `California` 와 `Utah` 의 정보가 `NaN` 으로 처리된다.
-
 # In[31]:
 
 
-obj3 + obj4
-
-
-# ### 시리즈 인덱싱
-
-# 인덱스를 이용한 인덱싱이 리스트, 어레이 방식과 동일하게 작동한다.
-
-# In[32]:
-
-
-obj2['a']
-
-
-# 인덱스가 가리키는 값을 변경할 수도 있다.
-
-# In[33]:
-
-
-obj2['d'] = 6
-
-obj2
-
-
-# 인덱스의 리스트를 이용한 인덱싱의 결과는 지정된 인덱스가 사용되는 시리즈다.
-# 단, 지정된 인덱스의 순서를 고려하여 시리즈가 생성된다.
-
-# In[34]:
-
-
-obj2_1 = obj2[['c', 'a', 'd']]
-obj2_1
-
-
-# 부울 인덱싱은 넘파이 어레이의 경우와 동일하게 작동한다.
-# 예를 들어 아래 코드는 양수로만 구성된 시리즈가 생성된다.
-
-# In[35]:
-
-
-mask = obj2 > 0
-
-obj2[mask]
+np.all(obj4.notnull())
 
 
 # ## 데이터프레임
@@ -410,21 +389,21 @@ obj2[mask]
 # 위 이미지에 있는 세 개의 시리즈는 다음과 같으며,
 # `name` 속성을 이용하여 각 시리즈의 이름도 함께 지정한다.
 
-# In[36]:
+# In[32]:
 
 
 series1 = pd.Series([4, 5, 6, 3 , 1], name="Mango")
 series1
 
 
-# In[37]:
+# In[33]:
 
 
 series2 = pd.Series([5, 4, 3, 0, 2], name="Apple")
 series2
 
 
-# In[38]:
+# In[34]:
 
 
 series3 = pd.Series([2, 3, 5, 2, 7], name="Banana")
@@ -432,47 +411,6 @@ series3
 
 
 # ### 데이터프레임 생성
-
-# **시리즈 사전 활용**
-
-# 시리즈를 값으로 갖는 사전(`dict`)을 이용하여 데이터프레임 객체를 생성할 수 있다.
-# 위 세 개의 시리즈를 하나의 데이터프레임으로 묶기 위해
-# 키(key)는 각 시리즈의 `name`으로, 값(value)은 해당 시리즈로 지정된 
-# 아래 사전을 이용한다.
-# 
-# ```python
-# {"Mango":series1, "Apple":series2, "Banana":series3}
-# ```
-# 
-# 그런데 각 시리즈의 이름 모두 `name` 속성에 저장되어 있다.
-
-# In[39]:
-
-
-series1.name
-
-
-# In[40]:
-
-
-series2.name
-
-
-# In[41]:
-
-
-series3.name
-
-
-# 따라서 아래처럼 바로 `name` 속성을 키로 지정한 후 데이터프레임을 생성할 수 있다.
-
-# In[42]:
-
-
-dict1 = {series1.name:series1, series2.name:series2, series3.name:series3}
-frame1 = pd.DataFrame(dict1)
-frame1
-
 
 # **`pd.concat()` 함수 활용**
 
@@ -483,10 +421,21 @@ frame1
 # 
 # __참고:__ `concat`는 이어붙인다의 의미를 갖는 concatenate 영어 단어에서 유래한다.
 
-# In[43]:
+# In[35]:
 
 
 pd.concat([series1, series2, series3], axis=1)
+
+
+# **2차원 넘파이 어레이 활용**
+
+# In[36]:
+
+
+data = pd.DataFrame(np.arange(16).reshape((4, 4)),
+                    index=['Ohio', 'Colorado', 'Utah', 'New York'],
+                    columns=['year', 'state', 'p', 'four'])
+data
 
 
 # **리스트 사전 활용**
@@ -496,7 +445,7 @@ pd.concat([series1, series2, series3], axis=1)
 # 아래 코드에서 `data`는 `state`(주 이름), `year`(년도), `pop`(인구)을 키(key)로 사용하며,
 # 해당 특성에 해당하는 데이터로 구성된 리스트를 값으로 갖는 사전 객체이다.
 
-# In[44]:
+# In[37]:
 
 
 dict2 = {'state': ['Ohio', 'Ohio', 'Ohio', 'Nevada', 'Nevada', 'Nevada', 'NY', 'NY', 'NY'],
@@ -506,7 +455,7 @@ dict2 = {'state': ['Ohio', 'Ohio', 'Ohio', 'Nevada', 'Nevada', 'Nevada', 'NY', '
 
 # 위 사전 객체를 데이터프레임으로 변환하면 다음과 같다.
 
-# In[45]:
+# In[38]:
 
 
 frame2 = pd.DataFrame(dict2)
@@ -520,7 +469,7 @@ frame2
 # 따라서 아래 모양의 중첩 사전을 활용하여 데이터프레임을 생성할 수 있다.
 # 그러면 최상위 키는 열의 이름으로, 내부에 사용된 키는 행의 인덱스로 사용된다.
 
-# In[46]:
+# In[39]:
 
 
 dict3 = {'Nevada': {2001: 2.4, 2002: 2.9},
@@ -531,7 +480,7 @@ dict3 = {'Nevada': {2001: 2.4, 2002: 2.9},
 # 다만, 두 사전의 키가 다름에 주의하라. 
 # 예를 들어, 2000 인덱스 행의 Nevada의 경우는 결측치로 처리된다. 
 
-# In[47]:
+# In[40]:
 
 
 frame3 = pd.DataFrame(dict3)
@@ -542,14 +491,14 @@ frame3
 # 생성된 데이터프레임은 여러 개의 시리즈를 이어붙여서 생성한 데이터프레임으로 간주할 수 있다.
 # 실제로 아래 두 개의 시리즈를 합친 결과와 동일함을 확인할 수 있다.
 
-# In[48]:
+# In[41]:
 
 
 nevada = pd.Series({2001: 2.4, 2002: 2.9}, name="Nevada")
 nevada
 
 
-# In[49]:
+# In[42]:
 
 
 ohio = pd.Series({2000: 1.5, 2001: 1.7, 2002: 3.6}, name="Ohio")
@@ -560,17 +509,19 @@ ohio
 # 단, 행 인덱스가 정렬되서 보이는 점만 조금 다르다.
 # 행과 열을 기준으로 정렬하는 작업은 나중에 설명한다.
 
-# In[50]:
+# In[43]:
 
 
 pd.concat([nevada, ohio], axis=1)
 
 
+# ### `name` 과 `values`
+
 # **`name` 속성**
 
 # 시리즈의 경우와 동일한 방식으로 행과 열의 이름을 지정할 수 있다.
 
-# In[51]:
+# In[44]:
 
 
 frame3.index.name = 'year'      # 행 이름 지정
@@ -582,13 +533,13 @@ frame3
 
 # 항목들로 이루어진 2차원 어레이는 `values` 속성이 가리킨다.
 
-# In[52]:
+# In[45]:
 
 
 frame3.values
 
 
-# In[53]:
+# In[46]:
 
 
 frame2.values
@@ -600,7 +551,7 @@ frame2.values
 
 # `columns` 속성을 이용하여 열의 순서를 지정할 수 있다.
 
-# In[54]:
+# In[47]:
 
 
 pd.DataFrame(dict2, columns=['year', 'state', 'pop'])
@@ -609,7 +560,7 @@ pd.DataFrame(dict2, columns=['year', 'state', 'pop'])
 # 새로운 열을 추가할 수도 있다.
 # 이름만 지정할 경우 항목은 모두 `NaN`으로 처리된다.
 
-# In[55]:
+# In[48]:
 
 
 frame2 = pd.DataFrame(dict2, columns=['year', 'state', 'pop', 'debt'])
@@ -620,7 +571,7 @@ frame2
 # 
 # __주의사항:__ `frame2`와의 충돌을 피하기 위해 복사해서 사용한다.
 
-# In[56]:
+# In[49]:
 
 
 frame2_ = frame2.copy()
@@ -631,7 +582,7 @@ frame2_
 
 # `columns` 속성을 확인하면 다음과 같다.
 
-# In[57]:
+# In[50]:
 
 
 frame2.columns
@@ -641,7 +592,7 @@ frame2.columns
 
 # 인덱스를 지정하려면 `index` 속성을 이용한다.
 
-# In[58]:
+# In[51]:
 
 
 frame2 = pd.DataFrame(dict2, index=['one', 'two', 'three', 'four',
@@ -651,7 +602,7 @@ frame2
 
 # 물론 `columns`, `index` 등 여러 속성을 동시에 지정할 수도 있다.
 
-# In[59]:
+# In[52]:
 
 
 frame2 = pd.DataFrame(dict2, columns=['year', 'state', 'pop', 'debt'],
@@ -660,24 +611,24 @@ frame2 = pd.DataFrame(dict2, columns=['year', 'state', 'pop', 'debt'],
 frame2
 
 
-# **중복 인덱스**
+# **중복 인덱스 허용**
 
 # 인덱스를 중복해서 사용할 수도 있다.
 
-# In[60]:
+# In[53]:
 
 
 dup_labels = pd.Index(['one', 'two', 'two', 'three', 'three', 'three'])
 dup_labels
 
 
-# In[61]:
+# In[54]:
 
 
 frame2
 
 
-# In[62]:
+# In[55]:
 
 
 pd.DataFrame(frame2, index=dup_labels)
@@ -688,7 +639,7 @@ pd.DataFrame(frame2, index=dup_labels)
 # 시리즈와 데이터프레임의 `index` 와 `columns` 속성에
 # 저장된 값은 `Index` 객체다.
 
-# In[63]:
+# In[56]:
 
 
 obj = pd.Series(range(3), index=['a', 'b', 'c'])
@@ -696,194 +647,33 @@ index = obj.index
 index
 
 
-# In[64]:
+# In[57]:
 
 
 frame3.columns
 
 
-# 인덱스 객체는 1차원 어레이와 유사하게 동작한다.
-# 예를 들어, 인덱싱과 슬라이싱은 리스트 또는 1차원 어레이의 경우와 동일하게 작동한다.
-
-# In[65]:
-
-
-index[1]
-
-
-# In[66]:
-
-
-index[1:]
-
-
-# 하지만 항목을 변경할 수는 없다.
-# 아래처럼 인덱싱을 이용하여 항목을 변경하려 하면 `TypeError`가 발생한다.
-# 
-# ```python
-# index[1] = 'd'
-# ```
-
-# ### 데이터프레임 인덱싱
-
-# **열 인덱싱**
-
-# 열 인덱싱은 시리즈, 사전 등과 동일한 방식을 사용한다.
-# 다만, 지정된 열의 이름을 사용한다.
-# 예를 들어, `state` 열을 확인하면 시리즈로 보여준다.
-
-# In[67]:
-
-
-frame2['state']
-
-
-# 대괄호 대신 속성 형식을 사용할 수도 있다.
-# 아래 코드는 `year` 열을 시리즈로 보여준다.
-
-# In[68]:
-
-
-frame2.year
-
-
-# __주의사항:__ 대괄호를 사용하는 인덱싱은 임의의 문자열을 사용한다.
-# 반면에 속성 형식은 변수를 사용하듯이 처리한다. 
-# 따라서 속성 형식에 사용될 수 있는 열의 이름은 일반 변수의 이름을 짓는 형식을 따라야 한다.
-# 
-# 예를 들어, Ohio 주(state)인지 여부를 판정하는 'Ohio state' 라는 열을 추가해보자.
-# 아래 코드는 새로운 열을 추가하기 위해 사전의 경우처럼 대괄호를 이용하여 새로운 열의 이름과 값을 지정한다.
-
-# In[69]:
-
-
-frame2['Ohio state'] = frame2.state == 'Ohio'
-frame2
-
-
-# 그러면 `'Ohio state'`의 열을 확인하는 방법은 대괄호만 이용할 수 있으며 속성 형식은 불가능하다.
-
-# In[70]:
-
-
-frame2['Ohio state']
-
-
-# 아래와 같이 실행하면 문법 오류(`SyntaxError`)가 발생한다.
-# 이유는 `Ohio state`가 변수 이름으로 허용되지 않기 때문이다.
-# 
-# ```python
-# frame2.Ohio state
-# ```
-
-# **열 삭제**
-
-# 하나의 열을 삭제하려면 `del` 예약어를 사용한다.
-
-# In[71]:
-
-
-del frame2['Ohio state']
-frame2
-
-
-# In[72]:
-
-
-frame2.columns
-
-
-# `drop()` 메서드를 사용할 수도 있지만 나중에 설명한다.
-
-# **행 인덱싱**
-
-# 행 인덱싱은 `loc` 속성과 지정된 인덱스를 이용한다.
-# 예를 들어, `'three'` 행을 확인하려면 다음과 같이 한다.
-
-# In[73]:
-
-
-frame2.loc['three']
-
-
-# 여러 행을 대상으로 인덱싱 하려면 아래와 같이 인덱스의 리스트를 활용한다.
-
-# In[74]:
-
-
-frame2.loc[['three', 'four']]
-
-
-# __참고:__ 행, 열 인덱싱 모두 0, 1, 2 등 정수를 이용하는 방식도 가능하며, 
-# 나중에 자세히 다룬다.
-
-# **열 업데이트**
-
-# 열 인덱싱을 이용하여 항목의 값을 지정할 수 있다. 
-# 아래 코드는 `'debt'` 열의 값을 16.5로 일정하게 지정한다.
-# 
-# __참고:__ 브로드캐스팅이 기본적으로 작동한다.
-
-# In[75]:
-
-
-frame2['debt'] = 16.5
-frame2
-
-
-# 반면에 행의 길이와 동일한 리스트, 어레이 등을 이용하여 각 행별로 다른 값을 지정할 수 있다.
-# 리스트, 어레이의 길이가 행의 개수와 동일해야 함에 주의해야 한다.
-
-# In[76]:
-
-
-frame2['debt'] = np.arange(9.)
-frame2
-
-
-# 반면에 시리즈를 이용하여 특정 열의 값을 지정할 수 있으며, 이 때는 항목의 길이가 
-# 행의 개수와 동일할 필요가 없다.
-# 다만, 지정된 행의 인덱스 값만 삽입되며 나머지는 `NaN`이 삽입된다.
-
-# In[77]:
-
-
-val = pd.Series([-1.2, -1.5, -1.7, 2.2], index=['two', 'four', 'five', 'eleven'])
-val
-
-
-# 위 시리즈를 이용하여 `'debt'` 열의 값을 업데이트하면 다음과 같다.
-# 
-# - `'two'`, `'four'`, `'five'`  행은 지정된 값으로 업데이트
-# - 나머지 인덱스의 값은 결측치로 처리됨.
-# - `'eleven'`에 해당하는 값은 무시됨. 이유는 `frame2`의 인덱스로 포함되지 않기 때문임.
-
-# In[78]:
-
-
-frame2['debt'] = val
-frame2
-
-
 # ### 데이터프레임 연산
+
+# 데이터프레임의 항목을 확인하는 기본 기능을 살펴 본다.
 
 # **`in` 연산자**
 
 # 인덱스와 열에 대한 특정 이름의 사용 여부는 `in` 연산자를 이용하여 확인한다.
 
-# In[79]:
+# In[58]:
 
 
 frame2
 
 
-# In[80]:
+# In[59]:
 
 
 'year' in frame2.columns
 
 
-# In[81]:
+# In[60]:
 
 
 'ten' in frame2.index
@@ -894,13 +684,13 @@ frame2
 # `head()` 메서드는 지정된 크기만큼의 행을 보여준다. 
 # 인자를 지정하지 않으면 처음 5개의 행을 보여준다.
 
-# In[82]:
+# In[61]:
 
 
 frame2.head(3)
 
 
-# In[83]:
+# In[62]:
 
 
 frame2.head()
@@ -911,13 +701,13 @@ frame2.head()
 # `tail()` 메서드는 지정된 크기만큼의 행을 뒤에서부터 보여준다. 
 # 인자를 지정하지 않으면 뒤에서부터 5개의 행을 보여준다.
 
-# In[84]:
+# In[63]:
 
 
 frame2.tail(3)
 
 
-# In[85]:
+# In[64]:
 
 
 frame2.tail()
@@ -928,21 +718,141 @@ frame2.tail()
 # 2차원 행렬의 전치 행렬처럼 전치 데이터프레임은 행과 열의 위치를 바꾼 결과이다.
 # 당연히 행과 열에 사용된 이름이 적절하게 전치된다.
 
-# In[86]:
+# In[65]:
 
 
 frame3
 
 
-# In[87]:
+# In[66]:
 
 
 frame3.T
 
 
+# **결측치 사용 여부 확인**
+
+# In[67]:
+
+
+frame2
+
+
+# `isnull()` 메서드는 누락된 항목은 `True`, 아니면 `False`로 지정하여 단번에 결측치가 포함되었는지 
+# 여부를 확인해준다.
+
+# In[68]:
+
+
+frame2.isnull()
+
+
+# `notnull()` 메서드는 누락된 항목은 `False`, 아니면 `True`로 지정하여 단번에 결측치가 포함되었는지 
+# 여부를 확인해준다.
+
+# In[69]:
+
+
+frame2.notnull()
+
+
+# **`any()` 와 `all()` 메서드**
+
+# `any()` 또는 `all()` 메서드를 활용하면 결측치 사용 여부를 단번에 알 수 있다.
+# 두 메서드는 기본적으로 열별로 적어도 하나가 또는 모두 참인지 여부를 확인한다.
+# 결과는 시리즈다.
+
+# In[70]:
+
+
+frame2.isnull().any()
+
+
+# 축 키워드 인자를 `axis=0`로 지정한 것과 동일하다.
+
+# In[71]:
+
+
+frame2.isnull().any(axis=0)
+
+
+# 행 별로 결측치 존재 여부를 확인하려면 축 키워드 인자를 `axis=1`로 지정한다.
+# 결과는 시리즈다.
+
+# In[72]:
+
+
+frame2.isnull().any(axis=1)
+
+
+# 반면에 `all()` 메서드는 열별 또는 행별로 모두 참인지 확인한다.
+
+# In[73]:
+
+
+frame2.isnull().all()
+
+
+# 축 키워드 인자를 `axis=0`로 지정한 것과 동일하다.
+
+# In[74]:
+
+
+frame2.isnull().all(axis=0)
+
+
+# 행 별로 결측치 존재 여부를 확인하려면 축 키워드 인자를 `axis=1`로 지정한다.
+# 결과는 시리즈다.
+
+# In[75]:
+
+
+frame2.isnull().all(axis=1)
+
+
+# 넘파이의 `np.any()`, `np.all()`는 전체 항목을 대상으로만 작동한다.
+
+# In[76]:
+
+
+np.any(frame2.isnull())
+
+
+# In[77]:
+
+
+np.all(frame2.notnull())
+
+
+# 데이터프레임의 `any()` 메서드와 `all()` 메서드를 이용하여 전체 항목을 확인하려면 해당 메서드를 두 번 적용해야 한다.
+
+# In[78]:
+
+
+frame2.isnull().any().any()
+
+
+# In[79]:
+
+
+frame2.isnull().any(axis=1).any()
+
+
+# In[80]:
+
+
+frame2.isnull().all().all()
+
+
+# In[81]:
+
+
+frame2.isnull().all(axis=1).all()
+
+
 # ## 연습문제
 
-# 참고: [(실습) 판다스 데이터프레임](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-pandas_dataframe.ipynb)
+# 참고: 준비중
 
 # ## 참고 자료
 

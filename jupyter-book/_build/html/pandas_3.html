@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>17. 판다스 활용: 통계 기초 &#8212; 파이썬 데이터 분석</title>
+    <title>17. 데이터프레임 핵심 2부 &#8212; 파이썬 데이터 분석</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,12 +51,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="18. matplotlib.pyplot 1부" href="visualization_1.html" />
-    <link rel="prev" title="16. 데이터프레임 핵심" href="pandas_2.html" />
+    <link rel="next" title="18. 판다스 활용: 통계 기초" href="pandas_4.html" />
+    <link rel="prev" title="16. 데이터프레임 핵심 1부" href="pandas_2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -207,12 +205,22 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_2.html">
-   16. 데이터프레임 핵심
+   16. 데이터프레임 핵심 1부
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   17. 판다스 활용: 통계 기초
+   17. 데이터프레임 핵심 2부
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas_4.html">
+   18. 판다스 활용: 통계 기초
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas_5.html">
+   19. 판다스 실전 활용: 타이타닉 데이터셋 전처리
   </a>
  </li>
 </ul>
@@ -224,17 +232,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="visualization_1.html">
-   18. matplotlib.pyplot 1부
+   20. matplotlib.pyplot 1부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="visualization_2.html">
-   19. matplotlib.pyplot 2부
+   21. matplotlib.pyplot 2부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="visualization_3.html">
-   20. seaborn
+   22. seaborn
   </a>
  </li>
 </ul>
@@ -246,7 +254,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="data_aggregation_grouping.html">
-   21. 데이터 집계와 그룹 생성
+   23. 데이터 집계와 그룹 생성
   </a>
  </li>
 </ul>
@@ -258,7 +266,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="timeseries.html">
-   22. 시계열 데이터
+   24. 시계열 데이터
   </a>
  </li>
 </ul>
@@ -487,27 +495,72 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   17.1. 합, 평균, 표준편차
+   17.1. 연산
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     17.1.1. 산술 연산
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     17.1.2. 연산과 결측치
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     17.1.3. 브로드캐스팅
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     17.1.4. 유니버설 함수
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   17.2. 정렬
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   17.2. 상관관계와 공분산
+  <a class="reference internal nav-link" href="#drop">
+   17.3. 행/열 삭제:
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     drop()
+    </span>
+   </code>
+   메서드
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   17.3. 중복과 빈도
+  <a class="reference internal nav-link" href="#fillna">
+   17.4.
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     fillna()
+    </span>
+   </code>
+   메서드
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
-   17.4. 미니 프로젝트: 붓꽃 데이터셋 표준화
+  <a class="reference internal nav-link" href="#reset-index">
+   17.5.
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     reset_index()
+    </span>
+   </code>
+   메서드
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id6">
-   17.5. 연습문제
+  <a class="reference internal nav-link" href="#id8">
+   17.6. 연습문제
   </a>
  </li>
 </ul>
@@ -519,7 +572,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>판다스 활용: 통계 기초</h1>
+                <h1>데이터프레임 핵심 2부</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -531,27 +584,72 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   17.1. 합, 평균, 표준편차
+   17.1. 연산
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     17.1.1. 산술 연산
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     17.1.2. 연산과 결측치
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     17.1.3. 브로드캐스팅
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     17.1.4. 유니버설 함수
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   17.2. 정렬
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   17.2. 상관관계와 공분산
+  <a class="reference internal nav-link" href="#drop">
+   17.3. 행/열 삭제:
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     drop()
+    </span>
+   </code>
+   메서드
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   17.3. 중복과 빈도
+  <a class="reference internal nav-link" href="#fillna">
+   17.4.
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     fillna()
+    </span>
+   </code>
+   메서드
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
-   17.4. 미니 프로젝트: 붓꽃 데이터셋 표준화
+  <a class="reference internal nav-link" href="#reset-index">
+   17.5.
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     reset_index()
+    </span>
+   </code>
+   메서드
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id6">
-   17.5. 연습문제
+  <a class="reference internal nav-link" href="#id8">
+   17.6. 연습문제
   </a>
  </li>
 </ul>
@@ -565,13 +663,15 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="sec-pandas-3">
-<span id="id1"></span><h1><span class="section-number">17. </span>판다스 활용: 통계 기초<a class="headerlink" href="#sec-pandas-3" title="Permalink to this headline">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">17. </span>데이터프레임 핵심 2부<a class="headerlink" href="#sec-pandas-3" title="Permalink to this headline">#</a></h1>
 <p><strong>주요 내용</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">Series</span></code>와 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> 객체를로부터 기초 통계 자료를 추출하는 방식을 다룬다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Series</span></code>와 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> 객체를 다루는 다양한 도구를 살펴본다.</p>
 <ul class="simple">
-<li><p>합, 평균, 표준편차</p></li>
-<li><p>상관관계, 공분산</p></li>
-<li><p>중복값 처리</p></li>
+<li><p>연산</p></li>
+<li><p>정렬</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">drop()</span></code> 메서드: 행/열 삭제</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fillna()</span></code> 메서드: 결측치 처리</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reset_index()</span></code> 메서드: 인덱스 초기화</p></li>
 </ul>
 <p><strong>기본 설정</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> 라이브러리는 보통 <code class="docutils literal notranslate"><span class="pre">pd</span></code> 라는 별칭으로 사용된다.</p>
@@ -618,1358 +718,337 @@ title="Print to PDF"
 </div>
 </div>
 <section id="id2">
-<h2><span class="section-number">17.1. </span>합, 평균, 표준편차<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
-<p>기초 통계에서 사용되는 주요 메서드들의 활용법을 살펴본다.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sum()</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">mean()</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">std()</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">idxmax()</span></code>/<code class="docutils literal notranslate"><span class="pre">idxmin()</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cumsum()</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">describe()</span></code></p></li>
-</ul>
-<p>기본적으로 열 단위로 작동하며, 결측치는 행 또는 열의 모든 값이 결측치가 아니라면 기본적으로 무시된다.
-행 단위로 작동하게 하려면 축을 <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">axis='columns</span></code>로 지정하고,
-결측치를 무시하지 않으려면 <code class="docutils literal notranslate"><span class="pre">skipna=False</span></code>로 지정한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="mf">1.4</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span> <span class="p">[</span><span class="mf">7.1</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.5</span><span class="p">],</span>
-                   <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.75</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.3</span><span class="p">]],</span>
-                  <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">],</span>
-                  <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">])</span>
-<span class="n">df</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>one</th>
-      <th>two</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>a</th>
-      <td>1.40</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>b</th>
-      <td>7.10</td>
-      <td>-4.5</td>
-    </tr>
-    <tr>
-      <th>c</th>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>d</th>
-      <td>0.75</td>
-      <td>-1.3</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">sum()</span></code> 메서드: 행/열 단위 합 계산</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>one    9.25
-two   -5.80
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<p>결측치를 무시하지 않으면, 결측치가 포함된 행/렬에 대한 계산은 하지 않는다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>one   NaN
-two   NaN
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    1.40
-b    2.60
-c    0.00
-d   -0.55
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<p>시리즈는 하나의 열을 갖는 데이터프레임처럼 작동한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    1.40
-b    7.10
-c     NaN
-d    0.75
-Name: one, dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.25
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">mean()</span></code> 메서드: 평균값 계산</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>one    3.083333
-two   -2.900000
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    1.400
-b    1.300
-c      NaN
-d   -0.275
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<p>결측치를 무시하지 않으면, 결측치가 포함된 행/렬에 대한 계산은 하지 않는다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>one   NaN
-two   NaN
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a      NaN
-b    1.300
-c      NaN
-d   -0.275
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<p>시리즈의 경우도 동일하게 작동한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.0833333333333335
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>nan
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">std()</span></code> 메서드: 표준편차 계산</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>one    3.493685
-two    2.262742
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a         NaN
-b    8.202439
-c         NaN
-d    1.449569
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>one   NaN
-two   NaN
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">,</span> <span class="n">skipna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a         NaN
-b    8.202439
-c         NaN
-d    1.449569
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">idxmax()</span></code>/<code class="docutils literal notranslate"><span class="pre">idxmin()</span></code>: 최댓값/최솟값을 갖는 인덱스 확인</p></li>
-</ul>
-<p>아래 코드는 열별 최댓값을 갖는 인덱스를 찾아준다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>one    b
-two    d
-dtype: object
-</pre></div>
-</div>
-</div>
-</div>
-<p>아래 코드는 행별 최솟값을 갖는 인덱스를 찾아준다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    one
-b    two
-c    NaN
-d    two
-dtype: object
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">cumsum()</span></code>: 누적 합 계산</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">cumsum</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>one</th>
-      <th>two</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>a</th>
-      <td>1.40</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>b</th>
-      <td>8.50</td>
-      <td>-4.5</td>
-    </tr>
-    <tr>
-      <th>c</th>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>d</th>
-      <td>9.25</td>
-      <td>-5.8</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">skipna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>one</th>
-      <th>two</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>a</th>
-      <td>1.4</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>b</th>
-      <td>8.5</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>c</th>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>d</th>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">describe()</span></code>: 요약 통계 보여주기</p></li>
-</ul>
-<p>수치형 데이터의 경우 평균값, 표준편차, 사분위수 등의 통계 정보를 요약해서 보여준다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>one</th>
-      <th>two</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>3.000000</td>
-      <td>2.000000</td>
-    </tr>
-    <tr>
-      <th>mean</th>
-      <td>3.083333</td>
-      <td>-2.900000</td>
-    </tr>
-    <tr>
-      <th>std</th>
-      <td>3.493685</td>
-      <td>2.262742</td>
-    </tr>
-    <tr>
-      <th>min</th>
-      <td>0.750000</td>
-      <td>-4.500000</td>
-    </tr>
-    <tr>
-      <th>25%</th>
-      <td>1.075000</td>
-      <td>-3.700000</td>
-    </tr>
-    <tr>
-      <th>50%</th>
-      <td>1.400000</td>
-      <td>-2.900000</td>
-    </tr>
-    <tr>
-      <th>75%</th>
-      <td>4.250000</td>
-      <td>-2.100000</td>
-    </tr>
-    <tr>
-      <th>max</th>
-      <td>7.100000</td>
-      <td>-1.300000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p>수치형 데이터가 아닐 경우 다른 요약 통계를 보여준다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">ser</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    a
-1    a
-2    b
-3    c
-4    a
-5    a
-6    b
-7    c
-dtype: object
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ser</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count     8
-unique    3
-top       a
-freq      4
-dtype: object
-</pre></div>
-</div>
-</div>
-</div>
-</section>
+<h2><span class="section-number">17.1. </span>연산<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <section id="id3">
-<h2><span class="section-number">17.2. </span>상관관계와 공분산<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
-<p>금융 사이트에서 구한 4 개 회사의 주가(price)와 거래량(volume)을 담고 있는 두 개의 데이터를 이용하여
-상관계수와 공분산을 계산해본다.</p>
-<p>이를 위해 먼저 바이너리 파일 두 개를 다운로드해서 지정된 하위 디렉토리에 저장한다.</p>
+<h3><span class="section-number">17.1.1. </span>산술 연산<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<p>시리즈/데이터프레임의 사칙 연산은 아래 원칙을 따르면서 항목별로 이뤄진다.</p>
 <ul class="simple">
-<li><p>파일 저장 디렉토리 지정 및 생성</p></li>
+<li><p>연산에 사용된 모든 행과 열의 라벨 모두 포함</p></li>
+<li><p>공통으로 사용되는 행과 열의 라벨에 대해서만 연산 적용. 그렇지 않으면 <code class="docutils literal notranslate"><span class="pre">NaN</span></code>으로 처리.</p></li>
 </ul>
+<p>브로드캐스팅은 넘파이 어레이 연산처럼 필요한 경우 자동 적용된다.</p>
+<p><strong>시리즈 산술 연산</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-
-<span class="n">data_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;examples&quot;</span>
-
-<span class="n">data_path</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>특정 서버에서 파일 다운로드 함수</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
-
-<span class="c1"># 파일 서버 기본 주소</span>
-<span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/examples/&quot;</span>
-    
-<span class="k">def</span> <span class="nf">myWget</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-    <span class="c1"># 다운로드 대상 파일 경로</span>
-    <span class="n">file_url</span> <span class="o">=</span> <span class="n">base_url</span> <span class="o">+</span> <span class="n">filename</span>
-    
-    <span class="c1"># 저장 경로와 파일명</span>
-    <span class="n">target_path</span> <span class="o">=</span> <span class="n">data_path</span> <span class="o">/</span> <span class="n">filename</span>
-
-    <span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">file_url</span><span class="p">)</span>
-    
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">target_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
-        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>두 개의 픽클 파일 다운로드한다.</p>
-<ul class="simple">
-<li><p>pkl 파일: 판다스에서 제공하는 객체를 <code class="docutils literal notranslate"><span class="pre">to_pickle()</span></code> 메서드를 이용하여
-컴퓨터에 파일로 저장할 때 사용되는 바이너리 파일.</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">myWget</span><span class="p">(</span><span class="s2">&quot;yahoo_price.pkl&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">myWget</span><span class="p">(</span><span class="s2">&quot;yahoo_volume.pkl&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>다운로드한 두 개의 데이터를 불러온다.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">read_pickle()</span></code>: 저장된 pkl 파일을 파이썬으로 불러오는 함수</p></li>
-</ul>
-<p>아래 코드는 일별 주가 데이터를 불러온다.
-2010년 1월 4일부터 2016년 10월 21일까지의 데이터 1714개를 담고 있다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">price</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;examples/yahoo_price.pkl&#39;</span><span class="p">)</span>
-<span class="n">price</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">7.3</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.4</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">])</span>
+<span class="n">s1</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>AAPL</th>
-      <th>GOOG</th>
-      <th>IBM</th>
-      <th>MSFT</th>
-    </tr>
-    <tr>
-      <th>Date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2010-01-04</th>
-      <td>27.990226</td>
-      <td>313.062468</td>
-      <td>113.304536</td>
-      <td>25.884104</td>
-    </tr>
-    <tr>
-      <th>2010-01-05</th>
-      <td>28.038618</td>
-      <td>311.683844</td>
-      <td>111.935822</td>
-      <td>25.892466</td>
-    </tr>
-    <tr>
-      <th>2010-01-06</th>
-      <td>27.592626</td>
-      <td>303.826685</td>
-      <td>111.208683</td>
-      <td>25.733566</td>
-    </tr>
-    <tr>
-      <th>2010-01-07</th>
-      <td>27.541619</td>
-      <td>296.753749</td>
-      <td>110.823732</td>
-      <td>25.465944</td>
-    </tr>
-    <tr>
-      <th>2010-01-08</th>
-      <td>27.724725</td>
-      <td>300.709808</td>
-      <td>111.935822</td>
-      <td>25.641571</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2016-10-17</th>
-      <td>117.550003</td>
-      <td>779.960022</td>
-      <td>154.770004</td>
-      <td>57.220001</td>
-    </tr>
-    <tr>
-      <th>2016-10-18</th>
-      <td>117.470001</td>
-      <td>795.260010</td>
-      <td>150.720001</td>
-      <td>57.660000</td>
-    </tr>
-    <tr>
-      <th>2016-10-19</th>
-      <td>117.120003</td>
-      <td>801.500000</td>
-      <td>151.259995</td>
-      <td>57.529999</td>
-    </tr>
-    <tr>
-      <th>2016-10-20</th>
-      <td>117.059998</td>
-      <td>796.969971</td>
-      <td>151.520004</td>
-      <td>57.250000</td>
-    </tr>
-    <tr>
-      <th>2016-10-21</th>
-      <td>116.599998</td>
-      <td>799.369995</td>
-      <td>149.630005</td>
-      <td>59.660000</td>
-    </tr>
-  </tbody>
-</table>
-<p>1714 rows × 4 columns</p>
-</div></div></div>
-</div>
-<p>아래 코드는 동일 회사, 동일 날짜의 1일 거래량(volume) 담고 있는 데이터를 불러온다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">volume</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;examples/yahoo_volume.pkl&#39;</span><span class="p">)</span>
-<span class="n">volume</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>AAPL</th>
-      <th>GOOG</th>
-      <th>IBM</th>
-      <th>MSFT</th>
-    </tr>
-    <tr>
-      <th>Date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2010-01-04</th>
-      <td>123432400</td>
-      <td>3927000</td>
-      <td>6155300</td>
-      <td>38409100</td>
-    </tr>
-    <tr>
-      <th>2010-01-05</th>
-      <td>150476200</td>
-      <td>6031900</td>
-      <td>6841400</td>
-      <td>49749600</td>
-    </tr>
-    <tr>
-      <th>2010-01-06</th>
-      <td>138040000</td>
-      <td>7987100</td>
-      <td>5605300</td>
-      <td>58182400</td>
-    </tr>
-    <tr>
-      <th>2010-01-07</th>
-      <td>119282800</td>
-      <td>12876600</td>
-      <td>5840600</td>
-      <td>50559700</td>
-    </tr>
-    <tr>
-      <th>2010-01-08</th>
-      <td>111902700</td>
-      <td>9483900</td>
-      <td>4197200</td>
-      <td>51197400</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2016-10-17</th>
-      <td>23624900</td>
-      <td>1089500</td>
-      <td>5890400</td>
-      <td>23830000</td>
-    </tr>
-    <tr>
-      <th>2016-10-18</th>
-      <td>24553500</td>
-      <td>1995600</td>
-      <td>12770600</td>
-      <td>19149500</td>
-    </tr>
-    <tr>
-      <th>2016-10-19</th>
-      <td>20034600</td>
-      <td>116600</td>
-      <td>4632900</td>
-      <td>22878400</td>
-    </tr>
-    <tr>
-      <th>2016-10-20</th>
-      <td>24125800</td>
-      <td>1734200</td>
-      <td>4023100</td>
-      <td>49455600</td>
-    </tr>
-    <tr>
-      <th>2016-10-21</th>
-      <td>22384800</td>
-      <td>1260500</td>
-      <td>4401900</td>
-      <td>79974200</td>
-    </tr>
-  </tbody>
-</table>
-<p>1714 rows × 4 columns</p>
-</div></div></div>
-</div>
-<p>주가의 일단위 변화율을 알아보기 위해 퍼센트 변화율을 확인해보자.</p>
-<p><strong>참고:</strong> 증권분야에서 return은 이익율을 의미한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span> <span class="o">=</span> <span class="n">price</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span>
-<span class="n">returns</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>AAPL</th>
-      <th>GOOG</th>
-      <th>IBM</th>
-      <th>MSFT</th>
-    </tr>
-    <tr>
-      <th>Date</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2016-10-17</th>
-      <td>-0.000680</td>
-      <td>0.001837</td>
-      <td>0.002072</td>
-      <td>-0.003483</td>
-    </tr>
-    <tr>
-      <th>2016-10-18</th>
-      <td>-0.000681</td>
-      <td>0.019616</td>
-      <td>-0.026168</td>
-      <td>0.007690</td>
-    </tr>
-    <tr>
-      <th>2016-10-19</th>
-      <td>-0.002979</td>
-      <td>0.007846</td>
-      <td>0.003583</td>
-      <td>-0.002255</td>
-    </tr>
-    <tr>
-      <th>2016-10-20</th>
-      <td>-0.000512</td>
-      <td>-0.005652</td>
-      <td>0.001719</td>
-      <td>-0.004867</td>
-    </tr>
-    <tr>
-      <th>2016-10-21</th>
-      <td>-0.003930</td>
-      <td>0.003011</td>
-      <td>-0.012474</td>
-      <td>0.042096</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p><strong><code class="docutils literal notranslate"><span class="pre">corr()</span></code>/<code class="docutils literal notranslate"><span class="pre">cov()</span></code> 메서드</strong></p>
-<p>상관계수와 공분산 모두 두 확률변수 사이의 선형관계를 보여주며
-차이점은 다음과 같다.</p>
-<ul class="simple">
-<li><p>공분산: 두 확률변수 <span class="math notranslate nohighlight">\(X, Y\)</span> 사이의 선형관계를 계량화 함.
-양수/음수 여부에 따라 양 또는 음의 선형관계이며,
-절댓값이 클 수록 강한 선형관계임.
-다만, 사용되는 확률변수의 척도(scale)에 많은 영향을 받음.
-따라서 보통 정규화한 값인 상관계수를 사용함.</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-Cov(X, Y) &amp; = E((X-\mu_X)(Y-\mu_Y))\\[2ex]
-\mu_X &amp; = E(X) = \dfrac{\sum X}{n}\\[1.5ex]
-\mu_Y &amp; = E(Y) = \dfrac{\sum Y}{n}
-\end{align*}
-\end{split}\]</div>
-<ul class="simple">
-<li><p>상관계수: 두 확률변수 사이의 선형관계를 -1과 1 사이의 값으로 표현.
-양수/음수 여부에 따라 양 또는 음의 선형관계이며,
-절댓값이 1에 가까울 수록 강한 선형관계임.
-$<span class="math notranslate nohighlight">\(
-\begin{align*}
-\rho &amp; = \frac{Cov(X, Y)}{\sigma_X\cdot \sigma_Y}\\[2ex]
-\sigma_X &amp; = \sqrt{Var(X)}\\[1.5ex]
-\sigma_X &amp; = \sqrt{Var(X)}\\[1.5ex]
-Var(X) &amp; = \dfrac{\sum (X-\mu_X)^2}{n}\\[1.5ex]
-Var(Y) &amp; = \dfrac{\sum (X-\mu_Y)^2}{n}
-\end{align*}
-\)</span>$</p></li>
-</ul>
-<p>‘MSFT’와 ‘IBM’ 사이의 상관계수는 다음과 같다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span><span class="p">[</span><span class="s1">&#39;MSFT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">returns</span><span class="p">[</span><span class="s1">&#39;IBM&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.49976361144151144
-</pre></div>
-</div>
-</div>
-</div>
-<p>‘MSFT’와 ‘IBM’ 사이의 공분산은 다음과 같다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span><span class="p">[</span><span class="s1">&#39;MSFT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">returns</span><span class="p">[</span><span class="s1">&#39;IBM&#39;</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.870655479703546e-05
-</pre></div>
-</div>
-</div>
-</div>
-<p>아래와 같이 속성으로 처리할 수 있으면 보다 깔금하게 보인다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span><span class="o">.</span><span class="n">MSFT</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">returns</span><span class="o">.</span><span class="n">IBM</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.49976361144151144
-</pre></div>
-</div>
-</div>
-</div>
-<p>전체 회사를 대상으로 하는 상관계수와 공분산을 계산할 수도 있다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>AAPL</th>
-      <th>GOOG</th>
-      <th>IBM</th>
-      <th>MSFT</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>AAPL</th>
-      <td>1.000000</td>
-      <td>0.407919</td>
-      <td>0.386817</td>
-      <td>0.389695</td>
-    </tr>
-    <tr>
-      <th>GOOG</th>
-      <td>0.407919</td>
-      <td>1.000000</td>
-      <td>0.405099</td>
-      <td>0.465919</td>
-    </tr>
-    <tr>
-      <th>IBM</th>
-      <td>0.386817</td>
-      <td>0.405099</td>
-      <td>1.000000</td>
-      <td>0.499764</td>
-    </tr>
-    <tr>
-      <th>MSFT</th>
-      <td>0.389695</td>
-      <td>0.465919</td>
-      <td>0.499764</td>
-      <td>1.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span><span class="o">.</span><span class="n">cov</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>AAPL</th>
-      <th>GOOG</th>
-      <th>IBM</th>
-      <th>MSFT</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>AAPL</th>
-      <td>0.000277</td>
-      <td>0.000107</td>
-      <td>0.000078</td>
-      <td>0.000095</td>
-    </tr>
-    <tr>
-      <th>GOOG</th>
-      <td>0.000107</td>
-      <td>0.000251</td>
-      <td>0.000078</td>
-      <td>0.000108</td>
-    </tr>
-    <tr>
-      <th>IBM</th>
-      <td>0.000078</td>
-      <td>0.000078</td>
-      <td>0.000146</td>
-      <td>0.000089</td>
-    </tr>
-    <tr>
-      <th>MSFT</th>
-      <td>0.000095</td>
-      <td>0.000108</td>
-      <td>0.000089</td>
-      <td>0.000215</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p><strong><code class="docutils literal notranslate"><span class="pre">corrwith()</span></code> 메서드: 다른 시리즈 또는 데이터프레임과의 상관계수 계산</strong></p>
-<p>시리즈를 인자로 사용하면 각 열에 대한 상관계수를 계산한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span><span class="o">.</span><span class="n">corrwith</span><span class="p">(</span><span class="n">returns</span><span class="o">.</span><span class="n">IBM</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL    0.386817
-GOOG    0.405099
-IBM     1.000000
-MSFT    0.499764
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    7.3
+c   -2.5
+d    3.4
+e    1.5
 dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-<p>데이터프레임을 인자로 사용하면 공통 인덱스를 사용하는 모든 열에 대한 상관계수를 계산한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">returns</span><span class="o">.</span><span class="n">corrwith</span><span class="p">(</span><span class="n">volume</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span><span class="o">*</span><span class="mi">2</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AAPL   -0.075565
-GOOG   -0.007067
-IBM    -0.204849
-MSFT   -0.092950
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    14.6
+c    -5.0
+d     6.8
+e     3.0
 dtype: float64
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="o">-</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">],</span>
+               <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">])</span>
+<span class="n">s2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a   -2.1
+c    3.6
+e   -1.5
+f    4.0
+g    3.1
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    5.2
+c    1.1
+d    NaN
+e    0.0
+f    NaN
+g    NaN
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>데이터프레임 산술 연산</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">9.</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> 
+                   <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;bcd&#39;</span><span class="p">),</span>
+                   <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Ohio&#39;</span><span class="p">,</span> <span class="s1">&#39;Texas&#39;</span><span class="p">,</span> <span class="s1">&#39;Colorado&#39;</span><span class="p">])</span>
+<span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Ohio</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>Colorado</th>
+      <td>6.0</td>
+      <td>7.0</td>
+      <td>8.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">-</span> <span class="mi">3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Ohio</th>
+      <td>-3.0</td>
+      <td>-2.0</td>
+      <td>-1.0</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>Colorado</th>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">12.</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;bde&#39;</span><span class="p">),</span>
+                   <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Utah&#39;</span><span class="p">,</span> <span class="s1">&#39;Ohio&#39;</span><span class="p">,</span> <span class="s1">&#39;Texas&#39;</span><span class="p">,</span> <span class="s1">&#39;Oregon&#39;</span><span class="p">])</span>
+<span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>b</th>
+      <th>d</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Utah</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>Ohio</th>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>6.0</td>
+      <td>7.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>Oregon</th>
+      <td>9.0</td>
+      <td>10.0</td>
+      <td>11.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">+</span> <span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Colorado</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Ohio</th>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>6.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Oregon</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>9.0</td>
+      <td>NaN</td>
+      <td>12.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Utah</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="id4">
-<h2><span class="section-number">17.3. </span>중복과 빈도<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
-<p><strong><code class="docutils literal notranslate"><span class="pre">unique()</span></code> 메서드</strong></p>
-<p>시리즈에서 사용된 값을 중복 없이 확인하려면 <code class="docutils literal notranslate"><span class="pre">unique()</span></code> 메서드를 이용한다.
-<code class="docutils literal notranslate"><span class="pre">set()</span></code> 함수와 유사하게 작동하며, 넘파이 어레이를 반환한다.</p>
+<h3><span class="section-number">17.1.2. </span>연산과 결측치<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<p>공통 인덱스가 아니거나 결측치가 이미 존재하는 경우 기본적으로 결측치로 처리된다.
+하지만 <code class="docutils literal notranslate"><span class="pre">fill_value</span></code> 키워드 인자를 이용하여 지정된 값으로 처리하게 만들 수도 있다.
+다만, 연산 기호 대신에 해당 연산의 메서드를 활용해야 한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
-<span class="n">obj</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    c
-1    a
-2    d
-3    a
-4    a
-5    b
-6    b
-7    c
-8    c
-dtype: object
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">uniques</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
-<span class="n">uniques</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;c&#39;, &#39;a&#39;, &#39;d&#39;, &#39;b&#39;], dtype=object)
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong><code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> 메서드</strong></p>
-<p>값들의 빈도수를 확인하기 위해 사용한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c    3
-a    3
-b    2
-d    1
-dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c    3
-a    3
-d    1
-b    2
-dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="id5">
-<h2><span class="section-number">17.4. </span>미니 프로젝트: 붓꽃 데이터셋 표준화<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
-<p>아래 코드는 인터넷 데이터 저장소로부터 아이리스(붓꽃) 데이터(<code class="docutils literal notranslate"><span class="pre">iris.data</span></code>)를
-2차원 넘파이 어레이로 불러온다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 아이리스(붓꽃) 데이터 불러오기</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data&#39;</span>
-<span class="n">iris</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;str&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">iris.data</span></code> 파일에는 아래 형식의 데이터가 150개 들어 있다.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="mf">5.1</span><span class="p">,</span><span class="mf">3.5</span><span class="p">,</span><span class="mf">1.4</span><span class="p">,</span><span class="mf">0.2</span><span class="p">,</span><span class="n">Iris</span><span class="o">-</span><span class="n">setosa</span>
-</pre></div>
-</div>
-<p>하나의 데이터에 사용된 값들은 하나의 아이리스(붓꽃)에 대한 꽃잎, 꽃받침과 관련된 특성(features)과 품종을 나타내며,
-보다 구체적으로 아래 순서를 따른다.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">꽃받침</span> <span class="n">길이</span><span class="p">,</span> <span class="n">꽃받침</span> <span class="n">너비</span><span class="p">,</span> <span class="n">꽃잎</span> <span class="n">길이</span><span class="p">,</span> <span class="n">꽃잎</span> <span class="n">너비</span><span class="p">,</span> <span class="n">품종</span>
-</pre></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">iris</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.ndarray
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(150, 5)
-</pre></div>
-</div>
-</div>
-</div>
-<p>길이와 너비를 저장하는 특성들은 숫자로 저장되어 있었지만 위 코드는 문자열로 저장된 품종 특성과의 자료형을 통일시키기 위해
-모두 문자열 자료형으로 불러왔다.
-처음 5개 데이터를 확인하면 다음과 같다.</p>
-<p><strong>참고:</strong> <code class="docutils literal notranslate"><span class="pre">'&lt;U15'</span></code>는 길이가 최대 15인 유니코드 문자열 자료형을 나타낸다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&#39;5.1&#39;, &#39;3.5&#39;, &#39;1.4&#39;, &#39;0.2&#39;, &#39;Iris-setosa&#39;],
-       [&#39;4.9&#39;, &#39;3.0&#39;, &#39;1.4&#39;, &#39;0.2&#39;, &#39;Iris-setosa&#39;],
-       [&#39;4.7&#39;, &#39;3.2&#39;, &#39;1.3&#39;, &#39;0.2&#39;, &#39;Iris-setosa&#39;],
-       [&#39;4.6&#39;, &#39;3.1&#39;, &#39;1.5&#39;, &#39;0.2&#39;, &#39;Iris-setosa&#39;],
-       [&#39;5.0&#39;, &#39;3.6&#39;, &#39;1.4&#39;, &#39;0.2&#39;, &#39;Iris-setosa&#39;]], dtype=&#39;&lt;U15&#39;)
-</pre></div>
-</div>
-</div>
-</div>
-<p>수치형 데이터와 품종 데이터를 분리해서 각각 (150,4), (150,) 모양의 어레이를 생성하자.
-이때 수치형 데이터는 <code class="docutils literal notranslate"><span class="pre">'f8'</span></code>, 즉 <code class="docutils literal notranslate"><span class="pre">'float64'</span></code> 자료형을 사용하도록 한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_features</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[:,:</span><span class="mi">4</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;f8&#39;</span><span class="p">)</span>
-<span class="n">iris_labels</span> <span class="o">=</span> <span class="n">iris</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>두 어레이를 판다스의 데이터프레임으로 형변환한다.
-이때 각 열의 이름을 사용된 데이터 특성을 반영하도록 지정한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;꽃받침길이&#39;</span><span class="p">,</span> <span class="s1">&#39;꽃받침너비&#39;</span><span class="p">,</span> <span class="s1">&#39;꽃잎길이&#39;</span><span class="p">,</span> <span class="s1">&#39;꽃잎너비&#39;</span><span class="p">]</span>
-<span class="n">iris_features</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris_features</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
-<span class="n">iris_features</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1992,891 +1071,194 @@ dtype: int64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>꽃받침길이</th>
-      <th>꽃받침너비</th>
-      <th>꽃잎길이</th>
-      <th>꽃잎너비</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>e</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>5.1</td>
-      <td>3.5</td>
-      <td>1.4</td>
-      <td>0.2</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>4.9</td>
-      <td>3.0</td>
-      <td>1.4</td>
-      <td>0.2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>4.7</td>
-      <td>3.2</td>
-      <td>1.3</td>
-      <td>0.2</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4.6</td>
-      <td>3.1</td>
-      <td>1.5</td>
-      <td>0.2</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5.0</td>
-      <td>3.6</td>
-      <td>1.4</td>
-      <td>0.2</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p>레이블은 판다스의 시리즈로 변환한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_labels</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">iris_labels</span><span class="p">)</span>
-<span class="n">iris_labels</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         Iris-setosa
-1         Iris-setosa
-2         Iris-setosa
-3         Iris-setosa
-4         Iris-setosa
-            ...      
-145    Iris-virginica
-146    Iris-virginica
-147    Iris-virginica
-148    Iris-virginica
-149    Iris-virginica
-Length: 150, dtype: object
-</pre></div>
-</div>
-</div>
-</div>
-<p>150개의 데이터는 아래 세 개의 품종으로 구분되며, 각각 50개씩 아래 언급된 순서대로 구분되어 있다.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span> <span class="s1">&#39;Iris-virginica&#39;</span>
-</pre></div>
-</div>
-<p>즉, 0번, 50번, 100번부터 각 품종의 데이터가 시작된다.
-넘파이의 경우와는 달리 인덱스를 항상 함께 보여준다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_labels</span><span class="p">[::</span><span class="mi">50</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0          Iris-setosa
-50     Iris-versicolor
-100     Iris-virginica
-dtype: object
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_labels</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    Iris-setosa
-1    Iris-setosa
-2    Iris-setosa
-3    Iris-setosa
-4    Iris-setosa
-dtype: object
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_labels</span><span class="p">[</span><span class="mi">50</span><span class="p">:</span><span class="mi">55</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50    Iris-versicolor
-51    Iris-versicolor
-52    Iris-versicolor
-53    Iris-versicolor
-54    Iris-versicolor
-dtype: object
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_labels</span><span class="p">[</span><span class="mi">100</span><span class="p">:</span><span class="mi">105</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100    Iris-virginica
-101    Iris-virginica
-102    Iris-virginica
-103    Iris-virginica
-104    Iris-virginica
-dtype: object
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>예제 1.</strong> 꽃잎 길이(2번 열)가 1.5보다 크거나 꽃받침 길이(0번 열)가 5.0보다 작은 데이터만 추출하라.</p>
-<p>부울 인덱싱은 넘파이의 경우와 기본적으로 동일하다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">iris_features</span><span class="o">.</span><span class="n">꽃잎길이</span><span class="o">&gt;</span><span class="mf">1.5</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">iris_features</span><span class="o">.</span><span class="n">꽃받침길이</span><span class="o">&lt;</span><span class="mf">5.0</span><span class="p">)</span>
-<span class="n">mask</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      False
-1       True
-2       True
-3       True
-4      False
-       ...  
-145     True
-146     True
-147     True
-148     True
-149     True
-Length: 150, dtype: bool
-</pre></div>
-</div>
-</div>
-</div>
-<p>조건을 만족하는 샘플의 수는 아래와 같다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>129
-</pre></div>
-</div>
-</div>
-</div>
-<p>조건을 만족하는 샘플들은 다음과 같다.
-예를 들어 0번 4번 인덱스의 붓꽃은 조건에 맞지 않아 부울 인덱싱에서 걸러진다.
-하지만 아래에서 볼 수 있듯이 다른 붓꽃의 인덱스가 조정되지는 않는다.
-즉, 인덱스는 한 번 정해지면 절대 변하지 않는다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_features</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>꽃받침길이</th>
-      <th>꽃받침너비</th>
-      <th>꽃잎길이</th>
-      <th>꽃잎너비</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>4.9</td>
-      <td>3.0</td>
-      <td>1.4</td>
-      <td>0.2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>4.7</td>
-      <td>3.2</td>
-      <td>1.3</td>
-      <td>0.2</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4.6</td>
-      <td>3.1</td>
-      <td>1.5</td>
-      <td>0.2</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>5.4</td>
-      <td>3.9</td>
-      <td>1.7</td>
-      <td>0.4</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>4.6</td>
-      <td>3.4</td>
-      <td>1.4</td>
-      <td>0.3</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>145</th>
-      <td>6.7</td>
-      <td>3.0</td>
-      <td>5.2</td>
-      <td>2.3</td>
-    </tr>
-    <tr>
-      <th>146</th>
-      <td>6.3</td>
-      <td>2.5</td>
-      <td>5.0</td>
-      <td>1.9</td>
-    </tr>
-    <tr>
-      <th>147</th>
-      <td>6.5</td>
-      <td>3.0</td>
-      <td>5.2</td>
-      <td>2.0</td>
-    </tr>
-    <tr>
-      <th>148</th>
-      <td>6.2</td>
-      <td>3.4</td>
-      <td>5.4</td>
-      <td>2.3</td>
-    </tr>
-    <tr>
-      <th>149</th>
-      <td>5.9</td>
-      <td>3.0</td>
-      <td>5.1</td>
-      <td>1.8</td>
-    </tr>
-  </tbody>
-</table>
-<p>129 rows × 4 columns</p>
-</div></div></div>
-</div>
-<p><strong>예제 2.</strong> 꽃받침 길이(0번 열)와 꽃잎 길이(2번 열) 사이의 피어슨 상관계수를 계산하라.</p>
-<p>힌트: 넘파이의 적절한 함수를 활용한다. 상관계수에 대한 설명은 <a class="reference external" href="https://ko.wikipedia.org/wiki/%EC%83%81%EA%B4%80_%EB%B6%84%EC%84%9D">위키백과: 상관분석</a>을 참고한다.
-상관계수를 구하는 여러 방식이 있지만 판다스의 <code class="docutils literal notranslate"><span class="pre">corr()</span></code> 함수는 피어슨 상관계수를 기본으로 계산한다.
-다른 방식의 상관계수를 구하려며 <code class="docutils literal notranslate"><span class="pre">method</span></code> 키워드 인자를 다르게 지정해야 한다.
-보다 자세한 사항은 <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.corr.html">판다스: <code class="docutils literal notranslate"><span class="pre">corr()</span></code> 함수 문서</a>를 참조하라.</p>
-<p>데이터프레임의 <code class="docutils literal notranslate"><span class="pre">corr()</span></code> 메서드는 모든 특성들 사이의 피어슨 상관계수로 이루어진 데이터프레임을 반환환다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_corr</span> <span class="o">=</span> <span class="n">iris_features</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
-<span class="n">iris_corr</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>꽃받침길이</th>
-      <th>꽃받침너비</th>
-      <th>꽃잎길이</th>
-      <th>꽃잎너비</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>꽃받침길이</th>
-      <td>1.000000</td>
-      <td>-0.109369</td>
-      <td>0.871754</td>
-      <td>0.817954</td>
-    </tr>
-    <tr>
-      <th>꽃받침너비</th>
-      <td>-0.109369</td>
-      <td>1.000000</td>
-      <td>-0.420516</td>
-      <td>-0.356544</td>
-    </tr>
-    <tr>
-      <th>꽃잎길이</th>
-      <td>0.871754</td>
-      <td>-0.420516</td>
-      <td>1.000000</td>
-      <td>0.962757</td>
-    </tr>
-    <tr>
-      <th>꽃잎너비</th>
-      <td>0.817954</td>
-      <td>-0.356544</td>
-      <td>0.962757</td>
-      <td>1.000000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p>따라서 ‘꽃받침길이’와 다른 특성들 사이의 상관계수를 역순으로 정렬하면 다음과 같다.</p>
-<ul class="simple">
-<li><p>인덱싱: 데이터프레임의 인덱싱은 기본적으로 열(column) 단위로 이루어진다.
-행(row) 단위 인덱싱은 <code class="docutils literal notranslate"><span class="pre">loc()</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">iloc()</span></code> 메서드를 이용한다.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">sort_values()</span></code>: 열 단위로 오름차순으로 정렬함. 역순으로 하고자 할 경우 <code class="docutils literal notranslate"><span class="pre">ascending=False</span></code> 키워드 인자 사용.</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_corr</span><span class="p">[</span><span class="s1">&#39;꽃받침길이&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>꽃받침길이    1.000000
-꽃잎길이     0.871754
-꽃잎너비     0.817954
-꽃받침너비   -0.109369
-Name: 꽃받침길이, dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<p>따라서 ‘꽃받침길이’와 ‘꽃잎길이’ 사이의 상관계수가 가장 높으며
-아래처럼 인덱싱을 두 번 사용하면 해당 값을 확인할 수 있다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_corr</span><span class="p">[</span><span class="s1">&#39;꽃받침길이&#39;</span><span class="p">][</span><span class="s1">&#39;꽃잎길이&#39;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8717541573048716
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>예제 3.</strong> 아래 식으로 계산된 값을 갖는 새로운 열(column)이 추가된 데이터프레임 <code class="docutils literal notranslate"><span class="pre">iris_features_added</span></code>를 생성하라.
-열의 이름은 ‘길이속성1’으로 지정한다.</p>
-<div class="math notranslate nohighlight">
-\[\frac{\text{원주율} \times \text{꽃잎길이} \times \text{꽃받침길이}^2}{3} \]</div>
-<p>시리즈를 생성하면서 동시에 <code class="docutils literal notranslate"><span class="pre">name='길이특성1'</span></code> 이라는 키워드 인자를 사용하는 이유는
-이어서 <code class="docutils literal notranslate"><span class="pre">iris_features</span></code> 데이터프레임과 합칠 때 새로 추가되는 열의 이름으로
-사용되도록 하기 위함이다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pass와 None을 각각 적절한 코드와 표현식으로 대체하라.</span>
-
-<span class="n">scaled</span> <span class="o">=</span> <span class="p">(</span><span class="mf">3.14</span> <span class="o">*</span> <span class="n">iris_features</span><span class="p">[</span><span class="s1">&#39;꽃잎길이&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="n">iris_features</span><span class="p">[</span><span class="s1">&#39;꽃받침길이&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">3</span>
-<span class="n">length_property1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">scaled</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;길이특성1&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">length_property1</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       38.113320
-1       35.182653
-2       30.057127
-3       33.221200
-4       36.633333
-          ...    
-145    244.321307
-146    207.711000
-147    229.952667
-148    217.262880
-149    185.815780
-Name: 길이특성1, Length: 150, dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_features_added</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">iris_features</span><span class="p">,</span> <span class="n">length_property1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="k">assert</span> <span class="n">iris_features_added</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">150</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-<span class="n">iris_features_added</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>꽃받침길이</th>
-      <th>꽃받침너비</th>
-      <th>꽃잎길이</th>
-      <th>꽃잎너비</th>
-      <th>길이특성1</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>5.1</td>
-      <td>3.5</td>
-      <td>1.4</td>
-      <td>0.2</td>
-      <td>38.113320</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>4.9</td>
-      <td>3.0</td>
-      <td>1.4</td>
-      <td>0.2</td>
-      <td>35.182653</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>4.7</td>
-      <td>3.2</td>
-      <td>1.3</td>
-      <td>0.2</td>
-      <td>30.057127</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4.6</td>
-      <td>3.1</td>
-      <td>1.5</td>
-      <td>0.2</td>
-      <td>33.221200</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>5.0</td>
-      <td>3.6</td>
-      <td>1.4</td>
-      <td>0.2</td>
-      <td>36.633333</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>145</th>
-      <td>6.7</td>
-      <td>3.0</td>
-      <td>5.2</td>
-      <td>2.3</td>
-      <td>244.321307</td>
-    </tr>
-    <tr>
-      <th>146</th>
-      <td>6.3</td>
-      <td>2.5</td>
-      <td>5.0</td>
-      <td>1.9</td>
-      <td>207.711000</td>
-    </tr>
-    <tr>
-      <th>147</th>
-      <td>6.5</td>
-      <td>3.0</td>
-      <td>5.2</td>
-      <td>2.0</td>
-      <td>229.952667</td>
-    </tr>
-    <tr>
-      <th>148</th>
-      <td>6.2</td>
-      <td>3.4</td>
-      <td>5.4</td>
-      <td>2.3</td>
-      <td>217.262880</td>
-    </tr>
-    <tr>
-      <th>149</th>
-      <td>5.9</td>
-      <td>3.0</td>
-      <td>5.1</td>
-      <td>1.8</td>
-      <td>185.815780</td>
-    </tr>
-  </tbody>
-</table>
-<p>150 rows × 5 columns</p>
-</div></div></div>
-</div>
-<p><strong>예제 4.</strong> <code class="docutils literal notranslate"><span class="pre">Iris_versicolor</span></code> 품종에 해당하는 데이터만 <code class="docutils literal notranslate"><span class="pre">iris_features</span></code>로부터 추출하라.</p>
-<p>부울 인덱싱을 사용한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># None을 적절한 부울 표현식으로 대체하라.</span>
-
-<span class="n">mask</span> <span class="o">=</span> <span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-versicolor&#39;</span>
-<span class="n">mask</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      False
-1      False
-2      False
-3      False
-4      False
-       ...  
-145    False
-146    False
-147    False
-148    False
-149    False
-Length: 150, dtype: bool
-</pre></div>
-</div>
-</div>
-</div>
-<p>정확히 50개의 샘플에 대해서만 <code class="docutils literal notranslate"><span class="pre">True</span></code>이다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50
-</pre></div>
-</div>
-</div>
-</div>
-<p>보다 정확히는 50번부터 99번까지 붓꽃만 선택된다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_versicolor</span> <span class="o">=</span> <span class="n">iris_features</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
-<span class="n">iris_versicolor</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>꽃받침길이</th>
-      <th>꽃받침너비</th>
-      <th>꽃잎길이</th>
-      <th>꽃잎너비</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>50</th>
+      <th>Colorado</th>
+      <td>6.0</td>
       <td>7.0</td>
-      <td>3.2</td>
-      <td>4.7</td>
-      <td>1.4</td>
+      <td>8.0</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>51</th>
-      <td>6.4</td>
-      <td>3.2</td>
-      <td>4.5</td>
-      <td>1.5</td>
+      <th>Ohio</th>
+      <td>3.0</td>
+      <td>1.0</td>
+      <td>6.0</td>
+      <td>5.0</td>
     </tr>
     <tr>
-      <th>52</th>
-      <td>6.9</td>
-      <td>3.1</td>
-      <td>4.9</td>
-      <td>1.5</td>
+      <th>Oregon</th>
+      <td>9.0</td>
+      <td>NaN</td>
+      <td>10.0</td>
+      <td>11.0</td>
     </tr>
     <tr>
-      <th>53</th>
-      <td>5.5</td>
-      <td>2.3</td>
+      <th>Texas</th>
+      <td>9.0</td>
       <td>4.0</td>
-      <td>1.3</td>
+      <td>12.0</td>
+      <td>8.0</td>
     </tr>
     <tr>
-      <th>54</th>
-      <td>6.5</td>
-      <td>2.8</td>
-      <td>4.6</td>
-      <td>1.5</td>
+      <th>Utah</th>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>2.0</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_versicolor</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>꽃받침길이</th>
-      <th>꽃받침너비</th>
-      <th>꽃잎길이</th>
-      <th>꽃잎너비</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>95</th>
-      <td>5.7</td>
-      <td>3.0</td>
-      <td>4.2</td>
-      <td>1.2</td>
-    </tr>
-    <tr>
-      <th>96</th>
-      <td>5.7</td>
-      <td>2.9</td>
-      <td>4.2</td>
-      <td>1.3</td>
-    </tr>
-    <tr>
-      <th>97</th>
-      <td>6.2</td>
-      <td>2.9</td>
-      <td>4.3</td>
-      <td>1.3</td>
-    </tr>
-    <tr>
-      <th>98</th>
-      <td>5.1</td>
-      <td>2.5</td>
-      <td>3.0</td>
-      <td>1.1</td>
-    </tr>
-    <tr>
-      <th>99</th>
-      <td>5.7</td>
-      <td>2.8</td>
-      <td>4.1</td>
-      <td>1.3</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p><strong>예제 5.</strong> 꽃받침 길이(0번 열)의 평균값(mean), 중앙값(median), 표준편차(standard deviation)를 구하라.</p>
-<p><strong>참고:</strong> 데이터프레임의 메서드는 기본적으로 열(columns)에 대한 속성을 다룬다.
-즉, <code class="docutils literal notranslate"><span class="pre">axis=0</span></code>을 기본 축으로 사용한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_mean</span> <span class="o">=</span> <span class="n">iris_features</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">iris_mean</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>꽃받침길이    5.843333
-꽃받침너비    3.054000
-꽃잎길이     3.758667
-꽃잎너비     1.198667
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_mean</span> <span class="o">=</span> <span class="n">iris_features</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">iris_mean</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>꽃받침길이    5.843333
-꽃받침너비    3.054000
-꽃잎길이     3.758667
-꽃잎너비     1.198667
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_median</span> <span class="o">=</span> <span class="n">iris_features</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
-<span class="n">iris_median</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>꽃받침길이    5.80
-꽃받침너비    3.00
-꽃잎길이     4.35
-꽃잎너비     1.30
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_std</span> <span class="o">=</span> <span class="n">iris_features</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-<span class="n">iris_std</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>꽃받침길이    0.828066
-꽃받침너비    0.433594
-꽃잎길이     1.764420
-꽃잎너비     0.763161
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<p>따라서 <code class="docutils literal notranslate"><span class="pre">for</span></code> 반복문을 이용하여 간단하게 세 개의 평균을 확인할 수 있다.</p>
-<p><strong>참고:</strong> 특정 객체의 메소드로 이루어진 리스트에 포함된 메소드에 대한 반복문을 활용할 수 있다.
-아래 코드는 통계와 관련해서 데이터프레임 객체가 제공하는 세 개의 메서드에
-대한 반복문을 적용하는 방식을 보여준다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">average_methods</span> <span class="o">=</span> <span class="p">[</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">median</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">std</span><span class="p">]</span>
-
-<span class="k">for</span> <span class="n">fun</span> <span class="ow">in</span> <span class="n">average_methods</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">fun</span><span class="p">(</span><span class="n">iris_features</span><span class="p">)[</span><span class="s1">&#39;꽃받침길이&#39;</span><span class="p">],</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.843333333333335 5.8 0.8280661279778629 
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>예제 6.</strong> 세 개의 품종 별 꽃받침 너비(1번 열)의 평균값을 계산하여 아래 모양의<br />
-데이터프레임과 시리즈(Series) <code class="docutils literal notranslate"><span class="pre">iris_mean_sepal_length</span></code>를 생성하라.</p>
+<p>기본적으로 사용되는 산술 연산 기호에 해당하는 메서드가 존재한다.
+아래는 가장 많이 사용되는 연산 메서드들이다.</p>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="text-align:right head"><p></p></th>
-<th class="text-align:right head"><p>평균 꽃받침 너비</p></th>
+<tr class="row-odd"><th class="text-align:left head"><p>메서드</p></th>
+<th class="text-align:left head"><p>설명</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:right"><p>Iris-setosa</p></td>
-<td class="text-align:right"><p>3.418</p></td>
+<tr class="row-even"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">add()</span></code></p></td>
+<td class="text-align:left"><p>덧셈(<code class="docutils literal notranslate"><span class="pre">+</span></code>) 계산 메서드</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:right"><p>Iris-versicolor</p></td>
-<td class="text-align:right"><p>2.770</p></td>
+<tr class="row-odd"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">sub()</span></code></p></td>
+<td class="text-align:left"><p>뺄셈(<code class="docutils literal notranslate"><span class="pre">-</span></code>) 계산 메서드</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:right"><p>Iris-virginica</p></td>
-<td class="text-align:right"><p>2.974</p></td>
+<tr class="row-even"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">mul()</span></code></p></td>
+<td class="text-align:left"><p>곱셈(<code class="docutils literal notranslate"><span class="pre">*</span></code>) 계산 메서드</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">div()</span></code></p></td>
+<td class="text-align:left"><p>나눗셈(<code class="docutils literal notranslate"><span class="pre">/</span></code>) 계산 메서드</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">floordiv()</span></code></p></td>
+<td class="text-align:left"><p>몫 (<code class="docutils literal notranslate"><span class="pre">//</span></code>) 계산 메서드</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p><code class="docutils literal notranslate"><span class="pre">pow()</span></code></p></td>
+<td class="text-align:left"><p>거듭제곱(<code class="docutils literal notranslate"><span class="pre">**</span></code>) 메서드</p></td>
 </tr>
 </tbody>
 </table>
-<p>데이터프레임을 만들려면 <code class="docutils literal notranslate"><span class="pre">index</span></code>와 <code class="docutils literal notranslate"><span class="pre">columns</span></code> 키워드를 인자를 적절하게 지정해야 한다.</p>
+</section>
+<section id="id5">
+<h3><span class="section-number">17.1.3. </span>브로드캐스팅<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<p>넘파이에서 2차원 어레이와 1차원 어레이 사이에
+브로드캐스팅이 가능한 경우,
+즉, 차원을 맞출 수 있는 경우에 연산이 가능했다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kinds</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">iris_labels</span><span class="p">))</span>
-<span class="n">kinds</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>                      <span class="c1"># 이름 순서를 맞추기 위해</span>
-
-<span class="n">iris_mean_sepal_width</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">kind</span> <span class="ow">in</span> <span class="n">kinds</span><span class="p">:</span>
-    <span class="n">mask</span> <span class="o">=</span> <span class="n">iris_labels</span> <span class="o">==</span> <span class="n">kind</span>
-    <span class="n">mean_0</span> <span class="o">=</span> <span class="n">iris_features</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;꽃받침너비&#39;</span><span class="p">]</span>
-    <span class="n">iris_mean_sepal_width</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_0</span><span class="p">)</span>
-    
-<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">iris_mean_sepal_width</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">kinds</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;평균 꽃받침 너비&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">12.</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">arr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.,  1.,  2.,  3.],
+       [ 4.,  5.,  6.,  7.],
+       [ 8.,  9., 10., 11.]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0., 1., 2., 3.])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">-</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 0., 0., 0.],
+       [4., 4., 4., 4.],
+       [8., 8., 8., 8.]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>브로드캐스팅이 불가능하면 오류가 발생한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1., 5., 9.])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">arr</span> <span class="o">+</span> <span class="n">arr</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;브로드캐스팅 불가능!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>브로드캐스팅 불가능!
+</pre></div>
+</div>
+</div>
+</div>
+<p>물론 아래와 같이 브로드캐스팅이 가능하도록 모양을 변환한 다음엔 연산이 가능하다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr_1</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[:,</span><span class="mi">1</span><span class="p">][:,</span> <span class="n">np</span><span class="o">.</span><span class="n">newaxis</span><span class="p">]</span>
+<span class="n">arr_1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.],
+       [5.],
+       [9.]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">+</span> <span class="n">arr_1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.,  2.,  3.,  4.],
+       [ 9., 10., 11., 12.],
+       [17., 18., 19., 20.]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>데이터프레임과 시리즈 사이의 연산도 동일하게 작동한다.
+다만, 행 또는 열에 대한 연산 여부를 확실하게 구분해주어야 한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">12.</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
+                     <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;bde&#39;</span><span class="p">),</span>
+                     <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Utah&#39;</span><span class="p">,</span> <span class="s1">&#39;Ohio&#39;</span><span class="p">,</span> <span class="s1">&#39;Texas&#39;</span><span class="p">,</span> <span class="s1">&#39;Oregon&#39;</span><span class="p">])</span>
+<span class="n">frame</span>
 </pre></div>
 </div>
 </div>
@@ -2899,166 +1281,61 @@ dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>평균 꽃받침 너비</th>
+      <th>b</th>
+      <th>d</th>
+      <th>e</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>Iris-setosa</th>
-      <td>3.418</td>
+      <th>Utah</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
     </tr>
     <tr>
-      <th>Iris-versicolor</th>
-      <td>2.770</td>
-    </tr>
-    <tr>
-      <th>Iris-virginica</th>
-      <td>2.974</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p>시리즈를 만들려면 <code class="docutils literal notranslate"><span class="pre">index</span></code>와 <code class="docutils literal notranslate"><span class="pre">name</span></code> 키워드를 인자를 적절하게 지정해야 한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kinds</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">iris_labels</span><span class="p">))</span>
-<span class="n">kinds</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>                      <span class="c1"># 이름 순서를 맞추기 위해</span>
-
-<span class="n">iris_mean_sepal_width</span> <span class="o">=</span> <span class="p">[]</span>
-
-<span class="k">for</span> <span class="n">kind</span> <span class="ow">in</span> <span class="n">kinds</span><span class="p">:</span>
-    <span class="n">mask</span> <span class="o">=</span> <span class="n">iris_labels</span> <span class="o">==</span> <span class="n">kind</span>
-    <span class="n">mean_0</span> <span class="o">=</span> <span class="n">iris_features</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">&#39;꽃받침너비&#39;</span><span class="p">]</span>
-    <span class="n">iris_mean_sepal_width</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_0</span><span class="p">)</span>
-    
-<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">iris_mean_sepal_width</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">kinds</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;평균 꽃받침 너비&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Iris-setosa        3.418
-Iris-versicolor    2.770
-Iris-virginica     2.974
-Name: 평균 꽃받침 너비, dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>예제 7.</strong> 꽃잎 너비(3번 열)에 사용된 값을 모두 0과 1사이의 값으로 변환하라.</p>
-<p>힌트: 하나의 특성, 여기서는 꽃잎 너비,에 속하는 값을 모두 0과 1사이의 값으로 변환하는 작업을 정규화(normalization)이라 한다.
-정규화에 대한 설명은 <a class="reference external" href="https://rucrazia.tistory.com/90">정규화/표준화</a>을 참고하라.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_features</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>꽃받침길이</th>
-      <th>꽃받침너비</th>
-      <th>꽃잎길이</th>
-      <th>꽃잎너비</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>5.1</td>
-      <td>3.5</td>
-      <td>1.4</td>
-      <td>0.2</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>4.9</td>
+      <th>Ohio</th>
       <td>3.0</td>
-      <td>1.4</td>
-      <td>0.2</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>4.7</td>
-      <td>3.2</td>
-      <td>1.3</td>
-      <td>0.2</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>4.6</td>
-      <td>3.1</td>
-      <td>1.5</td>
-      <td>0.2</td>
-    </tr>
-    <tr>
-      <th>4</th>
+      <td>4.0</td>
       <td>5.0</td>
-      <td>3.6</td>
-      <td>1.4</td>
-      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>6.0</td>
+      <td>7.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>Oregon</th>
+      <td>9.0</td>
+      <td>10.0</td>
+      <td>11.0</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>넘파이의 경우와 동일하게 작동한다.
-하지만 데이터프레임의 메서드는 기본적으로 축을 0으로 지정해서 열 단위로 작동하기에
-조금 더 간단하게 구현할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_features</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">series</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>꽃받침길이    4.3
-꽃받침너비    2.0
-꽃잎길이     1.0
-꽃잎너비     0.1
-dtype: float64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b    0.0
+d    1.0
+e    2.0
+Name: Utah, dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
+<p>브로드캐스팅은 기본족으로 행 단위로 이루어진다.
+따라서 아래처럼 데이터프레임과 시리즈의 연산을 그냥 적용할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_features</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>꽃받침길이    4.3
-꽃받침너비    2.0
-꽃잎길이     1.0
-꽃잎너비     0.1
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_features_normalized</span> <span class="o">=</span> <span class="p">(</span><span class="n">iris_features</span> <span class="o">-</span> <span class="n">iris_features</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">/</span><span class="p">(</span><span class="n">iris_features</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">iris_features</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
-
-<span class="n">iris_features_normalized</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span> <span class="o">-</span> <span class="n">series</span>
 </pre></div>
 </div>
 </div>
@@ -3081,161 +1358,60 @@ dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>꽃받침길이</th>
-      <th>꽃받침너비</th>
-      <th>꽃잎길이</th>
-      <th>꽃잎너비</th>
+      <th>b</th>
+      <th>d</th>
+      <th>e</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>0.222222</td>
-      <td>0.625000</td>
-      <td>0.067797</td>
-      <td>0.041667</td>
+      <th>Utah</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>0.166667</td>
-      <td>0.416667</td>
-      <td>0.067797</td>
-      <td>0.041667</td>
+      <th>Ohio</th>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>0.111111</td>
-      <td>0.500000</td>
-      <td>0.050847</td>
-      <td>0.041667</td>
+      <th>Texas</th>
+      <td>6.0</td>
+      <td>6.0</td>
+      <td>6.0</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>0.083333</td>
-      <td>0.458333</td>
-      <td>0.084746</td>
-      <td>0.041667</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0.194444</td>
-      <td>0.666667</td>
-      <td>0.067797</td>
-      <td>0.041667</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>145</th>
-      <td>0.666667</td>
-      <td>0.416667</td>
-      <td>0.711864</td>
-      <td>0.916667</td>
-    </tr>
-    <tr>
-      <th>146</th>
-      <td>0.555556</td>
-      <td>0.208333</td>
-      <td>0.677966</td>
-      <td>0.750000</td>
-    </tr>
-    <tr>
-      <th>147</th>
-      <td>0.611111</td>
-      <td>0.416667</td>
-      <td>0.711864</td>
-      <td>0.791667</td>
-    </tr>
-    <tr>
-      <th>148</th>
-      <td>0.527778</td>
-      <td>0.583333</td>
-      <td>0.745763</td>
-      <td>0.916667</td>
-    </tr>
-    <tr>
-      <th>149</th>
-      <td>0.444444</td>
-      <td>0.416667</td>
-      <td>0.694915</td>
-      <td>0.708333</td>
+      <th>Oregon</th>
+      <td>9.0</td>
+      <td>9.0</td>
+      <td>9.0</td>
     </tr>
   </tbody>
 </table>
-<p>150 rows × 4 columns</p>
 </div></div></div>
 </div>
-<p>이제 꽃잎 너비에 대한 정보만 인덱싱으로 추출하면 된다.</p>
+<p>공통 인덱스가 존재하면 두 인자 모두에 대해 브로드캐스팅이 적용된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_features_normalized</span><span class="o">.</span><span class="n">꽃잎너비</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">])</span>
+<span class="n">series2</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      0.041667
-1      0.041667
-2      0.041667
-3      0.041667
-4      0.041667
-         ...   
-145    0.916667
-146    0.750000
-147    0.791667
-148    0.916667
-149    0.708333
-Name: 꽃잎너비, Length: 150, dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>예제 8.</strong> <code class="docutils literal notranslate"><span class="pre">iris_features</span></code>에 사용된 모든 값을 특성 별로 표준화(standardization)하라.</p>
-<p>힌트: 표준화에 대한 설명은 <a class="reference external" href="https://rucrazia.tistory.com/90">정규화/표준화</a>을 참고하라.</p>
-<p><code class="docutils literal notranslate"><span class="pre">mean()</span></code>, <code class="docutils literal notranslate"><span class="pre">std()</span></code> 메서드도 기본적으로 축을 0으로 지정해서 작동한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_features</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>꽃받침길이    5.843333
-꽃받침너비    3.054000
-꽃잎길이     3.758667
-꽃잎너비     1.198667
-dtype: float64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b    0
+e    1
+f    2
+dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_features</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>꽃받침길이    0.828066
-꽃받침너비    0.433594
-꽃잎길이     1.764420
-꽃잎너비     0.763161
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># None을 적절한 부울 표현식으로 대체하라.</span>
-
-<span class="n">iris_features_standardized</span> <span class="o">=</span> <span class="p">(</span><span class="n">iris_features</span> <span class="o">-</span> <span class="n">iris_features</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">iris_features</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
-
-<span class="n">iris_features_standardized</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span> <span class="o">+</span> <span class="n">series2</span>
 </pre></div>
 </div>
 </div>
@@ -3258,47 +1434,178 @@ dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>꽃받침길이</th>
-      <th>꽃받침너비</th>
-      <th>꽃잎길이</th>
-      <th>꽃잎너비</th>
+      <th>b</th>
+      <th>d</th>
+      <th>e</th>
+      <th>f</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>-0.897674</td>
-      <td>1.028611</td>
-      <td>-1.336794</td>
-      <td>-1.308593</td>
+      <th>Utah</th>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>-1.139200</td>
-      <td>-0.124540</td>
-      <td>-1.336794</td>
-      <td>-1.308593</td>
+      <th>Ohio</th>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>6.0</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>-1.380727</td>
-      <td>0.336720</td>
-      <td>-1.393470</td>
-      <td>-1.308593</td>
+      <th>Texas</th>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>9.0</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>-1.501490</td>
-      <td>0.106090</td>
-      <td>-1.280118</td>
-      <td>-1.308593</td>
+      <th>Oregon</th>
+      <td>9.0</td>
+      <td>NaN</td>
+      <td>12.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>열 단위로 데이터프레임과 시리즈를 더하려면
+해당 연산 메서드를 <code class="docutils literal notranslate"><span class="pre">axis=0</span></code> 키워드 인자와 함께 적용해야 한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">series3</span> <span class="o">=</span> <span class="n">frame</span><span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">]</span>
+<span class="n">series3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Utah       1.0
+Ohio       4.0
+Texas      7.0
+Oregon    10.0
+Name: d, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">series3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>b</th>
+      <th>d</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Utah</th>
+      <td>-1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>-1.018437</td>
-      <td>1.259242</td>
-      <td>-1.336794</td>
-      <td>-1.308593</td>
+      <th>Ohio</th>
+      <td>-1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>-1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>Oregon</th>
+      <td>-1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">axis='index'</span></code>를 사용해도 된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="n">series3</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>b</th>
+      <th>d</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Utah</th>
+      <td>-1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>Ohio</th>
+      <td>-1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>-1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>Oregon</th>
+      <td>-1.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
     </tr>
   </tbody>
 </table>
@@ -3306,8 +1613,1385 @@ dtype: float64
 </div>
 </section>
 <section id="id6">
-<h2><span class="section-number">17.5. </span>연습문제<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
-<p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-pandas_stats.ipynb">(실습) 판다스 활용: 통계 기초</a></p>
+<h3><span class="section-number">17.1.4. </span>유니버설 함수<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<p>유니버설 함수는 넘파이의 경우와 동일하게 작동한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;bde&#39;</span><span class="p">),</span>
+                     <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Utah&#39;</span><span class="p">,</span> <span class="s1">&#39;Ohio&#39;</span><span class="p">,</span> <span class="s1">&#39;Texas&#39;</span><span class="p">,</span> <span class="s1">&#39;Oregon&#39;</span><span class="p">])</span>
+<span class="n">frame</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>b</th>
+      <th>d</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Utah</th>
+      <td>-0.204708</td>
+      <td>0.478943</td>
+      <td>-0.519439</td>
+    </tr>
+    <tr>
+      <th>Ohio</th>
+      <td>-0.555730</td>
+      <td>1.965781</td>
+      <td>1.393406</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>0.092908</td>
+      <td>0.281746</td>
+      <td>0.769023</td>
+    </tr>
+    <tr>
+      <th>Oregon</th>
+      <td>1.246435</td>
+      <td>1.007189</td>
+      <td>-1.296221</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>넘파이의 <code class="docutils literal notranslate"><span class="pre">abs()</span></code> 함수를 적용하면 항목별로 이루어진다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>b</th>
+      <th>d</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Utah</th>
+      <td>0.204708</td>
+      <td>0.478943</td>
+      <td>0.519439</td>
+    </tr>
+    <tr>
+      <th>Ohio</th>
+      <td>0.555730</td>
+      <td>1.965781</td>
+      <td>1.393406</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>0.092908</td>
+      <td>0.281746</td>
+      <td>0.769023</td>
+    </tr>
+    <tr>
+      <th>Oregon</th>
+      <td>1.246435</td>
+      <td>1.007189</td>
+      <td>1.296221</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>시리즈에 대해서도 동일하다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">frame</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Utah      0.204708
+Ohio      0.555730
+Texas     0.092908
+Oregon    1.246435
+Name: b, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">map()</span></code>과 <code class="docutils literal notranslate"><span class="pre">applymap()</span></code> 메서드</strong></p>
+<p>유니버설 함수가 아닌 함수를 시리즈의 항목별로 적용하려면
+<code class="docutils literal notranslate"><span class="pre">map()</span></code> 메서드를 이용한다.</p>
+<p>예를 들어 아래 람다(lambda) 함수는 부동소수점을 소수점 이하 셋째 자리에서 반올림한 값만 보여주도록
+한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>시리즈에 적용해보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="p">[</span><span class="s1">&#39;e&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">format</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Utah      -0.52
+Ohio       1.39
+Texas      0.77
+Oregon    -1.30
+Name: e, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>유니버설 함수가 아닌 함수를 데이터프레임의 항목별로 적용하려면
+<code class="docutils literal notranslate"><span class="pre">applymap()</span></code> 메서드를 이용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="nb">format</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>b</th>
+      <th>d</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Utah</th>
+      <td>-0.20</td>
+      <td>0.48</td>
+      <td>-0.52</td>
+    </tr>
+    <tr>
+      <th>Ohio</th>
+      <td>-0.56</td>
+      <td>1.97</td>
+      <td>1.39</td>
+    </tr>
+    <tr>
+      <th>Texas</th>
+      <td>0.09</td>
+      <td>0.28</td>
+      <td>0.77</td>
+    </tr>
+    <tr>
+      <th>Oregon</th>
+      <td>1.25</td>
+      <td>1.01</td>
+      <td>-1.30</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">apply()</span></code> 메서드</strong></p>
+<p>행 또는 열 단위로 함수를 적용하려면 <code class="docutils literal notranslate"><span class="pre">apply()</span></code> 메서드를 활용한다.
+기본은 열 단위로 함수가 적용되며 반환값이 스칼라 값이면 시리즈가 반환된다.</p>
+<p>예를 들어 아래 함수는 최댓값과 최소값의 차이를 반환한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f1</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>데이터프레임에 적용하면 열 별로 최댓값과 최솟값의 차이를 계산하여 시리즈로 반환한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b    1.802165
+d    1.684034
+e    2.689627
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>행 별로 함수를 적용하려면 <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">axis='columls'</span></code>를 지정해야 한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Utah      0.998382
+Ohio      2.521511
+Texas     0.676115
+Oregon    2.542656
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Utah      0.998382
+Ohio      2.521511
+Texas     0.676115
+Oregon    2.542656
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>함수의 반환값이 시리즈이면 <code class="docutils literal notranslate"><span class="pre">apply()</span></code> 메서드는 데이터프레임을 반환된다.
+예를 들어 아래 함수는 최솟값과 최댓값을 갖는 시리즈를 반환한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;max&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">apply()</span></code> 메서드와 함께 호출하면 열 별로 최댓값과 최솟값을 계산하여 데이터프레임으로 반환한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">f2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>b</th>
+      <th>d</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>min</th>
+      <td>-0.555730</td>
+      <td>0.281746</td>
+      <td>-1.296221</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>1.246435</td>
+      <td>1.965781</td>
+      <td>1.393406</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>참고:</strong> 시리즈 객체 또한 <code class="docutils literal notranslate"><span class="pre">apply()</span></code> 메서드를 갖는다. 하지만
+기본적으로 <code class="docutils literal notranslate"><span class="pre">map()</span></code> 메서드처럼 작동한다.
+<code class="docutils literal notranslate"><span class="pre">map()</span></code> 메서드보다 좀 더 다야한 기능을 갖지만 여기서는 다루지 않는다.</p>
+</section>
+</section>
+<section id="id7">
+<h2><span class="section-number">17.2. </span>정렬<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
+<p>행과 열의 인덱스 또는 항목을 대상으로 정렬할 수 있다.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">sort_index()</span></code> 메서드</strong></p>
+<p>시리즈의 경우 인덱스를 기준으로 정렬한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
+<span class="n">obj</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d    0
+a    1
+b    2
+c    3
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    1
+b    2
+c    3
+d    0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>내림차순으로 정렬하려면 <code class="docutils literal notranslate"><span class="pre">ascending=False</span></code> 키워드 인자를 함께 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d    0
+c    3
+b    2
+a    1
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>데이터프레임의 경우 행 또는 열의 인덱스를 기준으로 정렬한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)),</span>
+                     <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="s1">&#39;one&#39;</span><span class="p">],</span>
+                     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
+<span class="n">frame</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>d</th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>three</th>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>one</th>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>기본은 행의 인데스를 기준으로 정렬한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>d</th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>one</th>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>three</th>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>열의 인덱스를 기준으로 정렬하려면 <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">axis='columns'</span></code> 키워드 인자를 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>three</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>one</th>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>three</th>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>one</th>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>내림차순으로 정렬하려면 <code class="docutils literal notranslate"><span class="pre">ascending=False</span></code> 키워드 인자를 함께 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">sort_index</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>d</th>
+      <th>c</th>
+      <th>b</th>
+      <th>a</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>three</th>
+      <td>0</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>one</th>
+      <td>4</td>
+      <td>7</td>
+      <td>6</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">sort_values()</span></code> 메서드</strong></p>
+<p>지정된 열 또는 행에 속한 값들을 기준으로 정렬할 때 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">obj</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    4
+1    7
+2   -3
+3    2
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2   -3
+3    2
+0    4
+1    7
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>결측치는 맨 나중에 위치시킨다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">obj</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    4.0
+1    NaN
+2    7.0
+3    NaN
+4   -3.0
+5    2.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4   -3.0
+5    2.0
+0    4.0
+2    7.0
+1    NaN
+3    NaN
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>데이터프레임의 경우 <code class="docutils literal notranslate"><span class="pre">by</span></code> 키워드 인자를 이용하여 열의 라벨을 지정해야 한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]})</span>
+<span class="n">frame</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>b</th>
+      <th>a</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>예를 들어 <code class="docutils literal notranslate"><span class="pre">b</span></code> 열의 값을 기준으로 정렬한다.
+물론 동일한 행의 값은 함께 움직인다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>b</th>
+      <th>a</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>-3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>여러 열의 값을 기준으로 정렬하려면 라벨의 리스트를 입력한다.
+그러면 리스트 항목 순서대로 기준이 정해진다.</p>
+<p>예를 들어 아래 코드는 먼저 <code class="docutils literal notranslate"><span class="pre">a</span></code> 열의 항목들을 순서대로 정렬한 다음에
+동등한 값의 경우에는 <code class="docutils literal notranslate"><span class="pre">b</span></code> 열의 항목들 순서대로 정렬한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>b</th>
+      <th>a</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>-3</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>4</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>7</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>참고:</strong> <code class="docutils literal notranslate"><span class="pre">axis=1</span></code>을 이용하여 특정 행의 값을 기준으로 정렬할 수도 있다.
+하지만 데이터프레임은 서로 다른 특성을 열 단위로 담는 목적으로
+사용되기에 이런 정렬은 사용할 이유가 별로 없다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>-3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="drop">
+<h2><span class="section-number">17.3. </span>행/열 삭제: <code class="docutils literal notranslate"><span class="pre">drop()</span></code> 메서드<a class="headerlink" href="#drop" title="Permalink to this headline">#</a></h2>
+<p>특정 행 또는 열의 인덱스를 제외한 나머지로 이루어진 시리즈/데이터프레임을 생성할 때 사용한다.</p>
+<p><strong>시리즈의 행 삭제</strong></p>
+<p>시리즈의 경우 인덱스를 한 개 또는 여러 개 지정하면 나머지로 이루어진 시리즈를 얻는다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">5.</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">])</span>
+<span class="n">obj</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    0.0
+b    1.0
+c    2.0
+d    3.0
+e    4.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_obj</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="n">new_obj</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    0.0
+b    1.0
+d    3.0
+e    4.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    0.0
+b    1.0
+e    4.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>원본 시리즈를 직접 건드리지는 않는다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    0.0
+b    1.0
+c    2.0
+d    3.0
+e    4.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">inplace=True</span></code> 키워드 인자</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">inplace=True</span></code> 키워드 인자를 이용하면 원본을 수정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    0.0
+b    1.0
+d    3.0
+e    4.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>데이터프레임의 행 삭제</strong></p>
+<p>데이터프레임의 경우도 기본적으로 행의 인덱스를 기준으로 작동한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)),</span>
+                    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Ohio&#39;</span><span class="p">,</span> <span class="s1">&#39;Colorado&#39;</span><span class="p">,</span> <span class="s1">&#39;Utah&#39;</span><span class="p">,</span> <span class="s1">&#39;New York&#39;</span><span class="p">],</span>
+                    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="s1">&#39;four&#39;</span><span class="p">])</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>one</th>
+      <th>two</th>
+      <th>three</th>
+      <th>four</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Ohio</th>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>Colorado</th>
+      <td>4</td>
+      <td>5</td>
+      <td>6</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>Utah</th>
+      <td>8</td>
+      <td>9</td>
+      <td>10</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>12</td>
+      <td>13</td>
+      <td>14</td>
+      <td>15</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;Colorado&#39;</span><span class="p">,</span> <span class="s1">&#39;Ohio&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>one</th>
+      <th>two</th>
+      <th>three</th>
+      <th>four</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Utah</th>
+      <td>8</td>
+      <td>9</td>
+      <td>10</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>12</td>
+      <td>13</td>
+      <td>14</td>
+      <td>15</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>데이터프레임의 열 삭제</strong></p>
+<p>열을 기준으로 작동하게 하려면 <code class="docutils literal notranslate"><span class="pre">axis=1</span></code>로 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>one</th>
+      <th>three</th>
+      <th>four</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Ohio</th>
+      <td>0</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>Colorado</th>
+      <td>4</td>
+      <td>6</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>Utah</th>
+      <td>8</td>
+      <td>10</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>12</td>
+      <td>14</td>
+      <td>15</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">axis='columns'</span></code>로 지정해도 된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;four&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>one</th>
+      <th>three</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Ohio</th>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>Colorado</th>
+      <td>4</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>Utah</th>
+      <td>8</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>12</td>
+      <td>14</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">inplace=True</span></code> 키워드 인자</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">inplace=True</span></code> 키워드 인자를 사용하면 이번에도 원본을 수정함에 주의하라.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>one</th>
+      <th>three</th>
+      <th>four</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Ohio</th>
+      <td>0</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>Colorado</th>
+      <td>4</td>
+      <td>6</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>Utah</th>
+      <td>8</td>
+      <td>10</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>12</td>
+      <td>14</td>
+      <td>15</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="fillna">
+<h2><span class="section-number">17.4. </span><code class="docutils literal notranslate"><span class="pre">fillna()</span></code> 메서드<a class="headerlink" href="#fillna" title="Permalink to this headline">#</a></h2>
+<p>결측치를 특정 값으로 채우기</p>
+</section>
+<section id="reset-index">
+<h2><span class="section-number">17.5. </span><code class="docutils literal notranslate"><span class="pre">reset_index()</span></code> 메서드<a class="headerlink" href="#reset-index" title="Permalink to this headline">#</a></h2>
+<p>행 삭제 또는 정렬 이후 인덱스 재설정하기</p>
+</section>
+<section id="id8">
+<h2><span class="section-number">17.6. </span>연습문제<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
+<p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-pandas_3.ipynb">(실습) 데이터프레임 핵심 2부</a></p>
 </section>
 </section>
 
@@ -3342,13 +3026,13 @@ dtype: float64
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">16. </span>데이터프레임 핵심</p>
+            <p class="prev-next-title"><span class="section-number">16. </span>데이터프레임 핵심 1부</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="visualization_1.html" title="next page">
+    <a class='right-next' id="next-link" href="pandas_4.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">18. </span>matplotlib.pyplot 1부</p>
+        <p class="prev-next-title"><span class="section-number">18. </span>판다스 활용: 통계 기초</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

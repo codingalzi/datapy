@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>20. seaborn &#8212; 파이썬 데이터 분석</title>
+    <title>22. seaborn &#8212; 파이썬 데이터 분석</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="21. 데이터 집계와 그룹 생성" href="data_aggregation_grouping.html" />
-    <link rel="prev" title="19. matplotlib.pyplot 2부" href="visualization_2.html" />
+    <link rel="next" title="23. 데이터 집계와 그룹 생성" href="data_aggregation_grouping.html" />
+    <link rel="prev" title="21. matplotlib.pyplot 2부" href="visualization_2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -205,12 +205,22 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_2.html">
-   16. 데이터프레임 핵심
+   16. 데이터프레임 핵심 1부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_3.html">
-   17. 판다스 활용: 통계 기초
+   17. 데이터프레임 핵심 2부
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas_4.html">
+   18. 판다스 활용: 통계 기초
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas_5.html">
+   19. 판다스 실전 활용: 타이타닉 데이터셋 전처리
   </a>
  </li>
 </ul>
@@ -222,17 +232,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="visualization_1.html">
-   18. matplotlib.pyplot 1부
+   20. matplotlib.pyplot 1부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="visualization_2.html">
-   19. matplotlib.pyplot 2부
+   21. matplotlib.pyplot 2부
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   20. seaborn
+   22. seaborn
   </a>
  </li>
 </ul>
@@ -244,7 +254,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="data_aggregation_grouping.html">
-   21. 데이터 집계와 그룹 생성
+   23. 데이터 집계와 그룹 생성
   </a>
  </li>
 </ul>
@@ -256,7 +266,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="timeseries.html">
-   22. 시계열 데이터
+   24. 시계열 데이터
   </a>
  </li>
 </ul>
@@ -485,7 +495,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#intro">
-   20.1. Intro
+   22.1. Intro
   </a>
  </li>
 </ul>
@@ -509,7 +519,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#intro">
-   20.1. Intro
+   22.1. Intro
   </a>
  </li>
 </ul>
@@ -523,14 +533,14 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="seaborn">
-<span id="sec-visualization-3"></span><h1><span class="section-number">20. </span>seaborn<a class="headerlink" href="#seaborn" title="Permalink to this headline">#</a></h1>
+<span id="sec-visualization-3"></span><h1><span class="section-number">22. </span>seaborn<a class="headerlink" href="#seaborn" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p><a class="reference external" href="https://seaborn.pydata.org/index.html">Seaborn 홈페이지</a></p></li>
 <li><p><a class="reference external" href="https://seaborn.pydata.org/introduction.html">Seaborn intro</a></p></li>
 <li><p><a class="reference external" href="https://seaborn.pydata.org/tutorial/relational.html">Seaborn relational</a></p></li>
 </ul>
 <section id="intro">
-<h2><span class="section-number">20.1. </span>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">22.1. </span>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import seaborn</span>
@@ -552,7 +562,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f42871ba940&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f1f3a9a49d0&gt;
 </pre></div>
 </div>
 <img alt="_images/visualization_3_3_1.png" src="_images/visualization_3_3_1.png" />
@@ -571,7 +581,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f428716de20&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f1f39fe0fd0&gt;
 </pre></div>
 </div>
 <img alt="_images/visualization_3_4_1.png" src="_images/visualization_3_4_1.png" />
@@ -589,7 +599,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f4286765f10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f1f39fe0190&gt;
 </pre></div>
 </div>
 <img alt="_images/visualization_3_5_1.png" src="_images/visualization_3_5_1.png" />
@@ -602,7 +612,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f428689ee50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f1f39e78550&gt;
 </pre></div>
 </div>
 <img alt="_images/visualization_3_6_1.png" src="_images/visualization_3_6_1.png" />
@@ -615,7 +625,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f4284d43b50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f1f38589f40&gt;
 </pre></div>
 </div>
 <img alt="_images/visualization_3_7_1.png" src="_images/visualization_3_7_1.png" />
@@ -628,7 +638,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f4286707a90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f1f39ef8970&gt;
 </pre></div>
 </div>
 <img alt="_images/visualization_3_8_1.png" src="_images/visualization_3_8_1.png" />
@@ -641,7 +651,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f4284c4ceb0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f1f39f61a30&gt;
 </pre></div>
 </div>
 <img alt="_images/visualization_3_9_1.png" src="_images/visualization_3_9_1.png" />
@@ -654,7 +664,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f4284c48f40&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f1f306b9eb0&gt;
 </pre></div>
 </div>
 <img alt="_images/visualization_3_10_1.png" src="_images/visualization_3_10_1.png" />
@@ -667,7 +677,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f427cea5550&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f1f3066c7c0&gt;
 </pre></div>
 </div>
 <img alt="_images/visualization_3_11_1.png" src="_images/visualization_3_11_1.png" />
@@ -681,7 +691,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f427cdf5730&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f1f30540040&gt;
 </pre></div>
 </div>
 <img alt="_images/visualization_3_12_1.png" src="_images/visualization_3_12_1.png" />
@@ -694,7 +704,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f427cbd4e80&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f1f303cab80&gt;
 </pre></div>
 </div>
 <img alt="_images/visualization_3_13_1.png" src="_images/visualization_3_13_1.png" />
@@ -725,7 +735,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f427c7ad1c0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f1f1323cf70&gt;
 </pre></div>
 </div>
 <img alt="_images/visualization_3_15_1.png" src="_images/visualization_3_15_1.png" />
@@ -748,7 +758,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f425f9c0fd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f1f132b2ee0&gt;
 </pre></div>
 </div>
 <img alt="_images/visualization_3_16_1.png" src="_images/visualization_3_16_1.png" />
@@ -788,13 +798,13 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">19. </span>matplotlib.pyplot 2부</p>
+            <p class="prev-next-title"><span class="section-number">21. </span>matplotlib.pyplot 2부</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="data_aggregation_grouping.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">21. </span>데이터 집계와 그룹 생성</p>
+        <p class="prev-next-title"><span class="section-number">23. </span>데이터 집계와 그룹 생성</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
