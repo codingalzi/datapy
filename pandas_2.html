@@ -508,38 +508,38 @@ title="Print to PDF"
      16.1.2. 데이터프레임 리인덱싱
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     16.1.3. 리인덱싱과 결측치
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
-   16.2. 결측치 처리
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   16.3. 시리즈 인덱싱/슬라이싱
+   16.2. 시리즈 인덱싱/슬라이싱
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   16.4. 데이터프레임 인덱싱
+   16.3. 데이터프레임 인덱싱
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     16.4.1. 열 인덱싱
+     16.3.1. 열 인덱싱
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id9">
-     16.4.2. 행 인덱싱
+     16.3.2. 행 인덱싱
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loc-iloc">
-   16.5. 데이터프레임 슬라이싱:
+   16.4. 데이터프레임 슬라이싱:
    <code class="docutils literal notranslate">
     <span class="pre">
      loc()
@@ -556,7 +556,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id10">
-   16.6. 연습문제
+   16.5. 연습문제
   </a>
  </li>
 </ul>
@@ -593,38 +593,38 @@ title="Print to PDF"
      16.1.2. 데이터프레임 리인덱싱
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     16.1.3. 리인덱싱과 결측치
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
-   16.2. 결측치 처리
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   16.3. 시리즈 인덱싱/슬라이싱
+   16.2. 시리즈 인덱싱/슬라이싱
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   16.4. 데이터프레임 인덱싱
+   16.3. 데이터프레임 인덱싱
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     16.4.1. 열 인덱싱
+     16.3.1. 열 인덱싱
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id9">
-     16.4.2. 행 인덱싱
+     16.3.2. 행 인덱싱
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#loc-iloc">
-   16.5. 데이터프레임 슬라이싱:
+   16.4. 데이터프레임 슬라이싱:
    <code class="docutils literal notranslate">
     <span class="pre">
      loc()
@@ -641,7 +641,7 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id10">
-   16.6. 연습문제
+   16.5. 연습문제
   </a>
  </li>
 </ul>
@@ -709,6 +709,7 @@ title="Print to PDF"
 </div>
 <section id="id2">
 <h2><span class="section-number">16.1. </span>리인덱싱<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">reindex()</span></code> 메서드를 이용하여 시리즈의 <code class="docutils literal notranslate"><span class="pre">index</span></code>와 데이터프레임의 <code class="docutils literal notranslate"><span class="pre">index</span></code>, <code class="docutils literal notranslate"><span class="pre">columns</span></code> 속성을 임의로 재설정한다.</p>
 <section id="id3">
 <h3><span class="section-number">16.1.1. </span>시리즈 리인덱싱<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
@@ -942,14 +943,12 @@ dtype: float64
 </table>
 </div></div></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">reindex()</span></code> 메서드와 함께 사용할 수 있는 키워드 인자가 더 있지만 여기서는 다루지 않는다.</p>
-</section>
 </section>
 <section id="id5">
-<h2><span class="section-number">16.2. </span>결측치 처리<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<h3><span class="section-number">16.1.3. </span>리인덱싱과 결측치<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
+<p>리인덱싱 과정에서 결측치가 발생할 때 여러 방식으로 채울 수 있다.</p>
 <p><strong>결측치 채우기 1: <code class="docutils literal notranslate"><span class="pre">method</span></code> 키워드 인자</strong></p>
-<p>리인덱싱 과정에서 결측치가 발생할 때 여러 방식으로 채울 수 있다.
-<code class="docutils literal notranslate"><span class="pre">method='fill'</span></code> 키워드 인자는 결측치를 위쪽에 위치한 값으로 채운다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">method='fill'</span></code> 키워드 인자는 결측치를 위쪽에 위치한 값으로 채운다.</p>
 <p><strong>주의사항:</strong> 인덱스가 오름 또는 내림 차순으로 정렬되어 있는 경우에만 가능하다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1086,8 +1085,9 @@ dtype: object
 </div>
 </div>
 </section>
+</section>
 <section id="id6">
-<h2><span class="section-number">16.3. </span>시리즈 인덱싱/슬라이싱<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.2. </span>시리즈 인덱싱/슬라이싱<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
 <p><strong>시리즈 인덱싱</strong></p>
 <p>시리즈의 경우 1차원 넘파이 어레이와 거의 동일하게 작동한다.
 다만 정수 대신에 지정된 인덱스를 사용할 때 조금 차이가 있다.</p>
@@ -1285,7 +1285,7 @@ dtype: float64
 </div>
 </section>
 <section id="id7">
-<h2><span class="section-number">16.4. </span>데이터프레임 인덱싱<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.3. </span>데이터프레임 인덱싱<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
 <p>2차원 넘파이 어레이와 거의 유사하게 작동한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1394,7 +1394,7 @@ dtype: float64
 </div></div></div>
 </div>
 <section id="id8">
-<h3><span class="section-number">16.4.1. </span>열 인덱싱<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">16.3.1. </span>열 인덱싱<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
 <p>열 인덱싱은 시리즈, 사전 등과 동일한 방식을 사용한다.
 다만, 지정된 열의 이름을 사용한다.
 예를 들어, <code class="docutils literal notranslate"><span class="pre">state</span></code> 열을 확인하면 시리즈로 보여준다.</p>
@@ -2477,7 +2477,7 @@ Name: three, dtype: bool
 </div>
 </section>
 <section id="id9">
-<h3><span class="section-number">16.4.2. </span>행 인덱싱<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">16.3.2. </span>행 인덱싱<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h3>
 <p><strong><code class="docutils literal notranslate"><span class="pre">loc()</span></code>와 <code class="docutils literal notranslate"><span class="pre">iloc()</span></code> 함수</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">loc()</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">iloc()</span></code> 함수를 이용한다.</p>
 <ul class="simple">
@@ -2656,7 +2656,7 @@ Name: Utah, dtype: int64
 </section>
 </section>
 <section id="loc-iloc">
-<h2><span class="section-number">16.5. </span>데이터프레임 슬라이싱: <code class="docutils literal notranslate"><span class="pre">loc()</span></code>과 <code class="docutils literal notranslate"><span class="pre">iloc()</span></code> 함수<a class="headerlink" href="#loc-iloc" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.4. </span>데이터프레임 슬라이싱: <code class="docutils literal notranslate"><span class="pre">loc()</span></code>과 <code class="docutils literal notranslate"><span class="pre">iloc()</span></code> 함수<a class="headerlink" href="#loc-iloc" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">loc()</span></code> 과 <code class="docutils literal notranslate"><span class="pre">iloc()</span></code> 함수를 행과 열에 동시에 적용할 수 있으며,
 2차원 넘파이 어레이에 대한 인덱싱/슬라이싱이 작동하는 방식과 거의 동일하다.</p>
 <p><strong>열 슬라이싱</strong></p>
@@ -3094,7 +3094,7 @@ Name: two, dtype: int64
 </div>
 </section>
 <section id="id10">
-<h2><span class="section-number">16.6. </span>연습문제<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.5. </span>연습문제<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-pandas_2.ipynb">(실습) 데이터프레임 핵심 1부</a></p>
 </section>
 </section>
