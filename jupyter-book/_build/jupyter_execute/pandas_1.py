@@ -44,6 +44,15 @@ pd.options.display.max_rows # 원래 60이 기본.
 pd.set_option("display.max_rows", 20)
 
 
+# **참고 사항**
+# 
+# 여기서 다루는 내용은 
+# [10분동안 판다스 익히기](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/ten_minutes_to_pandas.ipynb)에서 
+# 소개하는 판다스 라이브러리가
+# 제공하는 시리즈와 데이터프레임의
+# 핵심 개념과 기능을 좀 더 자세히 설명합니다.
+# 따라서 [10분동안 판다스 익히기](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/ten_minutes_to_pandas.ipynb)을 먼저 읽어볼 것을 강추합니다.
+
 # **주요 내용**
 
 # 판다스가 제공하는 시리즈(Series)와 데이터프레임(DataFrame)은 
