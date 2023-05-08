@@ -46,7 +46,7 @@ pd.set_option("display.max_rows", 20)
 
 # **참고 자료**
 # 
-# 1. [파이썬 10분 완성](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/ten_minutes_to_pandas.ipynb):
+# 1. [판다스 10분 완성](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/ten_minutes_to_pandas.ipynb):
 #     먼적 읽을 것을 추천한다.
 #     이유는 여기서 소개하는 판다스 라이브러리가 제공하는 시리즈와 데이터프레임의 핵심 개념과 기능의 기초 사용법을
 #     소개하기 때문이다. 
