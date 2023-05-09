@@ -1,0 +1,92 @@
+Traceback (most recent call last):
+  File "/home/gslee/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/home/gslee/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/gslee/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/gslee/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/home/gslee/anaconda3/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/home/gslee/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/home/gslee/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/gslee/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+sns.barplot(data=df_1, x="island", y="body_mass_g", errorbar="sd") # 표준편차
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mAttributeError[0m                            Traceback (most recent call last)
+Input [0;32mIn [43][0m, in [0;36m<cell line: 1>[0;34m()[0m
+[0;32m----> 1[0m [43msns[49m[38;5;241;43m.[39;49m[43mbarplot[49m[43m([49m[43mdata[49m[38;5;241;43m=[39;49m[43mdf_1[49m[43m,[49m[43m [49m[43mx[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43misland[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[43my[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mbody_mass_g[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[43merrorbar[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43msd[39;49m[38;5;124;43m"[39;49m[43m)[49m
+
+File [0;32m~/anaconda3/lib/python3.9/site-packages/seaborn/_decorators.py:46[0m, in [0;36m_deprecate_positional_args.<locals>.inner_f[0;34m(*args, **kwargs)[0m
+[1;32m     36[0m     warnings[38;5;241m.[39mwarn(
+[1;32m     37[0m         [38;5;124m"[39m[38;5;124mPass the following variable[39m[38;5;132;01m{}[39;00m[38;5;124m as [39m[38;5;132;01m{}[39;00m[38;5;124mkeyword arg[39m[38;5;132;01m{}[39;00m[38;5;124m: [39m[38;5;132;01m{}[39;00m[38;5;124m. [39m[38;5;124m"[39m
+[1;32m     38[0m         [38;5;124m"[39m[38;5;124mFrom version 0.12, the only valid positional argument [39m[38;5;124m"[39m
+[0;32m   (...)[0m
+[1;32m     43[0m         [38;5;167;01mFutureWarning[39;00m
+[1;32m     44[0m     )
+[1;32m     45[0m kwargs[38;5;241m.[39mupdate({k: arg [38;5;28;01mfor[39;00m k, arg [38;5;129;01min[39;00m [38;5;28mzip[39m(sig[38;5;241m.[39mparameters, args)})
+[0;32m---> 46[0m [38;5;28;01mreturn[39;00m [43mf[49m[43m([49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/anaconda3/lib/python3.9/site-packages/seaborn/categorical.py:3190[0m, in [0;36mbarplot[0;34m(x, y, hue, data, order, hue_order, estimator, ci, n_boot, units, seed, orient, color, palette, saturation, errcolor, errwidth, capsize, dodge, ax, **kwargs)[0m
+[1;32m   3187[0m [38;5;28;01mif[39;00m ax [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[1;32m   3188[0m     ax [38;5;241m=[39m plt[38;5;241m.[39mgca()
+[0;32m-> 3190[0m [43mplotter[49m[38;5;241;43m.[39;49m[43mplot[49m[43m([49m[43max[49m[43m,[49m[43m [49m[43mkwargs[49m[43m)[49m
+[1;32m   3191[0m [38;5;28;01mreturn[39;00m ax
+
+File [0;32m~/anaconda3/lib/python3.9/site-packages/seaborn/categorical.py:1639[0m, in [0;36m_BarPlotter.plot[0;34m(self, ax, bar_kws)[0m
+[1;32m   1637[0m [38;5;28;01mdef[39;00m [38;5;21mplot[39m([38;5;28mself[39m, ax, bar_kws):
+[1;32m   1638[0m     [38;5;124;03m"""Make the plot."""[39;00m
+[0;32m-> 1639[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mdraw_bars[49m[43m([49m[43max[49m[43m,[49m[43m [49m[43mbar_kws[49m[43m)[49m
+[1;32m   1640[0m     [38;5;28mself[39m[38;5;241m.[39mannotate_axes(ax)
+[1;32m   1641[0m     [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39morient [38;5;241m==[39m [38;5;124m"[39m[38;5;124mh[39m[38;5;124m"[39m:
+
+File [0;32m~/anaconda3/lib/python3.9/site-packages/seaborn/categorical.py:1604[0m, in [0;36m_BarPlotter.draw_bars[0;34m(self, ax, kws)[0m
+[1;32m   1599[0m barpos [38;5;241m=[39m np[38;5;241m.[39marange([38;5;28mlen[39m([38;5;28mself[39m[38;5;241m.[39mstatistic))
+[1;32m   1601[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mplot_hues [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[1;32m   1602[0m 
+[1;32m   1603[0m     [38;5;66;03m# Draw the bars[39;00m
+[0;32m-> 1604[0m     [43mbarfunc[49m[43m([49m[43mbarpos[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mstatistic[49m[43m,[49m[43m [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mwidth[49m[43m,[49m
+[1;32m   1605[0m [43m            [49m[43mcolor[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mcolors[49m[43m,[49m[43m [49m[43malign[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mcenter[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkws[49m[43m)[49m
+[1;32m   1607[0m     [38;5;66;03m# Draw the confidence intervals[39;00m
+[1;32m   1608[0m     errcolors [38;5;241m=[39m [[38;5;28mself[39m[38;5;241m.[39merrcolor] [38;5;241m*[39m [38;5;28mlen[39m(barpos)
+
+File [0;32m~/anaconda3/lib/python3.9/site-packages/matplotlib/__init__.py:1412[0m, in [0;36m_preprocess_data.<locals>.inner[0;34m(ax, data, *args, **kwargs)[0m
+[1;32m   1409[0m [38;5;129m@functools[39m[38;5;241m.[39mwraps(func)
+[1;32m   1410[0m [38;5;28;01mdef[39;00m [38;5;21minner[39m(ax, [38;5;241m*[39margs, data[38;5;241m=[39m[38;5;28;01mNone[39;00m, [38;5;241m*[39m[38;5;241m*[39mkwargs):
+[1;32m   1411[0m     [38;5;28;01mif[39;00m data [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[0;32m-> 1412[0m         [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[43max[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;28;43mmap[39;49m[43m([49m[43msanitize_sequence[49m[43m,[49m[43m [49m[43margs[49m[43m)[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m   1414[0m     bound [38;5;241m=[39m new_sig[38;5;241m.[39mbind(ax, [38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)
+[1;32m   1415[0m     auto_label [38;5;241m=[39m (bound[38;5;241m.[39marguments[38;5;241m.[39mget(label_namer)
+[1;32m   1416[0m                   [38;5;129;01mor[39;00m bound[38;5;241m.[39mkwargs[38;5;241m.[39mget(label_namer))
+
+File [0;32m~/anaconda3/lib/python3.9/site-packages/matplotlib/axes/_axes.py:2403[0m, in [0;36mAxes.bar[0;34m(self, x, height, width, bottom, align, **kwargs)[0m
+[1;32m   2394[0m [38;5;28;01mfor[39;00m l, b, w, h, c, e, lw, htch [38;5;129;01min[39;00m args:
+[1;32m   2395[0m     r [38;5;241m=[39m mpatches[38;5;241m.[39mRectangle(
+[1;32m   2396[0m         xy[38;5;241m=[39m(l, b), width[38;5;241m=[39mw, height[38;5;241m=[39mh,
+[1;32m   2397[0m         facecolor[38;5;241m=[39mc,
+[0;32m   (...)[0m
+[1;32m   2401[0m         hatch[38;5;241m=[39mhtch,
+[1;32m   2402[0m         )
+[0;32m-> 2403[0m     [43mr[49m[38;5;241;43m.[39;49m[43mupdate[49m[43m([49m[43mkwargs[49m[43m)[49m
+[1;32m   2404[0m     r[38;5;241m.[39mget_path()[38;5;241m.[39m_interpolation_steps [38;5;241m=[39m [38;5;241m100[39m
+[1;32m   2405[0m     [38;5;28;01mif[39;00m orientation [38;5;241m==[39m [38;5;124m'[39m[38;5;124mvertical[39m[38;5;124m'[39m:
+
+File [0;32m~/anaconda3/lib/python3.9/site-packages/matplotlib/artist.py:1064[0m, in [0;36mArtist.update[0;34m(self, props)[0m
+[1;32m   1062[0m             func [38;5;241m=[39m [38;5;28mgetattr[39m([38;5;28mself[39m, [38;5;124mf[39m[38;5;124m"[39m[38;5;124mset_[39m[38;5;132;01m{[39;00mk[38;5;132;01m}[39;00m[38;5;124m"[39m, [38;5;28;01mNone[39;00m)
+[1;32m   1063[0m             [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m callable(func):
+[0;32m-> 1064[0m                 [38;5;28;01mraise[39;00m [38;5;167;01mAttributeError[39;00m([38;5;124mf[39m[38;5;124m"[39m[38;5;132;01m{[39;00m[38;5;28mtype[39m([38;5;28mself[39m)[38;5;241m.[39m[38;5;18m__name__[39m[38;5;132;01m!r}[39;00m[38;5;124m object [39m[38;5;124m"[39m
+[1;32m   1065[0m                                      [38;5;124mf[39m[38;5;124m"[39m[38;5;124mhas no property [39m[38;5;132;01m{[39;00mk[38;5;132;01m!r}[39;00m[38;5;124m"[39m)
+[1;32m   1066[0m             ret[38;5;241m.[39mappend(func(v))
+[1;32m   1067[0m [38;5;28;01mif[39;00m ret:
+
+[0;31mAttributeError[0m: 'Rectangle' object has no property 'errorbar'
+AttributeError: 'Rectangle' object has no property 'errorbar'
+
