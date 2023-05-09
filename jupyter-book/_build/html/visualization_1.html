@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>20. matplotlib.pyplot 1부 &#8212; 파이썬 데이터 분석</title>
+    <title>24. matplotlib.pyplot 1부 &#8212; 파이썬 데이터 분석</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="21. matplotlib.pyplot 2부" href="visualization_2.html" />
-    <link rel="prev" title="19. 판다스 실전 활용: 타이타닉 데이터셋 전처리" href="pandas_5.html" />
+    <link rel="next" title="25. matplotlib.pyplot 2부" href="visualization_2.html" />
+    <link rel="prev" title="23. 판다스 실전 활용: 타이타닉" href="pandas_titanic.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -199,28 +199,48 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="pandas_10minutes_1.html">
+   15. 판다스 10분 완성 (1부)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas_10minutes_2.html">
+   16. 판다스 10분 완성 (2부)
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="pandas_1.html">
-   15. 판다스 데이터프레임
+   17. 판다스 데이터프레임
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_2.html">
-   16. 데이터프레임 핵심 1부
+   18. 데이터프레임 핵심 1부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_3.html">
-   17. 데이터프레임 핵심 2부
+   19. 데이터프레임 핵심 2부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_4.html">
-   18. 판다스 활용: 통계 기초
+   20. 판다스 활용: 통계 기초
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_5.html">
-   19. 판다스 실전 활용: 타이타닉 데이터셋 전처리
+   21. 데이터 결합: merge-join-concat
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas_6.html">
+   22. 데이터 그룹화(Group by)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas_titanic.html">
+   23. 판다스 실전 활용: 타이타닉
   </a>
  </li>
 </ul>
@@ -232,29 +252,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   20. matplotlib.pyplot 1부
+   24. matplotlib.pyplot 1부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="visualization_2.html">
-   21. matplotlib.pyplot 2부
+   25. matplotlib.pyplot 2부
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="visualization_3.html">
-   22. seaborn
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  데이터 집계와 그룹 만들기
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="data_aggregation_grouping.html">
-   23. 데이터 집계와 그룹 생성
+   26. seaborn
   </a>
  </li>
 </ul>
@@ -266,7 +274,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="timeseries.html">
-   24. 시계열 데이터
+   27. 시계열 데이터
   </a>
  </li>
 </ul>
@@ -495,7 +503,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plot">
-   20.1.
+   24.1.
    <code class="docutils literal notranslate">
     <span class="pre">
      plot()
@@ -506,37 +514,37 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   20.2. 마커
+   24.2. 마커
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   20.3. 선분
+   24.3. 선분
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   20.4. 라벨과 제목
+   24.4. 라벨과 제목
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   20.5. 격자 무늬 배경
+   24.5. 격자 무늬 배경
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   20.6. 축의 범위와 척도
+   24.6. 축의 범위와 척도
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   20.7. 산점도
+   24.7. 산점도
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   20.8. 연습문제
+   24.8. 연습문제
   </a>
  </li>
 </ul>
@@ -560,7 +568,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plot">
-   20.1.
+   24.1.
    <code class="docutils literal notranslate">
     <span class="pre">
      plot()
@@ -571,37 +579,37 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   20.2. 마커
+   24.2. 마커
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   20.3. 선분
+   24.3. 선분
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   20.4. 라벨과 제목
+   24.4. 라벨과 제목
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   20.5. 격자 무늬 배경
+   24.5. 격자 무늬 배경
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   20.6. 축의 범위와 척도
+   24.6. 축의 범위와 척도
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   20.7. 산점도
+   24.7. 산점도
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   20.8. 연습문제
+   24.8. 연습문제
   </a>
  </li>
 </ul>
@@ -615,7 +623,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="matplotlib-pyplot-1">
-<span id="sec-visualization-1"></span><h1><span class="section-number">20. </span>matplotlib.pyplot 1부<a class="headerlink" href="#matplotlib-pyplot-1" title="Permalink to this headline">#</a></h1>
+<span id="sec-visualization-1"></span><h1><span class="section-number">24. </span>matplotlib.pyplot 1부<a class="headerlink" href="#matplotlib-pyplot-1" title="Permalink to this headline">#</a></h1>
 <p><strong>기본 설정</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -635,7 +643,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="plot">
-<h2><span class="section-number">20.1. </span><code class="docutils literal notranslate"><span class="pre">plot()</span></code> 함수<a class="headerlink" href="#plot" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">24.1. </span><code class="docutils literal notranslate"><span class="pre">plot()</span></code> 함수<a class="headerlink" href="#plot" title="Permalink to this headline">#</a></h2>
 <p><strong>선분 그리기</strong></p>
 <p>2차원 평면의 두 점이 주어졌을 때 두 점을 잇는 선분을 그린다.
 두 점의 좌표는 x 축 기준으로 두 개의 값을,
@@ -723,7 +731,7 @@ y 축 기준으로 두 개의 값을 지정하면
 </div>
 </section>
 <section id="id1">
-<h2><span class="section-number">20.2. </span>마커<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">24.2. </span>마커<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p>각 점을 강조하기 위해 모양을 지정하고 싶을 때 <code class="docutils literal notranslate"><span class="pre">marker</span></code> 옵션 인자를 사용한다.
 예를 들어, 작은 원으로 각 점을 표시하고 싶으면 <code class="docutils literal notranslate"><span class="pre">market='o'</span></code> 로 지정한다.</p>
 <div class="cell docutils container">
@@ -979,7 +987,7 @@ y 축 기준으로 두 개의 값을 지정하면
 </div>
 </section>
 <section id="id2">
-<h2><span class="section-number">20.3. </span>선분<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">24.3. </span>선분<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">linestyle</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">ls</span></code> 옵션 인자로 선 모양을 지정할 수 있다.
 앞서 언급한 선 기호를 사용하거나 다음 문자열 중에 하나를 사용한다.</p>
 <table class="colwidths-auto table">
@@ -1094,7 +1102,7 @@ y 축 기준으로 두 개의 값을 지정하면
 </div>
 </section>
 <section id="id3">
-<h2><span class="section-number">20.4. </span>라벨과 제목<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">24.4. </span>라벨과 제목<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 <p><strong>축 라벨</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">plt.xlabel()</span></code>, <code class="docutils literal notranslate"><span class="pre">plt.ylabel()</span></code> 함수를 이용하여
 x 축, y 축에 표시 라벨을 붙일 수 있다.</p>
@@ -1291,7 +1299,7 @@ x 축, y 축에 표시 라벨을 붙일 수 있다.</p>
 </div>
 </section>
 <section id="id4">
-<h2><span class="section-number">20.5. </span>격자 무늬 배경<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">24.5. </span>격자 무늬 배경<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
 <p>격자 무늬를 그래프의 배경에 넣기 위해 <code class="docutils literal notranslate"><span class="pre">plt.grid()</span></code> 함수를 사용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1357,7 +1365,7 @@ x 축, y 축에 표시 라벨을 붙일 수 있다.</p>
 </div>
 </section>
 <section id="id5">
-<h2><span class="section-number">20.6. </span>축의 범위와 척도<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">24.6. </span>축의 범위와 척도<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
 <p>x 축, y 축의 범위와 척도는 <code class="docutils literal notranslate"><span class="pre">plt.plot()</span></code> 함수가 데이터에 맞춰 자동으로 지정한다.
 하자민 경우에 따라 범위와 척도를 수동으로 지정해야할 때가 있다.</p>
 <p><strong>범위 지정</strong></p>
@@ -1426,7 +1434,7 @@ y 축의 최솟값, 최댓값
 </div>
 </section>
 <section id="id6">
-<h2><span class="section-number">20.7. </span>산점도<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">24.7. </span>산점도<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
 <p>산점도는 데이터의 분포를 표현할 때 사용된다.
 예를 들어, 아래 그래프는 파이썬 점수가 높으면 머신러닝 점수도 높아짐을
 산점도를 통해 보여준다.</p>
@@ -1646,7 +1654,7 @@ y 축의 최솟값, 최댓값
 </div>
 </section>
 <section id="id7">
-<h2><span class="section-number">20.8. </span>연습문제<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">24.8. </span>연습문제<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-data_visualization_pyplot1.ipynb">(실습) matplotlib.pyplot 1부</a></p>
 </section>
 </section>
@@ -1678,17 +1686,17 @@ y 축의 최솟값, 최댓값
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="pandas_5.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="pandas_titanic.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">19. </span>판다스 실전 활용: 타이타닉 데이터셋 전처리</p>
+            <p class="prev-next-title"><span class="section-number">23. </span>판다스 실전 활용: 타이타닉</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="visualization_2.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">21. </span>matplotlib.pyplot 2부</p>
+        <p class="prev-next-title"><span class="section-number">25. </span>matplotlib.pyplot 2부</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

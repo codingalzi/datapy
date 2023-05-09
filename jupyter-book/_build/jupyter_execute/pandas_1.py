@@ -46,11 +46,9 @@ pd.set_option("display.max_rows", 20)
 
 # **참고 자료**
 # 
-# 1. [판다스 10분 완성](https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/ten_minutes_to_pandas.ipynb):
-#     먼적 읽을 것을 추천한다.
-#     이유는 여기서 소개하는 판다스 라이브러리가 제공하는 시리즈와 데이터프레임의 핵심 개념과 기능의 기초 사용법을
-#     소개하기 때문이다. 
-#     단, 10분 이상 걸릴 수 있음에 주의한다.
+# 1. {ref}`sec:pandas10min_1`와 {ref}`sec:pandas10min_2`를
+#     먼저 무조건 따라하며 읽을 것을 추천한다.
+#     그러면 데이터프레임의 다양한 기능에 맛을 보고 여기서부터 하나씩 차분히 살펴볼 수 있다.
 # 1. [판다스 공식 사용자 설명서](https://pandas.pydata.org/docs/user_guide/index.html):
 #     함께 읽기를 권장한다.
 #     여기서 다루는 내용과 유사한 수준으로 판다스의 보다 다양한 기능을 설명한다.
@@ -860,10 +858,6 @@ frame2.isnull().all().all()
 
 frame2.isnull().all(axis=1).all()
 
-
-# ## 연습문제
-
-# 참고: 준비중
 
 # ## 참고 자료
 

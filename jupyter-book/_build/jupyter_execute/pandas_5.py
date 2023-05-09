@@ -1,496 +1,620 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# (sec:pandas_5)=
-# # 판다스 실전 활용: 타이타닉 데이터셋 전처리
-
-# **주요 내용**
-
-# 타이타닉<font size='2'>Titanic</font> 데이터셋을 데이터프레임으로 불러와서 전처리 하는 과정을 살펴 본다.
-
-# **기본 설정**
-
-# `pandas` 라이브러리는 보통 `pd` 라는 별칭으로 사용된다.
+# (sec:combination)=
+# # 데이터 결합: merge-join-concat
 
 # In[1]:
 
 
-import pandas as pd
 import numpy as np
+import pandas as pd
+pd.options.display.max_rows = 20
+pd.options.display.max_colwidth = 80
+pd.options.display.max_columns = 20
+np.random.seed(12345)
+import matplotlib.pyplot as plt
+plt.rc("figure", figsize=(10, 6))
+np.set_printoptions(precision=4, suppress=True)
 
-
-# 랜덤 시드, 어레이 내부에 사용되는 부동소수점 정확도, 도표 크기 지정 옵션 등은 이전과 동일하다.
 
 # In[2]:
 
 
-np.random.seed(12345)
-np.set_printoptions(precision=4, suppress=True)
+data = pd.Series(np.random.uniform(size=9),
+                 index=[["a", "a", "a", "b", "b", "c", "c", "d", "d"],
+                        [1, 2, 3, 1, 3, 1, 2, 2, 3]])
+data
 
-import matplotlib.pyplot as plt
-plt.rc('figure', figsize=(10, 6))
-
-
-# 사이킷런<font size='2'>scikit-learn</font> 라이브러리를 일부 이용한다.
 
 # In[3]:
 
 
-from sklearn.datasets import fetch_openml
-from sklearn.model_selection import train_test_split
+data.index
 
-
-# **참고**: 
-# 
-# - https://jaketae.github.io/study/sklearn-pipeline/
 
 # In[4]:
 
 
-X, y = fetch_openml("titanic", version=1, as_frame=True, return_X_y=True)
-X.drop(['boat', 'body', 'home.dest'], axis=1, inplace=True)
+data["b"]
+data["b":"c"]
+data.loc[["b", "d"]]
 
 
 # In[5]:
 
 
-X.head()
+data.loc[:, 2]
 
 
 # In[6]:
 
 
-X.isnull().any()
+data.unstack()
 
 
 # In[7]:
 
 
-X.isnull().sum()
+data.unstack().stack()
 
 
 # In[8]:
 
 
-X.isnull().sum()/len(X) * 100
+frame = pd.DataFrame(np.arange(12).reshape((4, 3)),
+                     index=[["a", "a", "b", "b"], [1, 2, 1, 2]],
+                     columns=[["Ohio", "Ohio", "Colorado"],
+                              ["Green", "Red", "Green"]])
+frame
 
 
 # In[9]:
 
 
-X.drop(['cabin'], axis=1, inplace=True)
+frame.index.names = ["key1", "key2"]
+frame.columns.names = ["state", "color"]
+frame
 
 
 # In[10]:
 
 
-X.isnull().sum()
+frame.index.nlevels
 
 
 # In[11]:
 
 
-import pandas as pd
-import seaborn as sns
-
-X_comb = pd.concat([X, y.astype(float)], axis=1)
-g = sns.heatmap(X_comb[['pclass', 'sex', 'age', 'sibsp', 'parch', 'fare', 'survived']].corr(),
-                annot=True, 
-                cmap = "coolwarm")
+frame["Ohio"]
 
 
 # In[12]:
 
 
-X['family_size'] = X['parch'] + X['sibsp']
-X.drop(['parch', 'sibsp'], axis=1, inplace=True)
-X['is_alone'] = 1
-X['is_alone'].loc[X['family_size'] > 1] = 0
-
-X.head()
+frame.swaplevel("key1", "key2")
 
 
 # In[13]:
 
 
-X['title'] =  X['name'].str.split(", ", expand=True)[1].str.split(".", expand=True)[0]
-X.drop(["name"], axis=1, inplace=True)
-
-X.head()
+frame.sort_index(level=1)
+frame.swaplevel(0, 1).sort_index(level=0)
 
 
 # In[14]:
 
 
-pd.crosstab(X['title'], X['sex'])
+frame.groupby(level="key2").sum()
+frame.groupby(level="color", axis="columns").sum()
 
 
 # In[15]:
 
 
-print(f"Miss: {np.sum(y.astype(int)[X.title == 'Miss']) / len(X.title == 'Miss')}")
-print(f"Mrs: {np.sum(y.astype(int)[X.title == 'Mrs']) / len(X.title == 'Mrs')}")
+frame = pd.DataFrame({"a": range(7), "b": range(7, 0, -1),
+                      "c": ["one", "one", "one", "two", "two",
+                            "two", "two"],
+                      "d": [0, 1, 2, 0, 1, 2, 3]})
+frame
 
 
 # In[16]:
 
 
-rare_titles = (X['title'].value_counts() < 10)
-rare_titles
+frame2 = frame.set_index(["c", "d"])
+frame2
 
 
 # In[17]:
 
 
-X.title.loc[X.title == 'Miss'] = 'Mrs'
-X['title'] = X.title.apply(lambda x: 'rare' if rare_titles[x] else x)
+frame.set_index(["c", "d"], drop=False)
 
 
 # In[18]:
 
 
-X.drop('ticket', axis=1, inplace=True)
-
-X.head()
+frame2.reset_index()
 
 
 # In[19]:
 
 
-X.dtypes
+df1 = pd.DataFrame({"key": ["b", "b", "a", "c", "a", "a", "b"],
+                    "data1": pd.Series(range(7), dtype="Int64")})
+df2 = pd.DataFrame({"key": ["a", "b", "d"],
+                    "data2": pd.Series(range(3), dtype="Int64")})
+df1
+df2
 
-
-# **참고**: 
-# 
-# - https://www.jcchouinard.com/classification-machine-learning-project-in-scikit-learn/
 
 # In[20]:
 
 
-X, y = fetch_openml("titanic", version=1, as_frame=True, return_X_y=True)
-X.drop(['boat', 'body', 'home.dest'], axis=1, inplace=True)
+pd.merge(df1, df2)
 
 
 # In[21]:
 
 
-from sklearn.datasets import fetch_openml
- 
-titanic = fetch_openml('titanic', version=1, as_frame=True)
+pd.merge(df1, df2, on="key")
 
 
 # In[22]:
 
 
-type(titanic)
+df3 = pd.DataFrame({"lkey": ["b", "b", "a", "c", "a", "a", "b"],
+                    "data1": pd.Series(range(7), dtype="Int64")})
+df4 = pd.DataFrame({"rkey": ["a", "b", "d"],
+                    "data2": pd.Series(range(3), dtype="Int64")})
+pd.merge(df3, df4, left_on="lkey", right_on="rkey")
 
 
 # In[23]:
 
 
-df = titanic['data']
-df.head()
+pd.merge(df1, df2, how="outer")
+pd.merge(df3, df4, left_on="lkey", right_on="rkey", how="outer")
 
 
 # In[24]:
 
 
-df.columns
+df1 = pd.DataFrame({"key": ["b", "b", "a", "c", "a", "b"],
+                    "data1": pd.Series(range(6), dtype="Int64")})
+df2 = pd.DataFrame({"key": ["a", "b", "a", "b", "d"],
+                    "data2": pd.Series(range(5), dtype="Int64")})
+df1
+df2
+pd.merge(df1, df2, on="key", how="left")
 
 
 # In[25]:
 
 
-df['survived'] = titanic['target']
+pd.merge(df1, df2, how="inner")
 
 
 # In[26]:
 
 
-df.head()
+left = pd.DataFrame({"key1": ["foo", "foo", "bar"],
+                     "key2": ["one", "two", "one"],
+                     "lval": pd.Series([1, 2, 3], dtype='Int64')})
+right = pd.DataFrame({"key1": ["foo", "foo", "bar", "bar"],
+                      "key2": ["one", "one", "one", "two"],
+                      "rval": pd.Series([4, 5, 6, 7], dtype='Int64')})
+pd.merge(left, right, on=["key1", "key2"], how="outer")
 
 
 # In[27]:
 
 
-df.describe()
+pd.merge(left, right, on="key1")
 
-
-# **결측치 확인과 시각화**
 
 # In[28]:
 
 
-df.info()
+pd.merge(left, right, on="key1", suffixes=("_left", "_right"))
 
 
 # In[29]:
 
 
-df.isnull().sum()
+left1 = pd.DataFrame({"key": ["a", "b", "a", "a", "b", "c"],
+                      "value": pd.Series(range(6), dtype="Int64")})
+right1 = pd.DataFrame({"group_val": [3.5, 7]}, index=["a", "b"])
+left1
+right1
+pd.merge(left1, right1, left_on="key", right_index=True)
 
 
 # In[30]:
 
 
-miss_vals = pd.DataFrame(df.isnull().sum() / len(df) * 100)
-miss_vals
+pd.merge(left1, right1, left_on="key", right_index=True, how="outer")
 
-
-# [`seaborn.set_theme()` 함수](https://seaborn.pydata.org/generated/seaborn.set_theme.html)를 이용하면 보다 세련된 그래프를 그린다.
 
 # In[31]:
 
 
-sns.set_theme()
+lefth = pd.DataFrame({"key1": ["Ohio", "Ohio", "Ohio",
+                               "Nevada", "Nevada"],
+                      "key2": [2000, 2001, 2002, 2001, 2002],
+                      "data": pd.Series(range(5), dtype="Int64")})
+righth_index = pd.MultiIndex.from_arrays(
+    [
+        ["Nevada", "Nevada", "Ohio", "Ohio", "Ohio", "Ohio"],
+        [2001, 2000, 2000, 2000, 2001, 2002]
+    ]
+)
+righth = pd.DataFrame({"event1": pd.Series([0, 2, 4, 6, 8, 10], dtype="Int64",
+                                           index=righth_index),
+                       "event2": pd.Series([1, 3, 5, 7, 9, 11], dtype="Int64",
+                                           index=righth_index)})
+lefth
+righth
 
 
 # In[32]:
 
 
-miss_vals.plot(kind='bar',
-               title='Missing values in percentage',
-               ylabel='percentage'
-              )
- 
-plt.show()
+pd.merge(lefth, righth, left_on=["key1", "key2"], right_index=True)
+pd.merge(lefth, righth, left_on=["key1", "key2"],
+         right_index=True, how="outer")
 
-
-# **타깃 시각화**
 
 # In[33]:
 
 
-df.survived.value_counts().plot(kind='bar')
- 
-plt.xlabel('Survival')
-plt.ylabel('# of passengers')
-plt.title('Number of passengers based on their survival')
-plt.show()
+left2 = pd.DataFrame([[1., 2.], [3., 4.], [5., 6.]],
+                     index=["a", "c", "e"],
+                     columns=["Ohio", "Nevada"]).astype("Int64")
+right2 = pd.DataFrame([[7., 8.], [9., 10.], [11., 12.], [13, 14]],
+                      index=["b", "c", "d", "e"],
+                      columns=["Missouri", "Alabama"]).astype("Int64")
+left2
+right2
+pd.merge(left2, right2, how="outer", left_index=True, right_index=True)
 
-
-# **연령별 생존자**
 
 # In[34]:
 
 
-df.age.dropna()
+left2.join(right2, how="outer")
 
 
 # In[35]:
 
 
-df['age'][df.survived == '1'].dropna()
+left1.join(right1, on="key")
 
 
 # In[36]:
 
 
-fig, ax = plt.subplots()
- 
-ax.hist(df.age.dropna(), label='Not survived')
-ax.hist(df['age'][df.survived == '1'].dropna(), label='Survived')
- 
-plt.ylabel('Survivors')
-plt.xlabel('Age')
-plt.title('Survival by age')
-plt.legend()
-plt.show()
+another = pd.DataFrame([[7., 8.], [9., 10.], [11., 12.], [16., 17.]],
+                       index=["a", "c", "e", "f"],
+                       columns=["New York", "Oregon"])
+another
+left2.join([right2, another])
+left2.join([right2, another], how="outer")
 
-
-# **성별 생존률**
 
 # In[37]:
 
 
-((df['survived'][df.sex == 'male']) == 1).sum()
+arr = np.arange(12).reshape((3, 4))
+arr
+np.concatenate([arr, arr], axis=1)
 
 
 # In[38]:
 
 
-161/843
+s1 = pd.Series([0, 1], index=["a", "b"], dtype="Int64")
+s2 = pd.Series([2, 3, 4], index=["c", "d", "e"], dtype="Int64")
+s3 = pd.Series([5, 6], index=["f", "g"], dtype="Int64")
 
 
 # In[39]:
 
 
-df['survived'] = df.survived.astype('int')
- 
-sns.barplot(data=df, 
-            x='sex',
-            y='survived'
-           )
- 
-plt.title('Survival by gender')
-plt.show()
+s1
+s2
+s3
+pd.concat([s1, s2, s3])
 
-
-# **참고: `sns.barplot()` 함수**
 
 # In[40]:
 
 
-df_1 = sns.load_dataset("penguins")
-sns.barplot(data=df_1, x="island", y="body_mass_g")
+pd.concat([s1, s2, s3], axis="columns")
 
 
 # In[41]:
 
 
-df_1
+s4 = pd.concat([s1, s3])
+s4
+pd.concat([s1, s4], axis="columns")
+pd.concat([s1, s4], axis="columns", join="inner")
 
 
 # In[42]:
 
 
-sns.barplot(data=df_1, x="island", y="body_mass_g", hue="sex")
+result = pd.concat([s1, s1, s3], keys=["one", "two", "three"])
+result
+result.unstack()
 
-
-# - `errorbar` 옵션 인자
-#     - `ci`: confidence interval
-#     - `pi`: percentile interval
-#     - `se`: standard error
-#     - `sd`: standard deviation
-#     
-# - 참고: [Statistical estimation and error bars](https://seaborn.pydata.org/tutorial/error_bars.html)
 
 # In[43]:
 
 
-sns.barplot(data=df_1, x="island", y="body_mass_g", errorbar="sd") # 표준편차
+pd.concat([s1, s2, s3], axis="columns", keys=["one", "two", "three"])
 
-
-# **신분별 생존자**
 
 # In[44]:
 
 
-sns.countplot(x='pclass', data=df)
-plt.title('Unique survivors by class')
-plt.show()
+df1 = pd.DataFrame(np.arange(6).reshape(3, 2), index=["a", "b", "c"],
+                   columns=["one", "two"])
+df2 = pd.DataFrame(5 + np.arange(4).reshape(2, 2), index=["a", "c"],
+                   columns=["three", "four"])
+df1
+df2
+pd.concat([df1, df2], axis="columns", keys=["level1", "level2"])
 
 
 # In[45]:
 
 
-sns.barplot(x='pclass', y='survived', data=df)
-plt.title('Percent survivers by class')
-plt.show()
+pd.concat({"level1": df1, "level2": df2}, axis="columns")
 
-
-# **출발 항구별 생존률**
 
 # In[46]:
 
 
-sns.barplot(x='embarked', y='survived', data=df)
-plt.title('Percent survivers by port of embarkation')
-plt.show()
+pd.concat([df1, df2], axis="columns", keys=["level1", "level2"],
+          names=["upper", "lower"])
 
-
-# **생존자 특성 분리**
 
 # In[47]:
 
 
-X = df.drop('survived', axis=1)
-y = df['survived']
+df1 = pd.DataFrame(np.random.standard_normal((3, 4)),
+                   columns=["a", "b", "c", "d"])
+df2 = pd.DataFrame(np.random.standard_normal((2, 3)),
+                   columns=["b", "d", "a"])
+df1
+df2
 
-
-# **데이터 전처리**
 
 # In[48]:
 
 
-X['family'] = X['sibsp'] + X['parch']
-X.loc[X['family'] > 0, 'travelled_alone'] = 0
-X.loc[X['family'] == 0, 'travelled_alone'] = 1
-X.drop(['family', 'sibsp', 'parch'], axis=1, inplace=True)
-sns.countplot(x='travelled_alone', data=X)
-plt.title('Number of passengers travelling alone')
-plt.show()
+pd.concat([df1, df2], ignore_index=True)
 
-
-# ### Preprocess Data with Scikit-learn
-
-# #### 결측치 처리
 
 # In[49]:
 
 
-from sklearn.impute import SimpleImputer
- 
-def get_parameters(df):
-    parameters = {}
-    for col in df.columns[df.isnull().any()]:
-        if df[col].dtype == 'float64' or df[col].dtype == 'int64' or df[col].dtype =='int32':
-            strategy = 'mean'
-        else:
-            strategy = 'most_frequent'
-        missing_values = df[col][df[col].isnull()].values[0]
-        parameters[col] = {'missing_values':missing_values, 'strategy':strategy}
-    return parameters
- 
-parameters = get_parameters(X)
- 
-for col, param in parameters.items():
-    missing_values = param['missing_values']
-    strategy = param['strategy']
-    imp = SimpleImputer(missing_values=missing_values, strategy=strategy)
-    X[col] = imp.fit_transform(X[[col]])
- 
-X.isnull().sum()
+a = pd.Series([np.nan, 2.5, 0.0, 3.5, 4.5, np.nan],
+              index=["f", "e", "d", "c", "b", "a"])
+b = pd.Series([0., np.nan, 2., np.nan, np.nan, 5.],
+              index=["a", "b", "c", "d", "e", "f"])
+a
+b
+np.where(pd.isna(a), b, a)
 
 
-# In[ ]:
+# In[50]:
+
+
+a.combine_first(b)
+
+
+# In[51]:
+
+
+df1 = pd.DataFrame({"a": [1., np.nan, 5., np.nan],
+                    "b": [np.nan, 2., np.nan, 6.],
+                    "c": range(2, 18, 4)})
+df2 = pd.DataFrame({"a": [5., 4., np.nan, 3., 7.],
+                    "b": [np.nan, 3., 4., 6., 8.]})
+df1
+df2
+df1.combine_first(df2)
+
+
+# In[52]:
+
+
+data = pd.DataFrame(np.arange(6).reshape((2, 3)),
+                    index=pd.Index(["Ohio", "Colorado"], name="state"),
+                    columns=pd.Index(["one", "two", "three"],
+                    name="number"))
+data
+
+
+# In[53]:
+
+
+result = data.stack()
+result
+
+
+# In[54]:
+
+
+result.unstack()
+
+
+# In[55]:
+
+
+result.unstack(level=0)
+result.unstack(level="state")
+
+
+# In[56]:
+
+
+s1 = pd.Series([0, 1, 2, 3], index=["a", "b", "c", "d"], dtype="Int64")
+s2 = pd.Series([4, 5, 6], index=["c", "d", "e"], dtype="Int64")
+data2 = pd.concat([s1, s2], keys=["one", "two"])
+data2
+
+
+# In[57]:
+
+
+data2.unstack()
+data2.unstack().stack()
+data2.unstack().stack(dropna=False)
+
+
+# In[58]:
+
+
+df = pd.DataFrame({"left": result, "right": result + 5},
+                  columns=pd.Index(["left", "right"], name="side"))
+df
+df.unstack(level="state")
+
+
+# In[59]:
+
+
+df.unstack(level="state").stack(level="side")
+
+
+# In[60]:
+
+
+data = pd.read_csv("examples/macrodata.csv")
+data = data.loc[:, ["year", "quarter", "realgdp", "infl", "unemp"]]
+data.head()
+
+
+# In[61]:
+
+
+periods = pd.PeriodIndex(year=data.pop("year"),
+                         quarter=data.pop("quarter"),
+                         name="date")
+periods
+data.index = periods.to_timestamp("D")
+data.head()
+
+
+# In[62]:
+
+
+data = data.reindex(columns=["realgdp", "infl", "unemp"])
+data.columns.name = "item"
+data.head()
+
+
+# In[63]:
+
+
+long_data = (data.stack()
+             .reset_index()
+             .rename(columns={0: "value"}))
+
+
+# In[64]:
+
+
+long_data[:10]
+
+
+# In[65]:
+
+
+pivoted = long_data.pivot(index="date", columns="item",
+                          values="value")
+pivoted.head()
+
+
+# In[66]:
+
+
+long_data.index.name = None
+
+
+# In[67]:
+
+
+long_data["value2"] = np.random.standard_normal(len(long_data))
+long_data[:10]
+
+
+# In[68]:
+
+
+pivoted = long_data.pivot(index="date", columns="item")
+pivoted.head()
+pivoted["value"].head()
+
+
+# In[69]:
+
+
+unstacked = long_data.set_index(["date", "item"]).unstack(level="item")
+unstacked.head()
+
+
+# In[70]:
 
 
 
 
 
-# In[ ]:
+# In[70]:
 
 
+df = pd.DataFrame({"key": ["foo", "bar", "baz"],
+                   "A": [1, 2, 3],
+                   "B": [4, 5, 6],
+                   "C": [7, 8, 9]})
+df
 
 
-
-# In[ ]:
-
+# In[71]:
 
 
+melted = pd.melt(df, id_vars="key")
+melted
 
 
-# In[ ]:
+# In[72]:
 
 
+reshaped = melted.pivot(index="key", columns="variable",
+                        values="value")
+reshaped
 
 
-
-# **참고**: 
-# 
-# - https://medium.datadriveninvestor.com/implementation-of-data-preprocessing-on-titanic-dataset-6c553bef0bc6
-
-# In[ ]:
+# In[73]:
 
 
+reshaped.reset_index()
 
 
-
-# In[ ]:
-
+# In[74]:
 
 
+pd.melt(df, id_vars="key", value_vars=["A", "B"])
 
 
-# In[ ]:
+# In[75]:
 
 
-
-
-
-# In[ ]:
-
-
-
+pd.melt(df, value_vars=["A", "B", "C"])
+pd.melt(df, value_vars=["key", "A", "B"])
 
