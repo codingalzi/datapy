@@ -240,7 +240,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_titanic.html">
-   23. 판다스 실전 활용: 타이타닉
+   23. 판다스 실전: 타이타닉
   </a>
  </li>
 </ul>
@@ -508,7 +508,7 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pd-concat">
-     16.1.1. 이어붙이기:
+     16.1.1. 합종연횡:
      <code class="docutils literal notranslate">
       <span class="pre">
        pd.concat()
@@ -526,6 +526,17 @@ title="Print to PDF"
       </span>
      </code>
      함수
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataframe-join">
+     16.1.3. 합병:
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.join()
+      </span>
+     </code>
+     메서드
     </a>
    </li>
   </ul>
@@ -616,7 +627,7 @@ title="Print to PDF"
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pd-concat">
-     16.1.1. 이어붙이기:
+     16.1.1. 합종연횡:
      <code class="docutils literal notranslate">
       <span class="pre">
        pd.concat()
@@ -634,6 +645,17 @@ title="Print to PDF"
       </span>
      </code>
      함수
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dataframe-join">
+     16.1.3. 합병:
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       DataFrame.join()
+      </span>
+     </code>
+     메서드
     </a>
    </li>
   </ul>
@@ -725,13 +747,24 @@ title="Print to PDF"
 <li><p>참고: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/merging.html#merging">Merging section</a></p></li>
 </ul>
 <section id="pd-concat">
-<h3><span class="section-number">16.1.1. </span>이어붙이기: <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> 함수<a class="headerlink" href="#pd-concat" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">16.1.1. </span>합종연횡: <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> 함수<a class="headerlink" href="#pd-concat" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> 함수는 여러 개의 데이터프레임을 하나로 합친다.</p>
-<p>아래 코드는 실습을 위해 임의로 생성된 데이터프레임을 세 개로 쪼갠다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">axis=0</span></code>: 합종 결합</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">df</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A0&quot;</span><span class="p">,</span> <span class="s2">&quot;A1&quot;</span><span class="p">,</span> <span class="s2">&quot;A2&quot;</span><span class="p">,</span> <span class="s2">&quot;A3&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B0&quot;</span><span class="p">,</span> <span class="s2">&quot;B1&quot;</span><span class="p">,</span> <span class="s2">&quot;B2&quot;</span><span class="p">,</span> <span class="s2">&quot;B3&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="s2">&quot;C1&quot;</span><span class="p">,</span> <span class="s2">&quot;C2&quot;</span><span class="p">,</span> <span class="s2">&quot;C3&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;D&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;D0&quot;</span><span class="p">,</span> <span class="s2">&quot;D1&quot;</span><span class="p">,</span> <span class="s2">&quot;D2&quot;</span><span class="p">,</span> <span class="s2">&quot;D3&quot;</span><span class="p">],</span>
+    <span class="p">},</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">df1</span>
 </pre></div>
 </div>
 </div>
@@ -754,82 +787,40 @@ title="Print to PDF"
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.350050</td>
-      <td>-0.324765</td>
-      <td>-1.847503</td>
-      <td>0.488104</td>
+      <td>A0</td>
+      <td>B0</td>
+      <td>C0</td>
+      <td>D0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1.042024</td>
-      <td>0.467583</td>
-      <td>1.030863</td>
-      <td>-0.053183</td>
+      <td>A1</td>
+      <td>B1</td>
+      <td>C1</td>
+      <td>D1</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.848371</td>
-      <td>1.514750</td>
-      <td>-0.023439</td>
-      <td>-0.163290</td>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>D2</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.460322</td>
-      <td>1.221043</td>
-      <td>-0.368516</td>
-      <td>0.336640</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>-1.780646</td>
-      <td>-0.121579</td>
-      <td>0.547268</td>
-      <td>-1.466184</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>-0.323941</td>
-      <td>0.480151</td>
-      <td>-0.031011</td>
-      <td>-1.006591</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>-1.215114</td>
-      <td>-0.733125</td>
-      <td>-0.527933</td>
-      <td>0.473032</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>-1.005283</td>
-      <td>-0.896361</td>
-      <td>1.122537</td>
-      <td>0.378512</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>0.210112</td>
-      <td>0.625629</td>
-      <td>-0.256842</td>
-      <td>-0.216851</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>-0.822727</td>
-      <td>-0.946102</td>
-      <td>1.072155</td>
-      <td>-0.200559</td>
+      <td>A3</td>
+      <td>B3</td>
+      <td>C3</td>
+      <td>D3</td>
     </tr>
   </tbody>
 </table>
@@ -837,16 +828,17 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pieces</span> <span class="o">=</span> <span class="p">[</span><span class="n">df</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">7</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="mi">7</span><span class="p">:]]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>아래 코드는 쪼갠 3 개의 데이터프레임을 <strong>횡으로 합쳐</strong>, 즉 열을 추가하는 방식으로
-원래의 데이터프레임과 동일한 데이터프레임을 생성한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">pieces</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A4&quot;</span><span class="p">,</span> <span class="s2">&quot;A5&quot;</span><span class="p">,</span> <span class="s2">&quot;A6&quot;</span><span class="p">,</span> <span class="s2">&quot;A7&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B4&quot;</span><span class="p">,</span> <span class="s2">&quot;B5&quot;</span><span class="p">,</span> <span class="s2">&quot;B6&quot;</span><span class="p">,</span> <span class="s2">&quot;B7&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;C4&quot;</span><span class="p">,</span> <span class="s2">&quot;C5&quot;</span><span class="p">,</span> <span class="s2">&quot;C6&quot;</span><span class="p">,</span> <span class="s2">&quot;C7&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;D&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;D4&quot;</span><span class="p">,</span> <span class="s2">&quot;D5&quot;</span><span class="p">,</span> <span class="s2">&quot;D6&quot;</span><span class="p">,</span> <span class="s2">&quot;D7&quot;</span><span class="p">],</span>
+    <span class="p">},</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">df2</span>
 </pre></div>
 </div>
 </div>
@@ -869,82 +861,633 @@ title="Print to PDF"
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>4</th>
+      <td>A4</td>
+      <td>B4</td>
+      <td>C4</td>
+      <td>D4</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>A5</td>
+      <td>B5</td>
+      <td>C5</td>
+      <td>D5</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>A6</td>
+      <td>B6</td>
+      <td>C6</td>
+      <td>D6</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>A7</td>
+      <td>B7</td>
+      <td>C7</td>
+      <td>D7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A8&quot;</span><span class="p">,</span> <span class="s2">&quot;A9&quot;</span><span class="p">,</span> <span class="s2">&quot;A10&quot;</span><span class="p">,</span> <span class="s2">&quot;A11&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B8&quot;</span><span class="p">,</span> <span class="s2">&quot;B9&quot;</span><span class="p">,</span> <span class="s2">&quot;B10&quot;</span><span class="p">,</span> <span class="s2">&quot;B11&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;C8&quot;</span><span class="p">,</span> <span class="s2">&quot;C9&quot;</span><span class="p">,</span> <span class="s2">&quot;C10&quot;</span><span class="p">,</span> <span class="s2">&quot;C11&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;D&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;D8&quot;</span><span class="p">,</span> <span class="s2">&quot;D9&quot;</span><span class="p">,</span> <span class="s2">&quot;D10&quot;</span><span class="p">,</span> <span class="s2">&quot;D11&quot;</span><span class="p">],</span>
+    <span class="p">},</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">df3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>8</th>
+      <td>A8</td>
+      <td>B8</td>
+      <td>C8</td>
+      <td>D8</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>A9</td>
+      <td>B9</td>
+      <td>C9</td>
+      <td>D9</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>A10</td>
+      <td>B10</td>
+      <td>C10</td>
+      <td>D10</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>A11</td>
+      <td>B11</td>
+      <td>C11</td>
+      <td>D11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="p">,</span> <span class="n">df3</span><span class="p">])</span> <span class="c1"># axis=0 이 기본값</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.350050</td>
-      <td>-0.324765</td>
-      <td>-1.847503</td>
-      <td>0.488104</td>
+      <td>A0</td>
+      <td>B0</td>
+      <td>C0</td>
+      <td>D0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1.042024</td>
-      <td>0.467583</td>
-      <td>1.030863</td>
-      <td>-0.053183</td>
+      <td>A1</td>
+      <td>B1</td>
+      <td>C1</td>
+      <td>D1</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.848371</td>
-      <td>1.514750</td>
-      <td>-0.023439</td>
-      <td>-0.163290</td>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>D2</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.460322</td>
-      <td>1.221043</td>
-      <td>-0.368516</td>
-      <td>0.336640</td>
+      <td>A3</td>
+      <td>B3</td>
+      <td>C3</td>
+      <td>D3</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>-1.780646</td>
-      <td>-0.121579</td>
-      <td>0.547268</td>
-      <td>-1.466184</td>
+      <td>A4</td>
+      <td>B4</td>
+      <td>C4</td>
+      <td>D4</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>-0.323941</td>
-      <td>0.480151</td>
-      <td>-0.031011</td>
-      <td>-1.006591</td>
+      <td>A5</td>
+      <td>B5</td>
+      <td>C5</td>
+      <td>D5</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>-1.215114</td>
-      <td>-0.733125</td>
-      <td>-0.527933</td>
-      <td>0.473032</td>
+      <td>A6</td>
+      <td>B6</td>
+      <td>C6</td>
+      <td>D6</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>-1.005283</td>
-      <td>-0.896361</td>
-      <td>1.122537</td>
-      <td>0.378512</td>
+      <td>A7</td>
+      <td>B7</td>
+      <td>C7</td>
+      <td>D7</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>0.210112</td>
-      <td>0.625629</td>
-      <td>-0.256842</td>
-      <td>-0.216851</td>
+      <td>A8</td>
+      <td>B8</td>
+      <td>C8</td>
+      <td>D8</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>-0.822727</td>
-      <td>-0.946102</td>
-      <td>1.072155</td>
-      <td>-0.200559</td>
+      <td>A9</td>
+      <td>B9</td>
+      <td>C9</td>
+      <td>D9</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>A10</td>
+      <td>B10</td>
+      <td>C10</td>
+      <td>D10</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>A11</td>
+      <td>B11</td>
+      <td>C11</td>
+      <td>D11</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">axis=1</span></code>: 연횡 결합</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B2&quot;</span><span class="p">,</span> <span class="s2">&quot;B3&quot;</span><span class="p">,</span> <span class="s2">&quot;B6&quot;</span><span class="p">,</span> <span class="s2">&quot;B7&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;D&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;D2&quot;</span><span class="p">,</span> <span class="s2">&quot;D3&quot;</span><span class="p">,</span> <span class="s2">&quot;D6&quot;</span><span class="p">,</span> <span class="s2">&quot;D7&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;F&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;F2&quot;</span><span class="p">,</span> <span class="s2">&quot;F3&quot;</span><span class="p">,</span> <span class="s2">&quot;F6&quot;</span><span class="p">,</span> <span class="s2">&quot;F7&quot;</span><span class="p">],</span>
+    <span class="p">},</span>
+    <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">df4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>B</th>
+      <th>D</th>
+      <th>F</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2</th>
+      <td>B2</td>
+      <td>D2</td>
+      <td>F2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>B3</td>
+      <td>D3</td>
+      <td>F3</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>B6</td>
+      <td>D6</td>
+      <td>F6</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>B7</td>
+      <td>D7</td>
+      <td>F7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df4</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>B</th>
+      <th>D</th>
+      <th>F</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A0</td>
+      <td>B0</td>
+      <td>C0</td>
+      <td>D0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>C1</td>
+      <td>D1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>D2</td>
+      <td>B2</td>
+      <td>D2</td>
+      <td>F2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A3</td>
+      <td>B3</td>
+      <td>C3</td>
+      <td>D3</td>
+      <td>B3</td>
+      <td>D3</td>
+      <td>F3</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>B6</td>
+      <td>D6</td>
+      <td>F6</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>B7</td>
+      <td>D7</td>
+      <td>F7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Int64Index([0, 1, 2, 3], dtype=&#39;int64&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df4</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>B</th>
+      <th>D</th>
+      <th>F</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A0</td>
+      <td>B0</td>
+      <td>C0</td>
+      <td>D0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>C1</td>
+      <td>D1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>D2</td>
+      <td>B2</td>
+      <td>D2</td>
+      <td>F2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A3</td>
+      <td>B3</td>
+      <td>C3</td>
+      <td>D3</td>
+      <td>B3</td>
+      <td>D3</td>
+      <td>F3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df4</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>B</th>
+      <th>D</th>
+      <th>F</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>B2</td>
+      <td>D2</td>
+      <td>F2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>B3</td>
+      <td>D3</td>
+      <td>F3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df1</span><span class="p">,</span> <span class="n">df4</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">index</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>B</th>
+      <th>D</th>
+      <th>F</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>A0</td>
+      <td>B0</td>
+      <td>C0</td>
+      <td>D0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>C1</td>
+      <td>D1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>D2</td>
+      <td>B2</td>
+      <td>D2</td>
+      <td>F2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A3</td>
+      <td>B3</td>
+      <td>C3</td>
+      <td>D3</td>
+      <td>B3</td>
+      <td>D3</td>
+      <td>F3</td>
     </tr>
   </tbody>
 </table>
@@ -953,7 +1496,7 @@ title="Print to PDF"
 </section>
 <section id="pd-merge">
 <h3><span class="section-number">16.1.2. </span>합병: <code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> 함수<a class="headerlink" href="#pd-merge" title="Permalink to this headline">#</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">pd.join()</span></code> 함수 는 SQL 방식으로 특정 열을 기준으로 두 개의 데이터프레임을 합친다.
+<p><code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> 함수 는 SQL 방식으로 특정 열을 기준으로 두 개의 데이터프레임을 합친다.
 다양한 옵션을 지원하는 매우 강력한 도구이다.</p>
 <ul class="simple">
 <li><p>참고: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/merging.html#merging-join">Database style joining</a></p></li>
@@ -2455,6 +2998,468 @@ title="Print to PDF"
 </div></div></div>
 </div>
 </section>
+<section id="dataframe-join">
+<h3><span class="section-number">16.1.3. </span>합병: <code class="docutils literal notranslate"><span class="pre">DataFrame.join()</span></code> 메서드<a class="headerlink" href="#dataframe-join" title="Permalink to this headline">#</a></h3>
+<p>인덱스를 기준으로 두 개의 데이터프레임을 합병할 때 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;A0&quot;</span><span class="p">,</span> <span class="s2">&quot;A1&quot;</span><span class="p">,</span> <span class="s2">&quot;A2&quot;</span><span class="p">],</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;B0&quot;</span><span class="p">,</span> <span class="s2">&quot;B1&quot;</span><span class="p">,</span> <span class="s2">&quot;B2&quot;</span><span class="p">]},</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;K0&quot;</span><span class="p">,</span> <span class="s2">&quot;K1&quot;</span><span class="p">,</span> <span class="s2">&quot;K2&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">left</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>K0</th>
+      <td>A0</td>
+      <td>B0</td>
+    </tr>
+    <tr>
+      <th>K1</th>
+      <td>A1</td>
+      <td>B1</td>
+    </tr>
+    <tr>
+      <th>K2</th>
+      <td>A2</td>
+      <td>B2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">right</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;C0&quot;</span><span class="p">,</span> <span class="s2">&quot;C2&quot;</span><span class="p">,</span> <span class="s2">&quot;C3&quot;</span><span class="p">],</span> <span class="s2">&quot;D&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;D0&quot;</span><span class="p">,</span> <span class="s2">&quot;D2&quot;</span><span class="p">,</span> <span class="s2">&quot;D3&quot;</span><span class="p">]},</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;K0&quot;</span><span class="p">,</span> <span class="s2">&quot;K2&quot;</span><span class="p">,</span> <span class="s2">&quot;K3&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">right</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>K0</th>
+      <td>C0</td>
+      <td>D0</td>
+    </tr>
+    <tr>
+      <th>K2</th>
+      <td>C2</td>
+      <td>D2</td>
+    </tr>
+    <tr>
+      <th>K3</th>
+      <td>C3</td>
+      <td>D3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>K0</th>
+      <td>A0</td>
+      <td>B0</td>
+      <td>C0</td>
+      <td>D0</td>
+    </tr>
+    <tr>
+      <th>K1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>K2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>D2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>아래와 같이 <code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> 함수를 이용한 결과와 동일하다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>K0</th>
+      <td>A0</td>
+      <td>B0</td>
+      <td>C0</td>
+      <td>D0</td>
+    </tr>
+    <tr>
+      <th>K1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>K2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>D2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> 함수의 키워드 인자를 동일하게 사용할 수 있다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">how='outer'</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;outer&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>K0</th>
+      <td>A0</td>
+      <td>B0</td>
+      <td>C0</td>
+      <td>D0</td>
+    </tr>
+    <tr>
+      <th>K1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>K2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>D2</td>
+    </tr>
+    <tr>
+      <th>K3</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>C3</td>
+      <td>D3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>아래 코드가 동일한 결과를 낸다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>K0</th>
+      <td>A0</td>
+      <td>B0</td>
+      <td>C0</td>
+      <td>D0</td>
+    </tr>
+    <tr>
+      <th>K1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>K2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>D2</td>
+    </tr>
+    <tr>
+      <th>K3</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>C3</td>
+      <td>D3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">how='inner'</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>K0</th>
+      <td>A0</td>
+      <td>B0</td>
+      <td>C0</td>
+      <td>D0</td>
+    </tr>
+    <tr>
+      <th>K2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>D2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>아래 코드가 동일한 결과를 낸다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>K0</th>
+      <td>A0</td>
+      <td>B0</td>
+      <td>C0</td>
+      <td>D0</td>
+    </tr>
+    <tr>
+      <th>K2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>D2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
 </section>
 <section id="pd-groupby">
 <h2><span class="section-number">16.2. </span>그룹화: <code class="docutils literal notranslate"><span class="pre">pd.groupby()</span></code> 함수<a class="headerlink" href="#pd-groupby" title="Permalink to this headline">#</a></h2>
@@ -2463,9 +3468,9 @@ title="Print to PDF"
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">pd.groupby()</span></code> 함수는 다음 3 기능을 제공한다.</p>
 <ul class="simple">
-<li><p><strong>분류</strong>: 데이터를 조건에 따라 여러 그룹으로 분류</p></li>
-<li><p><strong>함수 적용</strong>: 그룹별로 함수 적용</p></li>
-<li><p><strong>조합</strong>: 그룹별 함수 결과를 조합하여 새로운 데이터프레임/시리즈 생성</p></li>
+<li><p><strong>분류</strong><font size='2'>Splitting</font>: 데이터를 조건에 따라 여러 그룹으로 분류</p></li>
+<li><p><strong>함수 적용</strong><font size='2'>Applying</font>: 그룹별로 함수 적용</p></li>
+<li><p><strong>조합</strong><font size='2'>Combining</font>: 그룹별 함수 적용 결과를 취합하여 새로운 데이터프레임/시리즈 생성</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2510,57 +3515,57 @@ title="Print to PDF"
       <th>0</th>
       <td>foo</td>
       <td>one</td>
-      <td>1.594827</td>
-      <td>0.459224</td>
+      <td>0.305054</td>
+      <td>-1.026028</td>
     </tr>
     <tr>
       <th>1</th>
       <td>bar</td>
       <td>one</td>
-      <td>-0.721554</td>
-      <td>1.700169</td>
+      <td>0.205335</td>
+      <td>0.431831</td>
     </tr>
     <tr>
       <th>2</th>
       <td>foo</td>
       <td>two</td>
-      <td>-1.741016</td>
-      <td>0.649546</td>
+      <td>2.018089</td>
+      <td>1.276030</td>
     </tr>
     <tr>
       <th>3</th>
       <td>bar</td>
       <td>three</td>
-      <td>-1.172295</td>
-      <td>-0.744301</td>
+      <td>-1.186311</td>
+      <td>1.782188</td>
     </tr>
     <tr>
       <th>4</th>
       <td>foo</td>
       <td>two</td>
-      <td>0.384585</td>
-      <td>-0.170725</td>
+      <td>0.946516</td>
+      <td>-0.229903</td>
     </tr>
     <tr>
       <th>5</th>
       <td>bar</td>
       <td>two</td>
-      <td>-0.517304</td>
-      <td>1.105429</td>
+      <td>-0.910258</td>
+      <td>1.058586</td>
     </tr>
     <tr>
       <th>6</th>
       <td>foo</td>
       <td>one</td>
-      <td>0.855882</td>
-      <td>1.352434</td>
+      <td>-0.138771</td>
+      <td>0.020489</td>
     </tr>
     <tr>
       <th>7</th>
       <td>bar</td>
       <td>three</td>
-      <td>0.026417</td>
-      <td>0.226067</td>
+      <td>0.286481</td>
+      <td>-1.753151</td>
     </tr>
   </tbody>
 </table>
@@ -2621,13 +3626,13 @@ title="Print to PDF"
   <tbody>
     <tr>
       <th>bar</th>
-      <td>-2.384736</td>
-      <td>2.287365</td>
+      <td>-1.604753</td>
+      <td>1.519453</td>
     </tr>
     <tr>
       <th>foo</th>
-      <td>1.094278</td>
-      <td>2.290479</td>
+      <td>3.130887</td>
+      <td>0.040589</td>
     </tr>
   </tbody>
 </table>
@@ -2645,12 +3650,12 @@ title="Print to PDF"
 </thead>
 <tbody>
 <tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">bar</span></code>(4)</p></td>
-<td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">one</span></code>(2), <code class="docutils literal notranslate"><span class="pre">two</span></code>(2)</p></td>
-<td class="text-align:center"><p>2</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">foo</span></code>(4)</p></td>
 <td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">one</span></code>(1), <code class="docutils literal notranslate"><span class="pre">three</span></code>(2), <code class="docutils literal notranslate"><span class="pre">two</span></code>(1)</p></td>
 <td class="text-align:center"><p>3</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">foo</span></code>(4)</p></td>
+<td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">one</span></code>(2), <code class="docutils literal notranslate"><span class="pre">two</span></code>(2)</p></td>
+<td class="text-align:center"><p>2</p></td>
 </tr>
 </tbody>
 </table>
@@ -2694,29 +3699,29 @@ title="Print to PDF"
     <tr>
       <th rowspan="3" valign="top">bar</th>
       <th>one</th>
-      <td>-0.721554</td>
-      <td>1.700169</td>
+      <td>0.205335</td>
+      <td>0.431831</td>
     </tr>
     <tr>
       <th>three</th>
-      <td>-1.145878</td>
-      <td>-0.518233</td>
+      <td>-0.899830</td>
+      <td>0.029037</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.517304</td>
-      <td>1.105429</td>
+      <td>-0.910258</td>
+      <td>1.058586</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>2.450709</td>
-      <td>1.811658</td>
+      <td>0.166283</td>
+      <td>-1.005539</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-1.356431</td>
-      <td>0.478821</td>
+      <td>2.964605</td>
+      <td>1.046128</td>
     </tr>
   </tbody>
 </table>
@@ -2737,22 +3742,22 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;bar&#39;, &#39;one&#39;)
      A    B         C         D
-1  bar  one -0.721554  1.700169
+1  bar  one  0.205335  0.431831
 (&#39;bar&#39;, &#39;three&#39;)
      A      B         C         D
-3  bar  three -1.172295 -0.744301
-7  bar  three  0.026417  0.226067
+3  bar  three -1.186311  1.782188
+7  bar  three  0.286481 -1.753151
 (&#39;bar&#39;, &#39;two&#39;)
      A    B         C         D
-5  bar  two -0.517304  1.105429
+5  bar  two -0.910258  1.058586
 (&#39;foo&#39;, &#39;one&#39;)
      A    B         C         D
-0  foo  one  1.594827  0.459224
-6  foo  one  0.855882  1.352434
+0  foo  one  0.305054 -1.026028
+6  foo  one -0.138771  0.020489
 (&#39;foo&#39;, &#39;two&#39;)
      A    B         C         D
-2  foo  two -1.741016  0.649546
-4  foo  two  0.384585 -0.170725
+2  foo  two  2.018089  1.276030
+4  foo  two  0.946516 -0.229903
 </pre></div>
 </div>
 </div>
@@ -2796,8 +3801,8 @@ title="Print to PDF"
       <th>1</th>
       <td>bar</td>
       <td>one</td>
-      <td>-0.721554</td>
-      <td>1.700169</td>
+      <td>0.205335</td>
+      <td>0.431831</td>
     </tr>
   </tbody>
 </table>
@@ -2839,15 +3844,15 @@ title="Print to PDF"
       <th>3</th>
       <td>bar</td>
       <td>three</td>
-      <td>-1.172295</td>
-      <td>-0.744301</td>
+      <td>-1.186311</td>
+      <td>1.782188</td>
     </tr>
     <tr>
       <th>7</th>
       <td>bar</td>
       <td>three</td>
-      <td>0.026417</td>
-      <td>0.226067</td>
+      <td>0.286481</td>
+      <td>-1.753151</td>
     </tr>
   </tbody>
 </table>
@@ -2879,14 +3884,14 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    B      C          D        
-bar  one    -0.721554   1.700169    1
-     three  -1.172295  -0.744301    1
-             0.026417   0.226067    1
-     two    -0.517304   1.105429    1
-foo  one     0.855882   1.352434    1
-             1.594827   0.459224    1
-     two    -1.741016   0.649546    1
-             0.384585  -0.170725    1
+bar  one     0.205335   0.431831    1
+     three  -1.186311   1.782188    1
+             0.286481  -1.753151    1
+     two    -0.910258   1.058586    1
+foo  one    -0.138771   0.020489    1
+             0.305054  -1.026028    1
+     two     0.946516  -0.229903    1
+             2.018089   1.276030    1
 dtype: int64
 </pre></div>
 </div>
@@ -3006,29 +4011,29 @@ dtype: int64
     <tr>
       <th rowspan="3" valign="top">bar</th>
       <th>one</th>
-      <td>-0.721554</td>
-      <td>1.700169</td>
+      <td>0.205335</td>
+      <td>0.431831</td>
     </tr>
     <tr>
       <th>three</th>
-      <td>-1.145878</td>
-      <td>-0.518233</td>
+      <td>-0.899830</td>
+      <td>0.029037</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.517304</td>
-      <td>1.105429</td>
+      <td>-0.910258</td>
+      <td>1.058586</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>2.450709</td>
-      <td>1.811658</td>
+      <td>0.166283</td>
+      <td>-1.005539</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-1.356431</td>
-      <td>0.478821</td>
+      <td>2.964605</td>
+      <td>1.046128</td>
     </tr>
   </tbody>
 </table>
@@ -3074,31 +4079,31 @@ dtype: int64
     <tr>
       <th>foo</th>
       <th>one</th>
-      <td>2.450709</td>
-      <td>1.811658</td>
+      <td>0.166283</td>
+      <td>-1.005539</td>
     </tr>
     <tr>
       <th>bar</th>
       <th>one</th>
-      <td>-0.721554</td>
-      <td>1.700169</td>
+      <td>0.205335</td>
+      <td>0.431831</td>
     </tr>
     <tr>
       <th>foo</th>
       <th>two</th>
-      <td>-1.356431</td>
-      <td>0.478821</td>
+      <td>2.964605</td>
+      <td>1.046128</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>three</th>
-      <td>-1.145878</td>
-      <td>-0.518233</td>
+      <td>-0.899830</td>
+      <td>0.029037</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.517304</td>
-      <td>1.105429</td>
+      <td>-0.910258</td>
+      <td>1.058586</td>
     </tr>
   </tbody>
 </table>
@@ -3212,13 +4217,13 @@ dtype: int64
   <tbody>
     <tr>
       <th>bar</th>
-      <td>0.026417</td>
-      <td>1.700169</td>
+      <td>0.286481</td>
+      <td>1.782188</td>
     </tr>
     <tr>
       <th>foo</th>
-      <td>1.594827</td>
-      <td>1.352434</td>
+      <td>2.018089</td>
+      <td>1.276030</td>
     </tr>
   </tbody>
 </table>
@@ -3264,29 +4269,29 @@ dtype: int64
     <tr>
       <th rowspan="3" valign="top">bar</th>
       <th>one</th>
-      <td>-0.721554</td>
-      <td>1.700169</td>
+      <td>0.205335</td>
+      <td>0.431831</td>
     </tr>
     <tr>
       <th>three</th>
-      <td>0.026417</td>
-      <td>0.226067</td>
+      <td>0.286481</td>
+      <td>1.782188</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.517304</td>
-      <td>1.105429</td>
+      <td>-0.910258</td>
+      <td>1.058586</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>1.594827</td>
-      <td>1.352434</td>
+      <td>0.305054</td>
+      <td>0.020489</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.384585</td>
-      <td>0.649546</td>
+      <td>2.018089</td>
+      <td>1.276030</td>
     </tr>
   </tbody>
 </table>
@@ -3329,13 +4334,13 @@ dtype: int64
   <tbody>
     <tr>
       <th>bar</th>
-      <td>-0.596184</td>
-      <td>0.571841</td>
+      <td>-0.401188</td>
+      <td>0.379863</td>
     </tr>
     <tr>
       <th>foo</th>
-      <td>0.273569</td>
-      <td>0.572620</td>
+      <td>0.782722</td>
+      <td>0.010147</td>
     </tr>
   </tbody>
 </table>
@@ -3381,29 +4386,29 @@ dtype: int64
     <tr>
       <th rowspan="3" valign="top">bar</th>
       <th>one</th>
-      <td>-0.721554</td>
-      <td>1.700169</td>
+      <td>0.205335</td>
+      <td>0.431831</td>
     </tr>
     <tr>
       <th>three</th>
-      <td>-0.572939</td>
-      <td>-0.259117</td>
+      <td>-0.449915</td>
+      <td>0.014519</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.517304</td>
-      <td>1.105429</td>
+      <td>-0.910258</td>
+      <td>1.058586</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>1.225354</td>
-      <td>0.905829</td>
+      <td>0.083141</td>
+      <td>-0.502769</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.678216</td>
-      <td>0.239411</td>
+      <td>1.482302</td>
+      <td>0.523064</td>
     </tr>
   </tbody>
 </table>
@@ -3517,40 +4522,40 @@ dtype: int64
     <tr>
       <th>bar</th>
       <td>4.0</td>
-      <td>-0.596184</td>
-      <td>0.497150</td>
-      <td>-1.172295</td>
-      <td>-0.834239</td>
-      <td>-0.619429</td>
-      <td>-0.381374</td>
-      <td>0.026417</td>
+      <td>-0.401188</td>
+      <td>0.756380</td>
+      <td>-1.186311</td>
+      <td>-0.979272</td>
+      <td>-0.352462</td>
+      <td>0.225622</td>
+      <td>0.286481</td>
       <td>4.0</td>
-      <td>0.571841</td>
-      <td>1.066088</td>
-      <td>-0.744301</td>
-      <td>-0.016525</td>
-      <td>0.665748</td>
-      <td>1.254114</td>
-      <td>1.700169</td>
+      <td>0.379863</td>
+      <td>1.525301</td>
+      <td>-1.753151</td>
+      <td>-0.114415</td>
+      <td>0.745208</td>
+      <td>1.239486</td>
+      <td>1.782188</td>
     </tr>
     <tr>
       <th>foo</th>
       <td>4.0</td>
-      <td>0.273569</td>
-      <td>1.432444</td>
-      <td>-1.741016</td>
-      <td>-0.146815</td>
-      <td>0.620233</td>
-      <td>1.040618</td>
-      <td>1.594827</td>
+      <td>0.782722</td>
+      <td>0.936354</td>
+      <td>-0.138771</td>
+      <td>0.194098</td>
+      <td>0.625785</td>
+      <td>1.214409</td>
+      <td>2.018089</td>
       <td>4.0</td>
-      <td>0.572620</td>
-      <td>0.627016</td>
-      <td>-0.170725</td>
-      <td>0.301737</td>
-      <td>0.554385</td>
-      <td>0.825268</td>
-      <td>1.352434</td>
+      <td>0.010147</td>
+      <td>0.954611</td>
+      <td>-1.026028</td>
+      <td>-0.428934</td>
+      <td>-0.104707</td>
+      <td>0.334374</td>
+      <td>1.276030</td>
     </tr>
   </tbody>
 </table>
@@ -3635,98 +4640,98 @@ dtype: int64
       <th rowspan="3" valign="top">bar</th>
       <th>one</th>
       <td>1.0</td>
-      <td>-0.721554</td>
+      <td>0.205335</td>
       <td>NaN</td>
-      <td>-0.721554</td>
-      <td>-0.721554</td>
-      <td>-0.721554</td>
-      <td>-0.721554</td>
-      <td>-0.721554</td>
+      <td>0.205335</td>
+      <td>0.205335</td>
+      <td>0.205335</td>
+      <td>0.205335</td>
+      <td>0.205335</td>
       <td>1.0</td>
-      <td>1.700169</td>
+      <td>0.431831</td>
       <td>NaN</td>
-      <td>1.700169</td>
-      <td>1.700169</td>
-      <td>1.700169</td>
-      <td>1.700169</td>
-      <td>1.700169</td>
+      <td>0.431831</td>
+      <td>0.431831</td>
+      <td>0.431831</td>
+      <td>0.431831</td>
+      <td>0.431831</td>
     </tr>
     <tr>
       <th>three</th>
       <td>2.0</td>
-      <td>-0.572939</td>
-      <td>0.847617</td>
-      <td>-1.172295</td>
-      <td>-0.872617</td>
-      <td>-0.572939</td>
-      <td>-0.273261</td>
-      <td>0.026417</td>
+      <td>-0.449915</td>
+      <td>1.041422</td>
+      <td>-1.186311</td>
+      <td>-0.818113</td>
+      <td>-0.449915</td>
+      <td>-0.081717</td>
+      <td>0.286481</td>
       <td>2.0</td>
-      <td>-0.259117</td>
-      <td>0.686154</td>
-      <td>-0.744301</td>
-      <td>-0.501709</td>
-      <td>-0.259117</td>
-      <td>-0.016525</td>
-      <td>0.226067</td>
+      <td>0.014519</td>
+      <td>2.499862</td>
+      <td>-1.753151</td>
+      <td>-0.869316</td>
+      <td>0.014519</td>
+      <td>0.898353</td>
+      <td>1.782188</td>
     </tr>
     <tr>
       <th>two</th>
       <td>1.0</td>
-      <td>-0.517304</td>
+      <td>-0.910258</td>
       <td>NaN</td>
-      <td>-0.517304</td>
-      <td>-0.517304</td>
-      <td>-0.517304</td>
-      <td>-0.517304</td>
-      <td>-0.517304</td>
+      <td>-0.910258</td>
+      <td>-0.910258</td>
+      <td>-0.910258</td>
+      <td>-0.910258</td>
+      <td>-0.910258</td>
       <td>1.0</td>
-      <td>1.105429</td>
+      <td>1.058586</td>
       <td>NaN</td>
-      <td>1.105429</td>
-      <td>1.105429</td>
-      <td>1.105429</td>
-      <td>1.105429</td>
-      <td>1.105429</td>
+      <td>1.058586</td>
+      <td>1.058586</td>
+      <td>1.058586</td>
+      <td>1.058586</td>
+      <td>1.058586</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
       <td>2.0</td>
-      <td>1.225354</td>
-      <td>0.522513</td>
-      <td>0.855882</td>
-      <td>1.040618</td>
-      <td>1.225354</td>
-      <td>1.410091</td>
-      <td>1.594827</td>
+      <td>0.083141</td>
+      <td>0.313831</td>
+      <td>-0.138771</td>
+      <td>-0.027815</td>
+      <td>0.083141</td>
+      <td>0.194098</td>
+      <td>0.305054</td>
       <td>2.0</td>
-      <td>0.905829</td>
-      <td>0.631595</td>
-      <td>0.459224</td>
-      <td>0.682527</td>
-      <td>0.905829</td>
-      <td>1.129131</td>
-      <td>1.352434</td>
+      <td>-0.502769</td>
+      <td>0.739999</td>
+      <td>-1.026028</td>
+      <td>-0.764399</td>
+      <td>-0.502769</td>
+      <td>-0.241140</td>
+      <td>0.020489</td>
     </tr>
     <tr>
       <th>two</th>
       <td>2.0</td>
-      <td>-0.678216</td>
-      <td>1.503027</td>
-      <td>-1.741016</td>
-      <td>-1.209616</td>
-      <td>-0.678216</td>
-      <td>-0.146815</td>
-      <td>0.384585</td>
+      <td>1.482302</td>
+      <td>0.757717</td>
+      <td>0.946516</td>
+      <td>1.214409</td>
+      <td>1.482302</td>
+      <td>1.750196</td>
+      <td>2.018089</td>
       <td>2.0</td>
-      <td>0.239411</td>
-      <td>0.580019</td>
-      <td>-0.170725</td>
-      <td>0.034343</td>
-      <td>0.239411</td>
-      <td>0.444478</td>
-      <td>0.649546</td>
+      <td>0.523064</td>
+      <td>1.064855</td>
+      <td>-0.229903</td>
+      <td>0.146581</td>
+      <td>0.523064</td>
+      <td>0.899547</td>
+      <td>1.276030</td>
     </tr>
   </tbody>
 </table>
@@ -3747,10 +4752,133 @@ dtype: int64
     <span class="p">)</span>
 <span class="p">)</span>
 
-<span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">(</span><span class="n">tuples</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="s2">&quot;second&quot;</span><span class="p">])</span>
+<span class="n">tuples</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;bar&#39;, &#39;one&#39;),
+ (&#39;bar&#39;, &#39;two&#39;),
+ (&#39;baz&#39;, &#39;one&#39;),
+ (&#39;baz&#39;, &#39;two&#39;),
+ (&#39;foo&#39;, &#39;one&#39;),
+ (&#39;foo&#39;, &#39;two&#39;),
+ (&#39;qux&#39;, &#39;one&#39;),
+ (&#39;qux&#39;, &#39;two&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">(</span><span class="n">tuples</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="s2">&quot;second&quot;</span><span class="p">])</span>
+<span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MultiIndex([(&#39;bar&#39;, &#39;one&#39;),
+            (&#39;bar&#39;, &#39;two&#39;),
+            (&#39;baz&#39;, &#39;one&#39;),
+            (&#39;baz&#39;, &#39;two&#39;),
+            (&#39;foo&#39;, &#39;one&#39;),
+            (&#39;foo&#39;, &#39;two&#39;),
+            (&#39;qux&#39;, &#39;one&#39;),
+            (&#39;qux&#39;, &#39;two&#39;)],
+           names=[&#39;first&#39;, &#39;second&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">])</span>
-<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+    </tr>
+    <tr>
+      <th>first</th>
+      <th>second</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">bar</th>
+      <th>one</th>
+      <td>-1.363168</td>
+      <td>0.413617</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>-0.974199</td>
+      <td>0.401425</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">baz</th>
+      <th>one</th>
+      <td>-0.879002</td>
+      <td>-0.120605</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>-0.269523</td>
+      <td>0.943358</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">foo</th>
+      <th>one</th>
+      <td>-0.371793</td>
+      <td>0.104979</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>0.317785</td>
+      <td>1.444735</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">qux</th>
+      <th>one</th>
+      <td>-2.080407</td>
+      <td>1.343112</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>-1.377565</td>
+      <td>1.438669</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span>
 <span class="n">df2</span>
 </pre></div>
 </div>
@@ -3789,24 +4917,24 @@ dtype: int64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>one</th>
-      <td>0.154803</td>
-      <td>0.364316</td>
+      <td>-1.363168</td>
+      <td>0.413617</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.716557</td>
-      <td>-0.998475</td>
+      <td>-0.974199</td>
+      <td>0.401425</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>one</th>
-      <td>1.552960</td>
-      <td>-2.193681</td>
+      <td>-0.879002</td>
+      <td>-0.120605</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.317025</td>
-      <td>-1.806486</td>
+      <td>-0.269523</td>
+      <td>0.943358</td>
     </tr>
   </tbody>
 </table>
@@ -3822,14 +4950,14 @@ dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>first  second   
-bar    one     A    0.154803
-               B    0.364316
-       two     A    0.716557
-               B   -0.998475
-baz    one     A    1.552960
-               B   -2.193681
-       two     A   -0.317025
-               B   -1.806486
+bar    one     A   -1.363168
+               B    0.413617
+       two     A   -0.974199
+               B    0.401425
+baz    one     A   -0.879002
+               B   -0.120605
+       two     A   -0.269523
+               B    0.943358
 dtype: float64
 </pre></div>
 </div>
@@ -3876,24 +5004,24 @@ dtype: float64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>one</th>
-      <td>0.154803</td>
-      <td>0.364316</td>
+      <td>-1.363168</td>
+      <td>0.413617</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.716557</td>
-      <td>-0.998475</td>
+      <td>-0.974199</td>
+      <td>0.401425</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>one</th>
-      <td>1.552960</td>
-      <td>-2.193681</td>
+      <td>-0.879002</td>
+      <td>-0.120605</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.317025</td>
-      <td>-1.806486</td>
+      <td>-0.269523</td>
+      <td>0.943358</td>
     </tr>
   </tbody>
 </table>
@@ -3939,24 +5067,24 @@ dtype: float64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>A</th>
-      <td>0.154803</td>
-      <td>0.716557</td>
+      <td>-1.363168</td>
+      <td>-0.974199</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>0.364316</td>
-      <td>-0.998475</td>
+      <td>0.413617</td>
+      <td>0.401425</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>A</th>
-      <td>1.552960</td>
-      <td>-0.317025</td>
+      <td>-0.879002</td>
+      <td>-0.269523</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>-2.193681</td>
-      <td>-1.806486</td>
+      <td>-0.120605</td>
+      <td>0.943358</td>
     </tr>
   </tbody>
 </table>
@@ -4002,24 +5130,24 @@ dtype: float64
     <tr>
       <th rowspan="2" valign="top">one</th>
       <th>A</th>
-      <td>0.154803</td>
-      <td>1.552960</td>
+      <td>-1.363168</td>
+      <td>-0.879002</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>0.364316</td>
-      <td>-2.193681</td>
+      <td>0.413617</td>
+      <td>-0.120605</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">two</th>
       <th>A</th>
-      <td>0.716557</td>
-      <td>-0.317025</td>
+      <td>-0.974199</td>
+      <td>-0.269523</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>-0.998475</td>
-      <td>-1.806486</td>
+      <td>0.401425</td>
+      <td>0.943358</td>
     </tr>
   </tbody>
 </table>
@@ -4076,96 +5204,96 @@ dtype: float64
       <td>one</td>
       <td>A</td>
       <td>foo</td>
-      <td>0.821526</td>
-      <td>0.865510</td>
+      <td>-0.773860</td>
+      <td>-0.407661</td>
     </tr>
     <tr>
       <th>1</th>
       <td>one</td>
       <td>B</td>
       <td>foo</td>
-      <td>-0.971073</td>
-      <td>-0.757785</td>
+      <td>-0.090798</td>
+      <td>0.974621</td>
     </tr>
     <tr>
       <th>2</th>
       <td>two</td>
       <td>C</td>
       <td>foo</td>
-      <td>-0.008330</td>
-      <td>0.775165</td>
+      <td>-1.771676</td>
+      <td>1.581502</td>
     </tr>
     <tr>
       <th>3</th>
       <td>three</td>
       <td>A</td>
       <td>bar</td>
-      <td>-0.366821</td>
-      <td>-0.398007</td>
+      <td>1.236385</td>
+      <td>0.689159</td>
     </tr>
     <tr>
       <th>4</th>
       <td>one</td>
       <td>B</td>
       <td>bar</td>
-      <td>0.472135</td>
-      <td>-0.268640</td>
+      <td>0.062869</td>
+      <td>0.210112</td>
     </tr>
     <tr>
       <th>5</th>
       <td>one</td>
       <td>C</td>
       <td>bar</td>
-      <td>0.697673</td>
-      <td>0.770376</td>
+      <td>-1.229821</td>
+      <td>-1.278835</td>
     </tr>
     <tr>
       <th>6</th>
       <td>two</td>
       <td>A</td>
       <td>foo</td>
-      <td>-0.121985</td>
-      <td>-0.052581</td>
+      <td>1.298453</td>
+      <td>-0.782134</td>
     </tr>
     <tr>
       <th>7</th>
       <td>three</td>
       <td>B</td>
       <td>foo</td>
-      <td>-0.024500</td>
-      <td>-0.200235</td>
+      <td>-2.400533</td>
+      <td>-1.110220</td>
     </tr>
     <tr>
       <th>8</th>
       <td>one</td>
       <td>C</td>
       <td>foo</td>
-      <td>0.748235</td>
-      <td>-1.689349</td>
+      <td>0.537828</td>
+      <td>-0.016877</td>
     </tr>
     <tr>
       <th>9</th>
       <td>one</td>
       <td>A</td>
       <td>bar</td>
-      <td>0.307718</td>
-      <td>-0.372630</td>
+      <td>-0.479610</td>
+      <td>-0.983785</td>
     </tr>
     <tr>
       <th>10</th>
       <td>two</td>
       <td>B</td>
       <td>bar</td>
-      <td>0.347511</td>
-      <td>-0.198090</td>
+      <td>-0.002048</td>
+      <td>-0.181878</td>
     </tr>
     <tr>
       <th>11</th>
       <td>three</td>
       <td>C</td>
       <td>bar</td>
-      <td>-0.883010</td>
-      <td>2.111062</td>
+      <td>-0.859253</td>
+      <td>-1.083942</td>
     </tr>
   </tbody>
 </table>
@@ -4212,50 +5340,50 @@ dtype: float64
     <tr>
       <th rowspan="3" valign="top">one</th>
       <th>A</th>
-      <td>0.307718</td>
-      <td>0.821526</td>
+      <td>-0.479610</td>
+      <td>-0.773860</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>0.472135</td>
-      <td>-0.971073</td>
+      <td>0.062869</td>
+      <td>-0.090798</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>0.697673</td>
-      <td>0.748235</td>
+      <td>-1.229821</td>
+      <td>0.537828</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">three</th>
       <th>A</th>
-      <td>-0.366821</td>
+      <td>1.236385</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>B</th>
       <td>NaN</td>
-      <td>-0.024500</td>
+      <td>-2.400533</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>-0.883010</td>
+      <td>-0.859253</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">two</th>
       <th>A</th>
       <td>NaN</td>
-      <td>-0.121985</td>
+      <td>1.298453</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>0.347511</td>
+      <td>-0.002048</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>C</th>
       <td>NaN</td>
-      <td>-0.008330</td>
+      <td>-1.771676</td>
     </tr>
   </tbody>
 </table>
@@ -4269,14 +5397,122 @@ dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;1/1/2012&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;S&quot;</span><span class="p">)</span>
-<span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">rng</span><span class="p">)),</span> <span class="n">index</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
-<span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;5Min&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">rng</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-01-01    25649
-Freq: 5T, dtype: int64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DatetimeIndex([&#39;2012-01-01 00:00:00&#39;, &#39;2012-01-01 00:00:01&#39;,
+               &#39;2012-01-01 00:00:02&#39;, &#39;2012-01-01 00:00:03&#39;,
+               &#39;2012-01-01 00:00:04&#39;, &#39;2012-01-01 00:00:05&#39;,
+               &#39;2012-01-01 00:00:06&#39;, &#39;2012-01-01 00:00:07&#39;,
+               &#39;2012-01-01 00:00:08&#39;, &#39;2012-01-01 00:00:09&#39;,
+               &#39;2012-01-01 00:00:10&#39;, &#39;2012-01-01 00:00:11&#39;,
+               &#39;2012-01-01 00:00:12&#39;, &#39;2012-01-01 00:00:13&#39;,
+               &#39;2012-01-01 00:00:14&#39;, &#39;2012-01-01 00:00:15&#39;,
+               &#39;2012-01-01 00:00:16&#39;, &#39;2012-01-01 00:00:17&#39;,
+               &#39;2012-01-01 00:00:18&#39;, &#39;2012-01-01 00:00:19&#39;,
+               &#39;2012-01-01 00:00:20&#39;, &#39;2012-01-01 00:00:21&#39;,
+               &#39;2012-01-01 00:00:22&#39;, &#39;2012-01-01 00:00:23&#39;,
+               &#39;2012-01-01 00:00:24&#39;, &#39;2012-01-01 00:00:25&#39;,
+               &#39;2012-01-01 00:00:26&#39;, &#39;2012-01-01 00:00:27&#39;,
+               &#39;2012-01-01 00:00:28&#39;, &#39;2012-01-01 00:00:29&#39;,
+               &#39;2012-01-01 00:00:30&#39;, &#39;2012-01-01 00:00:31&#39;,
+               &#39;2012-01-01 00:00:32&#39;, &#39;2012-01-01 00:00:33&#39;,
+               &#39;2012-01-01 00:00:34&#39;, &#39;2012-01-01 00:00:35&#39;,
+               &#39;2012-01-01 00:00:36&#39;, &#39;2012-01-01 00:00:37&#39;,
+               &#39;2012-01-01 00:00:38&#39;, &#39;2012-01-01 00:00:39&#39;,
+               &#39;2012-01-01 00:00:40&#39;, &#39;2012-01-01 00:00:41&#39;,
+               &#39;2012-01-01 00:00:42&#39;, &#39;2012-01-01 00:00:43&#39;,
+               &#39;2012-01-01 00:00:44&#39;, &#39;2012-01-01 00:00:45&#39;,
+               &#39;2012-01-01 00:00:46&#39;, &#39;2012-01-01 00:00:47&#39;,
+               &#39;2012-01-01 00:00:48&#39;, &#39;2012-01-01 00:00:49&#39;,
+               &#39;2012-01-01 00:00:50&#39;, &#39;2012-01-01 00:00:51&#39;,
+               &#39;2012-01-01 00:00:52&#39;, &#39;2012-01-01 00:00:53&#39;,
+               &#39;2012-01-01 00:00:54&#39;, &#39;2012-01-01 00:00:55&#39;,
+               &#39;2012-01-01 00:00:56&#39;, &#39;2012-01-01 00:00:57&#39;,
+               &#39;2012-01-01 00:00:58&#39;, &#39;2012-01-01 00:00:59&#39;,
+               &#39;2012-01-01 00:01:00&#39;, &#39;2012-01-01 00:01:01&#39;,
+               &#39;2012-01-01 00:01:02&#39;, &#39;2012-01-01 00:01:03&#39;,
+               &#39;2012-01-01 00:01:04&#39;, &#39;2012-01-01 00:01:05&#39;,
+               &#39;2012-01-01 00:01:06&#39;, &#39;2012-01-01 00:01:07&#39;,
+               &#39;2012-01-01 00:01:08&#39;, &#39;2012-01-01 00:01:09&#39;,
+               &#39;2012-01-01 00:01:10&#39;, &#39;2012-01-01 00:01:11&#39;,
+               &#39;2012-01-01 00:01:12&#39;, &#39;2012-01-01 00:01:13&#39;,
+               &#39;2012-01-01 00:01:14&#39;, &#39;2012-01-01 00:01:15&#39;,
+               &#39;2012-01-01 00:01:16&#39;, &#39;2012-01-01 00:01:17&#39;,
+               &#39;2012-01-01 00:01:18&#39;, &#39;2012-01-01 00:01:19&#39;,
+               &#39;2012-01-01 00:01:20&#39;, &#39;2012-01-01 00:01:21&#39;,
+               &#39;2012-01-01 00:01:22&#39;, &#39;2012-01-01 00:01:23&#39;,
+               &#39;2012-01-01 00:01:24&#39;, &#39;2012-01-01 00:01:25&#39;,
+               &#39;2012-01-01 00:01:26&#39;, &#39;2012-01-01 00:01:27&#39;,
+               &#39;2012-01-01 00:01:28&#39;, &#39;2012-01-01 00:01:29&#39;,
+               &#39;2012-01-01 00:01:30&#39;, &#39;2012-01-01 00:01:31&#39;,
+               &#39;2012-01-01 00:01:32&#39;, &#39;2012-01-01 00:01:33&#39;,
+               &#39;2012-01-01 00:01:34&#39;, &#39;2012-01-01 00:01:35&#39;,
+               &#39;2012-01-01 00:01:36&#39;, &#39;2012-01-01 00:01:37&#39;,
+               &#39;2012-01-01 00:01:38&#39;, &#39;2012-01-01 00:01:39&#39;],
+              dtype=&#39;datetime64[ns]&#39;, freq=&#39;S&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">rng</span><span class="p">)),</span> <span class="n">index</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
+<span class="n">ts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-01-01 00:00:00     26
+2012-01-01 00:00:01    475
+2012-01-01 00:00:02    401
+2012-01-01 00:00:03    266
+2012-01-01 00:00:04    308
+                      ... 
+2012-01-01 00:01:35      6
+2012-01-01 00:01:36    477
+2012-01-01 00:01:37    494
+2012-01-01 00:01:38     82
+2012-01-01 00:01:39    438
+Freq: S, Length: 100, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;10S&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-01-01 00:00:00    2791
+2012-01-01 00:00:10    2113
+2012-01-01 00:00:20    2363
+2012-01-01 00:00:30    2361
+2012-01-01 00:00:40    2325
+2012-01-01 00:00:50    2411
+2012-01-01 00:01:00    2692
+2012-01-01 00:01:10    2634
+2012-01-01 00:01:20    3088
+2012-01-01 00:01:30    3096
+Freq: 10S, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s2">&quot;1Min&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-01-01 00:00:00    14364
+2012-01-01 00:01:00    11510
+Freq: T, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -4293,19 +5529,19 @@ Freq: 5T, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-03-06    0.889334
-2012-03-07    0.184339
-2012-03-08   -0.745514
-2012-03-09   -0.395967
-2012-03-10   -0.784771
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-03-06    0.306277
+2012-03-07   -0.598828
+2012-03-08   -0.214205
+2012-03-09   -0.721789
+2012-03-10    0.496100
 Freq: D, dtype: float64 
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-03-06 00:00:00+00:00    0.889334
-2012-03-07 00:00:00+00:00    0.184339
-2012-03-08 00:00:00+00:00   -0.745514
-2012-03-09 00:00:00+00:00   -0.395967
-2012-03-10 00:00:00+00:00   -0.784771
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-03-06 00:00:00+00:00    0.306277
+2012-03-07 00:00:00+00:00   -0.598828
+2012-03-08 00:00:00+00:00   -0.214205
+2012-03-09 00:00:00+00:00   -0.721789
+2012-03-10 00:00:00+00:00    0.496100
 Freq: D, dtype: float64
 </pre></div>
 </div>
@@ -4315,18 +5551,49 @@ Freq: D, dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;1/1/2012&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;M&quot;</span><span class="p">)</span>
-<span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rng</span><span class="p">)),</span> <span class="n">index</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
-<span class="n">ps</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">to_period</span><span class="p">()</span>
+<span class="n">rng</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DatetimeIndex([&#39;2012-01-31&#39;, &#39;2012-02-29&#39;, &#39;2012-03-31&#39;, &#39;2012-04-30&#39;,
+               &#39;2012-05-31&#39;],
+              dtype=&#39;datetime64[ns]&#39;, freq=&#39;M&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rng</span><span class="p">)),</span> <span class="n">index</span><span class="o">=</span><span class="n">rng</span><span class="p">)</span>
+<span class="n">ts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-01-31   -1.883583
+2012-02-29    0.163852
+2012-03-31    0.817292
+2012-04-30   -0.899811
+2012-05-31    0.995781
+Freq: M, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ps</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">to_period</span><span class="p">()</span>
 <span class="n">ps</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-01    1.182893
-2012-02   -2.155056
-2012-03   -1.992558
-2012-04    0.270752
-2012-05    0.128750
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-01   -1.883583
+2012-02    0.163852
+2012-03    0.817292
+2012-04   -0.899811
+2012-05    0.995781
 Freq: M, dtype: float64
 </pre></div>
 </div>
@@ -4339,11 +5606,11 @@ Freq: M, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-01-01    1.182893
-2012-02-01   -2.155056
-2012-03-01   -1.992558
-2012-04-01    0.270752
-2012-05-01    0.128750
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-01-01   -1.883583
+2012-02-01    0.163852
+2012-03-01    0.817292
+2012-04-01   -0.899811
+2012-05-01    0.995781
 Freq: MS, dtype: float64
 </pre></div>
 </div>
@@ -4353,18 +5620,121 @@ Freq: MS, dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">period_range</span><span class="p">(</span><span class="s2">&quot;1990Q1&quot;</span><span class="p">,</span> <span class="s2">&quot;2000Q4&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;Q-NOV&quot;</span><span class="p">)</span>
-<span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">prng</span><span class="p">)),</span> <span class="n">prng</span><span class="p">)</span>
-<span class="n">ts</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="n">prng</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">9</span>
-<span class="n">ts</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">prng</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1990-03-01 09:00    0.084083
-1990-06-01 09:00    0.076873
-1990-09-01 09:00    0.513642
-1990-12-01 09:00   -0.911874
-1991-03-01 09:00    2.078458
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PeriodIndex([&#39;1990Q1&#39;, &#39;1990Q2&#39;, &#39;1990Q3&#39;, &#39;1990Q4&#39;, &#39;1991Q1&#39;, &#39;1991Q2&#39;,
+             &#39;1991Q3&#39;, &#39;1991Q4&#39;, &#39;1992Q1&#39;, &#39;1992Q2&#39;, &#39;1992Q3&#39;, &#39;1992Q4&#39;,
+             &#39;1993Q1&#39;, &#39;1993Q2&#39;, &#39;1993Q3&#39;, &#39;1993Q4&#39;, &#39;1994Q1&#39;, &#39;1994Q2&#39;,
+             &#39;1994Q3&#39;, &#39;1994Q4&#39;, &#39;1995Q1&#39;, &#39;1995Q2&#39;, &#39;1995Q3&#39;, &#39;1995Q4&#39;,
+             &#39;1996Q1&#39;, &#39;1996Q2&#39;, &#39;1996Q3&#39;, &#39;1996Q4&#39;, &#39;1997Q1&#39;, &#39;1997Q2&#39;,
+             &#39;1997Q3&#39;, &#39;1997Q4&#39;, &#39;1998Q1&#39;, &#39;1998Q2&#39;, &#39;1998Q3&#39;, &#39;1998Q4&#39;,
+             &#39;1999Q1&#39;, &#39;1999Q2&#39;, &#39;1999Q3&#39;, &#39;1999Q4&#39;, &#39;2000Q1&#39;, &#39;2000Q2&#39;,
+             &#39;2000Q3&#39;, &#39;2000Q4&#39;],
+            dtype=&#39;period[Q-NOV]&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">prng</span><span class="p">)),</span> <span class="n">prng</span><span class="p">)</span>
+<span class="n">ts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1990Q1    0.959155
+1990Q2   -1.028456
+1990Q3   -1.302228
+1990Q4   -0.883494
+1991Q1   -1.995117
+1991Q2   -0.085012
+1991Q3   -0.201434
+1991Q4    1.416875
+1992Q1    0.036021
+1992Q2    1.366226
+1992Q3   -0.111209
+1992Q4   -0.978479
+1993Q1   -0.213304
+1993Q2    0.839963
+1993Q3   -0.671009
+1993Q4   -0.733019
+1994Q1    0.079194
+1994Q2    1.318127
+1994Q3   -1.498737
+1994Q4    0.999803
+1995Q1    0.200932
+1995Q2   -0.036628
+1995Q3   -1.546669
+1995Q4   -1.068876
+1996Q1    0.125223
+1996Q2    1.113946
+1996Q3   -0.136632
+1996Q4   -1.829181
+1997Q1    0.710470
+1997Q2    0.441136
+1997Q3   -1.264207
+1997Q4    0.951037
+1998Q1   -0.942419
+1998Q2    0.451126
+1998Q3    1.126582
+1998Q4    0.341863
+1999Q1    0.087526
+1999Q2   -1.351911
+1999Q3   -0.017569
+1999Q4    0.356485
+2000Q1    1.219240
+2000Q2    1.001394
+2000Q3    0.589857
+2000Q4    0.169063
+Freq: Q-NOV, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="p">(</span><span class="n">prng</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="mi">9</span>
+<span class="n">ts</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PeriodIndex([&#39;1990-03-01 09:00&#39;, &#39;1990-06-01 09:00&#39;, &#39;1990-09-01 09:00&#39;,
+             &#39;1990-12-01 09:00&#39;, &#39;1991-03-01 09:00&#39;, &#39;1991-06-01 09:00&#39;,
+             &#39;1991-09-01 09:00&#39;, &#39;1991-12-01 09:00&#39;, &#39;1992-03-01 09:00&#39;,
+             &#39;1992-06-01 09:00&#39;, &#39;1992-09-01 09:00&#39;, &#39;1992-12-01 09:00&#39;,
+             &#39;1993-03-01 09:00&#39;, &#39;1993-06-01 09:00&#39;, &#39;1993-09-01 09:00&#39;,
+             &#39;1993-12-01 09:00&#39;, &#39;1994-03-01 09:00&#39;, &#39;1994-06-01 09:00&#39;,
+             &#39;1994-09-01 09:00&#39;, &#39;1994-12-01 09:00&#39;, &#39;1995-03-01 09:00&#39;,
+             &#39;1995-06-01 09:00&#39;, &#39;1995-09-01 09:00&#39;, &#39;1995-12-01 09:00&#39;,
+             &#39;1996-03-01 09:00&#39;, &#39;1996-06-01 09:00&#39;, &#39;1996-09-01 09:00&#39;,
+             &#39;1996-12-01 09:00&#39;, &#39;1997-03-01 09:00&#39;, &#39;1997-06-01 09:00&#39;,
+             &#39;1997-09-01 09:00&#39;, &#39;1997-12-01 09:00&#39;, &#39;1998-03-01 09:00&#39;,
+             &#39;1998-06-01 09:00&#39;, &#39;1998-09-01 09:00&#39;, &#39;1998-12-01 09:00&#39;,
+             &#39;1999-03-01 09:00&#39;, &#39;1999-06-01 09:00&#39;, &#39;1999-09-01 09:00&#39;,
+             &#39;1999-12-01 09:00&#39;, &#39;2000-03-01 09:00&#39;, &#39;2000-06-01 09:00&#39;,
+             &#39;2000-09-01 09:00&#39;, &#39;2000-12-01 09:00&#39;],
+            dtype=&#39;period[H]&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1990-03-01 09:00    0.959155
+1990-06-01 09:00   -1.028456
+1990-09-01 09:00   -1.302228
+1990-12-01 09:00   -0.883494
+1991-03-01 09:00   -1.995117
 Freq: H, dtype: float64
 </pre></div>
 </div>
@@ -4667,7 +6037,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/pandas_10minutes_2_121_0.png" src="_images/pandas_10minutes_2_121_0.png" />
+<img alt="_images/pandas_10minutes_2_154_0.png" src="_images/pandas_10minutes_2_154_0.png" />
 </div>
 </div>
 <p>If running under Jupyter Notebook, the plot will appear on <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.plot.html#pandas.Series.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a>. Otherwise use <a class="reference external" href="https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.show.html"><code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.show</span></code></a> to show it or <a class="reference external" href="https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.savefig.html"><code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.savefig</span></code></a> to write it to a file.</p>
@@ -4689,7 +6059,7 @@ dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="_images/pandas_10minutes_2_123_1.png" src="_images/pandas_10minutes_2_123_1.png" />
+<img alt="_images/pandas_10minutes_2_156_1.png" src="_images/pandas_10minutes_2_156_1.png" />
 </div>
 </div>
 </section>
@@ -4742,42 +6112,42 @@ dtype: int64
     <tr>
       <th>0</th>
       <td>2000-01-01</td>
-      <td>0.809097</td>
-      <td>0.508312</td>
-      <td>-0.334861</td>
-      <td>0.128017</td>
+      <td>1.979118</td>
+      <td>0.329400</td>
+      <td>0.044357</td>
+      <td>-0.533561</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2000-01-02</td>
-      <td>0.245046</td>
-      <td>0.524692</td>
-      <td>0.264656</td>
-      <td>-0.514199</td>
+      <td>1.269218</td>
+      <td>1.783381</td>
+      <td>1.519387</td>
+      <td>0.273881</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2000-01-03</td>
-      <td>0.621339</td>
-      <td>-0.102367</td>
-      <td>1.754808</td>
-      <td>-1.569018</td>
+      <td>1.404339</td>
+      <td>1.756406</td>
+      <td>0.359010</td>
+      <td>0.139851</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2000-01-04</td>
-      <td>0.151205</td>
-      <td>-2.279682</td>
-      <td>2.104716</td>
-      <td>-0.559915</td>
+      <td>1.390422</td>
+      <td>0.082121</td>
+      <td>1.904601</td>
+      <td>-0.071930</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2000-01-05</td>
-      <td>0.820589</td>
-      <td>-1.392151</td>
-      <td>4.015279</td>
-      <td>-0.891391</td>
+      <td>2.262146</td>
+      <td>-0.011478</td>
+      <td>2.230144</td>
+      <td>-0.134033</td>
     </tr>
     <tr>
       <th>...</th>
@@ -4790,42 +6160,42 @@ dtype: int64
     <tr>
       <th>995</th>
       <td>2002-09-22</td>
-      <td>-24.538660</td>
-      <td>69.430783</td>
-      <td>24.166557</td>
-      <td>-14.576670</td>
+      <td>-4.101468</td>
+      <td>44.575337</td>
+      <td>19.911831</td>
+      <td>-20.354470</td>
     </tr>
     <tr>
       <th>996</th>
       <td>2002-09-23</td>
-      <td>-22.455428</td>
-      <td>68.026965</td>
-      <td>24.117950</td>
-      <td>-15.674254</td>
+      <td>-1.770783</td>
+      <td>44.311257</td>
+      <td>20.701065</td>
+      <td>-20.882252</td>
     </tr>
     <tr>
       <th>997</th>
       <td>2002-09-24</td>
-      <td>-23.438933</td>
-      <td>67.140763</td>
-      <td>23.887064</td>
-      <td>-15.768507</td>
+      <td>-3.383304</td>
+      <td>45.315278</td>
+      <td>21.327038</td>
+      <td>-19.146517</td>
     </tr>
     <tr>
       <th>998</th>
       <td>2002-09-25</td>
-      <td>-22.583989</td>
-      <td>67.429030</td>
-      <td>24.014904</td>
-      <td>-15.869295</td>
+      <td>-4.321428</td>
+      <td>46.019923</td>
+      <td>21.723059</td>
+      <td>-19.203105</td>
     </tr>
     <tr>
       <th>999</th>
       <td>2002-09-26</td>
-      <td>-21.532616</td>
-      <td>67.613796</td>
-      <td>24.490357</td>
-      <td>-15.172513</td>
+      <td>-4.533048</td>
+      <td>44.569343</td>
+      <td>20.441272</td>
+      <td>-18.767073</td>
     </tr>
   </tbody>
 </table>
@@ -4881,42 +6251,42 @@ dtype: int64
     <tr>
       <th>0</th>
       <td>2000-01-01</td>
-      <td>0.809097</td>
-      <td>0.508312</td>
-      <td>-0.334861</td>
-      <td>0.128017</td>
+      <td>1.979118</td>
+      <td>0.329400</td>
+      <td>0.044357</td>
+      <td>-0.533561</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2000-01-02</td>
-      <td>0.245046</td>
-      <td>0.524692</td>
-      <td>0.264656</td>
-      <td>-0.514199</td>
+      <td>1.269218</td>
+      <td>1.783381</td>
+      <td>1.519387</td>
+      <td>0.273881</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2000-01-03</td>
-      <td>0.621339</td>
-      <td>-0.102367</td>
-      <td>1.754808</td>
-      <td>-1.569018</td>
+      <td>1.404339</td>
+      <td>1.756406</td>
+      <td>0.359010</td>
+      <td>0.139851</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2000-01-04</td>
-      <td>0.151205</td>
-      <td>-2.279682</td>
-      <td>2.104716</td>
-      <td>-0.559915</td>
+      <td>1.390422</td>
+      <td>0.082121</td>
+      <td>1.904601</td>
+      <td>-0.071930</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2000-01-05</td>
-      <td>0.820589</td>
-      <td>-1.392151</td>
-      <td>4.015279</td>
-      <td>-0.891391</td>
+      <td>2.262146</td>
+      <td>-0.011478</td>
+      <td>2.230144</td>
+      <td>-0.134033</td>
     </tr>
     <tr>
       <th>...</th>
@@ -4929,54 +6299,47 @@ dtype: int64
     <tr>
       <th>995</th>
       <td>2002-09-22</td>
-      <td>-24.538660</td>
-      <td>69.430783</td>
-      <td>24.166557</td>
-      <td>-14.576670</td>
+      <td>-4.101468</td>
+      <td>44.575337</td>
+      <td>19.911831</td>
+      <td>-20.354470</td>
     </tr>
     <tr>
       <th>996</th>
       <td>2002-09-23</td>
-      <td>-22.455428</td>
-      <td>68.026965</td>
-      <td>24.117950</td>
-      <td>-15.674254</td>
+      <td>-1.770783</td>
+      <td>44.311257</td>
+      <td>20.701065</td>
+      <td>-20.882252</td>
     </tr>
     <tr>
       <th>997</th>
       <td>2002-09-24</td>
-      <td>-23.438933</td>
-      <td>67.140763</td>
-      <td>23.887064</td>
-      <td>-15.768507</td>
+      <td>-3.383304</td>
+      <td>45.315278</td>
+      <td>21.327038</td>
+      <td>-19.146517</td>
     </tr>
     <tr>
       <th>998</th>
       <td>2002-09-25</td>
-      <td>-22.583989</td>
-      <td>67.429030</td>
-      <td>24.014904</td>
-      <td>-15.869295</td>
+      <td>-4.321428</td>
+      <td>46.019923</td>
+      <td>21.723059</td>
+      <td>-19.203105</td>
     </tr>
     <tr>
       <th>999</th>
       <td>2002-09-26</td>
-      <td>-21.532616</td>
-      <td>67.613796</td>
-      <td>24.490357</td>
-      <td>-15.172513</td>
+      <td>-4.533048</td>
+      <td>44.569343</td>
+      <td>20.441272</td>
+      <td>-18.767073</td>
     </tr>
   </tbody>
 </table>
 <p>1000 rows × 5 columns</p>
 </div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span>
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 </section>
