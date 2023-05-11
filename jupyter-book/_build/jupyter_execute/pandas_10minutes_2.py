@@ -18,37 +18,116 @@ import pandas as pd
 
 # - 참고: [Merging section](https://pandas.pydata.org/docs/user_guide/merging.html#merging)
 
-# ### 이어붙이기: `pd.concat()` 함수
+# ### 합종연횡: `pd.concat()` 함수
 
 # `pd.concat()` 함수는 여러 개의 데이터프레임을 하나로 합친다.
 # 
-# 아래 코드는 실습을 위해 임의로 생성된 데이터프레임을 세 개로 쪼갠다.
+# - `axis=0`: 합종 결합
 
 # In[2]:
 
 
-df = pd.DataFrame(np.random.randn(10, 4))
-df
+df1 = pd.DataFrame(
+    {
+        "A": ["A0", "A1", "A2", "A3"],
+        "B": ["B0", "B1", "B2", "B3"],
+        "C": ["C0", "C1", "C2", "C3"],
+        "D": ["D0", "D1", "D2", "D3"],
+    },
+    index=[0, 1, 2, 3],
+)
+
+df1
 
 
 # In[3]:
 
 
-pieces = [df[:3], df[3:7], df[7:]]
+df2 = pd.DataFrame(
+    {
+        "A": ["A4", "A5", "A6", "A7"],
+        "B": ["B4", "B5", "B6", "B7"],
+        "C": ["C4", "C5", "C6", "C7"],
+        "D": ["D4", "D5", "D6", "D7"],
+    },
+    index=[4, 5, 6, 7],
+)
 
+df2
 
-# 아래 코드는 쪼갠 3 개의 데이터프레임을 **횡으로 합쳐**, 즉 열을 추가하는 방식으로
-# 원래의 데이터프레임과 동일한 데이터프레임을 생성한다.
 
 # In[4]:
 
 
-pd.concat(pieces)
+df3 = pd.DataFrame(
+    {
+        "A": ["A8", "A9", "A10", "A11"],
+        "B": ["B8", "B9", "B10", "B11"],
+        "C": ["C8", "C9", "C10", "C11"],
+        "D": ["D8", "D9", "D10", "D11"],
+    },
+    index=[8, 9, 10, 11],
+)
+
+df3
+
+
+# In[5]:
+
+
+pd.concat([df1, df2, df3]) # axis=0 이 기본값
+
+
+# - `axis=1`: 연횡 결합
+
+# In[6]:
+
+
+df4 = pd.DataFrame(
+    {
+        "B": ["B2", "B3", "B6", "B7"],
+        "D": ["D2", "D3", "D6", "D7"],
+        "F": ["F2", "F3", "F6", "F7"],
+    },
+    index=[2, 3, 6, 7],
+)
+
+df4
+
+
+# In[7]:
+
+
+pd.concat([df1, df4], axis=1)
+
+
+# In[8]:
+
+
+df1.index
+
+
+# In[9]:
+
+
+pd.concat([df1, df4], axis=1).reindex(df1.index)
+
+
+# In[10]:
+
+
+df4.reindex(df1.index)
+
+
+# In[11]:
+
+
+pd.concat([df1, df4.reindex(df1.index)], axis=1)
 
 
 # ### 합병: `pd.merge()` 함수
 
-# `pd.join()` 함수 는 SQL 방식으로 특정 열을 기준으로 두 개의 데이터프레임을 합친다.
+# `pd.merge()` 함수 는 SQL 방식으로 특정 열을 기준으로 두 개의 데이터프레임을 합친다.
 # 다양한 옵션을 지원하는 매우 강력한 도구이다.
 # 
 # - 참고: [Database style joining](https://pandas.pydata.org/docs/user_guide/merging.html#merging-join)
@@ -57,20 +136,20 @@ pd.concat(pieces)
 
 # 실습을 위해 아래 두 데이터프레임을 이용한다.
 
-# In[5]:
+# In[12]:
 
 
 left = pd.DataFrame({"key": ["foo", "foo"], "lval": [1, 2]})
 right = pd.DataFrame({"key": ["foo", "foo"], "rval": [4, 5]})
 
 
-# In[6]:
+# In[13]:
 
 
 left
 
 
-# In[7]:
+# In[14]:
 
 
 right
@@ -85,7 +164,7 @@ right
 #     | :---: | :---: | :---: | :---: |
 #     | `foo` | `1, 2` | `4, 5` | 4 |
 
-# In[8]:
+# In[15]:
 
 
 pd.merge(left, right, on="key")
@@ -93,20 +172,20 @@ pd.merge(left, right, on="key")
 
 # **예제**
 
-# In[9]:
+# In[16]:
 
 
 left = pd.DataFrame({"key": ["foo", "bar"], "lval": [1, 2]})
 right = pd.DataFrame({"key": ["foo", "bar"], "rval": [4, 5]})
 
 
-# In[10]:
+# In[17]:
 
 
 left
 
 
-# In[11]:
+# In[18]:
 
 
 right
@@ -124,7 +203,7 @@ right
 #     | `foo` | `1` | `4` | 1 |        
 #     | `bar` | `2` | `5` | 1 |        
 
-# In[12]:
+# In[19]:
 
 
 pd.merge(left, right, on="key")
@@ -134,7 +213,7 @@ pd.merge(left, right, on="key")
 
 # 경우의 수는 지정된 열의 항목이 사용된 횟수를 기준으로 한다. 
 
-# In[13]:
+# In[20]:
 
 
 left = pd.DataFrame(
@@ -146,13 +225,13 @@ left = pd.DataFrame(
 )
 
 
-# In[14]:
+# In[21]:
 
 
 left
 
 
-# In[15]:
+# In[22]:
 
 
 right = pd.DataFrame(
@@ -164,7 +243,7 @@ right = pd.DataFrame(
 )
 
 
-# In[16]:
+# In[23]:
 
 
 right
@@ -177,7 +256,7 @@ right
 # | `K2` | (`A2`, `B2`) | (`C2`, `D2`) | 1 |
 # | `K3` | (`A3`, `B3`) | (`C3`, `D3`) | 1 |
 
-# In[17]:
+# In[24]:
 
 
 result = pd.merge(left, right, on="key")
@@ -186,7 +265,7 @@ result
 
 # **다양한 키워드 인자**
 
-# In[18]:
+# In[25]:
 
 
 left = pd.DataFrame(
@@ -201,7 +280,7 @@ left = pd.DataFrame(
 left
 
 
-# In[19]:
+# In[26]:
 
 
 right = pd.DataFrame(
@@ -218,14 +297,14 @@ right
 
 # - `how='inner'`: 지정된 키의 교집합 대상
 
-# In[20]:
+# In[27]:
 
 
 result = pd.merge(left, right, on=["key1", "key2"]) # how='inner' 가 기본값
 result
 
 
-# In[21]:
+# In[28]:
 
 
 result = pd.merge(left, right, how="inner", on=["key1", "key2"])
@@ -234,7 +313,7 @@ result
 
 # - `how='outer'`: 지정된 키의 합집합 대상
 
-# In[22]:
+# In[29]:
 
 
 result = pd.merge(left, right, how="outer", on=["key1", "key2"])
@@ -243,13 +322,13 @@ result
 
 # - `how='left'`: 왼쪽 데이터프레임의 키에 포함된 항목만 대상
 
-# In[23]:
+# In[30]:
 
 
 left
 
 
-# In[24]:
+# In[31]:
 
 
 result = pd.merge(left, right, how="left", on=["key1", "key2"])
@@ -258,13 +337,13 @@ result
 
 # - `how='right'`: 오른쪽 데이터프레임의 키에 포함된 항목만 대상
 
-# In[25]:
+# In[32]:
 
 
 right
 
 
-# In[26]:
+# In[33]:
 
 
 result = pd.merge(left, right, how="right", on=["key1", "key2"])
@@ -273,11 +352,83 @@ result
 
 # - `how='cross'`: 모든 경우의 수 조합
 
-# In[27]:
+# In[34]:
 
 
 result = pd.merge(left, right, how="cross")
 result
+
+
+# ### 합병: `DataFrame.join()` 메서드
+
+# 인덱스를 기준으로 두 개의 데이터프레임을 합병할 때 사용한다.
+
+# In[35]:
+
+
+left = pd.DataFrame(
+    {"A": ["A0", "A1", "A2"], "B": ["B0", "B1", "B2"]}, index=["K0", "K1", "K2"]
+)
+
+left
+
+
+# In[36]:
+
+
+right = pd.DataFrame(
+    {"C": ["C0", "C2", "C3"], "D": ["D0", "D2", "D3"]}, index=["K0", "K2", "K3"]
+)
+
+right
+
+
+# In[37]:
+
+
+left.join(right)
+
+
+# 아래와 같이 `pd.merge()` 함수를 이용한 결과와 동일하다.
+
+# In[38]:
+
+
+pd.merge(left, right, left_index=True, right_index=True, how='left')
+
+
+# `pd.merge()` 함수의 키워드 인자를 동일하게 사용할 수 있다.
+
+# - `how='outer'`
+
+# In[39]:
+
+
+left.join(right, how="outer")
+
+
+# 아래 코드가 동일한 결과를 낸다.
+
+# In[40]:
+
+
+pd.merge(left, right, left_index=True, right_index=True, how='outer')
+
+
+# - `how='inner'`
+
+# In[41]:
+
+
+left.join(right, how="inner")
+
+
+# 아래 코드가 동일한 결과를 낸다.
+
+# In[42]:
+
+
+pd.merge(left, right, left_index=True, right_index=True, how='inner')
 
 
 # ## 그룹화: `pd.groupby()` 함수
@@ -286,11 +437,11 @@ result
 
 # `pd.groupby()` 함수는 다음 3 기능을 제공한다.
 # 
-# - **분류**: 데이터를 조건에 따라 여러 그룹으로 분류
-# - **함수 적용**: 그룹별로 함수 적용
-# - **조합**: 그룹별 함수 결과를 조합하여 새로운 데이터프레임/시리즈 생성
+# - **분류**<font size='2'>Splitting</font>: 데이터를 조건에 따라 여러 그룹으로 분류
+# - **함수 적용**<font size='2'>Applying</font>: 그룹별로 함수 적용
+# - **조합**<font size='2'>Combining</font>: 그룹별 함수 적용 결과를 취합하여 새로운 데이터프레임/시리즈 생성
 
-# In[28]:
+# In[43]:
 
 
 df = pd.DataFrame({'A': ['foo', 'bar', 'foo', 'bar',
@@ -310,7 +461,7 @@ df
 # | `bar`(4) | 1 |
 # | `foo`(4) | 1 |
 
-# In[29]:
+# In[44]:
 
 
 df.groupby('A')[["C", "D"]].sum()
@@ -320,10 +471,10 @@ df.groupby('A')[["C", "D"]].sum()
 
 # | `A`(사용횟수) | `B`(사용횟수) | 경우의 수 |
 # | :---: | :---: | :---: |
-# | `bar`(4) | `one`(2), `two`(2) | 2 |
-# | `foo`(4) | `one`(1), `three`(2), `two`(1) | 3 |
+# | `bar`(4) | `one`(1), `three`(2), `two`(1) | 3 |
+# | `foo`(4) | `one`(2), `two`(2) | 2 |
 
-# In[30]:
+# In[45]:
 
 
 df.groupby(["A", "B"]).sum()
@@ -333,7 +484,7 @@ df.groupby(["A", "B"]).sum()
 
 # - `for` 반복문 활용 
 
-# In[31]:
+# In[46]:
 
 
 for name, group in df.groupby(["A", "B"]):
@@ -343,13 +494,13 @@ for name, group in df.groupby(["A", "B"]):
 
 # - `get_group()` 메서드
 
-# In[32]:
+# In[47]:
 
 
 df.groupby(["A", "B"]).get_group(('bar', 'one'))
 
 
-# In[33]:
+# In[48]:
 
 
 df.groupby(["A", "B"]).get_group(('bar', 'three'))
@@ -357,7 +508,7 @@ df.groupby(["A", "B"]).get_group(('bar', 'three'))
 
 # - `groups` 속성
 
-# In[34]:
+# In[49]:
 
 
 df.groupby(["A", "B"]).groups
@@ -365,7 +516,7 @@ df.groupby(["A", "B"]).groups
 
 # - `value_counts` 속성
 
-# In[35]:
+# In[50]:
 
 
 df.groupby(["A", "B"]).value_counts()
@@ -373,7 +524,7 @@ df.groupby(["A", "B"]).value_counts()
 
 # - `nunique` 속성
 
-# In[36]:
+# In[51]:
 
 
 df.groupby(["A", "B"]).nunique()
@@ -381,19 +532,19 @@ df.groupby(["A", "B"]).nunique()
 
 # - `sort=True` 키워드 인자
 
-# In[37]:
+# In[52]:
 
 
 df.groupby(["A", "B"], sort=True).sum()
 
 
-# In[38]:
+# In[53]:
 
 
 df.groupby(["A", "B"], sort=False).sum()
 
 
-# In[39]:
+# In[54]:
 
 
 df.groupby(["A", "B"], sort=False).nunique()
@@ -401,58 +552,52 @@ df.groupby(["A", "B"], sort=False).nunique()
 
 # **그룹 연산**
 
-# In[40]:
+# In[55]:
 
 
 df.groupby('A')[["C", "D"]].max()
 
 
-# In[41]:
+# In[56]:
 
 
 df.groupby(["A", "B"]).max()
 
 
-# In[42]:
+# In[57]:
 
 
 df.groupby('A')[["C", "D"]].mean()
 
 
-# In[43]:
+# In[58]:
 
 
 df.groupby(["A", "B"]).mean()
 
 
-# In[44]:
+# In[59]:
 
 
 df.groupby('A')[["C", "D"]].size()
 
 
-# In[45]:
+# In[60]:
 
 
 df.groupby(["A", "B"]).size()
 
 
-# In[46]:
+# In[61]:
 
 
 df.groupby('A')[["C", "D"]].describe()
 
 
-# In[47]:
+# In[62]:
 
 
 df.groupby(["A", "B"]).describe()
-
-
-# In[ ]:
-
-
-
 
 
 # ## Reshaping
@@ -461,7 +606,7 @@ df.groupby(["A", "B"]).describe()
 
 # ### Stack
 
-# In[48]:
+# In[63]:
 
 
 tuples = list(
@@ -471,9 +616,26 @@ tuples = list(
     )
 )
 
+tuples
+
+
+# In[64]:
+
+
 index = pd.MultiIndex.from_tuples(tuples, names=["first", "second"])
+index
+
+
+# In[65]:
+
 
 df = pd.DataFrame(np.random.randn(8, 2), index=index, columns=["A", "B"])
+df
+
+
+# In[66]:
+
+
 df2 = df[:4]
 df2
 
@@ -482,7 +644,7 @@ df2
 # 
 # 
 
-# In[49]:
+# In[67]:
 
 
 stacked = df2.stack()
@@ -491,19 +653,19 @@ stacked
 
 # With a “stacked” DataFrame or Series (having a [MultiIndex](https://pandas.pydata.org/docs/reference/api/pandas.MultiIndex.html#pandas.MultiIndex) as the `index`), the inverse operation of [`stack()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.stack.html#pandas.DataFrame.stack) is [`unstack()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.unstack.html#pandas.DataFrame.unstack), which by default unstacks the **last level**:
 
-# In[50]:
+# In[68]:
 
 
 stacked.unstack()
 
 
-# In[51]:
+# In[69]:
 
 
 stacked.unstack(1)
 
 
-# In[52]:
+# In[70]:
 
 
 stacked.unstack(0)
@@ -513,7 +675,7 @@ stacked.unstack(0)
 # 
 # See the section on [Pivot Tables](https://pandas.pydata.org/docs/user_guide/reshaping.html#reshaping-pivot).
 
-# In[53]:
+# In[71]:
 
 
 df = pd.DataFrame(
@@ -532,7 +694,7 @@ df
 # 
 # 
 
-# In[54]:
+# In[72]:
 
 
 pd.pivot_table(df, values="D", index=["A", "B"], columns=["C"])
@@ -542,17 +704,35 @@ pd.pivot_table(df, values="D", index=["A", "B"], columns=["C"])
 # 
 # pandas has simple, powerful, and efficient functionality for performing resampling operations during frequency conversion (e.g., converting secondly data into 5-minutely data). This is extremely common in, but not limited to, financial applications. See the [Time Series](https://pandas.pydata.org/docs/user_guide/timeseries.html#timeseries) section.
 
-# In[55]:
+# In[73]:
 
 
 rng = pd.date_range("1/1/2012", periods=100, freq="S")
+rng
+
+
+# In[74]:
+
+
 ts = pd.Series(np.random.randint(0, 500, len(rng)), index=rng)
-ts.resample("5Min").sum()
+ts
+
+
+# In[75]:
+
+
+ts.resample("10S").sum()
+
+
+# In[76]:
+
+
+ts.resample("1Min").sum()
 
 
 # [`Series.tz_localize()`](https://pandas.pydata.org/docs/reference/api/pandas.Series.tz_localize.html#pandas.Series.tz_localize) localizes a time series to a time zone:
 
-# In[56]:
+# In[77]:
 
 
 rng = pd.date_range("3/6/2012 00:00", periods=5, freq="D")
@@ -564,16 +744,28 @@ ts_utc
 
 # Converting between time span representations:
 
-# In[57]:
+# In[78]:
 
 
 rng = pd.date_range("1/1/2012", periods=5, freq="M")
+rng
+
+
+# In[79]:
+
+
 ts = pd.Series(np.random.randn(len(rng)), index=rng)
+ts
+
+
+# In[80]:
+
+
 ps = ts.to_period()
 ps
 
 
-# In[58]:
+# In[81]:
 
 
 ps.to_timestamp()
@@ -581,12 +773,30 @@ ps.to_timestamp()
 
 # Converting between period and timestamp enables some convenient arithmetic functions to be used. In the following example, we convert a quarterly frequency with year ending in November to 9am of the end of the month following the quarter end:
 
-# In[59]:
+# In[82]:
 
 
 prng = pd.period_range("1990Q1", "2000Q4", freq="Q-NOV")
+prng
+
+
+# In[83]:
+
+
 ts = pd.Series(np.random.randn(len(prng)), prng)
+ts
+
+
+# In[84]:
+
+
 ts.index = (prng.asfreq("M", "e") + 1).asfreq("H", "s") + 9
+ts.index
+
+
+# In[85]:
+
+
 ts.head()
 
 
@@ -594,7 +804,7 @@ ts.head()
 # 
 # pandas can include categorical data in a [`DataFrame`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame). For full docs, see the [categorical introduction](https://pandas.pydata.org/docs/user_guide/categorical.html#categorical) and the [API documentation](https://pandas.pydata.org/docs/reference/arrays.html#api-arrays-categorical).
 
-# In[60]:
+# In[86]:
 
 
 df = pd.DataFrame(
@@ -605,7 +815,7 @@ df
 
 # Converting the raw grades to a categorical data type:
 
-# In[61]:
+# In[87]:
 
 
 df["grade"] = df["raw_grade"].astype("category")
@@ -614,7 +824,7 @@ df["grade"]
 
 # Rename the categories to more meaningful names:
 
-# In[62]:
+# In[88]:
 
 
 new_categories = ["very good", "good", "very bad"]
@@ -624,7 +834,7 @@ df
 
 # Reorder the categories and simultaneously add the missing categories (methods under [`Series.cat()`](https://pandas.pydata.org/docs/reference/api/pandas.Series.cat.html#pandas.Series.cat) return a new [`Series`](https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series) by default):
 
-# In[63]:
+# In[89]:
 
 
 df["grade"] = df["grade"].cat.set_categories(
@@ -635,7 +845,7 @@ df["grade"]
 
 # Sorting is per order in the categories, not lexical order:
 
-# In[64]:
+# In[90]:
 
 
 df.sort_values(by="grade")
@@ -643,7 +853,7 @@ df.sort_values(by="grade")
 
 # Grouping by a categorical column also shows empty categories:
 
-# In[65]:
+# In[91]:
 
 
 df.groupby("grade").size()
@@ -655,7 +865,7 @@ df.groupby("grade").size()
 # 
 # We use the standard convention for referencing the matplotlib API:
 
-# In[66]:
+# In[92]:
 
 
 import matplotlib.pyplot as plt
@@ -670,7 +880,7 @@ ts.plot();
 # 
 # On a DataFrame, the [`plot()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.html#pandas.DataFrame.plot) method is a convenience to plot all of the columns with labels:
 
-# In[67]:
+# In[93]:
 
 
 df = pd.DataFrame(
@@ -689,7 +899,7 @@ plt.legend(loc='best');
 # 
 # [Writing to a csv file](https://pandas.pydata.org/docs/user_guide/io.html#io-store-in-csv): using [`DataFrame.to_csv()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html#pandas.DataFrame.to_csv)
 
-# In[68]:
+# In[94]:
 
 
 df.to_csv("foo.csv")
@@ -697,7 +907,7 @@ df.to_csv("foo.csv")
 
 # [Reading from a csv file](https://pandas.pydata.org/docs/user_guide/io.html#io-read-csv-table): using [`read_csv()`](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html#pandas.read_csv)
 
-# In[69]:
+# In[95]:
 
 
 pd.read_csv("foo.csv")
@@ -709,7 +919,7 @@ pd.read_csv("foo.csv")
 # 
 # Writing to an excel file using [`DataFrame.to_excel()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html#pandas.DataFrame.to_excel):
 
-# In[70]:
+# In[96]:
 
 
 df.to_excel("foo.xlsx", sheet_name="Sheet1")
@@ -717,14 +927,8 @@ df.to_excel("foo.xlsx", sheet_name="Sheet1")
 
 # Reading from an excel file using [`read_excel()`](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html#pandas.read_excel):
 
-# In[71]:
+# In[97]:
 
 
 pd.read_excel("foo.xlsx", "Sheet1", index_col=None, na_values=["NA"])
-
-
-# In[72]:
-
-
-import matplotlib
 
