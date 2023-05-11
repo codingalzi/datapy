@@ -194,7 +194,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  판다스
+  판다스 10분 완성
  </span>
 </p>
 <ul class="current nav bd-sidenav">
@@ -208,6 +208,13 @@ const thebe_selector_output = ".output, .cell_output"
    16. 판다스 10분 완성 2부
   </a>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  판다스 기초와 활용
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="pandas_1.html">
    17. 판다스 데이터프레임
@@ -503,12 +510,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#merge-join-concat">
-   16.1. 데이터 결합: merge-join-concat
+   16.1. 합병과 결합: merge-join-concat
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pd-concat">
-     16.1.1. 합종연횡:
+     16.1.1. 종/횡 결합:
      <code class="docutils literal notranslate">
       <span class="pre">
        pd.concat()
@@ -542,8 +549,44 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-size-2-multiindex-font">
+   16.2. 다중 인덱스
+   <font size="2">
+    MultiIndex
+   </font>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiindex">
+     16.2.1.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MultiIndex
+      </span>
+     </code>
+     객체
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     16.2.2. 다중 인덱스 라벨
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     16.2.3. 인덱스 레벨
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     16.2.4. 인덱싱
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pd-groupby">
-   16.2. 그룹화:
+   16.3. 그룹 분류:
    <code class="docutils literal notranslate">
     <span class="pre">
      pd.groupby()
@@ -554,49 +597,49 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reshaping">
-   16.3. Reshaping
+   16.4. Reshaping
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#stack">
-     16.3.1. Stack
+     16.4.1. Stack
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pivot-tables">
-     16.3.2. Pivot tables
+     16.4.2. Pivot tables
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#time-series">
-   16.4. Time series
+   16.5. Time series
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#categoricals">
-   16.5. Categoricals
+   16.6. Categoricals
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plotting">
-   16.6. Plotting
+   16.7. Plotting
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#importing-and-exporting-data">
-   16.7. Importing and exporting data
+   16.8. Importing and exporting data
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#csv">
-     16.7.1. CSV
+     16.8.1. CSV
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#excel">
-     16.7.2. Excel
+     16.8.2. Excel
     </a>
    </li>
   </ul>
@@ -622,12 +665,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#merge-join-concat">
-   16.1. 데이터 결합: merge-join-concat
+   16.1. 합병과 결합: merge-join-concat
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pd-concat">
-     16.1.1. 합종연횡:
+     16.1.1. 종/횡 결합:
      <code class="docutils literal notranslate">
       <span class="pre">
        pd.concat()
@@ -661,8 +704,44 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#font-size-2-multiindex-font">
+   16.2. 다중 인덱스
+   <font size="2">
+    MultiIndex
+   </font>
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiindex">
+     16.2.1.
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       MultiIndex
+      </span>
+     </code>
+     객체
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     16.2.2. 다중 인덱스 라벨
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     16.2.3. 인덱스 레벨
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     16.2.4. 인덱싱
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pd-groupby">
-   16.2. 그룹화:
+   16.3. 그룹 분류:
    <code class="docutils literal notranslate">
     <span class="pre">
      pd.groupby()
@@ -673,49 +752,49 @@ title="Print to PDF"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#reshaping">
-   16.3. Reshaping
+   16.4. Reshaping
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#stack">
-     16.3.1. Stack
+     16.4.1. Stack
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#pivot-tables">
-     16.3.2. Pivot tables
+     16.4.2. Pivot tables
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#time-series">
-   16.4. Time series
+   16.5. Time series
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#categoricals">
-   16.5. Categoricals
+   16.6. Categoricals
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#plotting">
-   16.6. Plotting
+   16.7. Plotting
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#importing-and-exporting-data">
-   16.7. Importing and exporting data
+   16.8. Importing and exporting data
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#csv">
-     16.7.1. CSV
+     16.8.1. CSV
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#excel">
-     16.7.2. Excel
+     16.8.2. Excel
     </a>
    </li>
   </ul>
@@ -742,15 +821,15 @@ title="Print to PDF"
 </div>
 </div>
 <section id="merge-join-concat">
-<h2><span class="section-number">16.1. </span>데이터 결합: merge-join-concat<a class="headerlink" href="#merge-join-concat" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.1. </span>합병과 결합: merge-join-concat<a class="headerlink" href="#merge-join-concat" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>참고: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/merging.html#merging">Merging section</a></p></li>
 </ul>
 <section id="pd-concat">
-<h3><span class="section-number">16.1.1. </span>합종연횡: <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> 함수<a class="headerlink" href="#pd-concat" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">16.1.1. </span>종/횡 결합: <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> 함수<a class="headerlink" href="#pd-concat" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> 함수는 여러 개의 데이터프레임을 하나로 합친다.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">axis=0</span></code>: 합종 결합</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">axis=0</span></code>: 종 결합. 즉 데이터프레임 여러 개의 위아래 결합.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1095,7 +1174,7 @@ title="Print to PDF"
 </div></div></div>
 </div>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">axis=1</span></code>: 연횡 결합</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">axis=1</span></code>: 횡 결합. 즉 데이터프레임 여러 개의 좌우 결합.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1264,6 +1343,7 @@ title="Print to PDF"
 </table>
 </div></div></div>
 </div>
+<p>인덱스를 기존의 데이터프레임과 통일시키기 위해 리인덱싱을 활용할 수도 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">index</span>
@@ -1347,65 +1427,6 @@ title="Print to PDF"
       <td>B3</td>
       <td>C3</td>
       <td>D3</td>
-      <td>B3</td>
-      <td>D3</td>
-      <td>F3</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df4</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>B</th>
-      <th>D</th>
-      <th>F</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>B2</td>
-      <td>D2</td>
-      <td>F2</td>
-    </tr>
-    <tr>
-      <th>3</th>
       <td>B3</td>
       <td>D3</td>
       <td>F3</td>
@@ -3463,8 +3484,902 @@ title="Print to PDF"
 </div>
 </section>
 </section>
+<section id="font-size-2-multiindex-font">
+<h2><span class="section-number">16.2. </span>다중 인덱스<font size='2'>MultiIndex</font><a class="headerlink" href="#font-size-2-multiindex-font" title="Permalink to this headline">#</a></h2>
+<p>다중 인덱스를 이용하여 데이터를 보다 체계적으로 다를 수 있다.
+또한 이어서 다룰 그룹 분류<font size='2'>Group by</font>,
+모양 변환<font size='2'>reshaping</font>,
+피벗 변환<font size='2'>pivoting</font> 등에서 유용하게 활용된다.</p>
+<section id="multiindex">
+<h3><span class="section-number">16.2.1. </span><code class="docutils literal notranslate"><span class="pre">MultiIndex</span></code> 객체<a class="headerlink" href="#multiindex" title="Permalink to this headline">#</a></h3>
+<p>다중 인덱스 객체는 보통 튜플을 이용한다.
+예를 들어 아래 두 개의 리스트를 이용하여 튜플을 생성한 다음 다중 인덱스로 만들어보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arrays</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="s2">&quot;baz&quot;</span><span class="p">,</span> <span class="s2">&quot;baz&quot;</span><span class="p">,</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;foo&quot;</span><span class="p">,</span> <span class="s2">&quot;qux&quot;</span><span class="p">,</span> <span class="s2">&quot;qux&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">],</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>튜플 생성: 항목 8개</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tuples</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">arrays</span><span class="p">))</span>
+<span class="n">tuples</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;bar&#39;, &#39;one&#39;),
+ (&#39;bar&#39;, &#39;two&#39;),
+ (&#39;baz&#39;, &#39;one&#39;),
+ (&#39;baz&#39;, &#39;two&#39;),
+ (&#39;foo&#39;, &#39;one&#39;),
+ (&#39;foo&#39;, &#39;two&#39;),
+ (&#39;qux&#39;, &#39;one&#39;),
+ (&#39;qux&#39;, &#39;two&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>다중 인덱스 생성</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">names</span></code> 키워드 인자: 다중 인덱스의 각 레벨<font size='2'>level</font>의 이름 지정. 지정되지 않으면 <code class="docutils literal notranslate"><span class="pre">None</span></code>으로 처리됨.
+예를 들어 아래 코드에서 사용된 레벨별 이름은 다음과 같음.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;first&quot;</span></code>: 0-레벨 이름</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;second&quot;</span></code>: 1-레벨 이름</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_tuples</span><span class="p">(</span><span class="n">tuples</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;first&quot;</span><span class="p">,</span> <span class="s2">&quot;second&quot;</span><span class="p">])</span>
+<span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MultiIndex([(&#39;bar&#39;, &#39;one&#39;),
+            (&#39;bar&#39;, &#39;two&#39;),
+            (&#39;baz&#39;, &#39;one&#39;),
+            (&#39;baz&#39;, &#39;two&#39;),
+            (&#39;foo&#39;, &#39;one&#39;),
+            (&#39;foo&#39;, &#39;two&#39;),
+            (&#39;qux&#39;, &#39;one&#39;),
+            (&#39;qux&#39;, &#39;two&#39;)],
+           names=[&#39;first&#39;, &#39;second&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h3><span class="section-number">16.2.2. </span>다중 인덱스 라벨<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>시리즈 생성</p></li>
+</ul>
+<p>아래 코드는 길이가 8인 어레이를 이용하여 시리즈를 생성한다.
+인덱스의 라벨은 다중 인덱스가 사용된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>first  second
+bar    one      -1.098919
+       two       0.586408
+baz    one      -0.017812
+       two       0.387825
+foo    one       0.475875
+       two      -0.799011
+qux    one      -1.934579
+       two       1.225975
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>데이터프레임 생성</p></li>
+</ul>
+<p>아래 코드는 8개의 행으로 이뤄진 2차원 어레이를 이용하여 데이터프레임을 생성한다.
+<code class="docutils literal notranslate"><span class="pre">index</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">columns</span></code>로 여러 개의 리스트로 구성된 어레이를 지정하면
+자동으로 다중 인덱스 라벨이 지정된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">arrays</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">bar</th>
+      <th>one</th>
+      <td>1.188596</td>
+      <td>0.196234</td>
+      <td>-0.078824</td>
+      <td>-0.502658</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>0.257953</td>
+      <td>0.499214</td>
+      <td>0.546764</td>
+      <td>1.359612</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">baz</th>
+      <th>one</th>
+      <td>-0.090657</td>
+      <td>1.922955</td>
+      <td>-0.104927</td>
+      <td>0.294555</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>-0.759646</td>
+      <td>0.679877</td>
+      <td>-0.624379</td>
+      <td>0.226299</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">foo</th>
+      <th>one</th>
+      <td>0.941443</td>
+      <td>-0.560021</td>
+      <td>-0.214438</td>
+      <td>1.533584</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>1.086207</td>
+      <td>0.528776</td>
+      <td>-1.264328</td>
+      <td>1.176856</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">qux</th>
+      <th>one</th>
+      <td>1.278655</td>
+      <td>-0.902780</td>
+      <td>-0.194328</td>
+      <td>0.428141</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>0.630998</td>
+      <td>0.389398</td>
+      <td>0.617051</td>
+      <td>-0.121385</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>다중 인덱스를 열 라벨로도 활용할 수 있다.
+아래 코드는 8개의 열로 이뤄진 2차원 어레이를 이용하여 데이터프레임을 생성한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
+<span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>first</th>
+      <th colspan="2" halign="left">bar</th>
+      <th colspan="2" halign="left">baz</th>
+      <th colspan="2" halign="left">foo</th>
+      <th colspan="2" halign="left">qux</th>
+    </tr>
+    <tr>
+      <th>second</th>
+      <th>one</th>
+      <th>two</th>
+      <th>one</th>
+      <th>two</th>
+      <th>one</th>
+      <th>two</th>
+      <th>one</th>
+      <th>two</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>1.861403</td>
+      <td>0.719697</td>
+      <td>0.946876</td>
+      <td>0.977294</td>
+      <td>0.115123</td>
+      <td>1.754479</td>
+      <td>0.299616</td>
+      <td>2.072473</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>-3.051696</td>
+      <td>-0.429005</td>
+      <td>0.567416</td>
+      <td>1.461938</td>
+      <td>0.442430</td>
+      <td>0.793401</td>
+      <td>-0.050911</td>
+      <td>0.380521</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>-0.402539</td>
+      <td>0.494595</td>
+      <td>0.073238</td>
+      <td>0.300241</td>
+      <td>0.909874</td>
+      <td>-1.742559</td>
+      <td>0.420568</td>
+      <td>0.403575</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>인덱스 라벨과 열 라벨 모두 다중 인덱스를 이용할 수도 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arrays2</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s2">&quot;toto&quot;</span><span class="p">,</span> <span class="s2">&quot;toto&quot;</span><span class="p">,</span> <span class="s2">&quot;titi&quot;</span><span class="p">,</span> <span class="s2">&quot;titi&quot;</span><span class="p">,</span> <span class="s2">&quot;tata&quot;</span><span class="p">,</span> <span class="s2">&quot;tata&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">],</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">[:</span><span class="mi">6</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">arrays2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th colspan="2" halign="left">toto</th>
+      <th colspan="2" halign="left">titi</th>
+      <th colspan="2" halign="left">tata</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>A</th>
+      <th>B</th>
+      <th>A</th>
+      <th>B</th>
+    </tr>
+    <tr>
+      <th>first</th>
+      <th>second</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">bar</th>
+      <th>one</th>
+      <td>0.793930</td>
+      <td>0.258969</td>
+      <td>-0.088164</td>
+      <td>0.891092</td>
+      <td>-0.943673</td>
+      <td>-0.386247</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>0.103413</td>
+      <td>0.921195</td>
+      <td>-0.091599</td>
+      <td>0.794576</td>
+      <td>0.818202</td>
+      <td>-0.606446</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">baz</th>
+      <th>one</th>
+      <td>0.355227</td>
+      <td>-1.959771</td>
+      <td>-0.500102</td>
+      <td>0.618771</td>
+      <td>-1.001218</td>
+      <td>2.186508</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>-0.759322</td>
+      <td>-0.462374</td>
+      <td>0.446179</td>
+      <td>-0.630193</td>
+      <td>0.926117</td>
+      <td>0.134012</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">foo</th>
+      <th>one</th>
+      <td>0.597480</td>
+      <td>-1.722617</td>
+      <td>0.732015</td>
+      <td>-0.574702</td>
+      <td>-0.541135</td>
+      <td>0.377591</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>0.563823</td>
+      <td>-0.436540</td>
+      <td>-1.332440</td>
+      <td>0.150695</td>
+      <td>-0.491245</td>
+      <td>0.422011</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>주의사항</strong></p>
+<p>튜플을 라벨로 사용하는 것은 다중 인덱스와 아무 상관 없다.
+단지 라벨이 튜플인 것 뿐이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">tuples</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(bar, one)    0.079956
+(bar, two)   -0.154996
+(baz, one)   -1.771097
+(baz, two)    0.164256
+(foo, one)    0.234619
+(foo, two)   -1.722097
+(qux, one)   -0.978334
+(qux, two)   -0.080839
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h3><span class="section-number">16.2.3. </span>인덱스 레벨<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<p>다중 인덱스 객체의 <code class="docutils literal notranslate"><span class="pre">get_level_values()</span></code> 메서드를 이용하여 레벨별 인덱스 라벨을 확인할 수 있다.</p>
+<ul class="simple">
+<li><p>0-레블 인덱스</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;bar&#39;, &#39;bar&#39;, &#39;baz&#39;, &#39;baz&#39;, &#39;foo&#39;, &#39;foo&#39;, &#39;qux&#39;, &#39;qux&#39;], dtype=&#39;object&#39;, name=&#39;first&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>레벨 이름을 이용할 수도 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s2">&quot;first&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;bar&#39;, &#39;bar&#39;, &#39;baz&#39;, &#39;baz&#39;, &#39;foo&#39;, &#39;foo&#39;, &#39;qux&#39;, &#39;qux&#39;], dtype=&#39;object&#39;, name=&#39;first&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>1-레블 인덱스</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;one&#39;, &#39;two&#39;, &#39;one&#39;, &#39;two&#39;, &#39;one&#39;, &#39;two&#39;, &#39;one&#39;, &#39;two&#39;], dtype=&#39;object&#39;, name=&#39;second&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="s2">&quot;second&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;one&#39;, &#39;two&#39;, &#39;one&#39;, &#39;two&#39;, &#39;one&#39;, &#39;two&#39;, &#39;one&#39;, &#39;two&#39;], dtype=&#39;object&#39;, name=&#39;second&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id4">
+<h3><span class="section-number">16.2.4. </span>인덱싱<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<p>다중 인덱스를 라벨로 사용하는 시리즈와 데이터프레임의 인덱싱은 일반 인덱싱과 크게 다르지 않다.</p>
+<ul class="simple">
+<li><p>시리즈 인덱싱</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>first  second
+bar    one      -1.098919
+       two       0.586408
+baz    one      -0.017812
+       two       0.387825
+foo    one       0.475875
+       two      -0.799011
+qux    one      -1.934579
+       two       1.225975
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">[</span><span class="s2">&quot;qux&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>second
+one   -1.934579
+two    1.225975
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>데이터프레임 인덱싱: 인덱스 라벨이 다중 인덱스인 경우</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">bar</th>
+      <th>one</th>
+      <td>1.188596</td>
+      <td>0.196234</td>
+      <td>-0.078824</td>
+      <td>-0.502658</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>0.257953</td>
+      <td>0.499214</td>
+      <td>0.546764</td>
+      <td>1.359612</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">baz</th>
+      <th>one</th>
+      <td>-0.090657</td>
+      <td>1.922955</td>
+      <td>-0.104927</td>
+      <td>0.294555</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>-0.759646</td>
+      <td>0.679877</td>
+      <td>-0.624379</td>
+      <td>0.226299</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">foo</th>
+      <th>one</th>
+      <td>0.941443</td>
+      <td>-0.560021</td>
+      <td>-0.214438</td>
+      <td>1.533584</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>1.086207</td>
+      <td>0.528776</td>
+      <td>-1.264328</td>
+      <td>1.176856</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">qux</th>
+      <th>one</th>
+      <td>1.278655</td>
+      <td>-0.902780</td>
+      <td>-0.194328</td>
+      <td>0.428141</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>0.630998</td>
+      <td>0.389398</td>
+      <td>0.617051</td>
+      <td>-0.121385</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>one</th>
+      <td>1.188596</td>
+      <td>0.196234</td>
+      <td>-0.078824</td>
+      <td>-0.502658</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>0.257953</td>
+      <td>0.499214</td>
+      <td>0.546764</td>
+      <td>1.359612</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>레벨별로 라벨을 지정한다. 각각의 라벨은 쉼표로 구분한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    1.188596
+1    0.196234
+2   -0.078824
+3   -0.502658
+Name: (bar, one), dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>아래와 같이 할 수도 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;one&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    1.188596
+1    0.196234
+2   -0.078824
+3   -0.502658
+Name: one, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>데이터프레임 인덱싱: 열 라벨이 다중 인덱스인 경우</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th>first</th>
+      <th colspan="2" halign="left">bar</th>
+      <th colspan="2" halign="left">baz</th>
+      <th colspan="2" halign="left">foo</th>
+      <th colspan="2" halign="left">qux</th>
+    </tr>
+    <tr>
+      <th>second</th>
+      <th>one</th>
+      <th>two</th>
+      <th>one</th>
+      <th>two</th>
+      <th>one</th>
+      <th>two</th>
+      <th>one</th>
+      <th>two</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>1.861403</td>
+      <td>0.719697</td>
+      <td>0.946876</td>
+      <td>0.977294</td>
+      <td>0.115123</td>
+      <td>1.754479</td>
+      <td>0.299616</td>
+      <td>2.072473</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>-3.051696</td>
+      <td>-0.429005</td>
+      <td>0.567416</td>
+      <td>1.461938</td>
+      <td>0.442430</td>
+      <td>0.793401</td>
+      <td>-0.050911</td>
+      <td>0.380521</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>-0.402539</td>
+      <td>0.494595</td>
+      <td>0.073238</td>
+      <td>0.300241</td>
+      <td>0.909874</td>
+      <td>-1.742559</td>
+      <td>0.420568</td>
+      <td>0.403575</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>second</th>
+      <th>one</th>
+      <th>two</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>A</th>
+      <td>1.861403</td>
+      <td>0.719697</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>-3.051696</td>
+      <td>-0.429005</td>
+    </tr>
+    <tr>
+      <th>C</th>
+      <td>-0.402539</td>
+      <td>0.494595</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>레벨별로 라벨을 지정한다. 각각의 라벨은 쉼표로 구분한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    1.861403
+B   -3.051696
+C   -0.402539
+Name: (bar, one), dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>아래와 같이 할 수도 있다</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">][</span><span class="s2">&quot;one&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    1.861403
+B   -3.051696
+C   -0.402539
+Name: one, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 <section id="pd-groupby">
-<h2><span class="section-number">16.2. </span>그룹화: <code class="docutils literal notranslate"><span class="pre">pd.groupby()</span></code> 함수<a class="headerlink" href="#pd-groupby" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.3. </span>그룹 분류: <code class="docutils literal notranslate"><span class="pre">pd.groupby()</span></code> 함수<a class="headerlink" href="#pd-groupby" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>참고: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/groupby.html#groupby">Grouping section</a></p></li>
 </ul>
@@ -3517,57 +4432,57 @@ title="Print to PDF"
       <th>0</th>
       <td>foo</td>
       <td>one</td>
-      <td>1.018430</td>
-      <td>-0.878762</td>
+      <td>1.185300</td>
+      <td>-0.732476</td>
     </tr>
     <tr>
       <th>1</th>
       <td>bar</td>
       <td>one</td>
-      <td>1.403329</td>
-      <td>0.089246</td>
+      <td>1.057233</td>
+      <td>-0.055284</td>
     </tr>
     <tr>
       <th>2</th>
       <td>foo</td>
       <td>two</td>
-      <td>0.557203</td>
-      <td>-0.537264</td>
+      <td>0.962338</td>
+      <td>0.625680</td>
     </tr>
     <tr>
       <th>3</th>
       <td>bar</td>
       <td>three</td>
-      <td>0.182007</td>
-      <td>0.209080</td>
+      <td>-1.761318</td>
+      <td>-0.335511</td>
     </tr>
     <tr>
       <th>4</th>
       <td>foo</td>
       <td>two</td>
-      <td>-0.964830</td>
-      <td>-3.269280</td>
+      <td>-0.394826</td>
+      <td>-0.476860</td>
     </tr>
     <tr>
       <th>5</th>
       <td>bar</td>
       <td>two</td>
-      <td>0.178022</td>
-      <td>0.920202</td>
+      <td>0.916959</td>
+      <td>1.038515</td>
     </tr>
     <tr>
       <th>6</th>
       <td>foo</td>
       <td>one</td>
-      <td>1.275186</td>
-      <td>-0.279709</td>
+      <td>1.181950</td>
+      <td>-1.994079</td>
     </tr>
     <tr>
       <th>7</th>
       <td>bar</td>
       <td>three</td>
-      <td>0.715051</td>
-      <td>0.863761</td>
+      <td>-0.218941</td>
+      <td>-0.862302</td>
     </tr>
   </tbody>
 </table>
@@ -3630,13 +4545,13 @@ title="Print to PDF"
   <tbody>
     <tr>
       <th>bar</th>
-      <td>2.478409</td>
-      <td>2.082289</td>
+      <td>-0.006068</td>
+      <td>-0.214582</td>
     </tr>
     <tr>
       <th>foo</th>
-      <td>1.885988</td>
-      <td>-4.965015</td>
+      <td>2.934761</td>
+      <td>-2.577735</td>
     </tr>
   </tbody>
 </table>
@@ -3705,29 +4620,29 @@ title="Print to PDF"
     <tr>
       <th rowspan="3" valign="top">bar</th>
       <th>one</th>
-      <td>1.403329</td>
-      <td>0.089246</td>
+      <td>1.057233</td>
+      <td>-0.055284</td>
     </tr>
     <tr>
       <th>three</th>
-      <td>0.897058</td>
-      <td>1.072840</td>
+      <td>-1.980259</td>
+      <td>-1.197813</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.178022</td>
-      <td>0.920202</td>
+      <td>0.916959</td>
+      <td>1.038515</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>2.293616</td>
-      <td>-1.158471</td>
+      <td>2.367250</td>
+      <td>-2.726556</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.407627</td>
-      <td>-3.806544</td>
+      <td>0.567511</td>
+      <td>0.148820</td>
     </tr>
   </tbody>
 </table>
@@ -3748,22 +4663,22 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;bar&#39;, &#39;one&#39;)
      A    B         C         D
-1  bar  one  1.403329  0.089246
+1  bar  one  1.057233 -0.055284
 (&#39;bar&#39;, &#39;three&#39;)
      A      B         C         D
-3  bar  three  0.182007  0.209080
-7  bar  three  0.715051  0.863761
+3  bar  three -1.761318 -0.335511
+7  bar  three -0.218941 -0.862302
 (&#39;bar&#39;, &#39;two&#39;)
      A    B         C         D
-5  bar  two  0.178022  0.920202
+5  bar  two  0.916959  1.038515
 (&#39;foo&#39;, &#39;one&#39;)
-     A    B         C         D
-0  foo  one  1.018430 -0.878762
-6  foo  one  1.275186 -0.279709
+     A    B        C         D
+0  foo  one  1.18530 -0.732476
+6  foo  one  1.18195 -1.994079
 (&#39;foo&#39;, &#39;two&#39;)
-     A    B         C         D
-2  foo  two  0.557203 -0.537264
-4  foo  two -0.964830 -3.269280
+     A    B         C        D
+2  foo  two  0.962338  0.62568
+4  foo  two -0.394826 -0.47686
 </pre></div>
 </div>
 </div>
@@ -3807,8 +4722,8 @@ title="Print to PDF"
       <th>1</th>
       <td>bar</td>
       <td>one</td>
-      <td>1.403329</td>
-      <td>0.089246</td>
+      <td>1.057233</td>
+      <td>-0.055284</td>
     </tr>
   </tbody>
 </table>
@@ -3850,15 +4765,15 @@ title="Print to PDF"
       <th>3</th>
       <td>bar</td>
       <td>three</td>
-      <td>0.182007</td>
-      <td>0.209080</td>
+      <td>-1.761318</td>
+      <td>-0.335511</td>
     </tr>
     <tr>
       <th>7</th>
       <td>bar</td>
       <td>three</td>
-      <td>0.715051</td>
-      <td>0.863761</td>
+      <td>-0.218941</td>
+      <td>-0.862302</td>
     </tr>
   </tbody>
 </table>
@@ -3890,14 +4805,14 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    B      C          D        
-bar  one     1.403329   0.089246    1
-     three   0.182007   0.209080    1
-             0.715051   0.863761    1
-     two     0.178022   0.920202    1
-foo  one     1.018430  -0.878762    1
-             1.275186  -0.279709    1
-     two    -0.964830  -3.269280    1
-             0.557203  -0.537264    1
+bar  one     1.057233  -0.055284    1
+     three  -1.761318  -0.335511    1
+            -0.218941  -0.862302    1
+     two     0.916959   1.038515    1
+foo  one     1.181950  -1.994079    1
+             1.185300  -0.732476    1
+     two    -0.394826  -0.476860    1
+             0.962338   0.625680    1
 dtype: int64
 </pre></div>
 </div>
@@ -4017,29 +4932,29 @@ dtype: int64
     <tr>
       <th rowspan="3" valign="top">bar</th>
       <th>one</th>
-      <td>1.403329</td>
-      <td>0.089246</td>
+      <td>1.057233</td>
+      <td>-0.055284</td>
     </tr>
     <tr>
       <th>three</th>
-      <td>0.897058</td>
-      <td>1.072840</td>
+      <td>-1.980259</td>
+      <td>-1.197813</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.178022</td>
-      <td>0.920202</td>
+      <td>0.916959</td>
+      <td>1.038515</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>2.293616</td>
-      <td>-1.158471</td>
+      <td>2.367250</td>
+      <td>-2.726556</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.407627</td>
-      <td>-3.806544</td>
+      <td>0.567511</td>
+      <td>0.148820</td>
     </tr>
   </tbody>
 </table>
@@ -4085,31 +5000,31 @@ dtype: int64
     <tr>
       <th>foo</th>
       <th>one</th>
-      <td>2.293616</td>
-      <td>-1.158471</td>
+      <td>2.367250</td>
+      <td>-2.726556</td>
     </tr>
     <tr>
       <th>bar</th>
       <th>one</th>
-      <td>1.403329</td>
-      <td>0.089246</td>
+      <td>1.057233</td>
+      <td>-0.055284</td>
     </tr>
     <tr>
       <th>foo</th>
       <th>two</th>
-      <td>-0.407627</td>
-      <td>-3.806544</td>
+      <td>0.567511</td>
+      <td>0.148820</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>three</th>
-      <td>0.897058</td>
-      <td>1.072840</td>
+      <td>-1.980259</td>
+      <td>-1.197813</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.178022</td>
-      <td>0.920202</td>
+      <td>0.916959</td>
+      <td>1.038515</td>
     </tr>
   </tbody>
 </table>
@@ -4223,13 +5138,13 @@ dtype: int64
   <tbody>
     <tr>
       <th>bar</th>
-      <td>1.403329</td>
-      <td>0.920202</td>
+      <td>1.057233</td>
+      <td>1.038515</td>
     </tr>
     <tr>
       <th>foo</th>
-      <td>1.275186</td>
-      <td>-0.279709</td>
+      <td>1.185300</td>
+      <td>0.625680</td>
     </tr>
   </tbody>
 </table>
@@ -4275,29 +5190,29 @@ dtype: int64
     <tr>
       <th rowspan="3" valign="top">bar</th>
       <th>one</th>
-      <td>1.403329</td>
-      <td>0.089246</td>
+      <td>1.057233</td>
+      <td>-0.055284</td>
     </tr>
     <tr>
       <th>three</th>
-      <td>0.715051</td>
-      <td>0.863761</td>
+      <td>-0.218941</td>
+      <td>-0.335511</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.178022</td>
-      <td>0.920202</td>
+      <td>0.916959</td>
+      <td>1.038515</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>1.275186</td>
-      <td>-0.279709</td>
+      <td>1.185300</td>
+      <td>-0.732476</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.557203</td>
-      <td>-0.537264</td>
+      <td>0.962338</td>
+      <td>0.625680</td>
     </tr>
   </tbody>
 </table>
@@ -4340,13 +5255,13 @@ dtype: int64
   <tbody>
     <tr>
       <th>bar</th>
-      <td>0.619602</td>
-      <td>0.520572</td>
+      <td>-0.001517</td>
+      <td>-0.053646</td>
     </tr>
     <tr>
       <th>foo</th>
-      <td>0.471497</td>
-      <td>-1.241254</td>
+      <td>0.733690</td>
+      <td>-0.644434</td>
     </tr>
   </tbody>
 </table>
@@ -4392,29 +5307,29 @@ dtype: int64
     <tr>
       <th rowspan="3" valign="top">bar</th>
       <th>one</th>
-      <td>1.403329</td>
-      <td>0.089246</td>
+      <td>1.057233</td>
+      <td>-0.055284</td>
     </tr>
     <tr>
       <th>three</th>
-      <td>0.448529</td>
-      <td>0.536420</td>
+      <td>-0.990130</td>
+      <td>-0.598907</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.178022</td>
-      <td>0.920202</td>
+      <td>0.916959</td>
+      <td>1.038515</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>1.146808</td>
-      <td>-0.579235</td>
+      <td>1.183625</td>
+      <td>-1.363278</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.203814</td>
-      <td>-1.903272</td>
+      <td>0.283756</td>
+      <td>0.074410</td>
     </tr>
   </tbody>
 </table>
@@ -4528,40 +5443,40 @@ dtype: int64
     <tr>
       <th>bar</th>
       <td>4.0</td>
-      <td>0.619602</td>
-      <td>0.580178</td>
-      <td>0.178022</td>
-      <td>0.181011</td>
-      <td>0.448529</td>
-      <td>0.887120</td>
-      <td>1.403329</td>
+      <td>-0.001517</td>
+      <td>1.304955</td>
+      <td>-1.761318</td>
+      <td>-0.604535</td>
+      <td>0.349009</td>
+      <td>0.952027</td>
+      <td>1.057233</td>
       <td>4.0</td>
-      <td>0.520572</td>
-      <td>0.432262</td>
-      <td>0.089246</td>
-      <td>0.179121</td>
-      <td>0.536420</td>
-      <td>0.877871</td>
-      <td>0.920202</td>
+      <td>-0.053646</td>
+      <td>0.801288</td>
+      <td>-0.862302</td>
+      <td>-0.467209</td>
+      <td>-0.195397</td>
+      <td>0.218166</td>
+      <td>1.038515</td>
     </tr>
     <tr>
       <th>foo</th>
       <td>4.0</td>
-      <td>0.471497</td>
-      <td>1.002569</td>
-      <td>-0.964830</td>
-      <td>0.176694</td>
-      <td>0.787816</td>
-      <td>1.082619</td>
-      <td>1.275186</td>
+      <td>0.733690</td>
+      <td>0.759543</td>
+      <td>-0.394826</td>
+      <td>0.623047</td>
+      <td>1.072144</td>
+      <td>1.182788</td>
+      <td>1.185300</td>
       <td>4.0</td>
-      <td>-1.241254</td>
-      <td>1.374101</td>
-      <td>-3.269280</td>
-      <td>-1.476392</td>
-      <td>-0.708013</td>
-      <td>-0.472875</td>
-      <td>-0.279709</td>
+      <td>-0.644434</td>
+      <td>1.075572</td>
+      <td>-1.994079</td>
+      <td>-1.047877</td>
+      <td>-0.604668</td>
+      <td>-0.201225</td>
+      <td>0.625680</td>
     </tr>
   </tbody>
 </table>
@@ -4646,98 +5561,98 @@ dtype: int64
       <th rowspan="3" valign="top">bar</th>
       <th>one</th>
       <td>1.0</td>
-      <td>1.403329</td>
+      <td>1.057233</td>
       <td>NaN</td>
-      <td>1.403329</td>
-      <td>1.403329</td>
-      <td>1.403329</td>
-      <td>1.403329</td>
-      <td>1.403329</td>
+      <td>1.057233</td>
+      <td>1.057233</td>
+      <td>1.057233</td>
+      <td>1.057233</td>
+      <td>1.057233</td>
       <td>1.0</td>
-      <td>0.089246</td>
+      <td>-0.055284</td>
       <td>NaN</td>
-      <td>0.089246</td>
-      <td>0.089246</td>
-      <td>0.089246</td>
-      <td>0.089246</td>
-      <td>0.089246</td>
+      <td>-0.055284</td>
+      <td>-0.055284</td>
+      <td>-0.055284</td>
+      <td>-0.055284</td>
+      <td>-0.055284</td>
     </tr>
     <tr>
       <th>three</th>
       <td>2.0</td>
-      <td>0.448529</td>
-      <td>0.376919</td>
-      <td>0.182007</td>
-      <td>0.315268</td>
-      <td>0.448529</td>
-      <td>0.581790</td>
-      <td>0.715051</td>
+      <td>-0.990130</td>
+      <td>1.090626</td>
+      <td>-1.761318</td>
+      <td>-1.375724</td>
+      <td>-0.990130</td>
+      <td>-0.604535</td>
+      <td>-0.218941</td>
       <td>2.0</td>
-      <td>0.536420</td>
-      <td>0.462929</td>
-      <td>0.209080</td>
-      <td>0.372750</td>
-      <td>0.536420</td>
-      <td>0.700090</td>
-      <td>0.863761</td>
+      <td>-0.598907</td>
+      <td>0.372497</td>
+      <td>-0.862302</td>
+      <td>-0.730604</td>
+      <td>-0.598907</td>
+      <td>-0.467209</td>
+      <td>-0.335511</td>
     </tr>
     <tr>
       <th>two</th>
       <td>1.0</td>
-      <td>0.178022</td>
+      <td>0.916959</td>
       <td>NaN</td>
-      <td>0.178022</td>
-      <td>0.178022</td>
-      <td>0.178022</td>
-      <td>0.178022</td>
-      <td>0.178022</td>
+      <td>0.916959</td>
+      <td>0.916959</td>
+      <td>0.916959</td>
+      <td>0.916959</td>
+      <td>0.916959</td>
       <td>1.0</td>
-      <td>0.920202</td>
+      <td>1.038515</td>
       <td>NaN</td>
-      <td>0.920202</td>
-      <td>0.920202</td>
-      <td>0.920202</td>
-      <td>0.920202</td>
-      <td>0.920202</td>
+      <td>1.038515</td>
+      <td>1.038515</td>
+      <td>1.038515</td>
+      <td>1.038515</td>
+      <td>1.038515</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
       <td>2.0</td>
-      <td>1.146808</td>
-      <td>0.181554</td>
-      <td>1.018430</td>
-      <td>1.082619</td>
-      <td>1.146808</td>
-      <td>1.210997</td>
-      <td>1.275186</td>
+      <td>1.183625</td>
+      <td>0.002368</td>
+      <td>1.181950</td>
+      <td>1.182788</td>
+      <td>1.183625</td>
+      <td>1.184462</td>
+      <td>1.185300</td>
       <td>2.0</td>
-      <td>-0.579235</td>
-      <td>0.423595</td>
-      <td>-0.878762</td>
-      <td>-0.728999</td>
-      <td>-0.579235</td>
-      <td>-0.429472</td>
-      <td>-0.279709</td>
+      <td>-1.363278</td>
+      <td>0.892088</td>
+      <td>-1.994079</td>
+      <td>-1.678679</td>
+      <td>-1.363278</td>
+      <td>-1.047877</td>
+      <td>-0.732476</td>
     </tr>
     <tr>
       <th>two</th>
       <td>2.0</td>
-      <td>-0.203814</td>
-      <td>1.076240</td>
-      <td>-0.964830</td>
-      <td>-0.584322</td>
-      <td>-0.203814</td>
-      <td>0.176694</td>
-      <td>0.557203</td>
+      <td>0.283756</td>
+      <td>0.959660</td>
+      <td>-0.394826</td>
+      <td>-0.055535</td>
+      <td>0.283756</td>
+      <td>0.623047</td>
+      <td>0.962338</td>
       <td>2.0</td>
-      <td>-1.903272</td>
-      <td>1.931827</td>
-      <td>-3.269280</td>
-      <td>-2.586276</td>
-      <td>-1.903272</td>
-      <td>-1.220268</td>
-      <td>-0.537264</td>
+      <td>0.074410</td>
+      <td>0.779614</td>
+      <td>-0.476860</td>
+      <td>-0.201225</td>
+      <td>0.074410</td>
+      <td>0.350045</td>
+      <td>0.625680</td>
     </tr>
   </tbody>
 </table>
@@ -4745,10 +5660,10 @@ dtype: int64
 </div>
 </section>
 <section id="reshaping">
-<h2><span class="section-number">16.3. </span>Reshaping<a class="headerlink" href="#reshaping" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.4. </span>Reshaping<a class="headerlink" href="#reshaping" title="Permalink to this headline">#</a></h2>
 <p>See the sections on <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/advanced.html#advanced-hierarchical">Hierarchical Indexing</a> and <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/reshaping.html#reshaping-stacking">Reshaping</a>.</p>
 <section id="stack">
-<h3><span class="section-number">16.3.1. </span>Stack<a class="headerlink" href="#stack" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">16.4.1. </span>Stack<a class="headerlink" href="#stack" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tuples</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
@@ -4837,46 +5752,46 @@ dtype: int64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>one</th>
-      <td>-0.425581</td>
-      <td>-0.944740</td>
+      <td>-0.016643</td>
+      <td>-0.792630</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-3.037346</td>
-      <td>0.945253</td>
+      <td>0.819355</td>
+      <td>-0.684869</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>one</th>
-      <td>0.027429</td>
-      <td>-0.516669</td>
+      <td>1.888570</td>
+      <td>-0.016535</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.746659</td>
-      <td>1.476995</td>
+      <td>-1.349452</td>
+      <td>-0.310637</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>0.830600</td>
-      <td>1.240499</td>
+      <td>-0.242801</td>
+      <td>0.191175</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.588938</td>
-      <td>-0.877038</td>
+      <td>1.599879</td>
+      <td>-0.572373</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">qux</th>
       <th>one</th>
-      <td>0.753042</td>
-      <td>-0.551129</td>
+      <td>-0.143612</td>
+      <td>-2.534022</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>2.327707</td>
-      <td>1.092144</td>
+      <td>0.541860</td>
+      <td>-0.191276</td>
     </tr>
   </tbody>
 </table>
@@ -4923,24 +5838,24 @@ dtype: int64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>one</th>
-      <td>-0.425581</td>
-      <td>-0.944740</td>
+      <td>-0.016643</td>
+      <td>-0.792630</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-3.037346</td>
-      <td>0.945253</td>
+      <td>0.819355</td>
+      <td>-0.684869</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>one</th>
-      <td>0.027429</td>
-      <td>-0.516669</td>
+      <td>1.888570</td>
+      <td>-0.016535</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.746659</td>
-      <td>1.476995</td>
+      <td>-1.349452</td>
+      <td>-0.310637</td>
     </tr>
   </tbody>
 </table>
@@ -4956,14 +5871,14 @@ dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>first  second   
-bar    one     A   -0.425581
-               B   -0.944740
-       two     A   -3.037346
-               B    0.945253
-baz    one     A    0.027429
-               B   -0.516669
-       two     A   -0.746659
-               B    1.476995
+bar    one     A   -0.016643
+               B   -0.792630
+       two     A    0.819355
+               B   -0.684869
+baz    one     A    1.888570
+               B   -0.016535
+       two     A   -1.349452
+               B   -0.310637
 dtype: float64
 </pre></div>
 </div>
@@ -5010,24 +5925,24 @@ dtype: float64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>one</th>
-      <td>-0.425581</td>
-      <td>-0.944740</td>
+      <td>-0.016643</td>
+      <td>-0.792630</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-3.037346</td>
-      <td>0.945253</td>
+      <td>0.819355</td>
+      <td>-0.684869</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>one</th>
-      <td>0.027429</td>
-      <td>-0.516669</td>
+      <td>1.888570</td>
+      <td>-0.016535</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.746659</td>
-      <td>1.476995</td>
+      <td>-1.349452</td>
+      <td>-0.310637</td>
     </tr>
   </tbody>
 </table>
@@ -5073,24 +5988,24 @@ dtype: float64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>A</th>
-      <td>-0.425581</td>
-      <td>-3.037346</td>
+      <td>-0.016643</td>
+      <td>0.819355</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>-0.944740</td>
-      <td>0.945253</td>
+      <td>-0.792630</td>
+      <td>-0.684869</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>A</th>
-      <td>0.027429</td>
-      <td>-0.746659</td>
+      <td>1.888570</td>
+      <td>-1.349452</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>-0.516669</td>
-      <td>1.476995</td>
+      <td>-0.016535</td>
+      <td>-0.310637</td>
     </tr>
   </tbody>
 </table>
@@ -5136,24 +6051,24 @@ dtype: float64
     <tr>
       <th rowspan="2" valign="top">one</th>
       <th>A</th>
-      <td>-0.425581</td>
-      <td>0.027429</td>
+      <td>-0.016643</td>
+      <td>1.888570</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>-0.944740</td>
-      <td>-0.516669</td>
+      <td>-0.792630</td>
+      <td>-0.016535</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">two</th>
       <th>A</th>
-      <td>-3.037346</td>
-      <td>-0.746659</td>
+      <td>0.819355</td>
+      <td>-1.349452</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>0.945253</td>
-      <td>1.476995</td>
+      <td>-0.684869</td>
+      <td>-0.310637</td>
     </tr>
   </tbody>
 </table>
@@ -5161,7 +6076,7 @@ dtype: float64
 </div>
 </section>
 <section id="pivot-tables">
-<h3><span class="section-number">16.3.2. </span>Pivot tables<a class="headerlink" href="#pivot-tables" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">16.4.2. </span>Pivot tables<a class="headerlink" href="#pivot-tables" title="Permalink to this headline">#</a></h3>
 <p>See the section on <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/reshaping.html#reshaping-pivot">Pivot Tables</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5210,96 +6125,96 @@ dtype: float64
       <td>one</td>
       <td>A</td>
       <td>foo</td>
-      <td>-0.871650</td>
-      <td>0.357447</td>
+      <td>-0.090850</td>
+      <td>0.110082</td>
     </tr>
     <tr>
       <th>1</th>
       <td>one</td>
       <td>B</td>
       <td>foo</td>
-      <td>-0.130195</td>
-      <td>0.885047</td>
+      <td>-1.316786</td>
+      <td>1.003061</td>
     </tr>
     <tr>
       <th>2</th>
       <td>two</td>
       <td>C</td>
       <td>foo</td>
-      <td>-1.225810</td>
-      <td>-0.639333</td>
+      <td>0.660796</td>
+      <td>0.165873</td>
     </tr>
     <tr>
       <th>3</th>
       <td>three</td>
       <td>A</td>
       <td>bar</td>
-      <td>-0.032670</td>
-      <td>1.019736</td>
+      <td>-0.605276</td>
+      <td>0.877372</td>
     </tr>
     <tr>
       <th>4</th>
       <td>one</td>
       <td>B</td>
       <td>bar</td>
-      <td>0.036158</td>
-      <td>0.577312</td>
+      <td>0.293162</td>
+      <td>-1.527139</td>
     </tr>
     <tr>
       <th>5</th>
       <td>one</td>
       <td>C</td>
       <td>bar</td>
-      <td>0.418529</td>
-      <td>-1.945792</td>
+      <td>-0.024049</td>
+      <td>0.116160</td>
     </tr>
     <tr>
       <th>6</th>
       <td>two</td>
       <td>A</td>
       <td>foo</td>
-      <td>-0.177439</td>
-      <td>-0.714426</td>
+      <td>-0.771555</td>
+      <td>0.750259</td>
     </tr>
     <tr>
       <th>7</th>
       <td>three</td>
       <td>B</td>
       <td>foo</td>
-      <td>-0.589509</td>
-      <td>0.591826</td>
+      <td>-1.406905</td>
+      <td>-0.271431</td>
     </tr>
     <tr>
       <th>8</th>
       <td>one</td>
       <td>C</td>
       <td>foo</td>
-      <td>-0.054960</td>
-      <td>-0.341115</td>
+      <td>-0.228115</td>
+      <td>-0.660961</td>
     </tr>
     <tr>
       <th>9</th>
       <td>one</td>
       <td>A</td>
       <td>bar</td>
-      <td>1.411860</td>
-      <td>0.716325</td>
+      <td>-0.569965</td>
+      <td>-0.526956</td>
     </tr>
     <tr>
       <th>10</th>
       <td>two</td>
       <td>B</td>
       <td>bar</td>
-      <td>-0.198047</td>
-      <td>-0.552057</td>
+      <td>-0.598286</td>
+      <td>-0.922748</td>
     </tr>
     <tr>
       <th>11</th>
       <td>three</td>
       <td>C</td>
       <td>bar</td>
-      <td>-1.535576</td>
-      <td>-0.472272</td>
+      <td>-0.990359</td>
+      <td>-0.119445</td>
     </tr>
   </tbody>
 </table>
@@ -5346,50 +6261,50 @@ dtype: float64
     <tr>
       <th rowspan="3" valign="top">one</th>
       <th>A</th>
-      <td>1.411860</td>
-      <td>-0.871650</td>
+      <td>-0.569965</td>
+      <td>-0.090850</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>0.036158</td>
-      <td>-0.130195</td>
+      <td>0.293162</td>
+      <td>-1.316786</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>0.418529</td>
-      <td>-0.054960</td>
+      <td>-0.024049</td>
+      <td>-0.228115</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">three</th>
       <th>A</th>
-      <td>-0.032670</td>
+      <td>-0.605276</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>B</th>
       <td>NaN</td>
-      <td>-0.589509</td>
+      <td>-1.406905</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>-1.535576</td>
+      <td>-0.990359</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">two</th>
       <th>A</th>
       <td>NaN</td>
-      <td>-0.177439</td>
+      <td>-0.771555</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>-0.198047</td>
+      <td>-0.598286</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>C</th>
       <td>NaN</td>
-      <td>-1.225810</td>
+      <td>0.660796</td>
     </tr>
   </tbody>
 </table>
@@ -5398,7 +6313,7 @@ dtype: float64
 </section>
 </section>
 <section id="time-series">
-<h2><span class="section-number">16.4. </span>Time series<a class="headerlink" href="#time-series" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.5. </span>Time series<a class="headerlink" href="#time-series" title="Permalink to this headline">#</a></h2>
 <p>pandas has simple, powerful, and efficient functionality for performing resampling operations during frequency conversion (e.g., converting secondly data into 5-minutely data). This is extremely common in, but not limited to, financial applications. See the <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/timeseries.html#timeseries">Time Series</a> section.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5471,17 +6386,17 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-01-01 00:00:00    132
-2012-01-01 00:00:01     49
-2012-01-01 00:00:02    158
-2012-01-01 00:00:03    384
-2012-01-01 00:00:04    468
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-01-01 00:00:00     28
+2012-01-01 00:00:01    403
+2012-01-01 00:00:02    403
+2012-01-01 00:00:03    370
+2012-01-01 00:00:04     60
                       ... 
-2012-01-01 00:01:35      6
-2012-01-01 00:01:36    204
-2012-01-01 00:01:37    203
-2012-01-01 00:01:38    275
-2012-01-01 00:01:39    330
+2012-01-01 00:01:35    281
+2012-01-01 00:01:36     69
+2012-01-01 00:01:37    104
+2012-01-01 00:01:38    159
+2012-01-01 00:01:39    326
 Freq: S, Length: 100, dtype: int64
 </pre></div>
 </div>
@@ -5494,16 +6409,16 @@ Freq: S, Length: 100, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-01-01 00:00:00    2266
-2012-01-01 00:00:10    2174
-2012-01-01 00:00:20    2081
-2012-01-01 00:00:30    2285
-2012-01-01 00:00:40    1253
-2012-01-01 00:00:50    3623
-2012-01-01 00:01:00    1817
-2012-01-01 00:01:10    2141
-2012-01-01 00:01:20    2115
-2012-01-01 00:01:30    2639
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-01-01 00:00:00    2608
+2012-01-01 00:00:10    3205
+2012-01-01 00:00:20    2946
+2012-01-01 00:00:30    2175
+2012-01-01 00:00:40    2520
+2012-01-01 00:00:50    1525
+2012-01-01 00:01:00    2443
+2012-01-01 00:01:10    2362
+2012-01-01 00:01:20    2654
+2012-01-01 00:01:30    1648
 Freq: 10S, dtype: int64
 </pre></div>
 </div>
@@ -5516,8 +6431,8 @@ Freq: 10S, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-01-01 00:00:00    13682
-2012-01-01 00:01:00     8712
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-01-01 00:00:00    14979
+2012-01-01 00:01:00     9107
 Freq: T, dtype: int64
 </pre></div>
 </div>
@@ -5535,19 +6450,19 @@ Freq: T, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-03-06   -2.339070
-2012-03-07    0.918218
-2012-03-08    0.801979
-2012-03-09   -1.334786
-2012-03-10    2.142982
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-03-06   -0.116733
+2012-03-07   -0.187419
+2012-03-08   -0.815267
+2012-03-09   -1.095322
+2012-03-10    0.069411
 Freq: D, dtype: float64 
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-03-06 00:00:00+00:00   -2.339070
-2012-03-07 00:00:00+00:00    0.918218
-2012-03-08 00:00:00+00:00    0.801979
-2012-03-09 00:00:00+00:00   -1.334786
-2012-03-10 00:00:00+00:00    2.142982
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-03-06 00:00:00+00:00   -0.116733
+2012-03-07 00:00:00+00:00   -0.187419
+2012-03-08 00:00:00+00:00   -0.815267
+2012-03-09 00:00:00+00:00   -1.095322
+2012-03-10 00:00:00+00:00    0.069411
 Freq: D, dtype: float64
 </pre></div>
 </div>
@@ -5577,11 +6492,11 @@ Freq: D, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-01-31   -0.486955
-2012-02-29   -0.762562
-2012-03-31    1.444962
-2012-04-30    0.317764
-2012-05-31   -0.698324
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-01-31    1.416058
+2012-02-29    0.389173
+2012-03-31   -2.054782
+2012-04-30   -0.343927
+2012-05-31   -0.732927
 Freq: M, dtype: float64
 </pre></div>
 </div>
@@ -5595,11 +6510,11 @@ Freq: M, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-01   -0.486955
-2012-02   -0.762562
-2012-03    1.444962
-2012-04    0.317764
-2012-05   -0.698324
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-01    1.416058
+2012-02    0.389173
+2012-03   -2.054782
+2012-04   -0.343927
+2012-05   -0.732927
 Freq: M, dtype: float64
 </pre></div>
 </div>
@@ -5612,11 +6527,11 @@ Freq: M, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-01-01   -0.486955
-2012-02-01   -0.762562
-2012-03-01    1.444962
-2012-04-01    0.317764
-2012-05-01   -0.698324
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2012-01-01    1.416058
+2012-02-01    0.389173
+2012-03-01   -2.054782
+2012-04-01   -0.343927
+2012-05-01   -0.732927
 Freq: MS, dtype: float64
 </pre></div>
 </div>
@@ -5652,50 +6567,50 @@ Freq: MS, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1990Q1    0.032126
-1990Q2   -0.669374
-1990Q3    0.878916
-1990Q4   -1.700059
-1991Q1    0.333281
-1991Q2   -0.407602
-1991Q3   -0.575172
-1991Q4   -0.559229
-1992Q1   -0.666365
-1992Q2    1.149763
-1992Q3    0.345065
-1992Q4   -0.368360
-1993Q1   -2.011328
-1993Q2    0.691790
-1993Q3    0.081577
-1993Q4    0.426972
-1994Q1   -0.957994
-1994Q2    0.388651
-1994Q3    1.342524
-1994Q4   -0.342774
-1995Q1    1.318346
-1995Q2    1.339233
-1995Q3   -0.856048
-1995Q4    1.676571
-1996Q1    0.309488
-1996Q2    0.839987
-1996Q3    1.281626
-1996Q4    0.563086
-1997Q1   -0.140731
-1997Q2    1.578541
-1997Q3    1.777640
-1997Q4   -1.045217
-1998Q1    0.799419
-1998Q2   -0.225963
-1998Q3    1.431673
-1998Q4    0.302372
-1999Q1   -0.542276
-1999Q2   -0.698995
-1999Q3    0.232203
-1999Q4    0.360738
-2000Q1    2.187760
-2000Q2   -0.437336
-2000Q3    0.939348
-2000Q4    1.061047
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1990Q1    0.838568
+1990Q2    1.686019
+1990Q3    0.171914
+1990Q4   -0.556970
+1991Q1   -1.772927
+1991Q2   -0.093014
+1991Q3   -0.152098
+1991Q4   -0.763046
+1992Q1    1.267741
+1992Q2    1.163966
+1992Q3    0.168793
+1992Q4    1.755672
+1993Q1   -1.400834
+1993Q2   -1.193921
+1993Q3   -0.625537
+1993Q4    0.329459
+1994Q1    0.557809
+1994Q2   -1.734715
+1994Q3    0.254237
+1994Q4   -2.395133
+1995Q1   -0.502585
+1995Q2    0.522107
+1995Q3   -1.420346
+1995Q4   -0.410011
+1996Q1   -1.240743
+1996Q2   -0.604141
+1996Q3    0.490426
+1996Q4   -1.146798
+1997Q1    0.026661
+1997Q2   -0.227850
+1997Q3    2.954082
+1997Q4   -0.583695
+1998Q1   -1.104301
+1998Q2   -0.210130
+1998Q3    0.087798
+1998Q4   -0.189137
+1999Q1    0.199734
+1999Q2   -0.885299
+1999Q3   -0.934415
+1999Q4    0.149299
+2000Q1   -0.956790
+2000Q2   -0.479804
+2000Q3    0.237567
+2000Q4   -0.194661
 Freq: Q-NOV, dtype: float64
 </pre></div>
 </div>
@@ -5736,11 +6651,11 @@ Freq: Q-NOV, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1990-03-01 09:00    0.032126
-1990-06-01 09:00   -0.669374
-1990-09-01 09:00    0.878916
-1990-12-01 09:00   -1.700059
-1991-03-01 09:00    0.333281
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1990-03-01 09:00    0.838568
+1990-06-01 09:00    1.686019
+1990-09-01 09:00    0.171914
+1990-12-01 09:00   -0.556970
+1991-03-01 09:00   -1.772927
 Freq: H, dtype: float64
 </pre></div>
 </div>
@@ -5748,7 +6663,7 @@ Freq: H, dtype: float64
 </div>
 </section>
 <section id="categoricals">
-<h2><span class="section-number">16.5. </span>Categoricals<a class="headerlink" href="#categoricals" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.6. </span>Categoricals<a class="headerlink" href="#categoricals" title="Permalink to this headline">#</a></h2>
 <p>pandas can include categorical data in a <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame"><code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a>. For full docs, see the <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/categorical.html#categorical">categorical introduction</a> and the <a class="reference external" href="https://pandas.pydata.org/docs/reference/arrays.html#api-arrays-categorical">API documentation</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6028,7 +6943,7 @@ dtype: int64
 </div>
 </section>
 <section id="plotting">
-<h2><span class="section-number">16.6. </span>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.7. </span>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">#</a></h2>
 <p>See the <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/visualization.html#visualization">Plotting</a> docs.</p>
 <p>We use the standard convention for referencing the matplotlib API:</p>
 <div class="cell docutils container">
@@ -6043,7 +6958,7 @@ dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/pandas_10minutes_2_152_0.png" src="_images/pandas_10minutes_2_152_0.png" />
+<img alt="_images/pandas_10minutes_2_204_0.png" src="_images/pandas_10minutes_2_204_0.png" />
 </div>
 </div>
 <p>If running under Jupyter Notebook, the plot will appear on <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.plot.html#pandas.Series.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a>. Otherwise use <a class="reference external" href="https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.show.html"><code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.show</span></code></a> to show it or <a class="reference external" href="https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.savefig.html"><code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.savefig</span></code></a> to write it to a file.</p>
@@ -6065,14 +6980,14 @@ dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="_images/pandas_10minutes_2_154_1.png" src="_images/pandas_10minutes_2_154_1.png" />
+<img alt="_images/pandas_10minutes_2_206_1.png" src="_images/pandas_10minutes_2_206_1.png" />
 </div>
 </div>
 </section>
 <section id="importing-and-exporting-data">
-<h2><span class="section-number">16.7. </span>Importing and exporting data<a class="headerlink" href="#importing-and-exporting-data" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">16.8. </span>Importing and exporting data<a class="headerlink" href="#importing-and-exporting-data" title="Permalink to this headline">#</a></h2>
 <section id="csv">
-<h3><span class="section-number">16.7.1. </span>CSV<a class="headerlink" href="#csv" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">16.8.1. </span>CSV<a class="headerlink" href="#csv" title="Permalink to this headline">#</a></h3>
 <p><a class="reference external" href="https://pandas.pydata.org/docs/user_guide/io.html#io-store-in-csv">Writing to a csv file</a>: using <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html#pandas.DataFrame.to_csv"><code class="docutils literal notranslate"><span class="pre">DataFrame.to_csv()</span></code></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6118,42 +7033,42 @@ dtype: int64
     <tr>
       <th>0</th>
       <td>2000-01-01</td>
-      <td>-0.325755</td>
-      <td>1.785620</td>
-      <td>0.170050</td>
-      <td>-1.634606</td>
+      <td>-0.413030</td>
+      <td>1.670146</td>
+      <td>0.768710</td>
+      <td>0.242937</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2000-01-02</td>
-      <td>1.300756</td>
-      <td>1.185633</td>
-      <td>-0.621490</td>
-      <td>-0.635385</td>
+      <td>-1.421083</td>
+      <td>2.340008</td>
+      <td>1.708741</td>
+      <td>1.093219</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2000-01-03</td>
-      <td>0.437490</td>
-      <td>1.816847</td>
-      <td>0.614259</td>
-      <td>0.120829</td>
+      <td>-1.684770</td>
+      <td>1.933903</td>
+      <td>1.977001</td>
+      <td>-0.104429</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2000-01-04</td>
-      <td>0.880101</td>
-      <td>0.793056</td>
-      <td>1.371258</td>
-      <td>0.210003</td>
+      <td>-1.336324</td>
+      <td>1.941208</td>
+      <td>2.798036</td>
+      <td>-0.934061</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2000-01-05</td>
-      <td>0.238133</td>
-      <td>0.183308</td>
-      <td>0.932891</td>
-      <td>0.628865</td>
+      <td>-0.951288</td>
+      <td>2.595554</td>
+      <td>3.426638</td>
+      <td>0.526492</td>
     </tr>
     <tr>
       <th>...</th>
@@ -6166,42 +7081,42 @@ dtype: int64
     <tr>
       <th>995</th>
       <td>2002-09-22</td>
-      <td>-36.300508</td>
-      <td>56.270354</td>
-      <td>3.018058</td>
-      <td>29.786424</td>
+      <td>-56.245391</td>
+      <td>36.135933</td>
+      <td>-35.771531</td>
+      <td>-31.558078</td>
     </tr>
     <tr>
       <th>996</th>
       <td>2002-09-23</td>
-      <td>-35.312066</td>
-      <td>56.012029</td>
-      <td>4.010364</td>
-      <td>28.200179</td>
+      <td>-56.944974</td>
+      <td>36.982624</td>
+      <td>-35.397465</td>
+      <td>-30.738368</td>
     </tr>
     <tr>
       <th>997</th>
       <td>2002-09-24</td>
-      <td>-35.128091</td>
-      <td>56.950150</td>
-      <td>3.898657</td>
-      <td>29.374028</td>
+      <td>-58.109647</td>
+      <td>36.971590</td>
+      <td>-34.396176</td>
+      <td>-30.043446</td>
     </tr>
     <tr>
       <th>998</th>
       <td>2002-09-25</td>
-      <td>-35.756951</td>
-      <td>58.222894</td>
-      <td>3.756575</td>
-      <td>30.679561</td>
+      <td>-57.126478</td>
+      <td>38.980306</td>
+      <td>-33.300904</td>
+      <td>-29.019652</td>
     </tr>
     <tr>
       <th>999</th>
       <td>2002-09-26</td>
-      <td>-35.104387</td>
-      <td>56.310420</td>
-      <td>3.853378</td>
-      <td>28.832788</td>
+      <td>-57.853211</td>
+      <td>39.842967</td>
+      <td>-35.028271</td>
+      <td>-28.674271</td>
     </tr>
   </tbody>
 </table>
@@ -6210,7 +7125,7 @@ dtype: int64
 </div>
 </section>
 <section id="excel">
-<h3><span class="section-number">16.7.2. </span>Excel<a class="headerlink" href="#excel" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">16.8.2. </span>Excel<a class="headerlink" href="#excel" title="Permalink to this headline">#</a></h3>
 <p>Reading and writing to <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/io.html#io-excel">Excel</a>.</p>
 <p>Writing to an excel file using <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html#pandas.DataFrame.to_excel"><code class="docutils literal notranslate"><span class="pre">DataFrame.to_excel()</span></code></a>:</p>
 <div class="cell docutils container">
@@ -6257,42 +7172,42 @@ dtype: int64
     <tr>
       <th>0</th>
       <td>2000-01-01</td>
-      <td>-0.325755</td>
-      <td>1.785620</td>
-      <td>0.170050</td>
-      <td>-1.634606</td>
+      <td>-0.413030</td>
+      <td>1.670146</td>
+      <td>0.768710</td>
+      <td>0.242937</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2000-01-02</td>
-      <td>1.300756</td>
-      <td>1.185633</td>
-      <td>-0.621490</td>
-      <td>-0.635385</td>
+      <td>-1.421083</td>
+      <td>2.340008</td>
+      <td>1.708741</td>
+      <td>1.093219</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2000-01-03</td>
-      <td>0.437490</td>
-      <td>1.816847</td>
-      <td>0.614259</td>
-      <td>0.120829</td>
+      <td>-1.684770</td>
+      <td>1.933903</td>
+      <td>1.977001</td>
+      <td>-0.104429</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2000-01-04</td>
-      <td>0.880101</td>
-      <td>0.793056</td>
-      <td>1.371258</td>
-      <td>0.210003</td>
+      <td>-1.336324</td>
+      <td>1.941208</td>
+      <td>2.798036</td>
+      <td>-0.934061</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2000-01-05</td>
-      <td>0.238133</td>
-      <td>0.183308</td>
-      <td>0.932891</td>
-      <td>0.628865</td>
+      <td>-0.951288</td>
+      <td>2.595554</td>
+      <td>3.426638</td>
+      <td>0.526492</td>
     </tr>
     <tr>
       <th>...</th>
@@ -6305,42 +7220,42 @@ dtype: int64
     <tr>
       <th>995</th>
       <td>2002-09-22</td>
-      <td>-36.300508</td>
-      <td>56.270354</td>
-      <td>3.018058</td>
-      <td>29.786424</td>
+      <td>-56.245391</td>
+      <td>36.135933</td>
+      <td>-35.771531</td>
+      <td>-31.558078</td>
     </tr>
     <tr>
       <th>996</th>
       <td>2002-09-23</td>
-      <td>-35.312066</td>
-      <td>56.012029</td>
-      <td>4.010364</td>
-      <td>28.200179</td>
+      <td>-56.944974</td>
+      <td>36.982624</td>
+      <td>-35.397465</td>
+      <td>-30.738368</td>
     </tr>
     <tr>
       <th>997</th>
       <td>2002-09-24</td>
-      <td>-35.128091</td>
-      <td>56.950150</td>
-      <td>3.898657</td>
-      <td>29.374028</td>
+      <td>-58.109647</td>
+      <td>36.971590</td>
+      <td>-34.396176</td>
+      <td>-30.043446</td>
     </tr>
     <tr>
       <th>998</th>
       <td>2002-09-25</td>
-      <td>-35.756951</td>
-      <td>58.222894</td>
-      <td>3.756575</td>
-      <td>30.679561</td>
+      <td>-57.126478</td>
+      <td>38.980306</td>
+      <td>-33.300904</td>
+      <td>-29.019652</td>
     </tr>
     <tr>
       <th>999</th>
       <td>2002-09-26</td>
-      <td>-35.104387</td>
-      <td>56.310420</td>
-      <td>3.853378</td>
-      <td>28.832788</td>
+      <td>-57.853211</td>
+      <td>39.842967</td>
+      <td>-35.028271</td>
+      <td>-28.674271</td>
     </tr>
   </tbody>
 </table>
