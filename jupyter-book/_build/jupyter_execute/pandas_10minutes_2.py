@@ -261,7 +261,9 @@ result = pd.merge(left, right, on="key")
 result
 
 
-# **다양한 키워드 인자**
+# **다양한 키 활용**
+# 
+# - 두 개 이상의 키를 하나의 쌍으로 된 키를 사용하는 경우와 유사함. 
 
 # In[24]:
 
@@ -431,6 +433,8 @@ pd.merge(left, right, left_index=True, right_index=True, how='inner')
 
 # ## 다중 인덱스<font size='2'>MultiIndex</font>
 
+# - 참고: [Multiindex / advanced indexing](https://pandas.pydata.org/docs/user_guide/advanced.html)
+
 # 다중 인덱스를 이용하여 데이터를 보다 체계적으로 다를 수 있다.
 # 또한 이어서 다룰 그룹 분류<font size='2'>Group by</font>, 
 # 모양 변환<font size='2'>reshaping</font>, 
@@ -459,27 +463,53 @@ tuples = list(zip(*arrays))
 tuples
 
 
-# - 다중 인덱스 생성
-# - `names` 키워드 인자: 다중 인덱스의 각 레벨<font size='2'>level</font>의 이름 지정. 지정되지 않으면 `None`으로 처리됨.
-#     예를 들어 아래 코드에서 사용된 레벨별 이름은 다음과 같음.
-#     - `"first"`: 0-레벨 이름
-#     - `"second"`: 1-레벨 이름
+# **다중 인덱스 객체 생성: `from_tupes()` 함수**
+
+# 튜플 리스트를 이용하여 다중 인덱스 객체를 생성할 수 있다.
 
 # In[44]:
+
+
+index = pd.MultiIndex.from_tuples(tuples)
+index
+
+
+# - `names` 키워드 인자
+#     - 다중 인덱스의 각 레벨<font size='2'>level</font>의 이름 지정. 
+#     - 지정되지 않으면 `None`으로 처리됨.
+# 
+# 예를 들어 위 코드에서 사용된 각각의 레벨에 이름은 다음과 같다.
+# 
+# - `"first"`: 0-레벨 이름
+# - `"second"`: 1-레벨 이름
+
+# In[45]:
 
 
 index = pd.MultiIndex.from_tuples(tuples, names=["first", "second"])
 index
 
 
-# ### 다중 인덱스 라벨
+# **다중 인덱스 객체 생성: `from_arrays()` 함수**
+
+# 길이가 동일한 여러 개의 리스트로 구성된 어레이를 직접 이용할 수도 있다.
+
+# In[46]:
+
+
+index = pd.MultiIndex.from_arrays(arrays, names=["first", "second"])
+index
+
+
+# ### 다중 인덱스 라벨<font size='2'>label</font>을 사용하는 시리즈/데이터프레임 객체
 
 # - 시리즈 생성
 
 # 아래 코드는 길이가 8인 어레이를 이용하여 시리즈를 생성한다.
 # 인덱스의 라벨은 다중 인덱스가 사용된다.
+# 각각의 레벨에서 라벨이 연속적으로 사용되는 경우는 보다 자연스러운 표현을 위해 생략되기도 한다.
 
-# In[45]:
+# In[47]:
 
 
 s = pd.Series(np.random.randn(8), index=index)
@@ -492,7 +522,7 @@ s
 # `index` 또는 `columns`로 여러 개의 리스트로 구성된 어레이를 지정하면
 # 자동으로 다중 인덱스 라벨이 지정된다.
 
-# In[46]:
+# In[48]:
 
 
 df = pd.DataFrame(np.random.randn(8, 4), index=arrays)
@@ -502,7 +532,7 @@ df
 # 다중 인덱스를 열 라벨로도 활용할 수 있다.
 # 아래 코드는 8개의 열로 이뤄진 2차원 어레이를 이용하여 데이터프레임을 생성한다.
 
-# In[47]:
+# In[49]:
 
 
 df1 = pd.DataFrame(np.random.randn(3, 8), index=["A", "B", "C"], columns=index)
@@ -510,8 +540,11 @@ df1
 
 
 # 인덱스 라벨과 열 라벨 모두 다중 인덱스를 이용할 수도 있다.
+# 
+# - 동일한 길이의 리스트로 이루어진 리스트를 인덱스 또는 열의 라벨로 지정하면
+#     다중 인덱스로 자동 지정된다.
 
-# In[48]:
+# In[50]:
 
 
 arrays2 = [
@@ -520,7 +553,7 @@ arrays2 = [
 ]
 
 
-# In[49]:
+# In[51]:
 
 
 pd.DataFrame(np.random.randn(6, 6), index=index[:6], columns=arrays2)
@@ -531,19 +564,25 @@ pd.DataFrame(np.random.randn(6, 6), index=index[:6], columns=arrays2)
 # 튜플을 라벨로 사용하는 것은 다중 인덱스와 아무 상관 없다.
 # 단지 라벨이 튜플인 것 뿐이다.
 
-# In[50]:
+# In[52]:
+
+
+tuples
+
+
+# In[53]:
 
 
 pd.Series(np.random.randn(8), index=tuples)
 
 
-# ### 인덱스 레벨
+# ### 인덱스의 레벨
 
 # 다중 인덱스 객체의 `get_level_values()` 메서드를 이용하여 레벨별 인덱스 라벨을 확인할 수 있다.
 
-# - 0-레블 인덱스
+# - 0-레블 라벨
 
-# In[51]:
+# In[54]:
 
 
 index.get_level_values(0)
@@ -551,21 +590,21 @@ index.get_level_values(0)
 
 # 레벨 이름을 이용할 수도 있다.
 
-# In[52]:
+# In[55]:
 
 
 index.get_level_values("first")
 
 
-# - 1-레블 인덱스
+# - 1-레블 라벨
 
-# In[53]:
+# In[56]:
 
 
 index.get_level_values(1)
 
 
-# In[54]:
+# In[57]:
 
 
 index.get_level_values("second")
@@ -577,35 +616,35 @@ index.get_level_values("second")
 
 # - 시리즈 인덱싱
 
-# In[55]:
+# In[58]:
 
 
 s
 
 
-# In[56]:
+# In[59]:
 
 
 s["qux"]
 
 
-# - 데이터프레임 인덱싱: 인덱스 라벨이 다중 인덱스인 경우
+# - 데이터프레임 인덱싱
 
-# In[57]:
+# In[60]:
 
 
 df
 
 
-# In[58]:
+# In[61]:
 
 
 df.loc["bar"]
 
 
-# 레벨별로 라벨을 지정한다. 각각의 라벨은 쉼표로 구분한다.
+# 레벨별로 라벨을 지정할 수 있다. 각각의 라벨은 쉼표로 구분한다.
 
-# In[59]:
+# In[62]:
 
 
 df.loc["bar", "one"]
@@ -613,7 +652,7 @@ df.loc["bar", "one"]
 
 # 아래와 같이 할 수도 있다.
 
-# In[60]:
+# In[63]:
 
 
 df.loc["bar"].loc["one"]
@@ -621,13 +660,13 @@ df.loc["bar"].loc["one"]
 
 # - 데이터프레임 인덱싱: 열 라벨이 다중 인덱스인 경우
 
-# In[61]:
+# In[64]:
 
 
 df1
 
 
-# In[62]:
+# In[65]:
 
 
 df1["bar"]
@@ -635,7 +674,7 @@ df1["bar"]
 
 # 레벨별로 라벨을 지정한다. 각각의 라벨은 쉼표로 구분한다.
 
-# In[63]:
+# In[66]:
 
 
 df1["bar", "one"]
@@ -643,11 +682,47 @@ df1["bar", "one"]
 
 # 아래와 같이 할 수도 있다
 
-# In[64]:
+# In[67]:
 
 
 df1["bar"]["one"]
 
+
+# ### 슬라이싱
+
+# 다중 인덱스를 라벨로 사용하는 시리즈와 데이터프레임의 인덱싱은 일반 슬라이싱과 크게 다르지 않다.
+
+# In[68]:
+
+
+df
+
+
+# - 0-레벨 인덱싱
+
+# In[69]:
+
+
+df.loc["baz":"foo"]
+
+
+# - (0, 1)-레벨 인덱싱
+
+# In[70]:
+
+
+df.loc[("baz", "two"):("qux", "one")]
+
+
+# 튜플들의 리스트를 지정하면 리인덱싱처럼 작동한다.
+
+# In[71]:
+
+
+df.loc[[("bar", "two"), ("qux", "one")]]
+
+
+# 이외에 `slice()` 함수와 `pd.IndexSlice` 객체를 사용하는 방법도 있지만 여기서는 다루지 않는다.
 
 # ## 그룹 분류: `pd.groupby()` 함수
 
@@ -659,7 +734,7 @@ df1["bar"]["one"]
 # - **함수 적용**<font size='2'>Applying</font>: 그룹별로 함수 적용
 # - **조합**<font size='2'>Combining</font>: 그룹별 함수 적용 결과를 취합하여 새로운 데이터프레임/시리즈 생성
 
-# In[65]:
+# In[72]:
 
 
 df = pd.DataFrame({'A': ['foo', 'bar', 'foo', 'bar',
@@ -680,7 +755,7 @@ df
 #     | `bar` | 1 |
 #     | `foo` | 1 |
 
-# In[66]:
+# In[73]:
 
 
 df.groupby('A')[["C", "D"]].sum()
@@ -694,7 +769,7 @@ df.groupby('A')[["C", "D"]].sum()
 #     | `bar` | `one`, `three`, `two` | 3 |
 #     | `foo` | `one`, `two` | 2 |
 
-# In[67]:
+# In[74]:
 
 
 df.groupby(["A", "B"]).sum()
@@ -704,7 +779,7 @@ df.groupby(["A", "B"]).sum()
 
 # - `for` 반복문 활용 
 
-# In[68]:
+# In[75]:
 
 
 for name, group in df.groupby(["A", "B"]):
@@ -714,13 +789,13 @@ for name, group in df.groupby(["A", "B"]):
 
 # - `get_group()` 메서드
 
-# In[69]:
+# In[76]:
 
 
 df.groupby(["A", "B"]).get_group(('bar', 'one'))
 
 
-# In[70]:
+# In[77]:
 
 
 df.groupby(["A", "B"]).get_group(('bar', 'three'))
@@ -728,7 +803,7 @@ df.groupby(["A", "B"]).get_group(('bar', 'three'))
 
 # - `groups` 속성
 
-# In[71]:
+# In[78]:
 
 
 df.groupby(["A", "B"]).groups
@@ -736,7 +811,7 @@ df.groupby(["A", "B"]).groups
 
 # - `value_counts` 속성
 
-# In[72]:
+# In[79]:
 
 
 df.groupby(["A", "B"]).value_counts()
@@ -744,7 +819,7 @@ df.groupby(["A", "B"]).value_counts()
 
 # - `nunique` 속성
 
-# In[73]:
+# In[80]:
 
 
 df.groupby(["A", "B"]).nunique()
@@ -752,150 +827,224 @@ df.groupby(["A", "B"]).nunique()
 
 # - `sort=True` 키워드 인자
 
-# In[74]:
+# In[81]:
 
 
 df.groupby(["A", "B"], sort=True).sum()
 
 
-# In[75]:
+# In[82]:
 
 
 df.groupby(["A", "B"], sort=False).sum()
 
 
-# In[76]:
+# In[83]:
 
 
 df.groupby(["A", "B"], sort=False).nunique()
 
 
-# **그룹 연산**
+# **그룹 연산 예제**
 
-# In[77]:
+# - `max()` 메서드
+
+# In[84]:
 
 
 df.groupby('A')[["C", "D"]].max()
 
 
-# In[78]:
+# In[85]:
 
 
 df.groupby(["A", "B"]).max()
 
 
-# In[79]:
+# - `mean()` 메서드
+
+# In[86]:
 
 
 df.groupby('A')[["C", "D"]].mean()
 
 
-# In[80]:
+# In[87]:
 
 
 df.groupby(["A", "B"]).mean()
 
 
-# In[81]:
+# - `size()` 메서드
+
+# In[88]:
 
 
 df.groupby('A')[["C", "D"]].size()
 
 
-# In[82]:
+# In[89]:
 
 
 df.groupby(["A", "B"]).size()
 
 
-# In[83]:
+# - `describe()` 메서드
+
+# In[90]:
 
 
 df.groupby('A')[["C", "D"]].describe()
 
 
-# In[84]:
+# In[91]:
 
 
 df.groupby(["A", "B"]).describe()
 
 
-# ## Reshaping
-# 
-# See the sections on [Hierarchical Indexing](https://pandas.pydata.org/docs/user_guide/advanced.html#advanced-hierarchical) and [Reshaping](https://pandas.pydata.org/docs/user_guide/reshaping.html#reshaping-stacking).
+# ## 모양 변환<font size='2'>Reshaping</font>
 
-# ### Stack
+# - 참고: [Reshaping](https://pandas.pydata.org/docs/user_guide/reshaping.html#reshaping-stacking)
 
-# In[85]:
+# ### 스택
 
+# 열의 레벨을 하나 줄일 때 사용한다.
+# 없어진 레벨은 열의 마지막 레벨로 추가된다.
 
-tuples = list(
-    zip(
-        ["bar", "bar", "baz", "baz", "foo", "foo", "qux", "qux"],
-        ["one", "two", "one", "two", "one", "two", "one", "two"],
-    )
-)
-
-tuples
+# In[92]:
 
 
-# In[86]:
-
-
-index = pd.MultiIndex.from_tuples(tuples, names=["first", "second"])
 index
 
 
-# In[87]:
+# In[93]:
 
 
 df = pd.DataFrame(np.random.randn(8, 2), index=index, columns=["A", "B"])
 df
 
 
-# In[88]:
+# In[94]:
 
 
 df2 = df[:4]
 df2
 
 
-# The [`stack()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.stack.html#pandas.DataFrame.stack) method “compresses” a level in the DataFrame’s columns:
-# 
-# 
+# - `stack()` 메서드: 
+#     열이 한 개의 레벨로 구성되어 있기에 `stack()` 메서드를 적용하면
+#     결국 모든 열이 없어지고, 열의 라벨은
+#     인덱스의 마지막 레벨의 라벨로 변환된다.
+#     여기서는 결국 3중 인덱스를 사용하는 시리즈를 생성한다.
 
-# In[89]:
+# In[95]:
 
 
 stacked = df2.stack()
 stacked
 
 
-# With a “stacked” DataFrame or Series (having a [MultiIndex](https://pandas.pydata.org/docs/reference/api/pandas.MultiIndex.html#pandas.MultiIndex) as the `index`), the inverse operation of [`stack()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.stack.html#pandas.DataFrame.stack) is [`unstack()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.unstack.html#pandas.DataFrame.unstack), which by default unstacks the **last level**:
+# ### 언스택
 
-# In[90]:
+# - `unstack()` 메서드: 
+#     인덱스의 지정된 레벨을 열의 마지막 레벨로 변환한다.
+#     인자를 지정하지 않으면 마지막 레벨을 변환한다.
+
+# In[96]:
 
 
 stacked.unstack()
 
 
-# In[91]:
+# In[97]:
 
 
-stacked.unstack(1)
+stacked.unstack().unstack()
 
 
-# In[92]:
+# 인자를 지정하면 해당 레벨을 열의 마지막 레벨로 변환한다.
+
+# In[98]:
 
 
 stacked.unstack(0)
 
 
-# ### Pivot tables
-# 
-# See the section on [Pivot Tables](https://pandas.pydata.org/docs/user_guide/reshaping.html#reshaping-pivot).
+# In[99]:
 
-# In[93]:
+
+stacked.unstack(1)
+
+
+# ### 피버팅<font size='2'>Pivoting</font>
+
+# - 참고: [Pivot Tables](https://pandas.pydata.org/docs/user_guide/reshaping.html#reshaping-pivot)
+
+# **`pd.pivot_table()` 함수**
+
+# In[100]:
+
+
+import datetime
+
+df = pd.DataFrame(
+    {
+        "A": ["one", "one", "two", "three"] * 6,
+        "B": ["A", "B", "C"] * 8,
+        "C": ["foo", "foo", "foo", "bar", "bar", "bar"] * 4,
+        "D": np.random.randn(24),
+        "E": np.random.randn(24),
+        "F": [datetime.datetime(2013, i, 1) for i in range(1, 13)]
+        + [datetime.datetime(2013, i, 15) for i in range(1, 13)],
+    }
+)
+
+df
+
+
+# In[101]:
+
+
+pd.pivot_table(df, values="D", index=["A", "B"], columns=["C"]) # aggfunc=np.mean 이 기본값
+
+
+# In[102]:
+
+
+pd.pivot_table(df, values="D", index=["A", "B"], columns=["C"], aggfunc=np.sum)
+
+
+# **`DataFrame.pivot()` 메서드**
+
+# In[103]:
+
+
+df
+
+
+# In[104]:
+
+
+df1 = df.groupby(['A', 'B']).sum().reset_index()
+df1
+
+
+# In[105]:
+
+
+df1.pivot(columns='A', index='B', values="D")
+
+
+# In[106]:
+
+
+df1.pivot_table(columns='A', index='B', values="D")
+
+
+# **예제**
+
+# In[107]:
 
 
 df = pd.DataFrame(
@@ -914,37 +1063,104 @@ df
 # 
 # 
 
-# In[94]:
+# In[108]:
 
 
 pd.pivot_table(df, values="D", index=["A", "B"], columns=["C"])
+
+
+# In[109]:
+
+
+pd.pivot(df, values="D", index=["A", "B"], columns=["C"])
+
+
+# In[110]:
+
+
+df.pivot_table(values="D", index=["A", "B"], columns=["C"], aggfunc=np.mean)
+
+
+# In[111]:
+
+
+pd.pivot_table(df, values="D", index=["A", "B"], columns=["C"], aggfunc=np.sum)
+
+
+# In[112]:
+
+
+df.pivot_table(values="D", index=["A", "B"], columns=["C"], aggfunc=np.mean)
+
+
+# In[113]:
+
+
+pd.pivot_table(df, values="D", index=["A"], columns=["C"], aggfunc=np.mean)
+
+
+# In[114]:
+
+
+df.groupby(["A", "C"]).mean()
+
+
+# In[115]:
+
+
+df1 = df.groupby(["A", "C"]).mean().reset_index()
+df1
+
+
+# In[116]:
+
+
+pd.pivot(df1, values="D", index=["A"], columns=["C"])
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
+
+
+# In[ ]:
+
+
+
 
 
 # ## Time series
 # 
 # pandas has simple, powerful, and efficient functionality for performing resampling operations during frequency conversion (e.g., converting secondly data into 5-minutely data). This is extremely common in, but not limited to, financial applications. See the [Time Series](https://pandas.pydata.org/docs/user_guide/timeseries.html#timeseries) section.
 
-# In[95]:
+# In[117]:
 
 
 rng = pd.date_range("1/1/2012", periods=100, freq="S")
 rng
 
 
-# In[96]:
+# In[118]:
 
 
 ts = pd.Series(np.random.randint(0, 500, len(rng)), index=rng)
 ts
 
 
-# In[97]:
+# In[119]:
 
 
 ts.resample("10S").sum()
 
 
-# In[98]:
+# In[120]:
 
 
 ts.resample("1Min").sum()
@@ -952,7 +1168,7 @@ ts.resample("1Min").sum()
 
 # [`Series.tz_localize()`](https://pandas.pydata.org/docs/reference/api/pandas.Series.tz_localize.html#pandas.Series.tz_localize) localizes a time series to a time zone:
 
-# In[99]:
+# In[121]:
 
 
 rng = pd.date_range("3/6/2012 00:00", periods=5, freq="D")
@@ -964,28 +1180,28 @@ ts_utc
 
 # Converting between time span representations:
 
-# In[100]:
+# In[122]:
 
 
 rng = pd.date_range("1/1/2012", periods=5, freq="M")
 rng
 
 
-# In[101]:
+# In[123]:
 
 
 ts = pd.Series(np.random.randn(len(rng)), index=rng)
 ts
 
 
-# In[102]:
+# In[124]:
 
 
 ps = ts.to_period()
 ps
 
 
-# In[103]:
+# In[125]:
 
 
 ps.to_timestamp()
@@ -993,28 +1209,28 @@ ps.to_timestamp()
 
 # Converting between period and timestamp enables some convenient arithmetic functions to be used. In the following example, we convert a quarterly frequency with year ending in November to 9am of the end of the month following the quarter end:
 
-# In[104]:
+# In[126]:
 
 
 prng = pd.period_range("1990Q1", "2000Q4", freq="Q-NOV")
 prng
 
 
-# In[105]:
+# In[127]:
 
 
 ts = pd.Series(np.random.randn(len(prng)), prng)
 ts
 
 
-# In[106]:
+# In[128]:
 
 
 ts.index = (prng.asfreq("M", "e") + 1).asfreq("H", "s") + 9
 ts.index
 
 
-# In[107]:
+# In[129]:
 
 
 ts.head()
@@ -1024,7 +1240,7 @@ ts.head()
 # 
 # pandas can include categorical data in a [`DataFrame`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame). For full docs, see the [categorical introduction](https://pandas.pydata.org/docs/user_guide/categorical.html#categorical) and the [API documentation](https://pandas.pydata.org/docs/reference/arrays.html#api-arrays-categorical).
 
-# In[108]:
+# In[130]:
 
 
 df = pd.DataFrame(
@@ -1035,7 +1251,7 @@ df
 
 # Converting the raw grades to a categorical data type:
 
-# In[109]:
+# In[131]:
 
 
 df["grade"] = df["raw_grade"].astype("category")
@@ -1044,7 +1260,7 @@ df["grade"]
 
 # Rename the categories to more meaningful names:
 
-# In[110]:
+# In[132]:
 
 
 new_categories = ["very good", "good", "very bad"]
@@ -1054,7 +1270,7 @@ df
 
 # Reorder the categories and simultaneously add the missing categories (methods under [`Series.cat()`](https://pandas.pydata.org/docs/reference/api/pandas.Series.cat.html#pandas.Series.cat) return a new [`Series`](https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series) by default):
 
-# In[111]:
+# In[133]:
 
 
 df["grade"] = df["grade"].cat.set_categories(
@@ -1065,7 +1281,7 @@ df["grade"]
 
 # Sorting is per order in the categories, not lexical order:
 
-# In[112]:
+# In[134]:
 
 
 df.sort_values(by="grade")
@@ -1073,7 +1289,7 @@ df.sort_values(by="grade")
 
 # Grouping by a categorical column also shows empty categories:
 
-# In[113]:
+# In[135]:
 
 
 df.groupby("grade").size()
@@ -1085,7 +1301,7 @@ df.groupby("grade").size()
 # 
 # We use the standard convention for referencing the matplotlib API:
 
-# In[114]:
+# In[136]:
 
 
 import matplotlib.pyplot as plt
@@ -1100,7 +1316,7 @@ ts.plot();
 # 
 # On a DataFrame, the [`plot()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.html#pandas.DataFrame.plot) method is a convenience to plot all of the columns with labels:
 
-# In[115]:
+# In[137]:
 
 
 df = pd.DataFrame(
@@ -1119,7 +1335,7 @@ plt.legend(loc='best');
 # 
 # [Writing to a csv file](https://pandas.pydata.org/docs/user_guide/io.html#io-store-in-csv): using [`DataFrame.to_csv()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html#pandas.DataFrame.to_csv)
 
-# In[116]:
+# In[138]:
 
 
 df.to_csv("foo.csv")
@@ -1127,7 +1343,7 @@ df.to_csv("foo.csv")
 
 # [Reading from a csv file](https://pandas.pydata.org/docs/user_guide/io.html#io-read-csv-table): using [`read_csv()`](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html#pandas.read_csv)
 
-# In[117]:
+# In[139]:
 
 
 pd.read_csv("foo.csv")
@@ -1139,7 +1355,7 @@ pd.read_csv("foo.csv")
 # 
 # Writing to an excel file using [`DataFrame.to_excel()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html#pandas.DataFrame.to_excel):
 
-# In[118]:
+# In[140]:
 
 
 df.to_excel("foo.xlsx", sheet_name="Sheet1")
@@ -1147,7 +1363,7 @@ df.to_excel("foo.xlsx", sheet_name="Sheet1")
 
 # Reading from an excel file using [`read_excel()`](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html#pandas.read_excel):
 
-# In[119]:
+# In[141]:
 
 
 pd.read_excel("foo.xlsx", "Sheet1", index_col=None, na_values=["NA"])
