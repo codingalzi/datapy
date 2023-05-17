@@ -819,7 +819,7 @@ df.groupby(["A", "B"]).value_counts()
 
 # - `nunique` 속성
 
-# In[80]:
+# In[101]:
 
 
 df.groupby(["A", "B"]).nunique()
@@ -827,19 +827,19 @@ df.groupby(["A", "B"]).nunique()
 
 # - `sort=True` 키워드 인자
 
-# In[81]:
+# In[102]:
 
 
 df.groupby(["A", "B"], sort=True).sum()
 
 
-# In[82]:
+# In[103]:
 
 
 df.groupby(["A", "B"], sort=False).sum()
 
 
-# In[83]:
+# In[104]:
 
 
 df.groupby(["A", "B"], sort=False).nunique()
@@ -849,13 +849,13 @@ df.groupby(["A", "B"], sort=False).nunique()
 
 # - `max()` 메서드
 
-# In[84]:
+# In[105]:
 
 
 df.groupby('A')[["C", "D"]].max()
 
 
-# In[85]:
+# In[106]:
 
 
 df.groupby(["A", "B"]).max()
@@ -863,13 +863,13 @@ df.groupby(["A", "B"]).max()
 
 # - `mean()` 메서드
 
-# In[86]:
+# In[107]:
 
 
 df.groupby('A')[["C", "D"]].mean()
 
 
-# In[87]:
+# In[108]:
 
 
 df.groupby(["A", "B"]).mean()
@@ -877,13 +877,13 @@ df.groupby(["A", "B"]).mean()
 
 # - `size()` 메서드
 
-# In[88]:
+# In[109]:
 
 
 df.groupby('A')[["C", "D"]].size()
 
 
-# In[89]:
+# In[110]:
 
 
 df.groupby(["A", "B"]).size()
@@ -891,13 +891,13 @@ df.groupby(["A", "B"]).size()
 
 # - `describe()` 메서드
 
-# In[90]:
+# In[111]:
 
 
 df.groupby('A')[["C", "D"]].describe()
 
 
-# In[91]:
+# In[112]:
 
 
 df.groupby(["A", "B"]).describe()
@@ -909,23 +909,23 @@ df.groupby(["A", "B"]).describe()
 
 # ### 스택
 
-# 열의 레벨을 하나 줄일 때 사용한다.
-# 없어진 레벨은 열의 마지막 레벨로 추가된다.
+# 열 인덱스의 레벨을 하나 줄일 때 사용한다.
+# 없어진 레벨은 행 인덱스의 마지막 레벨로 추가된다.
 
-# In[92]:
+# In[117]:
 
 
 index
 
 
-# In[93]:
+# In[118]:
 
 
 df = pd.DataFrame(np.random.randn(8, 2), index=index, columns=["A", "B"])
 df
 
 
-# In[94]:
+# In[119]:
 
 
 df2 = df[:4]
@@ -938,7 +938,7 @@ df2
 #     인덱스의 마지막 레벨의 라벨로 변환된다.
 #     여기서는 결국 3중 인덱스를 사용하는 시리즈를 생성한다.
 
-# In[95]:
+# In[120]:
 
 
 stacked = df2.stack()
@@ -947,17 +947,18 @@ stacked
 
 # ### 언스택
 
-# - `unstack()` 메서드: 
-#     인덱스의 지정된 레벨을 열의 마지막 레벨로 변환한다.
-#     인자를 지정하지 않으면 마지막 레벨을 변환한다.
+# 행 인덱스의 지정된 레벨을 열의 마지막 레벨로 변환한다.
+# 인자를 지정하지 않으면 마지막 레벨을 변환한다.
 
-# In[96]:
+# - `unstack()` 메서드
+
+# In[121]:
 
 
 stacked.unstack()
 
 
-# In[97]:
+# In[122]:
 
 
 stacked.unstack().unstack()
@@ -965,13 +966,13 @@ stacked.unstack().unstack()
 
 # 인자를 지정하면 해당 레벨을 열의 마지막 레벨로 변환한다.
 
-# In[98]:
+# In[123]:
 
 
 stacked.unstack(0)
 
 
-# In[99]:
+# In[124]:
 
 
 stacked.unstack(1)
@@ -983,7 +984,9 @@ stacked.unstack(1)
 
 # **`pd.pivot_table()` 함수**
 
-# In[100]:
+# **예제**
+
+# In[142]:
 
 
 import datetime
@@ -995,21 +998,19 @@ df = pd.DataFrame(
         "C": ["foo", "foo", "foo", "bar", "bar", "bar"] * 4,
         "D": np.random.randn(24),
         "E": np.random.randn(24),
-        "F": [datetime.datetime(2013, i, 1) for i in range(1, 13)]
-        + [datetime.datetime(2013, i, 15) for i in range(1, 13)],
     }
 )
 
 df
 
 
-# In[101]:
+# In[143]:
 
 
 pd.pivot_table(df, values="D", index=["A", "B"], columns=["C"]) # aggfunc=np.mean 이 기본값
 
 
-# In[102]:
+# In[144]:
 
 
 pd.pivot_table(df, values="D", index=["A", "B"], columns=["C"], aggfunc=np.sum)
@@ -1017,150 +1018,52 @@ pd.pivot_table(df, values="D", index=["A", "B"], columns=["C"], aggfunc=np.sum)
 
 # **`DataFrame.pivot()` 메서드**
 
-# In[103]:
+# In[145]:
 
 
 df
 
 
-# In[104]:
+# In[146]:
 
 
-df1 = df.groupby(['A', 'B']).sum().reset_index()
+df1 = df.groupby(['A', 'B', 'C']).sum().reset_index()
 df1
 
 
-# In[105]:
+# In[148]:
 
 
-df1.pivot(columns='A', index='B', values="D")
-
-
-# In[106]:
-
-
-df1.pivot_table(columns='A', index='B', values="D")
-
-
-# **예제**
-
-# In[107]:
-
-
-df = pd.DataFrame(
-    {
-        "A": ["one", "one", "two", "three"] * 3,
-        "B": ["A", "B", "C"] * 4,
-        "C": ["foo", "foo", "foo", "bar", "bar", "bar"] * 2,
-        "D": np.random.randn(12),
-        "E": np.random.randn(12),
-    }
-)
-df
-
-
-# [`pivot_table()`](https://pandas.pydata.org/docs/reference/api/pandas.pivot_table.html#pandas.pivot_table) pivots a [`DataFrame`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame) specifying the `values`, `index`, and `columns`
-# 
-# 
-
-# In[108]:
-
-
-pd.pivot_table(df, values="D", index=["A", "B"], columns=["C"])
-
-
-# In[109]:
-
-
-pd.pivot(df, values="D", index=["A", "B"], columns=["C"])
-
-
-# In[110]:
-
-
-df.pivot_table(values="D", index=["A", "B"], columns=["C"], aggfunc=np.mean)
-
-
-# In[111]:
-
-
-pd.pivot_table(df, values="D", index=["A", "B"], columns=["C"], aggfunc=np.sum)
-
-
-# In[112]:
-
-
-df.pivot_table(values="D", index=["A", "B"], columns=["C"], aggfunc=np.mean)
-
-
-# In[113]:
-
-
-pd.pivot_table(df, values="D", index=["A"], columns=["C"], aggfunc=np.mean)
-
-
-# In[114]:
-
-
-df.groupby(["A", "C"]).mean()
-
-
-# In[115]:
-
-
-df1 = df.groupby(["A", "C"]).mean().reset_index()
-df1
-
-
-# In[116]:
-
-
-pd.pivot(df1, values="D", index=["A"], columns=["C"])
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
+df1.pivot(index=['A', 'B'], columns='C', values="D")
 
 
 # ## Time series
+
+# pandas has simple, powerful, and efficient functionality for performing resampling operations during frequency conversion (e.g., converting secondly data into 5-minutely data). This is extremely common in, but not limited to, financial applications. See the 
 # 
-# pandas has simple, powerful, and efficient functionality for performing resampling operations during frequency conversion (e.g., converting secondly data into 5-minutely data). This is extremely common in, but not limited to, financial applications. See the [Time Series](https://pandas.pydata.org/docs/user_guide/timeseries.html#timeseries) section.
+# - 참고: [Time Series](https://pandas.pydata.org/docs/user_guide/timeseries.html#timeseries)
 
-# In[117]:
+# In[158]:
 
 
-rng = pd.date_range("1/1/2012", periods=100, freq="S")
+rng = pd.date_range("1/1/2023", periods=100, freq="S")
 rng
 
 
-# In[118]:
+# In[159]:
 
 
 ts = pd.Series(np.random.randint(0, 500, len(rng)), index=rng)
 ts
 
 
-# In[119]:
+# In[160]:
 
 
 ts.resample("10S").sum()
 
 
-# In[120]:
+# In[161]:
 
 
 ts.resample("1Min").sum()
@@ -1168,40 +1071,50 @@ ts.resample("1Min").sum()
 
 # [`Series.tz_localize()`](https://pandas.pydata.org/docs/reference/api/pandas.Series.tz_localize.html#pandas.Series.tz_localize) localizes a time series to a time zone:
 
-# In[121]:
+# In[164]:
 
 
-rng = pd.date_range("3/6/2012 00:00", periods=5, freq="D")
+rng = pd.date_range("18/5/2023 00:00", periods=7, freq="D")
 ts = pd.Series(np.random.randn(len(rng)), rng)
-print(ts, "\n")
+
+
+# In[165]:
+
+
+ts
+
+
+# In[166]:
+
+
 ts_utc = ts.tz_localize("UTC")
 ts_utc
 
 
 # Converting between time span representations:
 
-# In[122]:
+# In[168]:
 
 
-rng = pd.date_range("1/1/2012", periods=5, freq="M")
+rng = pd.date_range("1/1/2023", periods=12, freq="M")
 rng
 
 
-# In[123]:
+# In[169]:
 
 
 ts = pd.Series(np.random.randn(len(rng)), index=rng)
 ts
 
 
-# In[124]:
+# In[170]:
 
 
 ps = ts.to_period()
 ps
 
 
-# In[125]:
+# In[171]:
 
 
 ps.to_timestamp()
@@ -1209,121 +1122,101 @@ ps.to_timestamp()
 
 # Converting between period and timestamp enables some convenient arithmetic functions to be used. In the following example, we convert a quarterly frequency with year ending in November to 9am of the end of the month following the quarter end:
 
-# In[126]:
+# In[172]:
 
 
-prng = pd.period_range("1990Q1", "2000Q4", freq="Q-NOV")
+prng = pd.period_range("2022Q1", "2023Q4", freq="Q-NOV")
 prng
 
 
-# In[127]:
+# In[173]:
 
 
 ts = pd.Series(np.random.randn(len(prng)), prng)
 ts
 
 
-# In[128]:
+# In[174]:
 
 
 ts.index = (prng.asfreq("M", "e") + 1).asfreq("H", "s") + 9
 ts.index
 
 
-# In[129]:
+# In[177]:
 
 
-ts.head()
+prng.asfreq("M", "e")
 
 
-# ## Categoricals
-# 
-# pandas can include categorical data in a [`DataFrame`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html#pandas.DataFrame). For full docs, see the [categorical introduction](https://pandas.pydata.org/docs/user_guide/categorical.html#categorical) and the [API documentation](https://pandas.pydata.org/docs/reference/arrays.html#api-arrays-categorical).
-
-# In[130]:
+# In[178]:
 
 
-df = pd.DataFrame(
-    {"id": [1, 2, 3, 4, 5, 6], "raw_grade": ["a", "b", "b", "a", "a", "e"]}
-)
-df
+prng.asfreq("M", "e")+1
 
 
-# Converting the raw grades to a categorical data type:
-
-# In[131]:
+# In[179]:
 
 
-df["grade"] = df["raw_grade"].astype("category")
-df["grade"]
-
-
-# Rename the categories to more meaningful names:
-
-# In[132]:
-
-
-new_categories = ["very good", "good", "very bad"]
-df["grade"] = df["grade"].cat.rename_categories(new_categories)
-df
-
-
-# Reorder the categories and simultaneously add the missing categories (methods under [`Series.cat()`](https://pandas.pydata.org/docs/reference/api/pandas.Series.cat.html#pandas.Series.cat) return a new [`Series`](https://pandas.pydata.org/docs/reference/api/pandas.Series.html#pandas.Series) by default):
-
-# In[133]:
-
-
-df["grade"] = df["grade"].cat.set_categories(
-    ["very bad", "bad", "medium", "good", "very good"]
-)
-df["grade"]
-
-
-# Sorting is per order in the categories, not lexical order:
-
-# In[134]:
-
-
-df.sort_values(by="grade")
-
-
-# Grouping by a categorical column also shows empty categories:
-
-# In[135]:
-
-
-df.groupby("grade").size()
+ts
 
 
 # ## Plotting
-# 
-# See the [Plotting](https://pandas.pydata.org/docs/user_guide/visualization.html#visualization) docs.
-# 
-# We use the standard convention for referencing the matplotlib API:
 
-# In[136]:
+# - 참고: [Plotting](https://pandas.pydata.org/docs/user_guide/visualization.html#visualization)
+
+# In[194]:
 
 
 import matplotlib.pyplot as plt
-plt.close("all")
 
-ts = pd.Series(np.random.randn(1000), index=pd.date_range("1/1/2000", periods=1000))
+np.random.seed(17)
+
+
+# In[199]:
+
+
+ts = pd.Series(np.random.randn(1000), index=pd.date_range("1/1/2023", periods=1000))
+ts
+
+
+# In[200]:
+
+
 ts = ts.cumsum()
-ts.plot();
+ts
+
+
+# In[201]:
+
+
+ts.plot()
 
 
 # If running under Jupyter Notebook, the plot will appear on [`plot()`](https://pandas.pydata.org/docs/reference/api/pandas.Series.plot.html#pandas.Series.plot). Otherwise use [`matplotlib.pyplot.show`](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.show.html) to show it or [`matplotlib.pyplot.savefig`](https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.savefig.html) to write it to a file.
 # 
 # On a DataFrame, the [`plot()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.html#pandas.DataFrame.plot) method is a convenience to plot all of the columns with labels:
 
-# In[137]:
+# In[206]:
 
 
 df = pd.DataFrame(
     np.random.randn(1000, 4), index=ts.index, columns=["A", "B", "C", "D"]
 )
 
+df
+
+
+# In[207]:
+
+
 df = df.cumsum()
+df
+
+
+# In[208]:
+
+
 plt.figure();
 df.plot();
 plt.legend(loc='best');
@@ -1335,7 +1228,7 @@ plt.legend(loc='best');
 # 
 # [Writing to a csv file](https://pandas.pydata.org/docs/user_guide/io.html#io-store-in-csv): using [`DataFrame.to_csv()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html#pandas.DataFrame.to_csv)
 
-# In[138]:
+# In[209]:
 
 
 df.to_csv("foo.csv")
@@ -1343,7 +1236,7 @@ df.to_csv("foo.csv")
 
 # [Reading from a csv file](https://pandas.pydata.org/docs/user_guide/io.html#io-read-csv-table): using [`read_csv()`](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html#pandas.read_csv)
 
-# In[139]:
+# In[210]:
 
 
 pd.read_csv("foo.csv")
@@ -1355,7 +1248,7 @@ pd.read_csv("foo.csv")
 # 
 # Writing to an excel file using [`DataFrame.to_excel()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html#pandas.DataFrame.to_excel):
 
-# In[140]:
+# In[211]:
 
 
 df.to_excel("foo.xlsx", sheet_name="Sheet1")
@@ -1363,7 +1256,7 @@ df.to_excel("foo.xlsx", sheet_name="Sheet1")
 
 # Reading from an excel file using [`read_excel()`](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html#pandas.read_excel):
 
-# In[141]:
+# In[212]:
 
 
 pd.read_excel("foo.xlsx", "Sheet1", index_col=None, na_values=["NA"])
