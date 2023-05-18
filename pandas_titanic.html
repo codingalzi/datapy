@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>23. 판다스 실전: 타이타닉 &#8212; 파이썬 데이터 분석</title>
+    <title>23. 판다스 실전: 타이타닉 데이터셋 &#8212; 파이썬 데이터 분석</title>
   
   
   
@@ -179,7 +179,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="pandas_4.html">20. 판다스 활용: 통계 기초</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_5.html">21. 데이터 결합: merge-join-concat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_6.html">22. 데이터 그룹화(Group by)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">23. 판다스 실전: 타이타닉</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">23. 판다스 실전: 타이타닉 데이터셋</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">데이터 시각화</span></p>
 <ul class="nav bd-sidenav">
@@ -404,7 +404,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>판다스 실전: 타이타닉</h1>
+    <h1>판다스 실전: 타이타닉 데이터셋</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -414,8 +414,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocess-data-with-scikit-learn">23.1. Preprocess Data with Scikit-learn</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">23.1.1. 결측치 처리</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">23.1. 타이타닉 데이터셋 불러오기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">23.2. 생존여부 상관관계</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">23.3. 데이터셋 살펴보기</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">23.3.1. 데이터 전처리</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocess-data-with-scikit-learn">23.3.2. Preprocess Data with Scikit-learn</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">23.3.2.1. 결측치 처리</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -430,11 +436,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-titanic">
-<span id="id1"></span><h1><span class="section-number">23. </span>판다스 실전: 타이타닉<a class="headerlink" href="#sec-titanic" title="Permalink to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">23. </span>판다스 실전: 타이타닉 데이터셋<a class="headerlink" href="#sec-titanic" title="Permalink to this heading">#</a></h1>
 <p><strong>주요 내용</strong></p>
 <p>타이타닉<font size='2'>Titanic</font> 데이터셋을 데이터프레임으로 불러와서 전처리 하는 과정을 살펴 본다.</p>
 <p><strong>기본 설정</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> 라이브러리는 보통 <code class="docutils literal notranslate"><span class="pre">pd</span></code> 라는 별칭으로 사용된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -443,13 +448,20 @@ document.write(`
 </div>
 </div>
 </div>
-<p>랜덤 시드, 어레이 내부에 사용되는 부동소수점 정확도, 도표 크기 지정 옵션 등은 이전과 동일하다.</p>
+<p>랜덤 시드, 어레이 내부에 사용되는 부동소수점의 정확도(여기서는 소수점 이하 네자리까지 표시)를 지정한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>그래프 크기를 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -468,23 +480,134 @@ document.write(`
 <ul class="simple">
 <li><p><a class="reference external" href="https://jaketae.github.io/study/sklearn-pipeline/">https://jaketae.github.io/study/sklearn-pipeline/</a></p></li>
 </ul>
+<p><strong>주의사항</strong></p>
+<p>열의 라벨을 데이터의 <strong>특성</strong><font size='2'>feature</font>로 부르는
+관습을 따라 여기서도 특성 표현을 사용한다.</p>
+<section id="id2">
+<h2><span class="section-number">23.1. </span>타이타닉 데이터셋 불러오기<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>타이타닉 데이터셋을 불러온다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fetch_openml()</span></code>: <a class="reference external" href="https://www.openml.org">openml</a>에서 제공하는 데이터셋을 가져오는 함수.</p></li>
+<li><p>여기서는 <a class="reference external" href="https://www.openml.org/search?type=data&amp;status=active&amp;id=40945">타이타닉 데이터셋</a> 지정.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="s2">&quot;titanic&quot;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">X</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;boat&#39;</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">,</span> <span class="s1">&#39;home.dest&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="s2">&quot;titanic&quot;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">parser</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>1309명 승객의 데이터 포함.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">X</span></code>: 13개의 열(특성) 사용.</p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>열 특성</p></th>
+<th class="head text-left"><p>의미</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>Pclass</p></td>
+<td class="text-left"><p>승객 클래스(1 = 1등석; 2 = 2등석; 3 = 3등석)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>name</p></td>
+<td class="text-left"><p>이름</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>sex</p></td>
+<td class="text-left"><p>성(male=남성, female=여성)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>age</p></td>
+<td class="text-left"><p>나이</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>sibsp</p></td>
+<td class="text-left"><p>함께 승선한 형제, 자매, 배우자 수</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>parch</p></td>
+<td class="text-left"><p>함께 승선한 부모 자식 수</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>ticket</p></td>
+<td class="text-left"><p>티켓 번호</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>fare</p></td>
+<td class="text-left"><p>티켓 요금 (영국 파운드)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>cabin</p></td>
+<td class="text-left"><p>객실 번호</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>embarked</p></td>
+<td class="text-left"><p>승선한 항구 (C = Cherbourg; Q = Queenstown; S = Southampton)</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>boat</p></td>
+<td class="text-left"><p>침몰시 탑승한 구명보트 번호</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p>body</p></td>
+<td class="text-left"><p>사망자인 경우 지정된 번호</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p>home.dest</p></td>
+<td class="text-left"><p>고향/목적지</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/gslee/anaconda3/lib/python3.10/site-packages/sklearn/datasets/_openml.py:932: FutureWarning: The default value of `parser` will change from `&#39;liac-arff&#39;` to `&#39;auto&#39;` in 1.4. You can set `parser=&#39;auto&#39;` to silence this warning. Therefore, an `ImportError` will be raised from 1.4 if the dataset is dense and pandas is not installed. Note that the pandas parser may return different data types. See the Notes Section in fetch_openml&#39;s API doc for details.
-  warn(
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1309, 13)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;pclass&#39;, &#39;name&#39;, &#39;sex&#39;, &#39;age&#39;, &#39;sibsp&#39;, &#39;parch&#39;, &#39;ticket&#39;, &#39;fare&#39;,
+       &#39;cabin&#39;, &#39;embarked&#39;, &#39;boat&#39;, &#39;body&#39;, &#39;home.dest&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code>: 1309명 승객의 생존 여부를 담은 시리즈.</p></li>
+<li><p>시리즈의 이름은 <code class="docutils literal notranslate"><span class="pre">survived</span></code></p></li>
+</ul>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>열 특성</p></th>
+<th class="head text-left"><p>의미</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p>survived</p></td>
+<td class="text-left"><p>생존 여부 (0 = 사망; 1 = 생존)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;survived&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">'boat'</span></code>, <code class="docutils literal notranslate"><span class="pre">'body'</span></code>, <code class="docutils literal notranslate"><span class="pre">'home.dest'</span></code>, <code class="docutils literal notranslate"><span class="pre">ticket</span></code> 등을 특성으로 갖는 열은 생존 여부와 상관 없는 정보이기에 삭제한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;boat&#39;</span><span class="p">,</span> <span class="s1">&#39;body&#39;</span><span class="p">,</span> <span class="s1">&#39;home.dest&#39;</span><span class="p">,</span> <span class="s1">&#39;ticket&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">X</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -513,7 +636,113 @@ document.write(`
       <th>age</th>
       <th>sibsp</th>
       <th>parch</th>
-      <th>ticket</th>
+      <th>fare</th>
+      <th>cabin</th>
+      <th>embarked</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Allen, Miss. Elisabeth Walton</td>
+      <td>female</td>
+      <td>29.0000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>211.3375</td>
+      <td>B5</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Allison, Master. Hudson Trevor</td>
+      <td>male</td>
+      <td>0.9167</td>
+      <td>1</td>
+      <td>2</td>
+      <td>151.5500</td>
+      <td>C22 C26</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>Allison, Miss. Helen Loraine</td>
+      <td>female</td>
+      <td>2.0000</td>
+      <td>1</td>
+      <td>2</td>
+      <td>151.5500</td>
+      <td>C22 C26</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>Allison, Mr. Hudson Joshua Creighton</td>
+      <td>male</td>
+      <td>30.0000</td>
+      <td>1</td>
+      <td>2</td>
+      <td>151.5500</td>
+      <td>C22 C26</td>
+      <td>S</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>Allison, Mrs. Hudson J C (Bessie Waldo Daniels)</td>
+      <td>female</td>
+      <td>25.0000</td>
+      <td>1</td>
+      <td>2</td>
+      <td>151.5500</td>
+      <td>C22 C26</td>
+      <td>S</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">23.2. </span>생존여부 상관관계<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>생존 여부 데이터를 <code class="docutils literal notranslate"><span class="pre">X</span></code>와 합친다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_comb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">),</span> <span class="n">X</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X_comb</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>survived</th>
+      <th>pclass</th>
+      <th>name</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>sibsp</th>
+      <th>parch</th>
       <th>fare</th>
       <th>cabin</th>
       <th>embarked</th>
@@ -523,12 +752,12 @@ document.write(`
     <tr>
       <th>0</th>
       <td>1.0</td>
+      <td>1</td>
       <td>Allen, Miss. Elisabeth Walton</td>
       <td>female</td>
       <td>29.0000</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>24160</td>
+      <td>0</td>
+      <td>0</td>
       <td>211.3375</td>
       <td>B5</td>
       <td>S</td>
@@ -536,59 +765,169 @@ document.write(`
     <tr>
       <th>1</th>
       <td>1.0</td>
+      <td>1</td>
       <td>Allison, Master. Hudson Trevor</td>
       <td>male</td>
       <td>0.9167</td>
-      <td>1.0</td>
-      <td>2.0</td>
-      <td>113781</td>
+      <td>1</td>
+      <td>2</td>
       <td>151.5500</td>
       <td>C22 C26</td>
       <td>S</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.0</td>
+      <td>0.0</td>
+      <td>1</td>
       <td>Allison, Miss. Helen Loraine</td>
       <td>female</td>
       <td>2.0000</td>
-      <td>1.0</td>
-      <td>2.0</td>
-      <td>113781</td>
+      <td>1</td>
+      <td>2</td>
       <td>151.5500</td>
       <td>C22 C26</td>
       <td>S</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1.0</td>
+      <td>0.0</td>
+      <td>1</td>
       <td>Allison, Mr. Hudson Joshua Creighton</td>
       <td>male</td>
       <td>30.0000</td>
-      <td>1.0</td>
-      <td>2.0</td>
-      <td>113781</td>
+      <td>1</td>
+      <td>2</td>
       <td>151.5500</td>
       <td>C22 C26</td>
       <td>S</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1.0</td>
+      <td>0.0</td>
+      <td>1</td>
       <td>Allison, Mrs. Hudson J C (Bessie Waldo Daniels)</td>
       <td>female</td>
       <td>25.0000</td>
-      <td>1.0</td>
-      <td>2.0</td>
-      <td>113781</td>
+      <td>1</td>
+      <td>2</td>
       <td>151.5500</td>
       <td>C22 C26</td>
       <td>S</td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1304</th>
+      <td>0.0</td>
+      <td>3</td>
+      <td>Zabour, Miss. Hileni</td>
+      <td>female</td>
+      <td>14.5000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>14.4542</td>
+      <td>NaN</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>1305</th>
+      <td>0.0</td>
+      <td>3</td>
+      <td>Zabour, Miss. Thamine</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0</td>
+      <td>14.4542</td>
+      <td>NaN</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>1306</th>
+      <td>0.0</td>
+      <td>3</td>
+      <td>Zakarian, Mr. Mapriededer</td>
+      <td>male</td>
+      <td>26.5000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7.2250</td>
+      <td>NaN</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>1307</th>
+      <td>0.0</td>
+      <td>3</td>
+      <td>Zakarian, Mr. Ortin</td>
+      <td>male</td>
+      <td>27.0000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7.2250</td>
+      <td>NaN</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>1308</th>
+      <td>0.0</td>
+      <td>3</td>
+      <td>Zimmerman, Mr. Leo</td>
+      <td>male</td>
+      <td>29.0000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7.8750</td>
+      <td>NaN</td>
+      <td>S</td>
+    </tr>
   </tbody>
 </table>
+<p>1309 rows × 10 columns</p>
 </div></div></div>
 </div>
+<p>생존 여부 특성과 다른 특성들과의 상관관계를 확인한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pclass</span></code>(승객 클래스) 특성과의 연관성이 가장 높음. 상위 클래스의 승객이 생존률이 높음.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fare</span></code>(티켓 가격) 특성 또한 동일한 이유로 생존 여부에 중요하게 연관됨.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">X_comb</span><span class="p">[[</span><span class="s1">&#39;survived&#39;</span><span class="p">,</span> <span class="s1">&#39;pclass&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;sibsp&#39;</span><span class="p">,</span> <span class="s1">&#39;parch&#39;</span><span class="p">,</span> <span class="s1">&#39;fare&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span>
+            <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
+            <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;coolwarm&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="_images/e14287d07a6b89dc523b1d10b404198eea77026853ce9fee144fc1dda102e1e7.png" src="_images/e14287d07a6b89dc523b1d10b404198eea77026853ce9fee144fc1dda102e1e7.png" />
+</div>
+</div>
+</section>
+<section id="id4">
+<h2><span class="section-number">23.3. </span>데이터셋 살펴보기<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>결측치의 존재 여부를 각 열에 대해 확인한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
@@ -602,7 +941,6 @@ sex         False
 age          True
 sibsp       False
 parch       False
-ticket      False
 fare         True
 cabin        True
 embarked     True
@@ -611,6 +949,7 @@ dtype: bool
 </div>
 </div>
 </div>
+<p>결측치의 수를 각 열에 대해 확인한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -624,7 +963,6 @@ sex            0
 age          263
 sibsp          0
 parch          0
-ticket         0
 fare           1
 cabin       1014
 embarked       2
@@ -633,6 +971,7 @@ dtype: int64
 </div>
 </div>
 </div>
+<p>결측치의 비율을 각 열에 대해 계산한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
@@ -646,7 +985,6 @@ sex          0.000000
 age         20.091673
 sibsp        0.000000
 parch        0.000000
-ticket       0.000000
 fare         0.076394
 cabin       77.463713
 embarked     0.152788
@@ -655,6 +993,8 @@ dtype: float64
 </div>
 </div>
 </div>
+<p>객실(<code class="docutils literal notranslate"><span class="pre">cabin</span></code>) 열에 너무 많은 누락치가 있기에 데이터분석에 도움이 되지 않는다.
+따라서 삭제한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;cabin&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -662,6 +1002,7 @@ dtype: float64
 </div>
 </div>
 </div>
+<p>다시 누락치 수를 열별로 확인한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -675,7 +1016,6 @@ sex           0
 age         263
 sibsp         0
 parch         0
-ticket        0
 fare          1
 embarked      2
 dtype: int64
@@ -683,45 +1023,18 @@ dtype: int64
 </div>
 </div>
 </div>
+<section id="id5">
+<h3><span class="section-number">23.3.1. </span>데이터 전처리<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>형제자매, 배우자, 부모자식 수를 하나로 합쳐서
+<code class="docutils literal notranslate"><span class="pre">family_size</span></code> 특성(열)로 추가한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-
-<span class="n">X_comb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">X_comb</span><span class="p">[[</span><span class="s1">&#39;pclass&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;sibsp&#39;</span><span class="p">,</span> <span class="s1">&#39;parch&#39;</span><span class="p">,</span> <span class="s1">&#39;fare&#39;</span><span class="p">,</span> <span class="s1">&#39;survived&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span>
-                <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-                <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;coolwarm&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;family_size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;parch&#39;</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;sibsp&#39;</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_559/2809281718.py:5: FutureWarning: The default value of numeric_only in DataFrame.corr is deprecated. In a future version, it will default to False. Select only valid columns or specify the value of numeric_only to silence this warning.
-  g = sns.heatmap(X_comb[[&#39;pclass&#39;, &#39;sex&#39;, &#39;age&#39;, &#39;sibsp&#39;, &#39;parch&#39;, &#39;fare&#39;, &#39;survived&#39;]].corr(),
-</pre></div>
-</div>
-<img alt="_images/e46a6bba29da603e4309b3812c377bb4184a61c6bd8abfbd6a7ef838f73f9c35.png" src="_images/e46a6bba29da603e4309b3812c377bb4184a61c6bd8abfbd6a7ef838f73f9c35.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;family_size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;parch&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;sibsp&#39;</span><span class="p">]</span>
-<span class="n">X</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;parch&#39;</span><span class="p">,</span> <span class="s1">&#39;sibsp&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">X</span><span class="p">[</span><span class="s1">&#39;is_alone&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">X</span><span class="p">[</span><span class="s1">&#39;is_alone&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;family_size&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="n">X</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_559/1881273339.py:4: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  X[&#39;is_alone&#39;].loc[X[&#39;family_size&#39;] &gt; 1] = 0
-</pre></div>
-</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -744,7 +1057,337 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <th>name</th>
       <th>sex</th>
       <th>age</th>
-      <th>ticket</th>
+      <th>sibsp</th>
+      <th>parch</th>
+      <th>fare</th>
+      <th>embarked</th>
+      <th>family_size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Allen, Miss. Elisabeth Walton</td>
+      <td>female</td>
+      <td>29.0000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>211.3375</td>
+      <td>S</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Allison, Master. Hudson Trevor</td>
+      <td>male</td>
+      <td>0.9167</td>
+      <td>1</td>
+      <td>2</td>
+      <td>151.5500</td>
+      <td>S</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>Allison, Miss. Helen Loraine</td>
+      <td>female</td>
+      <td>2.0000</td>
+      <td>1</td>
+      <td>2</td>
+      <td>151.5500</td>
+      <td>S</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>Allison, Mr. Hudson Joshua Creighton</td>
+      <td>male</td>
+      <td>30.0000</td>
+      <td>1</td>
+      <td>2</td>
+      <td>151.5500</td>
+      <td>S</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>Allison, Mrs. Hudson J C (Bessie Waldo Daniels)</td>
+      <td>female</td>
+      <td>25.0000</td>
+      <td>1</td>
+      <td>2</td>
+      <td>151.5500</td>
+      <td>S</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1304</th>
+      <td>3</td>
+      <td>Zabour, Miss. Hileni</td>
+      <td>female</td>
+      <td>14.5000</td>
+      <td>1</td>
+      <td>0</td>
+      <td>14.4542</td>
+      <td>C</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1305</th>
+      <td>3</td>
+      <td>Zabour, Miss. Thamine</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>1</td>
+      <td>0</td>
+      <td>14.4542</td>
+      <td>C</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1306</th>
+      <td>3</td>
+      <td>Zakarian, Mr. Mapriededer</td>
+      <td>male</td>
+      <td>26.5000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7.2250</td>
+      <td>C</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1307</th>
+      <td>3</td>
+      <td>Zakarian, Mr. Ortin</td>
+      <td>male</td>
+      <td>27.0000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7.2250</td>
+      <td>C</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1308</th>
+      <td>3</td>
+      <td>Zimmerman, Mr. Leo</td>
+      <td>male</td>
+      <td>29.0000</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7.8750</td>
+      <td>S</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1309 rows × 9 columns</p>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">parch</span></code>, <code class="docutils literal notranslate"><span class="pre">sibsp</span></code> 두 특성을 삭제한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;parch&#39;</span><span class="p">,</span> <span class="s1">&#39;sibsp&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">X</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pclass</th>
+      <th>name</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>fare</th>
+      <th>embarked</th>
+      <th>family_size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Allen, Miss. Elisabeth Walton</td>
+      <td>female</td>
+      <td>29.0000</td>
+      <td>211.3375</td>
+      <td>S</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Allison, Master. Hudson Trevor</td>
+      <td>male</td>
+      <td>0.9167</td>
+      <td>151.5500</td>
+      <td>S</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>Allison, Miss. Helen Loraine</td>
+      <td>female</td>
+      <td>2.0000</td>
+      <td>151.5500</td>
+      <td>S</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>Allison, Mr. Hudson Joshua Creighton</td>
+      <td>male</td>
+      <td>30.0000</td>
+      <td>151.5500</td>
+      <td>S</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>Allison, Mrs. Hudson J C (Bessie Waldo Daniels)</td>
+      <td>female</td>
+      <td>25.0000</td>
+      <td>151.5500</td>
+      <td>S</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1304</th>
+      <td>3</td>
+      <td>Zabour, Miss. Hileni</td>
+      <td>female</td>
+      <td>14.5000</td>
+      <td>14.4542</td>
+      <td>C</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1305</th>
+      <td>3</td>
+      <td>Zabour, Miss. Thamine</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>14.4542</td>
+      <td>C</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1306</th>
+      <td>3</td>
+      <td>Zakarian, Mr. Mapriededer</td>
+      <td>male</td>
+      <td>26.5000</td>
+      <td>7.2250</td>
+      <td>C</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1307</th>
+      <td>3</td>
+      <td>Zakarian, Mr. Ortin</td>
+      <td>male</td>
+      <td>27.0000</td>
+      <td>7.2250</td>
+      <td>C</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1308</th>
+      <td>3</td>
+      <td>Zimmerman, Mr. Leo</td>
+      <td>male</td>
+      <td>29.0000</td>
+      <td>7.8750</td>
+      <td>S</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1309 rows × 7 columns</p>
+</div></div></div>
+</div>
+<p>가족이 없는지 여부를 확인하는 특성 <code class="docutils literal notranslate"><span class="pre">is_alone</span></code>을 추가한다.</p>
+<ul class="simple">
+<li><p>먼저 1로 지정한다.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;is_alone&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">X</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pclass</th>
+      <th>name</th>
+      <th>sex</th>
+      <th>age</th>
       <th>fare</th>
       <th>embarked</th>
       <th>family_size</th>
@@ -754,68 +1397,296 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.0</td>
+      <td>1</td>
       <td>Allen, Miss. Elisabeth Walton</td>
       <td>female</td>
       <td>29.0000</td>
-      <td>24160</td>
       <td>211.3375</td>
       <td>S</td>
-      <td>0.0</td>
+      <td>0</td>
       <td>1</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1.0</td>
+      <td>1</td>
       <td>Allison, Master. Hudson Trevor</td>
       <td>male</td>
       <td>0.9167</td>
-      <td>113781</td>
       <td>151.5500</td>
       <td>S</td>
-      <td>3.0</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>Allison, Miss. Helen Loraine</td>
+      <td>female</td>
+      <td>2.0000</td>
+      <td>151.5500</td>
+      <td>S</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>Allison, Mr. Hudson Joshua Creighton</td>
+      <td>male</td>
+      <td>30.0000</td>
+      <td>151.5500</td>
+      <td>S</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>Allison, Mrs. Hudson J C (Bessie Waldo Daniels)</td>
+      <td>female</td>
+      <td>25.0000</td>
+      <td>151.5500</td>
+      <td>S</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1304</th>
+      <td>3</td>
+      <td>Zabour, Miss. Hileni</td>
+      <td>female</td>
+      <td>14.5000</td>
+      <td>14.4542</td>
+      <td>C</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1305</th>
+      <td>3</td>
+      <td>Zabour, Miss. Thamine</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>14.4542</td>
+      <td>C</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1306</th>
+      <td>3</td>
+      <td>Zakarian, Mr. Mapriededer</td>
+      <td>male</td>
+      <td>26.5000</td>
+      <td>7.2250</td>
+      <td>C</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1307</th>
+      <td>3</td>
+      <td>Zakarian, Mr. Ortin</td>
+      <td>male</td>
+      <td>27.0000</td>
+      <td>7.2250</td>
+      <td>C</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1308</th>
+      <td>3</td>
+      <td>Zimmerman, Mr. Leo</td>
+      <td>male</td>
+      <td>29.0000</td>
+      <td>7.8750</td>
+      <td>S</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>1309 rows × 8 columns</p>
+</div></div></div>
+</div>
+<p>이제 <code class="docutils literal notranslate"><span class="pre">family_size</span></code> 특성이 0이 아닌 경우 0으로 처리한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;family_size&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="s1">&#39;is_alone&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">X</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pclass</th>
+      <th>name</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>fare</th>
+      <th>embarked</th>
+      <th>family_size</th>
+      <th>is_alone</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>Allen, Miss. Elisabeth Walton</td>
+      <td>female</td>
+      <td>29.0000</td>
+      <td>211.3375</td>
+      <td>S</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>Allison, Master. Hudson Trevor</td>
+      <td>male</td>
+      <td>0.9167</td>
+      <td>151.5500</td>
+      <td>S</td>
+      <td>3</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.0</td>
+      <td>1</td>
       <td>Allison, Miss. Helen Loraine</td>
       <td>female</td>
       <td>2.0000</td>
-      <td>113781</td>
       <td>151.5500</td>
       <td>S</td>
-      <td>3.0</td>
+      <td>3</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1.0</td>
+      <td>1</td>
       <td>Allison, Mr. Hudson Joshua Creighton</td>
       <td>male</td>
       <td>30.0000</td>
-      <td>113781</td>
       <td>151.5500</td>
       <td>S</td>
-      <td>3.0</td>
+      <td>3</td>
       <td>0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1.0</td>
+      <td>1</td>
       <td>Allison, Mrs. Hudson J C (Bessie Waldo Daniels)</td>
       <td>female</td>
       <td>25.0000</td>
-      <td>113781</td>
       <td>151.5500</td>
       <td>S</td>
-      <td>3.0</td>
+      <td>3</td>
       <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1304</th>
+      <td>3</td>
+      <td>Zabour, Miss. Hileni</td>
+      <td>female</td>
+      <td>14.5000</td>
+      <td>14.4542</td>
+      <td>C</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1305</th>
+      <td>3</td>
+      <td>Zabour, Miss. Thamine</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>14.4542</td>
+      <td>C</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1306</th>
+      <td>3</td>
+      <td>Zakarian, Mr. Mapriededer</td>
+      <td>male</td>
+      <td>26.5000</td>
+      <td>7.2250</td>
+      <td>C</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1307</th>
+      <td>3</td>
+      <td>Zakarian, Mr. Ortin</td>
+      <td>male</td>
+      <td>27.0000</td>
+      <td>7.2250</td>
+      <td>C</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1308</th>
+      <td>3</td>
+      <td>Zimmerman, Mr. Leo</td>
+      <td>male</td>
+      <td>29.0000</td>
+      <td>7.8750</td>
+      <td>S</td>
+      <td>0</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
+<p>1309 rows × 8 columns</p>
 </div></div></div>
 </div>
+<p>이름 특성을 제거하는 대신 호칭(<code class="docutils literal notranslate"><span class="pre">title</span></code>) 특성을 추가한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span>  <span class="n">X</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -847,7 +1718,6 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <th>pclass</th>
       <th>sex</th>
       <th>age</th>
-      <th>ticket</th>
       <th>fare</th>
       <th>embarked</th>
       <th>family_size</th>
@@ -858,61 +1728,56 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.0</td>
+      <td>1</td>
       <td>female</td>
       <td>29.0000</td>
-      <td>24160</td>
       <td>211.3375</td>
       <td>S</td>
-      <td>0.0</td>
+      <td>0</td>
       <td>1</td>
       <td>Miss</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1.0</td>
+      <td>1</td>
       <td>male</td>
       <td>0.9167</td>
-      <td>113781</td>
       <td>151.5500</td>
       <td>S</td>
-      <td>3.0</td>
+      <td>3</td>
       <td>0</td>
       <td>Master</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.0</td>
+      <td>1</td>
       <td>female</td>
       <td>2.0000</td>
-      <td>113781</td>
       <td>151.5500</td>
       <td>S</td>
-      <td>3.0</td>
+      <td>3</td>
       <td>0</td>
       <td>Miss</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1.0</td>
+      <td>1</td>
       <td>male</td>
       <td>30.0000</td>
-      <td>113781</td>
       <td>151.5500</td>
       <td>S</td>
-      <td>3.0</td>
+      <td>3</td>
       <td>0</td>
       <td>Mr</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1.0</td>
+      <td>1</td>
       <td>female</td>
       <td>25.0000</td>
-      <td>113781</td>
       <td>151.5500</td>
       <td>S</td>
-      <td>3.0</td>
+      <td>3</td>
       <td>0</td>
       <td>Mrs</td>
     </tr>
@@ -920,6 +1785,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </table>
 </div></div></div>
 </div>
+<p>호칭에 따른 남녀 숫자를 확인하기 위해 <code class="docutils literal notranslate"><span class="pre">pd.crosstab()</span></code> 함수를 이용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">])</span>
@@ -1049,6 +1915,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </table>
 </div></div></div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">Miss</span></code>와 <code class="docutils literal notranslate"><span class="pre">Mrs</span></code>의 생존율이 거의 비슷하다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Miss: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)[</span><span class="n">X</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="s1">&#39;Miss&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="s1">&#39;Miss&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -1063,59 +1930,12 @@ Mrs: 0.11841100076394194
 </div>
 </div>
 </div>
+<p>따라서 <code class="docutils literal notranslate"><span class="pre">Mrs</span></code> 로 통일한다. 또한 <code class="docutils literal notranslate"><span class="pre">Ms</span></code> 호칭도 2명 밖에 없기에 역시 <code class="docutils literal notranslate"><span class="pre">Mrs</span></code>로 통일한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rare_titles</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>
-<span class="n">rare_titles</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mr              False
-Miss            False
-Mrs             False
-Master          False
-Rev              True
-Dr               True
-Col              True
-Mlle             True
-Ms               True
-Major            True
-Capt             True
-Sir              True
-Dona             True
-Jonkheer         True
-the Countess     True
-Don              True
-Mme              True
-Lady             True
-Name: title, dtype: bool
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="s1">&#39;Miss&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Mrs&#39;</span>
-<span class="n">X</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;rare&#39;</span> <span class="k">if</span> <span class="n">rare_titles</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_559/434893034.py:1: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  X.title.loc[X.title == &#39;Miss&#39;] = &#39;Mrs&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;ticket&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="n">X</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="s1">&#39;Miss&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="s1">&#39;Ms&#39;</span><span class="p">)</span>
+<span class="n">X</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">mask</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Mrs&#39;</span>
+<span class="n">X</span>
 </pre></div>
 </div>
 </div>
@@ -1151,62 +1971,346 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.0</td>
+      <td>1</td>
       <td>female</td>
       <td>29.0000</td>
       <td>211.3375</td>
       <td>S</td>
-      <td>0.0</td>
+      <td>0</td>
       <td>1</td>
       <td>Mrs</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1.0</td>
+      <td>1</td>
       <td>male</td>
       <td>0.9167</td>
       <td>151.5500</td>
       <td>S</td>
-      <td>3.0</td>
+      <td>3</td>
       <td>0</td>
       <td>Master</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1.0</td>
+      <td>1</td>
       <td>female</td>
       <td>2.0000</td>
       <td>151.5500</td>
       <td>S</td>
-      <td>3.0</td>
+      <td>3</td>
       <td>0</td>
       <td>Mrs</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1.0</td>
+      <td>1</td>
       <td>male</td>
       <td>30.0000</td>
       <td>151.5500</td>
       <td>S</td>
-      <td>3.0</td>
+      <td>3</td>
       <td>0</td>
       <td>Mr</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1.0</td>
+      <td>1</td>
       <td>female</td>
       <td>25.0000</td>
       <td>151.5500</td>
       <td>S</td>
-      <td>3.0</td>
+      <td>3</td>
       <td>0</td>
       <td>Mrs</td>
     </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1304</th>
+      <td>3</td>
+      <td>female</td>
+      <td>14.5000</td>
+      <td>14.4542</td>
+      <td>C</td>
+      <td>1</td>
+      <td>0</td>
+      <td>Mrs</td>
+    </tr>
+    <tr>
+      <th>1305</th>
+      <td>3</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>14.4542</td>
+      <td>C</td>
+      <td>1</td>
+      <td>0</td>
+      <td>Mrs</td>
+    </tr>
+    <tr>
+      <th>1306</th>
+      <td>3</td>
+      <td>male</td>
+      <td>26.5000</td>
+      <td>7.2250</td>
+      <td>C</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Mr</td>
+    </tr>
+    <tr>
+      <th>1307</th>
+      <td>3</td>
+      <td>male</td>
+      <td>27.0000</td>
+      <td>7.2250</td>
+      <td>C</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Mr</td>
+    </tr>
+    <tr>
+      <th>1308</th>
+      <td>3</td>
+      <td>male</td>
+      <td>29.0000</td>
+      <td>7.8750</td>
+      <td>S</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Mr</td>
+    </tr>
   </tbody>
 </table>
+<p>1309 rows × 8 columns</p>
 </div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="s1">&#39;Mrs&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>459
+</pre></div>
+</div>
+</div>
+</div>
+<p>10명 이하의 사람에게만 사용되는 호칭은 <code class="docutils literal notranslate"><span class="pre">rare</span></code>로 통일시킨다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rare_titles</span> <span class="o">=</span> <span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">rare_titles</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mr              False
+Mrs             False
+Master          False
+Dr               True
+Rev              True
+Col              True
+Major            True
+Mlle             True
+Mme              True
+Capt             True
+Lady             True
+Sir              True
+Dona             True
+Jonkheer         True
+the Countess     True
+Don              True
+Name: title, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;rare&#39;</span> <span class="k">if</span> <span class="n">rare_titles</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">else</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">X</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pclass</th>
+      <th>sex</th>
+      <th>age</th>
+      <th>fare</th>
+      <th>embarked</th>
+      <th>family_size</th>
+      <th>is_alone</th>
+      <th>title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>female</td>
+      <td>29.0000</td>
+      <td>211.3375</td>
+      <td>S</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Mrs</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>male</td>
+      <td>0.9167</td>
+      <td>151.5500</td>
+      <td>S</td>
+      <td>3</td>
+      <td>0</td>
+      <td>Master</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>female</td>
+      <td>2.0000</td>
+      <td>151.5500</td>
+      <td>S</td>
+      <td>3</td>
+      <td>0</td>
+      <td>Mrs</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>male</td>
+      <td>30.0000</td>
+      <td>151.5500</td>
+      <td>S</td>
+      <td>3</td>
+      <td>0</td>
+      <td>Mr</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>female</td>
+      <td>25.0000</td>
+      <td>151.5500</td>
+      <td>S</td>
+      <td>3</td>
+      <td>0</td>
+      <td>Mrs</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1304</th>
+      <td>3</td>
+      <td>female</td>
+      <td>14.5000</td>
+      <td>14.4542</td>
+      <td>C</td>
+      <td>1</td>
+      <td>0</td>
+      <td>Mrs</td>
+    </tr>
+    <tr>
+      <th>1305</th>
+      <td>3</td>
+      <td>female</td>
+      <td>NaN</td>
+      <td>14.4542</td>
+      <td>C</td>
+      <td>1</td>
+      <td>0</td>
+      <td>Mrs</td>
+    </tr>
+    <tr>
+      <th>1306</th>
+      <td>3</td>
+      <td>male</td>
+      <td>26.5000</td>
+      <td>7.2250</td>
+      <td>C</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Mr</td>
+    </tr>
+    <tr>
+      <th>1307</th>
+      <td>3</td>
+      <td>male</td>
+      <td>27.0000</td>
+      <td>7.2250</td>
+      <td>C</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Mr</td>
+    </tr>
+    <tr>
+      <th>1308</th>
+      <td>3</td>
+      <td>male</td>
+      <td>29.0000</td>
+      <td>7.8750</td>
+      <td>S</td>
+      <td>0</td>
+      <td>1</td>
+      <td>Mr</td>
+    </tr>
+  </tbody>
+</table>
+<p>1309 rows × 8 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="s1">&#39;rare&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1215,12 +2319,12 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pclass          float64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pclass            int64
 sex            category
 age             float64
 fare            float64
 embarked       category
-family_size     float64
+family_size       int64
 is_alone          int64
 title            object
 dtype: object
@@ -1946,7 +3050,7 @@ Name: age, Length: 427, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/e5d1f7309912b2e9bdfd720b61b0e28c83889ddbc03e69fc1d2ff808e1072205.png" src="_images/e5d1f7309912b2e9bdfd720b61b0e28c83889ddbc03e69fc1d2ff808e1072205.png" />
+<img alt="_images/a15e3a438547c336e6d7d4511970ae15963c2607145d70a7e482d158e38b7c80.png" src="_images/a15e3a438547c336e6d7d4511970ae15963c2607145d70a7e482d158e38b7c80.png" />
 </div>
 </div>
 <p><strong>참고: <code class="docutils literal notranslate"><span class="pre">sns.barplot()</span></code> 함수</strong></p>
@@ -1961,7 +3065,7 @@ Name: age, Length: 427, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;island&#39;, ylabel=&#39;body_mass_g&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/4b8aef663b219203168ea15c8ee24142eac20487eaab67ad386bdf0ac5325b66.png" src="_images/4b8aef663b219203168ea15c8ee24142eac20487eaab67ad386bdf0ac5325b66.png" />
+<img alt="_images/fa64e56d5ab86199b8feba8c8d4db367b2dda530fc7a65d2102c605aa2fdb74d.png" src="_images/fa64e56d5ab86199b8feba8c8d4db367b2dda530fc7a65d2102c605aa2fdb74d.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2124,7 +3228,7 @@ Name: age, Length: 427, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;island&#39;, ylabel=&#39;body_mass_g&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/c296087baa375031324f4fd55fe1f2e1963456339975049e25cf06a015d812de.png" src="_images/c296087baa375031324f4fd55fe1f2e1963456339975049e25cf06a015d812de.png" />
+<img alt="_images/2de5e6ff643ecb6492b3652f1868bcc2c6fa91b1b1f8be5d69862392d4f29d15.png" src="_images/2de5e6ff643ecb6492b3652f1868bcc2c6fa91b1b1f8be5d69862392d4f29d15.png" />
 </div>
 </div>
 <ul class="simple">
@@ -2173,7 +3277,7 @@ Name: age, Length: 427, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/12c1f735330dd45ab9e452ca115e67c44a85d756f2e24b4762b4efff6a7eb649.png" src="_images/12c1f735330dd45ab9e452ca115e67c44a85d756f2e24b4762b4efff6a7eb649.png" />
+<img alt="_images/b41eaec1aeb6fc9835e2baf872b2451a917ab0c05efb5dddcd8140bb48051797.png" src="_images/b41eaec1aeb6fc9835e2baf872b2451a917ab0c05efb5dddcd8140bb48051797.png" />
 </div>
 </div>
 <p><strong>출발 항구별 생존률</strong></p>
@@ -2186,7 +3290,7 @@ Name: age, Length: 427, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7341450a1428abed9f81a7a536491448ede3ea30c804beeda587f10ed3e2ecae.png" src="_images/7341450a1428abed9f81a7a536491448ede3ea30c804beeda587f10ed3e2ecae.png" />
+<img alt="_images/e0eef029ca8ef3b571c455b4d9f866932e761aa7578dd2d50359be95749054c6.png" src="_images/e0eef029ca8ef3b571c455b4d9f866932e761aa7578dd2d50359be95749054c6.png" />
 </div>
 </div>
 <p><strong>생존자 특성 분리</strong></p>
@@ -2215,10 +3319,11 @@ Name: age, Length: 427, dtype: float64
 <img alt="_images/5012849e5c1152f8326a8d9a3fdc234fb5030611913d1baaf115e6a44a3b8d4a.png" src="_images/5012849e5c1152f8326a8d9a3fdc234fb5030611913d1baaf115e6a44a3b8d4a.png" />
 </div>
 </div>
+</section>
 <section id="preprocess-data-with-scikit-learn">
-<h2><span class="section-number">23.1. </span>Preprocess Data with Scikit-learn<a class="headerlink" href="#preprocess-data-with-scikit-learn" title="Permalink to this heading">#</a></h2>
-<section id="id2">
-<h3><span class="section-number">23.1.1. </span>결측치 처리<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">23.3.2. </span>Preprocess Data with Scikit-learn<a class="headerlink" href="#preprocess-data-with-scikit-learn" title="Permalink to this heading">#</a></h3>
+<section id="id6">
+<h4><span class="section-number">23.3.2.1. </span>결측치 처리<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.impute</span> <span class="kn">import</span> <span class="n">SimpleImputer</span>
@@ -2249,7 +3354,7 @@ Name: age, Length: 427, dtype: float64
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">49</span><span class="p">],</span> <span class="n">line</span> <span class="mi">20</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">60</span><span class="p">],</span> <span class="n">line</span> <span class="mi">20</span>
 <span class="g g-Whitespace">     </span><span class="mi">18</span>     <span class="n">strategy</span> <span class="o">=</span> <span class="n">param</span><span class="p">[</span><span class="s1">&#39;strategy&#39;</span><span class="p">]</span>
 <span class="g g-Whitespace">     </span><span class="mi">19</span>     <span class="n">imp</span> <span class="o">=</span> <span class="n">SimpleImputer</span><span class="p">(</span><span class="n">missing_values</span><span class="o">=</span><span class="n">missing_values</span><span class="p">,</span> <span class="n">strategy</span><span class="o">=</span><span class="n">strategy</span><span class="p">)</span>
 <span class="ne">---&gt; </span><span class="mi">20</span>     <span class="n">X</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">imp</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">[[</span><span class="n">col</span><span class="p">]])</span>
@@ -2352,6 +3457,7 @@ Name: age, Length: 427, dtype: float64
 </section>
 </section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2420,8 +3526,14 @@ Name: age, Length: 427, dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocess-data-with-scikit-learn">23.1. Preprocess Data with Scikit-learn</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">23.1.1. 결측치 처리</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">23.1. 타이타닉 데이터셋 불러오기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">23.2. 생존여부 상관관계</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">23.3. 데이터셋 살펴보기</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">23.3.1. 데이터 전처리</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocess-data-with-scikit-learn">23.3.2. Preprocess Data with Scikit-learn</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">23.3.2.1. 결측치 처리</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
