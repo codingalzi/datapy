@@ -1,714 +1,460 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>16. 판다스 10분 완성 2부 &#8212; 파이썬 데이터 분석</title>
-    
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pandas_10minutes_2';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="17. 판다스 데이터프레임" href="pandas_1.html" />
     <link rel="prev" title="15. 판다스 10분 완성 1부" href="pandas_10minutes_1.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">파이썬 데이터 분석</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  파이썬 기초
- </span>
-</p>
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">파이썬 데이터 분석</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">파이썬 기초</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="python_basic_1.html">
-   1. 프로그래밍 개발 환경
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_basic_2.html">
-   2. 기초 문법
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_basic_3.html">
-   3. 기초 자료형
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_basic_4.html">
-   4. 제어문
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_basic_5.html">
-   5. 모음 자료형
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_basic_6.html">
-   6. 함수
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_basic_7.html">
-   7. 파일
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_1.html">1. 프로그래밍 개발 환경</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_2.html">2. 기초 문법</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_3.html">3. 기초 자료형</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_4.html">4. 제어문</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_5.html">5. 모음 자료형</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_6.html">6. 함수</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_7.html">7. 파일</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  기초수학 - 밑바닥부터
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">기초수학 - 밑바닥부터</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="from_scratch_1.html">
-   8. 선형대수 기초
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="from_scratch_2.html">
-   9. 통계 기초
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="from_scratch_1.html">8. 선형대수 기초</a></li>
+<li class="toctree-l1"><a class="reference internal" href="from_scratch_2.html">9. 통계 기초</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  넘파이
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">넘파이</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="numpy_1.html">
-   10. 넘파이 어레이
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="numpy_2.html">
-   11. 어레이 인덱싱
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="numpy_3.html">
-   12. 어레이 중심 프로그래밍
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="numpy_4.html">
-   13. 고급 넘파이
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="numpy_5.html">
-   14. 실전 예제: 어레이 활용
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_1.html">10. 넘파이 어레이</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_2.html">11. 어레이 인덱싱</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_3.html">12. 어레이 중심 프로그래밍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_4.html">13. 고급 넘파이</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_5.html">14. 실전 예제: 어레이 활용</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  판다스 10분 완성
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">판다스 10분 완성</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="pandas_10minutes_1.html">
-   15. 판다스 10분 완성 1부
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   16. 판다스 10분 완성 2부
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_10minutes_1.html">15. 판다스 10분 완성 1부</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">16. 판다스 10분 완성 2부</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  판다스 기초와 활용
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">판다스 기초와 활용</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="pandas_1.html">
-   17. 판다스 데이터프레임
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="pandas_2.html">
-   18. 데이터프레임 핵심 1부
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="pandas_3.html">
-   19. 데이터프레임 핵심 2부
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="pandas_4.html">
-   20. 판다스 활용: 통계 기초
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="pandas_5.html">
-   21. 데이터 결합: merge-join-concat
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="pandas_6.html">
-   22. 데이터 그룹화(Group by)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="pandas_titanic.html">
-   23. 판다스 실전: 타이타닉
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_1.html">17. 판다스 데이터프레임</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_2.html">18. 데이터프레임 핵심 1부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_3.html">19. 데이터프레임 핵심 2부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_4.html">20. 판다스 활용: 통계 기초</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_5.html">21. 데이터 결합: merge-join-concat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_6.html">22. 데이터 그룹화(Group by)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_titanic.html">23. 판다스 실전: 타이타닉</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  데이터 시각화
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">데이터 시각화</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="visualization_1.html">
-   24. matplotlib.pyplot 1부
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="visualization_2.html">
-   25. matplotlib.pyplot 2부
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="visualization_3.html">
-   26. seaborn
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_1.html">24. matplotlib.pyplot 1부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_2.html">25. matplotlib.pyplot 2부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">26. seaborn</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  시계열 데이터
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">시계열 데이터</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="timeseries.html">
-   27. 시계열 데이터
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="timeseries.html">27. 시계열 데이터</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/pandas_10minutes_2.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/codingalzi/datapy"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/codingalzi/datapy/issues/new?title=Issue%20on%20page%20%2Fpandas_10minutes_2.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/jupyter-book/pandas_10minutes_2.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/codingalzi/datapy/master?urlpath=tree/jupyter-book/pandas_10minutes_2.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/jupyter-book/pandas_10minutes_2.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/codingalzi/datapy" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/codingalzi/datapy/issues/new?title=Issue%20on%20page%20%2Fpandas_10minutes_2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/pandas_10minutes_2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>판다스 10분 완성 2부</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#merge-join-concat">
-   16.1. 합병과 결합: merge-join-concat
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pd-concat">
-     16.1.1. 종/횡 결합:
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       pd.concat()
-      </span>
-     </code>
-     함수
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pd-merge">
-     16.1.2. 합병:
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       pd.merge()
-      </span>
-     </code>
-     함수
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dataframe-join">
-     16.1.3. 합병:
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       DataFrame.join()
-      </span>
-     </code>
-     메서드
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#font-size-2-multiindex-font">
-   16.2. 다중 인덱스
-   <font size="2">
-    MultiIndex
-   </font>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#multiindex">
-     16.2.1.
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       MultiIndex
-      </span>
-     </code>
-     객체
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#font-size-2-label-font">
-     16.2.2. 다중 인덱스 라벨
-     <font size="2">
-      label
-     </font>
-     을 사용하는 시리즈/데이터프레임 객체
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     16.2.3. 인덱스의 레벨
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     16.2.4. 인덱싱
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     16.2.5. 슬라이싱
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pd-groupby">
-   16.3. 그룹 분류:
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     pd.groupby()
-    </span>
-   </code>
-   함수
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#font-size-2-reshaping-font">
-   16.4. 모양 변환
-   <font size="2">
-    Reshaping
-   </font>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     16.4.1. 스택
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     16.4.2. 언스택
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#font-size-2-pivoting-font">
-     16.4.3. 피버팅
-     <font size="2">
-      Pivoting
-     </font>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#time-series">
-   16.5. Time series
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plotting">
-   16.6. Plotting
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#importing-and-exporting-data">
-   16.7. Importing and exporting data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#csv">
-     16.7.1. CSV
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#excel">
-     16.7.2. Excel
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-join-concat">16.1. 합병과 결합: merge-join-concat</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-concat">16.1.1. 종/횡 결합: <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> 함수</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-merge">16.1.2. 합병: <code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> 함수</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-join">16.1.3. 합병: <code class="docutils literal notranslate"><span class="pre">DataFrame.join()</span></code> 메서드</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-size-2-multiindex-font">16.2. 다중 인덱스<font size="2">MultiIndex</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiindex">16.2.1. <code class="docutils literal notranslate"><span class="pre">MultiIndex</span></code> 객체</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-size-2-label-font">16.2.2. 다중 인덱스 라벨<font size="2">label</font>을 사용하는 시리즈/데이터프레임 객체</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">16.2.3. 인덱스의 레벨</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">16.2.4. 인덱싱</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">16.2.5. 슬라이싱</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-groupby">16.3. 그룹 분류: <code class="docutils literal notranslate"><span class="pre">pd.groupby()</span></code> 함수</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-size-2-reshaping-font">16.4. 모양 변환<font size="2">Reshaping</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">16.4.1. 스택</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">16.4.2. 언스택</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-size-2-pivoting-font">16.4.3. 피버팅<font size="2">Pivoting</font></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series">16.5. Time series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting">16.6. Plotting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-and-exporting-data">16.7. Importing and exporting data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#csv">16.7.1. CSV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excel">16.7.2. Excel</a></li>
+</ul>
+</li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>판다스 10분 완성 2부</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#merge-join-concat">
-   16.1. 합병과 결합: merge-join-concat
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pd-concat">
-     16.1.1. 종/횡 결합:
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       pd.concat()
-      </span>
-     </code>
-     함수
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pd-merge">
-     16.1.2. 합병:
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       pd.merge()
-      </span>
-     </code>
-     함수
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dataframe-join">
-     16.1.3. 합병:
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       DataFrame.join()
-      </span>
-     </code>
-     메서드
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#font-size-2-multiindex-font">
-   16.2. 다중 인덱스
-   <font size="2">
-    MultiIndex
-   </font>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#multiindex">
-     16.2.1.
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       MultiIndex
-      </span>
-     </code>
-     객체
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#font-size-2-label-font">
-     16.2.2. 다중 인덱스 라벨
-     <font size="2">
-      label
-     </font>
-     을 사용하는 시리즈/데이터프레임 객체
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     16.2.3. 인덱스의 레벨
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     16.2.4. 인덱싱
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     16.2.5. 슬라이싱
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pd-groupby">
-   16.3. 그룹 분류:
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     pd.groupby()
-    </span>
-   </code>
-   함수
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#font-size-2-reshaping-font">
-   16.4. 모양 변환
-   <font size="2">
-    Reshaping
-   </font>
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     16.4.1. 스택
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id6">
-     16.4.2. 언스택
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#font-size-2-pivoting-font">
-     16.4.3. 피버팅
-     <font size="2">
-      Pivoting
-     </font>
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#time-series">
-   16.5. Time series
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plotting">
-   16.6. Plotting
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#importing-and-exporting-data">
-   16.7. Importing and exporting data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#csv">
-     16.7.1. CSV
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#excel">
-     16.7.2. Excel
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="sec-pandas10min-2">
-<span id="id1"></span><h1><span class="section-number">16. </span>판다스 10분 완성 2부<a class="headerlink" href="#sec-pandas10min-2" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="sec-pandas10min-2">
+<span id="id1"></span><h1><span class="section-number">16. </span>판다스 10분 완성 2부<a class="headerlink" href="#sec-pandas10min-2" title="Permalink to this heading">#</a></h1>
 <p><strong>필수 라이브러리</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -718,13 +464,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="section" id="merge-join-concat">
-<h2><span class="section-number">16.1. </span>합병과 결합: merge-join-concat<a class="headerlink" href="#merge-join-concat" title="Permalink to this headline">¶</a></h2>
+<section id="merge-join-concat">
+<h2><span class="section-number">16.1. </span>합병과 결합: merge-join-concat<a class="headerlink" href="#merge-join-concat" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>참고: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/merging.html#merging">Merging section</a></p></li>
 </ul>
-<div class="section" id="pd-concat">
-<h3><span class="section-number">16.1.1. </span>종/횡 결합: <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> 함수<a class="headerlink" href="#pd-concat" title="Permalink to this headline">¶</a></h3>
+<section id="pd-concat">
+<h3><span class="section-number">16.1.1. </span>종/횡 결합: <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> 함수<a class="headerlink" href="#pd-concat" title="Permalink to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> 함수는 여러 개의 데이터프레임을 하나로 합친다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">axis=0</span></code>: 종 결합. 즉 데이터프레임 여러 개의 위아래 결합.</p></li>
@@ -1412,9 +1158,9 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="pd-merge">
-<h3><span class="section-number">16.1.2. </span>합병: <code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> 함수<a class="headerlink" href="#pd-merge" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="pd-merge">
+<h3><span class="section-number">16.1.2. </span>합병: <code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> 함수<a class="headerlink" href="#pd-merge" title="Permalink to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> 함수 는 SQL 방식으로 특정 열을 기준으로 두 개의 데이터프레임을 합친다.
 다양한 옵션을 지원하는 매우 강력한 도구이다.</p>
 <ul class="simple">
@@ -1526,19 +1272,19 @@ const thebe_selector_output = ".output, .cell_output"
 <code class="docutils literal notranslate"><span class="pre">rval</span></code> 열에서 2개의 값이 있기에 <code class="docutils literal notranslate"><span class="pre">foo</span></code>와 관련해서 총 4개의 경우가 생성된다.
 <br><br></p></li>
 </ul>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p><code class="docutils literal notranslate"><span class="pre">key</span></code></p></th>
-<th class="text-align:center head"><p><code class="docutils literal notranslate"><span class="pre">left.lval</span></code></p></th>
-<th class="text-align:center head"><p><code class="docutils literal notranslate"><span class="pre">right.rval</span></code></p></th>
-<th class="text-align:center head"><p>경우의 수</p></th>
+<tr class="row-odd"><th class="head text-center"><p><code class="docutils literal notranslate"><span class="pre">key</span></code></p></th>
+<th class="head text-center"><p><code class="docutils literal notranslate"><span class="pre">left.lval</span></code></p></th>
+<th class="head text-center"><p><code class="docutils literal notranslate"><span class="pre">right.rval</span></code></p></th>
+<th class="head text-center"><p>경우의 수</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">foo</span></code></p></td>
-<td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">1,</span> <span class="pre">2</span></code></p></td>
-<td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">4,</span> <span class="pre">5</span></code></p></td>
-<td class="text-align:center"><p>4</p></td>
+<tr class="row-even"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">foo</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">1,</span> <span class="pre">2</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">4,</span> <span class="pre">5</span></code></p></td>
+<td class="text-center"><p>4</p></td>
 </tr>
 </tbody>
 </table>
@@ -1710,24 +1456,24 @@ const thebe_selector_output = ".output, .cell_output"
 <code class="docutils literal notranslate"><span class="pre">rval</span></code> 열에서 1개의 값이 있기에 <code class="docutils literal notranslate"><span class="pre">foo</span></code>와 관련해서 총 1개의 경우가 생성된다.
 <br><br></p></li>
 </ul>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p><code class="docutils literal notranslate"><span class="pre">key</span></code></p></th>
-<th class="text-align:center head"><p><code class="docutils literal notranslate"><span class="pre">left.lval</span></code></p></th>
-<th class="text-align:center head"><p><code class="docutils literal notranslate"><span class="pre">right.rval</span></code></p></th>
-<th class="text-align:center head"><p>경우의 수</p></th>
+<tr class="row-odd"><th class="head text-center"><p><code class="docutils literal notranslate"><span class="pre">key</span></code></p></th>
+<th class="head text-center"><p><code class="docutils literal notranslate"><span class="pre">left.lval</span></code></p></th>
+<th class="head text-center"><p><code class="docutils literal notranslate"><span class="pre">right.rval</span></code></p></th>
+<th class="head text-center"><p>경우의 수</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">foo</span></code></p></td>
-<td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
-<td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">4</span></code></p></td>
-<td class="text-align:center"><p>1</p></td>
+<tr class="row-even"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">foo</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">4</span></code></p></td>
+<td class="text-center"><p>1</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">bar</span></code></p></td>
-<td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
-<td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">5</span></code></p></td>
-<td class="text-align:center"><p>1</p></td>
+<tr class="row-odd"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">bar</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">5</span></code></p></td>
+<td class="text-center"><p>1</p></td>
 </tr>
 </tbody>
 </table>
@@ -1926,34 +1672,34 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </div></div></div>
 </div>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p><code class="docutils literal notranslate"><span class="pre">key</span></code></p></th>
-<th class="text-align:center head"><p>(<code class="docutils literal notranslate"><span class="pre">left.A</span></code>, <code class="docutils literal notranslate"><span class="pre">left.B</span></code>)</p></th>
-<th class="text-align:center head"><p>(<code class="docutils literal notranslate"><span class="pre">right.C</span></code>, <code class="docutils literal notranslate"><span class="pre">right.D</span></code>)</p></th>
-<th class="text-align:center head"><p>경우의 수</p></th>
+<tr class="row-odd"><th class="head text-center"><p><code class="docutils literal notranslate"><span class="pre">key</span></code></p></th>
+<th class="head text-center"><p>(<code class="docutils literal notranslate"><span class="pre">left.A</span></code>, <code class="docutils literal notranslate"><span class="pre">left.B</span></code>)</p></th>
+<th class="head text-center"><p>(<code class="docutils literal notranslate"><span class="pre">right.C</span></code>, <code class="docutils literal notranslate"><span class="pre">right.D</span></code>)</p></th>
+<th class="head text-center"><p>경우의 수</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">K0</span></code></p></td>
-<td class="text-align:center"><p>(<code class="docutils literal notranslate"><span class="pre">A0</span></code>, <code class="docutils literal notranslate"><span class="pre">B0</span></code>)</p></td>
-<td class="text-align:center"><p>(<code class="docutils literal notranslate"><span class="pre">C0</span></code>, <code class="docutils literal notranslate"><span class="pre">D0</span></code>)</p></td>
-<td class="text-align:center"><p>1</p></td>
+<tr class="row-even"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">K0</span></code></p></td>
+<td class="text-center"><p>(<code class="docutils literal notranslate"><span class="pre">A0</span></code>, <code class="docutils literal notranslate"><span class="pre">B0</span></code>)</p></td>
+<td class="text-center"><p>(<code class="docutils literal notranslate"><span class="pre">C0</span></code>, <code class="docutils literal notranslate"><span class="pre">D0</span></code>)</p></td>
+<td class="text-center"><p>1</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">K1</span></code></p></td>
-<td class="text-align:center"><p>(<code class="docutils literal notranslate"><span class="pre">A1</span></code>, <code class="docutils literal notranslate"><span class="pre">B1</span></code>)</p></td>
-<td class="text-align:center"><p>(<code class="docutils literal notranslate"><span class="pre">C1</span></code>, <code class="docutils literal notranslate"><span class="pre">D1</span></code>)</p></td>
-<td class="text-align:center"><p>1</p></td>
+<tr class="row-odd"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">K1</span></code></p></td>
+<td class="text-center"><p>(<code class="docutils literal notranslate"><span class="pre">A1</span></code>, <code class="docutils literal notranslate"><span class="pre">B1</span></code>)</p></td>
+<td class="text-center"><p>(<code class="docutils literal notranslate"><span class="pre">C1</span></code>, <code class="docutils literal notranslate"><span class="pre">D1</span></code>)</p></td>
+<td class="text-center"><p>1</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">K2</span></code></p></td>
-<td class="text-align:center"><p>(<code class="docutils literal notranslate"><span class="pre">A2</span></code>, <code class="docutils literal notranslate"><span class="pre">B2</span></code>)</p></td>
-<td class="text-align:center"><p>(<code class="docutils literal notranslate"><span class="pre">C2</span></code>, <code class="docutils literal notranslate"><span class="pre">D2</span></code>)</p></td>
-<td class="text-align:center"><p>1</p></td>
+<tr class="row-even"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">K2</span></code></p></td>
+<td class="text-center"><p>(<code class="docutils literal notranslate"><span class="pre">A2</span></code>, <code class="docutils literal notranslate"><span class="pre">B2</span></code>)</p></td>
+<td class="text-center"><p>(<code class="docutils literal notranslate"><span class="pre">C2</span></code>, <code class="docutils literal notranslate"><span class="pre">D2</span></code>)</p></td>
+<td class="text-center"><p>1</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">K3</span></code></p></td>
-<td class="text-align:center"><p>(<code class="docutils literal notranslate"><span class="pre">A3</span></code>, <code class="docutils literal notranslate"><span class="pre">B3</span></code>)</p></td>
-<td class="text-align:center"><p>(<code class="docutils literal notranslate"><span class="pre">C3</span></code>, <code class="docutils literal notranslate"><span class="pre">D3</span></code>)</p></td>
-<td class="text-align:center"><p>1</p></td>
+<tr class="row-odd"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">K3</span></code></p></td>
+<td class="text-center"><p>(<code class="docutils literal notranslate"><span class="pre">A3</span></code>, <code class="docutils literal notranslate"><span class="pre">B3</span></code>)</p></td>
+<td class="text-center"><p>(<code class="docutils literal notranslate"><span class="pre">C3</span></code>, <code class="docutils literal notranslate"><span class="pre">D3</span></code>)</p></td>
+<td class="text-center"><p>1</p></td>
 </tr>
 </tbody>
 </table>
@@ -2921,9 +2667,9 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="dataframe-join">
-<h3><span class="section-number">16.1.3. </span>합병: <code class="docutils literal notranslate"><span class="pre">DataFrame.join()</span></code> 메서드<a class="headerlink" href="#dataframe-join" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="dataframe-join">
+<h3><span class="section-number">16.1.3. </span>합병: <code class="docutils literal notranslate"><span class="pre">DataFrame.join()</span></code> 메서드<a class="headerlink" href="#dataframe-join" title="Permalink to this heading">#</a></h3>
 <p>인덱스를 기준으로 두 개의 데이터프레임을 합병할 때 사용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3383,10 +3129,10 @@ const thebe_selector_output = ".output, .cell_output"
 </table>
 </div></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="font-size-2-multiindex-font">
-<h2><span class="section-number">16.2. </span>다중 인덱스<font size='2'>MultiIndex</font><a class="headerlink" href="#font-size-2-multiindex-font" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="font-size-2-multiindex-font">
+<h2><span class="section-number">16.2. </span>다중 인덱스<font size='2'>MultiIndex</font><a class="headerlink" href="#font-size-2-multiindex-font" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>참고: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/advanced.html">Multiindex / advanced indexing</a></p></li>
 </ul>
@@ -3394,8 +3140,8 @@ const thebe_selector_output = ".output, .cell_output"
 또한 이어서 다룰 그룹 분류<font size='2'>Group by</font>,
 모양 변환<font size='2'>reshaping</font>,
 피벗 변환<font size='2'>pivoting</font> 등에서 유용하게 활용된다.</p>
-<div class="section" id="multiindex">
-<h3><span class="section-number">16.2.1. </span><code class="docutils literal notranslate"><span class="pre">MultiIndex</span></code> 객체<a class="headerlink" href="#multiindex" title="Permalink to this headline">¶</a></h3>
+<section id="multiindex">
+<h3><span class="section-number">16.2.1. </span><code class="docutils literal notranslate"><span class="pre">MultiIndex</span></code> 객체<a class="headerlink" href="#multiindex" title="Permalink to this heading">#</a></h3>
 <p>다중 인덱스 객체는 보통 튜플을 이용한다.
 예를 들어 아래 두 개의 리스트를 이용하여 튜플을 생성한 다음 다중 인덱스로 만들어보자.</p>
 <div class="cell docutils container">
@@ -3511,9 +3257,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="font-size-2-label-font">
-<h3><span class="section-number">16.2.2. </span>다중 인덱스 라벨<font size='2'>label</font>을 사용하는 시리즈/데이터프레임 객체<a class="headerlink" href="#font-size-2-label-font" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="font-size-2-label-font">
+<h3><span class="section-number">16.2.2. </span>다중 인덱스 라벨<font size='2'>label</font>을 사용하는 시리즈/데이터프레임 객체<a class="headerlink" href="#font-size-2-label-font" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>시리즈 생성</p></li>
 </ul>
@@ -3529,14 +3275,14 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>first  second
-bar    one      -0.505764
-       two      -0.264917
-baz    one      -1.987484
-       two      -0.180773
-foo    one      -1.825188
-       two      -0.093315
-qux    one       0.641570
-       two      -0.403106
+bar    one      -0.955316
+       two      -0.583848
+baz    one      -0.428936
+       two       1.359555
+foo    one      -1.038370
+       two       0.380400
+qux    one      -1.370915
+       two      -0.372082
 dtype: float64
 </pre></div>
 </div>
@@ -3585,62 +3331,62 @@ dtype: float64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>one</th>
-      <td>0.250906</td>
-      <td>0.313670</td>
-      <td>1.413026</td>
-      <td>-0.203448</td>
+      <td>-0.300944</td>
+      <td>0.166185</td>
+      <td>0.358852</td>
+      <td>-0.838502</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.754360</td>
-      <td>0.043802</td>
-      <td>1.185797</td>
-      <td>0.108854</td>
+      <td>0.772308</td>
+      <td>-0.198046</td>
+      <td>-0.389179</td>
+      <td>-0.270313</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>one</th>
-      <td>0.259720</td>
-      <td>1.210976</td>
-      <td>-0.079784</td>
-      <td>0.253456</td>
+      <td>-1.470953</td>
+      <td>-0.807140</td>
+      <td>0.748903</td>
+      <td>-0.578978</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.338759</td>
-      <td>0.468934</td>
-      <td>0.995283</td>
-      <td>1.923987</td>
+      <td>0.189775</td>
+      <td>0.163765</td>
+      <td>1.672379</td>
+      <td>1.144295</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>0.838911</td>
-      <td>0.644479</td>
-      <td>0.410182</td>
-      <td>1.308373</td>
+      <td>1.045205</td>
+      <td>0.342468</td>
+      <td>-0.174034</td>
+      <td>0.790073</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.812439</td>
-      <td>-0.084158</td>
-      <td>0.747846</td>
-      <td>1.973584</td>
+      <td>-0.176670</td>
+      <td>0.835387</td>
+      <td>-0.647340</td>
+      <td>-0.768163</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">qux</th>
       <th>one</th>
-      <td>1.176011</td>
-      <td>-0.088259</td>
-      <td>-0.127658</td>
-      <td>-1.558616</td>
+      <td>-0.429912</td>
+      <td>2.483405</td>
+      <td>1.848826</td>
+      <td>-0.762628</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.576029</td>
-      <td>-0.818067</td>
-      <td>-0.493555</td>
-      <td>-0.668916</td>
+      <td>0.507311</td>
+      <td>0.428135</td>
+      <td>-0.560448</td>
+      <td>-0.778288</td>
     </tr>
   </tbody>
 </table>
@@ -3694,36 +3440,36 @@ dtype: float64
   <tbody>
     <tr>
       <th>A</th>
-      <td>-0.157602</td>
-      <td>0.264483</td>
-      <td>-0.274805</td>
-      <td>-1.680276</td>
-      <td>-0.844632</td>
-      <td>0.695968</td>
-      <td>-0.007622</td>
-      <td>-0.309335</td>
+      <td>0.631975</td>
+      <td>-0.819813</td>
+      <td>0.048340</td>
+      <td>0.095740</td>
+      <td>1.018241</td>
+      <td>-2.206426</td>
+      <td>-0.507833</td>
+      <td>-0.227812</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>-1.873240</td>
-      <td>1.337941</td>
-      <td>-0.965251</td>
-      <td>-0.627908</td>
-      <td>-0.099343</td>
-      <td>-3.001694</td>
-      <td>-0.149686</td>
-      <td>-0.508864</td>
+      <td>-0.873050</td>
+      <td>-0.942250</td>
+      <td>1.597823</td>
+      <td>-0.507219</td>
+      <td>-0.633160</td>
+      <td>2.126807</td>
+      <td>0.955857</td>
+      <td>-1.346186</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>-1.683441</td>
-      <td>-0.065378</td>
-      <td>-0.187297</td>
-      <td>1.313053</td>
-      <td>0.207650</td>
-      <td>0.746368</td>
-      <td>-2.444393</td>
-      <td>-1.293171</td>
+      <td>-0.064260</td>
+      <td>0.167337</td>
+      <td>0.351192</td>
+      <td>0.540444</td>
+      <td>1.200153</td>
+      <td>1.326066</td>
+      <td>-0.768320</td>
+      <td>0.086010</td>
     </tr>
   </tbody>
 </table>
@@ -3803,59 +3549,59 @@ dtype: float64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>one</th>
-      <td>-0.315121</td>
-      <td>0.184103</td>
-      <td>0.408892</td>
-      <td>0.787963</td>
-      <td>0.282170</td>
-      <td>2.156645</td>
+      <td>-0.756524</td>
+      <td>0.694905</td>
+      <td>1.138579</td>
+      <td>-0.212253</td>
+      <td>-0.684190</td>
+      <td>-0.640768</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.579386</td>
-      <td>2.603782</td>
-      <td>-1.622069</td>
-      <td>1.133721</td>
-      <td>-0.097783</td>
-      <td>-1.069281</td>
+      <td>0.560896</td>
+      <td>2.116151</td>
+      <td>0.893527</td>
+      <td>-0.606805</td>
+      <td>0.035942</td>
+      <td>0.499676</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>one</th>
-      <td>0.600468</td>
-      <td>0.534264</td>
-      <td>0.945247</td>
-      <td>-0.133345</td>
-      <td>-0.297044</td>
-      <td>0.547747</td>
+      <td>1.348547</td>
+      <td>0.563091</td>
+      <td>-1.483336</td>
+      <td>-0.890604</td>
+      <td>-0.088303</td>
+      <td>-1.300429</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.111147</td>
-      <td>1.723053</td>
-      <td>0.294422</td>
-      <td>-1.137502</td>
-      <td>0.194053</td>
-      <td>-0.131704</td>
+      <td>-0.917884</td>
+      <td>-0.439010</td>
+      <td>-0.202191</td>
+      <td>0.747252</td>
+      <td>0.280655</td>
+      <td>-1.291635</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>0.040166</td>
-      <td>-0.392402</td>
-      <td>1.061538</td>
-      <td>0.743854</td>
-      <td>-0.009309</td>
-      <td>0.068563</td>
+      <td>0.204930</td>
+      <td>-1.442792</td>
+      <td>0.081030</td>
+      <td>-1.272376</td>
+      <td>-0.001627</td>
+      <td>-1.302775</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.051168</td>
-      <td>-0.049859</td>
-      <td>-0.113471</td>
-      <td>-1.043307</td>
-      <td>0.210997</td>
-      <td>0.811639</td>
+      <td>1.135081</td>
+      <td>-0.799890</td>
+      <td>1.175068</td>
+      <td>-0.361123</td>
+      <td>-0.174160</td>
+      <td>-0.158653</td>
     </tr>
   </tbody>
 </table>
@@ -3890,22 +3636,22 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(bar, one)   -0.857653
-(bar, two)    0.163190
-(baz, one)    0.901817
-(baz, two)   -1.618794
-(foo, one)    0.644145
-(foo, two)   -0.430766
-(qux, one)   -0.843900
-(qux, two)   -0.275387
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(bar, one)    1.258006
+(bar, two)    0.759336
+(baz, one)   -1.835144
+(baz, two)   -0.653440
+(foo, one)   -1.815771
+(foo, two)    1.000676
+(qux, one)   -0.026786
+(qux, two)   -0.093565
 dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id2">
-<h3><span class="section-number">16.2.3. </span>인덱스의 레벨<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id2">
+<h3><span class="section-number">16.2.3. </span>인덱스의 레벨<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <p>다중 인덱스 객체의 <code class="docutils literal notranslate"><span class="pre">get_level_values()</span></code> 메서드를 이용하여 레벨별 인덱스 라벨을 확인할 수 있다.</p>
 <ul class="simple">
 <li><p>0-레블 라벨</p></li>
@@ -3962,9 +3708,9 @@ dtype: float64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id3">
-<h3><span class="section-number">16.2.4. </span>인덱싱<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id3">
+<h3><span class="section-number">16.2.4. </span>인덱싱<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>다중 인덱스를 라벨로 사용하는 시리즈와 데이터프레임의 인덱싱은 일반 인덱싱과 크게 다르지 않다.</p>
 <ul class="simple">
 <li><p>시리즈 인덱싱</p></li>
@@ -3977,14 +3723,14 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>first  second
-bar    one      -0.505764
-       two      -0.264917
-baz    one      -1.987484
-       two      -0.180773
-foo    one      -1.825188
-       two      -0.093315
-qux    one       0.641570
-       two      -0.403106
+bar    one      -0.955316
+       two      -0.583848
+baz    one      -0.428936
+       two       1.359555
+foo    one      -1.038370
+       two       0.380400
+qux    one      -1.370915
+       two      -0.372082
 dtype: float64
 </pre></div>
 </div>
@@ -3998,8 +3744,8 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>second
-one    0.641570
-two   -0.403106
+one   -1.370915
+two   -0.372082
 dtype: float64
 </pre></div>
 </div>
@@ -4044,62 +3790,62 @@ dtype: float64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>one</th>
-      <td>0.250906</td>
-      <td>0.313670</td>
-      <td>1.413026</td>
-      <td>-0.203448</td>
+      <td>-0.300944</td>
+      <td>0.166185</td>
+      <td>0.358852</td>
+      <td>-0.838502</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.754360</td>
-      <td>0.043802</td>
-      <td>1.185797</td>
-      <td>0.108854</td>
+      <td>0.772308</td>
+      <td>-0.198046</td>
+      <td>-0.389179</td>
+      <td>-0.270313</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>one</th>
-      <td>0.259720</td>
-      <td>1.210976</td>
-      <td>-0.079784</td>
-      <td>0.253456</td>
+      <td>-1.470953</td>
+      <td>-0.807140</td>
+      <td>0.748903</td>
+      <td>-0.578978</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.338759</td>
-      <td>0.468934</td>
-      <td>0.995283</td>
-      <td>1.923987</td>
+      <td>0.189775</td>
+      <td>0.163765</td>
+      <td>1.672379</td>
+      <td>1.144295</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>0.838911</td>
-      <td>0.644479</td>
-      <td>0.410182</td>
-      <td>1.308373</td>
+      <td>1.045205</td>
+      <td>0.342468</td>
+      <td>-0.174034</td>
+      <td>0.790073</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.812439</td>
-      <td>-0.084158</td>
-      <td>0.747846</td>
-      <td>1.973584</td>
+      <td>-0.176670</td>
+      <td>0.835387</td>
+      <td>-0.647340</td>
+      <td>-0.768163</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">qux</th>
       <th>one</th>
-      <td>1.176011</td>
-      <td>-0.088259</td>
-      <td>-0.127658</td>
-      <td>-1.558616</td>
+      <td>-0.429912</td>
+      <td>2.483405</td>
+      <td>1.848826</td>
+      <td>-0.762628</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.576029</td>
-      <td>-0.818067</td>
-      <td>-0.493555</td>
-      <td>-0.668916</td>
+      <td>0.507311</td>
+      <td>0.428135</td>
+      <td>-0.560448</td>
+      <td>-0.778288</td>
     </tr>
   </tbody>
 </table>
@@ -4139,17 +3885,17 @@ dtype: float64
   <tbody>
     <tr>
       <th>one</th>
-      <td>0.250906</td>
-      <td>0.313670</td>
-      <td>1.413026</td>
-      <td>-0.203448</td>
+      <td>-0.300944</td>
+      <td>0.166185</td>
+      <td>0.358852</td>
+      <td>-0.838502</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.754360</td>
-      <td>0.043802</td>
-      <td>1.185797</td>
-      <td>0.108854</td>
+      <td>0.772308</td>
+      <td>-0.198046</td>
+      <td>-0.389179</td>
+      <td>-0.270313</td>
     </tr>
   </tbody>
 </table>
@@ -4163,10 +3909,10 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.250906
-1    0.313670
-2    1.413026
-3   -0.203448
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   -0.300944
+1    0.166185
+2    0.358852
+3   -0.838502
 Name: (bar, one), dtype: float64
 </pre></div>
 </div>
@@ -4180,10 +3926,10 @@ Name: (bar, one), dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0.250906
-1    0.313670
-2    1.413026
-3   -0.203448
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   -0.300944
+1    0.166185
+2    0.358852
+3   -0.838502
 Name: one, dtype: float64
 </pre></div>
 </div>
@@ -4237,36 +3983,36 @@ Name: one, dtype: float64
   <tbody>
     <tr>
       <th>A</th>
-      <td>-0.157602</td>
-      <td>0.264483</td>
-      <td>-0.274805</td>
-      <td>-1.680276</td>
-      <td>-0.844632</td>
-      <td>0.695968</td>
-      <td>-0.007622</td>
-      <td>-0.309335</td>
+      <td>0.631975</td>
+      <td>-0.819813</td>
+      <td>0.048340</td>
+      <td>0.095740</td>
+      <td>1.018241</td>
+      <td>-2.206426</td>
+      <td>-0.507833</td>
+      <td>-0.227812</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>-1.873240</td>
-      <td>1.337941</td>
-      <td>-0.965251</td>
-      <td>-0.627908</td>
-      <td>-0.099343</td>
-      <td>-3.001694</td>
-      <td>-0.149686</td>
-      <td>-0.508864</td>
+      <td>-0.873050</td>
+      <td>-0.942250</td>
+      <td>1.597823</td>
+      <td>-0.507219</td>
+      <td>-0.633160</td>
+      <td>2.126807</td>
+      <td>0.955857</td>
+      <td>-1.346186</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>-1.683441</td>
-      <td>-0.065378</td>
-      <td>-0.187297</td>
-      <td>1.313053</td>
-      <td>0.207650</td>
-      <td>0.746368</td>
-      <td>-2.444393</td>
-      <td>-1.293171</td>
+      <td>-0.064260</td>
+      <td>0.167337</td>
+      <td>0.351192</td>
+      <td>0.540444</td>
+      <td>1.200153</td>
+      <td>1.326066</td>
+      <td>-0.768320</td>
+      <td>0.086010</td>
     </tr>
   </tbody>
 </table>
@@ -4304,18 +4050,18 @@ Name: one, dtype: float64
   <tbody>
     <tr>
       <th>A</th>
-      <td>-0.157602</td>
-      <td>0.264483</td>
+      <td>0.631975</td>
+      <td>-0.819813</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>-1.873240</td>
-      <td>1.337941</td>
+      <td>-0.873050</td>
+      <td>-0.942250</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>-1.683441</td>
-      <td>-0.065378</td>
+      <td>-0.064260</td>
+      <td>0.167337</td>
     </tr>
   </tbody>
 </table>
@@ -4329,9 +4075,9 @@ Name: one, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A   -0.157602
-B   -1.873240
-C   -1.683441
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    0.631975
+B   -0.873050
+C   -0.064260
 Name: (bar, one), dtype: float64
 </pre></div>
 </div>
@@ -4345,17 +4091,17 @@ Name: (bar, one), dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A   -0.157602
-B   -1.873240
-C   -1.683441
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    0.631975
+B   -0.873050
+C   -0.064260
 Name: one, dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id4">
-<h3><span class="section-number">16.2.5. </span>슬라이싱<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id4">
+<h3><span class="section-number">16.2.5. </span>슬라이싱<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>다중 인덱스를 라벨로 사용하는 시리즈와 데이터프레임의 인덱싱은 일반 슬라이싱과 크게 다르지 않다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4393,62 +4139,62 @@ Name: one, dtype: float64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>one</th>
-      <td>0.250906</td>
-      <td>0.313670</td>
-      <td>1.413026</td>
-      <td>-0.203448</td>
+      <td>-0.300944</td>
+      <td>0.166185</td>
+      <td>0.358852</td>
+      <td>-0.838502</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.754360</td>
-      <td>0.043802</td>
-      <td>1.185797</td>
-      <td>0.108854</td>
+      <td>0.772308</td>
+      <td>-0.198046</td>
+      <td>-0.389179</td>
+      <td>-0.270313</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>one</th>
-      <td>0.259720</td>
-      <td>1.210976</td>
-      <td>-0.079784</td>
-      <td>0.253456</td>
+      <td>-1.470953</td>
+      <td>-0.807140</td>
+      <td>0.748903</td>
+      <td>-0.578978</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.338759</td>
-      <td>0.468934</td>
-      <td>0.995283</td>
-      <td>1.923987</td>
+      <td>0.189775</td>
+      <td>0.163765</td>
+      <td>1.672379</td>
+      <td>1.144295</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>0.838911</td>
-      <td>0.644479</td>
-      <td>0.410182</td>
-      <td>1.308373</td>
+      <td>1.045205</td>
+      <td>0.342468</td>
+      <td>-0.174034</td>
+      <td>0.790073</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.812439</td>
-      <td>-0.084158</td>
-      <td>0.747846</td>
-      <td>1.973584</td>
+      <td>-0.176670</td>
+      <td>0.835387</td>
+      <td>-0.647340</td>
+      <td>-0.768163</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">qux</th>
       <th>one</th>
-      <td>1.176011</td>
-      <td>-0.088259</td>
-      <td>-0.127658</td>
-      <td>-1.558616</td>
+      <td>-0.429912</td>
+      <td>2.483405</td>
+      <td>1.848826</td>
+      <td>-0.762628</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.576029</td>
-      <td>-0.818067</td>
-      <td>-0.493555</td>
-      <td>-0.668916</td>
+      <td>0.507311</td>
+      <td>0.428135</td>
+      <td>-0.560448</td>
+      <td>-0.778288</td>
     </tr>
   </tbody>
 </table>
@@ -4493,32 +4239,32 @@ Name: one, dtype: float64
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>one</th>
-      <td>0.259720</td>
-      <td>1.210976</td>
-      <td>-0.079784</td>
-      <td>0.253456</td>
+      <td>-1.470953</td>
+      <td>-0.807140</td>
+      <td>0.748903</td>
+      <td>-0.578978</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.338759</td>
-      <td>0.468934</td>
-      <td>0.995283</td>
-      <td>1.923987</td>
+      <td>0.189775</td>
+      <td>0.163765</td>
+      <td>1.672379</td>
+      <td>1.144295</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>0.838911</td>
-      <td>0.644479</td>
-      <td>0.410182</td>
-      <td>1.308373</td>
+      <td>1.045205</td>
+      <td>0.342468</td>
+      <td>-0.174034</td>
+      <td>0.790073</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.812439</td>
-      <td>-0.084158</td>
-      <td>0.747846</td>
-      <td>1.973584</td>
+      <td>-0.176670</td>
+      <td>0.835387</td>
+      <td>-0.647340</td>
+      <td>-0.768163</td>
     </tr>
   </tbody>
 </table>
@@ -4563,33 +4309,33 @@ Name: one, dtype: float64
     <tr>
       <th>baz</th>
       <th>two</th>
-      <td>-0.338759</td>
-      <td>0.468934</td>
-      <td>0.995283</td>
-      <td>1.923987</td>
+      <td>0.189775</td>
+      <td>0.163765</td>
+      <td>1.672379</td>
+      <td>1.144295</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>0.838911</td>
-      <td>0.644479</td>
-      <td>0.410182</td>
-      <td>1.308373</td>
+      <td>1.045205</td>
+      <td>0.342468</td>
+      <td>-0.174034</td>
+      <td>0.790073</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.812439</td>
-      <td>-0.084158</td>
-      <td>0.747846</td>
-      <td>1.973584</td>
+      <td>-0.176670</td>
+      <td>0.835387</td>
+      <td>-0.647340</td>
+      <td>-0.768163</td>
     </tr>
     <tr>
       <th>qux</th>
       <th>one</th>
-      <td>1.176011</td>
-      <td>-0.088259</td>
-      <td>-0.127658</td>
-      <td>-1.558616</td>
+      <td>-0.429912</td>
+      <td>2.483405</td>
+      <td>1.848826</td>
+      <td>-0.762628</td>
     </tr>
   </tbody>
 </table>
@@ -4632,28 +4378,28 @@ Name: one, dtype: float64
     <tr>
       <th>bar</th>
       <th>two</th>
-      <td>0.754360</td>
-      <td>0.043802</td>
-      <td>1.185797</td>
-      <td>0.108854</td>
+      <td>0.772308</td>
+      <td>-0.198046</td>
+      <td>-0.389179</td>
+      <td>-0.270313</td>
     </tr>
     <tr>
       <th>qux</th>
       <th>one</th>
-      <td>1.176011</td>
-      <td>-0.088259</td>
-      <td>-0.127658</td>
-      <td>-1.558616</td>
+      <td>-0.429912</td>
+      <td>2.483405</td>
+      <td>1.848826</td>
+      <td>-0.762628</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
 <p>이외에 <code class="docutils literal notranslate"><span class="pre">slice()</span></code> 함수와 <code class="docutils literal notranslate"><span class="pre">pd.IndexSlice</span></code> 객체를 사용하는 방법도 있지만 여기서는 다루지 않는다.</p>
-</div>
-</div>
-<div class="section" id="pd-groupby">
-<h2><span class="section-number">16.3. </span>그룹 분류: <code class="docutils literal notranslate"><span class="pre">pd.groupby()</span></code> 함수<a class="headerlink" href="#pd-groupby" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="pd-groupby">
+<h2><span class="section-number">16.3. </span>그룹 분류: <code class="docutils literal notranslate"><span class="pre">pd.groupby()</span></code> 함수<a class="headerlink" href="#pd-groupby" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>참고: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/groupby.html#groupby">Grouping section</a></p></li>
 </ul>
@@ -4706,57 +4452,57 @@ Name: one, dtype: float64
       <th>0</th>
       <td>foo</td>
       <td>one</td>
-      <td>0.322391</td>
-      <td>0.768560</td>
+      <td>2.193787</td>
+      <td>0.454045</td>
     </tr>
     <tr>
       <th>1</th>
       <td>bar</td>
       <td>one</td>
-      <td>1.593844</td>
-      <td>-0.635828</td>
+      <td>2.472344</td>
+      <td>-1.035611</td>
     </tr>
     <tr>
       <th>2</th>
       <td>foo</td>
       <td>two</td>
-      <td>-1.519224</td>
-      <td>-1.239685</td>
+      <td>0.094830</td>
+      <td>-0.764965</td>
     </tr>
     <tr>
       <th>3</th>
       <td>bar</td>
       <td>three</td>
-      <td>-0.274315</td>
-      <td>1.109917</td>
+      <td>-0.507981</td>
+      <td>0.182631</td>
     </tr>
     <tr>
       <th>4</th>
       <td>foo</td>
       <td>two</td>
-      <td>1.179025</td>
-      <td>0.416782</td>
+      <td>0.679225</td>
+      <td>-0.737110</td>
     </tr>
     <tr>
       <th>5</th>
       <td>bar</td>
       <td>two</td>
-      <td>0.660068</td>
-      <td>-0.481949</td>
+      <td>0.703059</td>
+      <td>-0.101143</td>
     </tr>
     <tr>
       <th>6</th>
       <td>foo</td>
       <td>one</td>
-      <td>-1.992692</td>
-      <td>0.606825</td>
+      <td>-0.749872</td>
+      <td>-0.376362</td>
     </tr>
     <tr>
       <th>7</th>
       <td>bar</td>
       <td>three</td>
-      <td>-1.259714</td>
-      <td>-0.962905</td>
+      <td>1.715596</td>
+      <td>1.473849</td>
     </tr>
   </tbody>
 </table>
@@ -4765,18 +4511,18 @@ Name: one, dtype: float64
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">A</span></code> 열에 사용된 항목 기준으로 그룹으로 분류한 후 그룹별로 <code class="docutils literal notranslate"><span class="pre">C</span></code>와 <code class="docutils literal notranslate"><span class="pre">D</span></code> 열의 모든 항목의 합 계산해서 새로운 데이터프레임 생성
 <br><br></p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p><code class="docutils literal notranslate"><span class="pre">A</span></code></p></th>
-<th class="text-align:center head"><p>경우의 수</p></th>
+<tr class="row-odd"><th class="head text-center"><p><code class="docutils literal notranslate"><span class="pre">A</span></code></p></th>
+<th class="head text-center"><p>경우의 수</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">bar</span></code></p></td>
-<td class="text-align:center"><p>1</p></td>
+<tr class="row-even"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">bar</span></code></p></td>
+<td class="text-center"><p>1</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">foo</span></code></p></td>
-<td class="text-align:center"><p>1</p></td>
+<tr class="row-odd"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">foo</span></code></p></td>
+<td class="text-center"><p>1</p></td>
 </tr>
 </tbody>
 </table>
@@ -4819,13 +4565,13 @@ Name: one, dtype: float64
   <tbody>
     <tr>
       <th>bar</th>
-      <td>0.719883</td>
-      <td>-0.970765</td>
+      <td>4.383018</td>
+      <td>0.519726</td>
     </tr>
     <tr>
       <th>foo</th>
-      <td>-2.010499</td>
-      <td>0.552482</td>
+      <td>2.217969</td>
+      <td>-1.424392</td>
     </tr>
   </tbody>
 </table>
@@ -4834,21 +4580,21 @@ Name: one, dtype: float64
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">A</span></code>열의 항목과 <code class="docutils literal notranslate"><span class="pre">B</span></code> 열의 항목의 조합을 기준으로 그룹으로 그룹별로 <code class="docutils literal notranslate"><span class="pre">C</span></code>와 <code class="docutils literal notranslate"><span class="pre">D</span></code> 열의 모든 항목의 합 계산해서 새로운 데이터프레임 생성
 <br><br></p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p><code class="docutils literal notranslate"><span class="pre">A</span></code></p></th>
-<th class="text-align:center head"><p><code class="docutils literal notranslate"><span class="pre">B</span></code></p></th>
-<th class="text-align:center head"><p>경우의 수</p></th>
+<tr class="row-odd"><th class="head text-center"><p><code class="docutils literal notranslate"><span class="pre">A</span></code></p></th>
+<th class="head text-center"><p><code class="docutils literal notranslate"><span class="pre">B</span></code></p></th>
+<th class="head text-center"><p>경우의 수</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">bar</span></code></p></td>
-<td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">one</span></code>, <code class="docutils literal notranslate"><span class="pre">three</span></code>, <code class="docutils literal notranslate"><span class="pre">two</span></code></p></td>
-<td class="text-align:center"><p>3</p></td>
+<tr class="row-even"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">bar</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">one</span></code>, <code class="docutils literal notranslate"><span class="pre">three</span></code>, <code class="docutils literal notranslate"><span class="pre">two</span></code></p></td>
+<td class="text-center"><p>3</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">foo</span></code></p></td>
-<td class="text-align:center"><p><code class="docutils literal notranslate"><span class="pre">one</span></code>, <code class="docutils literal notranslate"><span class="pre">two</span></code></p></td>
-<td class="text-align:center"><p>2</p></td>
+<tr class="row-odd"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">foo</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">one</span></code>, <code class="docutils literal notranslate"><span class="pre">two</span></code></p></td>
+<td class="text-center"><p>2</p></td>
 </tr>
 </tbody>
 </table>
@@ -4894,29 +4640,29 @@ Name: one, dtype: float64
     <tr>
       <th rowspan="3" valign="top">bar</th>
       <th>one</th>
-      <td>1.593844</td>
-      <td>-0.635828</td>
+      <td>2.472344</td>
+      <td>-1.035611</td>
     </tr>
     <tr>
       <th>three</th>
-      <td>-1.534029</td>
-      <td>0.147012</td>
+      <td>1.207615</td>
+      <td>1.656480</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.660068</td>
-      <td>-0.481949</td>
+      <td>0.703059</td>
+      <td>-0.101143</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>-1.670300</td>
-      <td>1.375385</td>
+      <td>1.443914</td>
+      <td>0.077683</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.340199</td>
-      <td>-0.822903</td>
+      <td>0.774055</td>
+      <td>-1.502075</td>
     </tr>
   </tbody>
 </table>
@@ -4937,22 +4683,22 @@ Name: one, dtype: float64
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;bar&#39;, &#39;one&#39;)
      A    B         C         D
-1  bar  one  1.593844 -0.635828
+1  bar  one  2.472344 -1.035611
 (&#39;bar&#39;, &#39;three&#39;)
      A      B         C         D
-3  bar  three -0.274315  1.109917
-7  bar  three -1.259714 -0.962905
+3  bar  three -0.507981  0.182631
+7  bar  three  1.715596  1.473849
 (&#39;bar&#39;, &#39;two&#39;)
      A    B         C         D
-5  bar  two  0.660068 -0.481949
+5  bar  two  0.703059 -0.101143
 (&#39;foo&#39;, &#39;one&#39;)
      A    B         C         D
-0  foo  one  0.322391  0.768560
-6  foo  one -1.992692  0.606825
+0  foo  one  2.193787  0.454045
+6  foo  one -0.749872 -0.376362
 (&#39;foo&#39;, &#39;two&#39;)
      A    B         C         D
-2  foo  two -1.519224 -1.239685
-4  foo  two  1.179025  0.416782
+2  foo  two  0.094830 -0.764965
+4  foo  two  0.679225 -0.737110
 </pre></div>
 </div>
 </div>
@@ -4996,8 +4742,8 @@ Name: one, dtype: float64
       <th>1</th>
       <td>bar</td>
       <td>one</td>
-      <td>1.593844</td>
-      <td>-0.635828</td>
+      <td>2.472344</td>
+      <td>-1.035611</td>
     </tr>
   </tbody>
 </table>
@@ -5039,15 +4785,15 @@ Name: one, dtype: float64
       <th>3</th>
       <td>bar</td>
       <td>three</td>
-      <td>-0.274315</td>
-      <td>1.109917</td>
+      <td>-0.507981</td>
+      <td>0.182631</td>
     </tr>
     <tr>
       <th>7</th>
       <td>bar</td>
       <td>three</td>
-      <td>-1.259714</td>
-      <td>-0.962905</td>
+      <td>1.715596</td>
+      <td>1.473849</td>
     </tr>
   </tbody>
 </table>
@@ -5078,19 +4824,16 @@ Name: one, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_301</span><span class="o">/</span><span class="mf">3252504889.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-
-<span class="nn">~/anaconda3/lib/python3.9/site-packages/pandas/core/groupby/groupby.py</span> in <span class="ni">__getattr__</span><span class="nt">(self, attr)</span>
-<span class="g g-Whitespace">    </span><span class="mi">909</span>             <span class="k">return</span> <span class="bp">self</span><span class="p">[</span><span class="n">attr</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">910</span> 
-<span class="ne">--&gt; </span><span class="mi">911</span>         <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">912</span>             <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2">&#39; object has no attribute &#39;</span><span class="si">{</span><span class="n">attr</span><span class="si">}</span><span class="s2">&#39;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">913</span>         <span class="p">)</span>
-
-<span class="ne">AttributeError</span>: &#39;DataFrameGroupBy&#39; object has no attribute &#39;value_counts&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    B      C          D        
+bar  one     2.472344  -1.035611    1
+     three  -0.507981   0.182631    1
+             1.715596   1.473849    1
+     two     0.703059  -0.101143    1
+foo  one    -0.749872  -0.376362    1
+             2.193787   0.454045    1
+     two     0.094830  -0.764965    1
+             0.679225  -0.737110    1
+dtype: int64
 </pre></div>
 </div>
 </div>
@@ -5209,29 +4952,29 @@ Name: one, dtype: float64
     <tr>
       <th rowspan="3" valign="top">bar</th>
       <th>one</th>
-      <td>-1.256428</td>
-      <td>0.345713</td>
+      <td>2.472344</td>
+      <td>-1.035611</td>
     </tr>
     <tr>
       <th>three</th>
-      <td>1.219333</td>
-      <td>1.345430</td>
+      <td>1.207615</td>
+      <td>1.656480</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.629035</td>
-      <td>-0.487166</td>
+      <td>0.703059</td>
+      <td>-0.101143</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>1.577046</td>
-      <td>-1.325826</td>
+      <td>1.443914</td>
+      <td>0.077683</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.450304</td>
-      <td>-0.975193</td>
+      <td>0.774055</td>
+      <td>-1.502075</td>
     </tr>
   </tbody>
 </table>
@@ -5277,31 +5020,31 @@ Name: one, dtype: float64
     <tr>
       <th>foo</th>
       <th>one</th>
-      <td>1.577046</td>
-      <td>-1.325826</td>
+      <td>1.443914</td>
+      <td>0.077683</td>
     </tr>
     <tr>
       <th>bar</th>
       <th>one</th>
-      <td>-1.256428</td>
-      <td>0.345713</td>
+      <td>2.472344</td>
+      <td>-1.035611</td>
     </tr>
     <tr>
       <th>foo</th>
       <th>two</th>
-      <td>-0.450304</td>
-      <td>-0.975193</td>
+      <td>0.774055</td>
+      <td>-1.502075</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>three</th>
-      <td>1.219333</td>
-      <td>1.345430</td>
+      <td>1.207615</td>
+      <td>1.656480</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.629035</td>
-      <td>-0.487166</td>
+      <td>0.703059</td>
+      <td>-0.101143</td>
     </tr>
   </tbody>
 </table>
@@ -5418,13 +5161,13 @@ Name: one, dtype: float64
   <tbody>
     <tr>
       <th>bar</th>
-      <td>1.622106</td>
-      <td>1.818732</td>
+      <td>2.472344</td>
+      <td>1.473849</td>
     </tr>
     <tr>
       <th>foo</th>
-      <td>1.027778</td>
-      <td>0.331919</td>
+      <td>2.193787</td>
+      <td>0.454045</td>
     </tr>
   </tbody>
 </table>
@@ -5470,29 +5213,29 @@ Name: one, dtype: float64
     <tr>
       <th rowspan="3" valign="top">bar</th>
       <th>one</th>
-      <td>-1.256428</td>
-      <td>0.345713</td>
+      <td>2.472344</td>
+      <td>-1.035611</td>
     </tr>
     <tr>
       <th>three</th>
-      <td>1.622106</td>
-      <td>1.818732</td>
+      <td>1.715596</td>
+      <td>1.473849</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.629035</td>
-      <td>-0.487166</td>
+      <td>0.703059</td>
+      <td>-0.101143</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>1.027778</td>
-      <td>0.331919</td>
+      <td>2.193787</td>
+      <td>0.454045</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.694024</td>
-      <td>-0.179775</td>
+      <td>0.679225</td>
+      <td>-0.737110</td>
     </tr>
   </tbody>
 </table>
@@ -5538,13 +5281,13 @@ Name: one, dtype: float64
   <tbody>
     <tr>
       <th>bar</th>
-      <td>0.147985</td>
-      <td>0.300994</td>
+      <td>1.095755</td>
+      <td>0.129932</td>
     </tr>
     <tr>
       <th>foo</th>
-      <td>0.281685</td>
-      <td>-0.575255</td>
+      <td>0.554492</td>
+      <td>-0.356098</td>
     </tr>
   </tbody>
 </table>
@@ -5590,29 +5333,29 @@ Name: one, dtype: float64
     <tr>
       <th rowspan="3" valign="top">bar</th>
       <th>one</th>
-      <td>-1.256428</td>
-      <td>0.345713</td>
+      <td>2.472344</td>
+      <td>-1.035611</td>
     </tr>
     <tr>
       <th>three</th>
-      <td>0.609666</td>
-      <td>0.672715</td>
+      <td>0.603808</td>
+      <td>0.828240</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.629035</td>
-      <td>-0.487166</td>
+      <td>0.703059</td>
+      <td>-0.101143</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>0.788523</td>
-      <td>-0.662913</td>
+      <td>0.721957</td>
+      <td>0.038842</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.225152</td>
-      <td>-0.487596</td>
+      <td>0.387027</td>
+      <td>-0.751037</td>
     </tr>
   </tbody>
 </table>
@@ -5732,40 +5475,40 @@ dtype: int64
     <tr>
       <th>bar</th>
       <td>4.0</td>
-      <td>0.147985</td>
-      <td>1.249020</td>
-      <td>-1.256428</td>
-      <td>-0.616187</td>
-      <td>0.113131</td>
-      <td>0.877303</td>
-      <td>1.622106</td>
+      <td>1.095755</td>
+      <td>1.291689</td>
+      <td>-0.507981</td>
+      <td>0.400299</td>
+      <td>1.209327</td>
+      <td>1.904783</td>
+      <td>2.472344</td>
       <td>4.0</td>
-      <td>0.300994</td>
-      <td>1.084168</td>
-      <td>-0.487166</td>
-      <td>-0.476768</td>
-      <td>-0.063795</td>
-      <td>0.713968</td>
-      <td>1.818732</td>
+      <td>0.129932</td>
+      <td>1.036143</td>
+      <td>-1.035611</td>
+      <td>-0.334760</td>
+      <td>0.040744</td>
+      <td>0.505436</td>
+      <td>1.473849</td>
     </tr>
     <tr>
       <th>foo</th>
       <td>4.0</td>
-      <td>0.281685</td>
-      <td>0.971561</td>
-      <td>-1.144328</td>
-      <td>0.125869</td>
-      <td>0.621646</td>
-      <td>0.777462</td>
-      <td>1.027778</td>
+      <td>0.554492</td>
+      <td>1.240363</td>
+      <td>-0.749872</td>
+      <td>-0.116346</td>
+      <td>0.387027</td>
+      <td>1.057866</td>
+      <td>2.193787</td>
       <td>4.0</td>
-      <td>-0.575255</td>
-      <td>0.856276</td>
-      <td>-1.657745</td>
-      <td>-1.010999</td>
-      <td>-0.487596</td>
-      <td>-0.051852</td>
-      <td>0.331919</td>
+      <td>-0.356098</td>
+      <td>0.568356</td>
+      <td>-0.764965</td>
+      <td>-0.744074</td>
+      <td>-0.556736</td>
+      <td>-0.168760</td>
+      <td>0.454045</td>
     </tr>
   </tbody>
 </table>
@@ -5850,111 +5593,111 @@ dtype: int64
       <th rowspan="3" valign="top">bar</th>
       <th>one</th>
       <td>1.0</td>
-      <td>-1.256428</td>
+      <td>2.472344</td>
       <td>NaN</td>
-      <td>-1.256428</td>
-      <td>-1.256428</td>
-      <td>-1.256428</td>
-      <td>-1.256428</td>
-      <td>-1.256428</td>
+      <td>2.472344</td>
+      <td>2.472344</td>
+      <td>2.472344</td>
+      <td>2.472344</td>
+      <td>2.472344</td>
       <td>1.0</td>
-      <td>0.345713</td>
+      <td>-1.035611</td>
       <td>NaN</td>
-      <td>0.345713</td>
-      <td>0.345713</td>
-      <td>0.345713</td>
-      <td>0.345713</td>
-      <td>0.345713</td>
+      <td>-1.035611</td>
+      <td>-1.035611</td>
+      <td>-1.035611</td>
+      <td>-1.035611</td>
+      <td>-1.035611</td>
     </tr>
     <tr>
       <th>three</th>
       <td>2.0</td>
-      <td>0.609666</td>
-      <td>1.431805</td>
-      <td>-0.402773</td>
-      <td>0.103447</td>
-      <td>0.609666</td>
-      <td>1.115886</td>
-      <td>1.622106</td>
+      <td>0.603808</td>
+      <td>1.572306</td>
+      <td>-0.507981</td>
+      <td>0.047913</td>
+      <td>0.603808</td>
+      <td>1.159702</td>
+      <td>1.715596</td>
       <td>2.0</td>
-      <td>0.672715</td>
-      <td>1.620713</td>
-      <td>-0.473302</td>
-      <td>0.099706</td>
-      <td>0.672715</td>
-      <td>1.245724</td>
-      <td>1.818732</td>
+      <td>0.828240</td>
+      <td>0.913028</td>
+      <td>0.182631</td>
+      <td>0.505436</td>
+      <td>0.828240</td>
+      <td>1.151044</td>
+      <td>1.473849</td>
     </tr>
     <tr>
       <th>two</th>
       <td>1.0</td>
-      <td>0.629035</td>
+      <td>0.703059</td>
       <td>NaN</td>
-      <td>0.629035</td>
-      <td>0.629035</td>
-      <td>0.629035</td>
-      <td>0.629035</td>
-      <td>0.629035</td>
+      <td>0.703059</td>
+      <td>0.703059</td>
+      <td>0.703059</td>
+      <td>0.703059</td>
+      <td>0.703059</td>
       <td>1.0</td>
-      <td>-0.487166</td>
+      <td>-0.101143</td>
       <td>NaN</td>
-      <td>-0.487166</td>
-      <td>-0.487166</td>
-      <td>-0.487166</td>
-      <td>-0.487166</td>
-      <td>-0.487166</td>
+      <td>-0.101143</td>
+      <td>-0.101143</td>
+      <td>-0.101143</td>
+      <td>-0.101143</td>
+      <td>-0.101143</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
       <td>2.0</td>
-      <td>0.788523</td>
-      <td>0.338357</td>
-      <td>0.549269</td>
-      <td>0.668896</td>
-      <td>0.788523</td>
-      <td>0.908150</td>
-      <td>1.027778</td>
+      <td>0.721957</td>
+      <td>2.081481</td>
+      <td>-0.749872</td>
+      <td>-0.013958</td>
+      <td>0.721957</td>
+      <td>1.457872</td>
+      <td>2.193787</td>
       <td>2.0</td>
-      <td>-0.662913</td>
-      <td>1.406905</td>
-      <td>-1.657745</td>
-      <td>-1.160329</td>
-      <td>-0.662913</td>
-      <td>-0.165497</td>
-      <td>0.331919</td>
+      <td>0.038842</td>
+      <td>0.587187</td>
+      <td>-0.376362</td>
+      <td>-0.168760</td>
+      <td>0.038842</td>
+      <td>0.246443</td>
+      <td>0.454045</td>
     </tr>
     <tr>
       <th>two</th>
       <td>2.0</td>
-      <td>-0.225152</td>
-      <td>1.299911</td>
-      <td>-1.144328</td>
-      <td>-0.684740</td>
-      <td>-0.225152</td>
-      <td>0.234436</td>
-      <td>0.694024</td>
+      <td>0.387027</td>
+      <td>0.413230</td>
+      <td>0.094830</td>
+      <td>0.240928</td>
+      <td>0.387027</td>
+      <td>0.533126</td>
+      <td>0.679225</td>
       <td>2.0</td>
-      <td>-0.487596</td>
-      <td>0.435325</td>
-      <td>-0.795418</td>
-      <td>-0.641507</td>
-      <td>-0.487596</td>
-      <td>-0.333686</td>
-      <td>-0.179775</td>
+      <td>-0.751037</td>
+      <td>0.019697</td>
+      <td>-0.764965</td>
+      <td>-0.758001</td>
+      <td>-0.751037</td>
+      <td>-0.744074</td>
+      <td>-0.737110</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="font-size-2-reshaping-font">
-<h2><span class="section-number">16.4. </span>모양 변환<font size='2'>Reshaping</font><a class="headerlink" href="#font-size-2-reshaping-font" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="font-size-2-reshaping-font">
+<h2><span class="section-number">16.4. </span>모양 변환<font size='2'>Reshaping</font><a class="headerlink" href="#font-size-2-reshaping-font" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>참고: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/reshaping.html#reshaping-stacking">Reshaping</a></p></li>
 </ul>
-<div class="section" id="id5">
-<h3><span class="section-number">16.4.1. </span>스택<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<section id="id5">
+<h3><span class="section-number">16.4.1. </span>스택<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>열 인덱스의 레벨을 하나 줄일 때 사용한다.
 없어진 레벨은 행 인덱스의 마지막 레벨로 추가된다.</p>
 <div class="cell docutils container">
@@ -6018,46 +5761,46 @@ dtype: int64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>one</th>
-      <td>-0.552660</td>
-      <td>0.982069</td>
+      <td>0.599635</td>
+      <td>1.199888</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.848007</td>
-      <td>-0.169227</td>
+      <td>-1.689658</td>
+      <td>0.822207</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>one</th>
-      <td>1.404083</td>
-      <td>-1.211131</td>
+      <td>-0.529227</td>
+      <td>-1.173556</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.440551</td>
-      <td>0.477608</td>
+      <td>-0.988854</td>
+      <td>-1.257613</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>0.110482</td>
-      <td>-0.035655</td>
+      <td>-1.501587</td>
+      <td>1.533670</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.418956</td>
-      <td>1.043524</td>
+      <td>-0.049944</td>
+      <td>-0.259336</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">qux</th>
       <th>one</th>
-      <td>-0.838742</td>
-      <td>-0.591438</td>
+      <td>0.088915</td>
+      <td>-0.611222</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.452728</td>
-      <td>-1.455569</td>
+      <td>-0.304611</td>
+      <td>1.876861</td>
     </tr>
   </tbody>
 </table>
@@ -6104,24 +5847,24 @@ dtype: int64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>one</th>
-      <td>-0.552660</td>
-      <td>0.982069</td>
+      <td>0.599635</td>
+      <td>1.199888</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.848007</td>
-      <td>-0.169227</td>
+      <td>-1.689658</td>
+      <td>0.822207</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>one</th>
-      <td>1.404083</td>
-      <td>-1.211131</td>
+      <td>-0.529227</td>
+      <td>-1.173556</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.440551</td>
-      <td>0.477608</td>
+      <td>-0.988854</td>
+      <td>-1.257613</td>
     </tr>
   </tbody>
 </table>
@@ -6143,22 +5886,22 @@ dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>first  second   
-bar    one     A   -0.552660
-               B    0.982069
-       two     A    0.848007
-               B   -0.169227
-baz    one     A    1.404083
-               B   -1.211131
-       two     A   -0.440551
-               B    0.477608
+bar    one     A    0.599635
+               B    1.199888
+       two     A   -1.689658
+               B    0.822207
+baz    one     A   -0.529227
+               B   -1.173556
+       two     A   -0.988854
+               B   -1.257613
 dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id6">
-<h3><span class="section-number">16.4.2. </span>언스택<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id6">
+<h3><span class="section-number">16.4.2. </span>언스택<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>행 인덱스의 지정된 레벨을 열의 마지막 레벨로 변환한다.
 인자를 지정하지 않으면 마지막 레벨을 변환한다.</p>
 <ul class="simple">
@@ -6204,24 +5947,24 @@ dtype: float64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>one</th>
-      <td>-0.552660</td>
-      <td>0.982069</td>
+      <td>0.599635</td>
+      <td>1.199888</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.848007</td>
-      <td>-0.169227</td>
+      <td>-1.689658</td>
+      <td>0.822207</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>one</th>
-      <td>1.404083</td>
-      <td>-1.211131</td>
+      <td>-0.529227</td>
+      <td>-1.173556</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.440551</td>
-      <td>0.477608</td>
+      <td>-0.988854</td>
+      <td>-1.257613</td>
     </tr>
   </tbody>
 </table>
@@ -6277,17 +6020,17 @@ dtype: float64
   <tbody>
     <tr>
       <th>bar</th>
-      <td>-0.552660</td>
-      <td>0.848007</td>
-      <td>0.982069</td>
-      <td>-0.169227</td>
+      <td>0.599635</td>
+      <td>-1.689658</td>
+      <td>1.199888</td>
+      <td>0.822207</td>
     </tr>
     <tr>
       <th>baz</th>
-      <td>1.404083</td>
-      <td>-0.440551</td>
-      <td>-1.211131</td>
-      <td>0.477608</td>
+      <td>-0.529227</td>
+      <td>-0.988854</td>
+      <td>-1.173556</td>
+      <td>-1.257613</td>
     </tr>
   </tbody>
 </table>
@@ -6334,24 +6077,24 @@ dtype: float64
     <tr>
       <th rowspan="2" valign="top">one</th>
       <th>A</th>
-      <td>-0.552660</td>
-      <td>1.404083</td>
+      <td>0.599635</td>
+      <td>-0.529227</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>0.982069</td>
-      <td>-1.211131</td>
+      <td>1.199888</td>
+      <td>-1.173556</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">two</th>
       <th>A</th>
-      <td>0.848007</td>
-      <td>-0.440551</td>
+      <td>-1.689658</td>
+      <td>-0.988854</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>-0.169227</td>
-      <td>0.477608</td>
+      <td>0.822207</td>
+      <td>-1.257613</td>
     </tr>
   </tbody>
 </table>
@@ -6397,32 +6140,32 @@ dtype: float64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>A</th>
-      <td>-0.552660</td>
-      <td>0.848007</td>
+      <td>0.599635</td>
+      <td>-1.689658</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>0.982069</td>
-      <td>-0.169227</td>
+      <td>1.199888</td>
+      <td>0.822207</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>A</th>
-      <td>1.404083</td>
-      <td>-0.440551</td>
+      <td>-0.529227</td>
+      <td>-0.988854</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>-1.211131</td>
-      <td>0.477608</td>
+      <td>-1.173556</td>
+      <td>-1.257613</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="font-size-2-pivoting-font">
-<h3><span class="section-number">16.4.3. </span>피버팅<font size='2'>Pivoting</font><a class="headerlink" href="#font-size-2-pivoting-font" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="font-size-2-pivoting-font">
+<h3><span class="section-number">16.4.3. </span>피버팅<font size='2'>Pivoting</font><a class="headerlink" href="#font-size-2-pivoting-font" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>참고: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/reshaping.html#reshaping-pivot">Pivot Tables</a></p></li>
 </ul>
@@ -6478,192 +6221,192 @@ dtype: float64
       <td>one</td>
       <td>A</td>
       <td>foo</td>
-      <td>1.576387</td>
-      <td>-1.920876</td>
+      <td>-0.147578</td>
+      <td>0.936493</td>
     </tr>
     <tr>
       <th>1</th>
       <td>one</td>
       <td>B</td>
       <td>foo</td>
-      <td>0.277910</td>
-      <td>-1.626335</td>
+      <td>0.276558</td>
+      <td>0.105879</td>
     </tr>
     <tr>
       <th>2</th>
       <td>two</td>
       <td>C</td>
       <td>foo</td>
-      <td>-0.823135</td>
-      <td>-0.297894</td>
+      <td>-0.114954</td>
+      <td>0.887595</td>
     </tr>
     <tr>
       <th>3</th>
       <td>three</td>
       <td>A</td>
       <td>bar</td>
-      <td>1.181153</td>
-      <td>-0.453578</td>
+      <td>-1.665467</td>
+      <td>-0.676261</td>
     </tr>
     <tr>
       <th>4</th>
       <td>one</td>
       <td>B</td>
       <td>bar</td>
-      <td>0.619905</td>
-      <td>0.305616</td>
+      <td>-2.274728</td>
+      <td>0.407876</td>
     </tr>
     <tr>
       <th>5</th>
       <td>one</td>
       <td>C</td>
       <td>bar</td>
-      <td>-0.653185</td>
-      <td>-1.201945</td>
+      <td>2.072733</td>
+      <td>-0.069360</td>
     </tr>
     <tr>
       <th>6</th>
       <td>two</td>
       <td>A</td>
       <td>foo</td>
-      <td>-0.046961</td>
-      <td>0.936854</td>
+      <td>0.814803</td>
+      <td>-1.060514</td>
     </tr>
     <tr>
       <th>7</th>
       <td>three</td>
       <td>B</td>
       <td>foo</td>
-      <td>0.351423</td>
-      <td>2.070841</td>
+      <td>0.167972</td>
+      <td>1.552515</td>
     </tr>
     <tr>
       <th>8</th>
       <td>one</td>
       <td>C</td>
       <td>foo</td>
-      <td>-0.903270</td>
-      <td>0.172153</td>
+      <td>-0.574178</td>
+      <td>-0.878173</td>
     </tr>
     <tr>
       <th>9</th>
       <td>one</td>
       <td>A</td>
       <td>bar</td>
-      <td>-1.444833</td>
-      <td>1.833210</td>
+      <td>0.749102</td>
+      <td>-1.198790</td>
     </tr>
     <tr>
       <th>10</th>
       <td>two</td>
       <td>B</td>
       <td>bar</td>
-      <td>-1.980697</td>
-      <td>-0.411865</td>
+      <td>1.107601</td>
+      <td>-1.235323</td>
     </tr>
     <tr>
       <th>11</th>
       <td>three</td>
       <td>C</td>
       <td>bar</td>
-      <td>0.702665</td>
-      <td>1.121255</td>
+      <td>2.261636</td>
+      <td>-0.209358</td>
     </tr>
     <tr>
       <th>12</th>
       <td>one</td>
       <td>A</td>
       <td>foo</td>
-      <td>-1.134892</td>
-      <td>-0.983197</td>
+      <td>1.137629</td>
+      <td>0.746177</td>
     </tr>
     <tr>
       <th>13</th>
       <td>one</td>
       <td>B</td>
       <td>foo</td>
-      <td>0.763112</td>
-      <td>-1.458481</td>
+      <td>-0.585114</td>
+      <td>0.933308</td>
     </tr>
     <tr>
       <th>14</th>
       <td>two</td>
       <td>C</td>
       <td>foo</td>
-      <td>0.203629</td>
-      <td>0.350934</td>
+      <td>-2.055793</td>
+      <td>1.336774</td>
     </tr>
     <tr>
       <th>15</th>
       <td>three</td>
       <td>A</td>
       <td>bar</td>
-      <td>1.005854</td>
-      <td>-0.531662</td>
+      <td>-0.490438</td>
+      <td>1.212936</td>
     </tr>
     <tr>
       <th>16</th>
       <td>one</td>
       <td>B</td>
       <td>bar</td>
-      <td>-0.627474</td>
-      <td>0.319156</td>
+      <td>-0.711893</td>
+      <td>-2.034945</td>
     </tr>
     <tr>
       <th>17</th>
       <td>one</td>
       <td>C</td>
       <td>bar</td>
-      <td>0.390153</td>
-      <td>0.340894</td>
+      <td>-0.751708</td>
+      <td>1.000449</td>
     </tr>
     <tr>
       <th>18</th>
       <td>two</td>
       <td>A</td>
       <td>foo</td>
-      <td>0.003692</td>
-      <td>0.529432</td>
+      <td>-0.177327</td>
+      <td>-1.969357</td>
     </tr>
     <tr>
       <th>19</th>
       <td>three</td>
       <td>B</td>
       <td>foo</td>
-      <td>-0.642714</td>
-      <td>0.570521</td>
+      <td>0.482275</td>
+      <td>-0.583445</td>
     </tr>
     <tr>
       <th>20</th>
       <td>one</td>
       <td>C</td>
       <td>foo</td>
-      <td>-1.396607</td>
-      <td>-0.399162</td>
+      <td>-0.163230</td>
+      <td>-0.474722</td>
     </tr>
     <tr>
       <th>21</th>
       <td>one</td>
       <td>A</td>
       <td>bar</td>
-      <td>0.977617</td>
-      <td>1.363426</td>
+      <td>-1.366451</td>
+      <td>-0.568846</td>
     </tr>
     <tr>
       <th>22</th>
       <td>two</td>
       <td>B</td>
       <td>bar</td>
-      <td>-0.367708</td>
-      <td>0.476142</td>
+      <td>-1.110033</td>
+      <td>0.516270</td>
     </tr>
     <tr>
       <th>23</th>
       <td>three</td>
       <td>C</td>
       <td>bar</td>
-      <td>1.844942</td>
-      <td>0.195777</td>
+      <td>0.541621</td>
+      <td>-0.553620</td>
     </tr>
   </tbody>
 </table>
@@ -6709,50 +6452,50 @@ dtype: float64
     <tr>
       <th rowspan="3" valign="top">one</th>
       <th>A</th>
-      <td>-0.233608</td>
-      <td>0.220748</td>
+      <td>-0.308674</td>
+      <td>0.495026</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>-0.003785</td>
-      <td>0.520511</td>
+      <td>-1.493310</td>
+      <td>-0.154278</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>-0.131516</td>
-      <td>-1.149938</td>
+      <td>0.660513</td>
+      <td>-0.368704</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">three</th>
       <th>A</th>
-      <td>1.093503</td>
+      <td>-1.077953</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>B</th>
       <td>NaN</td>
-      <td>-0.145645</td>
+      <td>0.325123</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>1.273803</td>
+      <td>1.401628</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">two</th>
       <th>A</th>
       <td>NaN</td>
-      <td>-0.021634</td>
+      <td>0.318738</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>-1.174203</td>
+      <td>-0.001216</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>C</th>
       <td>NaN</td>
-      <td>-0.309753</td>
+      <td>-1.085373</td>
     </tr>
   </tbody>
 </table>
@@ -6798,50 +6541,50 @@ dtype: float64
     <tr>
       <th rowspan="3" valign="top">one</th>
       <th>A</th>
-      <td>-0.467216</td>
-      <td>0.441495</td>
+      <td>-0.617348</td>
+      <td>0.990051</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>-0.007569</td>
-      <td>1.041022</td>
+      <td>-2.986621</td>
+      <td>-0.308556</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>-0.263033</td>
-      <td>-2.299876</td>
+      <td>1.321025</td>
+      <td>-0.737408</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">three</th>
       <th>A</th>
-      <td>2.187007</td>
+      <td>-2.155906</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>B</th>
       <td>NaN</td>
-      <td>-0.291291</td>
+      <td>0.650247</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>2.547607</td>
+      <td>2.803257</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">two</th>
       <th>A</th>
       <td>NaN</td>
-      <td>-0.043268</td>
+      <td>0.637476</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>-2.348405</td>
+      <td>-0.002432</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>C</th>
       <td>NaN</td>
-      <td>-0.619506</td>
+      <td>-2.170746</td>
     </tr>
   </tbody>
 </table>
@@ -6886,192 +6629,192 @@ dtype: float64
       <td>one</td>
       <td>A</td>
       <td>foo</td>
-      <td>1.576387</td>
-      <td>-1.920876</td>
+      <td>-0.147578</td>
+      <td>0.936493</td>
     </tr>
     <tr>
       <th>1</th>
       <td>one</td>
       <td>B</td>
       <td>foo</td>
-      <td>0.277910</td>
-      <td>-1.626335</td>
+      <td>0.276558</td>
+      <td>0.105879</td>
     </tr>
     <tr>
       <th>2</th>
       <td>two</td>
       <td>C</td>
       <td>foo</td>
-      <td>-0.823135</td>
-      <td>-0.297894</td>
+      <td>-0.114954</td>
+      <td>0.887595</td>
     </tr>
     <tr>
       <th>3</th>
       <td>three</td>
       <td>A</td>
       <td>bar</td>
-      <td>1.181153</td>
-      <td>-0.453578</td>
+      <td>-1.665467</td>
+      <td>-0.676261</td>
     </tr>
     <tr>
       <th>4</th>
       <td>one</td>
       <td>B</td>
       <td>bar</td>
-      <td>0.619905</td>
-      <td>0.305616</td>
+      <td>-2.274728</td>
+      <td>0.407876</td>
     </tr>
     <tr>
       <th>5</th>
       <td>one</td>
       <td>C</td>
       <td>bar</td>
-      <td>-0.653185</td>
-      <td>-1.201945</td>
+      <td>2.072733</td>
+      <td>-0.069360</td>
     </tr>
     <tr>
       <th>6</th>
       <td>two</td>
       <td>A</td>
       <td>foo</td>
-      <td>-0.046961</td>
-      <td>0.936854</td>
+      <td>0.814803</td>
+      <td>-1.060514</td>
     </tr>
     <tr>
       <th>7</th>
       <td>three</td>
       <td>B</td>
       <td>foo</td>
-      <td>0.351423</td>
-      <td>2.070841</td>
+      <td>0.167972</td>
+      <td>1.552515</td>
     </tr>
     <tr>
       <th>8</th>
       <td>one</td>
       <td>C</td>
       <td>foo</td>
-      <td>-0.903270</td>
-      <td>0.172153</td>
+      <td>-0.574178</td>
+      <td>-0.878173</td>
     </tr>
     <tr>
       <th>9</th>
       <td>one</td>
       <td>A</td>
       <td>bar</td>
-      <td>-1.444833</td>
-      <td>1.833210</td>
+      <td>0.749102</td>
+      <td>-1.198790</td>
     </tr>
     <tr>
       <th>10</th>
       <td>two</td>
       <td>B</td>
       <td>bar</td>
-      <td>-1.980697</td>
-      <td>-0.411865</td>
+      <td>1.107601</td>
+      <td>-1.235323</td>
     </tr>
     <tr>
       <th>11</th>
       <td>three</td>
       <td>C</td>
       <td>bar</td>
-      <td>0.702665</td>
-      <td>1.121255</td>
+      <td>2.261636</td>
+      <td>-0.209358</td>
     </tr>
     <tr>
       <th>12</th>
       <td>one</td>
       <td>A</td>
       <td>foo</td>
-      <td>-1.134892</td>
-      <td>-0.983197</td>
+      <td>1.137629</td>
+      <td>0.746177</td>
     </tr>
     <tr>
       <th>13</th>
       <td>one</td>
       <td>B</td>
       <td>foo</td>
-      <td>0.763112</td>
-      <td>-1.458481</td>
+      <td>-0.585114</td>
+      <td>0.933308</td>
     </tr>
     <tr>
       <th>14</th>
       <td>two</td>
       <td>C</td>
       <td>foo</td>
-      <td>0.203629</td>
-      <td>0.350934</td>
+      <td>-2.055793</td>
+      <td>1.336774</td>
     </tr>
     <tr>
       <th>15</th>
       <td>three</td>
       <td>A</td>
       <td>bar</td>
-      <td>1.005854</td>
-      <td>-0.531662</td>
+      <td>-0.490438</td>
+      <td>1.212936</td>
     </tr>
     <tr>
       <th>16</th>
       <td>one</td>
       <td>B</td>
       <td>bar</td>
-      <td>-0.627474</td>
-      <td>0.319156</td>
+      <td>-0.711893</td>
+      <td>-2.034945</td>
     </tr>
     <tr>
       <th>17</th>
       <td>one</td>
       <td>C</td>
       <td>bar</td>
-      <td>0.390153</td>
-      <td>0.340894</td>
+      <td>-0.751708</td>
+      <td>1.000449</td>
     </tr>
     <tr>
       <th>18</th>
       <td>two</td>
       <td>A</td>
       <td>foo</td>
-      <td>0.003692</td>
-      <td>0.529432</td>
+      <td>-0.177327</td>
+      <td>-1.969357</td>
     </tr>
     <tr>
       <th>19</th>
       <td>three</td>
       <td>B</td>
       <td>foo</td>
-      <td>-0.642714</td>
-      <td>0.570521</td>
+      <td>0.482275</td>
+      <td>-0.583445</td>
     </tr>
     <tr>
       <th>20</th>
       <td>one</td>
       <td>C</td>
       <td>foo</td>
-      <td>-1.396607</td>
-      <td>-0.399162</td>
+      <td>-0.163230</td>
+      <td>-0.474722</td>
     </tr>
     <tr>
       <th>21</th>
       <td>one</td>
       <td>A</td>
       <td>bar</td>
-      <td>0.977617</td>
-      <td>1.363426</td>
+      <td>-1.366451</td>
+      <td>-0.568846</td>
     </tr>
     <tr>
       <th>22</th>
       <td>two</td>
       <td>B</td>
       <td>bar</td>
-      <td>-0.367708</td>
-      <td>0.476142</td>
+      <td>-1.110033</td>
+      <td>0.516270</td>
     </tr>
     <tr>
       <th>23</th>
       <td>three</td>
       <td>C</td>
       <td>bar</td>
-      <td>1.844942</td>
-      <td>0.195777</td>
+      <td>0.541621</td>
+      <td>-0.553620</td>
     </tr>
   </tbody>
 </table>
@@ -7116,96 +6859,96 @@ dtype: float64
       <td>one</td>
       <td>A</td>
       <td>bar</td>
-      <td>-0.467216</td>
-      <td>3.196635</td>
+      <td>-0.617348</td>
+      <td>-1.767636</td>
     </tr>
     <tr>
       <th>1</th>
       <td>one</td>
       <td>A</td>
       <td>foo</td>
-      <td>0.441495</td>
-      <td>-2.904072</td>
+      <td>0.990051</td>
+      <td>1.682670</td>
     </tr>
     <tr>
       <th>2</th>
       <td>one</td>
       <td>B</td>
       <td>bar</td>
-      <td>-0.007569</td>
-      <td>0.624772</td>
+      <td>-2.986621</td>
+      <td>-1.627069</td>
     </tr>
     <tr>
       <th>3</th>
       <td>one</td>
       <td>B</td>
       <td>foo</td>
-      <td>1.041022</td>
-      <td>-3.084816</td>
+      <td>-0.308556</td>
+      <td>1.039187</td>
     </tr>
     <tr>
       <th>4</th>
       <td>one</td>
       <td>C</td>
       <td>bar</td>
-      <td>-0.263033</td>
-      <td>-0.861052</td>
+      <td>1.321025</td>
+      <td>0.931089</td>
     </tr>
     <tr>
       <th>5</th>
       <td>one</td>
       <td>C</td>
       <td>foo</td>
-      <td>-2.299876</td>
-      <td>-0.227009</td>
+      <td>-0.737408</td>
+      <td>-1.352894</td>
     </tr>
     <tr>
       <th>6</th>
       <td>three</td>
       <td>A</td>
       <td>bar</td>
-      <td>2.187007</td>
-      <td>-0.985240</td>
+      <td>-2.155906</td>
+      <td>0.536675</td>
     </tr>
     <tr>
       <th>7</th>
       <td>three</td>
       <td>B</td>
       <td>foo</td>
-      <td>-0.291291</td>
-      <td>2.641362</td>
+      <td>0.650247</td>
+      <td>0.969070</td>
     </tr>
     <tr>
       <th>8</th>
       <td>three</td>
       <td>C</td>
       <td>bar</td>
-      <td>2.547607</td>
-      <td>1.317031</td>
+      <td>2.803257</td>
+      <td>-0.762978</td>
     </tr>
     <tr>
       <th>9</th>
       <td>two</td>
       <td>A</td>
       <td>foo</td>
-      <td>-0.043268</td>
-      <td>1.466286</td>
+      <td>0.637476</td>
+      <td>-3.029871</td>
     </tr>
     <tr>
       <th>10</th>
       <td>two</td>
       <td>B</td>
       <td>bar</td>
-      <td>-2.348405</td>
-      <td>0.064276</td>
+      <td>-0.002432</td>
+      <td>-0.719053</td>
     </tr>
     <tr>
       <th>11</th>
       <td>two</td>
       <td>C</td>
       <td>foo</td>
-      <td>-0.619506</td>
-      <td>0.053040</td>
+      <td>-2.170746</td>
+      <td>2.224369</td>
     </tr>
   </tbody>
 </table>
@@ -7251,59 +6994,59 @@ dtype: float64
     <tr>
       <th rowspan="3" valign="top">one</th>
       <th>A</th>
-      <td>-0.467216</td>
-      <td>0.441495</td>
+      <td>-0.617348</td>
+      <td>0.990051</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>-0.007569</td>
-      <td>1.041022</td>
+      <td>-2.986621</td>
+      <td>-0.308556</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>-0.263033</td>
-      <td>-2.299876</td>
+      <td>1.321025</td>
+      <td>-0.737408</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">three</th>
       <th>A</th>
-      <td>2.187007</td>
+      <td>-2.155906</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>B</th>
       <td>NaN</td>
-      <td>-0.291291</td>
+      <td>0.650247</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>2.547607</td>
+      <td>2.803257</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">two</th>
       <th>A</th>
       <td>NaN</td>
-      <td>-0.043268</td>
+      <td>0.637476</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>-2.348405</td>
+      <td>-0.002432</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>C</th>
       <td>NaN</td>
-      <td>-0.619506</td>
+      <td>-2.170746</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="time-series">
-<h2><span class="section-number">16.5. </span>Time series<a class="headerlink" href="#time-series" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="time-series">
+<h2><span class="section-number">16.5. </span>Time series<a class="headerlink" href="#time-series" title="Permalink to this heading">#</a></h2>
 <p>pandas has simple, powerful, and efficient functionality for performing resampling operations during frequency conversion (e.g., converting secondly data into 5-minutely data). This is extremely common in, but not limited to, financial applications. See the</p>
 <ul class="simple">
 <li><p>참고: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/timeseries.html#timeseries">Time Series</a></p></li>
@@ -7379,18 +7122,18 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01 00:00:00    232
-2023-01-01 00:00:01    477
-2023-01-01 00:00:02    366
-2023-01-01 00:00:03    136
-2023-01-01 00:00:04    372
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01 00:00:00    376
+2023-01-01 00:00:01    248
+2023-01-01 00:00:02     35
+2023-01-01 00:00:03     32
+2023-01-01 00:00:04    209
                       ... 
-2023-01-01 00:01:35     17
-2023-01-01 00:01:36    279
-2023-01-01 00:01:37    490
-2023-01-01 00:01:38    181
-2023-01-01 00:01:39    175
-Freq: S, Length: 100, dtype: int32
+2023-01-01 00:01:35    469
+2023-01-01 00:01:36     77
+2023-01-01 00:01:37    103
+2023-01-01 00:01:38      9
+2023-01-01 00:01:39    171
+Freq: S, Length: 100, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -7402,17 +7145,17 @@ Freq: S, Length: 100, dtype: int32
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01 00:00:00    2563
-2023-01-01 00:00:10    2446
-2023-01-01 00:00:20    2445
-2023-01-01 00:00:30    2469
-2023-01-01 00:00:40    1920
-2023-01-01 00:00:50    2675
-2023-01-01 00:01:00    2232
-2023-01-01 00:01:10    2159
-2023-01-01 00:01:20    3039
-2023-01-01 00:01:30    2014
-Freq: 10S, dtype: int32
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01 00:00:00    1569
+2023-01-01 00:00:10    1447
+2023-01-01 00:00:20    1752
+2023-01-01 00:00:30    2394
+2023-01-01 00:00:40    2195
+2023-01-01 00:00:50    1924
+2023-01-01 00:01:00    2102
+2023-01-01 00:01:10    2776
+2023-01-01 00:01:20    2788
+2023-01-01 00:01:30    2108
+Freq: 10S, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -7424,9 +7167,9 @@ Freq: 10S, dtype: int32
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01 00:00:00    14518
-2023-01-01 00:01:00     9444
-Freq: T, dtype: int32
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01 00:00:00    11281
+2023-01-01 00:01:00     9774
+Freq: T, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -7447,13 +7190,13 @@ Freq: T, dtype: int32
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-05-18   -1.916441
-2023-05-19   -1.574477
-2023-05-20   -0.076628
-2023-05-21   -0.615410
-2023-05-22    0.809414
-2023-05-23   -0.979909
-2023-05-24   -0.232630
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-05-18   -1.413435
+2023-05-19   -1.121127
+2023-05-20   -0.658126
+2023-05-21   -2.466094
+2023-05-22   -0.385695
+2023-05-23   -0.112811
+2023-05-24    2.062974
 Freq: D, dtype: float64
 </pre></div>
 </div>
@@ -7467,13 +7210,13 @@ Freq: D, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-05-18 00:00:00+00:00   -1.916441
-2023-05-19 00:00:00+00:00   -1.574477
-2023-05-20 00:00:00+00:00   -0.076628
-2023-05-21 00:00:00+00:00   -0.615410
-2023-05-22 00:00:00+00:00    0.809414
-2023-05-23 00:00:00+00:00   -0.979909
-2023-05-24 00:00:00+00:00   -0.232630
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-05-18 00:00:00+00:00   -1.413435
+2023-05-19 00:00:00+00:00   -1.121127
+2023-05-20 00:00:00+00:00   -0.658126
+2023-05-21 00:00:00+00:00   -2.466094
+2023-05-22 00:00:00+00:00   -0.385695
+2023-05-23 00:00:00+00:00   -0.112811
+2023-05-24 00:00:00+00:00    2.062974
 Freq: D, dtype: float64
 </pre></div>
 </div>
@@ -7504,18 +7247,18 @@ Freq: D, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-31    0.958815
-2023-02-28   -0.141561
-2023-03-31   -1.157367
-2023-04-30    2.423893
-2023-05-31    0.411260
-2023-06-30    0.390198
-2023-07-31    1.668766
-2023-08-31    0.235385
-2023-09-30    0.306633
-2023-10-31   -0.067944
-2023-11-30   -1.399290
-2023-12-31    0.172799
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-31    0.472225
+2023-02-28   -1.909878
+2023-03-31   -1.178546
+2023-04-30    0.125082
+2023-05-31   -1.253506
+2023-06-30    1.298559
+2023-07-31   -0.075913
+2023-08-31   -0.059697
+2023-09-30   -0.524691
+2023-10-31    0.632161
+2023-11-30    0.882913
+2023-12-31   -1.329687
 Freq: M, dtype: float64
 </pre></div>
 </div>
@@ -7529,18 +7272,18 @@ Freq: M, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01    0.958815
-2023-02   -0.141561
-2023-03   -1.157367
-2023-04    2.423893
-2023-05    0.411260
-2023-06    0.390198
-2023-07    1.668766
-2023-08    0.235385
-2023-09    0.306633
-2023-10   -0.067944
-2023-11   -1.399290
-2023-12    0.172799
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01    0.472225
+2023-02   -1.909878
+2023-03   -1.178546
+2023-04    0.125082
+2023-05   -1.253506
+2023-06    1.298559
+2023-07   -0.075913
+2023-08   -0.059697
+2023-09   -0.524691
+2023-10    0.632161
+2023-11    0.882913
+2023-12   -1.329687
 Freq: M, dtype: float64
 </pre></div>
 </div>
@@ -7553,18 +7296,18 @@ Freq: M, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01    0.958815
-2023-02-01   -0.141561
-2023-03-01   -1.157367
-2023-04-01    2.423893
-2023-05-01    0.411260
-2023-06-01    0.390198
-2023-07-01    1.668766
-2023-08-01    0.235385
-2023-09-01    0.306633
-2023-10-01   -0.067944
-2023-11-01   -1.399290
-2023-12-01    0.172799
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01    0.472225
+2023-02-01   -1.909878
+2023-03-01   -1.178546
+2023-04-01    0.125082
+2023-05-01   -1.253506
+2023-06-01    1.298559
+2023-07-01   -0.075913
+2023-08-01   -0.059697
+2023-09-01   -0.524691
+2023-10-01    0.632161
+2023-11-01    0.882913
+2023-12-01   -1.329687
 Freq: MS, dtype: float64
 </pre></div>
 </div>
@@ -7594,14 +7337,14 @@ Freq: MS, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022Q1   -2.054538
-2022Q2   -0.457317
-2022Q3   -0.826720
-2022Q4   -1.659300
-2023Q1   -0.053351
-2023Q2   -2.130187
-2023Q3    0.179261
-2023Q4   -0.736487
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022Q1    0.358663
+2022Q2   -0.232335
+2022Q3   -0.089188
+2022Q4    0.092653
+2023Q1    0.842552
+2023Q2   -0.383533
+2023Q3   -0.516937
+2023Q4    0.848404
 Freq: Q-NOV, dtype: float64
 </pre></div>
 </div>
@@ -7658,22 +7401,22 @@ Freq: Q-NOV, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-03-01 09:00   -2.054538
-2022-06-01 09:00   -0.457317
-2022-09-01 09:00   -0.826720
-2022-12-01 09:00   -1.659300
-2023-03-01 09:00   -0.053351
-2023-06-01 09:00   -2.130187
-2023-09-01 09:00    0.179261
-2023-12-01 09:00   -0.736487
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-03-01 09:00    0.358663
+2022-06-01 09:00   -0.232335
+2022-09-01 09:00   -0.089188
+2022-12-01 09:00    0.092653
+2023-03-01 09:00    0.842552
+2023-06-01 09:00   -0.383533
+2023-09-01 09:00   -0.516937
+2023-12-01 09:00    0.848404
 Freq: H, dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="plotting">
-<h2><span class="section-number">16.6. </span>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="plotting">
+<h2><span class="section-number">16.6. </span>Plotting<a class="headerlink" href="#plotting" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>참고: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/visualization.html#visualization">Plotting</a></p></li>
 </ul>
@@ -7694,17 +7437,17 @@ Freq: H, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01   -0.532375
-2023-01-02    0.512878
-2023-01-03   -0.923500
-2023-01-04   -0.783634
-2023-01-05    1.886192
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01    0.276266
+2023-01-02   -1.854628
+2023-01-03    0.623901
+2023-01-04    1.145311
+2023-01-05    1.037190
                 ...   
-2025-09-22   -0.667103
-2025-09-23    0.304817
-2025-09-24   -0.350991
-2025-09-25    0.131279
-2025-09-26   -0.462871
+2025-09-22    0.239557
+2025-09-23    1.541750
+2025-09-24   -0.369830
+2025-09-25   -1.451044
+2025-09-26   -0.213352
 Freq: D, Length: 1000, dtype: float64
 </pre></div>
 </div>
@@ -7718,17 +7461,17 @@ Freq: D, Length: 1000, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01   -0.532375
-2023-01-02   -0.019496
-2023-01-03   -0.942996
-2023-01-04   -1.726630
-2023-01-05    0.159562
-                ...   
-2025-09-22    2.284545
-2025-09-23    2.589361
-2025-09-24    2.238371
-2025-09-25    2.369649
-2025-09-26    1.906778
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01     0.276266
+2023-01-02    -1.578362
+2023-01-03    -0.954461
+2023-01-04     0.190850
+2023-01-05     1.228041
+                ...    
+2025-09-22    21.936198
+2025-09-23    23.477948
+2025-09-24    23.108118
+2025-09-25    21.657074
+2025-09-26    21.443722
 Freq: D, Length: 1000, dtype: float64
 </pre></div>
 </div>
@@ -7741,10 +7484,10 @@ Freq: D, Length: 1000, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="_images/pandas_10minutes_2_235_1.png" src="_images/pandas_10minutes_2_235_1.png" />
+<img alt="_images/257233d0391622fcf651dc273043d658e3ff2756ff44711917ada257ba32e956.png" src="_images/257233d0391622fcf651dc273043d658e3ff2756ff44711917ada257ba32e956.png" />
 </div>
 </div>
 <p>If running under Jupyter Notebook, the plot will appear on <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.plot.html#pandas.Series.plot"><code class="docutils literal notranslate"><span class="pre">plot()</span></code></a>. Otherwise use <a class="reference external" href="https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.show.html"><code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.show</span></code></a> to show it or <a class="reference external" href="https://matplotlib.org/3.1.1/api/_as_gen/matplotlib.pyplot.savefig.html"><code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.savefig</span></code></a> to write it to a file.</p>
@@ -7787,38 +7530,38 @@ Freq: D, Length: 1000, dtype: float64
   <tbody>
     <tr>
       <th>2023-01-01</th>
-      <td>0.893910</td>
-      <td>1.557533</td>
-      <td>1.391411</td>
-      <td>-1.818304</td>
+      <td>0.205191</td>
+      <td>-0.372824</td>
+      <td>0.661915</td>
+      <td>-0.308036</td>
     </tr>
     <tr>
       <th>2023-01-02</th>
-      <td>0.430021</td>
-      <td>-0.045819</td>
-      <td>-1.160083</td>
-      <td>-0.573786</td>
+      <td>0.152014</td>
+      <td>-0.995903</td>
+      <td>-0.421722</td>
+      <td>1.332621</td>
     </tr>
     <tr>
       <th>2023-01-03</th>
-      <td>0.348308</td>
-      <td>-0.530725</td>
-      <td>-1.208756</td>
-      <td>-2.074414</td>
+      <td>0.292945</td>
+      <td>-1.168323</td>
+      <td>-1.974502</td>
+      <td>0.825475</td>
     </tr>
     <tr>
       <th>2023-01-04</th>
-      <td>0.612972</td>
-      <td>-1.546190</td>
-      <td>0.801861</td>
-      <td>0.555108</td>
+      <td>-0.793733</td>
+      <td>0.172062</td>
+      <td>-0.887225</td>
+      <td>0.794429</td>
     </tr>
     <tr>
       <th>2023-01-05</th>
-      <td>0.936486</td>
-      <td>0.876662</td>
-      <td>-0.474661</td>
-      <td>-0.393873</td>
+      <td>0.303919</td>
+      <td>-0.991363</td>
+      <td>-0.287142</td>
+      <td>-0.837062</td>
     </tr>
     <tr>
       <th>...</th>
@@ -7829,38 +7572,38 @@ Freq: D, Length: 1000, dtype: float64
     </tr>
     <tr>
       <th>2025-09-22</th>
-      <td>-0.057009</td>
-      <td>-1.072625</td>
-      <td>0.511854</td>
-      <td>-1.157264</td>
+      <td>1.104410</td>
+      <td>2.141313</td>
+      <td>1.363344</td>
+      <td>0.068153</td>
     </tr>
     <tr>
       <th>2025-09-23</th>
-      <td>-0.428150</td>
-      <td>-0.441458</td>
-      <td>-0.032855</td>
-      <td>0.528877</td>
+      <td>0.436171</td>
+      <td>0.082910</td>
+      <td>-1.133586</td>
+      <td>0.155596</td>
     </tr>
     <tr>
       <th>2025-09-24</th>
-      <td>0.006262</td>
-      <td>-0.114026</td>
-      <td>-0.867111</td>
-      <td>0.153402</td>
+      <td>0.919537</td>
+      <td>-1.462166</td>
+      <td>0.274569</td>
+      <td>-0.217224</td>
     </tr>
     <tr>
       <th>2025-09-25</th>
-      <td>0.860467</td>
-      <td>1.651096</td>
-      <td>1.768416</td>
-      <td>1.003758</td>
+      <td>0.309003</td>
+      <td>-0.415077</td>
+      <td>-0.723517</td>
+      <td>-0.312430</td>
     </tr>
     <tr>
       <th>2025-09-26</th>
-      <td>0.144033</td>
-      <td>-0.916573</td>
-      <td>0.626166</td>
-      <td>1.037670</td>
+      <td>-0.496044</td>
+      <td>-0.608572</td>
+      <td>0.571576</td>
+      <td>1.547024</td>
     </tr>
   </tbody>
 </table>
@@ -7902,38 +7645,38 @@ Freq: D, Length: 1000, dtype: float64
   <tbody>
     <tr>
       <th>2023-01-01</th>
-      <td>0.893910</td>
-      <td>1.557533</td>
-      <td>1.391411</td>
-      <td>-1.818304</td>
+      <td>0.205191</td>
+      <td>-0.372824</td>
+      <td>0.661915</td>
+      <td>-0.308036</td>
     </tr>
     <tr>
       <th>2023-01-02</th>
-      <td>1.323931</td>
-      <td>1.511714</td>
-      <td>0.231328</td>
-      <td>-2.392090</td>
+      <td>0.357205</td>
+      <td>-1.368727</td>
+      <td>0.240192</td>
+      <td>1.024586</td>
     </tr>
     <tr>
       <th>2023-01-03</th>
-      <td>1.672239</td>
-      <td>0.980989</td>
-      <td>-0.977428</td>
-      <td>-4.466504</td>
+      <td>0.650150</td>
+      <td>-2.537050</td>
+      <td>-1.734310</td>
+      <td>1.850061</td>
     </tr>
     <tr>
       <th>2023-01-04</th>
-      <td>2.285211</td>
-      <td>-0.565201</td>
-      <td>-0.175567</td>
-      <td>-3.911396</td>
+      <td>-0.143583</td>
+      <td>-2.364988</td>
+      <td>-2.621535</td>
+      <td>2.644490</td>
     </tr>
     <tr>
       <th>2023-01-05</th>
-      <td>3.221697</td>
-      <td>0.311461</td>
-      <td>-0.650228</td>
-      <td>-4.305269</td>
+      <td>0.160337</td>
+      <td>-3.356351</td>
+      <td>-2.908677</td>
+      <td>1.807427</td>
     </tr>
     <tr>
       <th>...</th>
@@ -7944,38 +7687,38 @@ Freq: D, Length: 1000, dtype: float64
     </tr>
     <tr>
       <th>2025-09-22</th>
-      <td>-54.903141</td>
-      <td>-23.746732</td>
-      <td>7.048748</td>
-      <td>8.798066</td>
+      <td>19.619537</td>
+      <td>74.424493</td>
+      <td>-16.127490</td>
+      <td>-18.413635</td>
     </tr>
     <tr>
       <th>2025-09-23</th>
-      <td>-55.331291</td>
-      <td>-24.188190</td>
-      <td>7.015893</td>
-      <td>9.326942</td>
+      <td>20.055708</td>
+      <td>74.507403</td>
+      <td>-17.261076</td>
+      <td>-18.258039</td>
     </tr>
     <tr>
       <th>2025-09-24</th>
-      <td>-55.325029</td>
-      <td>-24.302216</td>
-      <td>6.148783</td>
-      <td>9.480344</td>
+      <td>20.975245</td>
+      <td>73.045237</td>
+      <td>-16.986507</td>
+      <td>-18.475263</td>
     </tr>
     <tr>
       <th>2025-09-25</th>
-      <td>-54.464562</td>
-      <td>-22.651120</td>
-      <td>7.917199</td>
-      <td>10.484102</td>
+      <td>21.284248</td>
+      <td>72.630161</td>
+      <td>-17.710025</td>
+      <td>-18.787693</td>
     </tr>
     <tr>
       <th>2025-09-26</th>
-      <td>-54.320529</td>
-      <td>-23.567692</td>
-      <td>8.543364</td>
-      <td>11.521772</td>
+      <td>20.788203</td>
+      <td>72.021588</td>
+      <td>-17.138449</td>
+      <td>-17.240669</td>
     </tr>
   </tbody>
 </table>
@@ -7991,17 +7734,17 @@ Freq: D, Length: 1000, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 432x288 with 0 Axes&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 0 Axes&gt;
 </pre></div>
 </div>
-<img alt="_images/pandas_10minutes_2_239_1.png" src="_images/pandas_10minutes_2_239_1.png" />
+<img alt="_images/80af2eac3f107f54121a9c8bb22675f98c8d0fc73262e04de3e61ac4c76e0a85.png" src="_images/80af2eac3f107f54121a9c8bb22675f98c8d0fc73262e04de3e61ac4c76e0a85.png" />
 </div>
 </div>
-</div>
-<div class="section" id="importing-and-exporting-data">
-<h2><span class="section-number">16.7. </span>Importing and exporting data<a class="headerlink" href="#importing-and-exporting-data" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="csv">
-<h3><span class="section-number">16.7.1. </span>CSV<a class="headerlink" href="#csv" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="importing-and-exporting-data">
+<h2><span class="section-number">16.7. </span>Importing and exporting data<a class="headerlink" href="#importing-and-exporting-data" title="Permalink to this heading">#</a></h2>
+<section id="csv">
+<h3><span class="section-number">16.7.1. </span>CSV<a class="headerlink" href="#csv" title="Permalink to this heading">#</a></h3>
 <p><a class="reference external" href="https://pandas.pydata.org/docs/user_guide/io.html#io-store-in-csv">Writing to a csv file</a>: using <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html#pandas.DataFrame.to_csv"><code class="docutils literal notranslate"><span class="pre">DataFrame.to_csv()</span></code></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -8047,42 +7790,42 @@ Freq: D, Length: 1000, dtype: float64
     <tr>
       <th>0</th>
       <td>2023-01-01</td>
-      <td>0.893910</td>
-      <td>1.557533</td>
-      <td>1.391411</td>
-      <td>-1.818304</td>
+      <td>0.205191</td>
+      <td>-0.372824</td>
+      <td>0.661915</td>
+      <td>-0.308036</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2023-01-02</td>
-      <td>1.323931</td>
-      <td>1.511714</td>
-      <td>0.231328</td>
-      <td>-2.392090</td>
+      <td>0.357205</td>
+      <td>-1.368727</td>
+      <td>0.240192</td>
+      <td>1.024586</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2023-01-03</td>
-      <td>1.672239</td>
-      <td>0.980989</td>
-      <td>-0.977428</td>
-      <td>-4.466504</td>
+      <td>0.650150</td>
+      <td>-2.537050</td>
+      <td>-1.734310</td>
+      <td>1.850061</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2023-01-04</td>
-      <td>2.285211</td>
-      <td>-0.565201</td>
-      <td>-0.175567</td>
-      <td>-3.911396</td>
+      <td>-0.143583</td>
+      <td>-2.364988</td>
+      <td>-2.621535</td>
+      <td>2.644490</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2023-01-05</td>
-      <td>3.221697</td>
-      <td>0.311461</td>
-      <td>-0.650228</td>
-      <td>-4.305269</td>
+      <td>0.160337</td>
+      <td>-3.356351</td>
+      <td>-2.908677</td>
+      <td>1.807427</td>
     </tr>
     <tr>
       <th>...</th>
@@ -8095,51 +7838,51 @@ Freq: D, Length: 1000, dtype: float64
     <tr>
       <th>995</th>
       <td>2025-09-22</td>
-      <td>-54.903141</td>
-      <td>-23.746732</td>
-      <td>7.048748</td>
-      <td>8.798066</td>
+      <td>19.619537</td>
+      <td>74.424493</td>
+      <td>-16.127490</td>
+      <td>-18.413635</td>
     </tr>
     <tr>
       <th>996</th>
       <td>2025-09-23</td>
-      <td>-55.331291</td>
-      <td>-24.188190</td>
-      <td>7.015893</td>
-      <td>9.326942</td>
+      <td>20.055708</td>
+      <td>74.507403</td>
+      <td>-17.261076</td>
+      <td>-18.258039</td>
     </tr>
     <tr>
       <th>997</th>
       <td>2025-09-24</td>
-      <td>-55.325029</td>
-      <td>-24.302216</td>
-      <td>6.148783</td>
-      <td>9.480344</td>
+      <td>20.975245</td>
+      <td>73.045237</td>
+      <td>-16.986507</td>
+      <td>-18.475263</td>
     </tr>
     <tr>
       <th>998</th>
       <td>2025-09-25</td>
-      <td>-54.464562</td>
-      <td>-22.651120</td>
-      <td>7.917199</td>
-      <td>10.484102</td>
+      <td>21.284248</td>
+      <td>72.630161</td>
+      <td>-17.710025</td>
+      <td>-18.787693</td>
     </tr>
     <tr>
       <th>999</th>
       <td>2025-09-26</td>
-      <td>-54.320529</td>
-      <td>-23.567692</td>
-      <td>8.543364</td>
-      <td>11.521772</td>
+      <td>20.788203</td>
+      <td>72.021588</td>
+      <td>-17.138449</td>
+      <td>-17.240669</td>
     </tr>
   </tbody>
 </table>
 <p>1000 rows × 5 columns</p>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="excel">
-<h3><span class="section-number">16.7.2. </span>Excel<a class="headerlink" href="#excel" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="excel">
+<h3><span class="section-number">16.7.2. </span>Excel<a class="headerlink" href="#excel" title="Permalink to this heading">#</a></h3>
 <p>Reading and writing to <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/io.html#io-excel">Excel</a>.</p>
 <p>Writing to an excel file using <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html#pandas.DataFrame.to_excel"><code class="docutils literal notranslate"><span class="pre">DataFrame.to_excel()</span></code></a>:</p>
 <div class="cell docutils container">
@@ -8186,42 +7929,42 @@ Freq: D, Length: 1000, dtype: float64
     <tr>
       <th>0</th>
       <td>2023-01-01</td>
-      <td>0.893910</td>
-      <td>1.557533</td>
-      <td>1.391411</td>
-      <td>-1.818304</td>
+      <td>0.205191</td>
+      <td>-0.372824</td>
+      <td>0.661915</td>
+      <td>-0.308036</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2023-01-02</td>
-      <td>1.323931</td>
-      <td>1.511714</td>
-      <td>0.231328</td>
-      <td>-2.392090</td>
+      <td>0.357205</td>
+      <td>-1.368727</td>
+      <td>0.240192</td>
+      <td>1.024586</td>
     </tr>
     <tr>
       <th>2</th>
       <td>2023-01-03</td>
-      <td>1.672239</td>
-      <td>0.980989</td>
-      <td>-0.977428</td>
-      <td>-4.466504</td>
+      <td>0.650150</td>
+      <td>-2.537050</td>
+      <td>-1.734310</td>
+      <td>1.850061</td>
     </tr>
     <tr>
       <th>3</th>
       <td>2023-01-04</td>
-      <td>2.285211</td>
-      <td>-0.565201</td>
-      <td>-0.175567</td>
-      <td>-3.911396</td>
+      <td>-0.143583</td>
+      <td>-2.364988</td>
+      <td>-2.621535</td>
+      <td>2.644490</td>
     </tr>
     <tr>
       <th>4</th>
       <td>2023-01-05</td>
-      <td>3.221697</td>
-      <td>0.311461</td>
-      <td>-0.650228</td>
-      <td>-4.305269</td>
+      <td>0.160337</td>
+      <td>-3.356351</td>
+      <td>-2.908677</td>
+      <td>1.807427</td>
     </tr>
     <tr>
       <th>...</th>
@@ -8234,51 +7977,51 @@ Freq: D, Length: 1000, dtype: float64
     <tr>
       <th>995</th>
       <td>2025-09-22</td>
-      <td>-54.903141</td>
-      <td>-23.746732</td>
-      <td>7.048748</td>
-      <td>8.798066</td>
+      <td>19.619537</td>
+      <td>74.424493</td>
+      <td>-16.127490</td>
+      <td>-18.413635</td>
     </tr>
     <tr>
       <th>996</th>
       <td>2025-09-23</td>
-      <td>-55.331291</td>
-      <td>-24.188190</td>
-      <td>7.015893</td>
-      <td>9.326942</td>
+      <td>20.055708</td>
+      <td>74.507403</td>
+      <td>-17.261076</td>
+      <td>-18.258039</td>
     </tr>
     <tr>
       <th>997</th>
       <td>2025-09-24</td>
-      <td>-55.325029</td>
-      <td>-24.302216</td>
-      <td>6.148783</td>
-      <td>9.480344</td>
+      <td>20.975245</td>
+      <td>73.045237</td>
+      <td>-16.986507</td>
+      <td>-18.475263</td>
     </tr>
     <tr>
       <th>998</th>
       <td>2025-09-25</td>
-      <td>-54.464562</td>
-      <td>-22.651120</td>
-      <td>7.917199</td>
-      <td>10.484102</td>
+      <td>21.284248</td>
+      <td>72.630161</td>
+      <td>-17.710025</td>
+      <td>-18.787693</td>
     </tr>
     <tr>
       <th>999</th>
       <td>2025-09-26</td>
-      <td>-54.320529</td>
-      <td>-23.567692</td>
-      <td>8.543364</td>
-      <td>11.521772</td>
+      <td>20.788203</td>
+      <td>72.021588</td>
+      <td>-17.138449</td>
+      <td>-17.240669</td>
     </tr>
   </tbody>
 </table>
 <p>1000 rows × 5 columns</p>
 </div></div></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -8292,7 +8035,7 @@ Freq: D, Length: 1000, dtype: float64
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -8300,44 +8043,132 @@ Freq: D, Length: 1000, dtype: float64
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="pandas_10minutes_1.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">15. </span>판다스 10분 완성 1부</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pandas_10minutes_1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">15. </span>판다스 10분 완성 1부</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="pandas_1.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="pandas_1.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">17. </span>판다스 데이터프레임</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By 코딩알지<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
-
-
       </div>
-    </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+</div>
 
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#merge-join-concat">16.1. 합병과 결합: merge-join-concat</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-concat">16.1.1. 종/횡 결합: <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> 함수</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-merge">16.1.2. 합병: <code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> 함수</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe-join">16.1.3. 합병: <code class="docutils literal notranslate"><span class="pre">DataFrame.join()</span></code> 메서드</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-size-2-multiindex-font">16.2. 다중 인덱스<font size="2">MultiIndex</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiindex">16.2.1. <code class="docutils literal notranslate"><span class="pre">MultiIndex</span></code> 객체</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-size-2-label-font">16.2.2. 다중 인덱스 라벨<font size="2">label</font>을 사용하는 시리즈/데이터프레임 객체</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">16.2.3. 인덱스의 레벨</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">16.2.4. 인덱싱</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">16.2.5. 슬라이싱</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pd-groupby">16.3. 그룹 분류: <code class="docutils literal notranslate"><span class="pre">pd.groupby()</span></code> 함수</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#font-size-2-reshaping-font">16.4. 모양 변환<font size="2">Reshaping</font></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">16.4.1. 스택</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">16.4.2. 언스택</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#font-size-2-pivoting-font">16.4.3. 피버팅<font size="2">Pivoting</font></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-series">16.5. Time series</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting">16.6. Plotting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-and-exporting-data">16.7. Importing and exporting data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#csv">16.7.1. CSV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excel">16.7.2. Excel</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 코딩알지
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
