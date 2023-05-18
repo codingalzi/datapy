@@ -1,0 +1,139 @@
+Traceback (most recent call last):
+  File "/home/gslee/anaconda3/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/home/gslee/anaconda3/lib/python3.10/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/gslee/anaconda3/lib/python3.10/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/gslee/anaconda3/lib/python3.10/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/home/gslee/anaconda3/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/gslee/anaconda3/lib/python3.10/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/home/gslee/anaconda3/lib/python3.10/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/gslee/anaconda3/lib/python3.10/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from sklearn.impute import SimpleImputer
+ 
+def get_parameters(df):
+    parameters = {}
+    for col in df.columns[df.isnull().any()]:
+        if df[col].dtype == 'float64' or df[col].dtype == 'int64' or df[col].dtype =='int32':
+            strategy = 'mean'
+        else:
+            strategy = 'most_frequent'
+        missing_values = df[col][df[col].isnull()].values[0]
+        parameters[col] = {'missing_values':missing_values, 'strategy':strategy}
+    return parameters
+ 
+parameters = get_parameters(X)
+ 
+for col, param in parameters.items():
+    missing_values = param['missing_values']
+    strategy = param['strategy']
+    imp = SimpleImputer(missing_values=missing_values, strategy=strategy)
+    X[col] = imp.fit_transform(X[[col]])
+ 
+X.isnull().sum()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+Cell [0;32mIn[49], line 20[0m
+[1;32m     18[0m     strategy [38;5;241m=[39m param[[38;5;124m'[39m[38;5;124mstrategy[39m[38;5;124m'[39m]
+[1;32m     19[0m     imp [38;5;241m=[39m SimpleImputer(missing_values[38;5;241m=[39mmissing_values, strategy[38;5;241m=[39mstrategy)
+[0;32m---> 20[0m     X[col] [38;5;241m=[39m [43mimp[49m[38;5;241;43m.[39;49m[43mfit_transform[49m[43m([49m[43mX[49m[43m[[49m[43m[[49m[43mcol[49m[43m][49m[43m][49m[43m)[49m
+[1;32m     22[0m X[38;5;241m.[39misnull()[38;5;241m.[39msum()
+
+File [0;32m~/anaconda3/lib/python3.10/site-packages/sklearn/utils/_set_output.py:142[0m, in [0;36m_wrap_method_output.<locals>.wrapped[0;34m(self, X, *args, **kwargs)[0m
+[1;32m    140[0m [38;5;129m@wraps[39m(f)
+[1;32m    141[0m [38;5;28;01mdef[39;00m [38;5;21mwrapped[39m([38;5;28mself[39m, X, [38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs):
+[0;32m--> 142[0m     data_to_wrap [38;5;241m=[39m [43mf[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43mX[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m    143[0m     [38;5;28;01mif[39;00m [38;5;28misinstance[39m(data_to_wrap, [38;5;28mtuple[39m):
+[1;32m    144[0m         [38;5;66;03m# only wrap the first output for cross decomposition[39;00m
+[1;32m    145[0m         [38;5;28;01mreturn[39;00m (
+[1;32m    146[0m             _wrap_data_with_container(method, data_to_wrap[[38;5;241m0[39m], X, [38;5;28mself[39m),
+[1;32m    147[0m             [38;5;241m*[39mdata_to_wrap[[38;5;241m1[39m:],
+[1;32m    148[0m         )
+
+File [0;32m~/anaconda3/lib/python3.10/site-packages/sklearn/base.py:859[0m, in [0;36mTransformerMixin.fit_transform[0;34m(self, X, y, **fit_params)[0m
+[1;32m    855[0m [38;5;66;03m# non-optimized default implementation; override when a better[39;00m
+[1;32m    856[0m [38;5;66;03m# method is possible for a given clustering algorithm[39;00m
+[1;32m    857[0m [38;5;28;01mif[39;00m y [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[1;32m    858[0m     [38;5;66;03m# fit method of arity 1 (unsupervised transformation)[39;00m
+[0;32m--> 859[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mfit[49m[43m([49m[43mX[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mfit_params[49m[43m)[49m[38;5;241m.[39mtransform(X)
+[1;32m    860[0m [38;5;28;01melse[39;00m:
+[1;32m    861[0m     [38;5;66;03m# fit method of arity 2 (supervised transformation)[39;00m
+[1;32m    862[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39mfit(X, y, [38;5;241m*[39m[38;5;241m*[39mfit_params)[38;5;241m.[39mtransform(X)
+
+File [0;32m~/anaconda3/lib/python3.10/site-packages/sklearn/impute/_base.py:390[0m, in [0;36mSimpleImputer.fit[0;34m(self, X, y)[0m
+[1;32m    381[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mverbose [38;5;241m!=[39m [38;5;124m"[39m[38;5;124mdeprecated[39m[38;5;124m"[39m:
+[1;32m    382[0m     warnings[38;5;241m.[39mwarn(
+[1;32m    383[0m         [38;5;124m"[39m[38;5;124mThe [39m[38;5;124m'[39m[38;5;124mverbose[39m[38;5;124m'[39m[38;5;124m parameter was deprecated in version [39m[38;5;124m"[39m
+[1;32m    384[0m         [38;5;124m"[39m[38;5;124m1.1 and will be removed in 1.3. A warning will [39m[38;5;124m"[39m
+[0;32m   (...)[0m
+[1;32m    387[0m         [38;5;167;01mFutureWarning[39;00m,
+[1;32m    388[0m     )
+[0;32m--> 390[0m X [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_validate_input[49m[43m([49m[43mX[49m[43m,[49m[43m [49m[43min_fit[49m[38;5;241;43m=[39;49m[38;5;28;43;01mTrue[39;49;00m[43m)[49m
+[1;32m    392[0m [38;5;66;03m# default fill_value is 0 for numerical input and "missing_value"[39;00m
+[1;32m    393[0m [38;5;66;03m# otherwise[39;00m
+[1;32m    394[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mfill_value [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+
+File [0;32m~/anaconda3/lib/python3.10/site-packages/sklearn/impute/_base.py:344[0m, in [0;36mSimpleImputer._validate_input[0;34m(self, X, in_fit)[0m
+[1;32m    342[0m         [38;5;28;01mraise[39;00m new_ve [38;5;28;01mfrom[39;00m [38;5;28mNone[39m
+[1;32m    343[0m     [38;5;28;01melse[39;00m:
+[0;32m--> 344[0m         [38;5;28;01mraise[39;00m ve
+[1;32m    346[0m [38;5;28;01mif[39;00m in_fit:
+[1;32m    347[0m     [38;5;66;03m# Use the dtype seen in `fit` for non-`fit` conversion[39;00m
+[1;32m    348[0m     [38;5;28mself[39m[38;5;241m.[39m_fit_dtype [38;5;241m=[39m X[38;5;241m.[39mdtype
+
+File [0;32m~/anaconda3/lib/python3.10/site-packages/sklearn/impute/_base.py:327[0m, in [0;36mSimpleImputer._validate_input[0;34m(self, X, in_fit)[0m
+[1;32m    324[0m     force_all_finite [38;5;241m=[39m [38;5;28;01mTrue[39;00m
+[1;32m    326[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 327[0m     X [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_validate_data[49m[43m([49m
+[1;32m    328[0m [43m        [49m[43mX[49m[43m,[49m
+[1;32m    329[0m [43m        [49m[43mreset[49m[38;5;241;43m=[39;49m[43min_fit[49m[43m,[49m
+[1;32m    330[0m [43m        [49m[43maccept_sparse[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mcsc[39;49m[38;5;124;43m"[39;49m[43m,[49m
+[1;32m    331[0m [43m        [49m[43mdtype[49m[38;5;241;43m=[39;49m[43mdtype[49m[43m,[49m
+[1;32m    332[0m [43m        [49m[43mforce_all_finite[49m[38;5;241;43m=[39;49m[43mforce_all_finite[49m[43m,[49m
+[1;32m    333[0m [43m        [49m[43mcopy[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mcopy[49m[43m,[49m
+[1;32m    334[0m [43m    [49m[43m)[49m
+[1;32m    335[0m [38;5;28;01mexcept[39;00m [38;5;167;01mValueError[39;00m [38;5;28;01mas[39;00m ve:
+[1;32m    336[0m     [38;5;28;01mif[39;00m [38;5;124m"[39m[38;5;124mcould not convert[39m[38;5;124m"[39m [38;5;129;01min[39;00m [38;5;28mstr[39m(ve):
+
+File [0;32m~/anaconda3/lib/python3.10/site-packages/sklearn/base.py:546[0m, in [0;36mBaseEstimator._validate_data[0;34m(self, X, y, reset, validate_separately, **check_params)[0m
+[1;32m    544[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([38;5;124m"[39m[38;5;124mValidation should be done on X, y or both.[39m[38;5;124m"[39m)
+[1;32m    545[0m [38;5;28;01melif[39;00m [38;5;129;01mnot[39;00m no_val_X [38;5;129;01mand[39;00m no_val_y:
+[0;32m--> 546[0m     X [38;5;241m=[39m [43mcheck_array[49m[43m([49m[43mX[49m[43m,[49m[43m [49m[43minput_name[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mX[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mcheck_params[49m[43m)[49m
+[1;32m    547[0m     out [38;5;241m=[39m X
+[1;32m    548[0m [38;5;28;01melif[39;00m no_val_X [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m no_val_y:
+
+File [0;32m~/anaconda3/lib/python3.10/site-packages/sklearn/utils/validation.py:921[0m, in [0;36mcheck_array[0;34m(array, accept_sparse, accept_large_sparse, dtype, order, copy, force_all_finite, ensure_2d, allow_nd, ensure_min_samples, ensure_min_features, estimator, input_name)[0m
+[1;32m    915[0m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[1;32m    916[0m             [38;5;124m"[39m[38;5;124mFound array with dim [39m[38;5;132;01m%d[39;00m[38;5;124m. [39m[38;5;132;01m%s[39;00m[38;5;124m expected <= 2.[39m[38;5;124m"[39m
+[1;32m    917[0m             [38;5;241m%[39m (array[38;5;241m.[39mndim, estimator_name)
+[1;32m    918[0m         )
+[1;32m    920[0m     [38;5;28;01mif[39;00m force_all_finite:
+[0;32m--> 921[0m         [43m_assert_all_finite[49m[43m([49m
+[1;32m    922[0m [43m            [49m[43marray[49m[43m,[49m
+[1;32m    923[0m [43m            [49m[43minput_name[49m[38;5;241;43m=[39;49m[43minput_name[49m[43m,[49m
+[1;32m    924[0m [43m            [49m[43mestimator_name[49m[38;5;241;43m=[39;49m[43mestimator_name[49m[43m,[49m
+[1;32m    925[0m [43m            [49m[43mallow_nan[49m[38;5;241;43m=[39;49m[43mforce_all_finite[49m[43m [49m[38;5;241;43m==[39;49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mallow-nan[39;49m[38;5;124;43m"[39;49m[43m,[49m
+[1;32m    926[0m [43m        [49m[43m)[49m
+[1;32m    928[0m [38;5;28;01mif[39;00m ensure_min_samples [38;5;241m>[39m [38;5;241m0[39m:
+[1;32m    929[0m     n_samples [38;5;241m=[39m _num_samples(array)
+
+File [0;32m~/anaconda3/lib/python3.10/site-packages/sklearn/utils/validation.py:111[0m, in [0;36m_assert_all_finite[0;34m(X, allow_nan, msg_dtype, estimator_name, input_name)[0m
+[1;32m    109[0m [38;5;28;01mif[39;00m X[38;5;241m.[39mdtype [38;5;241m==[39m np[38;5;241m.[39mdtype([38;5;124m"[39m[38;5;124mobject[39m[38;5;124m"[39m) [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m allow_nan:
+[1;32m    110[0m     [38;5;28;01mif[39;00m _object_dtype_isnan(X)[38;5;241m.[39many():
+[0;32m--> 111[0m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([38;5;124m"[39m[38;5;124mInput contains NaN[39m[38;5;124m"[39m)
+[1;32m    113[0m [38;5;66;03m# We need only consider float arrays, hence can early return for all else.[39;00m
+[1;32m    114[0m [38;5;28;01mif[39;00m X[38;5;241m.[39mdtype[38;5;241m.[39mkind [38;5;129;01mnot[39;00m [38;5;129;01min[39;00m [38;5;124m"[39m[38;5;124mfc[39m[38;5;124m"[39m:
+
+[0;31mValueError[0m: Input contains NaN
+ValueError: Input contains NaN
+

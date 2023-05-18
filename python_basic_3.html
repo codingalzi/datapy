@@ -1,554 +1,441 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>3. 기초 자료형 &#8212; 파이썬 데이터 분석</title>
-    
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'python_basic_3';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="4. 제어문" href="python_basic_4.html" />
     <link rel="prev" title="2. 기초 문법" href="python_basic_2.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">파이썬 데이터 분석</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  파이썬 기초
- </span>
-</p>
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">파이썬 데이터 분석</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">파이썬 기초</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="python_basic_1.html">
-   1. 프로그래밍 개발 환경
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_basic_2.html">
-   2. 기초 문법
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   3. 기초 자료형
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_basic_4.html">
-   4. 제어문
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_basic_5.html">
-   5. 모음 자료형
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_basic_6.html">
-   6. 함수
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="python_basic_7.html">
-   7. 파일
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_1.html">1. 프로그래밍 개발 환경</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_2.html">2. 기초 문법</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. 기초 자료형</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_4.html">4. 제어문</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_5.html">5. 모음 자료형</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_6.html">6. 함수</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_7.html">7. 파일</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  기초수학 - 밑바닥부터
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">기초수학 - 밑바닥부터</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="from_scratch_1.html">
-   8. 선형대수 기초
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="from_scratch_2.html">
-   9. 통계 기초
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="from_scratch_1.html">8. 선형대수 기초</a></li>
+<li class="toctree-l1"><a class="reference internal" href="from_scratch_2.html">9. 통계 기초</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  넘파이
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">넘파이</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="numpy_1.html">
-   10. 넘파이 어레이
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="numpy_2.html">
-   11. 어레이 인덱싱
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="numpy_3.html">
-   12. 어레이 중심 프로그래밍
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="numpy_4.html">
-   13. 고급 넘파이
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="numpy_5.html">
-   14. 실전 예제: 어레이 활용
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_1.html">10. 넘파이 어레이</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_2.html">11. 어레이 인덱싱</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_3.html">12. 어레이 중심 프로그래밍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_4.html">13. 고급 넘파이</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_5.html">14. 실전 예제: 어레이 활용</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  판다스 10분 완성
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">판다스 10분 완성</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="pandas_10minutes_1.html">
-   15. 판다스 10분 완성 1부
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="pandas_10minutes_2.html">
-   16. 판다스 10분 완성 2부
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_10minutes_1.html">15. 판다스 10분 완성 1부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_10minutes_2.html">16. 판다스 10분 완성 2부</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  판다스 기초와 활용
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">판다스 기초와 활용</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="pandas_1.html">
-   17. 판다스 데이터프레임
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="pandas_2.html">
-   18. 데이터프레임 핵심 1부
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="pandas_3.html">
-   19. 데이터프레임 핵심 2부
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="pandas_4.html">
-   20. 판다스 활용: 통계 기초
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="pandas_5.html">
-   21. 데이터 결합: merge-join-concat
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="pandas_6.html">
-   22. 데이터 그룹화(Group by)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="pandas_titanic.html">
-   23. 판다스 실전: 타이타닉
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_1.html">17. 판다스 데이터프레임</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_2.html">18. 데이터프레임 핵심 1부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_3.html">19. 데이터프레임 핵심 2부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_4.html">20. 판다스 활용: 통계 기초</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_5.html">21. 데이터 결합: merge-join-concat</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_6.html">22. 데이터 그룹화(Group by)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_titanic.html">23. 판다스 실전: 타이타닉</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  데이터 시각화
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">데이터 시각화</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="visualization_1.html">
-   24. matplotlib.pyplot 1부
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="visualization_2.html">
-   25. matplotlib.pyplot 2부
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="visualization_3.html">
-   26. seaborn
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_1.html">24. matplotlib.pyplot 1부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_2.html">25. matplotlib.pyplot 2부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">26. seaborn</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  시계열 데이터
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">시계열 데이터</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="timeseries.html">
-   27. 시계열 데이터
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="timeseries.html">27. 시계열 데이터</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/python_basic_3.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/codingalzi/datapy"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/codingalzi/datapy/issues/new?title=Issue%20on%20page%20%2Fpython_basic_3.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/jupyter-book/python_basic_3.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/codingalzi/datapy/master?urlpath=tree/jupyter-book/python_basic_3.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        <a class="colab-button" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/jupyter-book/python_basic_3.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
-                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
-                    src="_static/images/logo_colab.png"
-                    alt="Interact on Colab">Colab</button></a>
-        
-        
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/codingalzi/datapy" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/codingalzi/datapy/issues/new?title=Issue%20on%20page%20%2Fpython_basic_3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/python_basic_3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>기초 자료형</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#int">
-   3.1. 정수 자료형:
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     int
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#float">
-   3.2. 부동 소수점 자료형:
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     float
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#str">
-   3.3. 문자열 자료형:
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     str
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   3.4. 유니코드와 바이트
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bool">
-   3.5. 부울 자료형:
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     bool
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   3.6. 형 변환
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#none">
-   3.7.
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     None
-    </span>
-   </code>
-   값
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   3.8. 날짜와 시간
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
-   3.9. 연습문제
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#int">3.1. 정수 자료형: <code class="docutils literal notranslate"><span class="pre">int</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#float">3.2. 부동 소수점 자료형: <code class="docutils literal notranslate"><span class="pre">float</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#str">3.3. 문자열 자료형: <code class="docutils literal notranslate"><span class="pre">str</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.4. 유니코드와 바이트</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bool">3.5. 부울 자료형: <code class="docutils literal notranslate"><span class="pre">bool</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.6. 형 변환</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#none">3.7. <code class="docutils literal notranslate"><span class="pre">None</span></code> 값</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.8. 날짜와 시간</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.9. 연습문제</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>기초 자료형</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#int">
-   3.1. 정수 자료형:
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     int
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#float">
-   3.2. 부동 소수점 자료형:
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     float
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#str">
-   3.3. 문자열 자료형:
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     str
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   3.4. 유니코드와 바이트
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bool">
-   3.5. 부울 자료형:
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     bool
-    </span>
-   </code>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   3.6. 형 변환
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#none">
-   3.7.
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     None
-    </span>
-   </code>
-   값
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   3.8. 날짜와 시간
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
-   3.9. 연습문제
-  </a>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="sec-python-basic-3">
-<span id="id1"></span><h1><span class="section-number">3. </span>기초 자료형<a class="headerlink" href="#sec-python-basic-3" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="sec-python-basic-3">
+<span id="id1"></span><h1><span class="section-number">3. </span>기초 자료형<a class="headerlink" href="#sec-python-basic-3" title="Permalink to this heading">#</a></h1>
 <p>파이썬은 다양한 기초 자료형을 기본으로 제공하며
 크게 스칼라 자료형과 모음 자료형으로 나뉜다.</p>
 <p>정수, 부동 소수점, 부울값(<code class="docutils literal notranslate"><span class="pre">True</span></code>와 <code class="docutils literal notranslate"><span class="pre">False</span></code>), 문자열, 날짜와 시간 등처럼
@@ -564,8 +451,8 @@ const thebe_selector_output = ".output, .cell_output"
 그리고 문자열을 문자들의 모음으로 간주하기도 한다.
 이는 모음 자료형이 지원하는 인덱싱, 슬라이싱, <code class="docutils literal notranslate"><span class="pre">for</span></code> 반복문 활용 등을 문자열 자료형 또한 지원하기 때문이다.</p>
 </div>
-<div class="section" id="int">
-<h2><span class="section-number">3.1. </span>정수 자료형: <code class="docutils literal notranslate"><span class="pre">int</span></code><a class="headerlink" href="#int" title="Permalink to this headline">¶</a></h2>
+<section id="int">
+<h2><span class="section-number">3.1. </span>정수 자료형: <code class="docutils literal notranslate"><span class="pre">int</span></code><a class="headerlink" href="#int" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">int</span></code>는 정수 자료형이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -581,9 +468,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="float">
-<h2><span class="section-number">3.2. </span>부동 소수점 자료형: <code class="docutils literal notranslate"><span class="pre">float</span></code><a class="headerlink" href="#float" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="float">
+<h2><span class="section-number">3.2. </span>부동 소수점 자료형: <code class="docutils literal notranslate"><span class="pre">float</span></code><a class="headerlink" href="#float" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">float</span></code>는 유리수 자료형이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -641,9 +528,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p>실제로 컴퓨터의 한계로 인해 소수점 이하 특정 자릿수에서 반올림한 결과를
 이용하여 연산을 수행하기에 무리수 등을 다룰 때 결과에 실제 값과 오차가 발생한다.</p>
 </div>
-</div>
-<div class="section" id="str">
-<h2><span class="section-number">3.3. </span>문자열 자료형: <code class="docutils literal notranslate"><span class="pre">str</span></code><a class="headerlink" href="#str" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="str">
+<h2><span class="section-number">3.3. </span>문자열 자료형: <code class="docutils literal notranslate"><span class="pre">str</span></code><a class="headerlink" href="#str" title="Permalink to this heading">#</a></h2>
 <p><strong>따옴표</strong></p>
 <p>문자열은 작은따옴표(<code class="docutils literal notranslate"><span class="pre">'</span></code>) 또는 큰따옴표(<code class="docutils literal notranslate"><span class="pre">&quot;</span></code>)를 감싸며,
 따옴표의 종류는 아무 상관이 없다.
@@ -998,9 +885,9 @@ f-문자열은 문자열 앞에 영어 알파벳 f를 추가하기만 하면 되
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id2">
-<h2><span class="section-number">3.4. </span>유니코드와 바이트<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id2">
+<h2><span class="section-number">3.4. </span>유니코드와 바이트<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p><strong>유니코드</strong><font size='2'>unicode</font>는 순전히 키보드만을 이용하여 문자를 표현하는 코드표 모음집이며 영어 알파벳과 한글을 포함하여 거의 모든 언어의 문자를 지원한다.
 파이썬 또한 유니코드를 기본적으로 지원한다.</p>
 <p>반면에 <strong>바이트</strong><font size='2'>bytes</font>는
@@ -1067,9 +954,9 @@ f-문자열은 문자열 앞에 영어 알파벳 f를 추가하기만 하면 되
 <p class="admonition-title">파일 객체와 <code class="docutils literal notranslate"><span class="pre">bytes</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">bytes</span></code> 자료형의 객체는 파일<font size='2'>file</font> 다루면서 흔하게 접한다.</p>
 </div>
-</div>
-<div class="section" id="bool">
-<h2><span class="section-number">3.5. </span>부울 자료형: <code class="docutils literal notranslate"><span class="pre">bool</span></code><a class="headerlink" href="#bool" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="bool">
+<h2><span class="section-number">3.5. </span>부울 자료형: <code class="docutils literal notranslate"><span class="pre">bool</span></code><a class="headerlink" href="#bool" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">True</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">False</span></code>로 계산되는 객체(값)이
 <strong>부울 자료형</strong> <code class="docutils literal notranslate"><span class="pre">bool</span></code>에 속한다.
 부울 자료형과 관려된 연산자는 논리곱 연산자 <code class="docutils literal notranslate"><span class="pre">and</span></code>, 논리합 연산자 <code class="docutils literal notranslate"><span class="pre">or</span></code>가 대표적이며,
@@ -1100,36 +987,36 @@ f-문자열은 문자열 앞에 영어 알파벳 f를 추가하기만 하면 되
 </div>
 <p><strong>비교 연산자</strong></p>
 <p>비교 연산의 결과는 모두 부울값이다.</p>
-<table class="colwidths-auto table">
+<table class="table">
 <thead>
-<tr class="row-odd"><th class="text-align:right head"><p>비교 연산자</p></th>
-<th class="text-align:left head"><p>설명</p></th>
+<tr class="row-odd"><th class="head text-right"><p>비교 연산자</p></th>
+<th class="head text-left"><p>설명</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:right"><p>a == b</p></td>
-<td class="text-align:left"><p>a와 b가 동일한 값을 가리키는지 여부 판단</p></td>
+<tr class="row-even"><td class="text-right"><p>a == b</p></td>
+<td class="text-left"><p>a와 b가 동일한 값을 가리키는지 여부 판단</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:right"><p>a != b</p></td>
-<td class="text-align:left"><p>a와 b가 서로 다른 값을 가리키는지 여부 판단</p></td>
+<tr class="row-odd"><td class="text-right"><p>a != b</p></td>
+<td class="text-left"><p>a와 b가 서로 다른 값을 가리키는지 여부 판단</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:right"><p>a &lt; b</p></td>
-<td class="text-align:left"><p>a가 b보다 작은지 여부 판단</p></td>
+<tr class="row-even"><td class="text-right"><p>a &lt; b</p></td>
+<td class="text-left"><p>a가 b보다 작은지 여부 판단</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:right"><p>a &lt;= b</p></td>
-<td class="text-align:left"><p>a가 b보다 작거나 같은지 여부 판단</p></td>
+<tr class="row-odd"><td class="text-right"><p>a &lt;= b</p></td>
+<td class="text-left"><p>a가 b보다 작거나 같은지 여부 판단</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:right"><p>a &gt; b</p></td>
-<td class="text-align:left"><p>a가 b보다 큰지 여부 판단</p></td>
+<tr class="row-even"><td class="text-right"><p>a &gt; b</p></td>
+<td class="text-left"><p>a가 b보다 큰지 여부 판단</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:right"><p>a &gt;= b</p></td>
-<td class="text-align:left"><p>a가 b보다 크거나 같은지 여부 판단</p></td>
+<tr class="row-odd"><td class="text-right"><p>a &gt;= b</p></td>
+<td class="text-left"><p>a가 b보다 크거나 같은지 여부 판단</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:right"><p>a is b</p></td>
-<td class="text-align:left"><p>a와 b가 동일한 위치에 저장된 값을 참조하는지 여부 판단</p></td>
+<tr class="row-even"><td class="text-right"><p>a is b</p></td>
+<td class="text-left"><p>a와 b가 동일한 위치에 저장된 값을 참조하는지 여부 판단</p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:right"><p>a is not b</p></td>
-<td class="text-align:left"><p>a와 b가 다른 위치에 저정된 값을 참조하는지 여부 판단</p></td>
+<tr class="row-odd"><td class="text-right"><p>a is not b</p></td>
+<td class="text-left"><p>a와 b가 다른 위치에 저정된 값을 참조하는지 여부 판단</p></td>
 </tr>
 </tbody>
 </table>
@@ -1183,9 +1070,9 @@ f-문자열은 문자열 앞에 영어 알파벳 f를 추가하기만 하면 되
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id3">
-<h2><span class="section-number">3.6. </span>형 변환<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id3">
+<h2><span class="section-number">3.6. </span>형 변환<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>앞서 살펴 본 <code class="docutils literal notranslate"><span class="pre">str()</span></code>는 임의의 값을 문자열로 자료형을 변환한다.
 이처럼 자료형을 변환하는 작업을 <strong>형 변환</strong><font size='2'>type casting</font>이라 한다.
 <code class="docutils literal notranslate"><span class="pre">str()</span></code> 이외에 <code class="docutils literal notranslate"><span class="pre">bool()</span></code>, <code class="docutils literal notranslate"><span class="pre">int()</span></code>, <code class="docutils literal notranslate"><span class="pre">float()</span></code> 등도 형 변환 함수이며 인자로 들어온 값을 각각
@@ -1303,9 +1190,9 @@ f-문자열은 문자열 앞에 영어 알파벳 f를 추가하기만 하면 되
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="none">
-<h2><span class="section-number">3.7. </span><code class="docutils literal notranslate"><span class="pre">None</span></code> 값<a class="headerlink" href="#none" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="none">
+<h2><span class="section-number">3.7. </span><code class="docutils literal notranslate"><span class="pre">None</span></code> 값<a class="headerlink" href="#none" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">None</span></code>은 어떤 의미도 없는 값, 소위 널(null)값이며,
 문법적으로 <code class="docutils literal notranslate"><span class="pre">NoneType</span></code> 자료형의 유일한 값이다.</p>
 <div class="cell docutils container">
@@ -1389,9 +1276,9 @@ f-문자열은 문자열 앞에 영어 알파벳 f를 추가하기만 하면 되
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id4">
-<h2><span class="section-number">3.8. </span>날짜와 시간<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id4">
+<h2><span class="section-number">3.8. </span>날짜와 시간<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">datetime</span></code> 모듈은 날짜와 시간과 관련된 유용한 클래스를 제공한다.
 대표적으로 아래 세 개의 클래스가 활용된다.</p>
 <ul class="simple">
@@ -1594,14 +1481,14 @@ f-문자열은 문자열 앞에 영어 알파벳 f를 추가하기만 하면 되
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id5">
-<h2><span class="section-number">3.9. </span>연습문제<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
+</section>
+<section id="id5">
+<h2><span class="section-number">3.9. </span>연습문제<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
 <li><p><a class="reference external" href="https://colab.research.google.com/github/codingalzi/pybook/blob/master/practices/practice-datatypes.ipynb">(실습) 기초 자료형</a></p></li>
 </ol>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1615,7 +1502,7 @@ f-문자열은 문자열 앞에 영어 알파벳 f를 추가하기만 하면 되
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1623,44 +1510,113 @@ f-문자열은 문자열 앞에 영어 알파벳 f를 추가하기만 하면 되
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="python_basic_2.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">2. </span>기초 문법</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="python_basic_2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>기초 문법</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="python_basic_4.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="python_basic_4.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">4. </span>제어문</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By 코딩알지<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
-
-
       </div>
-    </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+</div>
 
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#int">3.1. 정수 자료형: <code class="docutils literal notranslate"><span class="pre">int</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#float">3.2. 부동 소수점 자료형: <code class="docutils literal notranslate"><span class="pre">float</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#str">3.3. 문자열 자료형: <code class="docutils literal notranslate"><span class="pre">str</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">3.4. 유니코드와 바이트</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bool">3.5. 부울 자료형: <code class="docutils literal notranslate"><span class="pre">bool</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.6. 형 변환</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#none">3.7. <code class="docutils literal notranslate"><span class="pre">None</span></code> 값</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.8. 날짜와 시간</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">3.9. 연습문제</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 코딩알지
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
