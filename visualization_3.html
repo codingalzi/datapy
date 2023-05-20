@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'visualization_3';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="27. 시계열 데이터" href="timeseries.html" />
+    <link rel="next" title="27. 타이타닉 데이터 분석" href="pandas_titanic.html" />
     <link rel="prev" title="25. matplotlib.pyplot 2부" href="visualization_2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -179,7 +179,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="pandas_4.html">20. 판다스 활용: 통계 기초</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_5.html">21. 데이터 결합: merge-join-concat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_6.html">22. 데이터 그룹화(Group by)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_titanic.html">23. 판다스 실전: 타이타닉</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">23. 시계열 데이터</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">데이터 시각화</span></p>
 <ul class="current nav bd-sidenav">
@@ -187,9 +187,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="visualization_2.html">25. matplotlib.pyplot 2부</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">26. seaborn</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">시계열 데이터</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">실전 데이터 분석</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="timeseries.html">27. 시계열 데이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_titanic.html">27. 타이타닉 데이터 분석</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_oecd_bli.html">28. OECD 국가의 삶의 만족도</a></li>
 </ul>
 
     </div>
@@ -456,7 +457,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f94f2a13910&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f29638d7e80&gt;
 </pre></div>
 </div>
 <img alt="_images/9142b4705ea23d596ef96033c33769c50bd19a18eafc7fa6a519cc0c8e853427.png" src="_images/9142b4705ea23d596ef96033c33769c50bd19a18eafc7fa6a519cc0c8e853427.png" />
@@ -475,7 +476,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f9530aa5a80&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2962ab9150&gt;
 </pre></div>
 </div>
 <img alt="_images/1a9e41abed8ad40b5346fa41ce6a2575b3c3b29560ab2ec8a0825f42c9fa2dbe.png" src="_images/1a9e41abed8ad40b5346fa41ce6a2575b3c3b29560ab2ec8a0825f42c9fa2dbe.png" />
@@ -493,10 +494,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f94f1be0ca0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f29a1612230&gt;
 </pre></div>
 </div>
-<img alt="_images/77858367433e35ee4216be727d508ed9d250d56b7e7d91918f247b247c954a01.png" src="_images/77858367433e35ee4216be727d508ed9d250d56b7e7d91918f247b247c954a01.png" />
+<img alt="_images/76acd86b5f56998262ca7761e7eedf2b36942ccd4c5d73d825f4c2cee525d816.png" src="_images/76acd86b5f56998262ca7761e7eedf2b36942ccd4c5d73d825f4c2cee525d816.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -506,10 +507,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f94ebf95420&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f29627fa4d0&gt;
 </pre></div>
 </div>
-<img alt="_images/0f2c6039370ddbe8b73adfa919cb49e521c8b7cf197cc9731fadcbca2b5cc5eb.png" src="_images/0f2c6039370ddbe8b73adfa919cb49e521c8b7cf197cc9731fadcbca2b5cc5eb.png" />
+<img alt="_images/a8a1c9d5950f828bb27947ccde829bdaeac4893fa2278482b077a585452e8c64.png" src="_images/a8a1c9d5950f828bb27947ccde829bdaeac4893fa2278482b077a585452e8c64.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -519,7 +520,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f94ebe6fa60&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2960cfe6e0&gt;
 </pre></div>
 </div>
 <img alt="_images/fb4810639624deac971d1db818f7c64ad8b10ccf7dff437c0be91b80830d6a52.png" src="_images/fb4810639624deac971d1db818f7c64ad8b10ccf7dff437c0be91b80830d6a52.png" />
@@ -532,7 +533,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f94f1b4a680&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f2960287310&gt;
 </pre></div>
 </div>
 <img alt="_images/e51bc4f0a20aa4fdc444f97f8e921979d4226e748260a5ebcf77cfe393f2c081.png" src="_images/e51bc4f0a20aa4fdc444f97f8e921979d4226e748260a5ebcf77cfe393f2c081.png" />
@@ -545,7 +546,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f94d3b273a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f29601fe980&gt;
 </pre></div>
 </div>
 <img alt="_images/ee90d3035f61d1ffa1f775a50a101909aabeaa9dfc624a89fdec66b933c94df3.png" src="_images/ee90d3035f61d1ffa1f775a50a101909aabeaa9dfc624a89fdec66b933c94df3.png" />
@@ -558,7 +559,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f9530aa6b90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f29601ffa60&gt;
 </pre></div>
 </div>
 <img alt="_images/bec1e8bfb76b86b821f7acf5ff3af9c428747fa65606ab8dd879adb80bac83c3.png" src="_images/bec1e8bfb76b86b821f7acf5ff3af9c428747fa65606ab8dd879adb80bac83c3.png" />
@@ -571,10 +572,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f94f1aca020&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f296017bbe0&gt;
 </pre></div>
 </div>
-<img alt="_images/f5bc51eefc784f37329da486394c067d18ead9ebf235e222653315ce9844224c.png" src="_images/f5bc51eefc784f37329da486394c067d18ead9ebf235e222653315ce9844224c.png" />
+<img alt="_images/5c6780dfeaacdf27e20bb96898d216dc5d21452bcda4e73c1035ea9088a7e596.png" src="_images/5c6780dfeaacdf27e20bb96898d216dc5d21452bcda4e73c1035ea9088a7e596.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -585,7 +586,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f94ebf50610&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.JointGrid at 0x7f29627cc730&gt;
 </pre></div>
 </div>
 <img alt="_images/2cebac9d5508f4b3b270030629a52c1af4d9fcfcda9a6974ec00d82b148e20dc.png" src="_images/2cebac9d5508f4b3b270030629a52c1af4d9fcfcda9a6974ec00d82b148e20dc.png" />
@@ -598,7 +599,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f94d38b68f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f295868b0d0&gt;
 </pre></div>
 </div>
 <img alt="_images/b366cf115f18ee9793a82a2b0219c523e2d046f124703d458945151e497eef8d.png" src="_images/b366cf115f18ee9793a82a2b0219c523e2d046f124703d458945151e497eef8d.png" />
@@ -629,7 +630,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f94d2c30130&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f29600f1d80&gt;
 </pre></div>
 </div>
 <img alt="_images/9707ba033f8fb1a7a4b2ba8341eea4cdc99a59730d095b29a4c5aee2915f01d4.png" src="_images/9707ba033f8fb1a7a4b2ba8341eea4cdc99a59730d095b29a4c5aee2915f01d4.png" />
@@ -652,7 +653,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f94d335e590&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f293acf4850&gt;
 </pre></div>
 </div>
 <img alt="_images/80dba7a46d545af58a583f2379d1dd30c52a28c9b804919cd1f628d805387a6c.png" src="_images/80dba7a46d545af58a583f2379d1dd30c52a28c9b804919cd1f628d805387a6c.png" />
@@ -702,11 +703,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="timeseries.html"
+       href="pandas_titanic.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">27. </span>시계열 데이터</p>
+        <p class="prev-next-title"><span class="section-number">27. </span>타이타닉 데이터 분석</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
