@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>23. 판다스 실전: 타이타닉 데이터셋 &#8212; 파이썬 데이터 분석</title>
+    <title>27. 타이타닉 데이터 분석 &#8212; 파이썬 데이터 분석</title>
   
   
   
@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'pandas_titanic';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="24. matplotlib.pyplot 1부" href="visualization_1.html" />
-    <link rel="prev" title="22. 데이터 그룹화(Group by)" href="pandas_6.html" />
+    <link rel="next" title="28. OECD 국가의 삶의 만족도" href="pandas_oecd_bli.html" />
+    <link rel="prev" title="26. seaborn" href="visualization_3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -172,14 +172,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="pandas_10minutes_2.html">16. 판다스 10분 완성 2부</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">판다스 기초와 활용</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="pandas_1.html">17. 판다스 데이터프레임</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_2.html">18. 데이터프레임 핵심 1부</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_3.html">19. 데이터프레임 핵심 2부</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_4.html">20. 판다스 활용: 통계 기초</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_5.html">21. 데이터 결합: merge-join-concat</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_6.html">22. 데이터 그룹화(Group by)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">23. 판다스 실전: 타이타닉 데이터셋</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">23. 시계열 데이터</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">데이터 시각화</span></p>
 <ul class="nav bd-sidenav">
@@ -187,9 +187,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="visualization_2.html">25. matplotlib.pyplot 2부</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualization_3.html">26. seaborn</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">시계열 데이터</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="timeseries.html">27. 시계열 데이터</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">실전 데이터 분석</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">27. 타이타닉 데이터 분석</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_oecd_bli.html">28. OECD 국가의 삶의 만족도</a></li>
 </ul>
 
     </div>
@@ -404,7 +405,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>판다스 실전: 타이타닉 데이터셋</h1>
+    <h1>타이타닉 데이터 분석</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -414,18 +415,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">23.1. 타이타닉 데이터셋 불러오기</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">23.2. 데이터 정제</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">23.2.1. 불필요 특성 제거</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">23.2.2. 결측치 처리</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">27.1. 타이타닉 데이터셋 불러오기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">27.2. 데이터 정제</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">27.2.1. 불필요 특성 제거</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">27.2.2. 결측치 처리</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">23.3. 데이터 전처리</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">23.3.1. 새로운 특성</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">27.3. 데이터 전처리</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">27.3.1. 새로운 특성</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">23.4. 상관 분석</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">23.4.1. 수치형 특성 상관 관계</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">27.4. 상관 분석</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">27.4.1. 수치형 특성 상관 관계</a></li>
 </ul>
 </li>
 </ul>
@@ -440,7 +441,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-titanic">
-<span id="id1"></span><h1><span class="section-number">23. </span>판다스 실전: 타이타닉 데이터셋<a class="headerlink" href="#sec-titanic" title="Permalink to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">27. </span>타이타닉 데이터 분석<a class="headerlink" href="#sec-titanic" title="Permalink to this heading">#</a></h1>
 <p><strong>주요 내용</strong></p>
 <p>타이타닉<font size='2'>Titanic</font> 데이터셋을 데이터프레임으로 불러와서 전처리 하는 과정을 살펴 본다.</p>
 <p>타이타닉은 1912년 4월 10일 영국을 떠나 미국 뉴욕으로 향하던 북 대서양 항해 중에 빙산과 충돌하여 침몰한다.
@@ -504,7 +505,7 @@ document.write(`
 <p>열의 라벨을 데이터의 <strong>특성</strong><font size='2'>feature</font>로 부르는
 관습을 따라 여기서도 특성 표현을 사용한다.</p>
 <section id="id2">
-<h2><span class="section-number">23.1. </span>타이타닉 데이터셋 불러오기<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">27.1. </span>타이타닉 데이터셋 불러오기<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>타이타닉 데이터셋을 불러온다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">fetch_openml()</span></code>: <a class="reference external" href="https://www.openml.org">openml</a>에서 제공하는 데이터셋을 가져오는 함수.</p></li>
@@ -670,7 +671,7 @@ Name: survived, Length: 1309, dtype: int32
 </div>
 </section>
 <section id="id3">
-<h2><span class="section-number">23.2. </span>데이터 정제<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">27.2. </span>데이터 정제<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p><strong>데이터 정제</strong><font size='2'>data cleaning</font>는 부정확하거나 불완전하거나 부적절한 데이터를 탐지하여 수정, 삭제하는 과정을 가리킨다.
 여기서는 다음 두 가지 과정을 소개한다.</p>
 <ul class="simple">
@@ -678,7 +679,7 @@ Name: survived, Length: 1309, dtype: int32
 <li><p>결측치 처리</p></li>
 </ul>
 <section id="id4">
-<h3><span class="section-number">23.2.1. </span>불필요 특성 제거<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">27.2.1. </span>불필요 특성 제거<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">'boat'</span></code>, <code class="docutils literal notranslate"><span class="pre">'body'</span></code>, <code class="docutils literal notranslate"><span class="pre">'home.dest'</span></code>, <code class="docutils literal notranslate"><span class="pre">ticket</span></code> 등을 특성으로 갖는 열은 생존 여부와 상관 없는 정보이기에 삭제한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -784,7 +785,7 @@ Name: survived, Length: 1309, dtype: int32
 </div>
 </section>
 <section id="id5">
-<h3><span class="section-number">23.2.2. </span>결측치 처리<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">27.2.2. </span>결측치 처리<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>결측치의 존재 여부를 각 열에 대해 확인한다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">DataFrame.info()</span></code> 메서드</p></li>
@@ -944,7 +945,7 @@ dtype: int64
 </section>
 </section>
 <section id="id6">
-<h2><span class="section-number">23.3. </span>데이터 전처리<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">27.3. </span>데이터 전처리<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <p><strong>데이터 전처리</strong><font size='2'>data preprocessing</font>는
 본격적인 데이터 분석을 위해 데이터를 조작하는 과정이다.</p>
 <p>여기서는 다음 과정을 소개한다.</p>
@@ -952,7 +953,7 @@ dtype: int64
 <li><p>새로운 특성 추가</p></li>
 </ul>
 <section id="id7">
-<h3><span class="section-number">23.3.1. </span>새로운 특성<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">27.3.1. </span>새로운 특성<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <p>형제자매, 배우자, 부모자식 수를 하나로 합쳐서
 함께 승선한 가족의 수를 값으로 갖는
 <code class="docutils literal notranslate"><span class="pre">family</span></code> 특성(열)을 생성하여 데이터셋에 추가한다.</p>
@@ -2163,7 +2164,7 @@ Name: title, dtype: int64
 </section>
 </section>
 <section id="id8">
-<h2><span class="section-number">23.4. </span>상관 분석<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">27.4. </span>상관 분석<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
 <p>타이타닉 호의 침몰 사건에서 생존율과 기타 특성과의 상관 관계를 분석한다.
 이를 위해 생존 여부 데이터를 <code class="docutils literal notranslate"><span class="pre">X</span></code>와 합친다.</p>
 <div class="cell docutils container">
@@ -2347,7 +2348,7 @@ Name: title, dtype: int64
 <li><p><code class="docutils literal notranslate"><span class="pre">fare</span></code>(티켓 가격) 특성 또한 동일한 이유로 생존 여부에 중요하게 연관됨.</p></li>
 </ul>
 <section id="id9">
-<h3><span class="section-number">23.4.1. </span>수치형 특성 상관 관계<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">27.4.1. </span>수치형 특성 상관 관계<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">DataFrame.describe()</span></code> 메서드: 수치형 특성의 분포를 담은 데이터프레임 생성</p></li>
 </ul>
@@ -2661,7 +2662,7 @@ Name: survived, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4e7b425f78b8dc2d53438822627852bfe4ca8f2cb0aa1ee20a4b6f675d54cd4b.png" src="_images/4e7b425f78b8dc2d53438822627852bfe4ca8f2cb0aa1ee20a4b6f675d54cd4b.png" />
+<img alt="_images/5e88039d86a89df416fc3253a3de9e84055600fa17319fbba7d8665e5fad5527.png" src="_images/5e88039d86a89df416fc3253a3de9e84055600fa17319fbba7d8665e5fad5527.png" />
 </div>
 </div>
 <p><strong>연령별 생존자</strong></p>
@@ -2783,7 +2784,7 @@ Name: age, Length: 427, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8e93a411395722fd3de6971169d0e8b6c75aee44c61171ad724ad0e8c2300a26.png" src="_images/8e93a411395722fd3de6971169d0e8b6c75aee44c61171ad724ad0e8c2300a26.png" />
+<img alt="_images/32d530c5031419f74d911db73d2d718e827e974d2fb3cf10da55baa14fc7b8d7.png" src="_images/32d530c5031419f74d911db73d2d718e827e974d2fb3cf10da55baa14fc7b8d7.png" />
 </div>
 </div>
 <p><strong>오차 막대</strong></p>
@@ -2834,20 +2835,20 @@ Name: age, Length: 427, dtype: float64
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="pandas_6.html"
+       href="visualization_3.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">22. </span>데이터 그룹화(Group by)</p>
+        <p class="prev-next-title"><span class="section-number">26. </span>seaborn</p>
       </div>
     </a>
     <a class="right-next"
-       href="visualization_1.html"
+       href="pandas_oecd_bli.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">24. </span>matplotlib.pyplot 1부</p>
+        <p class="prev-next-title"><span class="section-number">28. </span>OECD 국가의 삶의 만족도</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2869,18 +2870,18 @@ Name: age, Length: 427, dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">23.1. 타이타닉 데이터셋 불러오기</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">23.2. 데이터 정제</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">23.2.1. 불필요 특성 제거</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">23.2.2. 결측치 처리</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">27.1. 타이타닉 데이터셋 불러오기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">27.2. 데이터 정제</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">27.2.1. 불필요 특성 제거</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">27.2.2. 결측치 처리</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">23.3. 데이터 전처리</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">23.3.1. 새로운 특성</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">27.3. 데이터 전처리</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">27.3.1. 새로운 특성</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">23.4. 상관 분석</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">23.4.1. 수치형 특성 상관 관계</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">27.4. 상관 분석</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">27.4.1. 수치형 특성 상관 관계</a></li>
 </ul>
 </li>
 </ul>
