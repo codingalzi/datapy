@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>20. 판다스 활용: 통계 기초 &#8212; 파이썬 데이터 분석</title>
+    <title>20. 판다스 활용: 통계 &#8212; 파이썬 데이터 분석</title>
   
   
   
@@ -67,8 +67,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'pandas_4';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="21. 데이터 결합: merge-join-concat" href="pandas_5.html" />
-    <link rel="prev" title="19. 데이터프레임 핵심 2부" href="pandas_3.html" />
+    <link rel="next" title="21. 데이터 결합" href="pandas_5.html" />
+    <link rel="prev" title="19. 데이터프레임 중심 프로그래밍" href="pandas_3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -173,14 +173,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="pandas_10minutes_1.html">15. 판다스 10분 완성 1부</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_10minutes_2.html">16. 판다스 10분 완성 2부</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">판다스 기초와 활용</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">판다스</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="pandas_1.html">17. 판다스 데이터프레임</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_2.html">18. 데이터프레임 핵심 1부</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_3.html">19. 데이터프레임 핵심 2부</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">20. 판다스 활용: 통계 기초</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_5.html">21. 데이터 결합: merge-join-concat</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_6.html">22. 데이터 그룹화(Group by)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_2.html">18. 데이터프레임 인덱싱</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_3.html">19. 데이터프레임 중심 프로그래밍</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">20. 판다스 활용: 통계</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_5.html">21. 데이터 결합</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_6.html">22. 데이터 그룹화</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">23. 시계열 데이터</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">데이터 시각화</span></p>
@@ -407,7 +407,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>판다스 활용: 통계 기초</h1>
+    <h1>판다스 활용: 통계</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -420,7 +420,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">20.1. 합, 평균, 표준편차</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">20.2. 상관관계와 공분산</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">20.3. 중복과 빈도</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">20.4. 미니 프로젝트: 붓꽃 데이터셋 표준화</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">20.4. 미니 프로젝트: 붓꽃 데이터셋 분석</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">20.5. 연습문제</a></li>
 </ul>
             </nav>
@@ -434,7 +434,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-pandas-4">
-<span id="id1"></span><h1><span class="section-number">20. </span>판다스 활용: 통계 기초<a class="headerlink" href="#sec-pandas-4" title="Permalink to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">20. </span>판다스 활용: 통계<a class="headerlink" href="#sec-pandas-4" title="Permalink to this heading">#</a></h1>
 <p><strong>주요 내용</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">Series</span></code>와 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> 객체를로부터 기초 통계 자료를 추출하는 방식을 다룬다.</p>
 <ul class="simple">
@@ -1757,7 +1757,7 @@ dtype: int64
 </div>
 </section>
 <section id="id5">
-<h2><span class="section-number">20.4. </span>미니 프로젝트: 붓꽃 데이터셋 표준화<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">20.4. </span>미니 프로젝트: 붓꽃 데이터셋 분석<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
 <p>아래 코드는 인터넷 데이터 저장소로부터 아이리스(붓꽃) 데이터(<code class="docutils literal notranslate"><span class="pre">iris.data</span></code>)를
 2차원 넘파이 어레이로 불러온다.</p>
 <div class="cell docutils container">
@@ -3173,6 +3173,8 @@ dtype: float64
 </table>
 </div></div></div>
 </div>
+<p><strong>추가 사항</strong></p>
+<p>꽃잎의 길이/너비와 품종 사이의 상관 관계 파악하기</p>
 </section>
 <section id="id6">
 <h2><span class="section-number">20.5. </span>연습문제<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
@@ -3217,7 +3219,7 @@ dtype: float64
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">19. </span>데이터프레임 핵심 2부</p>
+        <p class="prev-next-title"><span class="section-number">19. </span>데이터프레임 중심 프로그래밍</p>
       </div>
     </a>
     <a class="right-next"
@@ -3225,7 +3227,7 @@ dtype: float64
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">21. </span>데이터 결합: merge-join-concat</p>
+        <p class="prev-next-title"><span class="section-number">21. </span>데이터 결합</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -3250,7 +3252,7 @@ dtype: float64
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">20.1. 합, 평균, 표준편차</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">20.2. 상관관계와 공분산</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">20.3. 중복과 빈도</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">20.4. 미니 프로젝트: 붓꽃 데이터셋 표준화</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">20.4. 미니 프로젝트: 붓꽃 데이터셋 분석</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">20.5. 연습문제</a></li>
 </ul>
   </nav></div>
