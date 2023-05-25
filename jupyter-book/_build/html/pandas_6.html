@@ -418,9 +418,9 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">22.1. 소개</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">22.1.1. 그룹 확인</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">22.1.2. 열 선택</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">22.1.3. 사전과 시리즈 활용</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">22.1.4. 함수 활용</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">22.1.5. 인덱스 레벨 활용</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">22.1.3. 사전과 시리즈 활용 열 기준 그룹화</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">22.1.4. 함수 활용 그룹화</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">22.1.5. 멀티 인덱스 레벨 활용</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">22.2. 데이터 집계</a><ul class="nav section-nav flex-column">
@@ -430,7 +430,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply">22.3. Apply: 데이터 집계 일반화</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">22.3.1. 그룹 키 제거</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">22.3.2. 사분위수와 구간 쪼개기</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">22.3.2. 분위/구간 분석</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">22.3.3. 예제: 그룹별 결측치 채우기</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">22.3.4. 예제: 무작위 샘플링</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">22.3.5. 그룹별 가중치 합</a></li>
@@ -631,7 +631,7 @@ document.write(`
 </div></div></div>
 </div>
 <p>아래 그림은 위 코드의 실행 과정을 묘사한다.</p>
-<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/groupby01.png" style="width:40%;"></div>
+<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/groupby01.png" style="width:50%;"></div>
 <p><div style="text-align: center">&lt;그림 출처: <a href="https://wesmckinney.com/book/numpy-basics.html">Python for Data Analysis</a>&gt;</div></p><p><strong>예제</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -739,25 +739,6 @@ document.write(`
 5    1.393406
 6    0.092908
 Name: data1, dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">key1</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       a
-1       a
-2    None
-3       b
-4       b
-5       a
-6    None
-Name: key1, dtype: object
 </pre></div>
 </div>
 </div>
@@ -876,7 +857,8 @@ Name: data1, dtype: float64
 </table>
 </div></div></div>
 </div>
-<p><strong>어레이 또는 리스트를 키로 활용</strong></p>
+<p>어레이 또는 리스트를 키로 활용하는 것도 가능하다.
+그러면 각 값의 인덱스에 맞춰 그룹화가 이뤄진다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">states</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;OH&quot;</span><span class="p">,</span> <span class="s2">&quot;CA&quot;</span><span class="p">,</span> <span class="s2">&quot;CA&quot;</span><span class="p">,</span> <span class="s2">&quot;OH&quot;</span><span class="p">,</span> <span class="s2">&quot;OH&quot;</span><span class="p">,</span> <span class="s2">&quot;CA&quot;</span><span class="p">,</span> <span class="s2">&quot;OH&quot;</span><span class="p">])</span>
@@ -1120,91 +1102,6 @@ dtype: int64
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>key1</th>
-      <th>key2</th>
-      <th>data1</th>
-      <th>data2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>a</td>
-      <td>1</td>
-      <td>-0.204708</td>
-      <td>0.281746</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>a</td>
-      <td>2</td>
-      <td>0.478943</td>
-      <td>0.769023</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>None</td>
-      <td>1</td>
-      <td>-0.519439</td>
-      <td>1.246435</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>b</td>
-      <td>2</td>
-      <td>-0.555730</td>
-      <td>1.007189</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>b</td>
-      <td>1</td>
-      <td>1.965781</td>
-      <td>-1.296221</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>a</td>
-      <td>&lt;NA&gt;</td>
-      <td>1.393406</td>
-      <td>0.274992</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>None</td>
-      <td>1</td>
-      <td>0.092908</td>
-      <td>0.228913</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1296,21 +1193,28 @@ dtype: int64
 </div>
 <section id="id3">
 <h3><span class="section-number">22.1.1. </span>그룹 확인<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>집계 적용 이전의 그룹들의 상태를 확인하기 위해 반복문을 이용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;===&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>===
+a
+---
   key1  key2     data1     data2
 0    a     1 -0.204708  0.281746
 1    a     2  0.478943  0.769023
 5    a  &lt;NA&gt;  1.393406  0.274992
+===
 b
+---
   key1  key2     data1     data2
 3    b     2 -0.555730  1.007189
 4    b     1  1.965781 -1.296221
@@ -1321,32 +1225,49 @@ b
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">),</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;===&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">((</span><span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;a&#39;, 1)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>===
+(&#39;a&#39;, 1)
+---
   key1  key2     data1     data2
 0    a     1 -0.204708  0.281746
+===
 (&#39;a&#39;, 2)
+---
   key1  key2     data1     data2
 1    a     2  0.478943  0.769023
+===
 (&#39;b&#39;, 1)
+---
   key1  key2     data1     data2
 4    b     1  1.965781 -1.296221
+===
 (&#39;b&#39;, 2)
+---
   key1  key2    data1     data2
 3    b     2 -0.55573  1.007189
 </pre></div>
 </div>
 </div>
 </div>
+<p>사전 형식으로 저장하면 쉽게 그룹 단위로 확인할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pieces</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">group</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">)}</span>
-<span class="n">pieces</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pieces</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1396,46 +1317,96 @@ b
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">({</span><span class="s2">&quot;key1&quot;</span><span class="p">:</span> <span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">:</span> <span class="s2">&quot;key&quot;</span><span class="p">,</span>
-                      <span class="s2">&quot;data1&quot;</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;data2&quot;</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span><span class="p">},</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">group_key</span><span class="p">,</span> <span class="n">group_values</span> <span class="ow">in</span> <span class="n">grouped</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">group_key</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">group_values</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data
-      data1     data2
-0 -0.204708  0.281746
-1  0.478943  0.769023
-2 -0.519439  1.246435
-3 -0.555730  1.007189
-4  1.965781 -1.296221
-5  1.393406  0.274992
-6  0.092908  0.228913
-key
-   key1  key2
-0     a     1
-1     a     2
-2  None     1
-3     b     2
-4     b     1
-5     a  &lt;NA&gt;
-6  None     1
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>key1</th>
+      <th>key2</th>
+      <th>data1</th>
+      <th>data2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>1</td>
+      <td>-0.204708</td>
+      <td>0.281746</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>a</td>
+      <td>2</td>
+      <td>0.478943</td>
+      <td>0.769023</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>None</td>
+      <td>1</td>
+      <td>-0.519439</td>
+      <td>1.246435</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>b</td>
+      <td>2</td>
+      <td>-0.555730</td>
+      <td>1.007189</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>b</td>
+      <td>1</td>
+      <td>1.965781</td>
+      <td>-1.296221</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>a</td>
+      <td>&lt;NA&gt;</td>
+      <td>1.393406</td>
+      <td>0.274992</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>None</td>
+      <td>1</td>
+      <td>0.092908</td>
+      <td>0.228913</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="id4">
 <h3><span class="section-number">22.1.2. </span>열 선택<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>그룹화 후 집계를 진행하기 전에 열 라벨을 이용하여 열을 선택할 수 있다.</p>
+<ul class="simple">
+<li><p>열 라벨의 리스트를 이용할 때: 데이터프레임 생성</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">])[[</span><span class="s2">&quot;data2&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -1493,11 +1464,12 @@ key
 </table>
 </div></div></div>
 </div>
+<ul class="simple">
+<li><p>열 라벨을 하나만 지정할 때: 시리즈 생성</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">])[</span><span class="s2">&quot;data2&quot;</span><span class="p">]</span>
-<span class="n">s_grouped</span>
-<span class="n">s_grouped</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">])[</span><span class="s2">&quot;data2&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1514,13 +1486,92 @@ Name: data2, dtype: float64
 </div>
 </section>
 <section id="id5">
-<h3><span class="section-number">22.1.3. </span>사전과 시리즈 활용<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">22.1.3. </span>사전과 시리즈 활용 열 기준 그룹화<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">people</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span>
                       <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">],</span>
                       <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Joe&quot;</span><span class="p">,</span> <span class="s2">&quot;Steve&quot;</span><span class="p">,</span> <span class="s2">&quot;Wanda&quot;</span><span class="p">,</span> <span class="s2">&quot;Jill&quot;</span><span class="p">,</span> <span class="s2">&quot;Trey&quot;</span><span class="p">])</span>
-<span class="n">people</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="c1"># Add a few NA values</span>
+
+<span class="n">people</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Joe</th>
+      <td>1.352917</td>
+      <td>0.886429</td>
+      <td>-2.001637</td>
+      <td>-0.371843</td>
+      <td>1.669025</td>
+    </tr>
+    <tr>
+      <th>Steve</th>
+      <td>-0.438570</td>
+      <td>-0.539741</td>
+      <td>0.476985</td>
+      <td>3.248944</td>
+      <td>-1.021228</td>
+    </tr>
+    <tr>
+      <th>Wanda</th>
+      <td>-0.577087</td>
+      <td>0.124121</td>
+      <td>0.302614</td>
+      <td>0.523772</td>
+      <td>0.000940</td>
+    </tr>
+    <tr>
+      <th>Jill</th>
+      <td>1.343810</td>
+      <td>-0.713544</td>
+      <td>-0.831154</td>
+      <td>-2.370232</td>
+      <td>-1.860761</td>
+    </tr>
+    <tr>
+      <th>Trey</th>
+      <td>-0.860757</td>
+      <td>0.560145</td>
+      <td>-1.265934</td>
+      <td>0.119827</td>
+      <td>-1.063512</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>결측치 두 개를 의도적으로 추가한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">people</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
 <span class="n">people</span>
 </pre></div>
 </div>
@@ -1596,6 +1647,10 @@ Name: data2, dtype: float64
 </table>
 </div></div></div>
 </div>
+<p><strong>사전 활용 열 기준 그룹화</strong></p>
+<p>사전을 이용하여 열 인덱스의 라벨을 <code class="docutils literal notranslate"><span class="pre">&quot;red&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;blue&quot;</span></code> 로 구분한다.
+즉, 키는 열 인덱스의 라벨을, 키의 값은 그룹을 지정한다.
+단, <code class="docutils literal notranslate"><span class="pre">&quot;f&quot;</span></code> 라벨은 존재하지 않기에 무시된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
@@ -1604,6 +1659,7 @@ Name: data2, dtype: float64
 </div>
 </div>
 </div>
+<p>아래 코드는 지정된 열로 구성된 그룹별로 <code class="docutils literal notranslate"><span class="pre">sum()</span></code> 메서드를 각 행에 대해 적용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">by_column</span> <span class="o">=</span> <span class="n">people</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span>
@@ -1664,11 +1720,90 @@ Name: data2, dtype: float64
 </table>
 </div></div></div>
 </div>
+<p>다음은 그룹별, 행별 평균값을 계산한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">by_column</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>blue</th>
+      <th>red</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Joe</th>
+      <td>-1.186740</td>
+      <td>1.302790</td>
+    </tr>
+    <tr>
+      <th>Steve</th>
+      <td>1.862964</td>
+      <td>-0.666513</td>
+    </tr>
+    <tr>
+      <th>Wanda</th>
+      <td>0.523772</td>
+      <td>-0.288074</td>
+    </tr>
+    <tr>
+      <th>Jill</th>
+      <td>-1.600693</td>
+      <td>-0.410165</td>
+    </tr>
+    <tr>
+      <th>Trey</th>
+      <td>-0.573054</td>
+      <td>-0.454708</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>시리즈 활용 열 기준 그룹화</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">map_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
 <span class="n">map_series</span>
-<span class="n">people</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">map_series</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a       red
+b       red
+c      blue
+d      blue
+e       red
+f    orange
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>시리즈를 활용하면 행의 라벨이 해당 값에 따라 그룹화된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">people</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">map_series</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1727,7 +1862,89 @@ Name: data2, dtype: float64
 </div>
 </section>
 <section id="id6">
-<h3><span class="section-number">22.1.4. </span>함수 활용<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">22.1.4. </span>함수 활용 그룹화<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">people</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>e</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Joe</th>
+      <td>1.352917</td>
+      <td>0.886429</td>
+      <td>-2.001637</td>
+      <td>-0.371843</td>
+      <td>1.669025</td>
+    </tr>
+    <tr>
+      <th>Steve</th>
+      <td>-0.438570</td>
+      <td>-0.539741</td>
+      <td>0.476985</td>
+      <td>3.248944</td>
+      <td>-1.021228</td>
+    </tr>
+    <tr>
+      <th>Wanda</th>
+      <td>-0.577087</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.523772</td>
+      <td>0.000940</td>
+    </tr>
+    <tr>
+      <th>Jill</th>
+      <td>1.343810</td>
+      <td>-0.713544</td>
+      <td>-0.831154</td>
+      <td>-2.370232</td>
+      <td>-1.860761</td>
+    </tr>
+    <tr>
+      <th>Trey</th>
+      <td>-0.860757</td>
+      <td>0.560145</td>
+      <td>-1.265934</td>
+      <td>0.119827</td>
+      <td>-1.063512</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">groupby()</span></code> 메서드의 첫째 인자는 <code class="docutils literal notranslate"><span class="pre">by</span></code> 키워드 인자로 지정된다.
+<code class="docutils literal notranslate"><span class="pre">by</span></code> 키워드의 인자가 함수이면 지정된 축에 따라
+행 또는 열 인덱스 라벨에 해당 함수를 적용한 결과를
+기준으로 그룹화한다.</p>
+<p>예를 들어 아래 코드는 행 인덱스의 라벨의 길이를 기준으로 그룹화한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">people</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -1789,10 +2006,111 @@ Name: data2, dtype: float64
 </table>
 </div></div></div>
 </div>
+<p>그룹화의 기준으로 함수와 함께 어레이, 사전, 시리즈, 또는 열 인덱스 라벨 등을 함께 사용할 수 있다.
+연습을 위해 먼저 새로운 열을 추가한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">]</span>
-<span class="n">people</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="nb">len</span><span class="p">,</span> <span class="n">key_list</span><span class="p">])</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">people</span><span class="p">[</span><span class="s2">&quot;School&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">people</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>a</th>
+      <th>b</th>
+      <th>c</th>
+      <th>d</th>
+      <th>e</th>
+      <th>School</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Joe</th>
+      <td>1.352917</td>
+      <td>0.886429</td>
+      <td>-2.001637</td>
+      <td>-0.371843</td>
+      <td>1.669025</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>Steve</th>
+      <td>-0.438570</td>
+      <td>-0.539741</td>
+      <td>0.476985</td>
+      <td>3.248944</td>
+      <td>-1.021228</td>
+      <td>B</td>
+    </tr>
+    <tr>
+      <th>Wanda</th>
+      <td>-0.577087</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.523772</td>
+      <td>0.000940</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <th>Jill</th>
+      <td>1.343810</td>
+      <td>-0.713544</td>
+      <td>-0.831154</td>
+      <td>-2.370232</td>
+      <td>-1.860761</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <th>Trey</th>
+      <td>-0.860757</td>
+      <td>0.560145</td>
+      <td>-1.265934</td>
+      <td>0.119827</td>
+      <td>-1.063512</td>
+      <td>B</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>아래 리스트도 그룹화에 사용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;three&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>아래 코드는 행 인덱스의 라벨의 길이, <code class="docutils literal notranslate"><span class="pre">key_list</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;School&quot;</span></code> 열을 기준으로 그룹하를 진행한
+다음에 그룹별 최소값을 계산한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">people</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="nb">len</span><span class="p">,</span> <span class="n">key_list</span><span class="p">,</span> <span class="s2">&quot;School&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1816,17 +2134,29 @@ Name: data2, dtype: float64
     <tr style="text-align: right;">
       <th></th>
       <th></th>
+      <th></th>
       <th>a</th>
       <th>b</th>
       <th>c</th>
       <th>d</th>
       <th>e</th>
     </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>School</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
   </thead>
   <tbody>
     <tr>
       <th>3</th>
       <th>one</th>
+      <th>A</th>
       <td>1.352917</td>
       <td>0.886429</td>
       <td>-2.001637</td>
@@ -1834,22 +2164,42 @@ Name: data2, dtype: float64
       <td>1.669025</td>
     </tr>
     <tr>
-      <th>4</th>
-      <th>two</th>
-      <td>-0.860757</td>
+      <th rowspan="2" valign="top">4</th>
+      <th>three</th>
+      <th>A</th>
+      <td>1.343810</td>
       <td>-0.713544</td>
-      <td>-1.265934</td>
+      <td>-0.831154</td>
       <td>-2.370232</td>
       <td>-1.860761</td>
     </tr>
     <tr>
-      <th>5</th>
+      <th>two</th>
+      <th>B</th>
+      <td>-0.860757</td>
+      <td>0.560145</td>
+      <td>-1.265934</td>
+      <td>0.119827</td>
+      <td>-1.063512</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">5</th>
       <th>one</th>
-      <td>-0.577087</td>
+      <th>B</th>
+      <td>-0.438570</td>
       <td>-0.539741</td>
       <td>0.476985</td>
-      <td>0.523772</td>
+      <td>3.248944</td>
       <td>-1.021228</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <th>C</th>
+      <td>-0.577087</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.523772</td>
+      <td>0.000940</td>
     </tr>
   </tbody>
 </table>
@@ -1857,12 +2207,12 @@ Name: data2, dtype: float64
 </div>
 </section>
 <section id="id7">
-<h3><span class="section-number">22.1.5. </span>인덱스 레벨 활용<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">22.1.5. </span>멀티 인덱스 레벨 활용<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_arrays</span><span class="p">([[</span><span class="s2">&quot;US&quot;</span><span class="p">,</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span> <span class="s2">&quot;JP&quot;</span><span class="p">,</span> <span class="s2">&quot;JP&quot;</span><span class="p">],</span>
-                                    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]],</span>
-                                    <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cty&quot;</span><span class="p">,</span> <span class="s2">&quot;tenor&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_arrays</span><span class="p">([[</span><span class="s2">&quot;Foo&quot;</span><span class="p">,</span> <span class="s2">&quot;Foo&quot;</span><span class="p">,</span> <span class="s2">&quot;Foo&quot;</span><span class="p">,</span> <span class="s2">&quot;Bar&quot;</span><span class="p">,</span> <span class="s2">&quot;Bar&quot;</span><span class="p">],</span>
+                                    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]])</span>
+
 <span class="n">hier_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
 <span class="n">hier_df</span>
 </pre></div>
@@ -1886,12 +2236,12 @@ Name: data2, dtype: float64
 <table border="1" class="dataframe">
   <thead>
     <tr>
-      <th>cty</th>
-      <th colspan="3" halign="left">US</th>
-      <th colspan="2" halign="left">JP</th>
+      <th></th>
+      <th colspan="3" halign="left">Foo</th>
+      <th colspan="2" halign="left">Bar</th>
     </tr>
     <tr>
-      <th>tenor</th>
+      <th></th>
       <th>1</th>
       <th>3</th>
       <th>5</th>
@@ -1936,9 +2286,12 @@ Name: data2, dtype: float64
 </table>
 </div></div></div>
 </div>
+<ul class="simple">
+<li><p>열 인덱스의 0-레벨 기준 그룹화</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hier_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">&quot;cty&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hier_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1960,9 +2313,9 @@ Name: data2, dtype: float64
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
-      <th>cty</th>
-      <th>JP</th>
-      <th>US</th>
+      <th></th>
+      <th>Bar</th>
+      <th>Foo</th>
     </tr>
   </thead>
   <tbody>
@@ -1985,6 +2338,68 @@ Name: data2, dtype: float64
       <th>3</th>
       <td>2</td>
       <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>열 인덱스의 1-레벨 기준 그룹화</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hier_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>1</th>
+      <th>3</th>
+      <th>5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.604556</td>
+      <td>-1.665077</td>
+      <td>-0.199543</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-1.030458</td>
+      <td>0.308818</td>
+      <td>0.377984</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.668940</td>
+      <td>0.537344</td>
+      <td>0.246674</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.674690</td>
+      <td>-0.080449</td>
+      <td>-1.549106</td>
     </tr>
   </tbody>
 </table>
@@ -4004,7 +4419,7 @@ dtype: float64
 </div>
 </section>
 <section id="id12">
-<h3><span class="section-number">22.3.2. </span>사분위수와 구간 쪼개기<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">22.3.2. </span>분위/구간 분석<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;data1&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span>
@@ -6859,9 +7274,9 @@ Name: value, dtype: float64
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">22.1. 소개</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">22.1.1. 그룹 확인</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">22.1.2. 열 선택</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">22.1.3. 사전과 시리즈 활용</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">22.1.4. 함수 활용</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">22.1.5. 인덱스 레벨 활용</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">22.1.3. 사전과 시리즈 활용 열 기준 그룹화</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">22.1.4. 함수 활용 그룹화</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">22.1.5. 멀티 인덱스 레벨 활용</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">22.2. 데이터 집계</a><ul class="nav section-nav flex-column">
@@ -6871,7 +7286,7 @@ Name: value, dtype: float64
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply">22.3. Apply: 데이터 집계 일반화</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">22.3.1. 그룹 키 제거</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">22.3.2. 사분위수와 구간 쪼개기</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">22.3.2. 분위/구간 분석</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">22.3.3. 예제: 그룹별 결측치 채우기</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">22.3.4. 예제: 무작위 샘플링</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">22.3.5. 그룹별 가중치 합</a></li>
