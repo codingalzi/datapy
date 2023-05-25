@@ -392,7 +392,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -408,6 +410,31 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">22.1. 소개</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">22.1.1. 그룹 확인</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">22.1.2. 열 선택</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">22.1.3. 사전과 시리즈 활용</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">22.1.4. 함수 활용</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">22.1.5. 인덱스 레벨 활용</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">22.2. 데이터 집계</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">22.2.1. 여러 함수 활용</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">22.2.2. 행 인덱스 없는 데이터 집계</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply">22.3. Apply: 데이터 집계 일반화</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">22.3.1. 그룹 키 제거</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">22.3.2. 사분위수와 구간 쪼개기</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -421,9 +448,7 @@ document.write(`
 <span id="id1"></span><h1><span class="section-number">22. </span>데이터 그룹화<a class="headerlink" href="#sec-groupby" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython suppress id=91bf744c97594b79aeaf6a9c84176193</span>
-<span class="o">%</span><span class="k">pushd</span> book-materials
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">PREVIOUS_MAX_ROWS</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_rows</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_columns</span> <span class="o">=</span> <span class="mi">20</span>
@@ -436,26 +461,21 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Errno 2] No such file or directory: &#39;book-materials&#39;
-/mnt/c/Users/gslee/Documents/GitHub/datapy/jupyter-book
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=a66384a336da4f5e80d115439d896670</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<section id="id2">
+<h2><span class="section-number">22.1. </span>소개<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/groupby01.png" style="width:40%;"></div>
+<p><div style="text-align: center">&lt;그림 출처: <a href="https://wesmckinney.com/book/numpy-basics.html">Python for Data Analysis</a>&gt;</div></p><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=717f2535751f48a68d977477a3898589</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;key1&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;key1&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
                    <span class="s2">&quot;key2&quot;</span> <span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;Int64&quot;</span><span class="p">),</span>
                    <span class="s2">&quot;data1&quot;</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
                    <span class="s2">&quot;data2&quot;</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">7</span><span class="p">)})</span>
@@ -544,22 +564,20 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=24486d99929647449d6208aed5a966ef</span>
-<span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;data1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;key1&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;data1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;key1&quot;</span><span class="p">])</span>
 <span class="n">grouped</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x7fc19d2e5210&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x7f4e5c41afb0&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=c29f2ae78cd746838c919a3b3d7cb9b0</span>
-<span class="n">grouped</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -574,8 +592,7 @@ Name: data1, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=b2f13da1d1db405db2714ce25d08b045</span>
-<span class="n">means</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;data1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;key1&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;key2&quot;</span><span class="p">]])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">means</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;data1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;key1&quot;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;key2&quot;</span><span class="p">]])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">means</span>
 </pre></div>
 </div>
@@ -593,8 +610,7 @@ Name: data1, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=f6d3464627b6440ab9b6ab5267778ec0</span>
-<span class="n">means</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">means</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -643,8 +659,7 @@ Name: data1, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=2b0bf87cf09644ee9f1f8ba9d4f2fb10</span>
-<span class="n">states</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;OH&quot;</span><span class="p">,</span> <span class="s2">&quot;CA&quot;</span><span class="p">,</span> <span class="s2">&quot;CA&quot;</span><span class="p">,</span> <span class="s2">&quot;OH&quot;</span><span class="p">,</span> <span class="s2">&quot;OH&quot;</span><span class="p">,</span> <span class="s2">&quot;CA&quot;</span><span class="p">,</span> <span class="s2">&quot;OH&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">states</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s2">&quot;OH&quot;</span><span class="p">,</span> <span class="s2">&quot;CA&quot;</span><span class="p">,</span> <span class="s2">&quot;CA&quot;</span><span class="p">,</span> <span class="s2">&quot;OH&quot;</span><span class="p">,</span> <span class="s2">&quot;OH&quot;</span><span class="p">,</span> <span class="s2">&quot;CA&quot;</span><span class="p">,</span> <span class="s2">&quot;OH&quot;</span><span class="p">])</span>
 <span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2005</span><span class="p">,</span> <span class="mi">2005</span><span class="p">,</span> <span class="mi">2006</span><span class="p">,</span> <span class="mi">2005</span><span class="p">,</span> <span class="mi">2006</span><span class="p">,</span> <span class="mi">2005</span><span class="p">,</span> <span class="mi">2006</span><span class="p">]</span>
 <span class="n">df</span><span class="p">[</span><span class="s2">&quot;data1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="n">states</span><span class="p">,</span> <span class="n">years</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
@@ -662,18 +677,113 @@ Name: data1, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=3eace3f65719478aa4e1fcc2002b04c9</span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_542/806793633.py:3: FutureWarning: The default value of numeric_only in DataFrameGroupBy.mean is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
-  df.groupby(&quot;key2&quot;).mean()
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>key2</th>
+      <th>data1</th>
+      <th>data2</th>
+    </tr>
+    <tr>
+      <th>key1</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>1.5</td>
+      <td>0.555881</td>
+      <td>0.441920</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>1.5</td>
+      <td>0.705025</td>
+      <td>-0.144516</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data1</th>
+      <th>data2</th>
+    </tr>
+    <tr>
+      <th>key2</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>0.333636</td>
+      <td>0.115218</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.038393</td>
+      <td>0.888106</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -732,8 +842,7 @@ Name: data1, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=b1a71909137c4bf5a1dadcdc297efc0f</span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -750,9 +859,23 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=8C7C817AB41E4D5EB6D4E2D8C0FA31EF</span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">],</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>key1
+a      3
+b      2
+NaN    2
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">],</span> <span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -771,8 +894,7 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=ac652b305fef4edda286f9fa9c23f53b</span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -823,14 +945,13 @@ dtype: int64
 </table>
 </div></div></div>
 </div>
+<section id="id3">
+<h3><span class="section-number">22.1.1. </span>그룹 확인<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=37c961ad9c074ba1a2165ce95aabd63c</span>
-<span class="c1">#! blockstart</span>
-<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
-<span class="c1">#! blockend</span>
 </pre></div>
 </div>
 </div>
@@ -850,12 +971,9 @@ b
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=8ec5c5d0eb0d431ba238881770479a40</span>
-<span class="c1">#! blockstart</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">),</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">]):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">),</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">]):</span>
     <span class="nb">print</span><span class="p">((</span><span class="n">k1</span><span class="p">,</span> <span class="n">k2</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">group</span><span class="p">)</span>
-<span class="c1">#! blockend</span>
 </pre></div>
 </div>
 </div>
@@ -878,8 +996,7 @@ b
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=dda859371f47444aab503b4e07658be1</span>
-<span class="n">pieces</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">group</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">)}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pieces</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">group</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">group</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">)}</span>
 <span class="n">pieces</span><span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -930,8 +1047,7 @@ b
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=b7d6ba2adfc84814b7fd09e6fa274ef4</span>
-<span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">({</span><span class="s2">&quot;key1&quot;</span><span class="p">:</span> <span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">:</span> <span class="s2">&quot;key&quot;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">({</span><span class="s2">&quot;key1&quot;</span><span class="p">:</span> <span class="s2">&quot;key&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">:</span> <span class="s2">&quot;key&quot;</span><span class="p">,</span>
                       <span class="s2">&quot;data1&quot;</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="s2">&quot;data2&quot;</span><span class="p">:</span> <span class="s2">&quot;data&quot;</span><span class="p">},</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -939,12 +1055,9 @@ b
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=ce2f6ff046f44cad8bafbf15a19a2cd5</span>
-<span class="c1">#! blockstart</span>
-<span class="k">for</span> <span class="n">group_key</span><span class="p">,</span> <span class="n">group_values</span> <span class="ow">in</span> <span class="n">grouped</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">group_key</span><span class="p">,</span> <span class="n">group_values</span> <span class="ow">in</span> <span class="n">grouped</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">group_key</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">group_values</span><span class="p">)</span>
-<span class="c1">#! blockend</span>
 </pre></div>
 </div>
 </div>
@@ -971,10 +1084,12 @@ key
 </div>
 </div>
 </div>
+</section>
+<section id="id4">
+<h3><span class="section-number">22.1.2. </span>열 선택<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=548bdde71e8f4741976a2cc620254fb9</span>
-<span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">])[[</span><span class="s2">&quot;data2&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">])[[</span><span class="s2">&quot;data2&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1031,8 +1146,7 @@ key
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=ba1813aa18c9456db659b05313612c1b</span>
-<span class="n">s_grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">])[</span><span class="s2">&quot;data2&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s_grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">])[</span><span class="s2">&quot;data2&quot;</span><span class="p">]</span>
 <span class="n">s_grouped</span>
 <span class="n">s_grouped</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
@@ -1049,10 +1163,12 @@ Name: data2, dtype: float64
 </div>
 </div>
 </div>
+</section>
+<section id="id5">
+<h3><span class="section-number">22.1.3. </span>사전과 시리즈 활용<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=78aee68b5f504ff89e6698bd9bbec2b2</span>
-<span class="n">people</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">people</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span>
                       <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">],</span>
                       <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Joe&quot;</span><span class="p">,</span> <span class="s2">&quot;Steve&quot;</span><span class="p">,</span> <span class="s2">&quot;Wanda&quot;</span><span class="p">,</span> <span class="s2">&quot;Jill&quot;</span><span class="p">,</span> <span class="s2">&quot;Trey&quot;</span><span class="p">])</span>
 <span class="n">people</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="c1"># Add a few NA values</span>
@@ -1133,8 +1249,7 @@ Name: data2, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=4ef4621d217e4c70bdf9c6ea024b6af2</span>
-<span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span>
            <span class="s2">&quot;d&quot;</span><span class="p">:</span> <span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;e&quot;</span><span class="p">:</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span> <span class="p">:</span> <span class="s2">&quot;orange&quot;</span><span class="p">}</span>
 </pre></div>
 </div>
@@ -1142,8 +1257,7 @@ Name: data2, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=dc0ed8d771324592b997cbb5742ae718</span>
-<span class="n">by_column</span> <span class="o">=</span> <span class="n">people</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">by_column</span> <span class="o">=</span> <span class="n">people</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">mapping</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span>
 <span class="n">by_column</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1203,8 +1317,7 @@ Name: data2, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=1cc8cb1b67df408a8bc530c8cef2bf41</span>
-<span class="n">map_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">map_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">mapping</span><span class="p">)</span>
 <span class="n">map_series</span>
 <span class="n">people</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">map_series</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </pre></div>
@@ -1263,10 +1376,12 @@ Name: data2, dtype: float64
 </table>
 </div></div></div>
 </div>
+</section>
+<section id="id6">
+<h3><span class="section-number">22.1.4. </span>함수 활용<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=45ccbe40ecfe4d29864e091288af57e3</span>
-<span class="n">people</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">people</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1327,8 +1442,7 @@ Name: data2, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=153a6214e5864c5186a8a1d52323c4f8</span>
-<span class="n">key_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">key_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">]</span>
 <span class="n">people</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="nb">len</span><span class="p">,</span> <span class="n">key_list</span><span class="p">])</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1392,10 +1506,12 @@ Name: data2, dtype: float64
 </table>
 </div></div></div>
 </div>
+</section>
+<section id="id7">
+<h3><span class="section-number">22.1.5. </span>인덱스 레벨 활용<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=81eb2063b2ae4d7caecf1704255f893c</span>
-<span class="n">columns</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_arrays</span><span class="p">([[</span><span class="s2">&quot;US&quot;</span><span class="p">,</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span> <span class="s2">&quot;JP&quot;</span><span class="p">,</span> <span class="s2">&quot;JP&quot;</span><span class="p">],</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">MultiIndex</span><span class="o">.</span><span class="n">from_arrays</span><span class="p">([[</span><span class="s2">&quot;US&quot;</span><span class="p">,</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span> <span class="s2">&quot;US&quot;</span><span class="p">,</span> <span class="s2">&quot;JP&quot;</span><span class="p">,</span> <span class="s2">&quot;JP&quot;</span><span class="p">],</span>
                                     <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]],</span>
                                     <span class="n">names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;cty&quot;</span><span class="p">,</span> <span class="s2">&quot;tenor&quot;</span><span class="p">])</span>
 <span class="n">hier_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)),</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
@@ -1473,8 +1589,7 @@ Name: data2, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=4d648f35e1f8461a96cad485d324551e</span>
-<span class="n">hier_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">&quot;cty&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hier_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">&quot;cty&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1526,11 +1641,98 @@ Name: data2, dtype: float64
 </table>
 </div></div></div>
 </div>
+</section>
+</section>
+<section id="id8">
+<h2><span class="section-number">22.2. </span>데이터 집계<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=643d0ed7414d41f8b5a32867b2539412</span>
-<span class="n">df</span>
-<span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>key1</th>
+      <th>key2</th>
+      <th>data1</th>
+      <th>data2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>a</td>
+      <td>1</td>
+      <td>-0.204708</td>
+      <td>0.281746</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>a</td>
+      <td>2</td>
+      <td>0.478943</td>
+      <td>0.769023</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>None</td>
+      <td>1</td>
+      <td>-0.519439</td>
+      <td>1.246435</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>b</td>
+      <td>2</td>
+      <td>-0.555730</td>
+      <td>1.007189</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>b</td>
+      <td>1</td>
+      <td>1.965781</td>
+      <td>-1.296221</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>a</td>
+      <td>&lt;NA&gt;</td>
+      <td>1.393406</td>
+      <td>0.274992</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>None</td>
+      <td>1</td>
+      <td>0.092908</td>
+      <td>0.228913</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;key1&quot;</span><span class="p">)</span>
 <span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;data1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nsmallest</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1548,10 +1750,15 @@ Name: data1, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=cc3562f5cfeb4a14920643783ecadb69</span>
-<span class="k">def</span> <span class="nf">peak_to_peak</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">peak_to_peak</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">arr</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">arr</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
-<span class="n">grouped</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">peak_to_peak</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">peak_to_peak</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1604,8 +1811,7 @@ Name: data1, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=47959d0bf07b4c4298f729e6af6a3c76</span>
-<span class="n">grouped</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1739,10 +1945,11 @@ Name: data1, dtype: float64
 <p>2 rows × 24 columns</p>
 </div></div></div>
 </div>
+<section id="id9">
+<h3><span class="section-number">22.2.1. </span>여러 함수 활용<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=ae1e841c962344d6a4ea9cc65da459f4</span>
-<span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;examples/tips.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;examples/tips.csv&quot;</span><span class="p">)</span>
 <span class="n">tips</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1826,8 +2033,7 @@ Name: data1, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=212326c8b5954ee0b1a9993ba2eeb8d7</span>
-<span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span>
 <span class="n">tips</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1917,16 +2123,14 @@ Name: data1, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=b5d4697e5fe84be9993099e33b568345</span>
-<span class="n">grouped</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=21d0430d3c794474a8a113cc10c0a59e</span>
-<span class="n">grouped_pct</span> <span class="o">=</span> <span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped_pct</span> <span class="o">=</span> <span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span>
 <span class="n">grouped_pct</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="s2">&quot;mean&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1948,8 +2152,7 @@ Name: tip_pct, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=2203ebe00b9345738e2c1748aeda7873</span>
-<span class="n">grouped_pct</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">peak_to_peak</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped_pct</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">peak_to_peak</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -2044,8 +2247,7 @@ Name: tip_pct, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=331922d6e0b8439fbba2d79df35ae3cb</span>
-<span class="n">grouped_pct</span><span class="o">.</span><span class="n">agg</span><span class="p">([(</span><span class="s2">&quot;average&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;stdev&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">)])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped_pct</span><span class="o">.</span><span class="n">agg</span><span class="p">([(</span><span class="s2">&quot;average&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;stdev&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
@@ -2130,8 +2332,7 @@ Name: tip_pct, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=b23e35d113f247f5b4ba6c7b57286cce</span>
-<span class="n">functions</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">functions</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">]</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">grouped</span><span class="p">[[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">,</span> <span class="s2">&quot;total_bill&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">functions</span><span class="p">)</span>
 <span class="n">result</span>
 </pre></div>
@@ -2268,8 +2469,7 @@ Name: tip_pct, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=48aeddf0d8614a9daa16851bf8292777</span>
-<span class="n">result</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2364,8 +2564,7 @@ Name: tip_pct, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=696328eaf2a94a9bb379aedc13ece6f0</span>
-<span class="n">ftuples</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;Average&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Variance&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ftuples</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;Average&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Variance&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">)]</span>
 <span class="n">grouped</span><span class="p">[[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">,</span> <span class="s2">&quot;total_bill&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">ftuples</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2481,9 +2680,92 @@ Name: tip_pct, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=9216a59f6365466ab7f76fa04a569de3</span>
-<span class="n">grouped</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;tip&quot;</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span> <span class="p">:</span> <span class="s2">&quot;sum&quot;</span><span class="p">})</span>
-<span class="n">grouped</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;tip_pct&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">],</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;tip&quot;</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span> <span class="p">:</span> <span class="s2">&quot;sum&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>tip</th>
+      <th>size</th>
+    </tr>
+    <tr>
+      <th>day</th>
+      <th>smoker</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">Fri</th>
+      <th>No</th>
+      <td>3.50</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>4.73</td>
+      <td>31</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Sat</th>
+      <th>No</th>
+      <td>9.00</td>
+      <td>115</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>10.00</td>
+      <td>104</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Sun</th>
+      <th>No</th>
+      <td>6.00</td>
+      <td>167</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>6.50</td>
+      <td>49</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Thur</th>
+      <th>No</th>
+      <td>6.70</td>
+      <td>112</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>5.00</td>
+      <td>40</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;tip_pct&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">],</span>
              <span class="s2">&quot;size&quot;</span> <span class="p">:</span> <span class="s2">&quot;sum&quot;</span><span class="p">})</span>
 </pre></div>
 </div>
@@ -2607,18 +2889,16 @@ Name: tip_pct, dtype: float64
 </table>
 </div></div></div>
 </div>
+</section>
+<section id="id10">
+<h3><span class="section-number">22.2.2. </span>행 인덱스 없는 데이터 집계<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=97bee90edc124121bde0d922a7da360d</span>
-<span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_542/3208275111.py:2: FutureWarning: The default value of numeric_only in DataFrameGroupBy.mean is deprecated. In a future version, numeric_only will default to False. Either specify numeric_only or select only columns which should be valid for the function.
-  tips.groupby([&quot;day&quot;, &quot;smoker&quot;], as_index=False).mean()
-</pre></div>
-</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2722,12 +3002,21 @@ Name: tip_pct, dtype: float64
 </table>
 </div></div></div>
 </div>
+</section>
+</section>
+<section id="apply">
+<h2><span class="section-number">22.3. </span>Apply: 데이터 집계 일반화<a class="headerlink" href="#apply" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=b74e5bd1d36148bf86a6ae9fb8ac78d6</span>
-<span class="k">def</span> <span class="nf">top</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">top</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">column</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="n">n</span><span class="p">]</span>
-<span class="n">top</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2826,8 +3115,7 @@ Name: tip_pct, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=afe083ef07204911ae57dfddc2a784a1</span>
-<span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;smoker&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">top</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;smoker&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">top</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2980,8 +3268,7 @@ Name: tip_pct, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=0983c697950348288a7c7b9fb5cfdb4b</span>
-<span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3124,10 +3411,81 @@ Name: tip_pct, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=04225aab0dd44b12bbac2961aa35254b</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;smoker&quot;</span><span class="p">)[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;smoker&quot;</span><span class="p">)[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 <span class="n">result</span>
-<span class="n">result</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s2">&quot;smoker&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>count</th>
+      <th>mean</th>
+      <th>std</th>
+      <th>min</th>
+      <th>25%</th>
+      <th>50%</th>
+      <th>75%</th>
+      <th>max</th>
+    </tr>
+    <tr>
+      <th>smoker</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>No</th>
+      <td>151.0</td>
+      <td>0.159328</td>
+      <td>0.039910</td>
+      <td>0.056797</td>
+      <td>0.136906</td>
+      <td>0.155625</td>
+      <td>0.185014</td>
+      <td>0.291990</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>93.0</td>
+      <td>0.163196</td>
+      <td>0.085119</td>
+      <td>0.035638</td>
+      <td>0.106771</td>
+      <td>0.153846</td>
+      <td>0.195059</td>
+      <td>0.710345</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="s2">&quot;smoker&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3154,10 +3512,11 @@ dtype: float64
 </div>
 </div>
 </div>
+<section id="id11">
+<h3><span class="section-number">22.3.1. </span>그룹 키 제거<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=c35103d700ee4488a481eb898f95001b</span>
-<span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">top</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">top</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3294,13 +3653,73 @@ dtype: float64
 </table>
 </div></div></div>
 </div>
+</section>
+<section id="id12">
+<h3><span class="section-number">22.3.2. </span>사분위수와 구간 쪼개기<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=b9e64e9337f247c0a408ea0c7a9961c5</span>
-<span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;data1&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;data1&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span>
                       <span class="s2">&quot;data2&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">1000</span><span class="p">)})</span>
 <span class="n">frame</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="n">quartiles</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">frame</span><span class="p">[</span><span class="s2">&quot;data1&quot;</span><span class="p">],</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>data1</th>
+      <th>data2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.660524</td>
+      <td>-0.612905</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.862580</td>
+      <td>0.316447</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-0.010032</td>
+      <td>0.838295</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.050009</td>
+      <td>-1.034423</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.670216</td>
+      <td>0.434304</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quartiles</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">frame</span><span class="p">[</span><span class="s2">&quot;data1&quot;</span><span class="p">],</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">quartiles</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -3324,15 +3743,25 @@ Categories (4, interval[float64, right]): [(-2.956, -1.23] &lt; (-1.23, 0.489] &
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=ce0b3030e230497c929e7f36b6d4ddb9</span>
-<span class="k">def</span> <span class="nf">get_stats</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_stats</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
         <span class="p">{</span><span class="s2">&quot;min&quot;</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="s2">&quot;max&quot;</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span>
         <span class="s2">&quot;count&quot;</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">count</span><span class="p">(),</span> <span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">mean</span><span class="p">()}</span>
     <span class="p">)</span>
-
-<span class="n">grouped</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">quartiles</span><span class="p">)</span>
-<span class="n">grouped</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">quartiles</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_stats</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3437,8 +3866,7 @@ Categories (4, interval[float64, right]): [(-2.956, -1.23] &lt; (-1.23, 0.489] &
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=32b18bf4409a4743ac83db5969bc6006</span>
-<span class="n">grouped</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -3542,11 +3970,32 @@ Categories (4, interval[float64, right]): [(-2.956, -1.23] &lt; (-1.23, 0.489] &
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=acb41e66e6624f45a52c701f7188b2a9</span>
-<span class="n">quartiles_samp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">frame</span><span class="p">[</span><span class="s2">&quot;data1&quot;</span><span class="p">],</span> <span class="mi">4</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">quartiles_samp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">frame</span><span class="p">[</span><span class="s2">&quot;data1&quot;</span><span class="p">],</span> <span class="mi">4</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">quartiles_samp</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="n">grouped</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">quartiles_samp</span><span class="p">)</span>
-<span class="n">grouped</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_stats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    1
+1    3
+2    2
+3    2
+4    3
+Name: data1, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">quartiles_samp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_stats</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3651,11 +4100,33 @@ Categories (4, interval[float64, right]): [(-2.956, -1.23] &lt; (-1.23, 0.489] &
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=a5f76377f0184195828c907897eb39d1</span>
-<span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
-<span class="n">s</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
 <span class="n">s</span>
-<span class="n">s</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         NaN
+1    0.227290
+2         NaN
+3   -2.153545
+4         NaN
+5   -0.375842
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">s</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -3673,12 +4144,23 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=b4f45efcbdd0491f906ca6a4847bab1e</span>
-<span class="n">states</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Ohio&quot;</span><span class="p">,</span> <span class="s2">&quot;New York&quot;</span><span class="p">,</span> <span class="s2">&quot;Vermont&quot;</span><span class="p">,</span> <span class="s2">&quot;Florida&quot;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">states</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Ohio&quot;</span><span class="p">,</span> <span class="s2">&quot;New York&quot;</span><span class="p">,</span> <span class="s2">&quot;Vermont&quot;</span><span class="p">,</span> <span class="s2">&quot;Florida&quot;</span><span class="p">,</span>
           <span class="s2">&quot;Oregon&quot;</span><span class="p">,</span> <span class="s2">&quot;Nevada&quot;</span><span class="p">,</span> <span class="s2">&quot;California&quot;</span><span class="p">,</span> <span class="s2">&quot;Idaho&quot;</span><span class="p">]</span>
-<span class="n">group_key</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;East&quot;</span><span class="p">,</span> <span class="s2">&quot;East&quot;</span><span class="p">,</span> <span class="s2">&quot;East&quot;</span><span class="p">,</span> <span class="s2">&quot;East&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">group_key</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;East&quot;</span><span class="p">,</span> <span class="s2">&quot;East&quot;</span><span class="p">,</span> <span class="s2">&quot;East&quot;</span><span class="p">,</span> <span class="s2">&quot;East&quot;</span><span class="p">,</span>
              <span class="s2">&quot;West&quot;</span><span class="p">,</span> <span class="s2">&quot;West&quot;</span><span class="p">,</span> <span class="s2">&quot;West&quot;</span><span class="p">,</span> <span class="s2">&quot;West&quot;</span><span class="p">]</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">states</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">states</span><span class="p">)</span>
 <span class="n">data</span>
 </pre></div>
 </div>
@@ -3699,12 +4181,56 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=72f2656d298f413f8720b68b62b51674</span>
-<span class="n">data</span><span class="p">[[</span><span class="s2">&quot;Vermont&quot;</span><span class="p">,</span> <span class="s2">&quot;Nevada&quot;</span><span class="p">,</span> <span class="s2">&quot;Idaho&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[[</span><span class="s2">&quot;Vermont&quot;</span><span class="p">,</span> <span class="s2">&quot;Nevada&quot;</span><span class="p">,</span> <span class="s2">&quot;Idaho&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
 <span class="n">data</span>
-<span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">group_key</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
-<span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">group_key</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
-<span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">group_key</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ohio          0.329939
+New York      0.981994
+Vermont            NaN
+Florida      -1.613716
+Oregon        1.561587
+Nevada             NaN
+California    0.359244
+Idaho              NaN
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">group_key</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>East    4
+West    4
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">group_key</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>East    3
+West    2
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">group_key</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -3718,26 +4244,19 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=dfc55860e6ea449aadb99677fc0e2986</span>
-<span class="k">def</span> <span class="nf">fill_mean</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fill_mean</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">group</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">group</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
-
-<span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">group_key</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">fill_mean</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">group_key</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">fill_mean</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_542/535824589.py:5: FutureWarning: Not prepending group keys to the result index of transform-like apply. In the future, the group keys will be included in the index, regardless of whether the applied function returns a like-indexed object.
-To preserve the previous behavior, use
-
-	&gt;&gt;&gt; .groupby(..., group_keys=False)
-
-To adopt the future behavior and silence this warning, use 
-
-	&gt;&gt;&gt; .groupby(..., group_keys=True)
-  data.groupby(group_key).apply(fill_mean)
-</pre></div>
-</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ohio          0.329939
 New York      0.981994
 Vermont      -0.100594
@@ -3753,27 +4272,46 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=4abfc8bfccfd41ea8d64ac98443dac45</span>
-<span class="n">fill_values</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;East&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;West&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">}</span>
-<span class="k">def</span> <span class="nf">fill_func</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">group</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">fill_values</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">name</span><span class="p">])</span>
-
-<span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">group_key</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">fill_func</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">group_key</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">fill_mean</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_542/3632648151.py:6: FutureWarning: Not prepending group keys to the result index of transform-like apply. In the future, the group keys will be included in the index, regardless of whether the applied function returns a like-indexed object.
-To preserve the previous behavior, use
-
-	&gt;&gt;&gt; .groupby(..., group_keys=False)
-
-To adopt the future behavior and silence this warning, use 
-
-	&gt;&gt;&gt; .groupby(..., group_keys=True)
-  data.groupby(group_key).apply(fill_func)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>East  Ohio          0.329939
+      New York      0.981994
+      Vermont      -0.100594
+      Florida      -1.613716
+West  Oregon        1.561587
+      Nevada        0.960416
+      California    0.359244
+      Idaho         0.960416
+dtype: float64
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fill_values</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;East&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s2">&quot;West&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fill_func</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">group</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">fill_values</span><span class="p">[</span><span class="n">group</span><span class="o">.</span><span class="n">name</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">group_key</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">fill_func</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ohio          0.329939
 New York      0.981994
 Vermont       0.500000
@@ -3789,22 +4327,26 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython verbatim id=05397b351c8e498c947d802a1cb48677</span>
-<span class="n">suits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">]</span>  <span class="c1"># Hearts, Spades, Clubs, Diamonds</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">suits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">]</span>  <span class="c1"># Hearts, Spades, Clubs, Diamonds</span>
 <span class="n">card_val</span> <span class="o">=</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span> <span class="o">+</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span>
 <span class="n">base_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">11</span><span class="p">))</span> <span class="o">+</span> <span class="p">[</span><span class="s2">&quot;J&quot;</span><span class="p">,</span> <span class="s2">&quot;K&quot;</span><span class="p">,</span> <span class="s2">&quot;Q&quot;</span><span class="p">]</span>
-<span class="n">cards</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">suit</span> <span class="ow">in</span> <span class="n">suits</span><span class="p">:</span>
-    <span class="n">cards</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">+</span> <span class="n">suit</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">base_names</span><span class="p">)</span>
-
-<span class="n">deck</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">card_val</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">cards</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=d54e45a5b95f4e84ab900beaeffc032e</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cards</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">suit</span> <span class="ow">in</span> <span class="n">suits</span><span class="p">:</span>
+    <span class="n">cards</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="o">+</span> <span class="n">suit</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">base_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">deck</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">card_val</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">cards</span><span class="p">)</span>
+
 <span class="n">deck</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -3830,10 +4372,15 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=1793b875d18f4a9c8eaf378979a65b8e</span>
-<span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="n">deck</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="n">deck</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">deck</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-<span class="n">draw</span><span class="p">(</span><span class="n">deck</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">draw</span><span class="p">(</span><span class="n">deck</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3850,12 +4397,16 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=5f9eadad6e6b4033a68f0cb222e87013</span>
-<span class="k">def</span> <span class="nf">get_suit</span><span class="p">(</span><span class="n">card</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_suit</span><span class="p">(</span><span class="n">card</span><span class="p">):</span>
     <span class="c1"># last letter is suit</span>
     <span class="k">return</span> <span class="n">card</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-
-<span class="n">deck</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">get_suit</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">draw</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">deck</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">get_suit</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">draw</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3875,8 +4426,7 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=56e0c862e6984555a30a33d3800ccf1e</span>
-<span class="n">deck</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">get_suit</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">draw</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">deck</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">get_suit</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">draw</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3896,8 +4446,7 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=2f6291892da840ff9f2cc04ddc89a1a0</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span>
                                 <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">],</span>
                    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span>
                    <span class="s2">&quot;weights&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)})</span>
@@ -3984,12 +4533,22 @@ dtype: int64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=f3785264a084456e81b4fe42320ecd65</span>
-<span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">get_wavg</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;category&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_wavg</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">average</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">],</span> <span class="n">weights</span><span class="o">=</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;weights&quot;</span><span class="p">])</span>
-
-<span class="n">grouped</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_wavg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_wavg</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4004,11 +4563,15 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=1113b4b05f2b495c9fa94c42165ac7a3</span>
-<span class="n">close_px</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;examples/stock_px.csv&quot;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">close_px</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;examples/stock_px.csv&quot;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                        <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">close_px</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
-<span class="n">close_px</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">close_px</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -4031,6 +4594,15 @@ dtypes: float64(9)
 memory usage: 427.5 KB
 </pre></div>
 </div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">close_px</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -4115,8 +4687,7 @@ memory usage: 427.5 KB
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=78ce3a267cfc491e8301e301f8a57342</span>
-<span class="k">def</span> <span class="nf">spx_corr</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">spx_corr</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">group</span><span class="o">.</span><span class="n">corrwith</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;SPX&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -4124,20 +4695,29 @@ memory usage: 427.5 KB
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=840cfbfdd33d4b82ba7013ea91095473</span>
-<span class="n">rets</span> <span class="o">=</span> <span class="n">close_px</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rets</span> <span class="o">=</span> <span class="n">close_px</span><span class="o">.</span><span class="n">pct_change</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=bf0ac26ec88548f9b9bb5e7b5a3e6248</span>
-<span class="k">def</span> <span class="nf">get_year</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_year</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">year</span>
-
-<span class="n">by_year</span> <span class="o">=</span> <span class="n">rets</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">get_year</span><span class="p">)</span>
-<span class="n">by_year</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">spx_corr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">by_year</span> <span class="o">=</span> <span class="n">rets</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">get_year</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">by_year</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">spx_corr</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4311,10 +4891,15 @@ memory usage: 427.5 KB
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=6dd546477c5548819f3610f8d0ff8987</span>
-<span class="k">def</span> <span class="nf">corr_aapl_msft</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">corr_aapl_msft</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">group</span><span class="p">[</span><span class="s2">&quot;AAPL&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">corr</span><span class="p">(</span><span class="n">group</span><span class="p">[</span><span class="s2">&quot;MSFT&quot;</span><span class="p">])</span>
-<span class="n">by_year</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">corr_aapl_msft</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">by_year</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">corr_aapl_msft</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4337,8 +4922,8 @@ Length: 22, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython verbatim id=64e6e813b0e948cd8cfa443fcbe485ad</span>
-<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+
 <span class="k">def</span> <span class="nf">regress</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">yvar</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">xvars</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
     <span class="n">Y</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">yvar</span><span class="p">]</span>
     <span class="n">X</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">xvars</span><span class="p">]</span>
@@ -4351,8 +4936,7 @@ Length: 22, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=78fdb9df1f984f3cb2ae8ae664af69f9</span>
-<span class="n">by_year</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">regress</span><span class="p">,</span> <span class="n">yvar</span><span class="o">=</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">xvars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;SPX&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">by_year</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">regress</span><span class="p">,</span> <span class="n">yvar</span><span class="o">=</span><span class="s2">&quot;AAPL&quot;</span><span class="p">,</span> <span class="n">xvars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;SPX&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -4442,8 +5026,7 @@ Length: 22, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=9d6f36a2555f44f29e689cd6a86c6c8b</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span>
                    <span class="s1">&#39;value&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">12.</span><span class="p">)})</span>
 <span class="n">df</span>
 </pre></div>
@@ -4539,9 +5122,14 @@ Length: 22, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=4f22990eed5f4794981b426d9690a067</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
-<span class="n">g</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -4557,10 +5145,15 @@ Name: value, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=e3dfd39e3cfb4b45a4d4fd3a0df8ba35</span>
-<span class="k">def</span> <span class="nf">get_mean</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_mean</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">group</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
-<span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">get_mean</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">get_mean</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4584,8 +5177,7 @@ Name: value, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=df3dbb405f0a418cb8f38b1d693126dc</span>
-<span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4609,10 +5201,15 @@ Name: value, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=7c617bcf7d4c442abda7927077f4501a</span>
-<span class="k">def</span> <span class="nf">times_two</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">times_two</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">group</span> <span class="o">*</span> <span class="mi">2</span>
-<span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">times_two</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">times_two</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4636,10 +5233,15 @@ Name: value, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=f90592bf16b7442097b9e22a099e1c75</span>
-<span class="k">def</span> <span class="nf">get_ranks</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_ranks</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">group</span><span class="o">.</span><span class="n">rank</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">get_ranks</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">get_ranks</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4663,8 +5265,7 @@ Name: value, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=8997dec2bb2e44978c3d39e98d12bec1</span>
-<span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">x</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -4672,24 +5273,11 @@ Name: value, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=d06c11e725f744abb0b0309eb2c04526</span>
-<span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">normalize</span><span class="p">)</span>
-<span class="n">g</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">normalize</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">normalize</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_542/2194423876.py:3: FutureWarning: Not prepending group keys to the result index of transform-like apply. In the future, the group keys will be included in the index, regardless of whether the applied function returns a like-indexed object.
-To preserve the previous behavior, use
-
-	&gt;&gt;&gt; .groupby(..., group_keys=False)
-
-To adopt the future behavior and silence this warning, use 
-
-	&gt;&gt;&gt; .groupby(..., group_keys=True)
-  g.apply(normalize)
-</pre></div>
-</div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    -1.161895
 1    -1.161895
 2    -1.161895
@@ -4709,9 +5297,55 @@ Name: value, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=36f1cd239f9a4b218ea0d3dc86776890</span>
-<span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
-<span class="n">normalized</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">))</span> <span class="o">/</span> <span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;std&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">normalize</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    -1.161895
+1    -1.161895
+2    -1.161895
+3    -0.387298
+4    -0.387298
+5    -0.387298
+6     0.387298
+7     0.387298
+8     0.387298
+9     1.161895
+10    1.161895
+11    1.161895
+Name: value, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     4.5
+1     5.5
+2     6.5
+3     4.5
+4     5.5
+5     6.5
+6     4.5
+7     5.5
+8     6.5
+9     4.5
+10    5.5
+11    6.5
+Name: value, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">normalized</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;mean&#39;</span><span class="p">))</span> <span class="o">/</span> <span class="n">g</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="s1">&#39;std&#39;</span><span class="p">)</span>
 <span class="n">normalized</span>
 </pre></div>
 </div>
@@ -4736,17 +5370,100 @@ Name: value, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=2502077543534742bebd6ec88eec4d04</span>
-<span class="n">tips</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-<span class="n">tips</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_542/1864511303.py:3: FutureWarning: pivot_table dropped a column because it failed to aggregate. This behavior is deprecated and will raise in a future version of pandas. Select only the columns that can be aggregated.
-  tips.pivot_table(index=[&quot;day&quot;, &quot;smoker&quot;])
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>smoker</th>
+      <th>day</th>
+      <th>time</th>
+      <th>size</th>
+      <th>tip_pct</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>16.99</td>
+      <td>1.01</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.059447</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.34</td>
+      <td>1.66</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+      <td>0.160542</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>21.01</td>
+      <td>3.50</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+      <td>0.166587</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>23.68</td>
+      <td>3.31</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.139780</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>24.59</td>
+      <td>3.61</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>4</td>
+      <td>0.146808</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">],</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="s2">&quot;tip&quot;</span><span class="p">,</span> <span class="s2">&quot;tip_pct&quot;</span><span class="p">,</span> <span class="s2">&quot;total_bill&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -4847,8 +5564,143 @@ Name: value, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=5f3d264eb32842e39cca60645b498611</span>
-<span class="n">tips</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">,</span> <span class="s2">&quot;time&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th></th>
+      <th>size</th>
+      <th>tip</th>
+      <th>tip_pct</th>
+      <th>total_bill</th>
+    </tr>
+    <tr>
+      <th>day</th>
+      <th>smoker</th>
+      <th>time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="4" valign="top">Fri</th>
+      <th rowspan="2" valign="top">No</th>
+      <th>Dinner</th>
+      <td>2.000000</td>
+      <td>2.750000</td>
+      <td>0.139622</td>
+      <td>19.233333</td>
+    </tr>
+    <tr>
+      <th>Lunch</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>0.187735</td>
+      <td>15.980000</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Yes</th>
+      <th>Dinner</th>
+      <td>2.222222</td>
+      <td>3.003333</td>
+      <td>0.165347</td>
+      <td>19.806667</td>
+    </tr>
+    <tr>
+      <th>Lunch</th>
+      <td>1.833333</td>
+      <td>2.280000</td>
+      <td>0.188937</td>
+      <td>12.323333</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Sat</th>
+      <th>No</th>
+      <th>Dinner</th>
+      <td>2.555556</td>
+      <td>3.102889</td>
+      <td>0.158048</td>
+      <td>19.661778</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <th>Dinner</th>
+      <td>2.476190</td>
+      <td>2.875476</td>
+      <td>0.147906</td>
+      <td>21.276667</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Sun</th>
+      <th>No</th>
+      <th>Dinner</th>
+      <td>2.929825</td>
+      <td>3.167895</td>
+      <td>0.160113</td>
+      <td>20.506667</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <th>Dinner</th>
+      <td>2.578947</td>
+      <td>3.516842</td>
+      <td>0.187250</td>
+      <td>24.120000</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">Thur</th>
+      <th rowspan="2" valign="top">No</th>
+      <th>Dinner</th>
+      <td>2.000000</td>
+      <td>3.000000</td>
+      <td>0.159744</td>
+      <td>18.780000</td>
+    </tr>
+    <tr>
+      <th>Lunch</th>
+      <td>2.500000</td>
+      <td>2.666364</td>
+      <td>0.160311</td>
+      <td>17.075227</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <th>Lunch</th>
+      <td>2.352941</td>
+      <td>3.030000</td>
+      <td>0.163863</td>
+      <td>19.190588</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span>
                  <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -4948,8 +5800,7 @@ Name: value, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=f65b89a55539440cac1405a620ed2758</span>
-<span class="n">tips</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span>
                  <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">],</span> <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -5075,8 +5926,7 @@ Name: value, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=b597770eae7542cfb95aa7168d4293a8</span>
-<span class="n">tips</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span>
                  <span class="n">values</span><span class="o">=</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -5167,8 +6017,7 @@ Name: value, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=307e306fd97449aa96c00b4c1af2887b</span>
-<span class="n">tips</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span>
                  <span class="n">values</span><span class="o">=</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">,</span> <span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -5305,9 +6154,8 @@ Name: value, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=c4ea7c59067e4ed5acce365201cec661</span>
-<span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
-<span class="c1">#! blockstart</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">StringIO</span>
+
 <span class="n">data</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Sample  Nationality  Handedness</span>
 <span class="s2">1   USA  Right-handed</span>
 <span class="s2">2   Japan    Left-handed</span>
@@ -5319,15 +6167,14 @@ Name: value, dtype: float64
 <span class="s2">8   USA  Left-handed</span>
 <span class="s2">9   Japan    Right-handed</span>
 <span class="s2">10  USA  Right-handed&quot;&quot;&quot;</span>
-<span class="c1">#! blockend</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;\s+&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=d7d271d116954e7d8237cabcbc227c52</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="n">StringIO</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;\s+&quot;</span><span class="p">)</span>
+
 <span class="n">data</span>
 </pre></div>
 </div>
@@ -5423,8 +6270,7 @@ Name: value, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=64e891aa9bc94090b29654b1f44dc426</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;Nationality&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Handedness&quot;</span><span class="p">],</span> <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;Nationality&quot;</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;Handedness&quot;</span><span class="p">],</span> <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5483,8 +6329,7 @@ Name: value, dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython id=5d0f91726eb748ecaa904c3c703c69cb</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">([</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">],</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">]],</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;smoker&quot;</span><span class="p">],</span> <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">([</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;time&quot;</span><span class="p">],</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">]],</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;smoker&quot;</span><span class="p">],</span> <span class="n">margins</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5570,28 +6415,8 @@ Name: value, dtype: float64
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython suppress id=231271ac720a43deadca4fb4fce4b133</span>
-<span class="o">%</span><span class="k">popd</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/mnt/c/Users/gslee/Documents/GitHub/datapy/jupyter-book
-popd -&gt; /mnt/c/Users/gslee/Documents/GitHub/datapy/jupyter-book
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#! ipython suppress id=553ffce9df1b4513bff1925e8c5e6c50</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_rows</span> <span class="o">=</span> <span class="n">PREVIOUS_MAX_ROWS</span>
-</pre></div>
-</div>
-</div>
-</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -5652,6 +6477,37 @@ popd -&gt; /mnt/c/Users/gslee/Documents/GitHub/datapy/jupyter-book
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">22.1. 소개</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">22.1.1. 그룹 확인</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">22.1.2. 열 선택</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">22.1.3. 사전과 시리즈 활용</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">22.1.4. 함수 활용</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">22.1.5. 인덱스 레벨 활용</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">22.2. 데이터 집계</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">22.2.1. 여러 함수 활용</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">22.2.2. 행 인덱스 없는 데이터 집계</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply">22.3. Apply: 데이터 집계 일반화</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">22.3.1. 그룹 키 제거</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">22.3.2. 사분위수와 구간 쪼개기</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
