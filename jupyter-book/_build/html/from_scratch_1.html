@@ -187,12 +187,13 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="visualization_1.html">24. matplotlib.pyplot 1부</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualization_2.html">25. matplotlib.pyplot 2부</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">26. seaborn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">26. 판다스와 그래프</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_4.html">27. Seaborn 시각화 라이브러리</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">실전 데이터 분석</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pandas_titanic.html">27. 타이타닉 데이터 분석</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_oecd_bli.html">28. OECD 국가의 삶의 만족도</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_titanic.html">28. 타이타닉 데이터 분석</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_oecd_bli.html">29. OECD 국가의 삶의 만족도</a></li>
 </ul>
 
     </div>
@@ -1197,7 +1198,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.380623825720257
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.2770566258757742
 </pre></div>
 </div>
 </div>
@@ -1209,7 +1210,7 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7530959764437222
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8563831887080584
 </pre></div>
 </div>
 </div>
@@ -1243,11 +1244,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.630580354307788, 0.10629971998375731, 0.7244590488778858],
- [0.24550199128233763, 0.7815329979688925, 0.7207161623427765],
- [0.6249835132626613, 0.20562710592991085, 0.12194579977540843],
- [0.3843455486515239, 0.6485838050544961, 0.7668042552160527],
- [0.4192740095786234, 0.060497898793090865, 0.48294807010389496]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.6104450758866707, 0.25312917165264515, 0.9224848607920341],
+ [0.8871373748237223, 0.4816068183260992, 0.47441637713742546],
+ [0.021387553501874046, 0.5015962981204067, 0.8431334743215393],
+ [0.20928332642244007, 0.23690955400804614, 0.34744495722799207],
+ [0.8449526347799791, 0.8246045981965401, 0.4401870799399258]]
 </pre></div>
 </div>
 </div>
@@ -1279,11 +1280,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.1, 0.24, 0.19],
- [0.6, 0.2, 0.3],
- [0.7, 0.76, 0.01],
- [0.07, 0.84, 0.36],
- [0.26, 0.96, 0.59]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.02, 0.1, 0.44],
+ [0.99, 0.73, 0.93],
+ [0.87, 0.8, 0.28],
+ [0.54, 0.37, 0.17],
+ [0.06, 0.69, 0.14]]
 </pre></div>
 </div>
 </div>
@@ -1296,11 +1297,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.58099, 0.91023, 0.33194],
- [0.10292, 0.85097, 0.3544],
- [0.33199, 0.2261, 0.79137],
- [0.35072, 0.86875, 0.18678],
- [0.84875, 0.81666, 0.32774]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.2112, 0.25296, 0.52053],
+ [0.68425, 0.62596, 0.27415],
+ [0.70973, 0.1036, 0.54785],
+ [0.64611, 0.53215, 0.97114],
+ [0.39206, 0.54665, 0.54534]]
 </pre></div>
 </div>
 </div>
@@ -1313,11 +1314,11 @@ c \ast [u_1, \cdots, u_n] = [c\ast u_1, \cdots, c\ast u_n]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.91941, 0.65912, 0.64609],
- [0.9493, 0.48056, 0.49383],
- [0.36806, 0.04445, 0.86761],
- [0.62172, 0.09112, 0.98712],
- [0.32935, 0.94056, 0.03479]]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0.71319, 0.7085, 0.13569],
+ [0.05254, 0.02656, 0.11684],
+ [0.97533, 0.1967, 0.17723],
+ [0.73291, 0.85032, 0.95334],
+ [0.93334, 0.35579, 0.11673]]
 </pre></div>
 </div>
 </div>
