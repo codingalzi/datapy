@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="28. 타이타닉 데이터 분석" href="pandas_titanic.html" />
-    <link rel="prev" title="26. 판다스와 그래프" href="visualization_3.html" />
+    <link rel="prev" title="26. 판다스 시각화 도구" href="visualization_3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -185,7 +185,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="visualization_1.html">24. matplotlib.pyplot 1부</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualization_2.html">25. matplotlib.pyplot 2부</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">26. 판다스와 그래프</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">26. 판다스 시각화 도구</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">27. Seaborn 시각화 라이브러리</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">실전 데이터 분석</span></p>
@@ -589,7 +589,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;tip_pct&#39;, ylabel=&#39;day&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/53772fc47ed028443ed884fb71d95d6ee069d851083af85f942a3e75a8d57350.png" src="_images/53772fc47ed028443ed884fb71d95d6ee069d851083af85f942a3e75a8d57350.png" />
+<img alt="_images/140e8ce7f148e9a50735d4ddf88b5be7f08606f7aadc515ca6530fd9b76fe7d1.png" src="_images/140e8ce7f148e9a50735d4ddf88b5be7f08606f7aadc515ca6530fd9b76fe7d1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -602,29 +602,18 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;tip_pct&#39;, ylabel=&#39;day&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/238865afc42d8480364f9a33b523c2fb3634574c75882ff3d98a3ee89e0f5497.png" src="_images/238865afc42d8480364f9a33b523c2fb3634574c75882ff3d98a3ee89e0f5497.png" />
+<img alt="_images/78c1e41ec581168d8835e220232a5be430713733e1b25e684429855787b09d9d.png" src="_images/78c1e41ec581168d8835e220232a5be430713733e1b25e684429855787b09d9d.png" />
 </div>
 </div>
+<p><strong>그래프 스타일 설정</strong></p>
+<ul class="simple">
+<li><p>참고: <a class="reference external" href="https://www.codecademy.com/article/seaborn-design-i">Seaborn Styling, Part 1: Figure Style and Scale</a></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;whitegrid&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-
-<span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Frequency&#39;&gt;
-</pre></div>
-</div>
-<img alt="_images/e47ed0aa80a35184cbc50ba16904f0f0966b118325258c208b6e0adcbbc9422a.png" src="_images/e47ed0aa80a35184cbc50ba16904f0f0966b118325258c208b6e0adcbbc9422a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -642,6 +631,57 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;darkgrid&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Frequency&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/f93f0462d8bd66918043c2e2dbd5d5aed1dbcb45d1944700ce3405791e916bb9.png" src="_images/f93f0462d8bd66918043c2e2dbd5d5aed1dbcb45d1944700ce3405791e916bb9.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;dark&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Frequency&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/61b01bc8fe553130b3344bb5c2fb0dd8e9be47f90e39a2f5c77467600b8351ae.png" src="_images/61b01bc8fe553130b3344bb5c2fb0dd8e9be47f90e39a2f5c77467600b8351ae.png" />
+</div>
+</div>
+<p><strong>색상 스타일 설정</strong></p>
+<ul class="simple">
+<li><p>참고: <a class="reference external" href="https://www.codecademy.com/article/seaborn-design-ii">Seaborn Styling, Part 2: Color</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="s2">&quot;Greys_r&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 
 <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">density</span><span class="p">()</span>
@@ -652,12 +692,43 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Density&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/75dbc581760152dd5d425191eb9c1a341af4b803c13c0c0e7dd8c25d7e0d2ba1.png" src="_images/75dbc581760152dd5d425191eb9c1a341af4b803c13c0c0e7dd8c25d7e0d2ba1.png" />
+<img alt="_images/21d7456109de99b3dc34241da301d6581aa538c8f7b004b398c783a35a100a23.png" src="_images/21d7456109de99b3dc34241da301d6581aa538c8f7b004b398c783a35a100a23.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set_palette</span><span class="p">(</span><span class="s1">&#39;pastel&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">density</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Density&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/927f1a9f0913c57394b3c3425e09466a572a2fc5ac2a4416178a3b9d9f4e6b45.png" src="_images/927f1a9f0913c57394b3c3425e09466a572a2fc5ac2a4416178a3b9d9f4e6b45.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>seabon 그래프 속성 초기화</strong></p>
+<p>아래 명령문은 seaborn 그래프 속성을 초기화한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -701,7 +772,7 @@ Length: 400, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;Count&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/38aa4a3bdde6a0f605f4461b4de83a62fb2932378ec2fe6dde1c93422f62ce41.png" src="_images/38aa4a3bdde6a0f605f4461b4de83a62fb2932378ec2fe6dde1c93422f62ce41.png" />
+<img alt="_images/9f77e2929d925f14e16de7579d463c03a63c4aa7fd7758d1fa674b7afa075931.png" src="_images/9f77e2929d925f14e16de7579d463c03a63c4aa7fd7758d1fa674b7afa075931.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -791,11 +862,11 @@ Length: 400, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f0fd86f6410&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f9325ed1450&gt;
 </pre></div>
 </div>
-<img alt="_images/441a82aaffb2aa06b7bf132dd6225a1d18908ee546d35fe5a89275538ae16cfd.png" src="_images/441a82aaffb2aa06b7bf132dd6225a1d18908ee546d35fe5a89275538ae16cfd.png" />
-<img alt="_images/55767a692d7ec5af29cb023c3b5720b4487fd153bc2156ad1b773cd0c15c4d82.png" src="_images/55767a692d7ec5af29cb023c3b5720b4487fd153bc2156ad1b773cd0c15c4d82.png" />
+<img alt="_images/2399a61c760d47852b0a428f8cc7e2be4bf0aa149d7bed66400a10a54405f9be.png" src="_images/2399a61c760d47852b0a428f8cc7e2be4bf0aa149d7bed66400a10a54405f9be.png" />
+<img alt="_images/1097f45fcd52580fe3d5a97307db5010b5511c7e3ff143e119a35de671fe5d1f.png" src="_images/1097f45fcd52580fe3d5a97307db5010b5511c7e3ff143e119a35de671fe5d1f.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -806,10 +877,10 @@ Length: 400, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f0fd9eb34f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f931d886fb0&gt;
 </pre></div>
 </div>
-<img alt="_images/1bdd62d734d598cb7268d7b18da94a9fc499e2170e0553ca050aa49e7269a8d4.png" src="_images/1bdd62d734d598cb7268d7b18da94a9fc499e2170e0553ca050aa49e7269a8d4.png" />
+<img alt="_images/2152902f4fca1b6f898d223b55c64e7e9e113472d7bd83757eb7c5c12b646a7c.png" src="_images/2152902f4fca1b6f898d223b55c64e7e9e113472d7bd83757eb7c5c12b646a7c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -821,10 +892,10 @@ Length: 400, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f0fd900ed10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f931d9c44f0&gt;
 </pre></div>
 </div>
-<img alt="_images/857fd8b866760f1e4c4184fd41e5563642ffd978a557b462b7e75c21e6acb316.png" src="_images/857fd8b866760f1e4c4184fd41e5563642ffd978a557b462b7e75c21e6acb316.png" />
+<img alt="_images/aeadd1be03415dd497c1fc4ca70a8e7154ce355fecdbe59987396342ac531d61.png" src="_images/aeadd1be03415dd497c1fc4ca70a8e7154ce355fecdbe59987396342ac531d61.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -835,10 +906,10 @@ Length: 400, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f0fd41c04f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f9325ed1b10&gt;
 </pre></div>
 </div>
-<img alt="_images/4a12f6bff2a2eb205f76f39f4e23627a8314a5e47aab30e9ea50d11806aa95ba.png" src="_images/4a12f6bff2a2eb205f76f39f4e23627a8314a5e47aab30e9ea50d11806aa95ba.png" />
+<img alt="_images/88fc1e7fc0652112f9842d342582e8d7f16263d9c8b6bb399961a1566e6d7b27.png" src="_images/88fc1e7fc0652112f9842d342582e8d7f16263d9c8b6bb399961a1566e6d7b27.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -888,7 +959,7 @@ Length: 400, dtype: float64
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">26. </span>판다스와 그래프</p>
+        <p class="prev-next-title"><span class="section-number">26. </span>판다스 시각화 도구</p>
       </div>
     </a>
     <a class="right-next"
