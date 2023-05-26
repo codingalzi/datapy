@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>27. Seaborn 시각화 라이브러리 &#8212; 파이썬 데이터 분석</title>
+    <title>26. Seaborn 시각화 라이브러리 &#8212; 파이썬 데이터 분석</title>
   
   
   
@@ -65,8 +65,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'visualization_4';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="28. 타이타닉 데이터 분석" href="pandas_titanic.html" />
-    <link rel="prev" title="26. 판다스 시각화 도구" href="visualization_3.html" />
+    <link rel="next" title="27. 시계열 데이터" href="pandas_timeseries.html" />
+    <link rel="prev" title="25. 판다스 시각화 도구" href="visualization_3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -166,27 +166,27 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="numpy_4.html">13. 고급 넘파이</a></li>
 <li class="toctree-l1"><a class="reference internal" href="numpy_5.html">14. 실전 예제: 어레이 활용</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">판다스 10분 완성</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">판다스</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="pandas_10minutes_1.html">15. 판다스 10분 완성 1부</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_10minutes_2.html">16. 판다스 10분 완성 2부</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">판다스</span></p>
-<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="pandas_1.html">17. 판다스 데이터프레임</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_2.html">18. 데이터프레임 인덱싱</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_3.html">19. 데이터프레임 중심 프로그래밍</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_4.html">20. 판다스 활용: 통계</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_5.html">21. 데이터 결합</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_6.html">22. 데이터 그룹화</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">23. 시계열 데이터</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">데이터 시각화</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="visualization_1.html">24. matplotlib.pyplot 1부</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_2.html">25. matplotlib.pyplot 2부</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">26. 판다스 시각화 도구</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">27. Seaborn 시각화 라이브러리</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_1.html">23. matplotlib.pyplot 1부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_2.html">24. matplotlib.pyplot 2부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">25. 판다스 시각화 도구</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">26. Seaborn 시각화 라이브러리</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">시계열 데이터</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">27. 시계열 데이터</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">실전 데이터 분석</span></p>
 <ul class="nav bd-sidenav">
@@ -416,7 +416,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">27.1. seaborn 라이브러리 불러오기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">26.1. seaborn 라이브러리 불러오기</a></li>
 </ul>
             </nav>
         </div>
@@ -429,7 +429,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="seaborn">
-<span id="sec-visualization-4"></span><h1><span class="section-number">27. </span>Seaborn 시각화 라이브러리<a class="headerlink" href="#seaborn" title="Permalink to this heading">#</a></h1>
+<span id="sec-visualization-4"></span><h1><span class="section-number">26. </span>Seaborn 시각화 라이브러리<a class="headerlink" href="#seaborn" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -472,7 +472,7 @@ document.write(`
 </div>
 </div>
 <section id="id1">
-<h2><span class="section-number">27.1. </span>seaborn 라이브러리 불러오기<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">26.1. </span>seaborn 라이브러리 불러오기<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -589,7 +589,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;tip_pct&#39;, ylabel=&#39;day&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/140e8ce7f148e9a50735d4ddf88b5be7f08606f7aadc515ca6530fd9b76fe7d1.png" src="_images/140e8ce7f148e9a50735d4ddf88b5be7f08606f7aadc515ca6530fd9b76fe7d1.png" />
+<img alt="_images/ad161e5bd3f49f539abfc028aa1f97c549535fbf60323ebace7778ee8c3cf8a5.png" src="_images/ad161e5bd3f49f539abfc028aa1f97c549535fbf60323ebace7778ee8c3cf8a5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -602,7 +602,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;tip_pct&#39;, ylabel=&#39;day&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/78c1e41ec581168d8835e220232a5be430713733e1b25e684429855787b09d9d.png" src="_images/78c1e41ec581168d8835e220232a5be430713733e1b25e684429855787b09d9d.png" />
+<img alt="_images/f827189065f48aefa029dc9c5a12d7941344d6b8734e75f4ca609ce1e8fc2976.png" src="_images/f827189065f48aefa029dc9c5a12d7941344d6b8734e75f4ca609ce1e8fc2976.png" />
 </div>
 </div>
 <p><strong>그래프 스타일 설정</strong></p>
@@ -862,10 +862,10 @@ Length: 400, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f9325ed1450&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f3dfc65d9f0&gt;
 </pre></div>
 </div>
-<img alt="_images/2399a61c760d47852b0a428f8cc7e2be4bf0aa149d7bed66400a10a54405f9be.png" src="_images/2399a61c760d47852b0a428f8cc7e2be4bf0aa149d7bed66400a10a54405f9be.png" />
+<img alt="_images/0ff74c3f2ad7f6115030f9a7855cf54d61837df1920af69d6bd530eea4c37e98.png" src="_images/0ff74c3f2ad7f6115030f9a7855cf54d61837df1920af69d6bd530eea4c37e98.png" />
 <img alt="_images/1097f45fcd52580fe3d5a97307db5010b5511c7e3ff143e119a35de671fe5d1f.png" src="_images/1097f45fcd52580fe3d5a97307db5010b5511c7e3ff143e119a35de671fe5d1f.png" />
 </div>
 </div>
@@ -877,10 +877,10 @@ Length: 400, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f931d886fb0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f3dfd9d8850&gt;
 </pre></div>
 </div>
-<img alt="_images/2152902f4fca1b6f898d223b55c64e7e9e113472d7bd83757eb7c5c12b646a7c.png" src="_images/2152902f4fca1b6f898d223b55c64e7e9e113472d7bd83757eb7c5c12b646a7c.png" />
+<img alt="_images/b6c1c5b4322c820567396d61323fc0b2ae8e00dc3b099a7e2f2f04fcf2cd9a0e.png" src="_images/b6c1c5b4322c820567396d61323fc0b2ae8e00dc3b099a7e2f2f04fcf2cd9a0e.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -892,10 +892,10 @@ Length: 400, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f931d9c44f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f3df81ce5c0&gt;
 </pre></div>
 </div>
-<img alt="_images/aeadd1be03415dd497c1fc4ca70a8e7154ce355fecdbe59987396342ac531d61.png" src="_images/aeadd1be03415dd497c1fc4ca70a8e7154ce355fecdbe59987396342ac531d61.png" />
+<img alt="_images/07c05e8e93868121d6a954e86ec9e82f834109747ea809f2c9955e6ae2b619f9.png" src="_images/07c05e8e93868121d6a954e86ec9e82f834109747ea809f2c9955e6ae2b619f9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -906,7 +906,7 @@ Length: 400, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f9325ed1b10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f3dda40c070&gt;
 </pre></div>
 </div>
 <img alt="_images/88fc1e7fc0652112f9842d342582e8d7f16263d9c8b6bb399961a1566e6d7b27.png" src="_images/88fc1e7fc0652112f9842d342582e8d7f16263d9c8b6bb399961a1566e6d7b27.png" />
@@ -959,15 +959,15 @@ Length: 400, dtype: float64
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">26. </span>판다스 시각화 도구</p>
+        <p class="prev-next-title"><span class="section-number">25. </span>판다스 시각화 도구</p>
       </div>
     </a>
     <a class="right-next"
-       href="pandas_titanic.html"
+       href="pandas_timeseries.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">28. </span>타이타닉 데이터 분석</p>
+        <p class="prev-next-title"><span class="section-number">27. </span>시계열 데이터</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -989,7 +989,7 @@ Length: 400, dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">27.1. seaborn 라이브러리 불러오기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">26.1. seaborn 라이브러리 불러오기</a></li>
 </ul>
   </nav></div>
 
