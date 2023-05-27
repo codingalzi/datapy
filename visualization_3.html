@@ -418,10 +418,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">27.1. 시리즈 시각화</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">27.2. 데이터프레임 시각화</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">27.3. 주석 추가</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">27.1. 시리즈 시각화</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">27.1.1. 선 그래프</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">27.1.2. 막대그래프</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">27.2. 데이터프레임 시각화</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">27.2.1. 데이터프레임과 선 그래프</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">27.2.2. 데이터프레임과 막대그래프</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">27.3. 주석 추가</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">27.4. matplotlib 기본 설정</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">27.5. 연습문제</a></li>
 </ul>
             </nav>
         </div>
@@ -484,8 +493,19 @@ document.write(`
 </div>
 </div>
 </div>
+<p><strong>주요 내용</strong></p>
+<p>판다스의 시리즈(Series)와 데이터프레임(Dataframe) 객체 모두 <code class="docutils literal notranslate"><span class="pre">plot()</span></code> 메서드를 지원한다.
+실제로는 <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.plot()</span></code>을 이용하기에 <code class="docutils literal notranslate"><span class="pre">xticks</span></code>, <code class="docutils literal notranslate"><span class="pre">xlim</span></code> 등 옵션 사용방식 또한 거의 동일하다.
+자세한 옵션과 사용법은 공식문서를 참고한다.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.plot.html"><code class="docutils literal notranslate"><span class="pre">pandas.Seris.plot()</span></code></a></p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.html"><code class="docutils literal notranslate"><span class="pre">pandas.DataFrame.plot()</span></code></a></p></li>
+</ul>
 <section id="id2">
 <h2><span class="section-number">27.1. </span>시리즈 시각화<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<section id="id3">
+<h3><span class="section-number">27.1.1. </span>선 그래프<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>시리즈는 하나의 선그래프를 그릴 수 있으며, 항목이 y축 좌표로, 인덱스가 x축 좌표로 사용된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(),</span> <span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
@@ -537,13 +557,210 @@ dtype: float64
 <img alt="_images/87e8a561f5b061f38b2c6ce8487b1e3e6dd4eca7107382f40512754f740ff516.png" src="_images/87e8a561f5b061f38b2c6ce8487b1e3e6dd4eca7107382f40512754f740ff516.png" />
 </div>
 </div>
+</section>
+<section id="id4">
+<h3><span class="section-number">27.1.2. </span>막대그래프<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>수직 막대그래프: <code class="docutils literal notranslate"><span class="pre">pandas.Series.plot.bar()</span></code></p></li>
+<li><p>수평 막대그래프: <code class="docutils literal notranslate"><span class="pre">pandas.Series.plot.barh()</span></code></p></li>
+</ul>
+<p>아래 코드는 시리즈를 이용한 수직/수평 막대그래프를 그리는 기본적인 방법을 보여준다.
+수평 막대그래프의 x축/y축 눈금은 수직 막대그래프의 y축/x축 눈금에 해당한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">16</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;abcdefghijklmnop&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    0.929616
+b    0.316376
+c    0.183919
+d    0.204560
+e    0.567725
+f    0.595545
+g    0.964515
+h    0.653177
+i    0.748907
+j    0.653570
+k    0.747715
+l    0.961307
+m    0.008388
+n    0.106444
+o    0.298704
+p    0.656411
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>참고: 서브플롯을 지정하려면 <code class="docutils literal notranslate"><span class="pre">ax=서브플롯</span></code> 옵션을 지정하면 되며, 이는 시리즈와 데이터프레임의
+모든 그래프 함수에 사용된다.
+아래 데이터는 (2,1) 모양의 <code class="docutils literal notranslate"><span class="pre">Figure</span></code> 객체에 포함된 두 개의 서브플롯에 각각 수직/수평 막대그래프를 삽입한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="_images/0b700faa5ed71ce01eb44d616f2f24289eae514e10735a2242ba0425f802487e.png" src="_images/0b700faa5ed71ce01eb44d616f2f24289eae514e10735a2242ba0425f802487e.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>plot() 메서드의 <code class="docutils literal notranslate"><span class="pre">kind=bar</span></code>와 <code class="docutils literal notranslate"><span class="pre">kind=barh</span></code> 옵션: <code class="docutils literal notranslate"><span class="pre">kind=bar</span></code>/<code class="docutils literal notranslate"><span class="pre">kind=barh</span></code> 옵션이 각각 수직/수평 막대그래프를 그리는 함수와 동일하다.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="_images/0b700faa5ed71ce01eb44d616f2f24289eae514e10735a2242ba0425f802487e.png" src="_images/0b700faa5ed71ce01eb44d616f2f24289eae514e10735a2242ba0425f802487e.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="id5">
+<h2><span class="section-number">27.2. </span>데이터프레임 시각화<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<section id="id6">
+<h3><span class="section-number">27.2.1. </span>데이터프레임과 선 그래프<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<p>데이터프레임은 특성 수만큼의  선그래프를 그릴 수 있다.
+y축 좌표는 특성별 항목이며, x축 좌표는 기본적으로 인덱스가 사용된다.
+또한 특성 이름이 범례로 지정된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
                   <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">],</span>
                   <span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.274992</td>
+      <td>0.228913</td>
+      <td>1.352917</td>
+      <td>0.886429</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>-1.726646</td>
+      <td>-0.142930</td>
+      <td>3.021942</td>
+      <td>0.447860</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>-2.266387</td>
+      <td>0.334055</td>
+      <td>6.270886</td>
+      <td>-0.573368</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>-2.843474</td>
+      <td>0.458177</td>
+      <td>6.573500</td>
+      <td>-0.049596</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>-2.842534</td>
+      <td>1.801986</td>
+      <td>5.859956</td>
+      <td>-0.880749</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>-5.212766</td>
+      <td>-0.058774</td>
+      <td>4.999198</td>
+      <td>-0.320604</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>-6.478700</td>
+      <td>0.061053</td>
+      <td>3.935686</td>
+      <td>0.012279</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>-8.838119</td>
+      <td>-0.138490</td>
+      <td>2.393690</td>
+      <td>-0.958457</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>-10.145149</td>
+      <td>0.147860</td>
+      <td>2.771674</td>
+      <td>-1.712344</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>-9.813864</td>
+      <td>1.497602</td>
+      <td>2.841551</td>
+      <td>-1.465670</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -551,34 +768,146 @@ dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
-<img alt="_images/94024109bc60e73403472d2cad2fa8c51dafcab411398a98b562d462c571c9b2.png" src="_images/94024109bc60e73403472d2cad2fa8c51dafcab411398a98b562d462c571c9b2.png" />
+<img alt="_images/893aadb4486bbe3beb440a06e306080619095f39f21c35b07c62fc5db9b95b84.png" src="_images/893aadb4486bbe3beb440a06e306080619095f39f21c35b07c62fc5db9b95b84.png" />
 </div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">subplots=True</span></code> 키워드 인자를 사용하면 각각의 그래프를 1차원 어레이 모양의 독립된 서브플롯에서 그린다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">16</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;abcdefghijklmnop&quot;</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
-<span class="n">data</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;black&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+                  <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">],</span>
+                  <span class="n">index</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">df</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.204708</td>
+      <td>0.478943</td>
+      <td>-0.519439</td>
+      <td>-0.555730</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>1.761073</td>
+      <td>1.872349</td>
+      <td>-0.426531</td>
+      <td>-0.273984</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>2.530095</td>
+      <td>3.118784</td>
+      <td>0.580659</td>
+      <td>-1.570205</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>2.805087</td>
+      <td>3.347697</td>
+      <td>1.933575</td>
+      <td>-0.683776</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>0.803450</td>
+      <td>2.975854</td>
+      <td>3.602601</td>
+      <td>-1.122346</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>0.263708</td>
+      <td>3.452839</td>
+      <td>6.851545</td>
+      <td>-2.143573</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>-0.313379</td>
+      <td>3.576961</td>
+      <td>7.154158</td>
+      <td>-1.619801</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>-0.312439</td>
+      <td>4.920770</td>
+      <td>6.440614</td>
+      <td>-2.450955</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>-2.682670</td>
+      <td>3.060010</td>
+      <td>5.579857</td>
+      <td>-1.890809</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>-3.948605</td>
+      <td>3.179837</td>
+      <td>4.516344</td>
+      <td>-1.557927</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">subplots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<img alt="_images/3ef38b58ae735471c73a2a050a66fbd2273903456c4eb3d350a65527da387b77.png" src="_images/3ef38b58ae735471c73a2a050a66fbd2273903456c4eb3d350a65527da387b77.png" />
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&lt;Axes: &gt;, &lt;Axes: &gt;, &lt;Axes: &gt;, &lt;Axes: &gt;], dtype=object)
+</pre></div>
+</div>
+<img alt="_images/2946128f371930dc4a4585b15c058b09cc77128276e75b7afd921568ab5c0a7d.png" src="_images/2946128f371930dc4a4585b15c058b09cc77128276e75b7afd921568ab5c0a7d.png" />
 </div>
 </div>
 </section>
-<section id="id3">
-<h2><span class="section-number">27.2. </span>데이터프레임 시각화<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<section id="id7">
+<h3><span class="section-number">27.2.2. </span>데이터프레임과 막대그래프<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>수직 막대그래프: <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame.plot.bar()</span></code></p></li>
+<li><p>수평 막대그래프: <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame.plot.barh()</span></code></p></li>
+</ul>
+<p>아래 코드는 데이터프레임을 이용한 수직/수평 막대그래프를 그리는 기본적인 방법을 보여준다.
+수평 막대그래프의 x축/y축 눈금은 수직 막대그래프의 y축/x축 눈금에 해당한다.</p>
+<ul class="simple">
+<li><p>범례 제목: 컬럼 인덱스의 이름이 주어진 경우 사용된다. 아래 코드에서는 Genus이다.</p></li>
+<li><p>행별 막대그래프를 하나로 묶어서 보여준다.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12348</span><span class="p">)</span>
@@ -677,6 +1006,39 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="_images/cdffe56c3806f0fa4f429b92165274f64edfa99bee88b98f6acd8372143664e3.png" src="_images/cdffe56c3806f0fa4f429b92165274f64edfa99bee88b98f6acd8372143664e3.png" />
+</div>
+</div>
+<p><strong>누적막대그래프</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">stacked=True</span></code> 옵션을 사용하면 각 행의 값들이 하나의 막대에 누적되어 출력된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 1000x600 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="_images/e8cf60b95ad45abbdd12b64d8f2683a9d4ec0ddc8de4588f31a3687b59eff230.png" src="_images/e8cf60b95ad45abbdd12b64d8f2683a9d4ec0ddc8de4588f31a3687b59eff230.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 
 <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
@@ -688,6 +1050,36 @@ dtype: float64
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 1000x600 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="_images/9ed25159f43f6132017c5263f793ceedd0180dc6e1ca4d745e24865e0c304786.png" src="_images/9ed25159f43f6132017c5263f793ceedd0180dc6e1ca4d745e24865e0c304786.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>plot() 메서드의 <code class="docutils literal notranslate"><span class="pre">kind=bar</span></code>와 <code class="docutils literal notranslate"><span class="pre">kind=barh</span></code> 옵션:
+<code class="docutils literal notranslate"><span class="pre">kind=bar</span></code>/<code class="docutils literal notranslate"><span class="pre">kind=barh</span></code> 옵션이 각각 수직/수평 막대그래프를 그리는 함수와 동일하다.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="_images/1636759ecbd4b2c022b19221038f145445bbf136748752c12b699987580087b5.png" src="_images/1636759ecbd4b2c022b19221038f145445bbf136748752c12b699987580087b5.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
 </pre></div>
 </div>
 <img alt="_images/9ed25159f43f6132017c5263f793ceedd0180dc6e1ca4d745e24865e0c304786.png" src="_images/9ed25159f43f6132017c5263f793ceedd0180dc6e1ca4d745e24865e0c304786.png" />
@@ -1169,8 +1561,9 @@ dtype: float64
 </div>
 </div>
 </section>
-<section id="id4">
-<h2><span class="section-number">27.3. </span>주석 추가<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="id8">
+<h2><span class="section-number">27.3. </span>주석 추가<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
 <p>이미지에 주석을 추가할 수 있다.</p>
 <p>설명을 위해 S&amp;P 500 (스탠다드 앤 푸어스, Standard and Poor’s 500)의 미국 500대 기업을 포함한
 주식시장지수 데이터로 그래프를 생성하고 2007-2008년 사이에 있었던
@@ -1393,7 +1786,7 @@ Name: SPX, Length: 5472, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fec863971c0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f74ba973f70&gt;]
 </pre></div>
 </div>
 <img alt="_images/74c335a4c7f8ded866b2390b7cea13ba9376af4598b45eef111f304d1fefa887.png" src="_images/74c335a4c7f8ded866b2390b7cea13ba9376af4598b45eef111f304d1fefa887.png" />
@@ -1601,6 +1994,495 @@ Name: SPX, Length: 5472, dtype: float64
 </div>
 </div>
 </section>
+<section id="id9">
+<h2><span class="section-number">27.5. </span>연습문제<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<p><strong>문제 1</strong></p>
+<p>서비스 팁 데이터는 요일별 파티 수, 총 수입, 시간대, 팁 수입 등에 대한 정보를 담고 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips_path</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/examples/tips.csv&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">tips_path</span><span class="p">)</span>
+
+<span class="n">tips</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>smoker</th>
+      <th>day</th>
+      <th>time</th>
+      <th>size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>16.99</td>
+      <td>1.01</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10.34</td>
+      <td>1.66</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>21.01</td>
+      <td>3.50</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>23.68</td>
+      <td>3.31</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>24.59</td>
+      <td>3.61</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>29.03</td>
+      <td>5.92</td>
+      <td>No</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>240</th>
+      <td>27.18</td>
+      <td>2.00</td>
+      <td>Yes</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>241</th>
+      <td>22.67</td>
+      <td>2.00</td>
+      <td>Yes</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>242</th>
+      <td>17.82</td>
+      <td>1.75</td>
+      <td>No</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>243</th>
+      <td>18.78</td>
+      <td>3.00</td>
+      <td>No</td>
+      <td>Thur</td>
+      <td>Dinner</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+<p>244 rows × 6 columns</p>
+</div></div></div>
+</div>
+<p>열별 특성은 다음과 같다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">total_bill</span></code>: 총 수입</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tip</span></code>: 서비스 팁</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">smoker</span></code>: 흡연 여부</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">day</span></code>: 요일</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">time</span></code>: 시간대(점심/저녁)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: 파티 규모(참여인원 수)</p></li>
+</ul>
+<p>범주형 데이터에 사용된 값들은 다음과 같다.</p>
+<ul class="simple">
+<li><p>흡연 여부</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;smoker&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;No&#39;, &#39;Yes&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>요일</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Sun&#39;, &#39;Sat&#39;, &#39;Thur&#39;, &#39;Fri&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>시간대</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Dinner&#39;, &#39;Lunch&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">'size'</span></code> 특성은 해당 파티 규모, 즉 파티 참여인원 수를 가리키며 최소 1명 최대 6명이 참여했다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2, 3, 4, 1, 6, 5])
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>교차 테이블</p></li>
+</ul>
+<p>요일과 파티 규모 사이의 관계를 파악하기 위해 교차표(cross table)를 이용한다.
+<code class="docutils literal notranslate"><span class="pre">pandas.crosstab()</span></code> 함수는 지정된 두 특성 사이의 도수분포도를 표로 생성한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">party_counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">],</span> <span class="n">tips</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">])</span>
+
+<span class="n">party_counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>size</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+      <th>6</th>
+    </tr>
+    <tr>
+      <th>day</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Fri</th>
+      <td>1</td>
+      <td>16</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Sat</th>
+      <td>2</td>
+      <td>53</td>
+      <td>18</td>
+      <td>13</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Sun</th>
+      <td>0</td>
+      <td>39</td>
+      <td>15</td>
+      <td>18</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Thur</th>
+      <td>1</td>
+      <td>48</td>
+      <td>4</td>
+      <td>5</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>빈도수가 낮은 1인과 6인 파티는 제외하자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1인과 6인 파티 제외</span>
+<span class="n">party_counts</span> <span class="o">=</span> <span class="n">party_counts</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+
+<span class="n">party_counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>size</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+    </tr>
+    <tr>
+      <th>day</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Fri</th>
+      <td>16</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Sat</th>
+      <td>53</td>
+      <td>18</td>
+      <td>13</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Sun</th>
+      <td>39</td>
+      <td>15</td>
+      <td>18</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>Thur</th>
+      <td>48</td>
+      <td>4</td>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>행별 정규화(Normalization)</p></li>
+</ul>
+<p>행별로 항목의 합이 1이 되도록 값을 정규화한다.
+이 과정을 통해 요일별 파티 규모의 비율을 파악할 수 있다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pandas.div()</span></code> 함수: 각 항목을 지정된 값으로 나눈다. <code class="docutils literal notranslate"><span class="pre">axis=0</span></code>는 행별로 나눗셈을 실행하도록 지정한다.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 각 행의 합이 1이 되도록 정규화</span>
+<span class="n">party_pcts</span> <span class="o">=</span> <span class="n">party_counts</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">party_counts</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">party_pcts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>size</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+    </tr>
+    <tr>
+      <th>day</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Fri</th>
+      <td>0.888889</td>
+      <td>0.055556</td>
+      <td>0.055556</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>Sat</th>
+      <td>0.623529</td>
+      <td>0.211765</td>
+      <td>0.152941</td>
+      <td>0.011765</td>
+    </tr>
+    <tr>
+      <th>Sun</th>
+      <td>0.520000</td>
+      <td>0.200000</td>
+      <td>0.240000</td>
+      <td>0.040000</td>
+    </tr>
+    <tr>
+      <th>Thur</th>
+      <td>0.827586</td>
+      <td>0.068966</td>
+      <td>0.086207</td>
+      <td>0.017241</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>요일별 파티 규모를 막대그래프로 그리면 다음과 같으며,
+주말일 수록 파티 규모가 커짐을 쉽게 확인할 수 있다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">party_pcts</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;day&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/fc9f485f23beeee17f9d22a4215a439a1c5f84b51d6aace0a89071f70edfc406.png" src="_images/fc9f485f23beeee17f9d22a4215a439a1c5f84b51d6aace0a89071f70edfc406.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1670,10 +2552,19 @@ Name: SPX, Length: 5472, dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">27.1. 시리즈 시각화</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">27.2. 데이터프레임 시각화</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">27.3. 주석 추가</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">27.1. 시리즈 시각화</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">27.1.1. 선 그래프</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">27.1.2. 막대그래프</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">27.2. 데이터프레임 시각화</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">27.2.1. 데이터프레임과 선 그래프</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">27.2.2. 데이터프레임과 막대그래프</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">27.3. 주석 추가</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">27.4. matplotlib 기본 설정</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">27.5. 연습문제</a></li>
 </ul>
   </nav></div>
 
