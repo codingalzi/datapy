@@ -429,7 +429,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">24.2. 데이터 집계</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">24.2.1. 집계 함수</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">24.2.2. 여러 함수 활용</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">24.2.2. 열별로 여러 함수 적용하기</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">24.2.3. 행 인덱스 없는 데이터 집계</a></li>
 </ul>
 </li>
@@ -770,7 +770,7 @@ Name: data1, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x7f63652e6410&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x7fb708a17bb0&gt;
 </pre></div>
 </div>
 </div>
@@ -2998,6 +2998,7 @@ Name: data1, dtype: float64
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">DataFrame.describe()</span></code> 메서드: 수치 데이터셋의 분포를 요약한다. 여기서는 그룹별로 작동한다.</p></li>
 </ul>
+<p>이와같은 비집계 함수가 작동하는 원리를 이해하려면 먼저 <code class="docutils literal notranslate"><span class="pre">apply()</span></code> 메서드를 이해해야 한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -3114,7 +3115,8 @@ Name: data1, dtype: float64
 </div>
 </section>
 <section id="id11">
-<h3><span class="section-number">24.2.2. </span>여러 함수 활용<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">24.2.2. </span>열별로 여러 함수 적용하기<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<p>팁 데이터를 다시 이용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/examples/&quot;</span>
@@ -3208,6 +3210,8 @@ Name: data1, dtype: float64
 </table>
 </div></div></div>
 </div>
+<p>전체 수입에 대한 팁이 비율을 새로운 열로 추가한다.
+열의 라벨은 <code class="docutils literal notranslate"><span class="pre">&quot;tip_pct&quot;</span></code>이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;tip&quot;</span><span class="p">]</span> <span class="o">/</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;total_bill&quot;</span><span class="p">]</span>
@@ -3298,6 +3302,7 @@ Name: data1, dtype: float64
 </table>
 </div></div></div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;day&quot;</span></code>와 <code class="docutils literal notranslate"><span class="pre">&quot;smoker&quot;</span></code> 기준으로 그룹을 짓는다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span> <span class="o">=</span> <span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">])</span>
@@ -3305,6 +3310,9 @@ Name: data1, dtype: float64
 </div>
 </div>
 </div>
+<p>그룹별 팁 비율의 평균값을 계산한다.
+<code class="docutils literal notranslate"><span class="pre">agg()</span></code> 메서드에 <code class="docutils literal notranslate"><span class="pre">GroupBy</span></code> 객체의 집계 메서드를 인자로 사용할 수 있으며
+이때 함수의 이름을 문자열로 지정한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped_pct</span> <span class="o">=</span> <span class="n">grouped</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span>
@@ -3327,6 +3335,8 @@ Name: tip_pct, dtype: float64
 </div>
 </div>
 </div>
+<p>여러 개의 집계 함수를 사용하면 사용된 집계 함수별로 열이 생성된다.
+아래 코드는 그룹별로 팁 비율의 평균값, 표준편차, 최대-최소 오차 값을 계산한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped_pct</span><span class="o">.</span><span class="n">agg</span><span class="p">([</span><span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">peak_to_peak</span><span class="p">])</span>
@@ -3422,6 +3432,10 @@ Name: tip_pct, dtype: float64
 </table>
 </div></div></div>
 </div>
+<p>집계 함수와 생성되는 열의 라벨을 쌍으로 구성하면 지정된 라벨이 사용된다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.std()</span></code> 함수: 집계 함수 <code class="docutils literal notranslate"><span class="pre">&quot;std&quot;</span></code> 대신 사용됨</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped_pct</span><span class="o">.</span><span class="n">agg</span><span class="p">([(</span><span class="s2">&quot;average&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;stdev&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">)])</span>
@@ -3507,6 +3521,7 @@ Name: tip_pct, dtype: float64
 </table>
 </div></div></div>
 </div>
+<p>여러 개의 함수를 여러 개의 열에 적용하면 멀티 인덱스가 열의 인덱스로 사용된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">functions</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;count&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">]</span>
@@ -3644,101 +3659,7 @@ Name: tip_pct, dtype: float64
 </table>
 </div></div></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="p">[</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th></th>
-      <th>count</th>
-      <th>mean</th>
-      <th>max</th>
-    </tr>
-    <tr>
-      <th>day</th>
-      <th>smoker</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th rowspan="2" valign="top">Fri</th>
-      <th>No</th>
-      <td>4</td>
-      <td>0.151650</td>
-      <td>0.187735</td>
-    </tr>
-    <tr>
-      <th>Yes</th>
-      <td>15</td>
-      <td>0.174783</td>
-      <td>0.263480</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">Sat</th>
-      <th>No</th>
-      <td>45</td>
-      <td>0.158048</td>
-      <td>0.291990</td>
-    </tr>
-    <tr>
-      <th>Yes</th>
-      <td>42</td>
-      <td>0.147906</td>
-      <td>0.325733</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">Sun</th>
-      <th>No</th>
-      <td>57</td>
-      <td>0.160113</td>
-      <td>0.252672</td>
-    </tr>
-    <tr>
-      <th>Yes</th>
-      <td>19</td>
-      <td>0.187250</td>
-      <td>0.710345</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">Thur</th>
-      <th>No</th>
-      <td>45</td>
-      <td>0.160298</td>
-      <td>0.266312</td>
-    </tr>
-    <tr>
-      <th>Yes</th>
-      <td>17</td>
-      <td>0.163863</td>
-      <td>0.241255</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
+<p>열의 라벨을 지정하는 방식도 동일하게 작동한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ftuples</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;Average&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;Variance&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">)]</span>
@@ -3855,6 +3776,7 @@ Name: tip_pct, dtype: float64
 </table>
 </div></div></div>
 </div>
+<p>열별로 다른 집계 함수를 적용하려면 사전을 이용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;tip&quot;</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span> <span class="p">:</span> <span class="s2">&quot;sum&quot;</span><span class="p">})</span>
@@ -3940,6 +3862,7 @@ Name: tip_pct, dtype: float64
 </table>
 </div></div></div>
 </div>
+<p>열별로 여러 함수를 적용할 수도 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grouped</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;tip_pct&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="s2">&quot;min&quot;</span><span class="p">,</span> <span class="s2">&quot;max&quot;</span><span class="p">,</span> <span class="s2">&quot;mean&quot;</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">],</span>
@@ -4069,6 +3992,7 @@ Name: tip_pct, dtype: float64
 </section>
 <section id="id12">
 <h3><span class="section-number">24.2.3. </span>행 인덱스 없는 데이터 집계<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<p>그룹화에 사용된 키들은 인덱스로 지정하지 않으려면 <code class="docutils literal notranslate"><span class="pre">as_index=False</span></code> 키워드 인자를 사용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -4170,6 +4094,112 @@ Name: tip_pct, dtype: float64
       <th>7</th>
       <td>Thur</td>
       <td>Yes</td>
+      <td>19.190588</td>
+      <td>3.030000</td>
+      <td>2.352941</td>
+      <td>0.163863</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>인데스로 사용하는 경우는 다음과 같다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># as_index=True 가 기본값</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>size</th>
+      <th>tip_pct</th>
+    </tr>
+    <tr>
+      <th>day</th>
+      <th>smoker</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">Fri</th>
+      <th>No</th>
+      <td>18.420000</td>
+      <td>2.812500</td>
+      <td>2.250000</td>
+      <td>0.151650</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>16.813333</td>
+      <td>2.714000</td>
+      <td>2.066667</td>
+      <td>0.174783</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Sat</th>
+      <th>No</th>
+      <td>19.661778</td>
+      <td>3.102889</td>
+      <td>2.555556</td>
+      <td>0.158048</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>21.276667</td>
+      <td>2.875476</td>
+      <td>2.476190</td>
+      <td>0.147906</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Sun</th>
+      <th>No</th>
+      <td>20.506667</td>
+      <td>3.167895</td>
+      <td>2.929825</td>
+      <td>0.160113</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
+      <td>24.120000</td>
+      <td>3.516842</td>
+      <td>2.578947</td>
+      <td>0.187250</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">Thur</th>
+      <th>No</th>
+      <td>17.113111</td>
+      <td>2.673778</td>
+      <td>2.488889</td>
+      <td>0.160298</td>
+    </tr>
+    <tr>
+      <th>Yes</th>
       <td>19.190588</td>
       <td>3.030000</td>
       <td>2.352941</td>
@@ -7715,7 +7745,7 @@ Name: value, dtype: float64
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">24.2. 데이터 집계</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">24.2.1. 집계 함수</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">24.2.2. 여러 함수 활용</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">24.2.2. 열별로 여러 함수 적용하기</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">24.2.3. 행 인덱스 없는 데이터 집계</a></li>
 </ul>
 </li>
