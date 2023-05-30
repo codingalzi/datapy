@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'visualization_2';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="28. 판다스 시각화 도구" href="visualization_3.html" />
+    <link rel="next" title="27. 판다스 시각화 도구" href="visualization_3.html" />
     <link rel="prev" title="25. matplotlib.pyplot 1부" href="visualization_1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -180,18 +180,17 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="visualization_1.html">25. matplotlib.pyplot 1부</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">26. matplotlib.pyplot 2부</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">28. 판다스 시각화 도구</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_4.html">29. Seaborn 시각화 라이브러리</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">27. 판다스 시각화 도구</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_4.html">28. Seaborn 시각화 라이브러리</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">시계열 데이터</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">30. 시계열 데이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">29. 시계열 데이터</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">실전 데이터 분석</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">31. 타이타닉 데이터 분석</a></li>
-<li class="toctree-l1"><a class="reference internal" href="casestudy_oecd_bli.html">32. OECD 국가의 삶의 만족도</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">30. 타이타닉 데이터 분석</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_oecd_bli.html">31. OECD 국가의 삶의 만족도</a></li>
 </ul>
 
     </div>
@@ -416,19 +415,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">26. matplotlib.pyplot 2부</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-subplot">26.1. <code class="docutils literal notranslate"><span class="pre">Figure</span></code> 객체와 서브플롯(subplot)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">26.2. 눈금과 라벨</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">26.3. 그래프 저장</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">26.4. 그래프 스타일 지정</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">26.5. matplotlib 기본 설정</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">26.6. 연습문제</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">27. matplotlib 기본 설정</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">27.1. 연습문제</a></li>
-</ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -526,7 +519,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f13f69697b0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe01fdc9750&gt;]
 </pre></div>
 </div>
 <img alt="_images/9694879fcd34295fdd7a4392072a87cfa02bac090237e9b575d36cd0a1a96522.png" src="_images/9694879fcd34295fdd7a4392072a87cfa02bac090237e9b575d36cd0a1a96522.png" />
@@ -548,7 +541,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f13f61551e0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fe01f5b8f40&gt;]
 </pre></div>
 </div>
 <img alt="_images/3a40355864993c4d2e39e09f217a06ef1434dbe56e49c8806b96c9714ccb9802.png" src="_images/3a40355864993c4d2e39e09f217a06ef1434dbe56e49c8806b96c9714ccb9802.png" />
@@ -801,7 +794,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f13f433b850&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe01cf9b760&gt;
 </pre></div>
 </div>
 <img alt="_images/120fc77fcb4cbce13f603128c5cdd3e6bb50218d5dbb354b55b897f9f5403567.png" src="_images/120fc77fcb4cbce13f603128c5cdd3e6bb50218d5dbb354b55b897f9f5403567.png" />
@@ -874,7 +867,7 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f13f41a3520&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe01ce032e0&gt;
 </pre></div>
 </div>
 <img alt="_images/8d14ee25c716bcddc5fb603990eb43dd147a12fac2227f9f23a449e3abc0c9c4.png" src="_images/8d14ee25c716bcddc5fb603990eb43dd147a12fac2227f9f23a449e3abc0c9c4.png" />
@@ -900,7 +893,7 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f13f4201990&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe01cf73520&gt;
 </pre></div>
 </div>
 <img alt="_images/fa600e2b6754442e6d6a95ab6761008c041ec0ff614d35fb240f033608bf8fc3.png" src="_images/fa600e2b6754442e6d6a95ab6761008c041ec0ff614d35fb240f033608bf8fc3.png" />
@@ -926,7 +919,7 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f13f5794640&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe01f1a37c0&gt;
 </pre></div>
 </div>
 <img alt="_images/7512a3933863aa66e9d4b638cc59e2d7982d9686374a2cb7af855b303b7594b4.png" src="_images/7512a3933863aa66e9d4b638cc59e2d7982d9686374a2cb7af855b303b7594b4.png" />
@@ -952,7 +945,7 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f13f451d030&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe01cd311e0&gt;
 </pre></div>
 </div>
 <img alt="_images/5b2d09d65094abba22bdc53c4edcf4e8e322ffd6b5846e99619f532d2f7e391b.png" src="_images/5b2d09d65094abba22bdc53c4edcf4e8e322ffd6b5846e99619f532d2f7e391b.png" />
@@ -978,7 +971,7 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f13f55d4040&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe01f49c820&gt;
 </pre></div>
 </div>
 <img alt="_images/e1b2f52b942666259522dfbed0972158032fe50dea64fd6bd31999c3dff08faf.png" src="_images/e1b2f52b942666259522dfbed0972158032fe50dea64fd6bd31999c3dff08faf.png" />
@@ -1004,16 +997,15 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f13f5be4fd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe01f045f90&gt;
 </pre></div>
 </div>
 <img alt="_images/bb0bc4949e37273c92e023ad0b62b3289ae74c5022b0de8b92762c8ab5913cd2.png" src="_images/bb0bc4949e37273c92e023ad0b62b3289ae74c5022b0de8b92762c8ab5913cd2.png" />
 </div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="matplotlib">
-<h1><span class="section-number">27. </span>matplotlib 기본 설정<a class="headerlink" href="#matplotlib" title="Permalink to this heading">#</a></h1>
+<section id="matplotlib">
+<h2><span class="section-number">26.5. </span>matplotlib 기본 설정<a class="headerlink" href="#matplotlib" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">plt.rc()</span></code> 함수를 이용하여 matplot을 이용하여 생성되는 이미지 관련 설정을 전역적으로 지정할 수 있다.
 사용되는 형식은 다음과 같다.</p>
 <ul class="simple">
@@ -1087,7 +1079,7 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f13f413c580&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fe01eb6a2c0&gt;
 </pre></div>
 </div>
 <img alt="_images/81c71ed61915d11aecdc2f0f7373b3acbdb85f0bfdd3ad182a643abae8a21766.png" src="_images/81c71ed61915d11aecdc2f0f7373b3acbdb85f0bfdd3ad182a643abae8a21766.png" />
@@ -1100,8 +1092,9 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 </div>
+</section>
 <section id="id4">
-<h2><span class="section-number">27.1. </span>연습문제<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">26.6. </span>연습문제<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-data_visualization_pyplot2.ipynb">(실습) matplotlib.pyplot 2부</a></p>
 </section>
 </section>
@@ -1151,7 +1144,7 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">28. </span>판다스 시각화 도구</p>
+        <p class="prev-next-title"><span class="section-number">27. </span>판다스 시각화 도구</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1173,19 +1166,13 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">26. matplotlib.pyplot 2부</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-subplot">26.1. <code class="docutils literal notranslate"><span class="pre">Figure</span></code> 객체와 서브플롯(subplot)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">26.2. 눈금과 라벨</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">26.3. 그래프 저장</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">26.4. 그래프 스타일 지정</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">26.5. matplotlib 기본 설정</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">26.6. 연습문제</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">27. matplotlib 기본 설정</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">27.1. 연습문제</a></li>
-</ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
