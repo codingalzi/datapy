@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'visualization_2';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="27. 판다스 시각화 도구" href="visualization_3.html" />
+    <link rel="next" title="28. 판다스 시각화 도구" href="visualization_3.html" />
     <link rel="prev" title="25. matplotlib.pyplot 1부" href="visualization_1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -183,17 +183,18 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="visualization_1.html">25. matplotlib.pyplot 1부</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">26. matplotlib.pyplot 2부</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">27. 판다스 시각화 도구</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_4.html">28. Seaborn 시각화 라이브러리</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">28. 판다스 시각화 도구</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_4.html">29. Seaborn 시각화 라이브러리</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">시계열 데이터</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">29. 시계열 데이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">30. 시계열 데이터</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">실전 데이터 분석</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">30. 타이타닉 데이터 분석</a></li>
-<li class="toctree-l1"><a class="reference internal" href="casestudy_oecd_bli.html">31. OECD 국가의 삶의 만족도</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">31. 타이타닉 데이터 분석</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_oecd_bli.html">32. OECD 국가의 삶의 만족도</a></li>
 </ul>
 
     </div>
@@ -418,12 +419,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">26. matplotlib.pyplot 2부</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-subplot">26.1. <code class="docutils literal notranslate"><span class="pre">Figure</span></code> 객체와 서브플롯(subplot)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">26.2. 눈금과 라벨</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">26.3. 그래프 저장</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">26.4. 그래프 스타일 지정</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">26.5. 연습문제</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">27. matplotlib 기본 설정</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">27.1. 연습문제</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -521,7 +529,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0afc551720&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6cae1757b0&gt;]
 </pre></div>
 </div>
 <img alt="_images/9694879fcd34295fdd7a4392072a87cfa02bac090237e9b575d36cd0a1a96522.png" src="_images/9694879fcd34295fdd7a4392072a87cfa02bac090237e9b575d36cd0a1a96522.png" />
@@ -543,7 +551,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f0afbd451e0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f6cad965030&gt;]
 </pre></div>
 </div>
 <img alt="_images/3a40355864993c4d2e39e09f217a06ef1434dbe56e49c8806b96c9714ccb9802.png" src="_images/3a40355864993c4d2e39e09f217a06ef1434dbe56e49c8806b96c9714ccb9802.png" />
@@ -613,13 +621,6 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <img alt="_images/09f804cf22e6ea8ac529e4a6db115db65f77c35d6faa85f8cb9e05b6436381cc.png" src="_images/09f804cf22e6ea8ac529e4a6db115db65f77c35d6faa85f8cb9e05b6436381cc.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
 </div>
 </div>
 <p><strong>서브플롯 관리</strong></p>
@@ -697,13 +698,6 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <img alt="_images/7eca631b10952531fbc627d364f9d14c50c04b98a986df0de9d4eea0971cd66b.png" src="_images/7eca631b10952531fbc627d364f9d14c50c04b98a986df0de9d4eea0971cd66b.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
 </div>
 </div>
 </section>
@@ -810,7 +804,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0af972fac0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6cac34bc10&gt;
 </pre></div>
 </div>
 <img alt="_images/120fc77fcb4cbce13f603128c5cdd3e6bb50218d5dbb354b55b897f9f5403567.png" src="_images/120fc77fcb4cbce13f603128c5cdd3e6bb50218d5dbb354b55b897f9f5403567.png" />
@@ -883,7 +877,7 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0afb1fc130&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6cac1e0370&gt;
 </pre></div>
 </div>
 <img alt="_images/8d14ee25c716bcddc5fb603990eb43dd147a12fac2227f9f23a449e3abc0c9c4.png" src="_images/8d14ee25c716bcddc5fb603990eb43dd147a12fac2227f9f23a449e3abc0c9c4.png" />
@@ -909,7 +903,7 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0af95c8070&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6cac20ec80&gt;
 </pre></div>
 </div>
 <img alt="_images/fa600e2b6754442e6d6a95ab6761008c041ec0ff614d35fb240f033608bf8fc3.png" src="_images/fa600e2b6754442e6d6a95ab6761008c041ec0ff614d35fb240f033608bf8fc3.png" />
@@ -935,7 +929,7 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0afb90e470&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6cad516b30&gt;
 </pre></div>
 </div>
 <img alt="_images/7512a3933863aa66e9d4b638cc59e2d7982d9686374a2cb7af855b303b7594b4.png" src="_images/7512a3933863aa66e9d4b638cc59e2d7982d9686374a2cb7af855b303b7594b4.png" />
@@ -961,7 +955,7 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0af959a440&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6cac0d9030&gt;
 </pre></div>
 </div>
 <img alt="_images/5b2d09d65094abba22bdc53c4edcf4e8e322ffd6b5846e99619f532d2f7e391b.png" src="_images/5b2d09d65094abba22bdc53c4edcf4e8e322ffd6b5846e99619f532d2f7e391b.png" />
@@ -987,7 +981,7 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0afb1c97b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6cac537580&gt;
 </pre></div>
 </div>
 <img alt="_images/e1b2f52b942666259522dfbed0972158032fe50dea64fd6bd31999c3dff08faf.png" src="_images/e1b2f52b942666259522dfbed0972158032fe50dea64fd6bd31999c3dff08faf.png" />
@@ -1013,10 +1007,93 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0afb7d6cb0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6cac20f460&gt;
 </pre></div>
 </div>
 <img alt="_images/bb0bc4949e37273c92e023ad0b62b3289ae74c5022b0de8b92762c8ab5913cd2.png" src="_images/bb0bc4949e37273c92e023ad0b62b3289ae74c5022b0de8b92762c8ab5913cd2.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="matplotlib">
+<h1><span class="section-number">27. </span>matplotlib 기본 설정<a class="headerlink" href="#matplotlib" title="Permalink to this heading">#</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">plt.rc()</span></code> 함수를 이용하여 matplot을 이용하여 생성되는 이미지 관련 설정을 전역적으로 지정할 수 있다.
+사용되는 형식은 다음과 같다.</p>
+<ul class="simple">
+<li><p>첫째 인자: 속성 지정</p></li>
+<li><p>둘째 인자: 속성값 지정</p></li>
+</ul>
+<p><strong>참고:</strong> ‘rc’ 는 기본설정을 의미하는 단어로 많이 사용된다.
+풀어 쓰면 “Run at startup and they Configure your stuff”,
+즉, “프로그램이 시작할 때 기본값들을 설정한다”의 의미이다.
+‘.vimrc’, ‘.bashrc’, ‘.zshrc’ 등 많은 애플리케이션의 초기설정 파일명에 사용되곤 한다.</p>
+<p>아래 코드는 다양한 속성을 지정하는 방식을 보여준다.</p>
+<ul class="simple">
+<li><p>이미지 사이즈 지정</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>선 속성 지정</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>텍스트 폰트 속성 지정</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">font_options</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;family&#39;</span> <span class="p">:</span> <span class="s1">&#39;serif&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;weight&#39;</span> <span class="p">:</span> <span class="s1">&#39;bold&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;size&#39;</span>   <span class="p">:</span> <span class="s1">&#39;13&#39;</span><span class="p">}</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">font_options</span><span class="p">)</span> <span class="c1"># plt.rc(&#39;font&#39;, family=&#39;serif&#39;, weight=&#39;bold&#39;, size=13)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>그래프 구성 요소의 색상 지정</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;text.color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;xtick.color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;ytick.color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;#CD5C5C&#39;</span>  <span class="c1"># RGB 색상</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>아래 코드는 앞서 설정된 다양한 속성을 반영한 결과를 보여준다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">17</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;one&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dashed&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;two&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(),</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;dotted&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;three&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;x-axis label&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f6cac1443a0&gt;
+</pre></div>
+</div>
+<img alt="_images/81c71ed61915d11aecdc2f0f7373b3acbdb85f0bfdd3ad182a643abae8a21766.png" src="_images/81c71ed61915d11aecdc2f0f7373b3acbdb85f0bfdd3ad182a643abae8a21766.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1026,9 +1103,8 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 </div>
-</section>
 <section id="id4">
-<h2><span class="section-number">26.5. </span>연습문제<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">27.1. </span>연습문제<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-data_visualization_pyplot2.ipynb">(실습) matplotlib.pyplot 2부</a></p>
 </section>
 </section>
@@ -1078,7 +1154,7 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">27. </span>판다스 시각화 도구</p>
+        <p class="prev-next-title"><span class="section-number">28. </span>판다스 시각화 도구</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1100,12 +1176,19 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">26. matplotlib.pyplot 2부</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figure-subplot">26.1. <code class="docutils literal notranslate"><span class="pre">Figure</span></code> 객체와 서브플롯(subplot)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">26.2. 눈금과 라벨</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">26.3. 그래프 저장</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">26.4. 그래프 스타일 지정</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">26.5. 연습문제</a></li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">27. matplotlib 기본 설정</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">27.1. 연습문제</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
