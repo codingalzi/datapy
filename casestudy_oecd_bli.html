@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>31. OECD 국가의 삶의 만족도 &#8212; 파이썬 데이터 분석</title>
+    <title>32. OECD 국가의 삶의 만족도 &#8212; 파이썬 데이터 분석</title>
   
   
   
@@ -67,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'casestudy_oecd_bli';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="30. 타이타닉 데이터 분석" href="casestudy_titanic.html" />
+    <link rel="prev" title="31. 타이타닉 데이터 분석" href="casestudy_titanic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -184,17 +184,18 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="visualization_1.html">25. matplotlib.pyplot 1부</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualization_2.html">26. matplotlib.pyplot 2부</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">27. 판다스 시각화 도구</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_4.html">28. Seaborn 시각화 라이브러리</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">28. 판다스 시각화 도구</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_4.html">29. Seaborn 시각화 라이브러리</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">시계열 데이터</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">29. 시계열 데이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">30. 시계열 데이터</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">실전 데이터 분석</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">30. 타이타닉 데이터 분석</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">31. OECD 국가의 삶의 만족도</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">31. 타이타닉 데이터 분석</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">32. OECD 국가의 삶의 만족도</a></li>
 </ul>
 
     </div>
@@ -419,29 +420,29 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">31.1. 주요 내용</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">31.2. 기본 설정</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">31.3. 선형회귀 모델 구현</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">31.3.1. 1단계: 문제 정의</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">31.3.2. 2단계: 데이터 구하기</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">31.3.3. 3단계: 데이터 적재, 정제, 전처리</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gdp">31.3.3.1. 1인당 GDP 데이터 적재, 정제, 전처리</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">31.3.3.2. 삶의 만족도 데이터 적재, 정제, 전처리</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">31.3.3.3. 데이터 병합</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">31.3.3.4. 추가 설정</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">32.1. 주요 내용</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">32.2. 기본 설정</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">32.3. 선형회귀 모델 구현</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">32.3.1. 1단계: 문제 정의</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">32.3.2. 2단계: 데이터 구하기</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">32.3.3. 3단계: 데이터 적재, 정제, 전처리</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gdp">32.3.3.1. 1인당 GDP 데이터 적재, 정제, 전처리</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">32.3.3.2. 삶의 만족도 데이터 적재, 정제, 전처리</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">32.3.3.3. 데이터 병합</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">32.3.3.4. 추가 설정</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">31.3.4. 4단계: 모델 선택과 훈련</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">31.3.4.1. 선형 관계 확인</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">31.3.4.2. 선형회귀 모델</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">31.3.4.3. 사이킷런 라이브러리 활용</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">32.3.4. 4단계: 모델 선택과 훈련</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">32.3.4.1. 선형 관계 확인</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">32.3.4.2. 선형회귀 모델</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">32.3.4.3. 사이킷런 라이브러리 활용</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">31.3.5. 5단계: 모델 활용</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">32.3.5. 5단계: 모델 활용</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">31.4. 머신러닝의 모델 훈련의 어려움</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">31.4.1. 훈련 데이터 추가</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">32.4. 머신러닝의 모델 훈련의 어려움</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">32.4.1. 훈련 데이터 추가</a></li>
 </ul>
 </li>
 </ul>
@@ -456,11 +457,11 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="oecd">
-<span id="sec-oecd-bli"></span><h1><span class="section-number">31. </span>OECD 국가의 삶의 만족도<a class="headerlink" href="#oecd" title="Permalink to this heading">#</a></h1>
+<span id="sec-oecd-bli"></span><h1><span class="section-number">32. </span>OECD 국가의 삶의 만족도<a class="headerlink" href="#oecd" title="Permalink to this heading">#</a></h1>
 <p><strong>참고:</strong> 오렐리앙 제롱의 <a class="reference external" href="https://github.com/ageron/handson-ml2">&lt;핸즈온 머신러닝(2판)&gt;</a>
 1장의 소스코드를 사용합니다.</p>
 <section id="id1">
-<h2><span class="section-number">31.1. </span>주요 내용<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">32.1. </span>주요 내용<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>1인당 <a class="reference external" href="https://ko.wikipedia.org/wiki/%EA%B5%AD%EB%82%B4%EC%B4%9D%EC%83%9D%EC%82%B0">GDP(국내총생산)</a>와 삶의 만족도 사이의
 선형 관계를 예측하는 모델의 훈련과정을 자세하게 소개한다.</p>
 <p><strong>참고</strong></p>
@@ -468,7 +469,7 @@ document.write(`
 2020년 데이터는 <a class="reference external" href="https://colab.research.google.com/github/codingalzi/handson-ml3/blob/master/practices/practice_ml_landscape.ipynb">연습문제</a>에서 다룬다.</p>
 </section>
 <section id="id2">
-<h2><span class="section-number">31.2. </span>기본 설정<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">32.2. </span>기본 설정<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>파이썬 3.7 이상을 요구한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -523,7 +524,7 @@ document.write(`
 </div>
 </section>
 <section id="id3">
-<h2><span class="section-number">31.3. </span>선형회귀 모델 구현<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">32.3. </span>선형회귀 모델 구현<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>선형회귀 모델의 구현과정은 일반적으로 아래 다섯 단계로 이루어진다.</p>
 <ol class="arabic simple">
 <li><p>문제 정의</p></li>
@@ -533,11 +534,11 @@ document.write(`
 <li><p>모델 활용</p></li>
 </ol>
 <section id="id4">
-<h3><span class="section-number">31.3.1. </span>1단계: 문제 정의<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">32.3.1. </span>1단계: 문제 정의<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>어느 국가의 1인당 GDP가 알려졌을 때 해당 국가의 삶의 만족도를 예측하는 모델을 구현해야 한다.</p>
 </section>
 <section id="id5">
-<h3><span class="section-number">31.3.2. </span>2단계: 데이터 구하기<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">32.3.2. </span>2단계: 데이터 구하기<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>모델 훈련에 사용되는 훈련 셋은 <strong>입력</strong> 데이터 셋과
 <strong>타깃</strong><font size="2">target</font> 데이터 셋으로 구분된다.
 모델 훈련은 입력 데이터와 타깃 데이터 사이의 관계를 가장 적절하게
@@ -614,7 +615,7 @@ document.write(`
 </table>
 </section>
 <section id="id6">
-<h3><span class="section-number">31.3.3. </span>3단계: 데이터 적재, 정제, 전처리<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">32.3.3. </span>3단계: 데이터 적재, 정제, 전처리<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>컴퓨터에 저장된 또는 다운로드된 데이터는 일반적으로 바로 모델 훈련에 사용할 수 없으며,
 데이터 적재, 데이터 정제, 데이터 전처리 등의 과정을 거쳐야 비로소 모델 훈련에 활용될 수 있다.</p>
 <ul class="simple">
@@ -626,7 +627,7 @@ document.write(`
 적절한 내용의 데이터를 추가하거나 삭제하는 과정</p></li>
 </ul>
 <section id="gdp">
-<h4><span class="section-number">31.3.3.1. </span>1인당 GDP 데이터 적재, 정제, 전처리<a class="headerlink" href="#gdp" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">32.3.3.1. </span>1인당 GDP 데이터 적재, 정제, 전처리<a class="headerlink" href="#gdp" title="Permalink to this heading">#</a></h4>
 <p>2015년 기준 국가별 1인당 GDP 관련 데이터가 저장되어 있는 서버 주소는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1052,7 +1053,7 @@ document.write(`
 </div>
 </section>
 <section id="id7">
-<h4><span class="section-number">31.3.3.2. </span>삶의 만족도 데이터 적재, 정제, 전처리<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">32.3.3.2. </span>삶의 만족도 데이터 적재, 정제, 전처리<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h4>
 <p>OECD 국가별 삶의 만족도 데이터는 ‘더 나은 삶의 지수’ 데이터 파일에 포함되어 있다.
 따라서 먼저 해당 csv 파일을 판다스의 데이터프레임 객체로 불러온 후에
 삶의 만족도와 관련된 내용을 추출하는 과정을 밟는다.</p>
@@ -2558,7 +2559,7 @@ Name: Life satisfaction, dtype: float64
 </div>
 </section>
 <section id="id8">
-<h4><span class="section-number">31.3.3.3. </span>데이터 병합<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">32.3.3.3. </span>데이터 병합<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h4>
 <p>앞서 살펴본 대로 1인당 GDP 데이터는 OECD 회원국 이외의 국가 데이터도 포함되어 있다.
 OECD 회원국으로 제한해서 1인당 GDP와 삶의 만족도 사이의 관계를 파악하기 위해
 앞서 구한 두 개의 데이터프레임을 하나로 병합한다.</p>
@@ -3020,7 +3021,7 @@ OECD 회원국으로 제한해서 1인당 GDP와 삶의 만족도 사이의 관�
 </div>
 </section>
 <section id="id9">
-<h4><span class="section-number">31.3.3.4. </span>추가 설정<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">32.3.3.4. </span>추가 설정<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h4>
 <p>선형회귀 모델을 훈련시킬 때 발생할 수 있는 과대적합 문제를 설명하기 위해
 고의로 7개 국가의 데이터를 데이터 셋에서 제외시키고 훈련 시킬 때와
 그렇지 않을 때를 비교하고자 한다.</p>
@@ -3123,9 +3124,9 @@ OECD 회원국으로 제한해서 1인당 GDP와 삶의 만족도 사이의 관�
 </section>
 </section>
 <section id="id10">
-<h3><span class="section-number">31.3.4. </span>4단계: 모델 선택과 훈련<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">32.3.4. </span>4단계: 모델 선택과 훈련<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
 <section id="id11">
-<h4><span class="section-number">31.3.4.1. </span>선형 관계 확인<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">32.3.4.1. </span>선형 관계 확인<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h4>
 <p>아래 코드는 앞서 언급된 7개 국가의 데이터를 제외한 국가들의 1인당 GDP와
 삶의 만족도 사이의 관계를 산점도로 나타낸다.
 선형관계를 잘 보여주는 다음 다섯 개 국가는 빨간색 점으로 표시한다.</p>
@@ -3245,7 +3246,7 @@ OECD 회원국으로 제한해서 1인당 GDP와 삶의 만족도 사이의 관�
 <p>위 산점도에 따르면 1인당 GDP와 삶의 만족도가 어느 정도 선형 관계에 있는 것처럼 보인다.</p>
 </section>
 <section id="id12">
-<h4><span class="section-number">31.3.4.2. </span>선형회귀 모델<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">32.3.4.2. </span>선형회귀 모델<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h4>
 <p>직선처럼 y 축의 값이 x 축의 값에 선형적으로 의존하는 관계를 __선형관계__라 하며,
 그런 선형관계를 함수로 구현하는 모델을 <strong>선형회귀 모델</strong>(linear regression model)이라 한다.
 선형회귀 모델은 직선을 나타내는 1차 함수의 그래프로 표현되며,
@@ -3261,7 +3262,7 @@ OECD 회원국으로 제한해서 1인당 GDP와 삶의 만족도 사이의 관�
 모델의 파라미터를 찾아내는 것이 머신러닝 모델훈련의 핵심이다.</p>
 </section>
 <section id="id13">
-<h4><span class="section-number">31.3.4.3. </span>사이킷런 라이브러리 활용<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">32.3.4.3. </span>사이킷런 라이브러리 활용<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h4>
 <p><strong>사이킷런</strong><font size="2">scikit-learn</font> 라이브러리는 머신러닝에서 사용되는
 다양한 모델을 제공한다.
 선형회귀의 경우 <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> 클래스의 객체를 생성하여 훈련시키면
@@ -3405,7 +3406,7 @@ OECD 회원국으로 제한해서 1인당 GDP와 삶의 만족도 사이의 관�
 </section>
 </section>
 <section id="id14">
-<h3><span class="section-number">31.3.5. </span>5단계: 모델 활용<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">32.3.5. </span>5단계: 모델 활용<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
 <p>한 국가의 1인당 GDP가 알려졌을 때
 훈련된 모델에 포함된 <span class="math notranslate nohighlight">\(\theta_0\)</span> 와 <span class="math notranslate nohighlight">\(\theta_1\)</span> 을 이용하여
 해당 국가의 삶의 만족도를 예측한다.
@@ -3448,11 +3449,11 @@ OECD 회원국으로 제한해서 1인당 GDP와 삶의 만족도 사이의 관�
 </section>
 </section>
 <section id="id15">
-<h2><span class="section-number">31.4. </span>머신러닝의 모델 훈련의 어려움<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">32.4. </span>머신러닝의 모델 훈련의 어려움<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
 <p>머신러닝 알고리즘을 훈련시키다보면 다양한 어려움에 부딪힌다.
 여기서는 선형회귀 모델이 훈련셋에 민감하게 반응하는 것을 보이고자 한다.</p>
 <section id="id16">
-<h3><span class="section-number">31.4.1. </span>훈련 데이터 추가<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">32.4.1. </span>훈련 데이터 추가<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
 <p>앞서 제외시킨 7개 국가의 데이터를 포함해서 선형회귀 모델을 훈련시켜 보자.
 제외된 7개 국가의 데이터는 다음과 같다.</p>
 <ul class="simple">
@@ -3643,7 +3644,7 @@ OECD 회원국으로 제한해서 1인당 GDP와 삶의 만족도 사이의 관�
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">30. </span>타이타닉 데이터 분석</p>
+        <p class="prev-next-title"><span class="section-number">31. </span>타이타닉 데이터 분석</p>
       </div>
     </a>
 </div></div>
@@ -3664,29 +3665,29 @@ OECD 회원국으로 제한해서 1인당 GDP와 삶의 만족도 사이의 관�
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">31.1. 주요 내용</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">31.2. 기본 설정</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">31.3. 선형회귀 모델 구현</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">31.3.1. 1단계: 문제 정의</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">31.3.2. 2단계: 데이터 구하기</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">31.3.3. 3단계: 데이터 적재, 정제, 전처리</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gdp">31.3.3.1. 1인당 GDP 데이터 적재, 정제, 전처리</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">31.3.3.2. 삶의 만족도 데이터 적재, 정제, 전처리</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">31.3.3.3. 데이터 병합</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">31.3.3.4. 추가 설정</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">32.1. 주요 내용</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">32.2. 기본 설정</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">32.3. 선형회귀 모델 구현</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">32.3.1. 1단계: 문제 정의</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">32.3.2. 2단계: 데이터 구하기</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">32.3.3. 3단계: 데이터 적재, 정제, 전처리</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gdp">32.3.3.1. 1인당 GDP 데이터 적재, 정제, 전처리</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">32.3.3.2. 삶의 만족도 데이터 적재, 정제, 전처리</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">32.3.3.3. 데이터 병합</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">32.3.3.4. 추가 설정</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">31.3.4. 4단계: 모델 선택과 훈련</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">31.3.4.1. 선형 관계 확인</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">31.3.4.2. 선형회귀 모델</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">31.3.4.3. 사이킷런 라이브러리 활용</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">32.3.4. 4단계: 모델 선택과 훈련</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">32.3.4.1. 선형 관계 확인</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">32.3.4.2. 선형회귀 모델</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">32.3.4.3. 사이킷런 라이브러리 활용</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">31.3.5. 5단계: 모델 활용</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">32.3.5. 5단계: 모델 활용</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">31.4. 머신러닝의 모델 훈련의 어려움</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">31.4.1. 훈련 데이터 추가</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">32.4. 머신러닝의 모델 훈련의 어려움</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">32.4.1. 훈련 데이터 추가</a></li>
 </ul>
 </li>
 </ul>

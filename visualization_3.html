@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>27. 판다스 시각화 도구 &#8212; 파이썬 데이터 분석</title>
+    <title>28. 판다스 시각화 도구 &#8212; 파이썬 데이터 분석</title>
   
   
   
@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'visualization_3';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="28. Seaborn 시각화 라이브러리" href="visualization_4.html" />
+    <link rel="next" title="29. Seaborn 시각화 라이브러리" href="visualization_4.html" />
     <link rel="prev" title="26. matplotlib.pyplot 2부" href="visualization_2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -183,17 +183,18 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="visualization_1.html">25. matplotlib.pyplot 1부</a></li>
 <li class="toctree-l1"><a class="reference internal" href="visualization_2.html">26. matplotlib.pyplot 2부</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">27. 판다스 시각화 도구</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_4.html">28. Seaborn 시각화 라이브러리</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">28. 판다스 시각화 도구</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_4.html">29. Seaborn 시각화 라이브러리</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">시계열 데이터</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">29. 시계열 데이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">30. 시계열 데이터</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">실전 데이터 분석</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">30. 타이타닉 데이터 분석</a></li>
-<li class="toctree-l1"><a class="reference internal" href="casestudy_oecd_bli.html">31. OECD 국가의 삶의 만족도</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">31. 타이타닉 데이터 분석</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_oecd_bli.html">32. OECD 국가의 삶의 만족도</a></li>
 </ul>
 
     </div>
@@ -418,19 +419,17 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">27.1. 시리즈 시각화</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">27.1.1. 선 그래프</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">27.1.2. 막대그래프</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">28.1. 시리즈 시각화</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">28.1.1. 선 그래프</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">28.1.2. 막대그래프</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">27.2. 데이터프레임 시각화</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">27.2.1. 데이터프레임과 선 그래프</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">27.2.2. 데이터프레임과 막대그래프</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">28.2. 데이터프레임 시각화</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">28.2.1. 데이터프레임과 선 그래프</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">28.2.2. 데이터프레임과 막대그래프</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">27.3. 주석 추가</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">27.4. matplotlib 기본 설정</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">27.5. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">28.3. 주석 추가</a></li>
 </ul>
             </nav>
         </div>
@@ -443,7 +442,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-visualization-3">
-<span id="id1"></span><h1><span class="section-number">27. </span>판다스 시각화 도구<a class="headerlink" href="#sec-visualization-3" title="Permalink to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">28. </span>판다스 시각화 도구<a class="headerlink" href="#sec-visualization-3" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -502,9 +501,9 @@ document.write(`
 <li><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.html"><code class="docutils literal notranslate"><span class="pre">pandas.DataFrame.plot()</span></code></a></p></li>
 </ul>
 <section id="id2">
-<h2><span class="section-number">27.1. </span>시리즈 시각화<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">28.1. </span>시리즈 시각화<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <section id="id3">
-<h3><span class="section-number">27.1.1. </span>선 그래프<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">28.1.1. </span>선 그래프<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>시리즈는 하나의 선그래프를 그릴 수 있으며, 항목이 y축 좌표로, 인덱스가 x축 좌표로 사용된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -559,7 +558,7 @@ dtype: float64
 </div>
 </section>
 <section id="id4">
-<h3><span class="section-number">27.1.2. </span>막대그래프<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">28.1.2. </span>막대그래프<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>수직 막대그래프: <code class="docutils literal notranslate"><span class="pre">pandas.Series.plot.bar()</span></code></p></li>
 <li><p>수평 막대그래프: <code class="docutils literal notranslate"><span class="pre">pandas.Series.plot.barh()</span></code></p></li>
@@ -643,9 +642,9 @@ dtype: float64
 </section>
 </section>
 <section id="id5">
-<h2><span class="section-number">27.2. </span>데이터프레임 시각화<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">28.2. </span>데이터프레임 시각화<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
 <section id="id6">
-<h3><span class="section-number">27.2.1. </span>데이터프레임과 선 그래프<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">28.2.1. </span>데이터프레임과 선 그래프<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>데이터프레임은 특성 수만큼의  선그래프를 그릴 수 있다.
 y축 좌표는 특성별 항목이며, x축 좌표는 기본적으로 인덱스가 사용된다.
 또한 특성 이름이 범례로 지정된다.</p>
@@ -897,7 +896,7 @@ y축 좌표는 특성별 항목이며, x축 좌표는 기본적으로 인덱스�
 </div>
 </section>
 <section id="id7">
-<h3><span class="section-number">27.2.2. </span>데이터프레임과 막대그래프<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">28.2.2. </span>데이터프레임과 막대그래프<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>수직 막대그래프: <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame.plot.bar()</span></code></p></li>
 <li><p>수평 막대그래프: <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame.plot.barh()</span></code></p></li>
@@ -1114,890 +1113,8 @@ y축 좌표는 특성별 항목이며, x축 좌표는 기본적으로 인덱스�
 <img alt="_images/447e0e4b84765c16813ef56b43e766d1b4cc62f3e238596f915a88d0efa90fa0.png" src="_images/447e0e4b84765c16813ef56b43e766d1b4cc62f3e238596f915a88d0efa90fa0.png" />
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/examples/&#39;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">base_url</span><span class="o">+</span><span class="s2">&quot;tips.csv&quot;</span><span class="p">)</span>
-<span class="n">tips</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>total_bill</th>
-      <th>tip</th>
-      <th>smoker</th>
-      <th>day</th>
-      <th>time</th>
-      <th>size</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>16.99</td>
-      <td>1.01</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>10.34</td>
-      <td>1.66</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>21.01</td>
-      <td>3.50</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>23.68</td>
-      <td>3.31</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>24.59</td>
-      <td>3.61</td>
-      <td>No</td>
-      <td>Sun</td>
-      <td>Dinner</td>
-      <td>4</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">party_counts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">tips</span><span class="p">[</span><span class="s2">&quot;day&quot;</span><span class="p">],</span> <span class="n">tips</span><span class="p">[</span><span class="s2">&quot;size&quot;</span><span class="p">])</span>
-<span class="n">party_counts</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>size</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
-      <th>5</th>
-      <th>6</th>
-    </tr>
-    <tr>
-      <th>day</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Fri</th>
-      <td>1</td>
-      <td>16</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Sat</th>
-      <td>2</td>
-      <td>53</td>
-      <td>18</td>
-      <td>13</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Sun</th>
-      <td>0</td>
-      <td>39</td>
-      <td>15</td>
-      <td>18</td>
-      <td>3</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>Thur</th>
-      <td>1</td>
-      <td>48</td>
-      <td>4</td>
-      <td>5</td>
-      <td>1</td>
-      <td>3</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">party_counts</span> <span class="o">=</span> <span class="n">party_counts</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Thur&quot;</span><span class="p">,</span> <span class="s2">&quot;Fri&quot;</span><span class="p">,</span> <span class="s2">&quot;Sat&quot;</span><span class="p">,</span> <span class="s2">&quot;Sun&quot;</span><span class="p">])</span>
-<span class="n">party_counts</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>size</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
-      <th>5</th>
-      <th>6</th>
-    </tr>
-    <tr>
-      <th>day</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Thur</th>
-      <td>1</td>
-      <td>48</td>
-      <td>4</td>
-      <td>5</td>
-      <td>1</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <th>Fri</th>
-      <td>1</td>
-      <td>16</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Sat</th>
-      <td>2</td>
-      <td>53</td>
-      <td>18</td>
-      <td>13</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Sun</th>
-      <td>0</td>
-      <td>39</td>
-      <td>15</td>
-      <td>18</td>
-      <td>3</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">party_counts</span> <span class="o">=</span> <span class="n">party_counts</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
-<span class="n">party_counts</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>size</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
-      <th>5</th>
-    </tr>
-    <tr>
-      <th>day</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Thur</th>
-      <td>48</td>
-      <td>4</td>
-      <td>5</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>Fri</th>
-      <td>16</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>Sat</th>
-      <td>53</td>
-      <td>18</td>
-      <td>13</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>Sun</th>
-      <td>39</td>
-      <td>15</td>
-      <td>18</td>
-      <td>3</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Normalize to sum to 1</span>
-<span class="n">party_pcts</span> <span class="o">=</span> <span class="n">party_counts</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">party_counts</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">),</span>
-                              <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span>
-<span class="n">party_pcts</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th>size</th>
-      <th>2</th>
-      <th>3</th>
-      <th>4</th>
-      <th>5</th>
-    </tr>
-    <tr>
-      <th>day</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Thur</th>
-      <td>0.827586</td>
-      <td>0.068966</td>
-      <td>0.086207</td>
-      <td>0.017241</td>
-    </tr>
-    <tr>
-      <th>Fri</th>
-      <td>0.888889</td>
-      <td>0.055556</td>
-      <td>0.055556</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>Sat</th>
-      <td>0.623529</td>
-      <td>0.211765</td>
-      <td>0.152941</td>
-      <td>0.011765</td>
-    </tr>
-    <tr>
-      <th>Sun</th>
-      <td>0.520000</td>
-      <td>0.200000</td>
-      <td>0.240000</td>
-      <td>0.040000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">party_pcts</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;day&#39;&gt;
-</pre></div>
-</div>
-<img alt="_images/58b217d93ff2268bfd21863aa3e86e84f548cdedbfd21167a704d9557734f75b.png" src="_images/58b217d93ff2268bfd21863aa3e86e84f548cdedbfd21167a704d9557734f75b.png" />
-</div>
-</div>
-<p>seaborn 스타일로 변환한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-v0_8&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">party_pcts</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;day&#39;&gt;
-</pre></div>
-</div>
-<img alt="_images/a52b41ecac6bd4e174e8b7b8624c0588ed5797084c0ee4d1c2b0a85414a5e8df.png" src="_images/a52b41ecac6bd4e174e8b7b8624c0588ed5797084c0ee4d1c2b0a85414a5e8df.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-</section>
-<section id="id8">
-<h2><span class="section-number">27.3. </span>주석 추가<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
-<p>이미지에 주석을 추가할 수 있다.</p>
-<p>설명을 위해 S&amp;P 500 (스탠다드 앤 푸어스, Standard and Poor’s 500)의 미국 500대 기업을 포함한
-주식시장지수 데이터로 그래프를 생성하고 2007-2008년 사이에 있었던
-재정위기와 관련된 중요한 날짜를 주석으로 추가한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/examples/&#39;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">base_url</span><span class="o">+</span><span class="s2">&quot;spx.csv&quot;</span><span class="p">)</span>
-<span class="n">data</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Unnamed: 0</th>
-      <th>SPX</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1990-02-01 00:00:00</td>
-      <td>328.79</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1990-02-02 00:00:00</td>
-      <td>330.92</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1990-02-05 00:00:00</td>
-      <td>331.85</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1990-02-06 00:00:00</td>
-      <td>329.66</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1990-02-07 00:00:00</td>
-      <td>333.75</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>5467</th>
-      <td>2011-10-10 00:00:00</td>
-      <td>1194.89</td>
-    </tr>
-    <tr>
-      <th>5468</th>
-      <td>2011-10-11 00:00:00</td>
-      <td>1195.54</td>
-    </tr>
-    <tr>
-      <th>5469</th>
-      <td>2011-10-12 00:00:00</td>
-      <td>1207.25</td>
-    </tr>
-    <tr>
-      <th>5470</th>
-      <td>2011-10-13 00:00:00</td>
-      <td>1203.66</td>
-    </tr>
-    <tr>
-      <th>5471</th>
-      <td>2011-10-14 00:00:00</td>
-      <td>1224.58</td>
-    </tr>
-  </tbody>
-</table>
-<p>5472 rows × 2 columns</p>
-</div></div></div>
-</div>
-<p>여기서는 시간 컬럼을 행의 인덱스로 사용한다.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">index_col=0</span></code>: 0번 열(column)을 인덱스로 사용</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">parse_dates=True</span></code>: 년월일까지만 구분해서 인덱스로 사용하도록 함. 기본값은 <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">base_url</span><span class="o">+</span><span class="s2">&quot;spx.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">data</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>SPX</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1990-02-01</th>
-      <td>328.79</td>
-    </tr>
-    <tr>
-      <th>1990-02-02</th>
-      <td>330.92</td>
-    </tr>
-    <tr>
-      <th>1990-02-05</th>
-      <td>331.85</td>
-    </tr>
-    <tr>
-      <th>1990-02-06</th>
-      <td>329.66</td>
-    </tr>
-    <tr>
-      <th>1990-02-07</th>
-      <td>333.75</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2011-10-10</th>
-      <td>1194.89</td>
-    </tr>
-    <tr>
-      <th>2011-10-11</th>
-      <td>1195.54</td>
-    </tr>
-    <tr>
-      <th>2011-10-12</th>
-      <td>1207.25</td>
-    </tr>
-    <tr>
-      <th>2011-10-13</th>
-      <td>1203.66</td>
-    </tr>
-    <tr>
-      <th>2011-10-14</th>
-      <td>1224.58</td>
-    </tr>
-  </tbody>
-</table>
-<p>5472 rows × 1 columns</p>
-</div></div></div>
-</div>
-<p>하나의 열만 존재하는 데이터프레임이기에 시리즈로 변환한다.</p>
-<p><strong>참고:</strong> 반드시 필요한 과정은 아니다. <code class="docutils literal notranslate"><span class="pre">spx</span></code> 대신 <code class="docutils literal notranslate"><span class="pre">data</span></code>를 그대로 사용해도 동일하게 작동한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spx</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;SPX&#39;</span><span class="p">]</span>
-<span class="n">spx</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1990-02-01     328.79
-1990-02-02     330.92
-1990-02-05     331.85
-1990-02-06     329.66
-1990-02-07     333.75
-               ...   
-2011-10-10    1194.89
-2011-10-11    1195.54
-2011-10-12    1207.25
-2011-10-13    1203.66
-2011-10-14    1224.58
-Name: SPX, Length: 5472, dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spx</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fb7d23412a0&gt;]
-</pre></div>
-</div>
-<img alt="_images/74c335a4c7f8ded866b2390b7cea13ba9376af4598b45eef111f304d1fefa887.png" src="_images/74c335a4c7f8ded866b2390b7cea13ba9376af4598b45eef111f304d1fefa887.png" />
-</div>
-</div>
-<p>2007-2008년 세계적 금융위기 지점을 아래 내용으로 그래프에 주석으로 추가해보자.</p>
-<ul class="simple">
-<li><p>2007년 10월 11일: 주가 강세장 위치</p></li>
-<li><p>2008년 3월 12일: 베어스턴스 투자은행 붕괴</p></li>
-<li><p>2008년 9월 15일: 레만 투자은행 파산</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crisis_data</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2007</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="s1">&#39;Peak of bull market&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2008</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="s1">&#39;Bear Stearns Fails&#39;</span><span class="p">),</span>
-    <span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2008</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="s1">&#39;Lehman Bankruptcy&#39;</span><span class="p">)</span>
-<span class="p">]</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong><code class="docutils literal notranslate"><span class="pre">annotate()</span></code> 메서드 활용</strong></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">xt</span></code> 속성: 화살표 머리 위치</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">xytext</span></code> 속성: 텍스트 위치</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">arrowprops</span></code> 속성: 화살표 속성</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">horizontalalignment</span></code>: 텍스트 좌우 줄맞춤</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">verticalalignment</span></code>: 텍스트 상하 줄맞춤</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="n">spx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">date</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">crisis_data</span><span class="p">:</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> 
-                <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">spx</span><span class="o">.</span><span class="n">asof</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span> <span class="mi">75</span><span class="p">),</span>
-                <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">spx</span><span class="o">.</span><span class="n">asof</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span> <span class="mi">225</span><span class="p">),</span>
-                <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-                                <span class="n">headlength</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-                <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
-
-<span class="c1"># 2007-2010 사이로 확대</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;2007-1-1&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;2011-1-1&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">600</span><span class="p">,</span> <span class="mi">1800</span><span class="p">])</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Important dates in the 2008-2009 financial crisis&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Important dates in the 2008-2009 financial crisis&#39;)
-</pre></div>
-</div>
-<img alt="_images/b4f5d87c1cebef7df6e6583248ddbee27f89ad8b848f489f863ed0b91e5bc66a.png" src="_images/b4f5d87c1cebef7df6e6583248ddbee27f89ad8b848f489f863ed0b91e5bc66a.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="matplotlib">
-<h2><span class="section-number">27.4. </span>matplotlib 기본 설정<a class="headerlink" href="#matplotlib" title="Permalink to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">plt.rc()</span></code> 함수를 이용하여 matplot을 이용하여 생성되는 이미지 관련 설정을 전역적으로 지정할 수 있다.
-사용되는 형식은 다음과 같다.</p>
-<ul class="simple">
-<li><p>첫째 인자: 속성 지정</p></li>
-<li><p>둘째 인자: 속성값 지정</p></li>
-</ul>
-<p><strong>참고:</strong> ‘rc’ 는 기본설정을 의미하는 단어로 많이 사용된다.
-풀어 쓰면 “Run at startup and they Configure your stuff”,
-즉, “프로그램이 시작할 때 기본값들을 설정한다”의 의미이다.
-‘.vimrc’, ‘.bashrc’, ‘.zshrc’ 등 많은 애플리케이션의 초기설정 파일명에 사용되곤 한다.</p>
-<p>아래 코드는 이미지의 사이즈를 지정한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># spx.plot(ax=ax, style=&#39;k-&#39;)</span>
-<span class="n">spx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">date</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">crisis_data</span><span class="p">:</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> 
-                <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">spx</span><span class="o">.</span><span class="n">asof</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span> <span class="mi">75</span><span class="p">),</span>
-                <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">spx</span><span class="o">.</span><span class="n">asof</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span> <span class="mi">225</span><span class="p">),</span>
-                <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-                                <span class="n">headlength</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-                <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
-
-<span class="c1"># 2007-2010 사이로 확대</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;2007-1-1&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;2011-1-1&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)))</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">600</span><span class="p">,</span> <span class="mi">1800</span><span class="p">])</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Important dates in the 2008-2009 financial crisis&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Important dates in the 2008-2009 financial crisis&#39;)
-</pre></div>
-</div>
-<img alt="_images/304545f3ba54ba771bd1a127239615870f12868c467f64c68f5b163d36dc8b34.png" src="_images/304545f3ba54ba771bd1a127239615870f12868c467f64c68f5b163d36dc8b34.png" />
-</div>
-</div>
-<p>아래 코드는 다양한 속성을 지정하는 방식을 보여준다.</p>
-<ul class="simple">
-<li><p>이미지 사이즈 지정</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>선 속성 지정</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;lines&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>텍스트 폰트 속성 지정</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">font_options</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;family&#39;</span> <span class="p">:</span> <span class="s1">&#39;monospace&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;weight&#39;</span> <span class="p">:</span> <span class="s1">&#39;bold&#39;</span><span class="p">,</span>
-                <span class="s1">&#39;size&#39;</span>   <span class="p">:</span> <span class="s1">&#39;15&#39;</span><span class="p">}</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;font&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">font_options</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>그래프 구성 요소의 색상 지정</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;text.color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;axes.labelcolor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;xtick.color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;ytick.color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;#CD5C5C&#39;</span>  <span class="c1"># RGB 색상</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>아래 코드는 앞서 설정된 다양한 속성을 반영한 결과를 보여준다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="c1"># spx.plot(ax=ax, style=&#39;k-&#39;)</span>
-<span class="n">spx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>    <span class="c1"># 기본 색상 사용</span>
-
-<span class="k">for</span> <span class="n">date</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">crisis_data</span><span class="p">:</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> 
-                <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">spx</span><span class="o">.</span><span class="n">asof</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span> <span class="mi">75</span><span class="p">),</span>
-                <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">spx</span><span class="o">.</span><span class="n">asof</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span> <span class="mi">225</span><span class="p">),</span>
-                <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-                                <span class="n">headlength</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
-                <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
-
-<span class="c1"># 2007-2010 사이로 확대</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;2007-1-1&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">),</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s2">&quot;2011-1-1&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">600</span><span class="p">,</span> <span class="mi">1800</span><span class="p">])</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Important dates in the 2008-2009 financial crisis&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Important dates in the 2008-2009 financial crisis&#39;)
-</pre></div>
-</div>
-<img alt="_images/c2d46ac18a44e376f1d8d1117ed68a772dfb2a55024838ca6dc058427224bd99.png" src="_images/c2d46ac18a44e376f1d8d1117ed68a772dfb2a55024838ca6dc058427224bd99.png" />
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="id9">
-<h2><span class="section-number">27.5. </span>연습문제<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
-<p><strong>문제 1</strong></p>
-<p>서비스 팁 데이터는 요일별 파티 수, 총 수입, 시간대, 팁 수입 등에 대한 정보를 담고 있다.</p>
+<p><strong>예제: 서빙 팁 데이터</strong></p>
+<p>서빙 팁 데이터는 어떤 식당에서 일주일 동안 올린 수입 내역을 담고 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips_path</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/examples/tips.csv&#39;</span>
@@ -2145,18 +1262,18 @@ Name: SPX, Length: 5472, dtype: float64
 <p>244 rows × 6 columns</p>
 </div></div></div>
 </div>
-<p>열별 특성은 다음과 같다.</p>
+<p>총 244개의 데이터 샘플을 담고 있으며, 열별 라벨(특성)이 의미하는 바는 다음과 같다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">total_bill</span></code>: 총 수입</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">tip</span></code>: 서비스 팁</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">smoker</span></code>: 흡연 여부</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tip</span></code>: 서빙 팁 수입</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">smoker</span></code>: 테이블 손님 흡연 여부</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">day</span></code>: 요일</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">time</span></code>: 시간대(점심/저녁)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: 파티 규모(참여인원 수)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code>: 테이블 손님 수</p></li>
 </ul>
 <p>범주형 데이터에 사용된 값들은 다음과 같다.</p>
 <ul class="simple">
-<li><p>흡연 여부</p></li>
+<li><p>흡연 여부: 비흡연, 흡연</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2171,7 +1288,7 @@ Name: SPX, Length: 5472, dtype: float64
 </div>
 </div>
 <ul class="simple">
-<li><p>요일</p></li>
+<li><p>요일: 일, 토, 목, 금</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2186,7 +1303,7 @@ Name: SPX, Length: 5472, dtype: float64
 </div>
 </div>
 <ul class="simple">
-<li><p>시간대</p></li>
+<li><p>시간대: 저녁, 점식</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2200,7 +1317,9 @@ Name: SPX, Length: 5472, dtype: float64
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">'size'</span></code> 특성은 해당 파티 규모, 즉 파티 참여인원 수를 가리키며 최소 1명 최대 6명이 참여했다.</p>
+<ul class="simple">
+<li><p>테이블 인원스: 1명에서 6명 사이</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="p">[</span><span class="s1">&#39;size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
@@ -2214,9 +1333,9 @@ Name: SPX, Length: 5472, dtype: float64
 </div>
 </div>
 <ul class="simple">
-<li><p>교차 테이블</p></li>
+<li><p>요일과 테이블 당 손님 수 사이의 관계</p></li>
 </ul>
-<p>요일과 파티 규모 사이의 관계를 파악하기 위해 교차표(cross table)를 이용한다.
+<p>요일(<code class="docutils literal notranslate"><span class="pre">day</span></code>)과 테이블 당 손님 수(<code class="docutils literal notranslate"><span class="pre">size</span></code>) 사이의 관계를 파악하기 위해 교차표를 이용한다.
 <code class="docutils literal notranslate"><span class="pre">pandas.crosstab()</span></code> 함수는 지정된 두 특성 사이의 도수분포도를 표로 생성한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2303,11 +1422,10 @@ Name: SPX, Length: 5472, dtype: float64
 </table>
 </div></div></div>
 </div>
-<p>빈도수가 낮은 1인과 6인 파티는 제외하자.</p>
+<p>빈도가 낮은 1인과 6인 테이블은 제외한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1인과 6인 파티 제외</span>
-<span class="n">party_counts</span> <span class="o">=</span> <span class="n">party_counts</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">party_counts</span> <span class="o">=</span> <span class="n">party_counts</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
 
 <span class="n">party_counts</span>
 </pre></div>
@@ -2378,18 +1496,92 @@ Name: SPX, Length: 5472, dtype: float64
 </table>
 </div></div></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">party_counts</span> <span class="o">=</span> <span class="n">party_counts</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Thur&quot;</span><span class="p">,</span> <span class="s2">&quot;Fri&quot;</span><span class="p">,</span> <span class="s2">&quot;Sat&quot;</span><span class="p">,</span> <span class="s2">&quot;Sun&quot;</span><span class="p">])</span>
+<span class="n">party_counts</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>size</th>
+      <th>2</th>
+      <th>3</th>
+      <th>4</th>
+      <th>5</th>
+    </tr>
+    <tr>
+      <th>day</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Thur</th>
+      <td>48</td>
+      <td>4</td>
+      <td>5</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Fri</th>
+      <td>16</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Sat</th>
+      <td>53</td>
+      <td>18</td>
+      <td>13</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>Sun</th>
+      <td>39</td>
+      <td>15</td>
+      <td>18</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 <ul class="simple">
 <li><p>행별 정규화(Normalization)</p></li>
 </ul>
 <p>행별로 항목의 합이 1이 되도록 값을 정규화한다.
-이 과정을 통해 요일별 파티 규모의 비율을 파악할 수 있다.</p>
+이를 통해 요일별 테이블 당 손님 수의 비율을 보다 정확히 파악할 수 있다.</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">pandas.div()</span></code> 함수: 각 항목을 지정된 값으로 나눈다. <code class="docutils literal notranslate"><span class="pre">axis=0</span></code>는 행별로 나눗셈을 실행하도록 지정한다.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pd.div()</span></code> 함수: 항목별 나눗셈. <code class="docutils literal notranslate"><span class="pre">axis=0</span></code>는 행별 나눗셈.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sum()</span></code> 메서드: 행/열별 합 계산. 기본은 열별 합 계산(<code class="docutils literal notranslate"><span class="pre">axis=0</span></code>). 행별 합은 <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> 지정.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 각 행의 합이 1이 되도록 정규화</span>
-<span class="n">party_pcts</span> <span class="o">=</span> <span class="n">party_counts</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">party_counts</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">row_sum</span> <span class="o">=</span> <span class="n">party_counts</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">party_pcts</span> <span class="o">=</span> <span class="n">party_counts</span><span class="o">.</span><span class="n">div</span><span class="p">(</span><span class="n">row_sum</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">party_pcts</span>
 </pre></div>
@@ -2429,6 +1621,13 @@ Name: SPX, Length: 5472, dtype: float64
   </thead>
   <tbody>
     <tr>
+      <th>Thur</th>
+      <td>0.827586</td>
+      <td>0.068966</td>
+      <td>0.086207</td>
+      <td>0.017241</td>
+    </tr>
+    <tr>
       <th>Fri</th>
       <td>0.888889</td>
       <td>0.055556</td>
@@ -2449,19 +1648,12 @@ Name: SPX, Length: 5472, dtype: float64
       <td>0.240000</td>
       <td>0.040000</td>
     </tr>
-    <tr>
-      <th>Thur</th>
-      <td>0.827586</td>
-      <td>0.068966</td>
-      <td>0.086207</td>
-      <td>0.017241</td>
-    </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>요일별 파티 규모를 막대그래프로 그리면 다음과 같으며,
-주말일 수록 파티 규모가 커짐을 쉽게 확인할 수 있다.</p>
+<p>요일별 테이블당 손님 수를 막대그래프로 그리면 다음과 같다.
+주말일 수록 테이블 당 손님 수가 많아짐을 확인할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">party_pcts</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">()</span>
@@ -2472,7 +1664,330 @@ Name: SPX, Length: 5472, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;day&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/fc9f485f23beeee17f9d22a4215a439a1c5f84b51d6aace0a89071f70edfc406.png" src="_images/fc9f485f23beeee17f9d22a4215a439a1c5f84b51d6aace0a89071f70edfc406.png" />
+<img alt="_images/fdc20c4d46a73d6ebfee11b3cf43cee3e127aeaf2bcbab71cbfc7dbcf638f3a6.png" src="_images/fdc20c4d46a73d6ebfee11b3cf43cee3e127aeaf2bcbab71cbfc7dbcf638f3a6.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">party_pcts</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;day&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/58b217d93ff2268bfd21863aa3e86e84f548cdedbfd21167a704d9557734f75b.png" src="_images/58b217d93ff2268bfd21863aa3e86e84f548cdedbfd21167a704d9557734f75b.png" />
+</div>
+</div>
+<p>seaborn 스타일로 변환한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-v0_8&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">party_pcts</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: ylabel=&#39;day&#39;&gt;
+</pre></div>
+</div>
+<img alt="_images/56e5eb83d7a06118bd262cd66f5ec07f61d44af317c108a8477b71bd5a5f3e1d.png" src="_images/56e5eb83d7a06118bd262cd66f5ec07f61d44af317c108a8477b71bd5a5f3e1d.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="id8">
+<h2><span class="section-number">28.3. </span>주석 추가<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<p>이미지에 설명, 화살표 등 다양한 주석을 추가할 수 있다.</p>
+<p>설명을 위해 S&amp;P 500 (스탠다드 앤 푸어스, Standard and Poor’s 500)의 미국 500대 기업을 포함한
+주식시장지수 데이터로 그래프를 생성하고 2007-2008년 사이에 있었던
+재정위기와 관련된 중요한 날짜를 주석으로 추가한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/examples/&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">base_url</span><span class="o">+</span><span class="s2">&quot;spx.csv&quot;</span><span class="p">)</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Unnamed: 0</th>
+      <th>SPX</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1990-02-01 00:00:00</td>
+      <td>328.79</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1990-02-02 00:00:00</td>
+      <td>330.92</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1990-02-05 00:00:00</td>
+      <td>331.85</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1990-02-06 00:00:00</td>
+      <td>329.66</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1990-02-07 00:00:00</td>
+      <td>333.75</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>5467</th>
+      <td>2011-10-10 00:00:00</td>
+      <td>1194.89</td>
+    </tr>
+    <tr>
+      <th>5468</th>
+      <td>2011-10-11 00:00:00</td>
+      <td>1195.54</td>
+    </tr>
+    <tr>
+      <th>5469</th>
+      <td>2011-10-12 00:00:00</td>
+      <td>1207.25</td>
+    </tr>
+    <tr>
+      <th>5470</th>
+      <td>2011-10-13 00:00:00</td>
+      <td>1203.66</td>
+    </tr>
+    <tr>
+      <th>5471</th>
+      <td>2011-10-14 00:00:00</td>
+      <td>1224.58</td>
+    </tr>
+  </tbody>
+</table>
+<p>5472 rows × 2 columns</p>
+</div></div></div>
+</div>
+<p>0번 열이 시간 데이터를 담고 있기에 파일에서 불러올 때 아예 0번 열을 인덱스로
+지정한다. 또한 시간의 흐름 정보를 최대한 활용하기 위해 문자열이 아닌 시계열 데이터로 불러온다.
+이 모든 것을 <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> 함수의 키워드 인자 지정으로 가능하다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">index_col=0</span></code>: 0번 열을 인덱스 지정.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">parse_dates=True</span></code>: 년월일까지 구분해서 인덱스로 사용하도록 함. 기본값은 <code class="docutils literal notranslate"><span class="pre">False</span></code>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">base_url</span><span class="o">+</span><span class="s2">&quot;spx.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SPX</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1990-02-01</th>
+      <td>328.79</td>
+    </tr>
+    <tr>
+      <th>1990-02-02</th>
+      <td>330.92</td>
+    </tr>
+    <tr>
+      <th>1990-02-05</th>
+      <td>331.85</td>
+    </tr>
+    <tr>
+      <th>1990-02-06</th>
+      <td>329.66</td>
+    </tr>
+    <tr>
+      <th>1990-02-07</th>
+      <td>333.75</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2011-10-10</th>
+      <td>1194.89</td>
+    </tr>
+    <tr>
+      <th>2011-10-11</th>
+      <td>1195.54</td>
+    </tr>
+    <tr>
+      <th>2011-10-12</th>
+      <td>1207.25</td>
+    </tr>
+    <tr>
+      <th>2011-10-13</th>
+      <td>1203.66</td>
+    </tr>
+    <tr>
+      <th>2011-10-14</th>
+      <td>1224.58</td>
+    </tr>
+  </tbody>
+</table>
+<p>5472 rows × 1 columns</p>
+</div></div></div>
+</div>
+<p>하나의 열만 존재하는 데이터프레임이기에 시리즈로 변환한다.</p>
+<p><strong>참고:</strong> 반드시 필요한 과정은 아니다. <code class="docutils literal notranslate"><span class="pre">spx</span></code> 대신 <code class="docutils literal notranslate"><span class="pre">data</span></code>를 그대로 사용해도 동일하게 작동한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spx</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;SPX&#39;</span><span class="p">]</span>
+<span class="n">spx</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1990-02-01     328.79
+1990-02-02     330.92
+1990-02-05     331.85
+1990-02-06     329.66
+1990-02-07     333.75
+               ...   
+2011-10-10    1194.89
+2011-10-11    1195.54
+2011-10-12    1207.25
+2011-10-13    1203.66
+2011-10-14    1224.58
+Name: SPX, Length: 5472, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">spx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7feb343ba530&gt;]
+</pre></div>
+</div>
+<img alt="_images/74c335a4c7f8ded866b2390b7cea13ba9376af4598b45eef111f304d1fefa887.png" src="_images/74c335a4c7f8ded866b2390b7cea13ba9376af4598b45eef111f304d1fefa887.png" />
+</div>
+</div>
+<p>우리나라에서 IMF 사태가 벌어진 이유 중에 하나인
+2007-2008년 세계적 금융위기가 시작한 지점을 아래 내용으로 그래프에 주석으로 추가하려 한다.</p>
+<ul class="simple">
+<li><p>2007년 10월 11일: 주가 강세장 위치</p></li>
+<li><p>2008년 3월 12일: 베어스턴스 투자은행 붕괴</p></li>
+<li><p>2008년 9월 15일: 레만 투자은행 파산</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">crisis_data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2007</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">),</span> <span class="s1">&#39;Peak of bull market&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2008</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="s1">&#39;Bear Stearns Fails&#39;</span><span class="p">),</span>
+    <span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2008</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">15</span><span class="p">),</span> <span class="s1">&#39;Lehman Bankruptcy&#39;</span><span class="p">)</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">annotate()</span></code> 메서드 활용</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">xy</span></code> 속성: 화살표 머리 위치</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xytext</span></code> 속성: 텍스트 위치</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">arrowprops</span></code> 속성: 화살표 속성</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">horizontalalignment</span></code>: 텍스트 좌우 줄맞춤</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">verticalalignment</span></code>: 텍스트 상하 줄맞춤</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">spx</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">date</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">crisis_data</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> 
+                <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">spx</span><span class="o">.</span><span class="n">asof</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span> <span class="mi">75</span><span class="p">),</span>
+                <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="n">spx</span><span class="o">.</span><span class="n">asof</span><span class="p">(</span><span class="n">date</span><span class="p">)</span> <span class="o">+</span> <span class="mi">225</span><span class="p">),</span>
+                <span class="n">arrowprops</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">headwidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">headlength</span><span class="o">=</span><span class="mi">4</span><span class="p">),</span>
+                <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">verticalalignment</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">)</span>
+
+<span class="c1"># 2007-2010 사이로 확대</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2007</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2011</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">600</span><span class="p">,</span> <span class="mi">1800</span><span class="p">])</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Important dates in the 2008-2009 financial crisis&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Important dates in the 2008-2009 financial crisis&#39;)
+</pre></div>
+</div>
+<img alt="_images/b4f5d87c1cebef7df6e6583248ddbee27f89ad8b848f489f863ed0b91e5bc66a.png" src="_images/b4f5d87c1cebef7df6e6583248ddbee27f89ad8b848f489f863ed0b91e5bc66a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2530,7 +2045,7 @@ Name: SPX, Length: 5472, dtype: float64
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">28. </span>Seaborn 시각화 라이브러리</p>
+        <p class="prev-next-title"><span class="section-number">29. </span>Seaborn 시각화 라이브러리</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2552,19 +2067,17 @@ Name: SPX, Length: 5472, dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">27.1. 시리즈 시각화</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">27.1.1. 선 그래프</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">27.1.2. 막대그래프</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">28.1. 시리즈 시각화</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">28.1.1. 선 그래프</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">28.1.2. 막대그래프</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">27.2. 데이터프레임 시각화</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">27.2.1. 데이터프레임과 선 그래프</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">27.2.2. 데이터프레임과 막대그래프</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">28.2. 데이터프레임 시각화</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">28.2.1. 데이터프레임과 선 그래프</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">28.2.2. 데이터프레임과 막대그래프</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">27.3. 주석 추가</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">27.4. matplotlib 기본 설정</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">27.5. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">28.3. 주석 추가</a></li>
 </ul>
   </nav></div>
 
