@@ -427,24 +427,23 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">24.2. 데이터 집계</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">24.2.1. 집계 함수</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">24.2.2. 열별로 여러 함수 적용하기</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">24.2.3. 행 인덱스 없는 데이터 집계</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply">24.3. Apply: 데이터 집계 일반화</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">24.3.1. 그룹 키 제거</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">24.3.2. 분위/구간 분석</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">24.3.3. 예제: 그룹별 결측치 채우기</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">24.3.4. 예제: 무작위 샘플링</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">24.3.5. 그룹별 가중치 합</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">24.3.6. 예제: 그룹 단위 선형 회귀</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply">24.3. Apply: 다목적 데이터 집계</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">24.3.1. 그룹 키 제거</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">24.3.2. 분위/구간 분석</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">24.3.3. 예제: 그룹별 결측치 채우기</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">24.3.4. 예제: 무작위 샘플링</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">24.3.5. 그룹별 가중치 합</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">24.3.6. 예제: 그룹 단위 선형 회귀</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">24.4. 그룹 변환</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">24.5. 피벗 테이블</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">24.4. 그룹 변환</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">24.5. 피벗 테이블</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-tabulations-crosstab">24.5.1. Cross-Tabulations: Crosstab</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">24.6. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">24.6. 연습문제</a></li>
 </ul>
             </nav>
         </div>
@@ -767,7 +766,7 @@ Name: data1, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x7f53c8faed70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.SeriesGroupBy object at 0x7ff8f4edaf80&gt;
 </pre></div>
 </div>
 </div>
@@ -3987,12 +3986,18 @@ Name: tip_pct, dtype: float64
 </div></div></div>
 </div>
 </section>
-<section id="id12">
-<h3><span class="section-number">24.2.3. </span>행 인덱스 없는 데이터 집계<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
-<p>그룹화에 사용된 키들은 인덱스로 지정하지 않으려면 <code class="docutils literal notranslate"><span class="pre">as_index=False</span></code> 키워드 인자를 사용한다.</p>
+</section>
+<section id="apply">
+<h2><span class="section-number">24.3. </span>Apply: 다목적 데이터 집계<a class="headerlink" href="#apply" title="Permalink to this heading">#</a></h2>
+<p>지금까지 <code class="docutils literal notranslate"><span class="pre">groupby</span></code>를 이용한 그룹화 이후에 사용한 집계 함수는
+모두 그룹별로 하나의 값만 생성하였다.
+반면에 <code class="docutils literal notranslate"><span class="pre">apply()</span></code> 메서드를 이용하면 그런 제한 없이 임의의 함수를
+그룹별로 적용할 수 있다.
+실행 결과는 그룹별 결과를 합친 데이터프레임이다.</p>
+<p><strong>서빙 팁 데이터 활용</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span>
 </pre></div>
 </div>
 </div>
@@ -4015,10 +4020,11 @@ Name: tip_pct, dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>day</th>
-      <th>smoker</th>
       <th>total_bill</th>
       <th>tip</th>
+      <th>smoker</th>
+      <th>day</th>
+      <th>time</th>
       <th>size</th>
       <th>tip_pct</th>
     </tr>
@@ -4026,190 +4032,121 @@ Name: tip_pct, dtype: float64
   <tbody>
     <tr>
       <th>0</th>
-      <td>Fri</td>
+      <td>16.99</td>
+      <td>1.01</td>
       <td>No</td>
-      <td>18.420000</td>
-      <td>2.812500</td>
-      <td>2.250000</td>
-      <td>0.151650</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.059447</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Fri</td>
-      <td>Yes</td>
-      <td>16.813333</td>
-      <td>2.714000</td>
-      <td>2.066667</td>
-      <td>0.174783</td>
+      <td>10.34</td>
+      <td>1.66</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+      <td>0.160542</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Sat</td>
+      <td>21.01</td>
+      <td>3.50</td>
       <td>No</td>
-      <td>19.661778</td>
-      <td>3.102889</td>
-      <td>2.555556</td>
-      <td>0.158048</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>3</td>
+      <td>0.166587</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Sat</td>
-      <td>Yes</td>
-      <td>21.276667</td>
-      <td>2.875476</td>
-      <td>2.476190</td>
-      <td>0.147906</td>
+      <td>23.68</td>
+      <td>3.31</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.139780</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Sun</td>
+      <td>24.59</td>
+      <td>3.61</td>
       <td>No</td>
-      <td>20.506667</td>
-      <td>3.167895</td>
-      <td>2.929825</td>
-      <td>0.160113</td>
-    </tr>
-    <tr>
-      <th>5</th>
       <td>Sun</td>
-      <td>Yes</td>
-      <td>24.120000</td>
-      <td>3.516842</td>
-      <td>2.578947</td>
-      <td>0.187250</td>
+      <td>Dinner</td>
+      <td>4</td>
+      <td>0.146808</td>
     </tr>
     <tr>
-      <th>6</th>
-      <td>Thur</td>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>239</th>
+      <td>29.03</td>
+      <td>5.92</td>
       <td>No</td>
-      <td>17.113111</td>
-      <td>2.673778</td>
-      <td>2.488889</td>
-      <td>0.160298</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>3</td>
+      <td>0.203927</td>
     </tr>
     <tr>
-      <th>7</th>
-      <td>Thur</td>
+      <th>240</th>
+      <td>27.18</td>
+      <td>2.00</td>
       <td>Yes</td>
-      <td>19.190588</td>
-      <td>3.030000</td>
-      <td>2.352941</td>
-      <td>0.163863</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.073584</td>
+    </tr>
+    <tr>
+      <th>241</th>
+      <td>22.67</td>
+      <td>2.00</td>
+      <td>Yes</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.088222</td>
+    </tr>
+    <tr>
+      <th>242</th>
+      <td>17.82</td>
+      <td>1.75</td>
+      <td>No</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.098204</td>
+    </tr>
+    <tr>
+      <th>243</th>
+      <td>18.78</td>
+      <td>3.00</td>
+      <td>No</td>
+      <td>Thur</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.159744</td>
     </tr>
   </tbody>
 </table>
+<p>244 rows × 7 columns</p>
 </div></div></div>
 </div>
-<p>인데스로 사용하는 경우는 다음과 같다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;day&quot;</span><span class="p">,</span> <span class="s2">&quot;smoker&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">numeric_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># as_index=True 가 기본값</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th></th>
-      <th>total_bill</th>
-      <th>tip</th>
-      <th>size</th>
-      <th>tip_pct</th>
-    </tr>
-    <tr>
-      <th>day</th>
-      <th>smoker</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th rowspan="2" valign="top">Fri</th>
-      <th>No</th>
-      <td>18.420000</td>
-      <td>2.812500</td>
-      <td>2.250000</td>
-      <td>0.151650</td>
-    </tr>
-    <tr>
-      <th>Yes</th>
-      <td>16.813333</td>
-      <td>2.714000</td>
-      <td>2.066667</td>
-      <td>0.174783</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">Sat</th>
-      <th>No</th>
-      <td>19.661778</td>
-      <td>3.102889</td>
-      <td>2.555556</td>
-      <td>0.158048</td>
-    </tr>
-    <tr>
-      <th>Yes</th>
-      <td>21.276667</td>
-      <td>2.875476</td>
-      <td>2.476190</td>
-      <td>0.147906</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">Sun</th>
-      <th>No</th>
-      <td>20.506667</td>
-      <td>3.167895</td>
-      <td>2.929825</td>
-      <td>0.160113</td>
-    </tr>
-    <tr>
-      <th>Yes</th>
-      <td>24.120000</td>
-      <td>3.516842</td>
-      <td>2.578947</td>
-      <td>0.187250</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">Thur</th>
-      <th>No</th>
-      <td>17.113111</td>
-      <td>2.673778</td>
-      <td>2.488889</td>
-      <td>0.160298</td>
-    </tr>
-    <tr>
-      <th>Yes</th>
-      <td>19.190588</td>
-      <td>3.030000</td>
-      <td>2.352941</td>
-      <td>0.163863</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-</section>
-</section>
-<section id="apply">
-<h2><span class="section-number">24.3. </span>Apply: 데이터 집계 일반화<a class="headerlink" href="#apply" title="Permalink to this heading">#</a></h2>
+<p>아래 <code class="docutils literal notranslate"><span class="pre">top()</span></code> 함수는 지정된 데이터프레임을 특정 열을 기준으로 내림차순으로 정렬한 다음에
+처음 <code class="docutils literal notranslate"><span class="pre">n</span></code> 개의 행을 반환한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">top</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;tip_pct&quot;</span><span class="p">):</span>
@@ -4218,6 +4155,7 @@ Name: tip_pct, dtype: float64
 </div>
 </div>
 </div>
+<p>서빙팁을 가장 많이 받은 6일에 대한 정보는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
@@ -4317,6 +4255,9 @@ Name: tip_pct, dtype: float64
 </table>
 </div></div></div>
 </div>
+<p>흡연 여부를 기준으로 그룹을 나눈 뒤 흡연 그룹과 비흡연 그룹에 대해
+서빙팁이 가장 많았던 5일에 대한 정보를
+<code class="docutils literal notranslate"><span class="pre">top()</span></code> 함수를 이용하여 구한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;smoker&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">top</span><span class="p">)</span>
@@ -4470,6 +4411,8 @@ Name: tip_pct, dtype: float64
 </table>
 </div></div></div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">top()</span></code> 함수의 키워드 인자를 변경하려면 <code class="docutils literal notranslate"><span class="pre">apply()</span></code> 함수의 키워드 인자로 지정하면 된다.
+아래 코드는 흡연 여부와 요일 기준에 따른 그룹화 후에 그룹별로 가장 많은 수입을 올린 날에 대한 정보를 보여준다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span> <span class="s2">&quot;day&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="s2">&quot;total_bill&quot;</span><span class="p">)</span>
@@ -4716,8 +4659,8 @@ dtype: float64
 </div>
 </div>
 </div>
-<section id="id13">
-<h3><span class="section-number">24.3.1. </span>그룹 키 제거<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<section id="id12">
+<h3><span class="section-number">24.3.1. </span>그룹 키 제거<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span> <span class="n">group_keys</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">top</span><span class="p">)</span>
@@ -4857,9 +4800,304 @@ dtype: float64
 </table>
 </div></div></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;smoker&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">top</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>smoker</th>
+      <th>day</th>
+      <th>time</th>
+      <th>size</th>
+      <th>tip_pct</th>
+    </tr>
+    <tr>
+      <th>smoker</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">No</th>
+      <th>232</th>
+      <td>11.61</td>
+      <td>3.39</td>
+      <td>No</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.291990</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>7.51</td>
+      <td>2.00</td>
+      <td>No</td>
+      <td>Thur</td>
+      <td>Lunch</td>
+      <td>2</td>
+      <td>0.266312</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>10.29</td>
+      <td>2.60</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.252672</td>
+    </tr>
+    <tr>
+      <th>185</th>
+      <td>20.69</td>
+      <td>5.00</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>5</td>
+      <td>0.241663</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>24.71</td>
+      <td>5.85</td>
+      <td>No</td>
+      <td>Thur</td>
+      <td>Lunch</td>
+      <td>2</td>
+      <td>0.236746</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">Yes</th>
+      <th>172</th>
+      <td>7.25</td>
+      <td>5.15</td>
+      <td>Yes</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.710345</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>9.60</td>
+      <td>4.00</td>
+      <td>Yes</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.416667</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>3.07</td>
+      <td>1.00</td>
+      <td>Yes</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>1</td>
+      <td>0.325733</td>
+    </tr>
+    <tr>
+      <th>183</th>
+      <td>23.17</td>
+      <td>6.50</td>
+      <td>Yes</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>4</td>
+      <td>0.280535</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>14.31</td>
+      <td>4.00</td>
+      <td>Yes</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.279525</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;smoker&quot;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">top</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>total_bill</th>
+      <th>tip</th>
+      <th>smoker</th>
+      <th>day</th>
+      <th>time</th>
+      <th>size</th>
+      <th>tip_pct</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">0</th>
+      <th>232</th>
+      <td>11.61</td>
+      <td>3.39</td>
+      <td>No</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.291990</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>7.51</td>
+      <td>2.00</td>
+      <td>No</td>
+      <td>Thur</td>
+      <td>Lunch</td>
+      <td>2</td>
+      <td>0.266312</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>10.29</td>
+      <td>2.60</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.252672</td>
+    </tr>
+    <tr>
+      <th>185</th>
+      <td>20.69</td>
+      <td>5.00</td>
+      <td>No</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>5</td>
+      <td>0.241663</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>24.71</td>
+      <td>5.85</td>
+      <td>No</td>
+      <td>Thur</td>
+      <td>Lunch</td>
+      <td>2</td>
+      <td>0.236746</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">1</th>
+      <th>172</th>
+      <td>7.25</td>
+      <td>5.15</td>
+      <td>Yes</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.710345</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>9.60</td>
+      <td>4.00</td>
+      <td>Yes</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.416667</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>3.07</td>
+      <td>1.00</td>
+      <td>Yes</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>1</td>
+      <td>0.325733</td>
+    </tr>
+    <tr>
+      <th>183</th>
+      <td>23.17</td>
+      <td>6.50</td>
+      <td>Yes</td>
+      <td>Sun</td>
+      <td>Dinner</td>
+      <td>4</td>
+      <td>0.280535</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>14.31</td>
+      <td>4.00</td>
+      <td>Yes</td>
+      <td>Sat</td>
+      <td>Dinner</td>
+      <td>2</td>
+      <td>0.279525</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </section>
-<section id="id14">
-<h3><span class="section-number">24.3.2. </span>분위/구간 분석<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<section id="id13">
+<h3><span class="section-number">24.3.2. </span>분위/구간 분석<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;data1&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span>
@@ -5303,8 +5541,8 @@ Name: data1, dtype: int64
 </div></div></div>
 </div>
 </section>
-<section id="id15">
-<h3><span class="section-number">24.3.3. </span>예제: 그룹별 결측치 채우기<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
+<section id="id14">
+<h3><span class="section-number">24.3.3. </span>예제: 그룹별 결측치 채우기<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">6</span><span class="p">))</span>
@@ -5533,8 +5771,8 @@ dtype: float64
 </div>
 </div>
 </section>
-<section id="id16">
-<h3><span class="section-number">24.3.4. </span>예제: 무작위 샘플링<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
+<section id="id15">
+<h3><span class="section-number">24.3.4. </span>예제: 무작위 샘플링<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">suits</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;H&quot;</span><span class="p">,</span> <span class="s2">&quot;S&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;D&quot;</span><span class="p">]</span>  <span class="c1"># Hearts, Spades, Clubs, Diamonds</span>
@@ -5655,8 +5893,8 @@ dtype: int64
 </div>
 </div>
 </section>
-<section id="id17">
-<h3><span class="section-number">24.3.5. </span>그룹별 가중치 합<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
+<section id="id16">
+<h3><span class="section-number">24.3.5. </span>그룹별 가중치 합<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span>
@@ -6142,8 +6380,8 @@ Length: 22, dtype: float64
 </div>
 </div>
 </section>
-<section id="id18">
-<h3><span class="section-number">24.3.6. </span>예제: 그룹 단위 선형 회귀<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
+<section id="id17">
+<h3><span class="section-number">24.3.6. </span>예제: 그룹 단위 선형 회귀<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
@@ -6250,8 +6488,8 @@ Length: 22, dtype: float64
 </div>
 </section>
 </section>
-<section id="id19">
-<h2><span class="section-number">24.4. </span>그룹 변환<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h2>
+<section id="id18">
+<h2><span class="section-number">24.4. </span>그룹 변환<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">4</span><span class="p">,</span>
@@ -6597,8 +6835,8 @@ Name: value, dtype: float64
 </div>
 </div>
 </section>
-<section id="id20">
-<h2><span class="section-number">24.5. </span>피벗 테이블<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h2>
+<section id="id19">
+<h2><span class="section-number">24.5. </span>피벗 테이블<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tips</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -7650,8 +7888,8 @@ Name: value, dtype: float64
 </div>
 </section>
 </section>
-<section id="id21">
-<h2><span class="section-number">24.6. </span>연습문제<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h2>
+<section id="id20">
+<h2><span class="section-number">24.6. </span>연습문제<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h2>
 <ol class="arabic">
 <li><p>아래 그림은 붓꽃 데이터셋에서 품종별 5개의 샘플에 대해
 네 가지 특성(꽃받침의 길이와 너비, 꽃잎의 길이와 너비)의 평균값을 계산해서
@@ -7743,24 +7981,23 @@ Name: value, dtype: float64
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">24.2. 데이터 집계</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">24.2.1. 집계 함수</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">24.2.2. 열별로 여러 함수 적용하기</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">24.2.3. 행 인덱스 없는 데이터 집계</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply">24.3. Apply: 데이터 집계 일반화</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">24.3.1. 그룹 키 제거</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">24.3.2. 분위/구간 분석</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">24.3.3. 예제: 그룹별 결측치 채우기</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">24.3.4. 예제: 무작위 샘플링</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">24.3.5. 그룹별 가중치 합</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">24.3.6. 예제: 그룹 단위 선형 회귀</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apply">24.3. Apply: 다목적 데이터 집계</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">24.3.1. 그룹 키 제거</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">24.3.2. 분위/구간 분석</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">24.3.3. 예제: 그룹별 결측치 채우기</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">24.3.4. 예제: 무작위 샘플링</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">24.3.5. 그룹별 가중치 합</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">24.3.6. 예제: 그룹 단위 선형 회귀</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">24.4. 그룹 변환</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">24.5. 피벗 테이블</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">24.4. 그룹 변환</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id19">24.5. 피벗 테이블</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-tabulations-crosstab">24.5.1. Cross-Tabulations: Crosstab</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id21">24.6. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id20">24.6. 연습문제</a></li>
 </ul>
   </nav></div>
 
