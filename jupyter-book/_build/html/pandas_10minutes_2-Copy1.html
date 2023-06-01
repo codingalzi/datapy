@@ -1005,10 +1005,10 @@ document.write(`
 </table>
 </div></div></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">df1</span></code>과 <code class="docutils literal notranslate"><span class="pre">df2</span></code>를 이용하여 아래 데이터프레임을 생성하는 방법은 무엇인가?</p>
+<p><code class="docutils literal notranslate"><span class="pre">df1</span></code>과 <code class="docutils literal notranslate"><span class="pre">df4</span></code>를 이용하여 아래 데이터프레임을 생성하는 방법은 무엇인가?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">?</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 적절한 표현식 작성</span>
 </pre></div>
 </div>
 </div>
@@ -1729,10 +1729,10 @@ document.write(`
 </tr>
 </tbody>
 </table>
+<p><code class="docutils literal notranslate"><span class="pre">left</span></code>와 <code class="docutils literal notranslate"><span class="pre">right</span></code>가 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s2">&quot;key&quot;</span><span class="p">)</span>
-<span class="n">result</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span>
 </pre></div>
 </div>
 </div>
@@ -1758,8 +1758,6 @@ document.write(`
       <th>key</th>
       <th>A</th>
       <th>B</th>
-      <th>C</th>
-      <th>D</th>
     </tr>
   </thead>
   <tbody>
@@ -1768,36 +1766,95 @@ document.write(`
       <td>K0</td>
       <td>A0</td>
       <td>B0</td>
-      <td>C0</td>
-      <td>D0</td>
     </tr>
     <tr>
       <th>1</th>
       <td>K1</td>
       <td>A1</td>
       <td>B1</td>
-      <td>C1</td>
-      <td>D1</td>
     </tr>
     <tr>
       <th>2</th>
       <td>K2</td>
       <td>A2</td>
       <td>B2</td>
-      <td>C2</td>
-      <td>D2</td>
     </tr>
     <tr>
       <th>3</th>
       <td>K3</td>
       <td>A3</td>
       <td>B3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">right</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>key</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>K0</td>
+      <td>C0</td>
+      <td>D0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>K1</td>
+      <td>C1</td>
+      <td>D1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>K2</td>
+      <td>C2</td>
+      <td>D2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>K3</td>
       <td>C3</td>
       <td>D3</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">left</span></code>와 <code class="docutils literal notranslate"><span class="pre">right</span></code>를 이용해서 다음 결과를 만들어 내는 표현식은 무엇인가?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 적절한 표현식 작성</span>
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong>다양한 키 활용</strong></p>
 <ul class="simple">
@@ -2180,9 +2237,7 @@ document.write(`
 </table>
 </div></div></div>
 </div>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">how='left'</span></code>: 왼쪽 데이터프레임의 키에 포함된 항목만 대상</p></li>
-</ul>
+<p><code class="docutils literal notranslate"><span class="pre">left</span></code>와 <code class="docutils literal notranslate"><span class="pre">right</span></code>가 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span>
@@ -2249,93 +2304,6 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">])</span>
-<span class="n">result</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>key1</th>
-      <th>key2</th>
-      <th>A</th>
-      <th>B</th>
-      <th>C</th>
-      <th>D</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>K0</td>
-      <td>K0</td>
-      <td>A0</td>
-      <td>B0</td>
-      <td>C0</td>
-      <td>D0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>K0</td>
-      <td>K1</td>
-      <td>A1</td>
-      <td>B1</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>K1</td>
-      <td>K0</td>
-      <td>A2</td>
-      <td>B2</td>
-      <td>C1</td>
-      <td>D1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>K1</td>
-      <td>K0</td>
-      <td>A2</td>
-      <td>B2</td>
-      <td>C2</td>
-      <td>D2</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>K2</td>
-      <td>K1</td>
-      <td>A3</td>
-      <td>B3</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">how='right'</span></code>: 오른쪽 데이터프레임의 키에 포함된 항목만 대상</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">right</span>
 </pre></div>
 </div>
@@ -2398,80 +2366,13 @@ document.write(`
 </table>
 </div></div></div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">left</span></code>와 <code class="docutils literal notranslate"><span class="pre">right</span></code>를 이용해서 아래 데이터프레임을 생성하는 표현식은 무엇인가?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;right&quot;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;key1&quot;</span><span class="p">,</span> <span class="s2">&quot;key2&quot;</span><span class="p">])</span>
-<span class="n">result</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 적절한 표현식 작성</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>key1</th>
-      <th>key2</th>
-      <th>A</th>
-      <th>B</th>
-      <th>C</th>
-      <th>D</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>K0</td>
-      <td>K0</td>
-      <td>A0</td>
-      <td>B0</td>
-      <td>C0</td>
-      <td>D0</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>K1</td>
-      <td>K0</td>
-      <td>A2</td>
-      <td>B2</td>
-      <td>C1</td>
-      <td>D1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>K1</td>
-      <td>K0</td>
-      <td>A2</td>
-      <td>B2</td>
-      <td>C2</td>
-      <td>D2</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>K2</td>
-      <td>K0</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>C3</td>
-      <td>D3</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">how='cross'</span></code>: 모든 경우의 수 조합</p></li>
@@ -2803,9 +2704,167 @@ document.write(`
 </table>
 </div></div></div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">left</span></code>와 <code class="docutils literal notranslate"><span class="pre">right</span></code>가 다음과 같다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>K0</th>
+      <td>A0</td>
+      <td>B0</td>
+    </tr>
+    <tr>
+      <th>K1</th>
+      <td>A1</td>
+      <td>B1</td>
+    </tr>
+    <tr>
+      <th>K2</th>
+      <td>A2</td>
+      <td>B2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">right</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>K0</th>
+      <td>C0</td>
+      <td>D0</td>
+    </tr>
+    <tr>
+      <th>K2</th>
+      <td>C2</td>
+      <td>D2</td>
+    </tr>
+    <tr>
+      <th>K3</th>
+      <td>C3</td>
+      <td>D3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">left</span></code>와 <code class="docutils literal notranslate"><span class="pre">right</span></code>가 다음과 같다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">left</span></code>와 <code class="docutils literal notranslate"><span class="pre">right</span></code>를 이용해서 아래 데이터프레임을 생성하는 표현식은 무엇인가?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>K0</th>
+      <td>A0</td>
+      <td>B0</td>
+      <td>C0</td>
+      <td>D0</td>
+    </tr>
+    <tr>
+      <th>K1</th>
+      <td>A1</td>
+      <td>B1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>K2</th>
+      <td>A2</td>
+      <td>B2</td>
+      <td>C2</td>
+      <td>D2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;left&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3301,14 +3360,14 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>first  second
-bar    one      -0.994348
-       two      -1.202332
-baz    one      -0.756060
-       two       1.101608
-foo    one      -0.010936
-       two       1.300882
-qux    one       1.488591
-       two       2.125791
+bar    one       1.354802
+       two       0.087946
+baz    one      -1.549938
+       two       0.560356
+foo    one       0.712929
+       two       0.006497
+qux    one       0.814150
+       two      -0.087331
 dtype: float64
 </pre></div>
 </div>
@@ -3357,62 +3416,62 @@ dtype: float64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>one</th>
-      <td>-2.662390</td>
-      <td>-0.580842</td>
-      <td>0.055068</td>
-      <td>-0.402675</td>
+      <td>2.730972</td>
+      <td>0.858540</td>
+      <td>1.442073</td>
+      <td>-1.315351</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.197059</td>
-      <td>0.759525</td>
-      <td>0.019934</td>
-      <td>0.167282</td>
+      <td>-1.394446</td>
+      <td>0.338618</td>
+      <td>-1.304758</td>
+      <td>-0.289437</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>one</th>
-      <td>0.652825</td>
-      <td>0.185203</td>
-      <td>0.142866</td>
-      <td>-0.323292</td>
+      <td>-0.723290</td>
+      <td>-1.985403</td>
+      <td>0.338772</td>
+      <td>1.147973</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.305398</td>
-      <td>-0.363180</td>
-      <td>0.629323</td>
-      <td>0.296168</td>
+      <td>1.455134</td>
+      <td>0.857843</td>
+      <td>1.308652</td>
+      <td>-0.825791</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>0.699210</td>
-      <td>-0.738252</td>
-      <td>0.633715</td>
-      <td>0.905393</td>
+      <td>-1.781946</td>
+      <td>-0.896386</td>
+      <td>-0.564185</td>
+      <td>-0.654900</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-1.638977</td>
-      <td>-1.714299</td>
-      <td>1.157314</td>
-      <td>0.225854</td>
+      <td>0.335482</td>
+      <td>-1.077071</td>
+      <td>0.681830</td>
+      <td>-0.211672</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">qux</th>
       <th>one</th>
-      <td>-0.000541</td>
-      <td>0.340082</td>
-      <td>-1.351484</td>
-      <td>-2.017065</td>
+      <td>-0.713897</td>
+      <td>-0.576169</td>
+      <td>-0.375765</td>
+      <td>-0.726874</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.286343</td>
-      <td>-0.448780</td>
-      <td>-1.522732</td>
-      <td>1.271398</td>
+      <td>1.942709</td>
+      <td>-1.454634</td>
+      <td>0.894071</td>
+      <td>0.789904</td>
     </tr>
   </tbody>
 </table>
@@ -3466,36 +3525,36 @@ dtype: float64
   <tbody>
     <tr>
       <th>A</th>
-      <td>-0.087442</td>
-      <td>-1.115777</td>
-      <td>-1.056233</td>
-      <td>1.130736</td>
-      <td>0.189095</td>
-      <td>0.177894</td>
-      <td>0.586807</td>
-      <td>-2.021256</td>
+      <td>0.408647</td>
+      <td>0.596600</td>
+      <td>-0.008338</td>
+      <td>0.873745</td>
+      <td>-0.331982</td>
+      <td>0.593828</td>
+      <td>1.719961</td>
+      <td>0.156237</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>0.650728</td>
-      <td>1.727576</td>
-      <td>2.100773</td>
-      <td>-0.317028</td>
-      <td>-0.429120</td>
-      <td>0.582295</td>
-      <td>0.026113</td>
-      <td>1.031528</td>
+      <td>-0.640758</td>
+      <td>0.184866</td>
+      <td>-1.687869</td>
+      <td>1.307183</td>
+      <td>-0.596336</td>
+      <td>-0.211227</td>
+      <td>0.117225</td>
+      <td>1.204492</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>0.246017</td>
-      <td>0.146597</td>
-      <td>1.930725</td>
-      <td>1.170164</td>
-      <td>2.092677</td>
-      <td>-2.230160</td>
-      <td>-1.016641</td>
-      <td>0.180540</td>
+      <td>-0.375798</td>
+      <td>0.013704</td>
+      <td>-0.917551</td>
+      <td>-0.480002</td>
+      <td>0.555521</td>
+      <td>0.450923</td>
+      <td>-2.082255</td>
+      <td>0.198054</td>
     </tr>
   </tbody>
 </table>
@@ -3575,59 +3634,59 @@ dtype: float64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>one</th>
-      <td>-1.109297</td>
-      <td>0.140808</td>
-      <td>-0.640854</td>
-      <td>0.486804</td>
-      <td>-1.329762</td>
-      <td>-0.366264</td>
+      <td>-0.531269</td>
+      <td>-1.319315</td>
+      <td>-0.783237</td>
+      <td>-0.554112</td>
+      <td>-1.030345</td>
+      <td>0.265133</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-1.500391</td>
-      <td>1.513810</td>
-      <td>0.097645</td>
-      <td>0.381920</td>
-      <td>1.662712</td>
-      <td>-1.404856</td>
+      <td>-0.732329</td>
+      <td>1.314933</td>
+      <td>1.400139</td>
+      <td>-0.768909</td>
+      <td>1.409427</td>
+      <td>0.145696</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>one</th>
-      <td>-0.473572</td>
-      <td>-0.343168</td>
-      <td>-1.638150</td>
-      <td>-0.153574</td>
-      <td>-0.190695</td>
-      <td>-0.329388</td>
+      <td>-0.610516</td>
+      <td>-1.050760</td>
+      <td>-0.769212</td>
+      <td>-0.918906</td>
+      <td>0.519817</td>
+      <td>2.168766</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.009352</td>
-      <td>1.238440</td>
-      <td>0.869738</td>
-      <td>-1.797461</td>
-      <td>-1.304130</td>
-      <td>-0.090519</td>
+      <td>1.256193</td>
+      <td>0.161924</td>
+      <td>1.067740</td>
+      <td>-1.744932</td>
+      <td>2.062424</td>
+      <td>-0.073034</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>-0.020272</td>
-      <td>1.554130</td>
-      <td>0.573791</td>
-      <td>0.927281</td>
-      <td>1.185402</td>
-      <td>-0.275100</td>
+      <td>-0.558618</td>
+      <td>0.227652</td>
+      <td>0.204420</td>
+      <td>-1.969719</td>
+      <td>0.346345</td>
+      <td>-1.341311</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.070553</td>
-      <td>1.608476</td>
-      <td>0.631720</td>
-      <td>0.014081</td>
-      <td>0.267998</td>
-      <td>-0.221869</td>
+      <td>-0.916065</td>
+      <td>-0.609192</td>
+      <td>0.984168</td>
+      <td>0.769209</td>
+      <td>1.463946</td>
+      <td>-0.183542</td>
     </tr>
   </tbody>
 </table>
@@ -3662,14 +3721,14 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(bar, one)   -0.407716
-(bar, two)   -0.918626
-(baz, one)    0.578815
-(baz, two)   -1.050893
-(foo, one)   -0.642097
-(foo, two)   -0.358857
-(qux, one)    0.051201
-(qux, two)   -0.090535
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(bar, one)   -1.578156
+(bar, two)    0.796188
+(baz, one)   -0.345618
+(baz, two)    1.115705
+(foo, one)   -0.481126
+(foo, two)   -0.129373
+(qux, one)   -0.786064
+(qux, two)   -1.219939
 dtype: float64
 </pre></div>
 </div>
@@ -3749,14 +3808,14 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>first  second
-bar    one      -0.994348
-       two      -1.202332
-baz    one      -0.756060
-       two       1.101608
-foo    one      -0.010936
-       two       1.300882
-qux    one       1.488591
-       two       2.125791
+bar    one       1.354802
+       two       0.087946
+baz    one      -1.549938
+       two       0.560356
+foo    one       0.712929
+       two       0.006497
+qux    one       0.814150
+       two      -0.087331
 dtype: float64
 </pre></div>
 </div>
@@ -3770,8 +3829,8 @@ dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>second
-one    1.488591
-two    2.125791
+one    0.814150
+two   -0.087331
 dtype: float64
 </pre></div>
 </div>
@@ -3780,6 +3839,7 @@ dtype: float64
 <ul class="simple">
 <li><p>데이터프레임 인덱싱</p></li>
 </ul>
+<p><code class="docutils literal notranslate"><span class="pre">df</span></code>가 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
@@ -3816,130 +3876,154 @@ dtype: float64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>one</th>
-      <td>-2.662390</td>
-      <td>-0.580842</td>
-      <td>0.055068</td>
-      <td>-0.402675</td>
+      <td>2.730972</td>
+      <td>0.858540</td>
+      <td>1.442073</td>
+      <td>-1.315351</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.197059</td>
-      <td>0.759525</td>
-      <td>0.019934</td>
-      <td>0.167282</td>
+      <td>-1.394446</td>
+      <td>0.338618</td>
+      <td>-1.304758</td>
+      <td>-0.289437</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>one</th>
-      <td>0.652825</td>
-      <td>0.185203</td>
-      <td>0.142866</td>
-      <td>-0.323292</td>
+      <td>-0.723290</td>
+      <td>-1.985403</td>
+      <td>0.338772</td>
+      <td>1.147973</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.305398</td>
-      <td>-0.363180</td>
-      <td>0.629323</td>
-      <td>0.296168</td>
+      <td>1.455134</td>
+      <td>0.857843</td>
+      <td>1.308652</td>
+      <td>-0.825791</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>0.699210</td>
-      <td>-0.738252</td>
-      <td>0.633715</td>
-      <td>0.905393</td>
+      <td>-1.781946</td>
+      <td>-0.896386</td>
+      <td>-0.564185</td>
+      <td>-0.654900</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-1.638977</td>
-      <td>-1.714299</td>
-      <td>1.157314</td>
-      <td>0.225854</td>
+      <td>0.335482</td>
+      <td>-1.077071</td>
+      <td>0.681830</td>
+      <td>-0.211672</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">qux</th>
       <th>one</th>
-      <td>-0.000541</td>
-      <td>0.340082</td>
-      <td>-1.351484</td>
-      <td>-2.017065</td>
+      <td>-0.713897</td>
+      <td>-0.576169</td>
+      <td>-0.375765</td>
+      <td>-0.726874</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.286343</td>
-      <td>-0.448780</td>
-      <td>-1.522732</td>
-      <td>1.271398</td>
+      <td>1.942709</td>
+      <td>-1.454634</td>
+      <td>0.894071</td>
+      <td>0.789904</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">df</span></code>를 이용하여 아래 결과를 반환하는 표현식은?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 적절한 표현식 작성</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>one</th>
-      <td>-2.662390</td>
-      <td>-0.580842</td>
-      <td>0.055068</td>
-      <td>-0.402675</td>
-    </tr>
-    <tr>
-      <th>two</th>
-      <td>0.197059</td>
-      <td>0.759525</td>
-      <td>0.019934</td>
-      <td>0.167282</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <p>레벨별로 라벨을 지정할 수 있다. 각각의 라벨은 쉼표로 구분한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   -2.662390
-1   -0.580842
-2    0.055068
-3   -0.402675
-Name: (bar, one), dtype: float64
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">68</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;bar&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;one&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">]]</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/pandas/core/indexing.py:1067,</span> in <span class="ni">_LocationIndexer.__getitem__</span><span class="nt">(self, key)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1065</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_scalar_access</span><span class="p">(</span><span class="n">key</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1066</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">_get_value</span><span class="p">(</span><span class="o">*</span><span class="n">key</span><span class="p">,</span> <span class="n">takeable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_takeable</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1067</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_tuple</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1068</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1069</span>     <span class="c1"># we by definition only have the 0th axis</span>
+<span class="g g-Whitespace">   </span><span class="mi">1070</span>     <span class="n">axis</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axis</span> <span class="ow">or</span> <span class="mi">0</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/pandas/core/indexing.py:1247,</span> in <span class="ni">_LocIndexer._getitem_tuple</span><span class="nt">(self, tup)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1245</span> <span class="k">with</span> <span class="n">suppress</span><span class="p">(</span><span class="n">IndexingError</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1246</span>     <span class="n">tup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expand_ellipsis</span><span class="p">(</span><span class="n">tup</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1247</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_lowerdim</span><span class="p">(</span><span class="n">tup</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1249</span> <span class="c1"># no multi-index, so validate all of the indexers</span>
+<span class="g g-Whitespace">   </span><span class="mi">1250</span> <span class="n">tup</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_tuple_indexer</span><span class="p">(</span><span class="n">tup</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/pandas/core/indexing.py:941,</span> in <span class="ni">_LocationIndexer._getitem_lowerdim</span><span class="nt">(self, tup)</span>
+<span class="g g-Whitespace">    </span><span class="mi">939</span> <span class="c1"># we may have a nested tuples indexer here</span>
+<span class="g g-Whitespace">    </span><span class="mi">940</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_nested_tuple_indexer</span><span class="p">(</span><span class="n">tup</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">941</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_nested_tuple</span><span class="p">(</span><span class="n">tup</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">943</span> <span class="c1"># we maybe be using a tuple to represent multiple dimensions here</span>
+<span class="g g-Whitespace">    </span><span class="mi">944</span> <span class="n">ax0</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">_get_axis</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/pandas/core/indexing.py:1047,</span> in <span class="ni">_LocationIndexer._getitem_nested_tuple</span><span class="nt">(self, tup)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1044</span>     <span class="n">axis</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="g g-Whitespace">   </span><span class="mi">1045</span>     <span class="k">continue</span>
+<span class="ne">-&gt; </span><span class="mi">1047</span> <span class="n">obj</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">_getitem_axis</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1048</span> <span class="n">axis</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="g g-Whitespace">   </span><span class="mi">1050</span> <span class="c1"># if we have a scalar, we are done</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/pandas/core/indexing.py:1301,</span> in <span class="ni">_LocIndexer._getitem_axis</span><span class="nt">(self, key, axis)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1298</span>     <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="s2">&quot;ndim&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">key</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1299</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Cannot index with multidimensional key&quot;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1301</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_iterable</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1303</span> <span class="c1"># nested tuple slicing</span>
+<span class="g g-Whitespace">   </span><span class="mi">1304</span> <span class="k">if</span> <span class="n">is_nested_tuple</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/pandas/core/indexing.py:1239,</span> in <span class="ni">_LocIndexer._getitem_iterable</span><span class="nt">(self, key, axis)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1236</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_key</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1238</span> <span class="c1"># A collection of keys</span>
+<span class="ne">-&gt; </span><span class="mi">1239</span> <span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_listlike_indexer</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1240</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">_reindex_with_indexers</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1241</span>     <span class="p">{</span><span class="n">axis</span><span class="p">:</span> <span class="p">[</span><span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span><span class="p">]},</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">allow_dups</span><span class="o">=</span><span class="kc">True</span>
+<span class="g g-Whitespace">   </span><span class="mi">1242</span> <span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/pandas/core/indexing.py:1432,</span> in <span class="ni">_LocIndexer._get_listlike_indexer</span><span class="nt">(self, key, axis)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1429</span> <span class="n">ax</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">_get_axis</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1430</span> <span class="n">axis_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">obj</span><span class="o">.</span><span class="n">_get_axis_name</span><span class="p">(</span><span class="n">axis</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1432</span> <span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">_get_indexer_strict</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">axis_name</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1434</span> <span class="k">return</span> <span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/pandas/core/indexes/base.py:6070,</span> in <span class="ni">Index._get_indexer_strict</span><span class="nt">(self, key, axis_name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6067</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">6068</span>     <span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">new_indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reindex_non_unique</span><span class="p">(</span><span class="n">keyarr</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">6070</span> <span class="bp">self</span><span class="o">.</span><span class="n">_raise_if_missing</span><span class="p">(</span><span class="n">keyarr</span><span class="p">,</span> <span class="n">indexer</span><span class="p">,</span> <span class="n">axis_name</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6072</span> <span class="n">keyarr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">take</span><span class="p">(</span><span class="n">indexer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6073</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">Index</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">6074</span>     <span class="c1"># GH 42790 - Preserve name from an Index</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/pandas/core/indexes/base.py:6130,</span> in <span class="ni">Index._raise_if_missing</span><span class="nt">(self, key, indexer, axis_name)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6128</span>     <span class="k">if</span> <span class="n">use_interval_msg</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">6129</span>         <span class="n">key</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">6130</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;None of [</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">] are in the [</span><span class="si">{</span><span class="n">axis_name</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6132</span> <span class="n">not_found</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ensure_index</span><span class="p">(</span><span class="n">key</span><span class="p">)[</span><span class="n">missing_mask</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="g g-Whitespace">   </span><span class="mi">6133</span> <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">not_found</span><span class="si">}</span><span class="s2"> not in index&quot;</span><span class="p">)</span>
+
+<span class="ne">KeyError</span>: &quot;None of [Index([&#39;one&#39;, &#39;two&#39;], dtype=&#39;object&#39;)] are in the [columns]&quot;
 </pre></div>
 </div>
 </div>
@@ -3952,10 +4036,10 @@ Name: (bar, one), dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   -2.662390
-1   -0.580842
-2    0.055068
-3   -0.402675
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0   -1.886262
+1    2.493236
+2   -0.035464
+3    0.500853
 Name: one, dtype: float64
 </pre></div>
 </div>
@@ -4009,36 +4093,36 @@ Name: one, dtype: float64
   <tbody>
     <tr>
       <th>A</th>
-      <td>-0.087442</td>
-      <td>-1.115777</td>
-      <td>-1.056233</td>
-      <td>1.130736</td>
-      <td>0.189095</td>
-      <td>0.177894</td>
-      <td>0.586807</td>
-      <td>-2.021256</td>
+      <td>-0.378184</td>
+      <td>0.052817</td>
+      <td>-0.782128</td>
+      <td>0.501950</td>
+      <td>-0.294021</td>
+      <td>-0.874656</td>
+      <td>-0.814218</td>
+      <td>-0.430703</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>0.650728</td>
-      <td>1.727576</td>
-      <td>2.100773</td>
-      <td>-0.317028</td>
-      <td>-0.429120</td>
-      <td>0.582295</td>
-      <td>0.026113</td>
-      <td>1.031528</td>
+      <td>-0.968468</td>
+      <td>-1.445705</td>
+      <td>-0.174168</td>
+      <td>0.541767</td>
+      <td>2.041514</td>
+      <td>1.436151</td>
+      <td>-0.208721</td>
+      <td>-0.938342</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>0.246017</td>
-      <td>0.146597</td>
-      <td>1.930725</td>
-      <td>1.170164</td>
-      <td>2.092677</td>
-      <td>-2.230160</td>
-      <td>-1.016641</td>
-      <td>0.180540</td>
+      <td>0.123543</td>
+      <td>-0.792570</td>
+      <td>0.687590</td>
+      <td>1.555869</td>
+      <td>0.633527</td>
+      <td>0.560887</td>
+      <td>0.410211</td>
+      <td>0.579830</td>
     </tr>
   </tbody>
 </table>
@@ -4076,18 +4160,18 @@ Name: one, dtype: float64
   <tbody>
     <tr>
       <th>A</th>
-      <td>-0.087442</td>
-      <td>-1.115777</td>
+      <td>-0.378184</td>
+      <td>0.052817</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>0.650728</td>
-      <td>1.727576</td>
+      <td>-0.968468</td>
+      <td>-1.445705</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>0.246017</td>
-      <td>0.146597</td>
+      <td>0.123543</td>
+      <td>-0.792570</td>
     </tr>
   </tbody>
 </table>
@@ -4101,9 +4185,9 @@ Name: one, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A   -0.087442
-B    0.650728
-C    0.246017
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A   -0.378184
+B   -0.968468
+C    0.123543
 Name: (bar, one), dtype: float64
 </pre></div>
 </div>
@@ -4117,9 +4201,9 @@ Name: (bar, one), dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A   -0.087442
-B    0.650728
-C    0.246017
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A   -0.378184
+B   -0.968468
+C    0.123543
 Name: one, dtype: float64
 </pre></div>
 </div>
@@ -4165,62 +4249,62 @@ Name: one, dtype: float64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>one</th>
-      <td>-2.662390</td>
-      <td>-0.580842</td>
-      <td>0.055068</td>
-      <td>-0.402675</td>
+      <td>-1.886262</td>
+      <td>2.493236</td>
+      <td>-0.035464</td>
+      <td>0.500853</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.197059</td>
-      <td>0.759525</td>
-      <td>0.019934</td>
-      <td>0.167282</td>
+      <td>-0.383649</td>
+      <td>1.351271</td>
+      <td>0.185382</td>
+      <td>1.843762</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>one</th>
-      <td>0.652825</td>
-      <td>0.185203</td>
-      <td>0.142866</td>
-      <td>-0.323292</td>
+      <td>0.483177</td>
+      <td>0.407589</td>
+      <td>0.156433</td>
+      <td>-1.166961</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.305398</td>
-      <td>-0.363180</td>
-      <td>0.629323</td>
-      <td>0.296168</td>
+      <td>-1.081702</td>
+      <td>1.732283</td>
+      <td>0.705837</td>
+      <td>-1.487140</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>0.699210</td>
-      <td>-0.738252</td>
-      <td>0.633715</td>
-      <td>0.905393</td>
+      <td>-1.285566</td>
+      <td>-0.116625</td>
+      <td>1.155733</td>
+      <td>0.950067</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-1.638977</td>
-      <td>-1.714299</td>
-      <td>1.157314</td>
-      <td>0.225854</td>
+      <td>1.088217</td>
+      <td>0.112346</td>
+      <td>0.291462</td>
+      <td>0.826089</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">qux</th>
       <th>one</th>
-      <td>-0.000541</td>
-      <td>0.340082</td>
-      <td>-1.351484</td>
-      <td>-2.017065</td>
+      <td>0.381409</td>
+      <td>-0.605190</td>
+      <td>1.252181</td>
+      <td>-0.521036</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.286343</td>
-      <td>-0.448780</td>
-      <td>-1.522732</td>
-      <td>1.271398</td>
+      <td>0.195374</td>
+      <td>-0.268929</td>
+      <td>-1.033568</td>
+      <td>-1.224923</td>
     </tr>
   </tbody>
 </table>
@@ -4265,32 +4349,32 @@ Name: one, dtype: float64
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>one</th>
-      <td>0.652825</td>
-      <td>0.185203</td>
-      <td>0.142866</td>
-      <td>-0.323292</td>
+      <td>0.483177</td>
+      <td>0.407589</td>
+      <td>0.156433</td>
+      <td>-1.166961</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.305398</td>
-      <td>-0.363180</td>
-      <td>0.629323</td>
-      <td>0.296168</td>
+      <td>-1.081702</td>
+      <td>1.732283</td>
+      <td>0.705837</td>
+      <td>-1.487140</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>0.699210</td>
-      <td>-0.738252</td>
-      <td>0.633715</td>
-      <td>0.905393</td>
+      <td>-1.285566</td>
+      <td>-0.116625</td>
+      <td>1.155733</td>
+      <td>0.950067</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-1.638977</td>
-      <td>-1.714299</td>
-      <td>1.157314</td>
-      <td>0.225854</td>
+      <td>1.088217</td>
+      <td>0.112346</td>
+      <td>0.291462</td>
+      <td>0.826089</td>
     </tr>
   </tbody>
 </table>
@@ -4299,9 +4383,108 @@ Name: one, dtype: float64
 <ul class="simple">
 <li><p>(0, 1)-레벨 인덱싱</p></li>
 </ul>
+<p><code class="docutils literal notranslate"><span class="pre">df</span></code>가 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="s2">&quot;baz&quot;</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">):(</span><span class="s2">&quot;qux&quot;</span><span class="p">,</span> <span class="s2">&quot;one&quot;</span><span class="p">)]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+      <th>2</th>
+      <th>3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">bar</th>
+      <th>one</th>
+      <td>-1.886262</td>
+      <td>2.493236</td>
+      <td>-0.035464</td>
+      <td>0.500853</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>-0.383649</td>
+      <td>1.351271</td>
+      <td>0.185382</td>
+      <td>1.843762</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">baz</th>
+      <th>one</th>
+      <td>0.483177</td>
+      <td>0.407589</td>
+      <td>0.156433</td>
+      <td>-1.166961</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>-1.081702</td>
+      <td>1.732283</td>
+      <td>0.705837</td>
+      <td>-1.487140</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">foo</th>
+      <th>one</th>
+      <td>-1.285566</td>
+      <td>-0.116625</td>
+      <td>1.155733</td>
+      <td>0.950067</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>1.088217</td>
+      <td>0.112346</td>
+      <td>0.291462</td>
+      <td>0.826089</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">qux</th>
+      <th>one</th>
+      <td>0.381409</td>
+      <td>-0.605190</td>
+      <td>1.252181</td>
+      <td>-0.521036</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>0.195374</td>
+      <td>-0.268929</td>
+      <td>-1.033568</td>
+      <td>-1.224923</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">df</span></code>를 이용하여 아래 결과를 반환하는 표현식은?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 적절한 표현식 작성</span>
 </pre></div>
 </div>
 </div>
@@ -4335,33 +4518,33 @@ Name: one, dtype: float64
     <tr>
       <th>baz</th>
       <th>two</th>
-      <td>0.305398</td>
-      <td>-0.363180</td>
-      <td>0.629323</td>
-      <td>0.296168</td>
+      <td>-1.081702</td>
+      <td>1.732283</td>
+      <td>0.705837</td>
+      <td>-1.487140</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>0.699210</td>
-      <td>-0.738252</td>
-      <td>0.633715</td>
-      <td>0.905393</td>
+      <td>-1.285566</td>
+      <td>-0.116625</td>
+      <td>1.155733</td>
+      <td>0.950067</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-1.638977</td>
-      <td>-1.714299</td>
-      <td>1.157314</td>
-      <td>0.225854</td>
+      <td>1.088217</td>
+      <td>0.112346</td>
+      <td>0.291462</td>
+      <td>0.826089</td>
     </tr>
     <tr>
       <th>qux</th>
       <th>one</th>
-      <td>-0.000541</td>
-      <td>0.340082</td>
-      <td>-1.351484</td>
-      <td>-2.017065</td>
+      <td>0.381409</td>
+      <td>-0.605190</td>
+      <td>1.252181</td>
+      <td>-0.521036</td>
     </tr>
   </tbody>
 </table>
@@ -4404,18 +4587,18 @@ Name: one, dtype: float64
     <tr>
       <th>bar</th>
       <th>two</th>
-      <td>0.197059</td>
-      <td>0.759525</td>
-      <td>0.019934</td>
-      <td>0.167282</td>
+      <td>-0.383649</td>
+      <td>1.351271</td>
+      <td>0.185382</td>
+      <td>1.843762</td>
     </tr>
     <tr>
       <th>qux</th>
       <th>one</th>
-      <td>-0.000541</td>
-      <td>0.340082</td>
-      <td>-1.351484</td>
-      <td>-2.017065</td>
+      <td>0.381409</td>
+      <td>-0.605190</td>
+      <td>1.252181</td>
+      <td>-0.521036</td>
     </tr>
   </tbody>
 </table>
@@ -4431,9 +4614,9 @@ Name: one, dtype: float64
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">pd.groupby()</span></code> 함수는 다음 3 기능을 제공한다.</p>
 <ul class="simple">
-<li><p><strong>분류</strong><font size='2'>Splitting</font>: 데이터를 조건에 따라 여러 그룹으로 분류</p></li>
-<li><p><strong>함수 적용</strong><font size='2'>Applying</font>: 그룹별로 함수 적용</p></li>
-<li><p><strong>조합</strong><font size='2'>Combining</font>: 그룹별 함수 적용 결과를 취합하여 새로운 데이터프레임/시리즈 생성</p></li>
+<li><p><strong>쪼개기</strong><font size='2'>Splitting</font>: 데이터를 조건에 따라 여러 그룹으로 쪼개기</p></li>
+<li><p><strong>적용하기</strong><font size='2'>Applying</font>: 그룹별로 함수 적용</p></li>
+<li><p><strong>조합하기</strong><font size='2'>Combining</font>: 그룹별 함수 적용 결과를 조합하여 새로운 데이터프레임/시리즈 생성</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4478,57 +4661,57 @@ Name: one, dtype: float64
       <th>0</th>
       <td>foo</td>
       <td>one</td>
-      <td>-0.549828</td>
-      <td>-0.033719</td>
+      <td>1.862528</td>
+      <td>0.140788</td>
     </tr>
     <tr>
       <th>1</th>
       <td>bar</td>
       <td>one</td>
-      <td>1.175140</td>
-      <td>-0.688398</td>
+      <td>-1.684147</td>
+      <td>0.133809</td>
     </tr>
     <tr>
       <th>2</th>
       <td>foo</td>
       <td>two</td>
-      <td>-0.487277</td>
-      <td>-0.043661</td>
+      <td>1.536145</td>
+      <td>0.453376</td>
     </tr>
     <tr>
       <th>3</th>
       <td>bar</td>
       <td>three</td>
-      <td>0.445260</td>
-      <td>-0.050483</td>
+      <td>-0.593406</td>
+      <td>0.284531</td>
     </tr>
     <tr>
       <th>4</th>
       <td>foo</td>
       <td>two</td>
-      <td>-0.336091</td>
-      <td>0.677534</td>
+      <td>-0.097291</td>
+      <td>0.949028</td>
     </tr>
     <tr>
       <th>5</th>
       <td>bar</td>
       <td>two</td>
-      <td>-0.314161</td>
-      <td>-0.448363</td>
+      <td>0.628354</td>
+      <td>1.472412</td>
     </tr>
     <tr>
       <th>6</th>
       <td>foo</td>
       <td>one</td>
-      <td>0.208009</td>
-      <td>0.268780</td>
+      <td>1.061002</td>
+      <td>-0.738526</td>
     </tr>
     <tr>
       <th>7</th>
       <td>bar</td>
       <td>three</td>
-      <td>-0.373096</td>
-      <td>0.136201</td>
+      <td>-0.423798</td>
+      <td>1.721764</td>
     </tr>
   </tbody>
 </table>
@@ -4591,13 +4774,13 @@ Name: one, dtype: float64
   <tbody>
     <tr>
       <th>bar</th>
-      <td>0.933144</td>
-      <td>-1.051043</td>
+      <td>-2.072998</td>
+      <td>3.612516</td>
     </tr>
     <tr>
       <th>foo</th>
-      <td>-1.165188</td>
-      <td>0.868935</td>
+      <td>4.362384</td>
+      <td>0.804667</td>
     </tr>
   </tbody>
 </table>
@@ -4626,9 +4809,103 @@ Name: one, dtype: float64
 </table>
 </li>
 </ul>
+<p><code class="docutils literal notranslate"><span class="pre">df</span></code>가 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>foo</td>
+      <td>one</td>
+      <td>1.862528</td>
+      <td>0.140788</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>bar</td>
+      <td>one</td>
+      <td>-1.684147</td>
+      <td>0.133809</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>foo</td>
+      <td>two</td>
+      <td>1.536145</td>
+      <td>0.453376</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>bar</td>
+      <td>three</td>
+      <td>-0.593406</td>
+      <td>0.284531</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>foo</td>
+      <td>two</td>
+      <td>-0.097291</td>
+      <td>0.949028</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>bar</td>
+      <td>two</td>
+      <td>0.628354</td>
+      <td>1.472412</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>foo</td>
+      <td>one</td>
+      <td>1.061002</td>
+      <td>-0.738526</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>bar</td>
+      <td>three</td>
+      <td>-0.423798</td>
+      <td>1.721764</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">df</span></code>를 이용하여 아래 데이터프레임을 생성하는 표현식은?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 적절한 표현식 작성</span>
 </pre></div>
 </div>
 </div>
@@ -4666,29 +4943,29 @@ Name: one, dtype: float64
     <tr>
       <th rowspan="3" valign="top">bar</th>
       <th>one</th>
-      <td>1.175140</td>
-      <td>-0.688398</td>
+      <td>-1.684147</td>
+      <td>0.133809</td>
     </tr>
     <tr>
       <th>three</th>
-      <td>0.072165</td>
-      <td>0.085719</td>
+      <td>-0.423798</td>
+      <td>1.721764</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.314161</td>
-      <td>-0.448363</td>
+      <td>0.628354</td>
+      <td>1.472412</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>-0.341820</td>
-      <td>0.235061</td>
+      <td>1.862528</td>
+      <td>0.140788</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.823368</td>
-      <td>0.633874</td>
+      <td>1.536145</td>
+      <td>0.949028</td>
     </tr>
   </tbody>
 </table>
@@ -4708,23 +4985,23 @@ Name: one, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;bar&#39;, &#39;one&#39;)
-     A    B        C         D
-1  bar  one  1.17514 -0.688398
+     A    B         C         D
+1  bar  one -1.684147  0.133809
 (&#39;bar&#39;, &#39;three&#39;)
      A      B         C         D
-3  bar  three  0.445260 -0.050483
-7  bar  three -0.373096  0.136201
+3  bar  three -0.593406  0.284531
+7  bar  three -0.423798  1.721764
 (&#39;bar&#39;, &#39;two&#39;)
      A    B         C         D
-5  bar  two -0.314161 -0.448363
+5  bar  two  0.628354  1.472412
 (&#39;foo&#39;, &#39;one&#39;)
      A    B         C         D
-0  foo  one -0.549828 -0.033719
-6  foo  one  0.208009  0.268780
+0  foo  one  1.862528  0.140788
+6  foo  one  1.061002 -0.738526
 (&#39;foo&#39;, &#39;two&#39;)
      A    B         C         D
-2  foo  two -0.487277 -0.043661
-4  foo  two -0.336091  0.677534
+2  foo  two  1.536145  0.453376
+4  foo  two -0.097291  0.949028
 </pre></div>
 </div>
 </div>
@@ -4768,8 +5045,8 @@ Name: one, dtype: float64
       <th>1</th>
       <td>bar</td>
       <td>one</td>
-      <td>1.17514</td>
-      <td>-0.688398</td>
+      <td>-1.684147</td>
+      <td>0.133809</td>
     </tr>
   </tbody>
 </table>
@@ -4811,15 +5088,15 @@ Name: one, dtype: float64
       <th>3</th>
       <td>bar</td>
       <td>three</td>
-      <td>0.445260</td>
-      <td>-0.050483</td>
+      <td>-0.593406</td>
+      <td>0.284531</td>
     </tr>
     <tr>
       <th>7</th>
       <td>bar</td>
       <td>three</td>
-      <td>-0.373096</td>
-      <td>0.136201</td>
+      <td>-0.423798</td>
+      <td>1.721764</td>
     </tr>
   </tbody>
 </table>
@@ -4851,14 +5128,14 @@ Name: one, dtype: float64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    B      C          D        
-bar  one     1.175140  -0.688398    1
-     three  -0.373096   0.136201    1
-             0.445260  -0.050483    1
-     two    -0.314161  -0.448363    1
-foo  one    -0.549828  -0.033719    1
-             0.208009   0.268780    1
-     two    -0.487277  -0.043661    1
-            -0.336091   0.677534    1
+bar  one    -1.684147   0.133809    1
+     three  -0.593406   0.284531    1
+            -0.423798   1.721764    1
+     two     0.628354   1.472412    1
+foo  one     1.061002  -0.738526    1
+             1.862528   0.140788    1
+     two    -0.097291   0.949028    1
+             1.536145   0.453376    1
 dtype: int64
 </pre></div>
 </div>
@@ -4978,29 +5255,29 @@ dtype: int64
     <tr>
       <th rowspan="3" valign="top">bar</th>
       <th>one</th>
-      <td>1.175140</td>
-      <td>-0.688398</td>
+      <td>-1.684147</td>
+      <td>0.133809</td>
     </tr>
     <tr>
       <th>three</th>
-      <td>0.072165</td>
-      <td>0.085719</td>
+      <td>-1.017205</td>
+      <td>2.006295</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.314161</td>
-      <td>-0.448363</td>
+      <td>0.628354</td>
+      <td>1.472412</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>-0.341820</td>
-      <td>0.235061</td>
+      <td>2.923530</td>
+      <td>-0.597737</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.823368</td>
-      <td>0.633874</td>
+      <td>1.438854</td>
+      <td>1.402404</td>
     </tr>
   </tbody>
 </table>
@@ -5046,31 +5323,31 @@ dtype: int64
     <tr>
       <th>foo</th>
       <th>one</th>
-      <td>-0.341820</td>
-      <td>0.235061</td>
+      <td>2.923530</td>
+      <td>-0.597737</td>
     </tr>
     <tr>
       <th>bar</th>
       <th>one</th>
-      <td>1.175140</td>
-      <td>-0.688398</td>
+      <td>-1.684147</td>
+      <td>0.133809</td>
     </tr>
     <tr>
       <th>foo</th>
       <th>two</th>
-      <td>-0.823368</td>
-      <td>0.633874</td>
+      <td>1.438854</td>
+      <td>1.402404</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>three</th>
-      <td>0.072165</td>
-      <td>0.085719</td>
+      <td>-1.017205</td>
+      <td>2.006295</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.314161</td>
-      <td>-0.448363</td>
+      <td>0.628354</td>
+      <td>1.472412</td>
     </tr>
   </tbody>
 </table>
@@ -5187,13 +5464,13 @@ dtype: int64
   <tbody>
     <tr>
       <th>bar</th>
-      <td>1.175140</td>
-      <td>0.136201</td>
+      <td>2.692870</td>
+      <td>1.578997</td>
     </tr>
     <tr>
       <th>foo</th>
-      <td>0.208009</td>
-      <td>0.677534</td>
+      <td>2.817105</td>
+      <td>0.778729</td>
     </tr>
   </tbody>
 </table>
@@ -5239,29 +5516,29 @@ dtype: int64
     <tr>
       <th rowspan="3" valign="top">bar</th>
       <th>one</th>
-      <td>1.175140</td>
-      <td>-0.688398</td>
+      <td>-0.197821</td>
+      <td>-0.119866</td>
     </tr>
     <tr>
       <th>three</th>
-      <td>0.445260</td>
-      <td>0.136201</td>
+      <td>2.692870</td>
+      <td>1.125497</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.314161</td>
-      <td>-0.448363</td>
+      <td>0.068631</td>
+      <td>1.578997</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>0.208009</td>
-      <td>0.268780</td>
+      <td>1.587711</td>
+      <td>0.778729</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.336091</td>
-      <td>0.677534</td>
+      <td>2.817105</td>
+      <td>0.544011</td>
     </tr>
   </tbody>
 </table>
@@ -5307,13 +5584,13 @@ dtype: int64
   <tbody>
     <tr>
       <th>bar</th>
-      <td>0.233286</td>
-      <td>-0.262761</td>
+      <td>0.735415</td>
+      <td>0.441304</td>
     </tr>
     <tr>
       <th>foo</th>
-      <td>-0.291297</td>
-      <td>0.217234</td>
+      <td>0.943100</td>
+      <td>0.004195</td>
     </tr>
   </tbody>
 </table>
@@ -5359,29 +5636,29 @@ dtype: int64
     <tr>
       <th rowspan="3" valign="top">bar</th>
       <th>one</th>
-      <td>1.175140</td>
-      <td>-0.688398</td>
+      <td>-1.684147</td>
+      <td>0.133809</td>
     </tr>
     <tr>
       <th>three</th>
-      <td>0.036082</td>
-      <td>0.042859</td>
+      <td>-0.508602</td>
+      <td>1.003148</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.314161</td>
-      <td>-0.448363</td>
+      <td>0.628354</td>
+      <td>1.472412</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>-0.170910</td>
-      <td>0.117531</td>
+      <td>1.461765</td>
+      <td>-0.298869</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.411684</td>
-      <td>0.316937</td>
+      <td>0.719427</td>
+      <td>0.701202</td>
     </tr>
   </tbody>
 </table>
@@ -5405,6 +5682,100 @@ dtype: int64
 </div>
 </div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">df</span></code>가 다음과 같다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>foo</td>
+      <td>one</td>
+      <td>1.862528</td>
+      <td>0.140788</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>bar</td>
+      <td>one</td>
+      <td>-1.684147</td>
+      <td>0.133809</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>foo</td>
+      <td>two</td>
+      <td>1.536145</td>
+      <td>0.453376</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>bar</td>
+      <td>three</td>
+      <td>-0.593406</td>
+      <td>0.284531</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>foo</td>
+      <td>two</td>
+      <td>-0.097291</td>
+      <td>0.949028</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>bar</td>
+      <td>two</td>
+      <td>0.628354</td>
+      <td>1.472412</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>foo</td>
+      <td>one</td>
+      <td>1.061002</td>
+      <td>-0.738526</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>bar</td>
+      <td>three</td>
+      <td>-0.423798</td>
+      <td>1.721764</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">df</span></code>를 이용하여 아래 데이터프레임을 생성하는 표현식은?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
@@ -5501,40 +5872,40 @@ dtype: int64
     <tr>
       <th>bar</th>
       <td>4.0</td>
-      <td>0.233286</td>
-      <td>0.730164</td>
-      <td>-0.373096</td>
-      <td>-0.328894</td>
-      <td>0.065550</td>
-      <td>0.627730</td>
-      <td>1.175140</td>
+      <td>0.735415</td>
+      <td>1.326011</td>
+      <td>-0.197821</td>
+      <td>0.002018</td>
+      <td>0.223305</td>
+      <td>0.956702</td>
+      <td>2.692870</td>
       <td>4.0</td>
-      <td>-0.262761</td>
-      <td>0.374098</td>
-      <td>-0.688398</td>
-      <td>-0.508372</td>
-      <td>-0.249423</td>
-      <td>-0.003812</td>
-      <td>0.136201</td>
+      <td>0.441304</td>
+      <td>1.105560</td>
+      <td>-0.819414</td>
+      <td>-0.294753</td>
+      <td>0.502815</td>
+      <td>1.238872</td>
+      <td>1.578997</td>
     </tr>
     <tr>
       <th>foo</th>
       <td>4.0</td>
-      <td>-0.291297</td>
-      <td>0.344751</td>
-      <td>-0.549828</td>
-      <td>-0.502915</td>
-      <td>-0.411684</td>
-      <td>-0.200066</td>
-      <td>0.208009</td>
+      <td>0.943100</td>
+      <td>1.638103</td>
+      <td>-1.005778</td>
+      <td>0.028578</td>
+      <td>0.980537</td>
+      <td>1.895059</td>
+      <td>2.817105</td>
       <td>4.0</td>
-      <td>0.217234</td>
-      <td>0.339400</td>
-      <td>-0.043661</td>
-      <td>-0.036204</td>
-      <td>0.117531</td>
-      <td>0.370968</td>
-      <td>0.677534</td>
+      <td>0.004195</td>
+      <td>0.915357</td>
+      <td>-1.268842</td>
+      <td>-0.345049</td>
+      <td>0.253447</td>
+      <td>0.602691</td>
+      <td>0.778729</td>
     </tr>
   </tbody>
 </table>
@@ -5619,98 +5990,98 @@ dtype: int64
       <th rowspan="3" valign="top">bar</th>
       <th>one</th>
       <td>1.0</td>
-      <td>1.175140</td>
+      <td>-0.197821</td>
       <td>NaN</td>
-      <td>1.175140</td>
-      <td>1.175140</td>
-      <td>1.175140</td>
-      <td>1.175140</td>
-      <td>1.175140</td>
+      <td>-0.197821</td>
+      <td>-0.197821</td>
+      <td>-0.197821</td>
+      <td>-0.197821</td>
+      <td>-0.197821</td>
       <td>1.0</td>
-      <td>-0.688398</td>
+      <td>-0.119866</td>
       <td>NaN</td>
-      <td>-0.688398</td>
-      <td>-0.688398</td>
-      <td>-0.688398</td>
-      <td>-0.688398</td>
-      <td>-0.688398</td>
+      <td>-0.119866</td>
+      <td>-0.119866</td>
+      <td>-0.119866</td>
+      <td>-0.119866</td>
+      <td>-0.119866</td>
     </tr>
     <tr>
       <th>three</th>
       <td>2.0</td>
-      <td>0.036082</td>
-      <td>0.578665</td>
-      <td>-0.373096</td>
-      <td>-0.168507</td>
-      <td>0.036082</td>
-      <td>0.240671</td>
-      <td>0.445260</td>
+      <td>1.535425</td>
+      <td>1.636875</td>
+      <td>0.377979</td>
+      <td>0.956702</td>
+      <td>1.535425</td>
+      <td>2.114147</td>
+      <td>2.692870</td>
       <td>2.0</td>
-      <td>0.042859</td>
-      <td>0.132005</td>
-      <td>-0.050483</td>
-      <td>-0.003812</td>
-      <td>0.042859</td>
-      <td>0.089530</td>
-      <td>0.136201</td>
+      <td>0.153041</td>
+      <td>1.375259</td>
+      <td>-0.819414</td>
+      <td>-0.333186</td>
+      <td>0.153041</td>
+      <td>0.639269</td>
+      <td>1.125497</td>
     </tr>
     <tr>
       <th>two</th>
       <td>1.0</td>
-      <td>-0.314161</td>
+      <td>0.068631</td>
       <td>NaN</td>
-      <td>-0.314161</td>
-      <td>-0.314161</td>
-      <td>-0.314161</td>
-      <td>-0.314161</td>
-      <td>-0.314161</td>
+      <td>0.068631</td>
+      <td>0.068631</td>
+      <td>0.068631</td>
+      <td>0.068631</td>
+      <td>0.068631</td>
       <td>1.0</td>
-      <td>-0.448363</td>
+      <td>1.578997</td>
       <td>NaN</td>
-      <td>-0.448363</td>
-      <td>-0.448363</td>
-      <td>-0.448363</td>
-      <td>-0.448363</td>
-      <td>-0.448363</td>
+      <td>1.578997</td>
+      <td>1.578997</td>
+      <td>1.578997</td>
+      <td>1.578997</td>
+      <td>1.578997</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
       <td>2.0</td>
-      <td>-0.170910</td>
-      <td>0.535872</td>
-      <td>-0.549828</td>
-      <td>-0.360369</td>
-      <td>-0.170910</td>
-      <td>0.018549</td>
-      <td>0.208009</td>
+      <td>0.980537</td>
+      <td>0.858673</td>
+      <td>0.373363</td>
+      <td>0.676950</td>
+      <td>0.980537</td>
+      <td>1.284124</td>
+      <td>1.587711</td>
       <td>2.0</td>
-      <td>0.117531</td>
-      <td>0.213899</td>
-      <td>-0.033719</td>
-      <td>0.041906</td>
-      <td>0.117531</td>
-      <td>0.193155</td>
-      <td>0.268780</td>
+      <td>0.370805</td>
+      <td>0.576891</td>
+      <td>-0.037118</td>
+      <td>0.166844</td>
+      <td>0.370805</td>
+      <td>0.574767</td>
+      <td>0.778729</td>
     </tr>
     <tr>
       <th>two</th>
       <td>2.0</td>
-      <td>-0.411684</td>
-      <td>0.106905</td>
-      <td>-0.487277</td>
-      <td>-0.449481</td>
-      <td>-0.411684</td>
-      <td>-0.373887</td>
-      <td>-0.336091</td>
+      <td>0.905664</td>
+      <td>2.703187</td>
+      <td>-1.005778</td>
+      <td>-0.050057</td>
+      <td>0.905664</td>
+      <td>1.861384</td>
+      <td>2.817105</td>
       <td>2.0</td>
-      <td>0.316937</td>
-      <td>0.509962</td>
-      <td>-0.043661</td>
-      <td>0.136638</td>
-      <td>0.316937</td>
-      <td>0.497235</td>
-      <td>0.677534</td>
+      <td>-0.362415</td>
+      <td>1.281881</td>
+      <td>-1.268842</td>
+      <td>-0.815629</td>
+      <td>-0.362415</td>
+      <td>0.090798</td>
+      <td>0.544011</td>
     </tr>
   </tbody>
 </table>
@@ -5788,46 +6159,46 @@ dtype: int64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>one</th>
-      <td>-0.183730</td>
-      <td>-0.353606</td>
+      <td>-3.339658</td>
+      <td>0.638483</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.101493</td>
-      <td>0.522354</td>
+      <td>-0.446766</td>
+      <td>0.699936</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>one</th>
-      <td>-0.912054</td>
-      <td>-0.208051</td>
+      <td>-1.351415</td>
+      <td>0.228252</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-1.769577</td>
-      <td>-1.411224</td>
+      <td>1.534718</td>
+      <td>0.533772</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">foo</th>
       <th>one</th>
-      <td>0.589184</td>
-      <td>0.253978</td>
+      <td>0.156370</td>
+      <td>-1.609710</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>0.288445</td>
-      <td>0.249781</td>
+      <td>-0.730430</td>
+      <td>0.928883</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">qux</th>
       <th>one</th>
-      <td>-0.556623</td>
-      <td>-1.294087</td>
+      <td>-0.048481</td>
+      <td>1.443387</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.280670</td>
-      <td>-1.156255</td>
+      <td>-0.850309</td>
+      <td>-0.299750</td>
     </tr>
   </tbody>
 </table>
@@ -5874,24 +6245,24 @@ dtype: int64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>one</th>
-      <td>-0.183730</td>
-      <td>-0.353606</td>
+      <td>-3.339658</td>
+      <td>0.638483</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.101493</td>
-      <td>0.522354</td>
+      <td>-0.446766</td>
+      <td>0.699936</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>one</th>
-      <td>-0.912054</td>
-      <td>-0.208051</td>
+      <td>-1.351415</td>
+      <td>0.228252</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-1.769577</td>
-      <td>-1.411224</td>
+      <td>1.534718</td>
+      <td>0.533772</td>
     </tr>
   </tbody>
 </table>
@@ -5904,37 +6275,10 @@ dtype: int64
 인덱스의 마지막 레벨의 라벨로 변환된다.
 여기서는 결국 3중 인덱스를 사용하는 시리즈를 생성한다.</p></li>
 </ul>
+<p><code class="docutils literal notranslate"><span class="pre">df2</span></code>가 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stacked</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">stack</span><span class="p">()</span>
-<span class="n">stacked</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>first  second   
-bar    one     A   -0.183730
-               B   -0.353606
-       two     A   -0.101493
-               B    0.522354
-baz    one     A   -0.912054
-               B   -0.208051
-       two     A   -1.769577
-               B   -1.411224
-dtype: float64
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong>언스택</strong></p>
-<p>행 인덱스의 지정된 레벨을 열의 마지막 레벨로 변환한다.
-인자를 지정하지 않으면 마지막 레벨을 변환한다.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">unstack()</span></code> 메서드</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stacked</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span>
 </pre></div>
 </div>
 </div>
@@ -5972,32 +6316,91 @@ dtype: float64
     <tr>
       <th rowspan="2" valign="top">bar</th>
       <th>one</th>
-      <td>-0.183730</td>
-      <td>-0.353606</td>
+      <td>-3.339658</td>
+      <td>0.638483</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-0.101493</td>
-      <td>0.522354</td>
+      <td>-0.446766</td>
+      <td>0.699936</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">baz</th>
       <th>one</th>
-      <td>-0.912054</td>
-      <td>-0.208051</td>
+      <td>-1.351415</td>
+      <td>0.228252</td>
     </tr>
     <tr>
       <th>two</th>
-      <td>-1.769577</td>
-      <td>-1.411224</td>
+      <td>1.534718</td>
+      <td>0.533772</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">df2</span></code>를 이용하여 아래 데이터프레임을 생성하는 표현식은?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stacked</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 적절한 표현식 작성</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>first  second   
+bar    one     A   -3.339658
+               B    0.638483
+       two     A   -0.446766
+               B    0.699936
+baz    one     A   -1.351415
+               B    0.228252
+       two     A    1.534718
+               B    0.533772
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>언스택</strong></p>
+<p>행 인덱스의 지정된 레벨을 열의 마지막 레벨로 변환한다.
+인자를 지정하지 않으면 마지막 레벨을 변환한다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">unstack()</span></code> 메서드</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">stacked</span></code>가 다음과 같다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span> <span class="o">=</span> <span class="n">stacked</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">df3</span></code>가 다음과 같다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df3</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>first  second   
+bar    one     A   -3.339658
+               B    0.638483
+       two     A   -0.446766
+               B    0.699936
+baz    one     A   -1.351415
+               B    0.228252
+       two     A    1.534718
+               B    0.533772
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">df3</span></code>를 이용하여 아래 데이터프레임을 생성하는 표현식은?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 적절한 표현식 작성</span>
 </pre></div>
 </div>
 </div>
@@ -6012,25 +6415,15 @@ dtype: float64
         vertical-align: top;
     }
 
-    .dataframe thead tr th {
-        text-align: left;
-    }
-
-    .dataframe thead tr:last-of-type th {
+    .dataframe thead th {
         text-align: right;
     }
 </style>
 <table border="1" class="dataframe">
   <thead>
-    <tr>
+    <tr style="text-align: right;">
       <th></th>
-      <th colspan="2" halign="left">A</th>
-      <th colspan="2" halign="left">B</th>
-    </tr>
-    <tr>
       <th>second</th>
-      <th>one</th>
-      <th>two</th>
       <th>one</th>
       <th>two</th>
     </tr>
@@ -6039,23 +6432,30 @@ dtype: float64
       <th></th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>bar</th>
-      <td>-0.183730</td>
-      <td>-0.101493</td>
-      <td>-0.353606</td>
-      <td>0.522354</td>
+      <th rowspan="2" valign="top">bar</th>
+      <th>A</th>
+      <td>-3.339658</td>
+      <td>-0.446766</td>
     </tr>
     <tr>
-      <th>baz</th>
-      <td>-0.912054</td>
-      <td>-1.769577</td>
-      <td>-0.208051</td>
-      <td>-1.411224</td>
+      <th>B</th>
+      <td>0.638483</td>
+      <td>0.699936</td>
+    </tr>
+    <tr>
+      <th rowspan="2" valign="top">baz</th>
+      <th>A</th>
+      <td>-1.351415</td>
+      <td>1.534718</td>
+    </tr>
+    <tr>
+      <th>B</th>
+      <td>0.228252</td>
+      <td>0.533772</td>
     </tr>
   </tbody>
 </table>
@@ -6102,87 +6502,24 @@ dtype: float64
     <tr>
       <th rowspan="2" valign="top">one</th>
       <th>A</th>
-      <td>-0.183730</td>
-      <td>-0.912054</td>
+      <td>-3.339658</td>
+      <td>-1.351415</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>-0.353606</td>
-      <td>-0.208051</td>
+      <td>0.638483</td>
+      <td>0.228252</td>
     </tr>
     <tr>
       <th rowspan="2" valign="top">two</th>
       <th>A</th>
-      <td>-0.101493</td>
-      <td>-1.769577</td>
+      <td>-0.446766</td>
+      <td>1.534718</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>0.522354</td>
-      <td>-1.411224</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stacked</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>second</th>
-      <th>one</th>
-      <th>two</th>
-    </tr>
-    <tr>
-      <th>first</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th rowspan="2" valign="top">bar</th>
-      <th>A</th>
-      <td>-0.183730</td>
-      <td>-0.101493</td>
-    </tr>
-    <tr>
-      <th>B</th>
-      <td>-0.353606</td>
-      <td>0.522354</td>
-    </tr>
-    <tr>
-      <th rowspan="2" valign="top">baz</th>
-      <th>A</th>
-      <td>-0.912054</td>
-      <td>-1.769577</td>
-    </tr>
-    <tr>
-      <th>B</th>
-      <td>-0.208051</td>
-      <td>-1.411224</td>
+      <td>0.699936</td>
+      <td>0.533772</td>
     </tr>
   </tbody>
 </table>
@@ -6246,192 +6583,192 @@ dtype: float64
       <td>one</td>
       <td>A</td>
       <td>foo</td>
-      <td>0.866700</td>
-      <td>-0.391954</td>
+      <td>-0.807445</td>
+      <td>1.571477</td>
     </tr>
     <tr>
       <th>1</th>
       <td>one</td>
       <td>B</td>
       <td>foo</td>
-      <td>0.128487</td>
-      <td>-0.664160</td>
+      <td>0.566058</td>
+      <td>0.360575</td>
     </tr>
     <tr>
       <th>2</th>
       <td>two</td>
       <td>C</td>
       <td>foo</td>
-      <td>-0.605794</td>
-      <td>-0.879873</td>
+      <td>-1.359200</td>
+      <td>-0.416175</td>
     </tr>
     <tr>
       <th>3</th>
       <td>three</td>
       <td>A</td>
       <td>bar</td>
-      <td>1.246883</td>
-      <td>1.615425</td>
+      <td>0.234013</td>
+      <td>0.307681</td>
     </tr>
     <tr>
       <th>4</th>
       <td>one</td>
       <td>B</td>
       <td>bar</td>
-      <td>1.458263</td>
-      <td>-1.742412</td>
+      <td>-0.043083</td>
+      <td>0.356286</td>
     </tr>
     <tr>
       <th>5</th>
       <td>one</td>
       <td>C</td>
       <td>bar</td>
-      <td>0.022205</td>
-      <td>-1.676870</td>
+      <td>-0.256746</td>
+      <td>1.504220</td>
     </tr>
     <tr>
       <th>6</th>
       <td>two</td>
       <td>A</td>
       <td>foo</td>
-      <td>-0.675659</td>
-      <td>-2.378216</td>
+      <td>-0.661517</td>
+      <td>0.693881</td>
     </tr>
     <tr>
       <th>7</th>
       <td>three</td>
       <td>B</td>
       <td>foo</td>
-      <td>0.869290</td>
-      <td>0.599767</td>
+      <td>-0.190959</td>
+      <td>0.266937</td>
     </tr>
     <tr>
       <th>8</th>
       <td>one</td>
       <td>C</td>
       <td>foo</td>
-      <td>-0.984250</td>
-      <td>-0.086763</td>
+      <td>-0.790224</td>
+      <td>-2.576235</td>
     </tr>
     <tr>
       <th>9</th>
       <td>one</td>
       <td>A</td>
       <td>bar</td>
-      <td>1.776414</td>
-      <td>-0.007977</td>
+      <td>-0.654992</td>
+      <td>0.263814</td>
     </tr>
     <tr>
       <th>10</th>
       <td>two</td>
       <td>B</td>
       <td>bar</td>
-      <td>-0.463037</td>
-      <td>2.185488</td>
+      <td>-0.990178</td>
+      <td>-0.286966</td>
     </tr>
     <tr>
       <th>11</th>
       <td>three</td>
       <td>C</td>
       <td>bar</td>
-      <td>-1.682035</td>
-      <td>-0.528180</td>
+      <td>-1.613838</td>
+      <td>0.186938</td>
     </tr>
     <tr>
       <th>12</th>
       <td>one</td>
       <td>A</td>
       <td>foo</td>
-      <td>-0.649297</td>
-      <td>-0.202406</td>
+      <td>-0.194243</td>
+      <td>-0.713591</td>
     </tr>
     <tr>
       <th>13</th>
       <td>one</td>
       <td>B</td>
       <td>foo</td>
-      <td>-0.426563</td>
-      <td>-0.134554</td>
+      <td>-0.816249</td>
+      <td>-1.600981</td>
     </tr>
     <tr>
       <th>14</th>
       <td>two</td>
       <td>C</td>
       <td>foo</td>
-      <td>-0.249753</td>
-      <td>-1.196685</td>
+      <td>0.859702</td>
+      <td>-1.405134</td>
     </tr>
     <tr>
       <th>15</th>
       <td>three</td>
       <td>A</td>
       <td>bar</td>
-      <td>0.778470</td>
-      <td>0.276501</td>
+      <td>0.226749</td>
+      <td>-0.622247</td>
     </tr>
     <tr>
       <th>16</th>
       <td>one</td>
       <td>B</td>
       <td>bar</td>
-      <td>0.796273</td>
-      <td>-0.846331</td>
+      <td>1.233826</td>
+      <td>-0.894713</td>
     </tr>
     <tr>
       <th>17</th>
       <td>one</td>
       <td>C</td>
       <td>bar</td>
-      <td>0.302038</td>
-      <td>-0.623191</td>
+      <td>-0.194334</td>
+      <td>-0.089782</td>
     </tr>
     <tr>
       <th>18</th>
       <td>two</td>
       <td>A</td>
       <td>foo</td>
-      <td>0.218332</td>
-      <td>1.801554</td>
+      <td>-0.242594</td>
+      <td>1.653136</td>
     </tr>
     <tr>
       <th>19</th>
       <td>three</td>
       <td>B</td>
       <td>foo</td>
-      <td>0.566309</td>
-      <td>1.652160</td>
+      <td>0.854093</td>
+      <td>-1.651289</td>
     </tr>
     <tr>
       <th>20</th>
       <td>one</td>
       <td>C</td>
       <td>foo</td>
-      <td>-1.134103</td>
-      <td>1.824827</td>
+      <td>0.319676</td>
+      <td>0.954510</td>
     </tr>
     <tr>
       <th>21</th>
       <td>one</td>
       <td>A</td>
       <td>bar</td>
-      <td>0.056665</td>
-      <td>0.222486</td>
+      <td>-0.536380</td>
+      <td>0.201390</td>
     </tr>
     <tr>
       <th>22</th>
       <td>two</td>
       <td>B</td>
       <td>bar</td>
-      <td>1.336600</td>
-      <td>-1.557439</td>
+      <td>-0.381925</td>
+      <td>1.251930</td>
     </tr>
     <tr>
       <th>23</th>
       <td>three</td>
       <td>C</td>
       <td>bar</td>
-      <td>0.145941</td>
-      <td>-1.211354</td>
+      <td>0.445800</td>
+      <td>-1.740890</td>
     </tr>
   </tbody>
 </table>
@@ -6477,50 +6814,50 @@ dtype: float64
     <tr>
       <th rowspan="3" valign="top">one</th>
       <th>A</th>
-      <td>0.916539</td>
-      <td>0.108702</td>
+      <td>-0.595686</td>
+      <td>-0.500844</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>1.127268</td>
-      <td>-0.149038</td>
+      <td>0.595371</td>
+      <td>-0.125095</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>0.162121</td>
-      <td>-1.059177</td>
+      <td>-0.225540</td>
+      <td>-0.235274</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">three</th>
       <th>A</th>
-      <td>1.012677</td>
+      <td>0.230381</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>B</th>
       <td>NaN</td>
-      <td>0.717799</td>
+      <td>0.331567</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>-0.768047</td>
+      <td>-0.584019</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">two</th>
       <th>A</th>
       <td>NaN</td>
-      <td>-0.228664</td>
+      <td>-0.452055</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>0.436781</td>
+      <td>-0.686052</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>C</th>
       <td>NaN</td>
-      <td>-0.427774</td>
+      <td>-0.249749</td>
     </tr>
   </tbody>
 </table>
@@ -6566,56 +6903,64 @@ dtype: float64
     <tr>
       <th rowspan="3" valign="top">one</th>
       <th>A</th>
-      <td>1.833079</td>
-      <td>0.217403</td>
+      <td>-1.191372</td>
+      <td>-1.001689</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>2.254537</td>
-      <td>-0.298076</td>
+      <td>1.190743</td>
+      <td>-0.250191</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>0.324243</td>
-      <td>-2.118353</td>
+      <td>-0.451080</td>
+      <td>-0.470548</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">three</th>
       <th>A</th>
-      <td>2.025354</td>
+      <td>0.460763</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>B</th>
       <td>NaN</td>
-      <td>1.435599</td>
+      <td>0.663134</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>-1.536094</td>
+      <td>-1.168039</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">two</th>
       <th>A</th>
       <td>NaN</td>
-      <td>-0.457328</td>
+      <td>-0.904111</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>0.873562</td>
+      <td>-1.372104</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>C</th>
       <td>NaN</td>
-      <td>-0.855547</td>
+      <td>-0.499498</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">DataFrame.pivot()</span></code> 메서드</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">df</span></code>가 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
@@ -6654,192 +6999,118 @@ dtype: float64
       <td>one</td>
       <td>A</td>
       <td>foo</td>
-      <td>0.866700</td>
-      <td>-0.391954</td>
+      <td>-0.807445</td>
+      <td>1.571477</td>
     </tr>
     <tr>
       <th>1</th>
       <td>one</td>
       <td>B</td>
       <td>foo</td>
-      <td>0.128487</td>
-      <td>-0.664160</td>
+      <td>0.566058</td>
+      <td>0.360575</td>
     </tr>
     <tr>
       <th>2</th>
       <td>two</td>
       <td>C</td>
       <td>foo</td>
-      <td>-0.605794</td>
-      <td>-0.879873</td>
+      <td>-1.359200</td>
+      <td>-0.416175</td>
     </tr>
     <tr>
       <th>3</th>
       <td>three</td>
       <td>A</td>
       <td>bar</td>
-      <td>1.246883</td>
-      <td>1.615425</td>
+      <td>0.234013</td>
+      <td>0.307681</td>
     </tr>
     <tr>
       <th>4</th>
       <td>one</td>
       <td>B</td>
       <td>bar</td>
-      <td>1.458263</td>
-      <td>-1.742412</td>
+      <td>-0.043083</td>
+      <td>0.356286</td>
     </tr>
     <tr>
       <th>5</th>
       <td>one</td>
       <td>C</td>
       <td>bar</td>
-      <td>0.022205</td>
-      <td>-1.676870</td>
+      <td>-0.256746</td>
+      <td>1.504220</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">df</span></code>를 이용해서 아래 데이터프레임을 생성하는 표현식은?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 적절한 표현식 작성</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>C</th>
+      <th>bar</th>
+      <th>foo</th>
     </tr>
     <tr>
-      <th>6</th>
-      <td>two</td>
-      <td>A</td>
-      <td>foo</td>
-      <td>-0.675659</td>
-      <td>-2.378216</td>
+      <th>A</th>
+      <th>B</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="3" valign="top">one</th>
+      <th>A</th>
+      <td>NaN</td>
+      <td>-0.807445</td>
     </tr>
     <tr>
-      <th>7</th>
-      <td>three</td>
-      <td>B</td>
-      <td>foo</td>
-      <td>0.869290</td>
-      <td>0.599767</td>
+      <th>B</th>
+      <td>-0.043083</td>
+      <td>0.566058</td>
     </tr>
     <tr>
-      <th>8</th>
-      <td>one</td>
-      <td>C</td>
-      <td>foo</td>
-      <td>-0.984250</td>
-      <td>-0.086763</td>
+      <th>C</th>
+      <td>-0.256746</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>9</th>
-      <td>one</td>
-      <td>A</td>
-      <td>bar</td>
-      <td>1.776414</td>
-      <td>-0.007977</td>
+      <th>three</th>
+      <th>A</th>
+      <td>0.234013</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>10</th>
-      <td>two</td>
-      <td>B</td>
-      <td>bar</td>
-      <td>-0.463037</td>
-      <td>2.185488</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>three</td>
-      <td>C</td>
-      <td>bar</td>
-      <td>-1.682035</td>
-      <td>-0.528180</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>one</td>
-      <td>A</td>
-      <td>foo</td>
-      <td>-0.649297</td>
-      <td>-0.202406</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>one</td>
-      <td>B</td>
-      <td>foo</td>
-      <td>-0.426563</td>
-      <td>-0.134554</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>two</td>
-      <td>C</td>
-      <td>foo</td>
-      <td>-0.249753</td>
-      <td>-1.196685</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>three</td>
-      <td>A</td>
-      <td>bar</td>
-      <td>0.778470</td>
-      <td>0.276501</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>one</td>
-      <td>B</td>
-      <td>bar</td>
-      <td>0.796273</td>
-      <td>-0.846331</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>one</td>
-      <td>C</td>
-      <td>bar</td>
-      <td>0.302038</td>
-      <td>-0.623191</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>two</td>
-      <td>A</td>
-      <td>foo</td>
-      <td>0.218332</td>
-      <td>1.801554</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>three</td>
-      <td>B</td>
-      <td>foo</td>
-      <td>0.566309</td>
-      <td>1.652160</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>one</td>
-      <td>C</td>
-      <td>foo</td>
-      <td>-1.134103</td>
-      <td>1.824827</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>one</td>
-      <td>A</td>
-      <td>bar</td>
-      <td>0.056665</td>
-      <td>0.222486</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>two</td>
-      <td>B</td>
-      <td>bar</td>
-      <td>1.336600</td>
-      <td>-1.557439</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>three</td>
-      <td>C</td>
-      <td>bar</td>
-      <td>0.145941</td>
-      <td>-1.211354</td>
+      <th>two</th>
+      <th>C</th>
+      <td>NaN</td>
+      <td>-1.359200</td>
     </tr>
   </tbody>
 </table>
@@ -6884,96 +7155,96 @@ dtype: float64
       <td>one</td>
       <td>A</td>
       <td>bar</td>
-      <td>1.833079</td>
-      <td>0.214510</td>
+      <td>-1.191372</td>
+      <td>0.465204</td>
     </tr>
     <tr>
       <th>1</th>
       <td>one</td>
       <td>A</td>
       <td>foo</td>
-      <td>0.217403</td>
-      <td>-0.594360</td>
+      <td>-1.001689</td>
+      <td>0.857886</td>
     </tr>
     <tr>
       <th>2</th>
       <td>one</td>
       <td>B</td>
       <td>bar</td>
-      <td>2.254537</td>
-      <td>-2.588743</td>
+      <td>1.190743</td>
+      <td>-0.538427</td>
     </tr>
     <tr>
       <th>3</th>
       <td>one</td>
       <td>B</td>
       <td>foo</td>
-      <td>-0.298076</td>
-      <td>-0.798714</td>
+      <td>-0.250191</td>
+      <td>-1.240406</td>
     </tr>
     <tr>
       <th>4</th>
       <td>one</td>
       <td>C</td>
       <td>bar</td>
-      <td>0.324243</td>
-      <td>-2.300061</td>
+      <td>-0.451080</td>
+      <td>1.414438</td>
     </tr>
     <tr>
       <th>5</th>
       <td>one</td>
       <td>C</td>
       <td>foo</td>
-      <td>-2.118353</td>
-      <td>1.738063</td>
+      <td>-0.470548</td>
+      <td>-1.621726</td>
     </tr>
     <tr>
       <th>6</th>
       <td>three</td>
       <td>A</td>
       <td>bar</td>
-      <td>2.025354</td>
-      <td>1.891926</td>
+      <td>0.460763</td>
+      <td>-0.314566</td>
     </tr>
     <tr>
       <th>7</th>
       <td>three</td>
       <td>B</td>
       <td>foo</td>
-      <td>1.435599</td>
-      <td>2.251927</td>
+      <td>0.663134</td>
+      <td>-1.384352</td>
     </tr>
     <tr>
       <th>8</th>
       <td>three</td>
       <td>C</td>
       <td>bar</td>
-      <td>-1.536094</td>
-      <td>-1.739533</td>
+      <td>-1.168039</td>
+      <td>-1.553952</td>
     </tr>
     <tr>
       <th>9</th>
       <td>two</td>
       <td>A</td>
       <td>foo</td>
-      <td>-0.457328</td>
-      <td>-0.576663</td>
+      <td>-0.904111</td>
+      <td>2.347018</td>
     </tr>
     <tr>
       <th>10</th>
       <td>two</td>
       <td>B</td>
       <td>bar</td>
-      <td>0.873562</td>
-      <td>0.628049</td>
+      <td>-1.372104</td>
+      <td>0.964964</td>
     </tr>
     <tr>
       <th>11</th>
       <td>two</td>
       <td>C</td>
       <td>foo</td>
-      <td>-0.855547</td>
-      <td>-2.076558</td>
+      <td>-0.499498</td>
+      <td>-1.821310</td>
     </tr>
   </tbody>
 </table>
@@ -7019,50 +7290,50 @@ dtype: float64
     <tr>
       <th rowspan="3" valign="top">one</th>
       <th>A</th>
-      <td>1.833079</td>
-      <td>0.217403</td>
+      <td>-1.191372</td>
+      <td>-1.001689</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>2.254537</td>
-      <td>-0.298076</td>
+      <td>1.190743</td>
+      <td>-0.250191</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>0.324243</td>
-      <td>-2.118353</td>
+      <td>-0.451080</td>
+      <td>-0.470548</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">three</th>
       <th>A</th>
-      <td>2.025354</td>
+      <td>0.460763</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>B</th>
       <td>NaN</td>
-      <td>1.435599</td>
+      <td>0.663134</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>-1.536094</td>
+      <td>-1.168039</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th rowspan="3" valign="top">two</th>
       <th>A</th>
       <td>NaN</td>
-      <td>-0.457328</td>
+      <td>-0.904111</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>0.873562</td>
+      <td>-1.372104</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>C</th>
       <td>NaN</td>
-      <td>-0.855547</td>
+      <td>-0.499498</td>
     </tr>
   </tbody>
 </table>
@@ -7157,18 +7428,18 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01 00:00:00    271
-2023-01-01 00:00:01      7
-2023-01-01 00:00:02    292
-2023-01-01 00:00:03    248
-2023-01-01 00:00:04    182
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01 00:00:00    240
+2023-01-01 00:00:01    458
+2023-01-01 00:00:02    163
+2023-01-01 00:00:03    271
+2023-01-01 00:00:04    300
                       ... 
-2023-01-01 00:01:35    147
-2023-01-01 00:01:36    488
-2023-01-01 00:01:37    254
-2023-01-01 00:01:38     35
-2023-01-01 00:01:39    379
-Freq: S, Length: 100, dtype: int64
+2023-01-01 00:01:35    362
+2023-01-01 00:01:36    102
+2023-01-01 00:01:37    156
+2023-01-01 00:01:38    114
+2023-01-01 00:01:39    395
+Freq: S, Length: 100, dtype: int32
 </pre></div>
 </div>
 </div>
@@ -7187,17 +7458,17 @@ Freq: S, Length: 100, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01 00:00:00    2432
-2023-01-01 00:00:10    3050
-2023-01-01 00:00:20    1942
-2023-01-01 00:00:30    2858
-2023-01-01 00:00:40    3006
-2023-01-01 00:00:50    1574
-2023-01-01 00:01:00    1558
-2023-01-01 00:01:10    2078
-2023-01-01 00:01:20    2574
-2023-01-01 00:01:30    2597
-Freq: 10S, dtype: int64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01 00:00:00    2980
+2023-01-01 00:00:10    2441
+2023-01-01 00:00:20    1680
+2023-01-01 00:00:30    2490
+2023-01-01 00:00:40    2495
+2023-01-01 00:00:50    2141
+2023-01-01 00:01:00    3154
+2023-01-01 00:01:10    3104
+2023-01-01 00:01:20    2312
+2023-01-01 00:01:30    2620
+Freq: 10S, dtype: int32
 </pre></div>
 </div>
 </div>
@@ -7214,9 +7485,9 @@ Freq: 10S, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01 00:00:00    14862
-2023-01-01 00:01:00     8807
-Freq: T, dtype: int64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01 00:00:00    14227
+2023-01-01 00:01:00    11190
+Freq: T, dtype: int32
 </pre></div>
 </div>
 </div>
@@ -7254,18 +7525,18 @@ Freq: T, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-31    0.779410
-2023-02-28   -1.480040
-2023-03-31    0.141697
-2023-04-30   -0.283880
-2023-05-31   -0.328387
-2023-06-30    0.331730
-2023-07-31    1.833566
-2023-08-31    1.312762
-2023-09-30   -0.944516
-2023-10-31   -0.961002
-2023-11-30   -0.522321
-2023-12-31   -1.271082
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-31    0.399498
+2023-02-28    0.835630
+2023-03-31   -0.350634
+2023-04-30    0.541861
+2023-05-31    0.193726
+2023-06-30    0.038754
+2023-07-31    1.291831
+2023-08-31   -1.045115
+2023-09-30   -1.527701
+2023-10-31   -0.274279
+2023-11-30    0.092871
+2023-12-31   -1.090811
 Freq: M, dtype: float64
 </pre></div>
 </div>
@@ -7283,18 +7554,18 @@ Freq: M, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01    0.779410
-2023-02   -1.480040
-2023-03    0.141697
-2023-04   -0.283880
-2023-05   -0.328387
-2023-06    0.331730
-2023-07    1.833566
-2023-08    1.312762
-2023-09   -0.944516
-2023-10   -0.961002
-2023-11   -0.522321
-2023-12   -1.271082
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01    0.399498
+2023-02    0.835630
+2023-03   -0.350634
+2023-04    0.541861
+2023-05    0.193726
+2023-06    0.038754
+2023-07    1.291831
+2023-08   -1.045115
+2023-09   -1.527701
+2023-10   -0.274279
+2023-11    0.092871
+2023-12   -1.090811
 Freq: M, dtype: float64
 </pre></div>
 </div>
@@ -7311,18 +7582,18 @@ Freq: M, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01    0.779410
-2023-02-01   -1.480040
-2023-03-01    0.141697
-2023-04-01   -0.283880
-2023-05-01   -0.328387
-2023-06-01    0.331730
-2023-07-01    1.833566
-2023-08-01    1.312762
-2023-09-01   -0.944516
-2023-10-01   -0.961002
-2023-11-01   -0.522321
-2023-12-01   -1.271082
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-01-01    0.399498
+2023-02-01    0.835630
+2023-03-01   -0.350634
+2023-04-01    0.541861
+2023-05-01    0.193726
+2023-06-01    0.038754
+2023-07-01    1.291831
+2023-08-01   -1.045115
+2023-09-01   -1.527701
+2023-10-01   -0.274279
+2023-11-01    0.092871
+2023-12-01   -1.090811
 Freq: MS, dtype: float64
 </pre></div>
 </div>
@@ -7386,8 +7657,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>A</td>
       <td>foo</td>
-      <td>0.866700</td>
-      <td>-0.391954</td>
+      <td>-2.878726</td>
+      <td>-2.064460</td>
     </tr>
     <tr>
       <th>1</th>
@@ -7395,8 +7666,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>B</td>
       <td>foo</td>
-      <td>0.128487</td>
-      <td>-0.664160</td>
+      <td>1.450555</td>
+      <td>0.130506</td>
     </tr>
     <tr>
       <th>2</th>
@@ -7404,8 +7675,8 @@ Freq: MS, dtype: float64
       <td>two</td>
       <td>C</td>
       <td>foo</td>
-      <td>-0.605794</td>
-      <td>-0.879873</td>
+      <td>-1.023284</td>
+      <td>-0.070181</td>
     </tr>
     <tr>
       <th>3</th>
@@ -7413,8 +7684,8 @@ Freq: MS, dtype: float64
       <td>three</td>
       <td>A</td>
       <td>bar</td>
-      <td>1.246883</td>
-      <td>1.615425</td>
+      <td>0.360537</td>
+      <td>1.091334</td>
     </tr>
     <tr>
       <th>4</th>
@@ -7422,8 +7693,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>B</td>
       <td>bar</td>
-      <td>1.458263</td>
-      <td>-1.742412</td>
+      <td>2.076769</td>
+      <td>-0.766590</td>
     </tr>
     <tr>
       <th>5</th>
@@ -7431,8 +7702,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>C</td>
       <td>bar</td>
-      <td>0.022205</td>
-      <td>-1.676870</td>
+      <td>-0.226304</td>
+      <td>0.575288</td>
     </tr>
     <tr>
       <th>6</th>
@@ -7440,8 +7711,8 @@ Freq: MS, dtype: float64
       <td>two</td>
       <td>A</td>
       <td>foo</td>
-      <td>-0.675659</td>
-      <td>-2.378216</td>
+      <td>0.875535</td>
+      <td>-2.104198</td>
     </tr>
     <tr>
       <th>7</th>
@@ -7449,8 +7720,8 @@ Freq: MS, dtype: float64
       <td>three</td>
       <td>B</td>
       <td>foo</td>
-      <td>0.869290</td>
-      <td>0.599767</td>
+      <td>-0.981223</td>
+      <td>0.452921</td>
     </tr>
     <tr>
       <th>8</th>
@@ -7458,8 +7729,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>C</td>
       <td>foo</td>
-      <td>-0.984250</td>
-      <td>-0.086763</td>
+      <td>-0.254173</td>
+      <td>-0.573222</td>
     </tr>
     <tr>
       <th>9</th>
@@ -7467,8 +7738,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>A</td>
       <td>bar</td>
-      <td>1.776414</td>
-      <td>-0.007977</td>
+      <td>1.322995</td>
+      <td>0.695488</td>
     </tr>
     <tr>
       <th>10</th>
@@ -7476,8 +7747,8 @@ Freq: MS, dtype: float64
       <td>two</td>
       <td>B</td>
       <td>bar</td>
-      <td>-0.463037</td>
-      <td>2.185488</td>
+      <td>0.006313</td>
+      <td>-0.070619</td>
     </tr>
     <tr>
       <th>11</th>
@@ -7485,8 +7756,8 @@ Freq: MS, dtype: float64
       <td>three</td>
       <td>C</td>
       <td>bar</td>
-      <td>-1.682035</td>
-      <td>-0.528180</td>
+      <td>0.263893</td>
+      <td>0.670962</td>
     </tr>
     <tr>
       <th>12</th>
@@ -7494,8 +7765,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>A</td>
       <td>foo</td>
-      <td>-0.649297</td>
-      <td>-0.202406</td>
+      <td>-1.089184</td>
+      <td>0.158075</td>
     </tr>
     <tr>
       <th>13</th>
@@ -7503,8 +7774,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>B</td>
       <td>foo</td>
-      <td>-0.426563</td>
-      <td>-0.134554</td>
+      <td>1.034373</td>
+      <td>-0.508421</td>
     </tr>
     <tr>
       <th>14</th>
@@ -7512,8 +7783,8 @@ Freq: MS, dtype: float64
       <td>two</td>
       <td>C</td>
       <td>foo</td>
-      <td>-0.249753</td>
-      <td>-1.196685</td>
+      <td>0.484234</td>
+      <td>-0.955311</td>
     </tr>
     <tr>
       <th>15</th>
@@ -7521,8 +7792,8 @@ Freq: MS, dtype: float64
       <td>three</td>
       <td>A</td>
       <td>bar</td>
-      <td>0.778470</td>
-      <td>0.276501</td>
+      <td>0.693513</td>
+      <td>1.219480</td>
     </tr>
     <tr>
       <th>16</th>
@@ -7530,8 +7801,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>B</td>
       <td>bar</td>
-      <td>0.796273</td>
-      <td>-0.846331</td>
+      <td>-1.147675</td>
+      <td>-0.729457</td>
     </tr>
     <tr>
       <th>17</th>
@@ -7539,8 +7810,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>C</td>
       <td>bar</td>
-      <td>0.302038</td>
-      <td>-0.623191</td>
+      <td>-0.772348</td>
+      <td>0.525151</td>
     </tr>
     <tr>
       <th>18</th>
@@ -7548,8 +7819,8 @@ Freq: MS, dtype: float64
       <td>two</td>
       <td>A</td>
       <td>foo</td>
-      <td>0.218332</td>
-      <td>1.801554</td>
+      <td>0.906707</td>
+      <td>-1.395497</td>
     </tr>
     <tr>
       <th>19</th>
@@ -7557,8 +7828,8 @@ Freq: MS, dtype: float64
       <td>three</td>
       <td>B</td>
       <td>foo</td>
-      <td>0.566309</td>
-      <td>1.652160</td>
+      <td>1.194608</td>
+      <td>0.374196</td>
     </tr>
     <tr>
       <th>20</th>
@@ -7566,8 +7837,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>C</td>
       <td>foo</td>
-      <td>-1.134103</td>
-      <td>1.824827</td>
+      <td>-1.908083</td>
+      <td>-1.584192</td>
     </tr>
     <tr>
       <th>21</th>
@@ -7575,8 +7846,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>A</td>
       <td>bar</td>
-      <td>0.056665</td>
-      <td>0.222486</td>
+      <td>0.074390</td>
+      <td>1.095922</td>
     </tr>
     <tr>
       <th>22</th>
@@ -7584,8 +7855,8 @@ Freq: MS, dtype: float64
       <td>two</td>
       <td>B</td>
       <td>bar</td>
-      <td>1.336600</td>
-      <td>-1.557439</td>
+      <td>-0.443055</td>
+      <td>-2.268940</td>
     </tr>
     <tr>
       <th>23</th>
@@ -7593,8 +7864,8 @@ Freq: MS, dtype: float64
       <td>three</td>
       <td>C</td>
       <td>bar</td>
-      <td>0.145941</td>
-      <td>-1.211354</td>
+      <td>-1.182320</td>
+      <td>0.442309</td>
     </tr>
   </tbody>
 </table>
@@ -7655,8 +7926,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>A</td>
       <td>foo</td>
-      <td>0.866700</td>
-      <td>-0.391954</td>
+      <td>-2.878726</td>
+      <td>-2.064460</td>
     </tr>
     <tr>
       <th>1</th>
@@ -7664,8 +7935,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>B</td>
       <td>foo</td>
-      <td>0.128487</td>
-      <td>-0.664160</td>
+      <td>1.450555</td>
+      <td>0.130506</td>
     </tr>
     <tr>
       <th>2</th>
@@ -7673,8 +7944,8 @@ Freq: MS, dtype: float64
       <td>two</td>
       <td>C</td>
       <td>foo</td>
-      <td>-0.605794</td>
-      <td>-0.879873</td>
+      <td>-1.023284</td>
+      <td>-0.070181</td>
     </tr>
     <tr>
       <th>3</th>
@@ -7682,8 +7953,8 @@ Freq: MS, dtype: float64
       <td>three</td>
       <td>A</td>
       <td>bar</td>
-      <td>1.246883</td>
-      <td>1.615425</td>
+      <td>0.360537</td>
+      <td>1.091334</td>
     </tr>
     <tr>
       <th>4</th>
@@ -7691,8 +7962,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>B</td>
       <td>bar</td>
-      <td>1.458263</td>
-      <td>-1.742412</td>
+      <td>2.076769</td>
+      <td>-0.766590</td>
     </tr>
     <tr>
       <th>5</th>
@@ -7700,8 +7971,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>C</td>
       <td>bar</td>
-      <td>0.022205</td>
-      <td>-1.676870</td>
+      <td>-0.226304</td>
+      <td>0.575288</td>
     </tr>
     <tr>
       <th>6</th>
@@ -7709,8 +7980,8 @@ Freq: MS, dtype: float64
       <td>two</td>
       <td>A</td>
       <td>foo</td>
-      <td>-0.675659</td>
-      <td>-2.378216</td>
+      <td>0.875535</td>
+      <td>-2.104198</td>
     </tr>
     <tr>
       <th>7</th>
@@ -7718,8 +7989,8 @@ Freq: MS, dtype: float64
       <td>three</td>
       <td>B</td>
       <td>foo</td>
-      <td>0.869290</td>
-      <td>0.599767</td>
+      <td>-0.981223</td>
+      <td>0.452921</td>
     </tr>
     <tr>
       <th>8</th>
@@ -7727,8 +7998,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>C</td>
       <td>foo</td>
-      <td>-0.984250</td>
-      <td>-0.086763</td>
+      <td>-0.254173</td>
+      <td>-0.573222</td>
     </tr>
     <tr>
       <th>9</th>
@@ -7736,8 +8007,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>A</td>
       <td>bar</td>
-      <td>1.776414</td>
-      <td>-0.007977</td>
+      <td>1.322995</td>
+      <td>0.695488</td>
     </tr>
     <tr>
       <th>10</th>
@@ -7745,8 +8016,8 @@ Freq: MS, dtype: float64
       <td>two</td>
       <td>B</td>
       <td>bar</td>
-      <td>-0.463037</td>
-      <td>2.185488</td>
+      <td>0.006313</td>
+      <td>-0.070619</td>
     </tr>
     <tr>
       <th>11</th>
@@ -7754,8 +8025,8 @@ Freq: MS, dtype: float64
       <td>three</td>
       <td>C</td>
       <td>bar</td>
-      <td>-1.682035</td>
-      <td>-0.528180</td>
+      <td>0.263893</td>
+      <td>0.670962</td>
     </tr>
     <tr>
       <th>12</th>
@@ -7763,8 +8034,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>A</td>
       <td>foo</td>
-      <td>-0.649297</td>
-      <td>-0.202406</td>
+      <td>-1.089184</td>
+      <td>0.158075</td>
     </tr>
     <tr>
       <th>13</th>
@@ -7772,8 +8043,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>B</td>
       <td>foo</td>
-      <td>-0.426563</td>
-      <td>-0.134554</td>
+      <td>1.034373</td>
+      <td>-0.508421</td>
     </tr>
     <tr>
       <th>14</th>
@@ -7781,8 +8052,8 @@ Freq: MS, dtype: float64
       <td>two</td>
       <td>C</td>
       <td>foo</td>
-      <td>-0.249753</td>
-      <td>-1.196685</td>
+      <td>0.484234</td>
+      <td>-0.955311</td>
     </tr>
     <tr>
       <th>15</th>
@@ -7790,8 +8061,8 @@ Freq: MS, dtype: float64
       <td>three</td>
       <td>A</td>
       <td>bar</td>
-      <td>0.778470</td>
-      <td>0.276501</td>
+      <td>0.693513</td>
+      <td>1.219480</td>
     </tr>
     <tr>
       <th>16</th>
@@ -7799,8 +8070,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>B</td>
       <td>bar</td>
-      <td>0.796273</td>
-      <td>-0.846331</td>
+      <td>-1.147675</td>
+      <td>-0.729457</td>
     </tr>
     <tr>
       <th>17</th>
@@ -7808,8 +8079,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>C</td>
       <td>bar</td>
-      <td>0.302038</td>
-      <td>-0.623191</td>
+      <td>-0.772348</td>
+      <td>0.525151</td>
     </tr>
     <tr>
       <th>18</th>
@@ -7817,8 +8088,8 @@ Freq: MS, dtype: float64
       <td>two</td>
       <td>A</td>
       <td>foo</td>
-      <td>0.218332</td>
-      <td>1.801554</td>
+      <td>0.906707</td>
+      <td>-1.395497</td>
     </tr>
     <tr>
       <th>19</th>
@@ -7826,8 +8097,8 @@ Freq: MS, dtype: float64
       <td>three</td>
       <td>B</td>
       <td>foo</td>
-      <td>0.566309</td>
-      <td>1.652160</td>
+      <td>1.194608</td>
+      <td>0.374196</td>
     </tr>
     <tr>
       <th>20</th>
@@ -7835,8 +8106,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>C</td>
       <td>foo</td>
-      <td>-1.134103</td>
-      <td>1.824827</td>
+      <td>-1.908083</td>
+      <td>-1.584192</td>
     </tr>
     <tr>
       <th>21</th>
@@ -7844,8 +8115,8 @@ Freq: MS, dtype: float64
       <td>one</td>
       <td>A</td>
       <td>bar</td>
-      <td>0.056665</td>
-      <td>0.222486</td>
+      <td>0.074390</td>
+      <td>1.095922</td>
     </tr>
     <tr>
       <th>22</th>
@@ -7853,8 +8124,8 @@ Freq: MS, dtype: float64
       <td>two</td>
       <td>B</td>
       <td>bar</td>
-      <td>1.336600</td>
-      <td>-1.557439</td>
+      <td>-0.443055</td>
+      <td>-2.268940</td>
     </tr>
     <tr>
       <th>23</th>
@@ -7862,8 +8133,8 @@ Freq: MS, dtype: float64
       <td>three</td>
       <td>C</td>
       <td>bar</td>
-      <td>0.145941</td>
-      <td>-1.211354</td>
+      <td>-1.182320</td>
+      <td>0.442309</td>
     </tr>
   </tbody>
 </table>
