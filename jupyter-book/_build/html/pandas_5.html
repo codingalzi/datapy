@@ -190,7 +190,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">실전 데이터 분석</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">30. 타이타닉 데이터 분석</a></li>
-<li class="toctree-l1"><a class="reference internal" href="casestudy_oecd_bli.html">31. OECD 국가의 삶의 만족도</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_california_housing.html">31. (실습) 판다스 활용: 데이터 전처리</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_oecd_bli.html">32. OECD 국가의 삶의 만족도</a></li>
 </ul>
 
     </div>
@@ -417,22 +418,21 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">23.1. 계층 인덱싱</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">23.1.1. 다중 인덱스 레벨 교환과 인덱스 라벨 정렬</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">23.1.2. </a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">23.1.3. 레벨 단위 그룹화</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">23.1.4. 인덱스 지정과 초기화</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">23.1.2. 레벨 단위 그룹화</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">23.1.3. 인덱스 지정과 초기화</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">23.2. 데이터 결합</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">23.2.1. 일대다/다대일 합병</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">23.2.2. 인덱스 기준 합병</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">23.2.3. 종/횡 결합</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">23.2.4. 겹침 결합</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">23.2. 데이터 결합</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">23.2.1. 일대다/다대일 합병</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">23.2.2. 인덱스 기준 합병</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">23.2.3. 종/횡 결합</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">23.2.4. 겹침 결합</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">23.3. 모양 변환</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">23.3.1. 항목 재배열</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">23.3.2. 피버팅</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">23.3.3. 언피버팅</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">23.3. 모양 변환</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">23.3.1. 항목 재배열</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">23.3.2. 피버팅</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">23.3.3. 언피버팅</a></li>
 </ul>
 </li>
 </ul>
@@ -1334,10 +1334,7 @@ dtype: float64
 </div>
 </section>
 <section id="id4">
-<h3><span class="section-number">23.1.2. </span><a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
-</section>
-<section id="id5">
-<h3><span class="section-number">23.1.3. </span>레벨 단위 그룹화<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">23.1.2. </span>레벨 단위 그룹화<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">&quot;key2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -1548,8 +1545,8 @@ dtype: float64
 </div></div></div>
 </div>
 </section>
-<section id="id6">
-<h3><span class="section-number">23.1.4. </span>인덱스 지정과 초기화<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<section id="id5">
+<h3><span class="section-number">23.1.3. </span>인덱스 지정과 초기화<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
@@ -1980,10 +1977,10 @@ dtype: float64
 </div>
 </section>
 </section>
+<section id="id6">
+<h2><span class="section-number">23.2. </span>데이터 결합<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <section id="id7">
-<h2><span class="section-number">23.2. </span>데이터 결합<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
-<section id="id8">
-<h3><span class="section-number">23.2.1. </span>일대다/다대일 합병<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">23.2.1. </span>일대다/다대일 합병<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">],</span>
@@ -3747,8 +3744,8 @@ dtype: float64
 </div></div></div>
 </div>
 </section>
-<section id="id9">
-<h3><span class="section-number">23.2.2. </span>인덱스 기준 합병<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<section id="id8">
+<h3><span class="section-number">23.2.2. </span>인덱스 기준 합병<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">],</span>
@@ -5379,8 +5376,8 @@ dtype: float64
 </div></div></div>
 </div>
 </section>
-<section id="id10">
-<h3><span class="section-number">23.2.3. </span>종/횡 결합<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<section id="id9">
+<h3><span class="section-number">23.2.3. </span>종/횡 결합<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> 함수는 <code class="docutils literal notranslate"><span class="pre">np.concatenate()</span></code>와 유사하게 작동한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6411,8 +6408,8 @@ dtype: Int64
 </div></div></div>
 </div>
 </section>
-<section id="id11">
-<h3><span class="section-number">23.2.4. </span>겹침 결합<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<section id="id10">
+<h3><span class="section-number">23.2.4. </span>겹침 결합<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
 <p>일부 또는 전체가 겹치는 두 개의 시리즈 또는 데이터프레임을 하나의 데이터프레임으로 결합하는 기법을 다룬다.</p>
 <p><strong>시리즈 겹침 결합</strong></p>
 <div class="cell docutils container">
@@ -6671,10 +6668,10 @@ dtype: float64
 </div>
 </section>
 </section>
+<section id="id11">
+<h2><span class="section-number">23.3. </span>모양 변환<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
 <section id="id12">
-<h2><span class="section-number">23.3. </span>모양 변환<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
-<section id="id13">
-<h3><span class="section-number">23.3.1. </span>항목 재배열<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">23.3.1. </span>항목 재배열<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>스택</p></li>
 <li><p>언스택</p></li>
@@ -7950,8 +7947,8 @@ Length: 609, dtype: float64
 </div></div></div>
 </div>
 </section>
-<section id="id14">
-<h3><span class="section-number">23.3.2. </span>피버팅<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<section id="id13">
+<h3><span class="section-number">23.3.2. </span>피버팅<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
 <p>긴 모양 데이터프레임을 넓은 모양 데이터프레임으로 변환하는 과정을 살펴 본다.</p>
 <p><strong>한 개의 열로 구성된 갑을 사용하는 피버팅</strong></p>
 <div class="cell docutils container">
@@ -8621,8 +8618,8 @@ Length: 609, dtype: float64
 </div></div></div>
 </div>
 </section>
-<section id="id15">
-<h3><span class="section-number">23.3.3. </span>언피버팅<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
+<section id="id14">
+<h3><span class="section-number">23.3.3. </span>언피버팅<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
 <p>넓은 모양 데이터프레임을 긴 모양 데이터프레임으로 변환하는 과정을 살펴 본다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -9567,22 +9564,21 @@ dtype: int64
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">23.1. 계층 인덱싱</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">23.1.1. 다중 인덱스 레벨 교환과 인덱스 라벨 정렬</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">23.1.2. </a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">23.1.3. 레벨 단위 그룹화</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">23.1.4. 인덱스 지정과 초기화</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">23.1.2. 레벨 단위 그룹화</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">23.1.3. 인덱스 지정과 초기화</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">23.2. 데이터 결합</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">23.2.1. 일대다/다대일 합병</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">23.2.2. 인덱스 기준 합병</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">23.2.3. 종/횡 결합</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">23.2.4. 겹침 결합</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">23.2. 데이터 결합</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">23.2.1. 일대다/다대일 합병</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">23.2.2. 인덱스 기준 합병</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">23.2.3. 종/횡 결합</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">23.2.4. 겹침 결합</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">23.3. 모양 변환</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">23.3.1. 항목 재배열</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">23.3.2. 피버팅</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">23.3.3. 언피버팅</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">23.3. 모양 변환</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">23.3.1. 항목 재배열</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">23.3.2. 피버팅</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">23.3.3. 언피버팅</a></li>
 </ul>
 </li>
 </ul>
