@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>31. OECD 국가의 삶의 만족도 &#8212; 파이썬 데이터 분석</title>
+    <title>32. OECD 국가의 삶의 만족도 &#8212; 파이썬 데이터 분석</title>
   
   
   
@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'casestudy_oecd_bli';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="30. 타이타닉 데이터 분석" href="casestudy_titanic.html" />
+    <link rel="prev" title="31. (실습) 판다스 활용: 데이터 전처리" href="casestudy_california_housing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,7 +189,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">실전 데이터 분석</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">30. 타이타닉 데이터 분석</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">31. OECD 국가의 삶의 만족도</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_california_housing.html">31. (실습) 판다스 활용: 데이터 전처리</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">32. OECD 국가의 삶의 만족도</a></li>
 </ul>
 
     </div>
@@ -414,15 +415,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">31.1. 주요 내용</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">31.2. 데이터 구하기</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">31.3. 데이터 적재, 정제, 전처리</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gdp">31.3.1. 1인당 GDP 데이터 적재, 정제, 전처리</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">31.3.2. 삶의 만족도 데이터 적재, 정제, 전처리</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">32.1. 주요 내용</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">32.2. 데이터 구하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">32.3. 데이터 적재, 정제, 전처리</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gdp">32.3.1. 1인당 GDP 데이터 적재, 정제, 전처리</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">32.3.2. 삶의 만족도 데이터 적재, 정제, 전처리</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">31.4. 데이터 합병</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">31.5. 그래프 그리기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">32.4. 데이터 합병</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">32.5. 그래프 그리기</a></li>
 </ul>
             </nav>
         </div>
@@ -435,11 +436,11 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="oecd">
-<h1><span class="section-number">31. </span>OECD 국가의 삶의 만족도<a class="headerlink" href="#oecd" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">32. </span>OECD 국가의 삶의 만족도<a class="headerlink" href="#oecd" title="Permalink to this heading">#</a></h1>
 <p><strong>참고:</strong> 오렐리앙 제롱의 <a class="reference external" href="https://github.com/ageron/handson-ml2">&lt;핸즈온 머신러닝(2판)&gt;</a>
 1장의 소스코드를 사용합니다.</p>
 <section id="id1">
-<h2><span class="section-number">31.1. </span>주요 내용<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">32.1. </span>주요 내용<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>1인당 <a class="reference external" href="https://ko.wikipedia.org/wiki/%EA%B5%AD%EB%82%B4%EC%B4%9D%EC%83%9D%EC%82%B0">GDP(국내총생산)</a>와 삶의 만족도 사이의
 선형 관계를 확인한다.</p>
 <div class="cell docutils container">
@@ -469,7 +470,7 @@ document.write(`
 </div>
 </section>
 <section id="id2">
-<h2><span class="section-number">31.2. </span>데이터 구하기<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">32.2. </span>데이터 구하기<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>1인당 GDP와 삶의 만족도 데이터셋은 아래 링크에서 구한다.</p>
 <ul class="simple">
 <li><p>국가별 1인당 GDP 데이터: [국제통화기금(IMF)](<a class="reference external" href="https://ko.wikipedia.org/wiki/%EA%B5%AD%EC%A0%9C_%ED%86%B5%ED%99%94_%EA%B8%B0%EA%B8%88#:~:text=%EA%B5%AD%EC%A0%9C%20%ED%86%B5%ED%99%94%20%EA%B8%B0%EA%B8%88(%E5%9C%8B%E9%9A%9B%E9%80%9A%E8%B2%A8,%EC%9C%84%EC%9E%84%EB%B0%9B%EC%9D%80%20%EA%B5%AD%EC%A0%9C%20%EA%B8%B0%EA%B5%AC%EC%9D%B4%EB%8B%A4.)%EC%9D%98">https://ko.wikipedia.org/wiki/국제_통화_기금#:~:text=국제 통화 기금(國際通貨,위임받은 국제 기구이다.)의</a>
@@ -493,7 +494,7 @@ document.write(`
 최대한 이해하도록 노력할 것을 권장한다.</p>
 <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/oecd_bli-1.png"style="width:300px;"/></div></section>
 <section id="id3">
-<h2><span class="section-number">31.3. </span>데이터 적재, 정제, 전처리<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">32.3. </span>데이터 적재, 정제, 전처리<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>컴퓨터에 저장된 또는 다운로드된 데이터는 일반적으로 바로 모델 훈련에 사용할 수 없으며,
 데이터 적재, 데이터 정제, 데이터 전처리 등의 과정을 거쳐야 비로소 모델 훈련에 활용될 수 있다.</p>
 <ul class="simple">
@@ -505,7 +506,7 @@ document.write(`
 적절한 내용의 데이터를 추가하거나 삭제하는 과정</p></li>
 </ul>
 <section id="gdp">
-<h3><span class="section-number">31.3.1. </span>1인당 GDP 데이터 적재, 정제, 전처리<a class="headerlink" href="#gdp" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">32.3.1. </span>1인당 GDP 데이터 적재, 정제, 전처리<a class="headerlink" href="#gdp" title="Permalink to this heading">#</a></h3>
 <p>2015년 기준 국가별 1인당 GDP 관련 데이터가 저장되어 있는 서버 주소는 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -931,7 +932,7 @@ document.write(`
 </div>
 </section>
 <section id="id4">
-<h3><span class="section-number">31.3.2. </span>삶의 만족도 데이터 적재, 정제, 전처리<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">32.3.2. </span>삶의 만족도 데이터 적재, 정제, 전처리<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>OECD 국가별 삶의 만족도 데이터는 ‘더 나은 삶의 지수’ 데이터 파일에 포함되어 있다.
 따라서 먼저 해당 csv 파일을 판다스의 데이터프레임 객체로 불러온 후에
 삶의 만족도와 관련된 내용을 추출하는 과정을 밟는다.</p>
@@ -2713,7 +2714,7 @@ Name: Life satisfaction, dtype: float64
 </section>
 </section>
 <section id="id5">
-<h2><span class="section-number">31.4. </span>데이터 합병<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">32.4. </span>데이터 합병<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
 <p>앞서 살펴본 대로 1인당 GDP 데이터는 OECD 회원국 이외의 국가 데이터도 포함되어 있다.
 OECD 회원국으로 제한해서 1인당 GDP와 삶의 만족도 사이의 관계를 파악하기 위해
 앞서 구한 두 개의 데이터프레임을 하나로 합병한다.</p>
@@ -3217,7 +3218,7 @@ OECD 회원국으로 제한해서 1인당 GDP와 삶의 만족도 사이의 관�
 </div>
 </section>
 <section id="id6">
-<h2><span class="section-number">31.5. </span>그래프 그리기<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">32.5. </span>그래프 그리기<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <p>36개 국가의 1인단 GDP와 삶의 만족도 사이의 관계를 확인하기 위해 산점도를 그린다.
 추가로 일부 국가를 빨강색 점으로 정하고 국가 이름도 함께 넣는다.</p>
 <div class="cell docutils container">
@@ -3350,12 +3351,12 @@ OECD 회원국으로 제한해서 1인당 GDP와 삶의 만족도 사이의 관�
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="casestudy_titanic.html"
+       href="casestudy_california_housing.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">30. </span>타이타닉 데이터 분석</p>
+        <p class="prev-next-title"><span class="section-number">31. </span>(실습) 판다스 활용: 데이터 전처리</p>
       </div>
     </a>
 </div></div>
@@ -3376,15 +3377,15 @@ OECD 회원국으로 제한해서 1인당 GDP와 삶의 만족도 사이의 관�
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">31.1. 주요 내용</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">31.2. 데이터 구하기</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">31.3. 데이터 적재, 정제, 전처리</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gdp">31.3.1. 1인당 GDP 데이터 적재, 정제, 전처리</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">31.3.2. 삶의 만족도 데이터 적재, 정제, 전처리</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">32.1. 주요 내용</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">32.2. 데이터 구하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">32.3. 데이터 적재, 정제, 전처리</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gdp">32.3.1. 1인당 GDP 데이터 적재, 정제, 전처리</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">32.3.2. 삶의 만족도 데이터 적재, 정제, 전처리</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">31.4. 데이터 합병</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">31.5. 그래프 그리기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">32.4. 데이터 합병</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">32.5. 그래프 그리기</a></li>
 </ul>
   </nav></div>
 

@@ -192,7 +192,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">실전 데이터 분석</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">30. 타이타닉 데이터 분석</a></li>
-<li class="toctree-l1"><a class="reference internal" href="casestudy_oecd_bli.html">31. OECD 국가의 삶의 만족도</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_california_housing.html">31. (실습) 판다스 활용: 데이터 전처리</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_oecd_bli.html">32. OECD 국가의 삶의 만족도</a></li>
 </ul>
 
     </div>
@@ -909,7 +910,7 @@ seabon 라이브러리도 제공한다.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;tip_pct&#39;, ylabel=&#39;day&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/0d45dbe4279ca5c3c27dc1ee0ed17b2bbbc257997f344372c0568bb25e587f29.png" src="_images/0d45dbe4279ca5c3c27dc1ee0ed17b2bbbc257997f344372c0568bb25e587f29.png" />
+<img alt="_images/6111ccb6296df836fc9ae34bcb734124e389cc4b590aab0a12813274750c777c.png" src="_images/6111ccb6296df836fc9ae34bcb734124e389cc4b590aab0a12813274750c777c.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">errorbar</span></code> 옵션을 조절하면 신뢰구간을 표준편차로 바꾸거나 아무 것도 표시하지 않도록 할 수 있다.</p>
@@ -956,7 +957,7 @@ seabon 라이브러리도 제공한다.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;tip_pct&#39;, ylabel=&#39;day&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/fa523018d3c127a0f3910ab17906e23a6a37a99408e0cacbbbb67197d245a357.png" src="_images/fa523018d3c127a0f3910ab17906e23a6a37a99408e0cacbbbb67197d245a357.png" />
+<img alt="_images/88b47c3bb6b912c97e50a459e62f3d174d296b024268674a657f04ce69637f1e.png" src="_images/88b47c3bb6b912c97e50a459e62f3d174d296b024268674a657f04ce69637f1e.png" />
 </div>
 </div>
 <p>참고: 목요일 저녁 막대에 신뢰구간이 표시되지 않는 이유는 단 한 번의 파티만 있었기 때문이다.</p>
@@ -1051,7 +1052,7 @@ seabon 라이브러리도 제공한다.</p>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;tip_pct&#39;, ylabel=&#39;day&#39;&gt;
 </pre></div>
 </div>
-<img alt="_images/0c5ea9335c3210d609fbba79c004f342cd796256a5bf7dfe74e68642182e2017.png" src="_images/0c5ea9335c3210d609fbba79c004f342cd796256a5bf7dfe74e68642182e2017.png" />
+<img alt="_images/651e9aa293576c8bc921e7b3a82f4ebd1bb593aae662b1b033ec6854f0b2ce99.png" src="_images/651e9aa293576c8bc921e7b3a82f4ebd1bb593aae662b1b033ec6854f0b2ce99.png" />
 </div>
 </div>
 </section>
@@ -1255,7 +1256,7 @@ Length: 400, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f9459cf3eb0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fd1af812b60&gt;
 </pre></div>
 </div>
 <img alt="_images/4210db9eb3eac7390c265d7b65d1a702cca08058f0bdb6962911785a3db8742c.png" src="_images/4210db9eb3eac7390c265d7b65d1a702cca08058f0bdb6962911785a3db8742c.png" />
@@ -1276,7 +1277,7 @@ Length: 400, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f9459a170a0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fd1af8c0c40&gt;
 </pre></div>
 </div>
 <img alt="_images/da4cd718ae3f37d8cb6478dd774ab0cd45a20a32572448e978d8d78bba0bde2d.png" src="_images/da4cd718ae3f37d8cb6478dd774ab0cd45a20a32572448e978d8d78bba0bde2d.png" />
@@ -1860,7 +1861,7 @@ Length: 400, dtype: float64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Changes in log(m1) versus log(unemp)&#39;)
 </pre></div>
 </div>
-<img alt="_images/65e4b3836c76f64d4524ea2ce8e69812093ae66c4728e5bd2c23187e2fce19f8.png" src="_images/65e4b3836c76f64d4524ea2ce8e69812093ae66c4728e5bd2c23187e2fce19f8.png" />
+<img alt="_images/1e36103660cc072501319b163b8ef8fd0aea41a4fe2e962cf562fcefd75e95cb.png" src="_images/1e36103660cc072501319b163b8ef8fd0aea41a4fe2e962cf562fcefd75e95cb.png" />
 </div>
 </div>
 <p>사실 <code class="docutils literal notranslate"><span class="pre">m1</span></code> 데이터와 <code class="docutils literal notranslate"><span class="pre">unemp</span></code> 데이터 사이의 선형관계가 많이 있어보이지는 않는다.
@@ -1971,7 +1972,7 @@ Length: 400, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f94542a4b50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fd1ada0f9d0&gt;
 </pre></div>
 </div>
 <img alt="_images/ad877e56cc0ad62864762a1ff8e27b772fedefc68c812f5aa1f2d48fcd4d021b.png" src="_images/ad877e56cc0ad62864762a1ff8e27b772fedefc68c812f5aa1f2d48fcd4d021b.png" />
@@ -1985,7 +1986,7 @@ Length: 400, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f9445ee98d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7fd187bee890&gt;
 </pre></div>
 </div>
 <img alt="_images/1097f45fcd52580fe3d5a97307db5010b5511c7e3ff143e119a35de671fe5d1f.png" src="_images/1097f45fcd52580fe3d5a97307db5010b5511c7e3ff143e119a35de671fe5d1f.png" />
@@ -2010,10 +2011,10 @@ Length: 400, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f944508ffd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fd186dabb50&gt;
 </pre></div>
 </div>
-<img alt="_images/24d8882020978f127b3d0762516414601dd0a16ee442a7f937e332f79d98b904.png" src="_images/24d8882020978f127b3d0762516414601dd0a16ee442a7f937e332f79d98b904.png" />
+<img alt="_images/55037bbb012af3b69a3e75a301a613a10968fbdc354c3ab6c632b6aa7fdc46d6.png" src="_images/55037bbb012af3b69a3e75a301a613a10968fbdc354c3ab6c632b6aa7fdc46d6.png" />
 </div>
 </div>
 <p>열뿐만 아니라 행별로 구분된 그래프를 그리려면 <code class="docutils literal notranslate"><span class="pre">row</span></code> 옵션 인자를 활용한다.
@@ -2028,10 +2029,10 @@ Length: 400, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f9445e5a800&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fd187348160&gt;
 </pre></div>
 </div>
-<img alt="_images/90a3b725dad31b0d98439a7756f75fbd6822387844dd8826a361601c9aedb2f5.png" src="_images/90a3b725dad31b0d98439a7756f75fbd6822387844dd8826a361601c9aedb2f5.png" />
+<img alt="_images/53d630dd6705fc4c16f5b4f41534cf4234da2a9fea62a35112ad63388aa8c9e3.png" src="_images/53d630dd6705fc4c16f5b4f41534cf4234da2a9fea62a35112ad63388aa8c9e3.png" />
 </div>
 </div>
 <p>물론 아래와 같이 <code class="docutils literal notranslate"><span class="pre">col</span></code> 옵션을 지정하지 않으면 행별로 하나의 막대그래프만 그릴 수도 있다.</p>
@@ -2042,10 +2043,10 @@ Length: 400, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f9446543bb0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fd186a4eb60&gt;
 </pre></div>
 </div>
-<img alt="_images/dda8cdcb550842ca6cae62269a3ccab892f0605c06a7903c1182eeeeff890dac.png" src="_images/dda8cdcb550842ca6cae62269a3ccab892f0605c06a7903c1182eeeeff890dac.png" />
+<img alt="_images/79e6c3011f862039d5a2e1169c83f8b11bcfa341727dc215615115128b524221.png" src="_images/79e6c3011f862039d5a2e1169c83f8b11bcfa341727dc215615115128b524221.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">kind</span></code> 옵션에 따라 다양한 그래프를 그린다.
@@ -2060,7 +2061,7 @@ Length: 400, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7f9444825e70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.FacetGrid at 0x7fd186572d70&gt;
 </pre></div>
 </div>
 <img alt="_images/0ed1bedd71d88a9db2b30dbe6ec0766a69813f875b4ee0917c7d720f2e08d688.png" src="_images/0ed1bedd71d88a9db2b30dbe6ec0766a69813f875b4ee0917c7d720f2e08d688.png" />
