@@ -2669,7 +2669,7 @@ Name: survived, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/f38b37809094d49d4da99e4d5610aa00b4f18522ce752e3e924c73bf7965d0c3.png" src="_images/f38b37809094d49d4da99e4d5610aa00b4f18522ce752e3e924c73bf7965d0c3.png" />
+<img alt="_images/55723acd09a3fb6880faa55a4f7e969d8e6b78cd1953ad3d0f715d48bdb90f6c.png" src="_images/55723acd09a3fb6880faa55a4f7e969d8e6b78cd1953ad3d0f715d48bdb90f6c.png" />
 </div>
 </div>
 <p><strong>연령별 생존자</strong></p>
@@ -2743,7 +2743,7 @@ Name: age, Length: 427, dtype: float64
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
  
-<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X_comb</span><span class="o">.</span><span class="n">age</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Not survived&#39;</span><span class="p">)</span> <span class="c1"># 원래는 연령별 전체 탑승자 수. 하지만 생존사 수에 의해 일부 구간 가려짐.</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X_comb</span><span class="o">.</span><span class="n">age</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Total&#39;</span><span class="p">)</span> <span class="c1"># 원래는 연령별 전체 탑승자 수. 하지만 생존자 수에 의해 일부 구간 가려짐.</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X_comb</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">][</span><span class="n">X_comb</span><span class="o">.</span><span class="n">survived</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">(),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Survived&#39;</span><span class="p">)</span>
  
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Survivors&#39;</span><span class="p">)</span>
@@ -2755,7 +2755,7 @@ Name: age, Length: 427, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/5aa6757a3af221dade4624a3763173c25d12028c4fb847a9fbc4fc0411fe1157.png" src="_images/5aa6757a3af221dade4624a3763173c25d12028c4fb847a9fbc4fc0411fe1157.png" />
+<img alt="_images/0f6409bb71e78aace421329d2363712af779f12e8bc93229fb02ebdbfa602b91.png" src="_images/0f6409bb71e78aace421329d2363712af779f12e8bc93229fb02ebdbfa602b91.png" />
 </div>
 </div>
 <p><strong>연습 문제</strong></p>
@@ -2791,7 +2791,7 @@ Name: age, Length: 427, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6c16a728050cad303ddc3edf3b78672de0fe6d90089364edd090fb169d165bc6.png" src="_images/6c16a728050cad303ddc3edf3b78672de0fe6d90089364edd090fb169d165bc6.png" />
+<img alt="_images/edd0598268457b08ebcdd542462d293fa4d6515fbf8ff4a3b9fed58c8b711c81.png" src="_images/edd0598268457b08ebcdd542462d293fa4d6515fbf8ff4a3b9fed58c8b711c81.png" />
 </div>
 </div>
 <p><strong>오차 막대</strong></p>
