@@ -155,7 +155,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="python_basic_6.html">6. 함수</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_7.html">7. 파일</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_8.html">8. 모듈 (준비중)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python_basic_9.html">9. 클래스, 인스턴스, 객체 (준비중)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_9.html">9. 클래스, 객체, 상속 (준비중)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="from_scratch_1.html">10. 선형대수 기초</a></li>
 <li class="toctree-l1"><a class="reference internal" href="from_scratch_2.html">11. 통계 기초</a></li>
 </ul>
@@ -1232,12 +1232,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1293/2577077185.py:2: DeprecationWarning: scipy.misc.face has been deprecated in SciPy v1.10.0; and will be completely removed in SciPy v1.12.0. Dataset methods have moved into the scipy.datasets module. Use scipy.datasets.face instead.
-  face = scipy.misc.face()
-</pre></div>
-</div>
-</div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">face</span></code>는 너구리 얼굴 이미지를 3차원 어레이로 불러온다.</p>
 <ul class="simple">
@@ -1252,7 +1246,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/41eeaacbd210a4a606196f5a4c0d71f55611e5384456bcde029d2821de442849.png" src="_images/41eeaacbd210a4a606196f5a4c0d71f55611e5384456bcde029d2821de442849.png" />
+<img alt="_images/76b99cea2e8a11960572aca4c5f65722e708526d69c28f0a82b4db3881d1e730.png" src="_images/76b99cea2e8a11960572aca4c5f65722e708526d69c28f0a82b4db3881d1e730.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">face</span></code>는 아래 모양의 3차원 어레이를 가리킨다.</p>
@@ -1401,7 +1395,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d7292290cbfc11e68c8225e7a166e733f86cf5217794bb191e5f29c3f8ab8a99.png" src="_images/d7292290cbfc11e68c8225e7a166e733f86cf5217794bb191e5f29c3f8ab8a99.png" />
+<img alt="_images/d5542cb1d5bc5799466bc3dcfbe6075f19a4691efda1c78fb700c867925671b0.png" src="_images/d5542cb1d5bc5799466bc3dcfbe6075f19a4691efda1c78fb700c867925671b0.png" />
 </div>
 </div>
 <p>초록(Green)색 요소는 각 픽셀의 1번 인덱스로 구성된다.</p>
@@ -1415,7 +1409,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fb3f28693eeb2f99339f475ccae6adbaac3a603c30a7868c71bdf2f72ae906ba.png" src="_images/fb3f28693eeb2f99339f475ccae6adbaac3a603c30a7868c71bdf2f72ae906ba.png" />
+<img alt="_images/338702d2921132e8fd452e06c419eb80c4c05ece7cca7a1795f3950221e0f646.png" src="_images/338702d2921132e8fd452e06c419eb80c4c05ece7cca7a1795f3950221e0f646.png" />
 </div>
 </div>
 <p>파랑(Blue)색 요소는 각 픽셀의 2번 인덱스로 구성된다.</p>
@@ -1429,7 +1423,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d2c4a17e3efc3e8f712266e75fc36d50ae875e78484c91da329f99e9b3c02d2e.png" src="_images/d2c4a17e3efc3e8f712266e75fc36d50ae875e78484c91da329f99e9b3c02d2e.png" />
+<img alt="_images/70fb82d48d5c2682dd8a93bd12567c8df25b9048b99f052d9422ddc6712733f5.png" src="_images/70fb82d48d5c2682dd8a93bd12567c8df25b9048b99f052d9422ddc6712733f5.png" />
 </div>
 </div>
 <div class="info admonition">
@@ -1502,7 +1496,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/534a20f1a03d1756ab885da1eb5079210c9b649642200e632bd6ed7dd6da6d52.png" src="_images/534a20f1a03d1756ab885da1eb5079210c9b649642200e632bd6ed7dd6da6d52.png" />
+<img alt="_images/9f52162e0d3c1e6b9e9dbc19334fb97d75f2d54b01417fa76e8e60f589fc9234.png" src="_images/9f52162e0d3c1e6b9e9dbc19334fb97d75f2d54b01417fa76e8e60f589fc9234.png" />
 </div>
 </div>
 </section>
@@ -1542,7 +1536,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7e1476e5b5c00d451925bd20cfd0e43b193b55844ee2492ed5cb102353c314e5.png" src="_images/7e1476e5b5c00d451925bd20cfd0e43b193b55844ee2492ed5cb102353c314e5.png" />
+<img alt="_images/7973a2351567c8d3f662ebf251c4243b8a269304fcf4baa34c20440ce44ac139.png" src="_images/7973a2351567c8d3f662ebf251c4243b8a269304fcf4baa34c20440ce44ac139.png" />
 </div>
 </div>
 <p><strong>보간법</strong></p>
@@ -1577,7 +1571,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ef78410a1cc288aa5bad5c88735ec32584badf756a3000c6f15dac45d2f5d0c2.png" src="_images/ef78410a1cc288aa5bad5c88735ec32584badf756a3000c6f15dac45d2f5d0c2.png" />
+<img alt="_images/6dcd00d1428d26f2dd870d3a3c07ce9c038f763fbeb3aebb7bddfaa03b5de06b.png" src="_images/6dcd00d1428d26f2dd870d3a3c07ce9c038f763fbeb3aebb7bddfaa03b5de06b.png" />
 </div>
 </div>
 <p>4분의 1 크기의 두 이미지 데이터가 조금 다르기는 하지만 이미지 상으로 차이점을 발견하기 어렵다.</p>

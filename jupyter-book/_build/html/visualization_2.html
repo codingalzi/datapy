@@ -153,7 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="python_basic_6.html">6. 함수</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_7.html">7. 파일</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_8.html">8. 모듈 (준비중)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python_basic_9.html">9. 클래스, 인스턴스, 객체 (준비중)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_9.html">9. 클래스, 객체, 상속 (준비중)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="from_scratch_1.html">10. 선형대수 기초</a></li>
 <li class="toctree-l1"><a class="reference internal" href="from_scratch_2.html">11. 통계 기초</a></li>
 </ul>
@@ -520,7 +520,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f5b893de770&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1bd35648220&gt;]
 </pre></div>
 </div>
 <img alt="_images/9694879fcd34295fdd7a4392072a87cfa02bac090237e9b575d36cd0a1a96522.png" src="_images/9694879fcd34295fdd7a4392072a87cfa02bac090237e9b575d36cd0a1a96522.png" />
@@ -542,7 +542,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f5b88bc9180&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x1bd35786ad0&gt;]
 </pre></div>
 </div>
 <img alt="_images/3a40355864993c4d2e39e09f217a06ef1434dbe56e49c8806b96c9714ccb9802.png" src="_images/3a40355864993c4d2e39e09f217a06ef1434dbe56e49c8806b96c9714ccb9802.png" />
@@ -795,7 +795,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f5b865b3790&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1bd37f0a4a0&gt;
 </pre></div>
 </div>
 <img alt="_images/120fc77fcb4cbce13f603128c5cdd3e6bb50218d5dbb354b55b897f9f5403567.png" src="_images/120fc77fcb4cbce13f603128c5cdd3e6bb50218d5dbb354b55b897f9f5403567.png" />
@@ -868,7 +868,7 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f5b86453c70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1bd37f659f0&gt;
 </pre></div>
 </div>
 <img alt="_images/8d14ee25c716bcddc5fb603990eb43dd147a12fac2227f9f23a449e3abc0c9c4.png" src="_images/8d14ee25c716bcddc5fb603990eb43dd147a12fac2227f9f23a449e3abc0c9c4.png" />
@@ -894,7 +894,7 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f5b865e6920&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1bd37fefa90&gt;
 </pre></div>
 </div>
 <img alt="_images/fa600e2b6754442e6d6a95ab6761008c041ec0ff614d35fb240f033608bf8fc3.png" src="_images/fa600e2b6754442e6d6a95ab6761008c041ec0ff614d35fb240f033608bf8fc3.png" />
@@ -920,7 +920,7 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f5b887196f0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1bd37f65930&gt;
 </pre></div>
 </div>
 <img alt="_images/7512a3933863aa66e9d4b638cc59e2d7982d9686374a2cb7af855b303b7594b4.png" src="_images/7512a3933863aa66e9d4b638cc59e2d7982d9686374a2cb7af855b303b7594b4.png" />
@@ -946,7 +946,7 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f5b8802beb0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1bd321d0820&gt;
 </pre></div>
 </div>
 <img alt="_images/5b2d09d65094abba22bdc53c4edcf4e8e322ffd6b5846e99619f532d2f7e391b.png" src="_images/5b2d09d65094abba22bdc53c4edcf4e8e322ffd6b5846e99619f532d2f7e391b.png" />
@@ -972,10 +972,10 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f5b8804dd50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1bd377798a0&gt;
 </pre></div>
 </div>
-<img alt="_images/e1b2f52b942666259522dfbed0972158032fe50dea64fd6bd31999c3dff08faf.png" src="_images/e1b2f52b942666259522dfbed0972158032fe50dea64fd6bd31999c3dff08faf.png" />
+<img alt="_images/52070c895db33fb20e19bc5343a27480a912fb421eb2e21f8cc1fc13df52c7db.png" src="_images/52070c895db33fb20e19bc5343a27480a912fb421eb2e21f8cc1fc13df52c7db.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -998,10 +998,10 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f5b881bfbe0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1bd38cdf9d0&gt;
 </pre></div>
 </div>
-<img alt="_images/bb0bc4949e37273c92e023ad0b62b3289ae74c5022b0de8b92762c8ab5913cd2.png" src="_images/bb0bc4949e37273c92e023ad0b62b3289ae74c5022b0de8b92762c8ab5913cd2.png" />
+<img alt="_images/eaf04450e359987bd48449e19b3939d297993bb460734cf6537bb6d63e2aa2d5.png" src="_images/eaf04450e359987bd48449e19b3939d297993bb460734cf6537bb6d63e2aa2d5.png" />
 </div>
 </div>
 </section>
@@ -1080,7 +1080,7 @@ dpi를 지정하여 저장된 이미지 파일의 해상도를 조절할 수 있
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f5b863b85e0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1bd38d5e6b0&gt;
 </pre></div>
 </div>
 <img alt="_images/81c71ed61915d11aecdc2f0f7373b3acbdb85f0bfdd3ad182a643abae8a21766.png" src="_images/81c71ed61915d11aecdc2f0f7373b3acbdb85f0bfdd3ad182a643abae8a21766.png" />
