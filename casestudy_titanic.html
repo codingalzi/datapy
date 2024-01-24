@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,8 +39,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -77,6 +78,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -138,6 +148,7 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">파이썬 데이터 분석</p>
   
 </a></div>
@@ -145,7 +156,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">파이썬 기초</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="python_basic_1.html">1. 프로그래밍 개발 환경</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_1.html">1. 프로그램 개발 환경</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_2.html">2. 기초 문법</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_3.html">3. 기초 자료형</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_4.html">4. 제어문</a></li>
@@ -153,7 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="python_basic_6.html">6. 함수</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_7.html">7. 파일</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_8.html">8. 모듈 (준비중)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python_basic_9.html">9. 클래스, 인스턴스, 객체 (준비중)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_9.html">9. 클래스, 객체, 상속 (준비중)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="from_scratch_1.html">10. 선형대수 기초</a></li>
 <li class="toctree-l1"><a class="reference internal" href="from_scratch_2.html">11. 통계 기초</a></li>
 </ul>
@@ -378,10 +389,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -389,7 +400,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -515,12 +526,6 @@ document.write(`
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">fetch_openml</span><span class="p">(</span><span class="s2">&quot;titanic&quot;</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/home/gslee/anaconda3/lib/python3.10/site-packages/sklearn/datasets/_openml.py:932: FutureWarning: The default value of `parser` will change from `&#39;liac-arff&#39;` to `&#39;auto&#39;` in 1.4. You can set `parser=&#39;auto&#39;` to silence this warning. Therefore, an `ImportError` will be raised from 1.4 if the dataset is dense and pandas is not installed. Note that the pandas parser may return different data types. See the Notes Section in fetch_openml&#39;s API doc for details.
-  warn(
 </pre></div>
 </div>
 </div>
@@ -912,7 +917,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2a9844230d0f39dea60ac4779e6f86c4238c33a1ab3fd9b38be2a4f7b05e4660.png" src="_images/2a9844230d0f39dea60ac4779e6f86c4238c33a1ab3fd9b38be2a4f7b05e4660.png" />
+<img alt="_images/0a15af342f054d2518fedf44930208815206877f59b82df52416e81b7d9f2092.png" src="_images/0a15af342f054d2518fedf44930208815206877f59b82df52416e81b7d9f2092.png" />
 </div>
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">DataFrame.drop()</span></code> 메서드</strong></p>
@@ -1738,8 +1743,8 @@ Name: is_alone, Length: 1309, dtype: object
 <p>남성으로 구성된 <code class="docutils literal notranslate"><span class="pre">Master</span></code>와 <code class="docutils literal notranslate"><span class="pre">Mr</span></code>의 생존률에서 차이가 많이 난다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Master: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="s1">&#39;Master&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="s1">&#39;Master&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mr: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="s1">&#39;Mr&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="s1">&#39;Mr&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Master: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">title</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;Master&#39;</span><span class="p">])</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">title</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;Master&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mr: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">title</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;Mr&#39;</span><span class="p">])</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">title</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;Mr&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1753,8 +1758,8 @@ Mr: 0.09396485867074103
 <p>반면에 <code class="docutils literal notranslate"><span class="pre">Miss</span></code>와 <code class="docutils literal notranslate"><span class="pre">Mrs</span></code>의 생존율이 거의 비슷하다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Miss: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="s1">&#39;Miss&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="s1">&#39;Miss&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mrs: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="s1">&#39;Mrs&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">title</span> <span class="o">==</span> <span class="s1">&#39;Mrs&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Miss: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">title</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;Miss&#39;</span><span class="p">])</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">title</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;Miss&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mrs: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">X</span><span class="o">.</span><span class="n">title</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;Mrs&#39;</span><span class="p">])</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">title</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;Mrs&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2568,7 +2573,7 @@ Name: title, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7f226d00622de4b9196c9a62e9941644fbcfd22b06ba2f141e90617eaa7812db.png" src="_images/7f226d00622de4b9196c9a62e9941644fbcfd22b06ba2f141e90617eaa7812db.png" />
+<img alt="_images/7b0b1d9c847cdbf8ec4fac8ded0fbaa1483a2481f8e0d9f8ba5a4bb9ad55f038.png" src="_images/7b0b1d9c847cdbf8ec4fac8ded0fbaa1483a2481f8e0d9f8ba5a4bb9ad55f038.png" />
 </div>
 </div>
 <p><strong>성별 생존률</strong></p>
@@ -2602,7 +2607,7 @@ Name: survived, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/29f985e0f5663e88a8cabdb1fe273fcdf26db86ee807b89d653d07b79831d27e.png" src="_images/29f985e0f5663e88a8cabdb1fe273fcdf26db86ee807b89d653d07b79831d27e.png" />
+<img alt="_images/da50f6e267166d1564e2e5f95bfa8b86d42d9c992746150767f6c9d1752761b2.png" src="_images/da50f6e267166d1564e2e5f95bfa8b86d42d9c992746150767f6c9d1752761b2.png" />
 </div>
 </div>
 <p>남성의 생존률을 계산한다.</p>
@@ -2669,7 +2674,7 @@ Name: survived, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/55723acd09a3fb6880faa55a4f7e969d8e6b78cd1953ad3d0f715d48bdb90f6c.png" src="_images/55723acd09a3fb6880faa55a4f7e969d8e6b78cd1953ad3d0f715d48bdb90f6c.png" />
+<img alt="_images/1f7a62dbee97553292e3cff49eb1d1d5cb44929b0900c5515fe19c7dbb0589cb.png" src="_images/1f7a62dbee97553292e3cff49eb1d1d5cb44929b0900c5515fe19c7dbb0589cb.png" />
 </div>
 </div>
 <p><strong>연령별 생존자</strong></p>
@@ -2755,7 +2760,7 @@ Name: age, Length: 427, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/0f6409bb71e78aace421329d2363712af779f12e8bc93229fb02ebdbfa602b91.png" src="_images/0f6409bb71e78aace421329d2363712af779f12e8bc93229fb02ebdbfa602b91.png" />
+<img alt="_images/527efaed12552802f7de9030d9e3cdc937e6a1c4dc11e81bee99691d4f502e72.png" src="_images/527efaed12552802f7de9030d9e3cdc937e6a1c4dc11e81bee99691d4f502e72.png" />
 </div>
 </div>
 <p><strong>연습 문제</strong></p>
@@ -2775,7 +2780,7 @@ Name: age, Length: 427, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3d024dccf364b318756d22feaf9d66a15c4ed28938b435a3e381ae6fd7bc1f7a.png" src="_images/3d024dccf364b318756d22feaf9d66a15c4ed28938b435a3e381ae6fd7bc1f7a.png" />
+<img alt="_images/42f817757104647c4c04bc7bcc7c57447c81f768be88611f4ca94fb393ba702a.png" src="_images/42f817757104647c4c04bc7bcc7c57447c81f768be88611f4ca94fb393ba702a.png" />
 </div>
 </div>
 <ul class="simple">
@@ -2791,7 +2796,7 @@ Name: age, Length: 427, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/edd0598268457b08ebcdd542462d293fa4d6515fbf8ff4a3b9fed58c8b711c81.png" src="_images/edd0598268457b08ebcdd542462d293fa4d6515fbf8ff4a3b9fed58c8b711c81.png" />
+<img alt="_images/a6f6a20a9ad645d97515eb3ea9d13eb2dc7a6cd58df3df850074843351900c93.png" src="_images/a6f6a20a9ad645d97515eb3ea9d13eb2dc7a6cd58df3df850074843351900c93.png" />
 </div>
 </div>
 <p><strong>오차 막대</strong></p>
@@ -2842,11 +2847,10 @@ Name: age, Length: 427, dtype: float64
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="pandas_timeseries.html"
@@ -2866,10 +2870,7 @@ Name: age, Length: 427, dtype: float64
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -2945,8 +2946,8 @@ By 코딩알지
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
   <footer class="bd-footer">
   </footer>

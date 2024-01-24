@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,8 +39,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -79,6 +80,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -140,6 +150,7 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">파이썬 데이터 분석</p>
   
 </a></div>
@@ -147,7 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">파이썬 기초</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="python_basic_1.html">1. 프로그래밍 개발 환경</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_1.html">1. 프로그램 개발 환경</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_2.html">2. 기초 문법</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_3.html">3. 기초 자료형</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_4.html">4. 제어문</a></li>
@@ -155,7 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="python_basic_6.html">6. 함수</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_7.html">7. 파일</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_8.html">8. 모듈 (준비중)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python_basic_9.html">9. 클래스, 인스턴스, 객체 (준비중)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_9.html">9. 클래스, 객체, 상속 (준비중)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="from_scratch_1.html">10. 선형대수 기초</a></li>
 <li class="toctree-l1"><a class="reference internal" href="from_scratch_2.html">11. 통계 기초</a></li>
 </ul>
@@ -380,10 +391,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -391,7 +402,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -1232,12 +1243,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_1293/2577077185.py:2: DeprecationWarning: scipy.misc.face has been deprecated in SciPy v1.10.0; and will be completely removed in SciPy v1.12.0. Dataset methods have moved into the scipy.datasets module. Use scipy.datasets.face instead.
-  face = scipy.misc.face()
-</pre></div>
-</div>
-</div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">face</span></code>는 너구리 얼굴 이미지를 3차원 어레이로 불러온다.</p>
 <ul class="simple">
@@ -1252,7 +1257,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/41eeaacbd210a4a606196f5a4c0d71f55611e5384456bcde029d2821de442849.png" src="_images/41eeaacbd210a4a606196f5a4c0d71f55611e5384456bcde029d2821de442849.png" />
+<img alt="_images/76b99cea2e8a11960572aca4c5f65722e708526d69c28f0a82b4db3881d1e730.png" src="_images/76b99cea2e8a11960572aca4c5f65722e708526d69c28f0a82b4db3881d1e730.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">face</span></code>는 아래 모양의 3차원 어레이를 가리킨다.</p>
@@ -1401,7 +1406,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d7292290cbfc11e68c8225e7a166e733f86cf5217794bb191e5f29c3f8ab8a99.png" src="_images/d7292290cbfc11e68c8225e7a166e733f86cf5217794bb191e5f29c3f8ab8a99.png" />
+<img alt="_images/d5542cb1d5bc5799466bc3dcfbe6075f19a4691efda1c78fb700c867925671b0.png" src="_images/d5542cb1d5bc5799466bc3dcfbe6075f19a4691efda1c78fb700c867925671b0.png" />
 </div>
 </div>
 <p>초록(Green)색 요소는 각 픽셀의 1번 인덱스로 구성된다.</p>
@@ -1415,7 +1420,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/fb3f28693eeb2f99339f475ccae6adbaac3a603c30a7868c71bdf2f72ae906ba.png" src="_images/fb3f28693eeb2f99339f475ccae6adbaac3a603c30a7868c71bdf2f72ae906ba.png" />
+<img alt="_images/338702d2921132e8fd452e06c419eb80c4c05ece7cca7a1795f3950221e0f646.png" src="_images/338702d2921132e8fd452e06c419eb80c4c05ece7cca7a1795f3950221e0f646.png" />
 </div>
 </div>
 <p>파랑(Blue)색 요소는 각 픽셀의 2번 인덱스로 구성된다.</p>
@@ -1429,7 +1434,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/d2c4a17e3efc3e8f712266e75fc36d50ae875e78484c91da329f99e9b3c02d2e.png" src="_images/d2c4a17e3efc3e8f712266e75fc36d50ae875e78484c91da329f99e9b3c02d2e.png" />
+<img alt="_images/70fb82d48d5c2682dd8a93bd12567c8df25b9048b99f052d9422ddc6712733f5.png" src="_images/70fb82d48d5c2682dd8a93bd12567c8df25b9048b99f052d9422ddc6712733f5.png" />
 </div>
 </div>
 <div class="info admonition">
@@ -1502,7 +1507,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/534a20f1a03d1756ab885da1eb5079210c9b649642200e632bd6ed7dd6da6d52.png" src="_images/534a20f1a03d1756ab885da1eb5079210c9b649642200e632bd6ed7dd6da6d52.png" />
+<img alt="_images/9f52162e0d3c1e6b9e9dbc19334fb97d75f2d54b01417fa76e8e60f589fc9234.png" src="_images/9f52162e0d3c1e6b9e9dbc19334fb97d75f2d54b01417fa76e8e60f589fc9234.png" />
 </div>
 </div>
 </section>
@@ -1542,7 +1547,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/7e1476e5b5c00d451925bd20cfd0e43b193b55844ee2492ed5cb102353c314e5.png" src="_images/7e1476e5b5c00d451925bd20cfd0e43b193b55844ee2492ed5cb102353c314e5.png" />
+<img alt="_images/7973a2351567c8d3f662ebf251c4243b8a269304fcf4baa34c20440ce44ac139.png" src="_images/7973a2351567c8d3f662ebf251c4243b8a269304fcf4baa34c20440ce44ac139.png" />
 </div>
 </div>
 <p><strong>보간법</strong></p>
@@ -1577,7 +1582,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ef78410a1cc288aa5bad5c88735ec32584badf756a3000c6f15dac45d2f5d0c2.png" src="_images/ef78410a1cc288aa5bad5c88735ec32584badf756a3000c6f15dac45d2f5d0c2.png" />
+<img alt="_images/6dcd00d1428d26f2dd870d3a3c07ce9c038f763fbeb3aebb7bddfaa03b5de06b.png" src="_images/6dcd00d1428d26f2dd870d3a3c07ce9c038f763fbeb3aebb7bddfaa03b5de06b.png" />
 </div>
 </div>
 <p>4분의 1 크기의 두 이미지 데이터가 조금 다르기는 하지만 이미지 상으로 차이점을 발견하기 어렵다.</p>
@@ -2414,11 +2419,10 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="numpy_1.html"
@@ -2438,10 +2442,7 @@ R(빨강), G(초록), B(파랑) 색상에 대한 정보를 각각 담는다.
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -2526,8 +2527,8 @@ By 코딩알지
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
   <footer class="bd-footer">
   </footer>

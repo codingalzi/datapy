@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,8 +39,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -79,6 +80,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -140,6 +150,7 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">파이썬 데이터 분석</p>
   
 </a></div>
@@ -147,7 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">파이썬 기초</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="python_basic_1.html">1. 프로그래밍 개발 환경</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_1.html">1. 프로그램 개발 환경</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_2.html">2. 기초 문법</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_3.html">3. 기초 자료형</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_4.html">4. 제어문</a></li>
@@ -155,7 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="python_basic_6.html">6. 함수</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_7.html">7. 파일</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_8.html">8. 모듈 (준비중)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python_basic_9.html">9. 클래스, 인스턴스, 객체 (준비중)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_9.html">9. 클래스, 객체, 상속 (준비중)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="from_scratch_1.html">10. 선형대수 기초</a></li>
 <li class="toctree-l1"><a class="reference internal" href="from_scratch_2.html">11. 통계 기초</a></li>
 </ul>
@@ -380,10 +391,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -391,7 +402,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -570,7 +581,7 @@ x-좌표 리스트와 y-좌표 리스트를 생성하며
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/6c8f17d358c8b4dbd6b2f94582f31fa47dd5754fd2a336e6c09054179d300664.png" src="_images/6c8f17d358c8b4dbd6b2f94582f31fa47dd5754fd2a336e6c09054179d300664.png" />
+<img alt="_images/c6e8e3dadc47fbd9fb3db073ae824b525e5c9b2f1afaa3d6fa7b71bdf30a3008.png" src="_images/c6e8e3dadc47fbd9fb3db073ae824b525e5c9b2f1afaa3d6fa7b71bdf30a3008.png" />
 </div>
 </div>
 <p><strong>배경화면 그리기</strong></p>
@@ -631,7 +642,7 @@ x-좌표 리스트와 y-좌표 리스트를 생성하며
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/45c2fbc8276e1ba029e87e705428adb3c77833e5b0127663f326c44d0d580ace.png" src="_images/45c2fbc8276e1ba029e87e705428adb3c77833e5b0127663f326c44d0d580ace.png" />
+<img alt="_images/55242e833655aa5f4f0c67852dba61804809f767566bdd9dca89db8ba355cd7f.png" src="_images/55242e833655aa5f4f0c67852dba61804809f767566bdd9dca89db8ba355cd7f.png" />
 </div>
 </div>
 <p><strong>등고선 그리기</strong></p>
@@ -669,7 +680,7 @@ x-좌표 리스트와 y-좌표 리스트를 생성하며
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/81d4c90a9715e9ac56df2de3225e3eabce8cf66afd0b4aa414503234a1bafd90.png" src="_images/81d4c90a9715e9ac56df2de3225e3eabce8cf66afd0b4aa414503234a1bafd90.png" />
+<img alt="_images/4d9be0842e0c19becc0a297121022892e3f11f462936a76a47b7ebf6013c6419.png" src="_images/4d9be0842e0c19becc0a297121022892e3f11f462936a76a47b7ebf6013c6419.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">plt.contourf()</span></code> 함수는 등고선을 색으로 구분한다.</p>
@@ -684,7 +695,7 @@ x-좌표 리스트와 y-좌표 리스트를 생성하며
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ff77cd6aeca508e58ee827624718ebcb23b1e5c4e3254c228807bc62a6b5a990.png" src="_images/ff77cd6aeca508e58ee827624718ebcb23b1e5c4e3254c228807bc62a6b5a990.png" />
+<img alt="_images/8332b2bf592b8ce4de07dc42c84ecdb4567153bca561c87f3ad03b25de93e23b.png" src="_images/8332b2bf592b8ce4de07dc42c84ecdb4567153bca561c87f3ad03b25de93e23b.png" />
 </div>
 </div>
 </section>
@@ -713,7 +724,7 @@ x-좌표 리스트와 y-좌표 리스트를 생성하며
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(PosixPath(&#39;data/iris.data&#39;), &lt;http.client.HTTPMessage at 0x7f7bf3e93ee0&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(WindowsPath(&#39;data/iris.data&#39;), &lt;http.client.HTTPMessage at 0x1bec47084f0&gt;)
 </pre></div>
 </div>
 </div>
@@ -988,7 +999,7 @@ Iris-virginica  샘플 수: 50
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.5, 7.0, 0.0, 3.0)
 </pre></div>
 </div>
-<img alt="_images/f909c715aaf8e4e5cc9a0329fc7473a1445bc9968064be5dc4f43423754745a3.png" src="_images/f909c715aaf8e4e5cc9a0329fc7473a1445bc9968064be5dc4f43423754745a3.png" />
+<img alt="_images/6271e37ebe8fbf28f7321fa20999084c7398adae4879c8aafb0b003e45321c5f.png" src="_images/6271e37ebe8fbf28f7321fa20999084c7398adae4879c8aafb0b003e45321c5f.png" />
 </div>
 </div>
 <p>그런데 이렇게 하면 품종이 구별되지 않기에 품종 정보를 함께 활용해야 한다.
@@ -1020,7 +1031,7 @@ Iris-virginica  샘플 수: 50
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/a6dbfd795aef6ff893ede1aa05b1158bcb992f81c497c6dd8ab5945f790810b9.png" src="_images/a6dbfd795aef6ff893ede1aa05b1158bcb992f81c497c6dd8ab5945f790810b9.png" />
+<img alt="_images/91d0fdc1ea55b821fb45d480388a8c63b33746de63207ffa4e76215ec110a5c9.png" src="_images/91d0fdc1ea55b821fb45d480388a8c63b33746de63207ffa4e76215ec110a5c9.png" />
 </div>
 </div>
 <p><strong>격자 무늬</strong></p>
@@ -1047,7 +1058,7 @@ Iris-virginica  샘플 수: 50
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/67bebb929bce0a9a1d383cddc1d45a2007a2efff481a100d8945d5740649f34c.png" src="_images/67bebb929bce0a9a1d383cddc1d45a2007a2efff481a100d8945d5740649f34c.png" />
+<img alt="_images/556b1d340a2cf95343019d621c8e4026ff77348512cb1a78de2342aad6ec8e43.png" src="_images/556b1d340a2cf95343019d621c8e4026ff77348512cb1a78de2342aad6ec8e43.png" />
 </div>
 </div>
 <p><strong>배경화면 색</strong></p>
@@ -1085,7 +1096,7 @@ Iris-virginica  샘플 수: 50
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/96e1790e244da3d2376770e6313cbbdd42604f9746a67ee0ff84dd12430bcc76.png" src="_images/96e1790e244da3d2376770e6313cbbdd42604f9746a67ee0ff84dd12430bcc76.png" />
+<img alt="_images/44d4c682d271a13fbdad1eeb3959900090240f678a1a3347063098411a98f1df.png" src="_images/44d4c682d271a13fbdad1eeb3959900090240f678a1a3347063098411a98f1df.png" />
 </div>
 </div>
 <p><strong>품종 분류</strong></p>
@@ -1154,7 +1165,7 @@ Iris-virginica  샘플 수: 50
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/ed543d6f5e1e77b0981897c37ec47fb48801978773b871c22b69ca674464e714.png" src="_images/ed543d6f5e1e77b0981897c37ec47fb48801978773b871c22b69ca674464e714.png" />
+<img alt="_images/be2bd7160acceb1a673661499ff6ad2b751e63e73a8b2b386cef265762d76cab.png" src="_images/be2bd7160acceb1a673661499ff6ad2b751e63e73a8b2b386cef265762d76cab.png" />
 </div>
 </div>
 <p>아래 코드는 등고선도 함께 그린다.</p>
@@ -1182,7 +1193,7 @@ Iris-virginica  샘플 수: 50
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/77af6db8e2661bfd7f8a156ef8f5acff92977940a42fa97c63fc766a89c0b82e.png" src="_images/77af6db8e2661bfd7f8a156ef8f5acff92977940a42fa97c63fc766a89c0b82e.png" />
+<img alt="_images/4ea9437bc3889d93eb6d133931a457d61e10e72d417e8420de386e63c887d32b.png" src="_images/4ea9437bc3889d93eb6d133931a457d61e10e72d417e8420de386e63c887d32b.png" />
 </div>
 </div>
 </section>
@@ -1217,11 +1228,10 @@ Iris-virginica  샘플 수: 50
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="numpy_4.html"
@@ -1241,10 +1251,7 @@ Iris-virginica  샘플 수: 50
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1309,8 +1316,8 @@ By 코딩알지
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
   <footer class="bd-footer">
   </footer>

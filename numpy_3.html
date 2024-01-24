@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,8 +39,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -79,6 +80,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -140,6 +150,7 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">파이썬 데이터 분석</p>
   
 </a></div>
@@ -147,7 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">파이썬 기초</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="python_basic_1.html">1. 프로그래밍 개발 환경</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_1.html">1. 프로그램 개발 환경</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_2.html">2. 기초 문법</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_3.html">3. 기초 자료형</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_4.html">4. 제어문</a></li>
@@ -155,7 +166,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="python_basic_6.html">6. 함수</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_7.html">7. 파일</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_8.html">8. 모듈 (준비중)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="python_basic_9.html">9. 클래스, 인스턴스, 객체 (준비중)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_9.html">9. 클래스, 객체, 상속 (준비중)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="from_scratch_1.html">10. 선형대수 기초</a></li>
 <li class="toctree-l1"><a class="reference internal" href="from_scratch_2.html">11. 통계 기초</a></li>
 </ul>
@@ -380,10 +391,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -391,7 +402,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -617,9 +628,9 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([[ 3,  4,  5,  6],
-        [ 7,  8,  9, 10]]),
+        [ 7,  8,  9, 10]], dtype=int32),
  array([[1, 1, 1, 1],
-        [1, 1, 1, 1]]))
+        [1, 1, 1, 1]], dtype=int32))
 </pre></div>
 </div>
 </div>
@@ -1349,7 +1360,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 0])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 1, 0], dtype=int64)
 </pre></div>
 </div>
 </div>
@@ -1361,7 +1372,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 1])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 0, 1], dtype=int64)
 </pre></div>
 </div>
 </div>
@@ -1374,7 +1385,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2, 0])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2, 0], dtype=int64)
 </pre></div>
 </div>
 </div>
@@ -1386,7 +1397,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2], dtype=int64)
 </pre></div>
 </div>
 </div>
@@ -1434,7 +1445,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 3, 0],
        [3, 1, 1],
        [2, 0, 3],
-       [1, 2, 2]])
+       [1, 2, 2]], dtype=int64)
 </pre></div>
 </div>
 </div>
@@ -1452,7 +1463,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2, 0, 1],
        [1, 2, 0],
        [2, 0, 1],
-       [1, 2, 0]])
+       [1, 2, 0]], dtype=int64)
 </pre></div>
 </div>
 </div>
@@ -1468,7 +1479,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[2, 0, 1],
        [1, 2, 0],
        [2, 0, 1],
-       [1, 2, 0]])
+       [1, 2, 0]], dtype=int64)
 </pre></div>
 </div>
 </div>
@@ -1481,7 +1492,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 2, 10,  4,  5,  0, 11,  8,  9,  1,  6,  7,  3])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 2, 10,  4,  5,  0, 11,  8,  9,  1,  6,  7,  3], dtype=int64)
 </pre></div>
 </div>
 </div>
@@ -1497,7 +1508,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 3, 2, 1])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 3, 2, 1], dtype=int64)
 </pre></div>
 </div>
 </div>
@@ -1769,11 +1780,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.,  0.,  0., -0., -0.],
-       [-0.,  1.,  0., -0., -0.],
-       [ 0.,  0.,  1., -0., -0.],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.,  0., -0.,  0.,  0.],
+       [ 0.,  1.,  0.,  0.,  0.],
+       [ 0.,  0.,  1.,  0., -0.],
        [ 0.,  0., -0.,  1., -0.],
-       [-0., -0.,  0.,  0.,  1.]])
+       [ 0.,  0., -0.,  0.,  1.]])
 </pre></div>
 </div>
 </div>
@@ -1804,7 +1815,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/78e69f174cee5e2e59db9ec4ef0e0272285b16668e7a317f36a5c302d4730600.png" src="_images/78e69f174cee5e2e59db9ec4ef0e0272285b16668e7a317f36a5c302d4730600.png" />
+<img alt="_images/16e58762f422ae3c3b2e57a298b5c531950fe7e2a9f6f429a662764679b7c9d3.png" src="_images/16e58762f422ae3c3b2e57a298b5c531950fe7e2a9f6f429a662764679b7c9d3.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">np.random.randn(n)</span></code>은 <code class="docutils literal notranslate"><span class="pre">np.random.normal(size=n)</span></code>과 동일하게 작동한다.</p>
@@ -1819,7 +1830,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/78e69f174cee5e2e59db9ec4ef0e0272285b16668e7a317f36a5c302d4730600.png" src="_images/78e69f174cee5e2e59db9ec4ef0e0272285b16668e7a317f36a5c302d4730600.png" />
+<img alt="_images/16e58762f422ae3c3b2e57a298b5c531950fe7e2a9f6f429a662764679b7c9d3.png" src="_images/16e58762f422ae3c3b2e57a298b5c531950fe7e2a9f6f429a662764679b7c9d3.png" />
 </div>
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">np.random.rand()</span></code>/<code class="docutils literal notranslate"><span class="pre">np.random.uniform()</span></code> 함수</strong></p>
@@ -1835,7 +1846,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/931f507296b6713d822a59f39fea4efbc91fc176e10b09e92cb6b5a350643d70.png" src="_images/931f507296b6713d822a59f39fea4efbc91fc176e10b09e92cb6b5a350643d70.png" />
+<img alt="_images/fd491a29e7afa6b3dcc97bbc8929a0d987f516f53aa1f5e2dd4b2cd942e46ec5.png" src="_images/fd491a29e7afa6b3dcc97bbc8929a0d987f516f53aa1f5e2dd4b2cd942e46ec5.png" />
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">np.random.rand(n)</span></code>은 <code class="docutils literal notranslate"><span class="pre">np.random.uniform(0,</span> <span class="pre">1,</span> <span class="pre">n)</span></code>과 동일하게 작동한다.</p>
@@ -1850,7 +1861,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/931f507296b6713d822a59f39fea4efbc91fc176e10b09e92cb6b5a350643d70.png" src="_images/931f507296b6713d822a59f39fea4efbc91fc176e10b09e92cb6b5a350643d70.png" />
+<img alt="_images/fd491a29e7afa6b3dcc97bbc8929a0d987f516f53aa1f5e2dd4b2cd942e46ec5.png" src="_images/fd491a29e7afa6b3dcc97bbc8929a0d987f516f53aa1f5e2dd4b2cd942e46ec5.png" />
 </div>
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">np.random.randint()</span></code> 함수</strong></p>
@@ -1864,7 +1875,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/2237f4cff303cdc1c1274b6f6e3aeba3d5bb9deeb46e9eac1ab1be4b8518d039.png" src="_images/2237f4cff303cdc1c1274b6f6e3aeba3d5bb9deeb46e9eac1ab1be4b8518d039.png" />
+<img alt="_images/8202e4a6dc28d07fbb818ec8f48b512527462f5bc521dc9416ff11e40a563d71.png" src="_images/8202e4a6dc28d07fbb818ec8f48b512527462f5bc521dc9416ff11e40a563d71.png" />
 </div>
 </div>
 <p><strong>시드(seed)</strong></p>
@@ -1882,7 +1893,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c645d9cf63b7a14590c473ad56c3d0898b0139246fb695e85f645767e7dd2225.png" src="_images/c645d9cf63b7a14590c473ad56c3d0898b0139246fb695e85f645767e7dd2225.png" />
+<img alt="_images/6b549a387b0eebe873937b03cd1519d61394452ec39ed380915927fe353078d1.png" src="_images/6b549a387b0eebe873937b03cd1519d61394452ec39ed380915927fe353078d1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1896,7 +1907,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/cb799ce8fe109fd3bdf3fc6f08dce160782a0fbce79220fce924027ed897fb8a.png" src="_images/cb799ce8fe109fd3bdf3fc6f08dce160782a0fbce79220fce924027ed897fb8a.png" />
+<img alt="_images/e784d9e75a31fa6a48b45e89c38c7d170ea19ae3e8d0a30fab5d1db7128ed635.png" src="_images/e784d9e75a31fa6a48b45e89c38c7d170ea19ae3e8d0a30fab5d1db7128ed635.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1910,7 +1921,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/3bc9744253fbd1ddf35e8cef78b0386b46fcd381c3d6599e84fba49e4dc414ef.png" src="_images/3bc9744253fbd1ddf35e8cef78b0386b46fcd381c3d6599e84fba49e4dc414ef.png" />
+<img alt="_images/8d1582f447881f015e4587571b8eec13df2c79f8b4489ac1f378962171fea406.png" src="_images/8d1582f447881f015e4587571b8eec13df2c79f8b4489ac1f378962171fea406.png" />
 </div>
 </div>
 <p>구간의 오른쪽 끝은 포함되지 않으며, 구간의 왼쪽 끝은 생략되면 0이 기본값으로 사용된다.</p>
@@ -1946,11 +1957,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="numpy_2.html"
@@ -1970,10 +1980,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -2042,8 +2049,8 @@ By 코딩알지
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
   <footer class="bd-footer">
   </footer>
