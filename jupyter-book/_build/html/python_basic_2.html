@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,8 +39,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -66,7 +67,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="3. 기초 자료형" href="python_basic_3.html" />
-    <link rel="prev" title="1. 프로그래밍 개발 환경" href="python_basic_1.html" />
+    <link rel="prev" title="1. 프로그램 개발 환경" href="python_basic_1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -77,6 +78,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -138,6 +148,7 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">파이썬 데이터 분석</p>
   
 </a></div>
@@ -145,7 +156,7 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">파이썬 기초</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="python_basic_1.html">1. 프로그래밍 개발 환경</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_1.html">1. 프로그램 개발 환경</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">2. 기초 문법</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_3.html">3. 기초 자료형</a></li>
 <li class="toctree-l1"><a class="reference internal" href="python_basic_4.html">4. 제어문</a></li>
@@ -378,10 +389,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -389,7 +400,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -418,13 +429,16 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1. 구문</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2. 주석</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3. 변수</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.4. 함수 호출과 인자</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.5. 이항 연산자와 비교문</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.6. 객체와 자료형</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.7. 모듈</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.8. 불변 객체 대 가변 객체</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.9. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3. 변수</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.3.1. 스코프</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.4. 함수 호출과 인자</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.5. 이항 연산자와 비교문</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.6. 객체와 자료형</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.7. 모듈</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.8. 불변 객체 대 가변 객체</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.9. 연습문제</a></li>
 </ul>
             </nav>
         </div>
@@ -441,9 +455,11 @@ document.write(`
 <p>파이썬 프로그램의 기본 구조를 살펴본다.</p>
 <section id="id2">
 <h2><span class="section-number">2.1. </span>구문<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>구문 또는 신택스<font size='2'>syntax</font>는 프로그래밍 언어에서 정해진 문법에 따라 프로그램의 형태와 구조를 지정하는 것을 가리킨다.
-파이썬의 구문은 C, Java 등의 그것과는 다르다. 예를 들어, 중괄호(<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code>)와 세미콜론(<code class="docutils literal notranslate"><span class="pre">;</span></code>)을 사용하지 않으며,
-대신에 들여쓰기와 줄바꿈을 기본으로 사용한다.</p>
+<p>구문<font size='2'>syntax</font>은 프로그래밍 언어에서 정해진 문법에 따라
+프로그램의 형태와 구조를 지정하는 것을 가리킨다.
+파이썬의 구문은 C, Java 등의 그것과 많이 다르다.
+예를 들어, 중괄호(<code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">}</span></code>)와 세미콜론(<code class="docutils literal notranslate"><span class="pre">;</span></code>)을 사용하지 않으며,
+대신에 들여쓰기와 줄바꿈을 이용하여 명령문을 작성한다.</p>
 <p><strong>들여쓰기</strong></p>
 <p>들여쓰기를 이용하여 명령문 블록<font size='2'>block</font>을 지정한다.
 예를 들어 <code class="docutils literal notranslate"><span class="pre">for</span></code> 반복문의 본문에 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">...</span> <span class="pre">else</span> <span class="pre">...</span></code> 조건문을
@@ -473,7 +489,7 @@ greater: [3, 5, 4]
 </div>
 </div>
 </div>
-<div class="admonition-kbd-tab-kbd admonition">
+<div class="info admonition">
 <p class="admonition-title"><kbd>Tab</kbd> 키 활용</p>
 <p>코딩할 때 <kbd>Tab</kbd> 키는 두 가지 기능으로 유용하게 사용된다.</p>
 <p>첫째, <strong>들여쓰기</strong>. 커서가 줄 맨 왼쪽에 위치했을 때 <kbd>Tab</kbd> 키를 누르면
@@ -584,8 +600,7 @@ c: 7
 </section>
 <section id="id4">
 <h2><span class="section-number">2.3. </span>변수<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
-<p><strong>참조</strong></p>
-<p>변수가 가리키는 값이 리스트와 같이 좀 복잡한 객체일 때는 파이썬 실행기 내부에서
+<p>변수에 할당된 값이 리스트와 같이 좀 복잡한 객체일 때는 파이썬 실행기 내부에서
 변수가 해당 값을 <strong>참조</strong>(reference)한다.
 참조는 변수가 단순히 하나의 값을 가리키는 것 이외에 부가적인 기능도 수행한다.</p>
 <p>예를 들어 변수 <code class="docutils literal notranslate"><span class="pre">a</span></code>가 리스트 <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>을 참조하도록 하자.</p>
@@ -648,7 +663,8 @@ b = 4
 </div>
 </div>
 </div>
-<div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/variables-a-b-5.png" style="width:360px;"></div><p><strong>스코프</strong></p>
+<div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/variables-a-b-5.png" style="width:360px;"></div><section id="id5">
+<h3><span class="section-number">2.3.1. </span>스코프<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>파이썬에서 다루는 모든 객체는 스코프<font size='2'>scope</font>라 불리는 자신만의 활동영역이 있으며
 자신의 활동영역을 벗어나서는 존재 자체를 인정받지 못한다.
 이는 변수에게도 동일하게 적용되는데 특히 함수와 관련되어 전역 변수와 지역 변수로 서로 다른 활동영역을 갖는다.</p>
@@ -709,8 +725,9 @@ b = 4
 </pre></div>
 </div>
 </section>
-<section id="id5">
-<h2><span class="section-number">2.4. </span>함수 호출과 인자<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="id6">
+<h2><span class="section-number">2.4. </span>함수 호출과 인자<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <p><strong>함수 호출</strong></p>
 <p>함수를 적절한 인자와 함께 실행하는 것을 <strong>함수 호출</strong><font size='2'>function call</font>이라 한다.
 예를 들어, 아래와 같이 세 개의 인자를 받는 함수를 정의한다.</p>
@@ -959,7 +976,7 @@ print(...)
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;책값은 </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">discount</span><span class="p">)</span><span class="si">}</span><span class="s2">% 할인해서 </span><span class="si">{</span><span class="n">book_price</span><span class="p">(</span><span class="mi">23000</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span><span class="si">}</span><span class="s2">원입니다.&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;책값은 </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="mi">100</span><span class="o">*</span><span class="n">discount</span><span class="p">)</span><span class="si">}</span><span class="s2">% 할인해서 </span><span class="si">{</span><span class="n">book_price</span><span class="p">(</span><span class="mi">23000</span><span class="p">,</span><span class="w"> </span><span class="n">discount</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span><span class="si">}</span><span class="s2">원입니다.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -970,8 +987,8 @@ print(...)
 </div>
 </div>
 </section>
-<section id="id6">
-<h2><span class="section-number">2.5. </span>이항 연산자와 비교문<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<section id="id7">
+<h2><span class="section-number">2.5. </span>이항 연산자와 비교문<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <p>사칙연산과 비교문의 사용법은 일반적으로 알려진 방식과 동일하다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1189,8 +1206,8 @@ print(...)
 <a class="reference external" href="https://dojang.io/mod/page/view.php?id=2460">파이썬 코딩도장: 비트 연산자 사용하기</a>에서 확인할 수 있다.</p>
 </div>
 </section>
-<section id="id7">
-<h2><span class="section-number">2.6. </span>객체와 자료형<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<section id="id8">
+<h2><span class="section-number">2.6. </span>객체와 자료형<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
 <p><strong>객체</strong></p>
 <p>파이썬이 다루는 대상(값)은 모두 <strong>객체</strong><font size='2'>object</font>,
 즉 특정 클래스의 인스턴스다.
@@ -1407,8 +1424,8 @@ print(...)
 <p>이렇게 작동하는 언어를 <strong>약타입</strong><font size='2'>weak types</font> 언어라 부른다.
 파이썬은 기본적으로 강타입 언어이지만, 약간의 약타입을 지원하는 언어라는 의미이다.</p>
 </section>
-<section id="id8">
-<h2><span class="section-number">2.7. </span>모듈<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<section id="id9">
+<h2><span class="section-number">2.7. </span>모듈<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
 <p><strong>모듈</strong>(module)은 파이썬 소스코드를 담고 있는, 확장자가 <code class="docutils literal notranslate"><span class="pre">.py</span></code>인 파이썬 스크립트 파일이다.</p>
 <p><strong>모듈 불러오기</strong></p>
 <p>다음 내용을 담은 모듈 <code class="docutils literal notranslate"><span class="pre">some_module.py</span></code>가 현재 주피터 노트북이 실행되고 있는 디렉토리에
@@ -1524,8 +1541,8 @@ pi:	 3.14159
 보다 자세한 내용은 <a class="reference external" href="https://codingalzi.github.io/pybook/modules.html">파이썬 프로그래밍 기초: 모듈</a>을 참고한다.</p>
 </div>
 </section>
-<section id="id9">
-<h2><span class="section-number">2.8. </span>불변 객체 대 가변 객체<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<section id="id10">
+<h2><span class="section-number">2.8. </span>불변 객체 대 가변 객체<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
 <p><strong>가변 객체</strong></p>
 <p>리스트, 사전, 넘파이 어레이 등은 항복 변경, 추가, 삭제 등이 가능한<font size>mutable</font> 자료형이다.</p>
 <p>예를 들어, 리스트의 항목을 교체할 수 있다.</p>
@@ -1585,8 +1602,8 @@ pi:	 3.14159
 </pre></div>
 </div>
 </section>
-<section id="id10">
-<h2><span class="section-number">2.9. </span>연습문제<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<section id="id11">
+<h2><span class="section-number">2.9. </span>연습문제<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://colab.research.google.com/github/codingalzi/pybook/blob/master/practices/practice-starting.ipynb">(실습) 프로그래밍 시작하기</a></p></li>
 <li><p><a class="reference external" href="https://colab.research.google.com/github/codingalzi/pybook/blob/master/practices/practice-variables_expressions.ipynb">(실습) 변수, 값, 표현식</a></p></li>
@@ -1620,11 +1637,10 @@ pi:	 3.14159
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="python_basic_1.html"
@@ -1632,7 +1648,7 @@ pi:	 3.14159
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1. </span>프로그래밍 개발 환경</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>프로그램 개발 환경</p>
       </div>
     </a>
     <a class="right-next"
@@ -1644,10 +1660,7 @@ pi:	 3.14159
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -1664,13 +1677,16 @@ pi:	 3.14159
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.1. 구문</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2. 주석</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3. 변수</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.4. 함수 호출과 인자</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.5. 이항 연산자와 비교문</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.6. 객체와 자료형</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.7. 모듈</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.8. 불변 객체 대 가변 객체</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.9. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3. 변수</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.3.1. 스코프</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.4. 함수 호출과 인자</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.5. 이항 연산자와 비교문</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">2.6. 객체와 자료형</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">2.7. 모듈</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">2.8. 불변 객체 대 가변 객체</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">2.9. 연습문제</a></li>
 </ul>
   </nav></div>
 
@@ -1718,8 +1734,8 @@ By 코딩알지
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
 
   <footer class="bd-footer">
   </footer>
