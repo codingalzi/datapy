@@ -469,13 +469,12 @@ document.write(`
 <span id="id1"></span><h1><span class="section-number">12. </span>넘파이 어레이<a class="headerlink" href="#sec-numpy-1" title="Permalink to this heading">#</a></h1>
 <p><strong>주요 내용</strong></p>
 <ul class="simple">
-<li><p>넘파이 어레이 소개</p></li>
-<li><p>어레이 기초 연산</p></li>
+<li><p>넘파이 어레이 자료형</p></li>
+<li><p>다차원 어레이 소개</p></li>
+<li><p>어레이 기초 연산 소개</p></li>
 </ul>
-<p><strong>슬라이드</strong></p>
-<p>본문 내용을 요약한 <a class="reference external" href="https://github.com/codingalzi/datapy/raw/master/slides/slides-numpy_1.pdf">슬라이드</a>를 다운로드할 수 있다.</p>
 <p><strong>기본 설정</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">numpy</span></code> 모듈과 시각화 도구 모듈인 <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>에 대한 기본 설정을 지정한다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">numpy</span></code> 모듈에 대한 기본 설정을 지정한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 넘파이</span>
@@ -484,16 +483,6 @@ document.write(`
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">12345</span><span class="p">)</span>
 <span class="c1"># 어레이 사용되는 부동소수점들의 정확도 지정</span>
 <span class="n">np</span><span class="o">.</span><span class="n">set_printoptions</span><span class="p">(</span><span class="n">precision</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">suppress</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 파이플롯</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="c1"># 도표 크기 지정</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -580,9 +569,14 @@ document.write(`
 </section>
 <section id="id3">
 <h2><span class="section-number">12.2. </span>다차원 어레이<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
-<p>리스트, 튜플 등을 <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> 함수를 이용하여 어레이로 변환시킬 수 있다.</p>
+<p>넘파이 어레이는 리스트와는 달리 포함된 모양, 항목의 자료형 등에 대한 자료형 정보도 포함한다.
+모양에 따라 차원이 결정되며, 모든 항목은 동일한 자료형을 갖는다.
+가장 많이 활용되는 어레이의 차원은 다음과 같다.</p>
 <section id="id4">
 <h3><span class="section-number">12.2.1. </span>1차원 어레이<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>리스트와 유사한 모양을 가지며, 리스트와 튜플 등에 <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> 함수를 적용하여 생성할 수 있다.
+1차원 어레이는 <strong>벡터</strong><font size='2'>vector</font>로도 불리며,
+한 개의 <strong>축</strong><font size='2'>axis</font>을 갖는다.</p>
 <ul class="simple">
 <li><p>리스트 활용</p></li>
 </ul>
@@ -605,8 +599,8 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">arr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">arr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>
 <span class="n">arr1</span>
 </pre></div>
 </div>
@@ -618,7 +612,7 @@ document.write(`
 </div>
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">ndarray</span></code> 자료형</strong></p>
-<p>넘파이 어레이의 자료형은 <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>이다.</p>
+<p>넘파이 어레이 자체의 자료형은 <code class="docutils literal notranslate"><span class="pre">ndarray</span></code>이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">arr1</span><span class="p">)</span>
@@ -631,12 +625,29 @@ document.write(`
 </div>
 </div>
 </div>
+<p>참고로 리스트의 자료형은 <code class="docutils literal notranslate"><span class="pre">list</span></code>다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">data1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="id5">
 <h3><span class="section-number">12.2.2. </span>2차원 어레이<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
-<p>중첩된 리스트를 2차원 어레이로 변환할 수 있다.
-단, 항목으로 사용된 리스트의 길이가 모두 동일해야 한다.
-즉, 2차원 어레이는 어레이의 모든 항목이 동일한 크기의 1차원 어레이이다.</p>
+<p>동일한 길이의 리스트를 항목으로 갖는 중첩 리스트를
+2차원 어레이로 변환할 수 있다.
+따라서 2차원 어레이는 어레이의 모든 항목은
+동일한 크기의 1차원 어레이이다.
+2차원 어레이는 <strong>행렬</strong><font size='2'>matrix</font>로도 불리며,
+<strong>행</strong><font size='2'>row</font>과 <strong>열</strong><font size='2'>column</font>
+두 개의 축을 갖는다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data2</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]]</span>
@@ -654,12 +665,7 @@ document.write(`
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">shape</span></code></strong> 속성</p>
 <p>어레이 객체의 <code class="docutils literal notranslate"><span class="pre">shape</span></code> 속성은 생성된 어레이의 모양을 저장한다.
-2차원 어레이는 행과 열의 크기를 이용한 튜플로 보여준다.
-위 어레이의 모양(shape)은 (2, 4)이다.</p>
-<ul class="simple">
-<li><p>2: 항목이 두개</p></li>
-<li><p>4: 각각의 항목은 길이가 4인 어레이</p></li>
-</ul>
+예를 들어 위 2차원 어레이의 모양은 행과 열의 개수로 구성된 튜플 <code class="docutils literal notranslate"><span class="pre">(2,</span> <span class="pre">4)</span></code>이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr2</span><span class="o">.</span><span class="n">shape</span>
@@ -672,7 +678,8 @@ document.write(`
 </div>
 </div>
 </div>
-<p>1차원 어레이의 모양은 어레이의 길이 정보를 길이가 1인 튜플로 저장한다.</p>
+<p>1차원 어레이, 즉 벡터의 모양은 벡터에 포함된 항목의 개수로 구성된
+길이가 1인 튜플로 표현된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr1</span><span class="o">.</span><span class="n">shape</span>
@@ -681,25 +688,6 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5,)
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong><code class="docutils literal notranslate"><span class="pre">dtype</span></code></strong> 속성</p>
-<p>어레이 객체의 <code class="docutils literal notranslate"><span class="pre">dtype</span></code> 속성은 어레이에 사용된 항목들의 자료형을 저장한다.
-어레이의 모든 항목은 <strong>동일한 자료형</strong>을 가져야 한다.
-넘파이는 파이썬 표준에서 제공하는 자료형보다 세분화된 자료형을 지원한다.
-예를 들어, <code class="docutils literal notranslate"><span class="pre">float64</span></code>는 64비트로 구현된 부동소수점 자료형을 가리킨다.
-앞으로 계속해서 세분화된 자료형을 만나게 될 것이다.</p>
-<p><code class="docutils literal notranslate"><span class="pre">arr2</span></code> 항목의 자료형은 <code class="docutils literal notranslate"><span class="pre">int64</span></code>, 즉, 64비트로 구현된 정수 자료형이다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr2</span><span class="o">.</span><span class="n">dtype</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype(&#39;int32&#39;)
 </pre></div>
 </div>
 </div>
@@ -736,56 +724,17 @@ document.write(`
 <h3><span class="section-number">12.2.3. </span>3차원 어레이<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>3차원 이상의 어레이는 처음에는 매우 생소하게 다가올 수 있다.
 하지만 이미지 데이터 분석에서 가장 기본으로 사용되는 차원이기에 3차원 어레이에 익숙해져야 한다.</p>
-<p>(n, m, p) 모양의 3차원 어레이를 이해하는 두 가지 방법은 다음과 같다.</p>
-<p>첫째, 바둑판을 (n, m) 크기의 격자로 나누고 각각의 칸에 길이가 p 인 1차원 어레이가
+<p><code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">m,</span> <span class="pre">p)</span></code> 모양의 3차원 어레이를 이해하는 두 가지 방법은 다음과 같다.</p>
+<p>첫째, 바둑판을 <code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">m)</span></code> 크기의 격자로 나누고 각각의 칸에 길이가 <code class="docutils literal notranslate"><span class="pre">p</span></code> 인 1차원 어레이가
 위치하는 것으로 이해한다.
-아래 그림은 (3, 3, 3) 모양의 어레이이며, (3, 3) 모양의 바둑판에
-0과 1사이의 부동소수점으로 구성된 (R, G, B) 색상 정보를 담은 길이가 3인 튜플을 표현한다.</p>
-<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/impixelregion.png" style="width:5=700px;"></div>
-<p><div style="text-align: center">&lt;그림 출처: <a href="http://maprabu.blogspot.com/2013/08/dont-photoshop-just-matlab-it.html">Big Data & Image Processing</a>&gt;</div></p><p>둘째, (m, p) 모양의 2차원 어레이 n 개를 항목으로 갖는 1차원 어레이로 이해한다.
-아래 <code class="docutils literal notranslate"><span class="pre">threeD_array</span></code> 변수가 가리키는 3차원 어레이는 (3, 2) 모양의 2차원 어레이를 4개 포함한 1차원 어레이로 이해할 수 있다.</p>
+예를 들어, 아래 그림은 작은 컬러 고양이 사진을 <code class="docutils literal notranslate"><span class="pre">(5,</span> <span class="pre">5,</span> <span class="pre">3)</span></code> 모양의 어레이로 표현한 방식을 보여준다.
+즉, 모든 항목이 (R, G, B) 색상 정보를 담은 길이가 3인 1차원 어레이인 2차원 어레이로 표현되었다.</p>
+<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/rgb-3d-1.png" style="width:80%;"></div>
+<div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/rgb-3d-2.png" style="width:80%;"></div>
+<p><div style="text-align: center">&lt;그림 출처: <a href="https://dev.to/sandeepbalachandran/machine-learning-going-furthur-with-cnn-part-2-41km">Machine Learning - Going Furthur with CNN Part 2</a>&gt;</div></p><p>둘째, <code class="docutils literal notranslate"><span class="pre">(m,</span> <span class="pre">p)</span></code> 모양의 2차원 어레이 <code class="docutils literal notranslate"><span class="pre">n</span></code> 개를 항목으로 갖는 1차원 어레이로 이해한다.
+아래 그림은 (3, 2) 모양의 2차원 어레이를 4개 포함한 1차원 어레이로 표현된 3차원 어레이로 이해할 수 있다.</p>
 <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy-array.svg" style="width:30%;"></div>
-<p><div style="text-align: center">&lt;그림 출처: <a href="https://www.reallifeedublogging.com/2020/07/numpy-arrays-and-data-analysis.html">NumPy Arrays and Data Analysis</a>&gt;</div></p><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">threeD_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
-                          <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> 
-                          <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]],</span>
-   
-                         <span class="p">[[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-                          <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> 
-                          <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span>
-
-                         <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> 
-                          <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> 
-                          <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">]],</span>
-
-                         <span class="p">[[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">11</span><span class="p">],</span> 
-                          <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> 
-                          <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">]]])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">threeD_array</span><span class="o">.</span><span class="n">shape</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4, 3, 2)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="info admonition">
-<p class="admonition-title">어레이의 차원 대 벡터의 차원</p>
-<p>벡터는 1차원 어레이에 해당한다.
-그리고 벡터의 차원은 벡터에 포함된 항목의 개수,
-즉 1차원 어레이의 모양<font size='2'>shape</font>에 사용되는 항목의 값이다.
-따라서 벡터의 차원과 어레이의 차원은 기본적으로 아무 상관이 없다.</p>
-</div>
-</section>
+<p><div style="text-align: center">&lt;그림 출처: <a href="https://www.reallifeedublogging.com/2020/07/numpy-arrays-and-data-analysis.html">NumPy Arrays and Data Analysis</a>&gt;</div></p></section>
 <section id="id7">
 <h3><span class="section-number">12.2.4. </span>어레이 객체 생성 함수<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <p>배열을 쉽게 생성할 수 있는 함수는 다음과 같으며,
@@ -889,7 +838,7 @@ document.write(`
 </section>
 <section id="dtype">
 <h2><span class="section-number">12.3. </span><code class="docutils literal notranslate"><span class="pre">dtype</span></code> 종류<a class="headerlink" href="#dtype" title="Permalink to this heading">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">dtype</span></code> 속성은 어레이 항목의 자료형을 담고 있으며, 파이썬 표준 라이브러리에서 제공하는
+<p>넘파이 어레이의 <code class="docutils literal notranslate"><span class="pre">dtype</span></code> 속성은 어레이 항목의 자료형을 담고 있으며, 파이썬 표준 라이브러리에서 제공하는
 <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code> 등을 보다 세분화시킨 자료형을 제공한다.</p>
 <section id="id8">
 <h3><span class="section-number">12.3.1. </span>기본 <code class="docutils literal notranslate"><span class="pre">dtype</span></code><a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
