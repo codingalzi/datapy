@@ -505,48 +505,73 @@ document.write(`
 넘파이가 제공하는 가장 중요한 요소는 아래 두 가지이다.</p>
 <ul class="simple">
 <li><p>다차원 어레이(배열)</p></li>
-<li><p>메모리 효율적인 빠른 어레이 연산</p></li>
+<li><p>메모리 효율적이며 빠른 어레이 연산</p></li>
 </ul>
 <p>넘파이의 기능을 잘 이해한다면 이어서 다룰 <strong>판다스</strong><font size='2'>pandas</font> 라이브러리가 지원하는
-데이터프레임<font size='2'>Dataframe</font> 자료형의 기능을 매우 쉽게 활용할 수 있다.</p>
+데이터프레임<font size='2'>Dataframe</font> 자료형의 기능 또한 쉽게 이해할 수 있다.</p>
 <p>리스트 연산과 넘파이 어레이 연산의 속도 차이를 아래 코드가 보여준다.
 아래 코드는 0부터 999,999까지의 숫자를 각각 두 배하는 연산에 필요한 시간을 측정한다.
 결과적으로 넘파이 어레이를 이용한 연산이 50배 정도 빠르다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1000000</span><span class="p">)</span>
-<span class="n">my_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1000000</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
 <div class="warning admonition">
 <p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">%time</span></code> 매직 커맨드</p>
 <p><code class="docutils literal notranslate"><span class="pre">%time</span></code>은 코드 실행시간을 측정하는 IPython의 매직 커맨드 중의 하나이며, 파이썬 자체의 기능이 아니다.</p>
 </div>
-<p>아래 코드에서 <code class="docutils literal notranslate"><span class="pre">my_array</span> <span class="pre">*</span> <span class="pre">2</span></code>는 <code class="docutils literal notranslate"><span class="pre">my_array</span></code> 어레이의 항목 각각을 두 배한 값을 항목으로 갖는다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> for _ in range(10): my_array2 = my_array * 2
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: total: 0 ns
-Wall time: 13 ms
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000000</span><span class="p">)</span>
+<span class="n">my_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10000000</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span> for _ in range(10): my_list2 = [x * 2 for x in my_list]
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> for _ in range(10): my_array2 = my_array * 2
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: total: 469 ms
-Wall time: 603 ms
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>134 ms ± 2.48 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">timeit</span> for _ in range(10): my_list2 = [x * 2 for x in my_list]
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.38 s ± 39.2 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+</pre></div>
+</div>
+</div>
+</div>
+<p>이전 코드에서 사용된 <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> 함수는 <code class="docutils literal notranslate"><span class="pre">range()</span></code> 함수와 유사하게 작동하지만
+반환값은 항상 넘파이 어레이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+</pre></div>
+</div>
+</div>
+</div>
+<p>넘퍼이 어레이 자료형의 연산은 기본적으로 항목별로 실행된다.
+따라서 어레이와 정수의 곱은 어레이의 각 항목에 정수를 곱해서 새로운 어레이를 생성한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0,  2,  4,  6,  8, 10, 12, 14, 16, 18])
 </pre></div>
 </div>
 </div>
