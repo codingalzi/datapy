@@ -486,7 +486,7 @@ document.write(`
 <p>넘파이의 기능을 잘 이해한다면 이어서 다룰 <strong>판다스</strong><font size='2'>pandas</font> 라이브러리가 지원하는
 데이터프레임<font size='2'>Dataframe</font> 자료형의 기능 또한 쉽게 이해할 수 있다.</p>
 <p>리스트 연산과 넘파이 어레이 연산의 속도 차이를 아래 코드가 보여준다.
-아래 코드는 0부터 999,999까지의 숫자를 각각 두 배하는 연산에 필요한 시간을 측정한다.
+아래 코드는 0부터 1천만까지의 숫자를 각각 두 배하는 연산에 필요한 시간을 측정한다.
 결과적으로 넘파이 어레이를 이용한 연산이 50배 정도 빠르다.</p>
 <div class="warning admonition">
 <p class="admonition-title"><code class="docutils literal notranslate"><span class="pre">%time</span></code> 매직 커맨드</p>
@@ -494,8 +494,8 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000000</span><span class="p">)</span>
-<span class="n">my_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10000000</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10000001</span><span class="p">)</span>
+<span class="n">my_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10000001</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -507,7 +507,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>134 ms ± 2.48 ms per loop (mean ± std. dev. of 7 runs, 10 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100 ms ± 760 µs per loop (mean ± std. dev. of 7 runs, 10 loops each)
 </pre></div>
 </div>
 </div>
@@ -519,7 +519,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.38 s ± 39.2 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.51 s ± 82.4 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
 </pre></div>
 </div>
 </div>
