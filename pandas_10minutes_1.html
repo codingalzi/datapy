@@ -608,319 +608,6 @@ dtype: float64
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>A</th>
-      <th>B</th>
-      <th>C</th>
-      <th>D</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2013-01-01</th>
-      <td>1.764052</td>
-      <td>0.400157</td>
-      <td>0.978738</td>
-      <td>2.240893</td>
-    </tr>
-    <tr>
-      <th>2013-01-02</th>
-      <td>1.867558</td>
-      <td>NaN</td>
-      <td>0.950088</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2013-01-03</th>
-      <td>NaN</td>
-      <td>0.410599</td>
-      <td>0.144044</td>
-      <td>1.454274</td>
-    </tr>
-    <tr>
-      <th>2013-01-04</th>
-      <td>0.761038</td>
-      <td>0.121675</td>
-      <td>0.443863</td>
-      <td>0.333674</td>
-    </tr>
-    <tr>
-      <th>2013-01-05</th>
-      <td>1.494079</td>
-      <td>NaN</td>
-      <td>0.313068</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2013-01-06</th>
-      <td>NaN</td>
-      <td>0.653619</td>
-      <td>0.864436</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">df</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>A</th>
-      <th>B</th>
-      <th>C</th>
-      <th>D</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2013-01-01</th>
-      <td>1.764052</td>
-      <td>0.400157</td>
-      <td>0.978738</td>
-      <td>2.240893</td>
-    </tr>
-    <tr>
-      <th>2013-01-02</th>
-      <td>1.867558</td>
-      <td>NaN</td>
-      <td>0.950088</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2013-01-03</th>
-      <td>NaN</td>
-      <td>0.410599</td>
-      <td>0.144044</td>
-      <td>1.454274</td>
-    </tr>
-    <tr>
-      <th>2013-01-04</th>
-      <td>0.761038</td>
-      <td>0.121675</td>
-      <td>0.443863</td>
-      <td>0.333674</td>
-    </tr>
-    <tr>
-      <th>2013-01-05</th>
-      <td>1.494079</td>
-      <td>NaN</td>
-      <td>0.313068</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2013-01-06</th>
-      <td>NaN</td>
-      <td>0.653619</td>
-      <td>0.864436</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="n">df</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-<span class="n">df</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>A</th>
-      <th>B</th>
-      <th>C</th>
-      <th>D</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2013-01-01</th>
-      <td>1.764052</td>
-      <td>0.400157</td>
-      <td>0.978738</td>
-      <td>2.240893</td>
-    </tr>
-    <tr>
-      <th>2013-01-02</th>
-      <td>1.867558</td>
-      <td>NaN</td>
-      <td>0.950088</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2013-01-03</th>
-      <td>NaN</td>
-      <td>0.410599</td>
-      <td>0.144044</td>
-      <td>1.454274</td>
-    </tr>
-    <tr>
-      <th>2013-01-04</th>
-      <td>0.761038</td>
-      <td>0.121675</td>
-      <td>0.443863</td>
-      <td>0.333674</td>
-    </tr>
-    <tr>
-      <th>2013-01-05</th>
-      <td>1.494079</td>
-      <td>NaN</td>
-      <td>0.313068</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2013-01-06</th>
-      <td>NaN</td>
-      <td>0.653619</td>
-      <td>0.864436</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">df</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>A</th>
-      <th>B</th>
-      <th>C</th>
-      <th>D</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>2013-01-01</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2013-01-02</th>
-      <td>NaN</td>
-      <td>-0.977278</td>
-      <td>NaN</td>
-      <td>-0.151357</td>
-    </tr>
-    <tr>
-      <th>2013-01-03</th>
-      <td>-0.103219</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2013-01-04</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2013-01-05</th>
-      <td>NaN</td>
-      <td>-0.205158</td>
-      <td>NaN</td>
-      <td>-0.854096</td>
-    </tr>
-    <tr>
-      <th>2013-01-06</th>
-      <td>-2.552990</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>-0.742165</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
     <span class="p">{</span>
         <span class="s2">&quot;A&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
@@ -1012,12 +699,12 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A           float64
-B    datetime64[ns]
-C           float32
-D             int32
-E          category
-F            object
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A          float64
+B    datetime64[s]
+C          float32
+D            int32
+E         category
+F           object
 dtype: object
 </pre></div>
 </div>
@@ -1064,38 +751,38 @@ dtype: object
   <tbody>
     <tr>
       <th>2013-01-01</th>
-      <td>0.062521</td>
-      <td>2.459803</td>
-      <td>0.043692</td>
-      <td>-0.796323</td>
+      <td>1.764052</td>
+      <td>0.400157</td>
+      <td>0.978738</td>
+      <td>2.240893</td>
     </tr>
     <tr>
       <th>2013-01-02</th>
-      <td>0.992179</td>
-      <td>1.962987</td>
-      <td>1.172598</td>
-      <td>0.442971</td>
+      <td>1.867558</td>
+      <td>-0.977278</td>
+      <td>0.950088</td>
+      <td>-0.151357</td>
     </tr>
     <tr>
       <th>2013-01-03</th>
-      <td>-0.609547</td>
-      <td>0.594179</td>
-      <td>0.348269</td>
-      <td>0.725129</td>
+      <td>-0.103219</td>
+      <td>0.410599</td>
+      <td>0.144044</td>
+      <td>1.454274</td>
     </tr>
     <tr>
       <th>2013-01-04</th>
-      <td>1.120017</td>
-      <td>0.470862</td>
-      <td>2.052462</td>
-      <td>-0.786725</td>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>0.333674</td>
     </tr>
     <tr>
       <th>2013-01-05</th>
-      <td>-1.896509</td>
-      <td>-1.025820</td>
-      <td>-0.105514</td>
-      <td>-0.658734</td>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>-0.854096</td>
     </tr>
   </tbody>
 </table>
@@ -1138,24 +825,24 @@ dtype: object
   <tbody>
     <tr>
       <th>2013-01-04</th>
-      <td>1.120017</td>
-      <td>0.470862</td>
-      <td>2.052462</td>
-      <td>-0.786725</td>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>0.333674</td>
     </tr>
     <tr>
       <th>2013-01-05</th>
-      <td>-1.896509</td>
-      <td>-1.025820</td>
-      <td>-0.105514</td>
-      <td>-0.658734</td>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>-0.854096</td>
     </tr>
     <tr>
       <th>2013-01-06</th>
-      <td>-1.362511</td>
-      <td>-0.987405</td>
-      <td>1.365379</td>
-      <td>-0.603763</td>
+      <td>-2.552990</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
+      <td>-0.742165</td>
     </tr>
   </tbody>
 </table>
@@ -1203,18 +890,18 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.06252149,  2.45980274,  0.04369169, -0.79632259],
-       [ 0.99217915,  1.96298737,  1.17259806,  0.44297063],
-       [-0.60954681,  0.59417851,  0.34826945,  0.72512943],
-       [ 1.12001727,  0.47086214,  2.05246187, -0.78672531],
-       [-1.89650928, -1.02581964, -0.10551397, -0.65873416],
-       [-1.36251102, -0.98740507,  1.36537886, -0.60376273]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.76405235,  0.40015721,  0.97873798,  2.2408932 ],
+       [ 1.86755799, -0.97727788,  0.95008842, -0.15135721],
+       [-0.10321885,  0.4105985 ,  0.14404357,  1.45427351],
+       [ 0.76103773,  0.12167502,  0.44386323,  0.33367433],
+       [ 1.49407907, -0.20515826,  0.3130677 , -0.85409574],
+       [-2.55298982,  0.6536186 ,  0.8644362 , -0.74216502]])
 </pre></div>
 </div>
 </div>
 </div>
 <ul class="simple">
-<li><p>열별 자료형이 통일되지 않은 경우: <code class="docutils literal notranslate"><span class="pre">object</span></code>로 통일된 자료형 사용. 시간 소요.</p></li>
+<li><p>열별 자료형이 통일되지 않은 경우: <code class="docutils literal notranslate"><span class="pre">object</span></code>로 통일된 자료형 사용.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1276,52 +963,52 @@ dtype: object
     </tr>
     <tr>
       <th>mean</th>
-      <td>-0.282308</td>
-      <td>0.579101</td>
-      <td>0.812814</td>
-      <td>-0.279574</td>
+      <td>0.538420</td>
+      <td>0.067269</td>
+      <td>0.615706</td>
+      <td>0.380204</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>1.232015</td>
-      <td>1.448712</td>
-      <td>0.851138</td>
-      <td>0.678910</td>
+      <td>1.685238</td>
+      <td>0.590042</td>
+      <td>0.360293</td>
+      <td>1.239655</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>-1.896509</td>
-      <td>-1.025820</td>
-      <td>-0.105514</td>
-      <td>-0.796323</td>
+      <td>-2.552990</td>
+      <td>-0.977278</td>
+      <td>0.144044</td>
+      <td>-0.854096</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>-1.174270</td>
-      <td>-0.622838</td>
-      <td>0.119836</td>
-      <td>-0.754728</td>
+      <td>0.112845</td>
+      <td>-0.123450</td>
+      <td>0.345767</td>
+      <td>-0.594463</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>-0.273513</td>
-      <td>0.532520</td>
-      <td>0.760434</td>
-      <td>-0.631248</td>
+      <td>1.127558</td>
+      <td>0.260916</td>
+      <td>0.654150</td>
+      <td>0.091159</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>0.759765</td>
-      <td>1.620785</td>
-      <td>1.317184</td>
-      <td>0.181287</td>
+      <td>1.696559</td>
+      <td>0.407988</td>
+      <td>0.928675</td>
+      <td>1.174124</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>1.120017</td>
-      <td>2.459803</td>
-      <td>2.052462</td>
-      <td>0.725129</td>
+      <td>1.867558</td>
+      <td>0.653619</td>
+      <td>0.978738</td>
+      <td>2.240893</td>
     </tr>
   </tbody>
 </table>
@@ -1366,39 +1053,39 @@ dtype: object
   <tbody>
     <tr>
       <th>A</th>
-      <td>0.062521</td>
-      <td>0.992179</td>
-      <td>-0.609547</td>
-      <td>1.120017</td>
-      <td>-1.896509</td>
-      <td>-1.362511</td>
+      <td>1.764052</td>
+      <td>1.867558</td>
+      <td>-0.103219</td>
+      <td>0.761038</td>
+      <td>1.494079</td>
+      <td>-2.552990</td>
     </tr>
     <tr>
       <th>B</th>
-      <td>2.459803</td>
-      <td>1.962987</td>
-      <td>0.594179</td>
-      <td>0.470862</td>
-      <td>-1.025820</td>
-      <td>-0.987405</td>
+      <td>0.400157</td>
+      <td>-0.977278</td>
+      <td>0.410599</td>
+      <td>0.121675</td>
+      <td>-0.205158</td>
+      <td>0.653619</td>
     </tr>
     <tr>
       <th>C</th>
-      <td>0.043692</td>
-      <td>1.172598</td>
-      <td>0.348269</td>
-      <td>2.052462</td>
-      <td>-0.105514</td>
-      <td>1.365379</td>
+      <td>0.978738</td>
+      <td>0.950088</td>
+      <td>0.144044</td>
+      <td>0.443863</td>
+      <td>0.313068</td>
+      <td>0.864436</td>
     </tr>
     <tr>
       <th>D</th>
-      <td>-0.796323</td>
-      <td>0.442971</td>
-      <td>0.725129</td>
-      <td>-0.786725</td>
-      <td>-0.658734</td>
-      <td>-0.603763</td>
+      <td>2.240893</td>
+      <td>-0.151357</td>
+      <td>1.454274</td>
+      <td>0.333674</td>
+      <td>-0.854096</td>
+      <td>-0.742165</td>
     </tr>
   </tbody>
 </table>
@@ -1441,45 +1128,45 @@ dtype: object
   <tbody>
     <tr>
       <th>2013-01-01</th>
-      <td>-0.796323</td>
-      <td>0.043692</td>
-      <td>2.459803</td>
-      <td>0.062521</td>
+      <td>2.240893</td>
+      <td>0.978738</td>
+      <td>0.400157</td>
+      <td>1.764052</td>
     </tr>
     <tr>
       <th>2013-01-02</th>
-      <td>0.442971</td>
-      <td>1.172598</td>
-      <td>1.962987</td>
-      <td>0.992179</td>
+      <td>-0.151357</td>
+      <td>0.950088</td>
+      <td>-0.977278</td>
+      <td>1.867558</td>
     </tr>
     <tr>
       <th>2013-01-03</th>
-      <td>0.725129</td>
-      <td>0.348269</td>
-      <td>0.594179</td>
-      <td>-0.609547</td>
+      <td>1.454274</td>
+      <td>0.144044</td>
+      <td>0.410599</td>
+      <td>-0.103219</td>
     </tr>
     <tr>
       <th>2013-01-04</th>
-      <td>-0.786725</td>
-      <td>2.052462</td>
-      <td>0.470862</td>
-      <td>1.120017</td>
+      <td>0.333674</td>
+      <td>0.443863</td>
+      <td>0.121675</td>
+      <td>0.761038</td>
     </tr>
     <tr>
       <th>2013-01-05</th>
-      <td>-0.658734</td>
-      <td>-0.105514</td>
-      <td>-1.025820</td>
-      <td>-1.896509</td>
+      <td>-0.854096</td>
+      <td>0.313068</td>
+      <td>-0.205158</td>
+      <td>1.494079</td>
     </tr>
     <tr>
       <th>2013-01-06</th>
-      <td>-0.603763</td>
-      <td>1.365379</td>
-      <td>-0.987405</td>
-      <td>-1.362511</td>
+      <td>-0.742165</td>
+      <td>0.864436</td>
+      <td>0.653619</td>
+      <td>-2.552990</td>
     </tr>
   </tbody>
 </table>
@@ -1521,46 +1208,46 @@ dtype: object
   </thead>
   <tbody>
     <tr>
-      <th>2013-01-05</th>
-      <td>-1.896509</td>
-      <td>-1.025820</td>
-      <td>-0.105514</td>
-      <td>-0.658734</td>
+      <th>2013-01-02</th>
+      <td>1.867558</td>
+      <td>-0.977278</td>
+      <td>0.950088</td>
+      <td>-0.151357</td>
     </tr>
     <tr>
-      <th>2013-01-06</th>
-      <td>-1.362511</td>
-      <td>-0.987405</td>
-      <td>1.365379</td>
-      <td>-0.603763</td>
+      <th>2013-01-05</th>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>-0.854096</td>
     </tr>
     <tr>
       <th>2013-01-04</th>
-      <td>1.120017</td>
-      <td>0.470862</td>
-      <td>2.052462</td>
-      <td>-0.786725</td>
-    </tr>
-    <tr>
-      <th>2013-01-03</th>
-      <td>-0.609547</td>
-      <td>0.594179</td>
-      <td>0.348269</td>
-      <td>0.725129</td>
-    </tr>
-    <tr>
-      <th>2013-01-02</th>
-      <td>0.992179</td>
-      <td>1.962987</td>
-      <td>1.172598</td>
-      <td>0.442971</td>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>0.333674</td>
     </tr>
     <tr>
       <th>2013-01-01</th>
-      <td>0.062521</td>
-      <td>2.459803</td>
-      <td>0.043692</td>
-      <td>-0.796323</td>
+      <td>1.764052</td>
+      <td>0.400157</td>
+      <td>0.978738</td>
+      <td>2.240893</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>-0.103219</td>
+      <td>0.410599</td>
+      <td>0.144044</td>
+      <td>1.454274</td>
+    </tr>
+    <tr>
+      <th>2013-01-06</th>
+      <td>-2.552990</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
+      <td>-0.742165</td>
     </tr>
   </tbody>
 </table>
@@ -1569,10 +1256,7 @@ dtype: object
 </section>
 <section id="id4">
 <h2><span class="section-number">17.3. </span>인덱싱/슬라이싱<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
-<p>참고</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://pandas.pydata.org/docs/user_guide/indexing.html#indexing">Indexing and Selecting Data</a></p></li>
-</ul>
+<p>참고: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/indexing.html#indexing">Indexing and Selecting Data</a></p>
 <section id="id5">
 <h3><span class="section-number">17.3.1. </span>열 인덱싱<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>열 라벨을 이용한 인덱싱. 시리즈 생성.</p>
@@ -1583,12 +1267,12 @@ dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2013-01-01    0.062521
-2013-01-02    0.992179
-2013-01-03   -0.609547
-2013-01-04    1.120017
-2013-01-05   -1.896509
-2013-01-06   -1.362511
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2013-01-01    1.764052
+2013-01-02    1.867558
+2013-01-03   -0.103219
+2013-01-04    0.761038
+2013-01-05    1.494079
+2013-01-06   -2.552990
 Freq: D, Name: A, dtype: float64
 </pre></div>
 </div>
@@ -1602,12 +1286,12 @@ Freq: D, Name: A, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2013-01-01    0.062521
-2013-01-02    0.992179
-2013-01-03   -0.609547
-2013-01-04    1.120017
-2013-01-05   -1.896509
-2013-01-06   -1.362511
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2013-01-01    1.764052
+2013-01-02    1.867558
+2013-01-03   -0.103219
+2013-01-04    0.761038
+2013-01-05    1.494079
+2013-01-06   -2.552990
 Freq: D, Name: A, dtype: float64
 </pre></div>
 </div>
@@ -1651,24 +1335,24 @@ Freq: D, Name: A, dtype: float64
   <tbody>
     <tr>
       <th>2013-01-01</th>
-      <td>0.062521</td>
-      <td>2.459803</td>
-      <td>0.043692</td>
-      <td>-0.796323</td>
+      <td>1.764052</td>
+      <td>0.400157</td>
+      <td>0.978738</td>
+      <td>2.240893</td>
     </tr>
     <tr>
       <th>2013-01-02</th>
-      <td>0.992179</td>
-      <td>1.962987</td>
-      <td>1.172598</td>
-      <td>0.442971</td>
+      <td>1.867558</td>
+      <td>-0.977278</td>
+      <td>0.950088</td>
+      <td>-0.151357</td>
     </tr>
     <tr>
       <th>2013-01-03</th>
-      <td>-0.609547</td>
-      <td>0.594179</td>
-      <td>0.348269</td>
-      <td>0.725129</td>
+      <td>-0.103219</td>
+      <td>0.410599</td>
+      <td>0.144044</td>
+      <td>1.454274</td>
     </tr>
   </tbody>
 </table>
@@ -1709,24 +1393,24 @@ Freq: D, Name: A, dtype: float64
   <tbody>
     <tr>
       <th>2013-01-01</th>
-      <td>0.062521</td>
-      <td>2.459803</td>
-      <td>0.043692</td>
-      <td>-0.796323</td>
+      <td>1.764052</td>
+      <td>0.400157</td>
+      <td>0.978738</td>
+      <td>2.240893</td>
     </tr>
     <tr>
       <th>2013-01-02</th>
-      <td>0.992179</td>
-      <td>1.962987</td>
-      <td>1.172598</td>
-      <td>0.442971</td>
+      <td>1.867558</td>
+      <td>-0.977278</td>
+      <td>0.950088</td>
+      <td>-0.151357</td>
     </tr>
     <tr>
       <th>2013-01-03</th>
-      <td>-0.609547</td>
-      <td>0.594179</td>
-      <td>0.348269</td>
-      <td>0.725129</td>
+      <td>-0.103219</td>
+      <td>0.410599</td>
+      <td>0.144044</td>
+      <td>1.454274</td>
     </tr>
   </tbody>
 </table>
@@ -1757,7 +1441,7 @@ Freq: D, Name: A, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2013-01-01 00:00:00&#39;, freq=&#39;D&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Timestamp(&#39;2013-01-01 00:00:00&#39;)
 </pre></div>
 </div>
 </div>
@@ -1769,10 +1453,10 @@ Freq: D, Name: A, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    0.062521
-B    2.459803
-C    0.043692
-D   -0.796323
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    1.764052
+B    0.400157
+C    0.978738
+D    2.240893
 Name: 2013-01-01 00:00:00, dtype: float64
 </pre></div>
 </div>
@@ -1814,33 +1498,33 @@ Name: 2013-01-01 00:00:00, dtype: float64
   <tbody>
     <tr>
       <th>2013-01-01</th>
-      <td>0.062521</td>
-      <td>2.459803</td>
+      <td>1.764052</td>
+      <td>0.400157</td>
     </tr>
     <tr>
       <th>2013-01-02</th>
-      <td>0.992179</td>
-      <td>1.962987</td>
+      <td>1.867558</td>
+      <td>-0.977278</td>
     </tr>
     <tr>
       <th>2013-01-03</th>
-      <td>-0.609547</td>
-      <td>0.594179</td>
+      <td>-0.103219</td>
+      <td>0.410599</td>
     </tr>
     <tr>
       <th>2013-01-04</th>
-      <td>1.120017</td>
-      <td>0.470862</td>
+      <td>0.761038</td>
+      <td>0.121675</td>
     </tr>
     <tr>
       <th>2013-01-05</th>
-      <td>-1.896509</td>
-      <td>-1.025820</td>
+      <td>1.494079</td>
+      <td>-0.205158</td>
     </tr>
     <tr>
       <th>2013-01-06</th>
-      <td>-1.362511</td>
-      <td>-0.987405</td>
+      <td>-2.552990</td>
+      <td>0.653619</td>
     </tr>
   </tbody>
 </table>
@@ -1881,18 +1565,18 @@ Name: 2013-01-01 00:00:00, dtype: float64
   <tbody>
     <tr>
       <th>2013-01-02</th>
-      <td>0.992179</td>
-      <td>1.962987</td>
+      <td>1.867558</td>
+      <td>-0.977278</td>
     </tr>
     <tr>
       <th>2013-01-03</th>
-      <td>-0.609547</td>
-      <td>0.594179</td>
+      <td>-0.103219</td>
+      <td>0.410599</td>
     </tr>
     <tr>
       <th>2013-01-04</th>
-      <td>1.120017</td>
-      <td>0.470862</td>
+      <td>0.761038</td>
+      <td>0.121675</td>
     </tr>
   </tbody>
 </table>
@@ -1910,8 +1594,8 @@ Name: 2013-01-01 00:00:00, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    0.992179
-B    1.962987
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    1.867558
+B   -0.977278
 Name: 2013-01-02 00:00:00, dtype: float64
 </pre></div>
 </div>
@@ -1925,7 +1609,7 @@ Name: 2013-01-02 00:00:00, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.06252148641460413
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.764052345967664
 </pre></div>
 </div>
 </div>
@@ -1938,7 +1622,7 @@ Name: 2013-01-02 00:00:00, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.06252148641460413
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.764052345967664
 </pre></div>
 </div>
 </div>
@@ -1954,10 +1638,10 @@ Name: 2013-01-02 00:00:00, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    1.120017
-B    0.470862
-C    2.052462
-D   -0.786725
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    0.761038
+B    0.121675
+C    0.443863
+D    0.333674
 Name: 2013-01-04 00:00:00, dtype: float64
 </pre></div>
 </div>
@@ -1996,13 +1680,13 @@ Name: 2013-01-04 00:00:00, dtype: float64
   <tbody>
     <tr>
       <th>2013-01-04</th>
-      <td>1.120017</td>
-      <td>0.470862</td>
+      <td>0.761038</td>
+      <td>0.121675</td>
     </tr>
     <tr>
       <th>2013-01-05</th>
-      <td>-1.896509</td>
-      <td>-1.025820</td>
+      <td>1.494079</td>
+      <td>-0.205158</td>
     </tr>
   </tbody>
 </table>
@@ -2041,18 +1725,18 @@ Name: 2013-01-04 00:00:00, dtype: float64
   <tbody>
     <tr>
       <th>2013-01-02</th>
-      <td>0.992179</td>
-      <td>1.172598</td>
+      <td>1.867558</td>
+      <td>0.950088</td>
     </tr>
     <tr>
       <th>2013-01-03</th>
-      <td>-0.609547</td>
-      <td>0.348269</td>
+      <td>-0.103219</td>
+      <td>0.144044</td>
     </tr>
     <tr>
       <th>2013-01-05</th>
-      <td>-1.896509</td>
-      <td>-0.105514</td>
+      <td>1.494079</td>
+      <td>0.313068</td>
     </tr>
   </tbody>
 </table>
@@ -2091,21 +1775,21 @@ Name: 2013-01-04 00:00:00, dtype: float64
   <tbody>
     <tr>
       <th>2013-01-02</th>
-      <td>0.992179</td>
-      <td>1.172598</td>
-      <td>0.442971</td>
+      <td>1.867558</td>
+      <td>0.950088</td>
+      <td>-0.151357</td>
     </tr>
     <tr>
       <th>2013-01-03</th>
-      <td>-0.609547</td>
-      <td>0.348269</td>
-      <td>0.725129</td>
+      <td>-0.103219</td>
+      <td>0.144044</td>
+      <td>1.454274</td>
     </tr>
     <tr>
       <th>2013-01-05</th>
-      <td>-1.896509</td>
-      <td>-0.105514</td>
-      <td>-0.658734</td>
+      <td>1.494079</td>
+      <td>0.313068</td>
+      <td>-0.854096</td>
     </tr>
   </tbody>
 </table>
@@ -2145,24 +1829,24 @@ Name: 2013-01-04 00:00:00, dtype: float64
   <tbody>
     <tr>
       <th>2013-01-02</th>
-      <td>0.992179</td>
-      <td>1.172598</td>
-      <td>0.442971</td>
-      <td>1.962987</td>
+      <td>1.867558</td>
+      <td>0.950088</td>
+      <td>-0.151357</td>
+      <td>-0.977278</td>
     </tr>
     <tr>
       <th>2013-01-03</th>
-      <td>-0.609547</td>
-      <td>0.348269</td>
-      <td>0.725129</td>
-      <td>0.594179</td>
+      <td>-0.103219</td>
+      <td>0.144044</td>
+      <td>1.454274</td>
+      <td>0.410599</td>
     </tr>
     <tr>
       <th>2013-01-05</th>
-      <td>-1.896509</td>
-      <td>-0.105514</td>
-      <td>-0.658734</td>
-      <td>-1.025820</td>
+      <td>1.494079</td>
+      <td>0.313068</td>
+      <td>-0.854096</td>
+      <td>-0.205158</td>
     </tr>
   </tbody>
 </table>
@@ -2203,24 +1887,24 @@ Name: 2013-01-04 00:00:00, dtype: float64
   <tbody>
     <tr>
       <th>2013-01-02</th>
-      <td>0.992179</td>
-      <td>1.962987</td>
-      <td>1.172598</td>
-      <td>0.442971</td>
+      <td>1.867558</td>
+      <td>-0.977278</td>
+      <td>0.950088</td>
+      <td>-0.151357</td>
     </tr>
     <tr>
       <th>2013-01-04</th>
-      <td>1.120017</td>
-      <td>0.470862</td>
-      <td>2.052462</td>
-      <td>-0.786725</td>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>0.333674</td>
     </tr>
     <tr>
       <th>2013-01-06</th>
-      <td>-1.362511</td>
-      <td>-0.987405</td>
-      <td>1.365379</td>
-      <td>-0.603763</td>
+      <td>-2.552990</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
+      <td>-0.742165</td>
     </tr>
   </tbody>
 </table>
@@ -2259,33 +1943,33 @@ Name: 2013-01-04 00:00:00, dtype: float64
   <tbody>
     <tr>
       <th>2013-01-01</th>
-      <td>2.459803</td>
-      <td>0.043692</td>
+      <td>0.400157</td>
+      <td>0.978738</td>
     </tr>
     <tr>
       <th>2013-01-02</th>
-      <td>1.962987</td>
-      <td>1.172598</td>
+      <td>-0.977278</td>
+      <td>0.950088</td>
     </tr>
     <tr>
       <th>2013-01-03</th>
-      <td>0.594179</td>
-      <td>0.348269</td>
+      <td>0.410599</td>
+      <td>0.144044</td>
     </tr>
     <tr>
       <th>2013-01-04</th>
-      <td>0.470862</td>
-      <td>2.052462</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
     </tr>
     <tr>
       <th>2013-01-05</th>
-      <td>-1.025820</td>
-      <td>-0.105514</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
     </tr>
     <tr>
       <th>2013-01-06</th>
-      <td>-0.987405</td>
-      <td>1.365379</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
     </tr>
   </tbody>
 </table>
@@ -2299,20 +1983,7 @@ Name: 2013-01-04 00:00:00, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.9629873694742508
-</pre></div>
-</div>
-</div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">iat[]</span></code> 활용도 가능</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iat</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.9629873694742508
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-0.977277879876411
 </pre></div>
 </div>
 </div>
@@ -2335,11 +2006,11 @@ Name: 2013-01-04 00:00:00, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a   -2.235164
-b   -0.142005
-c    0.836297
-d   -1.144208
-e    0.674186
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a    2.269755
+b   -1.454366
+c    0.045759
+d   -0.187184
+e    1.532779
 dtype: float64
 </pre></div>
 </div>
@@ -2352,10 +2023,10 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>e    0.674186
-b   -0.142005
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>e    1.532779
+b   -1.454366
 f         NaN
-d   -1.144208
+d   -0.187184
 dtype: float64
 </pre></div>
 </div>
@@ -2398,45 +2069,45 @@ dtype: float64
   <tbody>
     <tr>
       <th>2013-01-01</th>
-      <td>0.062521</td>
-      <td>2.459803</td>
-      <td>0.043692</td>
-      <td>-0.796323</td>
+      <td>1.764052</td>
+      <td>0.400157</td>
+      <td>0.978738</td>
+      <td>2.240893</td>
     </tr>
     <tr>
       <th>2013-01-02</th>
-      <td>0.992179</td>
-      <td>1.962987</td>
-      <td>1.172598</td>
-      <td>0.442971</td>
+      <td>1.867558</td>
+      <td>-0.977278</td>
+      <td>0.950088</td>
+      <td>-0.151357</td>
     </tr>
     <tr>
       <th>2013-01-03</th>
-      <td>-0.609547</td>
-      <td>0.594179</td>
-      <td>0.348269</td>
-      <td>0.725129</td>
+      <td>-0.103219</td>
+      <td>0.410599</td>
+      <td>0.144044</td>
+      <td>1.454274</td>
     </tr>
     <tr>
       <th>2013-01-04</th>
-      <td>1.120017</td>
-      <td>0.470862</td>
-      <td>2.052462</td>
-      <td>-0.786725</td>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>0.333674</td>
     </tr>
     <tr>
       <th>2013-01-05</th>
-      <td>-1.896509</td>
-      <td>-1.025820</td>
-      <td>-0.105514</td>
-      <td>-0.658734</td>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>-0.854096</td>
     </tr>
     <tr>
       <th>2013-01-06</th>
-      <td>-1.362511</td>
-      <td>-0.987405</td>
-      <td>1.365379</td>
-      <td>-0.603763</td>
+      <td>-2.552990</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
+      <td>-0.742165</td>
     </tr>
   </tbody>
 </table>
@@ -2489,21 +2160,21 @@ dtype: float64
   <tbody>
     <tr>
       <th>2013-01-02</th>
-      <td>1.172598</td>
-      <td>1.962987</td>
-      <td>0.992179</td>
+      <td>0.950088</td>
+      <td>-0.977278</td>
+      <td>1.867558</td>
     </tr>
     <tr>
       <th>2013-01-04</th>
-      <td>2.052462</td>
-      <td>0.470862</td>
-      <td>1.120017</td>
+      <td>0.443863</td>
+      <td>0.121675</td>
+      <td>0.761038</td>
     </tr>
     <tr>
       <th>2013-01-01</th>
-      <td>0.043692</td>
-      <td>2.459803</td>
-      <td>0.062521</td>
+      <td>0.978738</td>
+      <td>0.400157</td>
+      <td>1.764052</td>
     </tr>
   </tbody>
 </table>
@@ -2544,32 +2215,34 @@ dtype: float64
   <tbody>
     <tr>
       <th>2013-01-02</th>
-      <td>0.992179</td>
-      <td>1.962987</td>
-      <td>1.172598</td>
-      <td>0.442971</td>
+      <td>1.867558</td>
+      <td>-0.977278</td>
+      <td>0.950088</td>
+      <td>-0.151357</td>
     </tr>
     <tr>
       <th>2013-01-04</th>
-      <td>1.120017</td>
-      <td>0.470862</td>
-      <td>2.052462</td>
-      <td>-0.786725</td>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>0.333674</td>
     </tr>
     <tr>
       <th>2013-01-01</th>
-      <td>0.062521</td>
-      <td>2.459803</td>
-      <td>0.043692</td>
-      <td>-0.796323</td>
+      <td>1.764052</td>
+      <td>0.400157</td>
+      <td>0.978738</td>
+      <td>2.240893</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;index&quot;</span></code> 대신 0을 사용할 수도 있다.
+0번 축은 행을 따라 움직인다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">reindex</span><span class="p">([</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">reindex</span><span class="p">([</span><span class="n">dates</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">dates</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2600,25 +2273,169 @@ dtype: float64
   </thead>
   <tbody>
     <tr>
+      <th>2013-01-02</th>
+      <td>1.867558</td>
+      <td>-0.977278</td>
+      <td>0.950088</td>
+      <td>-0.151357</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>0.333674</td>
+    </tr>
+    <tr>
+      <th>2013-01-01</th>
+      <td>1.764052</td>
+      <td>0.400157</td>
+      <td>0.978738</td>
+      <td>2.240893</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">reindex</span><span class="p">([</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="s2">&quot;columns&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
       <th>C</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
       <th>B</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <th>A</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>0.978738</td>
+      <td>0.400157</td>
+      <td>1.764052</td>
     </tr>
     <tr>
+      <th>2013-01-02</th>
+      <td>0.950088</td>
+      <td>-0.977278</td>
+      <td>1.867558</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>0.144044</td>
+      <td>0.410599</td>
+      <td>-0.103219</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.443863</td>
+      <td>0.121675</td>
+      <td>0.761038</td>
+    </tr>
+    <tr>
+      <th>2013-01-05</th>
+      <td>0.313068</td>
+      <td>-0.205158</td>
+      <td>1.494079</td>
+    </tr>
+    <tr>
+      <th>2013-01-06</th>
+      <td>0.864436</td>
+      <td>0.653619</td>
+      <td>-2.552990</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;columns&quot;</span></code> 대신 1을 사용할 수도 있다.
+1번 축은 열을 따라 움직인다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">reindex</span><span class="p">([</span><span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>C</th>
+      <th>B</th>
       <th>A</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>0.978738</td>
+      <td>0.400157</td>
+      <td>1.764052</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>0.950088</td>
+      <td>-0.977278</td>
+      <td>1.867558</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>0.144044</td>
+      <td>0.410599</td>
+      <td>-0.103219</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.443863</td>
+      <td>0.121675</td>
+      <td>0.761038</td>
+    </tr>
+    <tr>
+      <th>2013-01-05</th>
+      <td>0.313068</td>
+      <td>-0.205158</td>
+      <td>1.494079</td>
+    </tr>
+    <tr>
+      <th>2013-01-06</th>
+      <td>0.864436</td>
+      <td>0.653619</td>
+      <td>-2.552990</td>
     </tr>
   </tbody>
 </table>
@@ -2642,7 +2459,7 @@ dtype: float64
 2013-01-02     True
 2013-01-03    False
 2013-01-04     True
-2013-01-05    False
+2013-01-05     True
 2013-01-06    False
 Freq: D, Name: A, dtype: bool
 </pre></div>
@@ -2683,24 +2500,96 @@ Freq: D, Name: A, dtype: bool
   <tbody>
     <tr>
       <th>2013-01-01</th>
-      <td>0.062521</td>
-      <td>2.459803</td>
-      <td>0.043692</td>
-      <td>-0.796323</td>
+      <td>1.764052</td>
+      <td>0.400157</td>
+      <td>0.978738</td>
+      <td>2.240893</td>
     </tr>
     <tr>
       <th>2013-01-02</th>
-      <td>0.992179</td>
-      <td>1.962987</td>
-      <td>1.172598</td>
-      <td>0.442971</td>
+      <td>1.867558</td>
+      <td>-0.977278</td>
+      <td>0.950088</td>
+      <td>-0.151357</td>
     </tr>
     <tr>
       <th>2013-01-04</th>
-      <td>1.120017</td>
-      <td>0.470862</td>
-      <td>2.052462</td>
-      <td>-0.786725</td>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>0.333674</td>
+    </tr>
+    <tr>
+      <th>2013-01-05</th>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>-0.854096</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>아래 방식이 더 권장된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>1.764052</td>
+      <td>0.400157</td>
+      <td>0.978738</td>
+      <td>2.240893</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>1.867558</td>
+      <td>-0.977278</td>
+      <td>0.950088</td>
+      <td>-0.151357</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>0.333674</td>
+    </tr>
+    <tr>
+      <th>2013-01-05</th>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>-0.854096</td>
     </tr>
   </tbody>
 </table>
@@ -2743,44 +2632,44 @@ Freq: D, Name: A, dtype: bool
   <tbody>
     <tr>
       <th>2013-01-01</th>
-      <td>0.062521</td>
-      <td>2.459803</td>
-      <td>0.043692</td>
-      <td>NaN</td>
+      <td>1.764052</td>
+      <td>0.400157</td>
+      <td>0.978738</td>
+      <td>2.240893</td>
     </tr>
     <tr>
       <th>2013-01-02</th>
-      <td>0.992179</td>
-      <td>1.962987</td>
-      <td>1.172598</td>
-      <td>0.442971</td>
+      <td>1.867558</td>
+      <td>NaN</td>
+      <td>0.950088</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>2013-01-03</th>
       <td>NaN</td>
-      <td>0.594179</td>
-      <td>0.348269</td>
-      <td>0.725129</td>
+      <td>0.410599</td>
+      <td>0.144044</td>
+      <td>1.454274</td>
     </tr>
     <tr>
       <th>2013-01-04</th>
-      <td>1.120017</td>
-      <td>0.470862</td>
-      <td>2.052462</td>
-      <td>NaN</td>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>0.333674</td>
     </tr>
     <tr>
       <th>2013-01-05</th>
+      <td>1.494079</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>0.313068</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2013-01-06</th>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>1.365379</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
       <td>NaN</td>
     </tr>
   </tbody>
@@ -2797,12 +2686,12 @@ Freq: D, Name: A, dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.06252149,  2.45980274,  0.04369169, -0.79632259],
-       [ 0.99217915,  1.96298737,  1.17259806,  0.44297063],
-       [-0.60954681,  0.59417851,  0.34826945,  0.72512943],
-       [ 1.12001727,  0.47086214,  2.05246187, -0.78672531],
-       [-1.89650928, -1.02581964, -0.10551397, -0.65873416],
-       [-1.36251102, -0.98740507,  1.36537886, -0.60376273]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.76405235,  0.40015721,  0.97873798,  2.2408932 ],
+       [ 1.86755799, -0.97727788,  0.95008842, -0.15135721],
+       [-0.10321885,  0.4105985 ,  0.14404357,  1.45427351],
+       [ 0.76103773,  0.12167502,  0.44386323,  0.33367433],
+       [ 1.49407907, -0.20515826,  0.3130677 , -0.85409574],
+       [-2.55298982,  0.6536186 ,  0.8644362 , -0.74216502]])
 </pre></div>
 </div>
 </div>
@@ -2814,9 +2703,10 @@ Freq: D, Name: A, dtype: bool
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.06252149, 2.45980274, 0.04369169, 0.99217915, 1.96298737,
-       1.17259806, 0.44297063, 0.59417851, 0.34826945, 0.72512943,
-       1.12001727, 0.47086214, 2.05246187, 1.36537886])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.76405235, 0.40015721, 0.97873798, 2.2408932 , 1.86755799,
+       0.95008842, 0.4105985 , 0.14404357, 1.45427351, 0.76103773,
+       0.12167502, 0.44386323, 0.33367433, 1.49407907, 0.3130677 ,
+       0.6536186 , 0.8644362 ])
 </pre></div>
 </div>
 </div>
@@ -2861,50 +2751,50 @@ Freq: D, Name: A, dtype: bool
   <tbody>
     <tr>
       <th>2013-01-01</th>
-      <td>0.062521</td>
-      <td>2.459803</td>
-      <td>0.043692</td>
-      <td>-0.796323</td>
+      <td>1.764052</td>
+      <td>0.400157</td>
+      <td>0.978738</td>
+      <td>2.240893</td>
       <td>one</td>
     </tr>
     <tr>
       <th>2013-01-02</th>
-      <td>0.992179</td>
-      <td>1.962987</td>
-      <td>1.172598</td>
-      <td>0.442971</td>
+      <td>1.867558</td>
+      <td>-0.977278</td>
+      <td>0.950088</td>
+      <td>-0.151357</td>
       <td>one</td>
     </tr>
     <tr>
       <th>2013-01-03</th>
-      <td>-0.609547</td>
-      <td>0.594179</td>
-      <td>0.348269</td>
-      <td>0.725129</td>
+      <td>-0.103219</td>
+      <td>0.410599</td>
+      <td>0.144044</td>
+      <td>1.454274</td>
       <td>two</td>
     </tr>
     <tr>
       <th>2013-01-04</th>
-      <td>1.120017</td>
-      <td>0.470862</td>
-      <td>2.052462</td>
-      <td>-0.786725</td>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>0.333674</td>
       <td>three</td>
     </tr>
     <tr>
       <th>2013-01-05</th>
-      <td>-1.896509</td>
-      <td>-1.025820</td>
-      <td>-0.105514</td>
-      <td>-0.658734</td>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>-0.854096</td>
       <td>four</td>
     </tr>
     <tr>
       <th>2013-01-06</th>
-      <td>-1.362511</td>
-      <td>-0.987405</td>
-      <td>1.365379</td>
-      <td>-0.603763</td>
+      <td>-2.552990</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
+      <td>-0.742165</td>
       <td>three</td>
     </tr>
   </tbody>
@@ -2984,6 +2874,60 @@ Freq: D, Name: E, dtype: bool
 </table>
 </div></div></div>
 </div>
+<p>아래 방식이 권장된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df2</span><span class="p">[</span><span class="s2">&quot;E&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="s2">&quot;four&quot;</span><span class="p">])]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>E</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-03</th>
+      <td>-0.103219</td>
+      <td>0.410599</td>
+      <td>0.144044</td>
+      <td>1.454274</td>
+      <td>two</td>
+    </tr>
+    <tr>
+      <th>2013-01-05</th>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>-0.854096</td>
+      <td>four</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </section>
 <section id="id8">
 <h3><span class="section-number">17.3.7. </span>항목 지정<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
@@ -3044,60 +2988,59 @@ Freq: D, dtype: int64
   <tbody>
     <tr>
       <th>2013-01-01</th>
-      <td>0.062521</td>
-      <td>2.459803</td>
-      <td>0.043692</td>
-      <td>-0.796323</td>
+      <td>1.764052</td>
+      <td>0.400157</td>
+      <td>0.978738</td>
+      <td>2.240893</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2013-01-02</th>
-      <td>0.992179</td>
-      <td>1.962987</td>
-      <td>1.172598</td>
-      <td>0.442971</td>
+      <td>1.867558</td>
+      <td>-0.977278</td>
+      <td>0.950088</td>
+      <td>-0.151357</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>2013-01-03</th>
-      <td>-0.609547</td>
-      <td>0.594179</td>
-      <td>0.348269</td>
-      <td>0.725129</td>
+      <td>-0.103219</td>
+      <td>0.410599</td>
+      <td>0.144044</td>
+      <td>1.454274</td>
       <td>2.0</td>
     </tr>
     <tr>
       <th>2013-01-04</th>
-      <td>1.120017</td>
-      <td>0.470862</td>
-      <td>2.052462</td>
-      <td>-0.786725</td>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>0.333674</td>
       <td>3.0</td>
     </tr>
     <tr>
       <th>2013-01-05</th>
-      <td>-1.896509</td>
-      <td>-1.025820</td>
-      <td>-0.105514</td>
-      <td>-0.658734</td>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>-0.854096</td>
       <td>4.0</td>
     </tr>
     <tr>
       <th>2013-01-06</th>
-      <td>-1.362511</td>
-      <td>-0.987405</td>
-      <td>1.365379</td>
-      <td>-0.603763</td>
+      <td>-2.552990</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
+      <td>-0.742165</td>
       <td>5.0</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">at[]</span></code> 활용: 첫재 행, <code class="docutils literal notranslate"><span class="pre">A</span></code> 열 항목을 0으로 지정.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;A&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;A&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="n">df</span>
 </pre></div>
@@ -3133,62 +3076,147 @@ Freq: D, dtype: int64
     <tr>
       <th>2013-01-01</th>
       <td>0.000000</td>
-      <td>2.459803</td>
-      <td>0.043692</td>
-      <td>-0.796323</td>
+      <td>0.400157</td>
+      <td>0.978738</td>
+      <td>2.240893</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2013-01-02</th>
-      <td>0.992179</td>
-      <td>1.962987</td>
-      <td>1.172598</td>
-      <td>0.442971</td>
+      <td>1.867558</td>
+      <td>-0.977278</td>
+      <td>0.950088</td>
+      <td>-0.151357</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>2013-01-03</th>
-      <td>-0.609547</td>
-      <td>0.594179</td>
-      <td>0.348269</td>
-      <td>0.725129</td>
+      <td>-0.103219</td>
+      <td>0.410599</td>
+      <td>0.144044</td>
+      <td>1.454274</td>
       <td>2.0</td>
     </tr>
     <tr>
       <th>2013-01-04</th>
-      <td>1.120017</td>
-      <td>0.470862</td>
-      <td>2.052462</td>
-      <td>-0.786725</td>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>0.333674</td>
       <td>3.0</td>
     </tr>
     <tr>
       <th>2013-01-05</th>
-      <td>-1.896509</td>
-      <td>-1.025820</td>
-      <td>-0.105514</td>
-      <td>-0.658734</td>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>-0.854096</td>
       <td>4.0</td>
     </tr>
     <tr>
       <th>2013-01-06</th>
-      <td>-1.362511</td>
-      <td>-0.987405</td>
-      <td>1.365379</td>
-      <td>-0.603763</td>
+      <td>-2.552990</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
+      <td>-0.742165</td>
       <td>5.0</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">iat[]</span></code>도 활용 가능.</p>
+<p><code class="docutils literal notranslate"><span class="pre">iloc[]</span></code>도 활용 가능.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iat</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.978738</td>
+      <td>2.240893</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>1.867558</td>
+      <td>-0.977278</td>
+      <td>0.950088</td>
+      <td>-0.151357</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>-0.103219</td>
+      <td>0.410599</td>
+      <td>0.144044</td>
+      <td>1.454274</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>0.333674</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-05</th>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>-0.854096</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-06</th>
+      <td>-2.552990</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
+      <td>-0.742165</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <p>어레이를 이용하여 열 또는 행을 지정할 수 있다.</p>
 <ul class="simple">
@@ -3238,48 +3266,48 @@ Freq: D, dtype: int64
       <th>2013-01-01</th>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.043692</td>
-      <td>5</td>
+      <td>0.978738</td>
+      <td>5.0</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2013-01-02</th>
-      <td>0.992179</td>
-      <td>1.962987</td>
-      <td>1.172598</td>
-      <td>5</td>
+      <td>1.867558</td>
+      <td>-0.977278</td>
+      <td>0.950088</td>
+      <td>5.0</td>
       <td>1.0</td>
     </tr>
     <tr>
       <th>2013-01-03</th>
-      <td>-0.609547</td>
-      <td>0.594179</td>
-      <td>0.348269</td>
-      <td>5</td>
+      <td>-0.103219</td>
+      <td>0.410599</td>
+      <td>0.144044</td>
+      <td>5.0</td>
       <td>2.0</td>
     </tr>
     <tr>
       <th>2013-01-04</th>
-      <td>1.120017</td>
-      <td>0.470862</td>
-      <td>2.052462</td>
-      <td>5</td>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>5.0</td>
       <td>3.0</td>
     </tr>
     <tr>
       <th>2013-01-05</th>
-      <td>-1.896509</td>
-      <td>-1.025820</td>
-      <td>-0.105514</td>
-      <td>5</td>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>5.0</td>
       <td>4.0</td>
     </tr>
     <tr>
       <th>2013-01-06</th>
-      <td>-1.362511</td>
-      <td>-0.987405</td>
-      <td>1.365379</td>
-      <td>5</td>
+      <td>-2.552990</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
+      <td>5.0</td>
       <td>5.0</td>
     </tr>
   </tbody>
@@ -3333,8 +3361,8 @@ Freq: D, dtype: int64
       <th>2013-01-01</th>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.043692</td>
-      <td>5</td>
+      <td>0.978738</td>
+      <td>5.0</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -3342,39 +3370,39 @@ Freq: D, dtype: int64
       <td>3.000000</td>
       <td>3.000000</td>
       <td>3.000000</td>
-      <td>3</td>
+      <td>3.0</td>
       <td>3.0</td>
     </tr>
     <tr>
       <th>2013-01-03</th>
-      <td>-0.609547</td>
-      <td>0.594179</td>
-      <td>0.348269</td>
-      <td>5</td>
+      <td>-0.103219</td>
+      <td>0.410599</td>
+      <td>0.144044</td>
+      <td>5.0</td>
       <td>2.0</td>
     </tr>
     <tr>
       <th>2013-01-04</th>
-      <td>1.120017</td>
-      <td>0.470862</td>
-      <td>2.052462</td>
-      <td>5</td>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>5.0</td>
       <td>3.0</td>
     </tr>
     <tr>
       <th>2013-01-05</th>
-      <td>-1.896509</td>
-      <td>-1.025820</td>
-      <td>-0.105514</td>
-      <td>5</td>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>5.0</td>
       <td>4.0</td>
     </tr>
     <tr>
       <th>2013-01-06</th>
-      <td>-1.362511</td>
-      <td>-0.987405</td>
-      <td>1.365379</td>
-      <td>5</td>
+      <td>-2.552990</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
+      <td>5.0</td>
       <td>5.0</td>
     </tr>
   </tbody>
@@ -3428,8 +3456,8 @@ Freq: D, dtype: int64
       <th>2013-01-01</th>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>0.043692</td>
-      <td>5</td>
+      <td>0.978738</td>
+      <td>5.0</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -3437,7 +3465,7 @@ Freq: D, dtype: int64
       <td>3.000000</td>
       <td>3.000000</td>
       <td>3.000000</td>
-      <td>3</td>
+      <td>3.0</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -3445,31 +3473,31 @@ Freq: D, dtype: int64
       <td>4.000000</td>
       <td>4.000000</td>
       <td>4.000000</td>
-      <td>4</td>
+      <td>4.0</td>
       <td>4.0</td>
     </tr>
     <tr>
       <th>2013-01-04</th>
-      <td>1.120017</td>
-      <td>0.470862</td>
-      <td>2.052462</td>
-      <td>5</td>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>5.0</td>
       <td>3.0</td>
     </tr>
     <tr>
       <th>2013-01-05</th>
-      <td>-1.896509</td>
-      <td>-1.025820</td>
-      <td>-0.105514</td>
-      <td>5</td>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>5.0</td>
       <td>4.0</td>
     </tr>
     <tr>
       <th>2013-01-06</th>
-      <td>-1.362511</td>
-      <td>-0.987405</td>
-      <td>1.365379</td>
-      <td>5</td>
+      <td>-2.552990</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
+      <td>5.0</td>
       <td>5.0</td>
     </tr>
   </tbody>
@@ -3487,6 +3515,17 @@ Freq: D, dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    0
+1    1
+2    2
+3    3
+4    4
+dtype: int64
 </pre></div>
 </div>
 </div>
@@ -3547,8 +3586,8 @@ dtype: float64
       <th>2013-01-01</th>
       <td>NaN</td>
       <td>NaN</td>
-      <td>0.043692</td>
-      <td>5</td>
+      <td>0.978738</td>
+      <td>5.0</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -3556,7 +3595,7 @@ dtype: float64
       <td>3.000000</td>
       <td>3.000000</td>
       <td>3.000000</td>
-      <td>3</td>
+      <td>3.0</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -3564,31 +3603,31 @@ dtype: float64
       <td>4.000000</td>
       <td>4.000000</td>
       <td>4.000000</td>
-      <td>4</td>
+      <td>4.0</td>
       <td>4.0</td>
     </tr>
     <tr>
       <th>2013-01-04</th>
-      <td>1.120017</td>
-      <td>0.470862</td>
-      <td>2.052462</td>
-      <td>5</td>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>5.0</td>
       <td>3.0</td>
     </tr>
     <tr>
       <th>2013-01-05</th>
+      <td>1.494079</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>5</td>
+      <td>0.313068</td>
+      <td>5.0</td>
       <td>4.0</td>
     </tr>
     <tr>
       <th>2013-01-06</th>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>1.365379</td>
-      <td>5</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
+      <td>5.0</td>
       <td>5.0</td>
     </tr>
   </tbody>
@@ -3666,7 +3705,7 @@ dtype: float64
   <tbody>
     <tr>
       <th>2013-01-01</th>
-      <td>0.000000</td>
+      <td>0.00000</td>
       <td>0.000000</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3698,16 +3737,16 @@ dtype: float64
     </tr>
     <tr>
       <th>2013-01-05</th>
-      <td>-1.896509</td>
-      <td>-1.025820</td>
-      <td>-0.105514</td>
+      <td>NaN</td>
+      <td>-0.205158</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2013-01-06</th>
-      <td>-1.362511</td>
-      <td>-0.987405</td>
+      <td>-2.55299</td>
+      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -3753,8 +3792,8 @@ dtype: float64
       <th>2013-01-01</th>
       <td>NaN</td>
       <td>NaN</td>
-      <td>0.043692</td>
-      <td>5</td>
+      <td>0.978738</td>
+      <td>5.0</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -3762,7 +3801,7 @@ dtype: float64
       <td>3.000000</td>
       <td>3.000000</td>
       <td>3.000000</td>
-      <td>3</td>
+      <td>3.0</td>
       <td>3.0</td>
     </tr>
     <tr>
@@ -3770,31 +3809,31 @@ dtype: float64
       <td>4.000000</td>
       <td>4.000000</td>
       <td>4.000000</td>
-      <td>4</td>
+      <td>4.0</td>
       <td>4.0</td>
     </tr>
     <tr>
       <th>2013-01-04</th>
-      <td>1.120017</td>
-      <td>0.470862</td>
-      <td>2.052462</td>
-      <td>5</td>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>5.0</td>
       <td>3.0</td>
     </tr>
     <tr>
       <th>2013-01-05</th>
+      <td>1.494079</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>5</td>
+      <td>0.313068</td>
+      <td>5.0</td>
       <td>4.0</td>
     </tr>
     <tr>
       <th>2013-01-06</th>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>1.365379</td>
-      <td>5</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
+      <td>5.0</td>
       <td>5.0</td>
     </tr>
   </tbody>
