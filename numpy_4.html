@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -143,6 +143,7 @@ const thebe_selector_output = ".output, .cell_output"
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -432,13 +433,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">15.2.2. 차원 삭제</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">15.3. 어레이 이어붙이기와 쌓기</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">15.4. 브로드캐스팅</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">15.4.1. 브로드캐스팅과 연산</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">15.4.2. 브로드캐스팅과 항목 대체</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">15.3. 어레이 쪼개기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">15.4. 어레이 이어붙이기와 쌓기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">15.5. 브로드캐스팅</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">15.5.1. 브로드캐스팅과 연산</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">15.5.2. 브로드캐스팅과 항목 대체</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">15.5. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">15.6. 연습문제</a></li>
 </ul>
             </nav>
         </div>
@@ -877,7 +879,185 @@ document.write(`
 </section>
 </section>
 <section id="id6">
-<h2><span class="section-number">15.3. </span>어레이 이어붙이기와 쌓기<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">15.3. </span>어레이 쪼개기<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<p><strong><code class="docutils literal notranslate"><span class="pre">np.split()</span></code> 함수</strong></p>
+<p>어레이를 지정된 기준에 따라 여러 개의 어레이로 쪼갠다.
+반환값은 쪼개진 어레이들의 리스트다.</p>
+<p>아래 예제를 살펴보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">arr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.7688, -0.23  ,  0.7451,  1.9761, -1.2441],
+       [-0.6264, -0.8038, -2.4191, -0.9238, -1.0239],
+       [ 1.124 , -0.1319, -1.6233,  0.6467, -0.3563],
+       [-1.7431, -0.5966, -0.5886, -0.8739,  0.0297],
+       [-2.2483, -0.2678,  1.0132,  0.8528,  1.1082],
+       [ 1.1194,  1.4875, -1.1183,  0.8458, -1.8609]])
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">np.split()</span></code> 함수의 인자는 하나의 인덱스이거나 여러 인덱스들의 리스트가 사용된다.
+먼저, 정수 리스트가 들어오면 축이 정한 방향으로 리스트에 포함된 정수를 이용하여 여러 개의 구간으로 쪼갠다.</p>
+<p>아래 코드는 행을 기준으로 행의 인덱스를 0-1, 2, 3-5 세 개의 구간으로 쪼갠다.
+따라서 결과는 네 개의 어레이로 이루어진 리스트가 되며,
+각 어레의 모양은 다음과 같다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span> <span class="c1"># np.split(arr, [2, 3],axis=0)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[-0.7688, -0.23  ,  0.7451,  1.9761, -1.2441],
+        [-0.6264, -0.8038, -2.4191, -0.9238, -1.0239]]),
+ array([[ 1.124 , -0.1319, -1.6233,  0.6467, -0.3563]]),
+ array([[-1.7431, -0.5966, -0.5886, -0.8739,  0.0297],
+        [-2.2483, -0.2678,  1.0132,  0.8528,  1.1082],
+        [ 1.1194,  1.4875, -1.1183,  0.8458, -1.8609]])]
+</pre></div>
+</div>
+</div>
+</div>
+<p>반면에 열을 기준으로 0, 1-2, 3-4 세 개의 구간으로 쪼개면 다음과 같으며,
+각 어레이의 모양은 다음과 같다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[-0.7688],
+        [-0.6264],
+        [ 1.124 ],
+        [-1.7431],
+        [-2.2483],
+        [ 1.1194]]),
+ array([[-0.23  ,  0.7451],
+        [-0.8038, -2.4191],
+        [-0.1319, -1.6233],
+        [-0.5966, -0.5886],
+        [-0.2678,  1.0132],
+        [ 1.4875, -1.1183]]),
+ array([[ 1.9761, -1.2441],
+        [-0.9238, -1.0239],
+        [ 0.6467, -0.3563],
+        [-0.8739,  0.0297],
+        [ 0.8528,  1.1082],
+        [ 0.8458, -1.8609]])]
+</pre></div>
+</div>
+</div>
+</div>
+<p>둘째 인자로 하나의 정수를 사용하면 행 또는 열을 기준으로 등분한다.
+아래 코드는 6개의 행을 3등분 한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[-0.7688, -0.23  ,  0.7451,  1.9761, -1.2441],
+        [-0.6264, -0.8038, -2.4191, -0.9238, -1.0239]]),
+ array([[ 1.124 , -0.1319, -1.6233,  0.6467, -0.3563],
+        [-1.7431, -0.5966, -0.5886, -0.8739,  0.0297]]),
+ array([[-2.2483, -0.2678,  1.0132,  0.8528,  1.1082],
+        [ 1.1194,  1.4875, -1.1183,  0.8458, -1.8609]])]
+</pre></div>
+</div>
+</div>
+</div>
+<p>등분을 위해서는 행 또는 열의 약수만 둘째 인자로 사용할 수 있다. 그렇지 않으면 오류가 발생한다.
+예를 들어, 아래 코드처럼 열을 2등분 하려 하면 오류가 발생한다.
+이유는 5개의 열을 2등분 할 수 없기 때문이다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">np</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="go">---------------------------------------------------------------------------</span>
+<span class="go">ValueError                                Traceback (most recent call last)</span>
+<span class="go">Input In [16], in &lt;module&gt;</span>
+<span class="go">----&gt; 1 np.split(arr, 2, axis=1)</span>
+
+<span class="go">File &lt;__array_function__ internals&gt;:180, in split(*args, **kwargs)</span>
+
+<span class="go">File ~\miniconda3\envs\homl3\lib\site-packages\numpy\lib\shape_base.py:872, in split(ary, indices_or_sections, axis)</span>
+<span class="go">    870     N = ary.shape[axis]</span>
+<span class="go">    871     if N % sections:</span>
+<span class="go">--&gt; 872         raise ValueError(</span>
+<span class="go">    873             &#39;array split does not result in an equal division&#39;) from None</span>
+<span class="go">    874 return array_split(ary, indices_or_sections, axis)</span>
+
+<span class="go">ValueError: array split does not result in an equal division</span>
+</pre></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">np.vsplit()</span></code>/<code class="docutils literal notranslate"><span class="pre">np.hsplit()</span></code> 함수</strong></p>
+<p>두 함수는 <code class="docutils literal notranslate"><span class="pre">np.split()</span></code> 함수에 축을 각각 0과 1로 지정한 함수이다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.vsplit(arr,</span> <span class="pre">z)</span></code> := <code class="docutils literal notranslate"><span class="pre">np.split(arr,</span> <span class="pre">z,</span> <span class="pre">axis=0)</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">vsplit</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[-0.7688, -0.23  ,  0.7451,  1.9761, -1.2441],
+        [-0.6264, -0.8038, -2.4191, -0.9238, -1.0239]]),
+ array([[ 1.124 , -0.1319, -1.6233,  0.6467, -0.3563]]),
+ array([[-1.7431, -0.5966, -0.5886, -0.8739,  0.0297],
+        [-2.2483, -0.2678,  1.0132,  0.8528,  1.1082]]),
+ array([[ 1.1194,  1.4875, -1.1183,  0.8458, -1.8609]])]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.hsplit(arr,</span> <span class="pre">z)</span></code> := <code class="docutils literal notranslate"><span class="pre">np.split(arr,</span> <span class="pre">z,</span> <span class="pre">axis=1)</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">hsplit</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[-0.7688],
+        [-0.6264],
+        [ 1.124 ],
+        [-1.7431],
+        [-2.2483],
+        [ 1.1194]]),
+ array([[-0.23  ,  0.7451],
+        [-0.8038, -2.4191],
+        [-0.1319, -1.6233],
+        [-0.5966, -0.5886],
+        [-0.2678,  1.0132],
+        [ 1.4875, -1.1183]]),
+ array([[ 1.9761, -1.2441],
+        [-0.9238, -1.0239],
+        [ 0.6467, -0.3563],
+        [-0.8739,  0.0297],
+        [ 0.8528,  1.1082],
+        [ 0.8458, -1.8609]])]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id7">
+<h2><span class="section-number">15.4. </span>어레이 이어붙이기와 쌓기<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <p><strong><code class="docutils literal notranslate"><span class="pre">np.concatenate()</span></code> 함수</strong></p>
 <p>두 개의 어레이를 이어붙인다.
 지정되는 축에 따라 좌우로 또는 상하로 이어붙인다.
@@ -1064,8 +1244,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="id7">
-<h2><span class="section-number">15.4. </span>브로드캐스팅<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<section id="id8">
+<h2><span class="section-number">15.5. </span>브로드캐스팅<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
 <p><strong>브로드캐스팅</strong><font size='2'>broadcasting</font>
 모양이 서로 다른 두 어레이가 주어졌을 때 두 모양을 통일시킬 수 있다면 두 어레이의 연산이 가능하도록
 도와주는 기능이다.
@@ -1102,8 +1282,8 @@ document.write(`
 즉, 정수 4로 채워진 동일한 모양의 어레이를 먼저 생성한 후에 항목별 곱셈을 진행한다.</p>
 <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting14.png?raw=true" style="width:300px;"></div><p>이와 같이 어레이의 모양을 확장하여 항목별 연산이 가능해지도록 하는 기능은 두 어레이의 모야을
 통일시킬 수 있는 경우 항상 작동한다.</p>
-<section id="id8">
-<h3><span class="section-number">15.4.1. </span>브로드캐스팅과 연산<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<section id="id9">
+<h3><span class="section-number">15.5.1. </span>브로드캐스팅과 연산<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <p>어레이 연산을 실행할 때 브로드캐스팅이 가능한 경우 자동 적용된다.</p>
 <p><strong>예제</strong></p>
 <p>아래 코드는 1차원 어레이를 2차원 어레이로 확장하여 다른 어레이와 모양을 맞춘 후 연산을 실행한 결과를 보여준다.</p>
@@ -1451,8 +1631,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="id9">
-<h3><span class="section-number">15.4.2. </span>브로드캐스팅과 항목 대체<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<section id="id10">
+<h3><span class="section-number">15.5.2. </span>브로드캐스팅과 항목 대체<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
 <p>브로드캐스팅으로 어레이의 항목을 대체할 수 있다.
 설명을 위해 아래 어레이를 사용한다.</p>
 <div class="cell docutils container">
@@ -1543,8 +1723,8 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="id10">
-<h2><span class="section-number">15.5. </span>연습문제<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<section id="id11">
+<h2><span class="section-number">15.6. </span>연습문제<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-numpy_4.ipynb">(실습) 고급 넘파이</a></p>
 </section>
 </section>
@@ -1618,13 +1798,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">15.2.2. 차원 삭제</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">15.3. 어레이 이어붙이기와 쌓기</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">15.4. 브로드캐스팅</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">15.4.1. 브로드캐스팅과 연산</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">15.4.2. 브로드캐스팅과 항목 대체</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">15.3. 어레이 쪼개기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">15.4. 어레이 이어붙이기와 쌓기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">15.5. 브로드캐스팅</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">15.5.1. 브로드캐스팅과 연산</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">15.5.2. 브로드캐스팅과 항목 대체</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">15.5. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">15.6. 연습문제</a></li>
 </ul>
   </nav></div>
 
@@ -1672,8 +1853,8 @@ By 코딩알지
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
 
   <footer class="bd-footer">
   </footer>
