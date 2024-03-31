@@ -1,15 +1,14 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>15. 고급 넘파이 &#8212; 파이썬 데이터 분석</title>
+    <title>15. 어레이 변형 &#8212; 파이썬 데이터 분석</title>
   
   
   
@@ -29,36 +28,36 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'numpy_4';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -183,7 +182,7 @@
 <li class="toctree-l1"><a class="reference internal" href="numpy_1.html">12. 넘파이 어레이</a></li>
 <li class="toctree-l1"><a class="reference internal" href="numpy_2.html">13. 어레이 인덱싱</a></li>
 <li class="toctree-l1"><a class="reference internal" href="numpy_3.html">14. 어레이 중심 프로그래밍</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">15. 고급 넘파이</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">15. 어레이 변형</a></li>
 <li class="toctree-l1"><a class="reference internal" href="numpy_5.html">16. 실전 예제: 어레이 활용</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">판다스</span></p>
@@ -429,7 +428,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>고급 넘파이</h1>
+    <h1>어레이 변형</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -439,20 +438,19 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">15.1. 어레이 변형</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">15.2. 차원 추가와 삭제</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">15.2.1. 차원 추가</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">15.2.2. 차원 삭제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">15.1. 차원 추가와 삭제</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">15.1.1. 차원 추가</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">15.1.2. 차원 삭제</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">15.3. 어레이 쪼개기</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">15.4. 어레이 이어붙이기와 쌓기</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">15.5. 브로드캐스팅</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">15.5.1. 브로드캐스팅과 연산</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">15.5.2. 브로드캐스팅과 항목 대체</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">15.2. 어레이 쪼개기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">15.3. 어레이 이어붙이기와 쌓기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">15.4. 브로드캐스팅</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">15.4.1. 브로드캐스팅과 연산</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">15.4.2. 브로드캐스팅과 항목 대체</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">15.6. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">15.5. 연습문제</a></li>
 </ul>
             </nav>
         </div>
@@ -465,8 +463,8 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-numpy-4">
-<span id="id1"></span><h1><span class="section-number">15. </span>고급 넘파이<a class="headerlink" href="#sec-numpy-4" title="Permalink to this heading">#</a></h1>
-<p>넘파이 어레이를 조작하는 고급 기능의 일부를 예제를 이용하여 살펴본다.</p>
+<span id="id1"></span><h1><span class="section-number">15. </span>어레이 변형<a class="headerlink" href="#sec-numpy-4" title="Link to this heading">#</a></h1>
+<p>어레이의 모양을 변형해서 새로운 어레이를 생성하는 다양한 방식을 살펴본다.</p>
 <p><strong>주요 내용</strong></p>
 <ul class="simple">
 <li><p>어레이 변형</p></li>
@@ -501,148 +499,13 @@ document.write(`
 </div>
 </div>
 </div>
-<p>먼저 어레이를 조작하는 몇 가지 중요한 고급 기법을 살펴본다.</p>
 <section id="id2">
-<h2><span class="section-number">15.1. </span>어레이 변형<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p><strong><code class="docutils literal notranslate"><span class="pre">reshape()</span></code> 메서드</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">reshape()</span></code> 메서드를 활용하여 주어진 어레이의 모양을 원하는 대로 변형한다.
-단, 항목의 수가 변하지 않도록 모양을 지정해야 한다.
-예를 들어, 길이가 8인 1차원 어레이가 다음과 같다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">arr</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0, 1, 2, 3, 4, 5, 6, 7])
-</pre></div>
-</div>
-</div>
-</div>
-<p>이제 (4, 2) 모양의 2차원 어레이로 모양을 변형할 수 있다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0, 1],
-       [2, 3],
-       [4, 5],
-       [6, 7]])
-</pre></div>
-</div>
-</div>
-</div>
-<p>항목의 수만 같으면 임의의 차원의 어레이를 임의의 차원의 어레이로 변형시킬 수 있다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[0, 1],
-        [2, 3]],
-
-       [[4, 5],
-        [6, 7]]])
-</pre></div>
-</div>
-</div>
-</div>
-<p><strong><code class="docutils literal notranslate"><span class="pre">-1</span></code>의 역할</strong></p>
-<p>어레의 모양을 지정할 때 튜플의 특정 위치에 -1을 사용할 수 있다.
-그러면 그 위치의 값은 튜플의 다른 항목의 정보를 이용하여 자동 결정된다.
-예를 들어, 아래 코드에서 -1은 4를 의미한다.
-이유는 20개의 항목을 5개의 행으로 이루어진 2차원 어레이로 지정하려면 열은 4개 있어야 하기 때문이다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
-<span class="n">arr</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0,  1,  2,  3],
-       [ 4,  5,  6,  7],
-       [ 8,  9, 10, 11],
-       [12, 13, 14, 15],
-       [16, 17, 18, 19]])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0,  1,  2,  3],
-       [ 4,  5,  6,  7],
-       [ 8,  9, 10, 11],
-       [12, 13, 14, 15],
-       [16, 17, 18, 19]])
-</pre></div>
-</div>
-</div>
-</div>
-<p>동일한 이유로 아래에서 -1은 5를 의미한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[ 0,  1],
-        [ 2,  3],
-        [ 4,  5],
-        [ 6,  7],
-        [ 8,  9]],
-
-       [[10, 11],
-        [12, 13],
-        [14, 15],
-        [16, 17],
-        [18, 19]]])
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[[ 0,  1],
-        [ 2,  3],
-        [ 4,  5],
-        [ 6,  7],
-        [ 8,  9]],
-
-       [[10, 11],
-        [12, 13],
-        [14, 15],
-        [16, 17],
-        [18, 19]]])
-</pre></div>
-</div>
-</div>
-</div>
-</section>
+<h2><span class="section-number">15.1. </span>차원 추가와 삭제<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">reshape()</span></code> 메서드와 함께
+항목은 그대로 유지하면서 어레이의 모양만 변형시키는 방법으로
+차원 추가와 삭제 기법이 활용된다.</p>
 <section id="id3">
-<h2><span class="section-number">15.2. </span>차원 추가와 삭제<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
-<p>어레이 변형의 특별한 경우로 차원 추가와 삭제가 있다.</p>
-<section id="id4">
-<h3><span class="section-number">15.2.1. </span>차원 추가<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">15.1.1. </span>차원 추가<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>어레이에 임의의 축을 추가하는 방식으로 차원이 하나 더 추가된 어레이를 생성할 수 있다.
 어느 축을 추가하느냐에 따라 생성된 어레이의  모양은 달라진다.</p>
 <p><strong>예제</strong></p>
@@ -804,8 +667,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="id5">
-<h3><span class="section-number">15.2.2. </span>차원 삭제<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<section id="id4">
+<h3><span class="section-number">15.1.2. </span>차원 삭제<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">ravel()</span></code> 메서드와 <code class="docutils literal notranslate"><span class="pre">flatten()</span></code> 메서드는 어레이를 1차원으로 변형한다.
 즉, 차원을 모두 없앤다.</p>
 <div class="cell docutils container">
@@ -890,8 +753,8 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="id6">
-<h2><span class="section-number">15.3. </span>어레이 쪼개기<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<section id="id5">
+<h2><span class="section-number">15.2. </span>어레이 쪼개기<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <p><strong><code class="docutils literal notranslate"><span class="pre">np.split()</span></code> 함수</strong></p>
 <p>어레이를 지정된 기준에 따라 여러 개의 어레이로 쪼갠다.
 반환값은 쪼개진 어레이들의 리스트다.</p>
@@ -904,12 +767,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.7688, -0.23  ,  0.7451,  1.9761, -1.2441],
-       [-0.6264, -0.8038, -2.4191, -0.9238, -1.0239],
-       [ 1.124 , -0.1319, -1.6233,  0.6467, -0.3563],
-       [-1.7431, -0.5966, -0.5886, -0.8739,  0.0297],
-       [-2.2483, -0.2678,  1.0132,  0.8528,  1.1082],
-       [ 1.1194,  1.4875, -1.1183,  0.8458, -1.8609]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.8864, -2.0016, -0.3718,  1.669 , -0.4386],
+       [-0.5397,  0.477 ,  3.2489, -1.0212, -0.5771],
+       [ 0.1241,  0.3026,  0.5238,  0.0009,  1.3438],
+       [-0.7135, -0.8312, -2.3702, -1.8608, -0.8608],
+       [ 0.5601, -1.2659,  0.1198, -1.0635,  0.3329],
+       [-2.3594, -0.1995, -1.542 , -0.9707, -1.307 ]])
 </pre></div>
 </div>
 </div>
@@ -929,12 +792,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[-0.7688, -0.23  ,  0.7451,  1.9761, -1.2441],
-        [-0.6264, -0.8038, -2.4191, -0.9238, -1.0239]]),
- array([[ 1.124 , -0.1319, -1.6233,  0.6467, -0.3563]]),
- array([[-1.7431, -0.5966, -0.5886, -0.8739,  0.0297],
-        [-2.2483, -0.2678,  1.0132,  0.8528,  1.1082],
-        [ 1.1194,  1.4875, -1.1183,  0.8458, -1.8609]])]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[ 0.8864, -2.0016, -0.3718,  1.669 , -0.4386],
+        [-0.5397,  0.477 ,  3.2489, -1.0212, -0.5771]]),
+ array([[0.1241, 0.3026, 0.5238, 0.0009, 1.3438]]),
+ array([[-0.7135, -0.8312, -2.3702, -1.8608, -0.8608],
+        [ 0.5601, -1.2659,  0.1198, -1.0635,  0.3329],
+        [-2.3594, -0.1995, -1.542 , -0.9707, -1.307 ]])]
 </pre></div>
 </div>
 </div>
@@ -951,24 +814,24 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[-0.7688],
-        [-0.6264],
-        [ 1.124 ],
-        [-1.7431],
-        [-2.2483],
-        [ 1.1194]]),
- array([[-0.23  ,  0.7451],
-        [-0.8038, -2.4191],
-        [-0.1319, -1.6233],
-        [-0.5966, -0.5886],
-        [-0.2678,  1.0132],
-        [ 1.4875, -1.1183]]),
- array([[ 1.9761, -1.2441],
-        [-0.9238, -1.0239],
-        [ 0.6467, -0.3563],
-        [-0.8739,  0.0297],
-        [ 0.8528,  1.1082],
-        [ 0.8458, -1.8609]])]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[ 0.8864],
+        [-0.5397],
+        [ 0.1241],
+        [-0.7135],
+        [ 0.5601],
+        [-2.3594]]),
+ array([[-2.0016, -0.3718],
+        [ 0.477 ,  3.2489],
+        [ 0.3026,  0.5238],
+        [-0.8312, -2.3702],
+        [-1.2659,  0.1198],
+        [-0.1995, -1.542 ]]),
+ array([[ 1.669 , -0.4386],
+        [-1.0212, -0.5771],
+        [ 0.0009,  1.3438],
+        [-1.8608, -0.8608],
+        [-1.0635,  0.3329],
+        [-0.9707, -1.307 ]])]
 </pre></div>
 </div>
 </div>
@@ -982,12 +845,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[-0.7688, -0.23  ,  0.7451,  1.9761, -1.2441],
-        [-0.6264, -0.8038, -2.4191, -0.9238, -1.0239]]),
- array([[ 1.124 , -0.1319, -1.6233,  0.6467, -0.3563],
-        [-1.7431, -0.5966, -0.5886, -0.8739,  0.0297]]),
- array([[-2.2483, -0.2678,  1.0132,  0.8528,  1.1082],
-        [ 1.1194,  1.4875, -1.1183,  0.8458, -1.8609]])]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[ 0.8864, -2.0016, -0.3718,  1.669 , -0.4386],
+        [-0.5397,  0.477 ,  3.2489, -1.0212, -0.5771]]),
+ array([[ 0.1241,  0.3026,  0.5238,  0.0009,  1.3438],
+        [-0.7135, -0.8312, -2.3702, -1.8608, -0.8608]]),
+ array([[ 0.5601, -1.2659,  0.1198, -1.0635,  0.3329],
+        [-2.3594, -0.1995, -1.542 , -0.9707, -1.307 ]])]
 </pre></div>
 </div>
 </div>
@@ -1025,12 +888,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[-0.7688, -0.23  ,  0.7451,  1.9761, -1.2441],
-        [-0.6264, -0.8038, -2.4191, -0.9238, -1.0239]]),
- array([[ 1.124 , -0.1319, -1.6233,  0.6467, -0.3563]]),
- array([[-1.7431, -0.5966, -0.5886, -0.8739,  0.0297],
-        [-2.2483, -0.2678,  1.0132,  0.8528,  1.1082]]),
- array([[ 1.1194,  1.4875, -1.1183,  0.8458, -1.8609]])]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[ 0.8864, -2.0016, -0.3718,  1.669 , -0.4386],
+        [-0.5397,  0.477 ,  3.2489, -1.0212, -0.5771]]),
+ array([[0.1241, 0.3026, 0.5238, 0.0009, 1.3438]]),
+ array([[-0.7135, -0.8312, -2.3702, -1.8608, -0.8608],
+        [ 0.5601, -1.2659,  0.1198, -1.0635,  0.3329]]),
+ array([[-2.3594, -0.1995, -1.542 , -0.9707, -1.307 ]])]
 </pre></div>
 </div>
 </div>
@@ -1045,31 +908,31 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[-0.7688],
-        [-0.6264],
-        [ 1.124 ],
-        [-1.7431],
-        [-2.2483],
-        [ 1.1194]]),
- array([[-0.23  ,  0.7451],
-        [-0.8038, -2.4191],
-        [-0.1319, -1.6233],
-        [-0.5966, -0.5886],
-        [-0.2678,  1.0132],
-        [ 1.4875, -1.1183]]),
- array([[ 1.9761, -1.2441],
-        [-0.9238, -1.0239],
-        [ 0.6467, -0.3563],
-        [-0.8739,  0.0297],
-        [ 0.8528,  1.1082],
-        [ 0.8458, -1.8609]])]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([[ 0.8864],
+        [-0.5397],
+        [ 0.1241],
+        [-0.7135],
+        [ 0.5601],
+        [-2.3594]]),
+ array([[-2.0016, -0.3718],
+        [ 0.477 ,  3.2489],
+        [ 0.3026,  0.5238],
+        [-0.8312, -2.3702],
+        [-1.2659,  0.1198],
+        [-0.1995, -1.542 ]]),
+ array([[ 1.669 , -0.4386],
+        [-1.0212, -0.5771],
+        [ 0.0009,  1.3438],
+        [-1.8608, -0.8608],
+        [-1.0635,  0.3329],
+        [-0.9707, -1.307 ]])]
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="id7">
-<h2><span class="section-number">15.4. </span>어레이 이어붙이기와 쌓기<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<section id="id6">
+<h2><span class="section-number">15.3. </span>어레이 이어붙이기와 쌓기<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <p><strong><code class="docutils literal notranslate"><span class="pre">np.concatenate()</span></code> 함수</strong></p>
 <p>두 개의 어레이를 이어붙인다.
 지정되는 축에 따라 좌우로 또는 상하로 이어붙인다.
@@ -1256,8 +1119,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="id8">
-<h2><span class="section-number">15.5. </span>브로드캐스팅<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<section id="id7">
+<h2><span class="section-number">15.4. </span>브로드캐스팅<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
 <p><strong>브로드캐스팅</strong><font size='2'>broadcasting</font>
 모양이 서로 다른 두 어레이가 주어졌을 때 두 모양을 통일시킬 수 있다면 두 어레이의 연산이 가능하도록
 도와주는 기능이다.
@@ -1294,8 +1157,8 @@ document.write(`
 즉, 정수 4로 채워진 동일한 모양의 어레이를 먼저 생성한 후에 항목별 곱셈을 진행한다.</p>
 <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/broadcasting14.png?raw=true" style="width:300px;"></div><p>이와 같이 어레이의 모양을 확장하여 항목별 연산이 가능해지도록 하는 기능은 두 어레이의 모야을
 통일시킬 수 있는 경우 항상 작동한다.</p>
-<section id="id9">
-<h3><span class="section-number">15.5.1. </span>브로드캐스팅과 연산<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<section id="id8">
+<h3><span class="section-number">15.4.1. </span>브로드캐스팅과 연산<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <p>어레이 연산을 실행할 때 브로드캐스팅이 가능한 경우 자동 적용된다.</p>
 <p><strong>예제</strong></p>
 <p>아래 코드는 1차원 어레이를 2차원 어레이로 확장하여 다른 어레이와 모양을 맞춘 후 연산을 실행한 결과를 보여준다.</p>
@@ -1528,10 +1391,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.8864, -2.0016, -0.3718],
-       [ 1.669 , -0.4386, -0.5397],
-       [ 0.477 ,  3.2489, -1.0212],
-       [-0.5771,  0.1241,  0.3026]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.2863,  0.378 , -0.7539],
+       [ 0.3313,  1.3497,  0.0699],
+       [ 0.2467, -0.0119,  1.0048],
+       [ 1.3272, -0.9193, -1.5491]])
 </pre></div>
 </div>
 </div>
@@ -1544,7 +1407,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.6138,  0.2332, -0.4075])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.5479,  0.1992, -0.3071])
 </pre></div>
 </div>
 </div>
@@ -1557,10 +1420,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.2726, -2.2349,  0.0357],
-       [ 1.0552, -0.6718, -0.1322],
-       [-0.1369,  3.0157, -0.6137],
-       [-1.1909, -0.1091,  0.7102]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.2615,  0.1788, -0.4468],
+       [-0.2166,  1.1506,  0.377 ],
+       [-0.3012, -0.211 ,  1.3119],
+       [ 0.7793, -1.1184, -1.242 ]])
 </pre></div>
 </div>
 </div>
@@ -1573,7 +1436,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0., -0., -0.])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.,  0.,  0.])
 </pre></div>
 </div>
 </div>
@@ -1587,10 +1450,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.8864, -2.0016, -0.3718],
-       [ 1.669 , -0.4386, -0.5397],
-       [ 0.477 ,  3.2489, -1.0212],
-       [-0.5771,  0.1241,  0.3026]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.2863,  0.378 , -0.7539],
+       [ 0.3313,  1.3497,  0.0699],
+       [ 0.2467, -0.0119,  1.0048],
+       [ 1.3272, -0.9193, -1.5491]])
 </pre></div>
 </div>
 </div>
@@ -1603,7 +1466,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.4957,  0.2302,  0.9016, -0.0501])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.0299,  0.5836,  0.4132, -0.3804])
 </pre></div>
 </div>
 </div>
@@ -1615,10 +1478,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.4957],
-       [ 0.2302],
-       [ 0.9016],
-       [-0.0501]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.0299],
+       [ 0.5836],
+       [ 0.4132],
+       [-0.3804]])
 </pre></div>
 </div>
 </div>
@@ -1637,14 +1500,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0., -0.,  0.,  0.])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 0.,  0., -0.,  0.])
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="id10">
-<h3><span class="section-number">15.5.2. </span>브로드캐스팅과 항목 대체<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<section id="id9">
+<h3><span class="section-number">15.4.2. </span>브로드캐스팅과 항목 대체<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>브로드캐스팅으로 어레이의 항목을 대체할 수 있다.
 설명을 위해 아래 어레이를 사용한다.</p>
 <div class="cell docutils container">
@@ -1735,8 +1598,8 @@ document.write(`
 </div>
 </section>
 </section>
-<section id="id11">
-<h2><span class="section-number">15.6. </span>연습문제<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
+<section id="id10">
+<h2><span class="section-number">15.5. </span>연습문제<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-numpy_4.ipynb">(실습) 고급 넘파이</a></p>
 </section>
 </section>
@@ -1805,20 +1668,19 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">15.1. 어레이 변형</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">15.2. 차원 추가와 삭제</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">15.2.1. 차원 추가</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">15.2.2. 차원 삭제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">15.1. 차원 추가와 삭제</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">15.1.1. 차원 추가</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">15.1.2. 차원 삭제</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">15.3. 어레이 쪼개기</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">15.4. 어레이 이어붙이기와 쌓기</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">15.5. 브로드캐스팅</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">15.5.1. 브로드캐스팅과 연산</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">15.5.2. 브로드캐스팅과 항목 대체</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">15.2. 어레이 쪼개기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">15.3. 어레이 이어붙이기와 쌓기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">15.4. 브로드캐스팅</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">15.4.1. 브로드캐스팅과 연산</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">15.4.2. 브로드캐스팅과 항목 대체</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">15.6. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">15.5. 연습문제</a></li>
 </ul>
   </nav></div>
 

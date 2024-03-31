@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>23. 데이터 결합 &#8212; 파이썬 데이터 분석</title>
   
@@ -29,36 +28,36 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pandas_5';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -470,7 +469,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-combination">
-<span id="id1"></span><h1><span class="section-number">23. </span>데이터 결합<a class="headerlink" href="#sec-combination" title="Permalink to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">23. </span>데이터 결합<a class="headerlink" href="#sec-combination" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -506,7 +505,7 @@ document.write(`
 </div>
 </div>
 <section id="id2">
-<h2><span class="section-number">23.1. </span>계층 인덱싱<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">23.1. </span>계층 인덱싱<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p><strong>다중 인덱스 사용 시리즈</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -943,7 +942,7 @@ dtype: float64
 </div></div></div>
 </div>
 <section id="id3">
-<h3><span class="section-number">23.1.1. </span>다중 인덱스 레벨 교환과 인덱스 라벨 정렬<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">23.1.1. </span>다중 인덱스 레벨 교환과 인덱스 라벨 정렬<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p><strong>레벨 교환</strong></p>
 <ul class="simple">
 <li><p>레벨 이름 활용</p></li>
@@ -1357,7 +1356,7 @@ dtype: float64
 </div>
 </section>
 <section id="id4">
-<h3><span class="section-number">23.1.2. </span>레벨 단위 그룹화<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">23.1.2. </span>레벨 단위 그룹화<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="s2">&quot;key2&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -1569,7 +1568,7 @@ dtype: float64
 </div>
 </section>
 <section id="id5">
-<h3><span class="section-number">23.1.3. </span>인덱스 지정과 초기화<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">23.1.3. </span>인덱스 지정과 초기화<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;a&quot;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span> <span class="s2">&quot;b&quot;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">),</span>
@@ -2001,9 +2000,9 @@ dtype: float64
 </section>
 </section>
 <section id="id6">
-<h2><span class="section-number">23.2. </span>데이터 결합<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">23.2. </span>데이터 결합<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <section id="id7">
-<h3><span class="section-number">23.2.1. </span>일대다/다대일 합병<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">23.2.1. </span>일대다/다대일 합병<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">],</span>
@@ -3768,7 +3767,7 @@ dtype: float64
 </div>
 </section>
 <section id="id8">
-<h3><span class="section-number">23.2.2. </span>인덱스 기준 합병<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">23.2.2. </span>인덱스 기준 합병<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">left1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">],</span>
@@ -5400,7 +5399,7 @@ dtype: float64
 </div>
 </section>
 <section id="id9">
-<h3><span class="section-number">23.2.3. </span>종/횡 결합<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">23.2.3. </span>종/횡 결합<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> 함수는 <code class="docutils literal notranslate"><span class="pre">np.concatenate()</span></code>와 유사하게 작동한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -6432,7 +6431,7 @@ dtype: Int64
 </div>
 </section>
 <section id="id10">
-<h3><span class="section-number">23.2.4. </span>겹침 결합<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">23.2.4. </span>겹침 결합<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <p>일부 또는 전체가 겹치는 두 개의 시리즈 또는 데이터프레임을 하나의 데이터프레임으로 결합하는 기법을 다룬다.</p>
 <p><strong>시리즈 겹침 결합</strong></p>
 <div class="cell docutils container">
@@ -6692,9 +6691,9 @@ dtype: float64
 </section>
 </section>
 <section id="id11">
-<h2><span class="section-number">23.3. </span>모양 변환<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">23.3. </span>모양 변환<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
 <section id="id12">
-<h3><span class="section-number">23.3.1. </span>항목 재배열<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">23.3.1. </span>항목 재배열<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>스택</p></li>
 <li><p>언스택</p></li>
@@ -7971,7 +7970,7 @@ Length: 609, dtype: float64
 </div>
 </section>
 <section id="id13">
-<h3><span class="section-number">23.3.2. </span>피버팅<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">23.3.2. </span>피버팅<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <p>긴 모양 데이터프레임을 넓은 모양 데이터프레임으로 변환하는 과정을 살펴 본다.</p>
 <p><strong>한 개의 열로 구성된 갑을 사용하는 피버팅</strong></p>
 <div class="cell docutils container">
@@ -8642,7 +8641,7 @@ Length: 609, dtype: float64
 </div>
 </section>
 <section id="id14">
-<h3><span class="section-number">23.3.3. </span>언피버팅<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">23.3.3. </span>언피버팅<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
 <p>넓은 모양 데이터프레임을 긴 모양 데이터프레임으로 변환하는 과정을 살펴 본다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
