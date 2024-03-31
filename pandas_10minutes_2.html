@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>18. 판다스 10분 완성 2부 &#8212; 파이썬 데이터 분석</title>
   
@@ -29,36 +28,36 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pandas_10minutes_2';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -473,7 +472,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-pandas10min-2">
-<span id="id1"></span><h1><span class="section-number">18. </span>판다스 10분 완성 2부<a class="headerlink" href="#sec-pandas10min-2" title="Permalink to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">18. </span>판다스 10분 완성 2부<a class="headerlink" href="#sec-pandas10min-2" title="Link to this heading">#</a></h1>
 <p><strong>필수 라이브러리</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -484,12 +483,12 @@ document.write(`
 </div>
 </div>
 <section id="merge-join-concat">
-<h2><span class="section-number">18.1. </span>합병과 결합: merge-join-concat<a class="headerlink" href="#merge-join-concat" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">18.1. </span>합병과 결합: merge-join-concat<a class="headerlink" href="#merge-join-concat" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>참고: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/merging.html#merging">Merging section</a></p></li>
 </ul>
 <section id="pd-concat">
-<h3><span class="section-number">18.1.1. </span>종/횡 결합: <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> 함수<a class="headerlink" href="#pd-concat" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">18.1.1. </span>종/횡 결합: <code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> 함수<a class="headerlink" href="#pd-concat" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pd.concat()</span></code> 함수는 여러 개의 데이터프레임을 하나로 합친다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">axis=0</span></code>: 종 결합. 즉 데이터프레임 여러 개의 위아래 결합.</p></li>
@@ -1179,7 +1178,7 @@ document.write(`
 </div>
 </section>
 <section id="pd-merge">
-<h3><span class="section-number">18.1.2. </span>합병: <code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> 함수<a class="headerlink" href="#pd-merge" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">18.1.2. </span>합병: <code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> 함수<a class="headerlink" href="#pd-merge" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pd.merge()</span></code> 함수 는 SQL 방식으로 특정 열을 기준으로 두 개의 데이터프레임을 합친다.
 다양한 옵션을 지원하는 매우 강력한 도구이다.</p>
 <ul class="simple">
@@ -2688,7 +2687,7 @@ document.write(`
 </div>
 </section>
 <section id="dataframe-join">
-<h3><span class="section-number">18.1.3. </span>합병: <code class="docutils literal notranslate"><span class="pre">DataFrame.join()</span></code> 메서드<a class="headerlink" href="#dataframe-join" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">18.1.3. </span>합병: <code class="docutils literal notranslate"><span class="pre">DataFrame.join()</span></code> 메서드<a class="headerlink" href="#dataframe-join" title="Link to this heading">#</a></h3>
 <p>인덱스를 기준으로 두 개의 데이터프레임을 합병할 때 사용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3151,7 +3150,7 @@ document.write(`
 </section>
 </section>
 <section id="multiindex">
-<h2><span class="section-number">18.2. </span>다중 인덱스<font size='2'>MultiIndex</font><a class="headerlink" href="#multiindex" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">18.2. </span>다중 인덱스<font size='2'>MultiIndex</font><a class="headerlink" href="#multiindex" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>참고: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/advanced.html">Multiindex / advanced indexing</a></p></li>
 </ul>
@@ -3160,7 +3159,7 @@ document.write(`
 모양 변환<font size='2'>reshaping</font>,
 피벗 변환<font size='2'>pivoting</font> 등에서 유용하게 활용된다.</p>
 <section id="id2">
-<h3><span class="section-number">18.2.1. </span><code class="docutils literal notranslate"><span class="pre">MultiIndex</span></code> 객체<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">18.2.1. </span><code class="docutils literal notranslate"><span class="pre">MultiIndex</span></code> 객체<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <p>다중 인덱스 객체는 보통 튜플을 이용한다.
 예를 들어 아래 두 개의 리스트를 이용하여 튜플을 생성한 다음 다중 인덱스로 만들어보자.</p>
 <div class="cell docutils container">
@@ -3278,7 +3277,7 @@ document.write(`
 </div>
 </section>
 <section id="label">
-<h3><span class="section-number">18.2.2. </span>다중 인덱스 라벨<font size='2'>label</font><a class="headerlink" href="#label" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">18.2.2. </span>다중 인덱스 라벨<font size='2'>label</font><a class="headerlink" href="#label" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>시리즈 생성</p></li>
 </ul>
@@ -3670,7 +3669,7 @@ dtype: float64
 </div>
 </section>
 <section id="level">
-<h3><span class="section-number">18.2.3. </span>다중 인덱스 레벨<font size='2'>level</font><a class="headerlink" href="#level" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">18.2.3. </span>다중 인덱스 레벨<font size='2'>level</font><a class="headerlink" href="#level" title="Link to this heading">#</a></h3>
 <p>다중 인덱스 객체의 <code class="docutils literal notranslate"><span class="pre">get_level_values()</span></code> 메서드를 이용하여 레벨별 인덱스 라벨을 확인할 수 있다.</p>
 <ul class="simple">
 <li><p>0-레블 라벨</p></li>
@@ -3729,7 +3728,7 @@ dtype: float64
 </div>
 </section>
 <section id="id3">
-<h3><span class="section-number">18.2.4. </span>다중 인덱스 인덱싱<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">18.2.4. </span>다중 인덱스 인덱싱<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>다중 인덱스를 라벨로 사용하는 시리즈와 데이터프레임의 인덱싱은 일반 인덱싱과 크게 다르지 않다.</p>
 <ul class="simple">
 <li><p>시리즈 인덱싱</p></li>
@@ -4120,7 +4119,7 @@ Name: one, dtype: float64
 </div>
 </section>
 <section id="id4">
-<h3><span class="section-number">18.2.5. </span>다중 인덱스 슬라이싱<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">18.2.5. </span>다중 인덱스 슬라이싱<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>다중 인덱스를 라벨로 사용하는 시리즈와 데이터프레임의 인덱싱은 일반 슬라이싱과 크게 다르지 않다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4418,7 +4417,7 @@ Name: one, dtype: float64
 </section>
 </section>
 <section id="pd-groupby">
-<h2><span class="section-number">18.3. </span>그룹 분류: <code class="docutils literal notranslate"><span class="pre">pd.groupby()</span></code> 함수<a class="headerlink" href="#pd-groupby" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">18.3. </span>그룹 분류: <code class="docutils literal notranslate"><span class="pre">pd.groupby()</span></code> 함수<a class="headerlink" href="#pd-groupby" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>참고: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/groupby.html#groupby">Grouping section</a></p></li>
 </ul>
@@ -5711,9 +5710,9 @@ dtype: int64
 </div>
 </section>
 <section id="reshaping">
-<h2><span class="section-number">18.4. </span>모양 변환<font size='2'>Reshaping</font><a class="headerlink" href="#reshaping" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">18.4. </span>모양 변환<font size='2'>Reshaping</font><a class="headerlink" href="#reshaping" title="Link to this heading">#</a></h2>
 <section id="id5">
-<h3><span class="section-number">18.4.1. </span>항목 재배열<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">18.4.1. </span>항목 재배열<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>참고: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/reshaping.html#reshaping-stacking">Reshaping</a></p></li>
 </ul>
@@ -6183,7 +6182,7 @@ dtype: float64
 </div>
 </section>
 <section id="id6">
-<h3><span class="section-number">18.4.2. </span>피버팅<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">18.4.2. </span>피버팅<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>참고: <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/reshaping.html#reshaping-pivot">Pivot Tables</a></p></li>
 </ul>
@@ -7064,7 +7063,7 @@ dtype: float64
 </section>
 </section>
 <section id="id7">
-<h2><span class="section-number">18.5. </span>시계열<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">18.5. </span>시계열<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
 <p>시계열<font size='2'>time series</font> 데이터는 시간의 흐름을 다루는 데이터다. 증시, 날씨 데이터 등에서 많이 사용된다.
 판다스 라이브러리는 시계열 데이터를 다루는 많은 기능을 제공한다.</p>
 <ul class="simple">
@@ -7323,7 +7322,7 @@ Freq: MS, dtype: float64
 </div>
 </section>
 <section id="id8">
-<h2><span class="section-number">18.6. </span>데이터셋 불러오기와 저장하기<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">18.6. </span>데이터셋 불러오기와 저장하기<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 <p><strong>csv 파일 불러오기</strong></p>
 <ul class="simple">
 <li><p>참고: <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html#pandas.DataFrame.to_csv"><code class="docutils literal notranslate"><span class="pre">DataFrame.to_csv()</span></code></a></p></li>
