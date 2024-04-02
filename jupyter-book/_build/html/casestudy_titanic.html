@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>30. 타이타닉 데이터 분석 &#8212; 파이썬 데이터 분석</title>
   
@@ -18,46 +19,50 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'casestudy_titanic';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -72,9 +77,10 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
+
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>
@@ -115,14 +121,11 @@
 </form></div>
   </div>
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
-    </header>
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
   
-
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
-      
-      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -137,7 +140,6 @@
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
-
   
 
 <a class="navbar-brand logo" href="intro.html">
@@ -146,22 +148,10 @@
   
   
   
-  
     <p class="title logo__title">파이썬 데이터 분석</p>
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">파이썬 기초</span></p>
 <ul class="nav bd-sidenav">
@@ -396,7 +386,6 @@
 </button>
 
 
-
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -406,7 +395,6 @@ document.write(`
   </button>
 `);
 </script>
-
 
 <script>
 document.write(`
@@ -461,10 +449,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article">
+                <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-titanic">
-<span id="id1"></span><h1><span class="section-number">30. </span>타이타닉 데이터 분석<a class="headerlink" href="#sec-titanic" title="Link to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">30. </span>타이타닉 데이터 분석<a class="headerlink" href="#sec-titanic" title="Permalink to this heading">#</a></h1>
 <p><strong>주요 내용</strong></p>
 <p>타이타닉<font size='2'>Titanic</font> 데이터셋을 데이터프레임으로 불러와서 전처리 하는 과정을 살펴 본다.</p>
 <p>타이타닉은 1912년 4월 10일 영국을 떠나 미국 뉴욕으로 향하던 북 대서양 항해 중에 빙산과 충돌하여 침몰한다.
@@ -528,11 +516,11 @@ document.write(`
 <p>열의 라벨을 데이터의 <strong>특성</strong><font size='2'>feature</font>로 부르는
 관습을 따라 여기서도 특성 표현을 사용한다.</p>
 <section id="id2">
-<h2><span class="section-number">30.1. </span>타이타닉 데이터셋 불러오기<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">30.1. </span>타이타닉 데이터셋 불러오기<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>타이타닉 데이터셋을 불러온다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">fetch_openml()</span></code>: <a class="reference external" href="https://www.openml.org">openml</a>에서 제공하는 데이터셋을 가져오는 함수.</p></li>
-<li><p>여기서는 <a class="reference external" href="https://www.openml.org/search?type=data&amp;amp;status=active&amp;amp;id=40945">타이타닉 데이터셋</a> 지정.</p></li>
+<li><p>여기서는 <a class="reference external" href="https://www.openml.org/search?type=data&amp;status=active&amp;id=40945">타이타닉 데이터셋</a> 지정.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -694,7 +682,7 @@ Name: survived, Length: 1309, dtype: int32
 </div>
 </section>
 <section id="id3">
-<h2><span class="section-number">30.2. </span>데이터 정제<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">30.2. </span>데이터 정제<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p><strong>데이터 정제</strong><font size='2'>data cleaning</font>는 부정확하거나 불완전하거나 부적절한 데이터를 탐지하여 수정, 삭제하는 과정을 가리킨다.
 여기서는 다음 두 가지 과정을 소개한다.</p>
 <ul class="simple">
@@ -702,7 +690,7 @@ Name: survived, Length: 1309, dtype: int32
 <li><p>결측치 처리</p></li>
 </ul>
 <section id="id4">
-<h3><span class="section-number">30.2.1. </span>불필요 특성 제거<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">30.2.1. </span>불필요 특성 제거<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">'boat'</span></code>, <code class="docutils literal notranslate"><span class="pre">'body'</span></code>, <code class="docutils literal notranslate"><span class="pre">'home.dest'</span></code>, <code class="docutils literal notranslate"><span class="pre">ticket</span></code> 등을 특성으로 갖는 열은 생존 여부와 상관 없는 정보이기에 삭제한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -808,7 +796,7 @@ Name: survived, Length: 1309, dtype: int32
 </div>
 </section>
 <section id="id5">
-<h3><span class="section-number">30.2.2. </span>결측치 처리<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">30.2.2. </span>결측치 처리<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>결측치의 존재 여부를 각 열에 대해 확인한다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">DataFrame.info()</span></code> 메서드</p></li>
@@ -968,7 +956,7 @@ dtype: int64
 </section>
 </section>
 <section id="id6">
-<h2><span class="section-number">30.3. </span>데이터 전처리<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">30.3. </span>데이터 전처리<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <p><strong>데이터 전처리</strong><font size='2'>data preprocessing</font>는
 본격적인 데이터 분석을 위해 데이터를 조작하는 과정이다.</p>
 <p>여기서는 다음 과정을 소개한다.</p>
@@ -976,7 +964,7 @@ dtype: int64
 <li><p>새로운 특성 추가</p></li>
 </ul>
 <section id="id7">
-<h3><span class="section-number">30.3.1. </span>새로운 특성<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">30.3.1. </span>새로운 특성<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <p>형제자매, 배우자, 부모자식 수를 하나로 합쳐서
 함께 승선한 가족의 수를 값으로 갖는
 <code class="docutils literal notranslate"><span class="pre">family</span></code> 특성(열)을 생성하여 데이터셋에 추가한다.</p>
@@ -2187,7 +2175,7 @@ Name: title, dtype: int64
 </section>
 </section>
 <section id="id8">
-<h2><span class="section-number">30.4. </span>상관 분석<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">30.4. </span>상관 분석<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
 <p>타이타닉 호의 침몰 사건에서 생존율과 기타 특성과의 상관 관계를 분석한다.
 이를 위해 생존 여부 데이터를 <code class="docutils literal notranslate"><span class="pre">X</span></code>와 합친다.</p>
 <div class="cell docutils container">
@@ -2371,7 +2359,7 @@ Name: title, dtype: int64
 <li><p><code class="docutils literal notranslate"><span class="pre">fare</span></code>(티켓 가격) 특성 또한 동일한 이유로 생존 여부에 중요하게 연관됨.</p></li>
 </ul>
 <section id="id9">
-<h3><span class="section-number">30.4.1. </span>수치형 특성 상관 관계<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">30.4.1. </span>수치형 특성 상관 관계<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">DataFrame.describe()</span></code> 메서드: 수치형 특성의 분포를 담은 데이터프레임 생성</p></li>
 </ul>
@@ -2861,7 +2849,7 @@ Name: age, Length: 427, dtype: float64
               
               
                 <footer class="prev-next-footer">
-                  
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="pandas_timeseries.html"
@@ -2889,7 +2877,6 @@ Name: age, Length: 427, dtype: float64
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2932,10 +2919,9 @@ By 코딩알지
   
   <div class="footer-item">
     
-
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -2959,8 +2945,8 @@ By 코딩알지
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>
