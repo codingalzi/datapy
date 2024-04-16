@@ -441,9 +441,22 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">16.1. 2차원 격자 어레이</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">16.2. 붓꽃 데이터셋</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">16.3. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">16.1. 목표</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">16.2. 그래프 배경색칠</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">16.2.1. 2차원 격자 어레이</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">16.2.2. 배경색칠</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">16.2.3. 등고선</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">16.3. 붓꽃 데이터셋 분석</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">16.3.1. 데이터셋 불러오기</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">16.3.2. 결측치 처리</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">16.3.3. 산점도 그리기</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">16.3.4. 배경 색칠</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">16.3.5. 등고선과 품종 분류</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">16.4. 연습문제</a></li>
 </ul>
             </nav>
         </div>
@@ -459,8 +472,8 @@ document.write(`
 <span id="id1"></span><h1><span class="section-number">16. </span>실전 예제: 어레이 활용<a class="headerlink" href="#sec-numpy-5" title="Permalink to this heading">#</a></h1>
 <p><strong>주요 내용</strong></p>
 <ul class="simple">
-<li><p>예제: 2차원 격자 어레이</p></li>
-<li><p>예제: 붓꽃 데이터셋</p></li>
+<li><p>예제: 그래프 배경색칠</p></li>
+<li><p>예제: 붓꽃 데이터셋 분석</p></li>
 </ul>
 <p><strong>기본 설정</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">numpy</span></code> 모듈과 시각화 도구 모듈인 <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code>에 대한 기본 설정을 지정한다.</p>
@@ -490,8 +503,19 @@ document.write(`
 </div>
 </div>
 <section id="id2">
-<h2><span class="section-number">16.1. </span>2차원 격자 어레이<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<p>아래 모양의 회색 격자무늬에 해당하는 2차원 어레이를 생성하고자 한다.
+<h2><span class="section-number">16.1. </span>목표<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>최종적으로 아래와 같은 산점도를 그리려 한다.
+각각의 점들은 붓꽃(아이리스) 데이터셋에 포함된 150개의 데이터 샘플을 세 개의 품종에 따라 다른 색깔과 모양으로 보여준다.
+또한 품종을 구분하는 두 개의 직선을 경계로 배경색을 달리한다.</p>
+<p><div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book//images/iris-classification1.png" style="width:90%;"></div></p><p>먼저 배경을 색칠하는 방법을 알아본다.</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">16.2. </span>그래프 배경색칠<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>그래프 배경으르 그리는 방법은 아래와 같은 격자 무늬에 사용되는 점들을
+2차원 어레이를 이용하여 사람의 눈으로 구분할 수 없을 정도로 촘촘하게 그리는 것이다.</p>
+<section id="id4">
+<h3><span class="section-number">16.2.1. </span>2차원 격자 어레이<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>아래 모양의 회색 격자무늬를 그리기 위해 필요한 2차원 어레이를 생성하고자 한다.
 각 점의 좌표는 -1과 1사이의 값을 10개의 구간으로 균등하게 나눈 값들이다.
 즉, 가로 세로 모두 11개의 점으로 구성된다.</p>
 <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book//images/meshgrid10x10.png" style="width:350px;"></div><p>먼저 <code class="docutils literal notranslate"><span class="pre">np.arange()</span></code> 함수를 이용하여 -1와 1 사이의 구간을 10개의 구간으로 균등하게
@@ -593,11 +617,13 @@ x-좌표 리스트와 y-좌표 리스트를 생성하며
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/c6e8e3dadc47fbd9fb3db073ae824b525e5c9b2f1afaa3d6fa7b71bdf30a3008.png" src="_images/c6e8e3dadc47fbd9fb3db073ae824b525e5c9b2f1afaa3d6fa7b71bdf30a3008.png" />
+<img alt="_images/008ff7a19e37981563f3552272b58c45716bd7259ef4ad7e35a9d118c0790042.png" src="_images/008ff7a19e37981563f3552272b58c45716bd7259ef4ad7e35a9d118c0790042.png" />
 </div>
 </div>
-<p><strong>배경화면 그리기</strong></p>
-<p>회색 배경화면을 얻고자 한다면 보다 점을 보다 촘촘히 찍으면 된다.
+</section>
+<section id="id5">
+<h3><span class="section-number">16.2.2. </span>배경색칠<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>예를 들어 회색 배경을 얻고자 한다면 보다 점을 보다 촘촘히 찍으면 된다.
 예를 들어, -1부터 1사이의 구간은 0.02 크기로 총 100개의 구간으로 구성한 다음에 동일한 그래프를 그리면 훨씬 더
 섬세한 사진을 얻는다.</p>
 <div class="cell docutils container">
@@ -648,18 +674,48 @@ x-좌표 리스트와 y-좌표 리스트를 생성하며
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
 <span class="c1"># 산점도 그리기</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span> <span class="s1">&#39;darkgray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">c</span><span class="s1">&#39;darkgray&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/55242e833655aa5f4f0c67852dba61804809f767566bdd9dca89db8ba355cd7f.png" src="_images/55242e833655aa5f4f0c67852dba61804809f767566bdd9dca89db8ba355cd7f.png" />
+<img alt="_images/8149a31f733e085dcb799d3a03717c5550a88bdc6f69ad8506bbefba817bdff3.png" src="_images/8149a31f733e085dcb799d3a03717c5550a88bdc6f69ad8506bbefba817bdff3.png" />
 </div>
 </div>
-<p><strong>등고선 그리기</strong></p>
-<p>등고선 모양의 이미지를 생성하기 위해 xs와 ys 각각의 제곱을 합하여 제곱근을 구하면 101x101 모양의
-2차원 대칭 어레이가 얻어진다.</p>
+<p>배경색은 <code class="docutils literal notranslate"><span class="pre">c</span></code>의 키워드 인자를 변경하면 된다.
+예를 들어, 연노랑 배경을 원하면 <code class="docutils literal notranslate"><span class="pre">c='lightyello'</span></code> 옵션을 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 도표 크기 지정</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># 산점도 그리기</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;lightyellow&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/74a9905279caefbee8d4219a8f5fa6cd63a0ccb5da08ca2075a03056ceb4896c.png" src="_images/74a9905279caefbee8d4219a8f5fa6cd63a0ccb5da08ca2075a03056ceb4896c.png" />
+</div>
+</div>
+</section>
+<section id="id6">
+<h3><span class="section-number">16.2.3. </span>등고선<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<p>등고선 기능을 이용하여 배경색을 구역에 따라 다르게 할 수 있다.
+등고선을 그리려면 먼저 배경을 포함되는 각각의 점의 좌표에 따라
+값을 달리하는 방법을 지정해야 한다.</p>
+<p>예를 들어 원점으로부터 멀어질 수록 색을 달리하는 등고선을 그리기 위해
+<code class="docutils literal notranslate"><span class="pre">xs</span></code>와 <code class="docutils literal notranslate"><span class="pre">ys</span></code>에 대해 원의 방정식을 적용한다.
+참고로 원점을 중심으로 하고, 반지름이 <span class="math notranslate nohighlight">\(r\)</span>인 원에 포함되는 점들의 좌표 <span class="math notranslate nohighlight">\((x, y)\)</span>는 다음 방정식을 만족해야 한다.</p>
+<div class="math notranslate nohighlight">
+\[
+x^2 + y^2 = r^2
+\]</div>
+<p>따라서 <span class="math notranslate nohighlight">\(\sqrt{x^2 + y^2}\)</span>의 값에 따라 해당 점이 원점으로부터의 거리를 가리키며,
+이 성질을 이용하여 배경에 사용되는 각 점의 원점으로부터의 거리에 따라 배경색을 달리할 수 있다.</p>
+<p>아래 코드가 배경에 사용되는 각각의 점에 대해 원점으로부터의 거리를 계산한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">xs</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">ys</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
@@ -679,40 +735,60 @@ x-좌표 리스트와 y-좌표 리스트를 생성하며
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">z</span></code> 값을 기준으로 등고선을 흑백사진으로 표현하면 다음과 같다.</p>
+<p>이제 <code class="docutils literal notranslate"><span class="pre">plt.contour()</span></code> 함수를 <code class="docutils literal notranslate"><span class="pre">z</span></code> 값을 기준으로 등고선을 흑백사진으로 그리게 하면 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 도표 크기 지정(기본값으로 되돌림)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/4d9be0842e0c19becc0a297121022892e3f11f462936a76a47b7ebf6013c6419.png" src="_images/4d9be0842e0c19becc0a297121022892e3f11f462936a76a47b7ebf6013c6419.png" />
+<img alt="_images/fe1ef3c3a3414cce24c806ae9ef1d5e02dc2968a6f50888dda3a345a33c4dc10.png" src="_images/fe1ef3c3a3414cce24c806ae9ef1d5e02dc2968a6f50888dda3a345a33c4dc10.png" />
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">plt.contourf()</span></code> 함수는 등고선을 색으로 구분한다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">plt.contourf()</span></code> 함수는 등고선에 의해 구분된 영역을 <code class="docutils literal notranslate"><span class="pre">z</span></code> 값에 따른 색을 칠한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">gray</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8332b2bf592b8ce4de07dc42c84ecdb4567153bca561c87f3ad03b25de93e23b.png" src="_images/8332b2bf592b8ce4de07dc42c84ecdb4567153bca561c87f3ad03b25de93e23b.png" />
+<img alt="_images/8af499e5bd8f46f7a99832e8172cb8aebda82947bf118339c191385657bd5c51.png" src="_images/8af499e5bd8f46f7a99832e8172cb8aebda82947bf118339c191385657bd5c51.png" />
+</div>
+</div>
+<p>다양한 <a class="reference external" href="https://matplotlib.org/stable/tutorials/colors/colormaps.html">색지도</a>를
+이용하여 자신만의 색상으로 배경을 색칠할 수 있다.
+아래 코드는 예를 들어 파스텔 색지도인 <code class="docutils literal notranslate"><span class="pre">Pastel1</span></code>을 이용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Pastel1&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/99dab8644273e31a536c6a5c8af90238e17aefb5672fc11b4dd47576e019dde4.png" src="_images/99dab8644273e31a536c6a5c8af90238e17aefb5672fc11b4dd47576e019dde4.png" />
 </div>
 </div>
 </section>
-<section id="id3">
-<h2><span class="section-number">16.2. </span>붓꽃 데이터셋<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="id7">
+<h2><span class="section-number">16.3. </span>붓꽃 데이터셋 분석<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<section id="id8">
+<h3><span class="section-number">16.3.1. </span>데이터셋 불러오기<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <p>붓꽃(아이리스) 데이터를 이용하여 활용법을 살펴 보기 위해
 먼저 데이터를 인터넷 상에서 가져온다.</p>
 <div class="cell docutils container">
@@ -736,7 +812,7 @@ x-좌표 리스트와 y-좌표 리스트를 생성하며
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(WindowsPath(&#39;data/iris.data&#39;), &lt;http.client.HTTPMessage at 0x1bec47084f0&gt;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(PosixPath(&#39;data/iris.data&#39;), &lt;http.client.HTTPMessage at 0x7f5ab39e5050&gt;)
 </pre></div>
 </div>
 </div>
@@ -796,7 +872,9 @@ x-좌표 리스트와 y-좌표 리스트를 생성하며
 </div>
 </div>
 </div>
-<p><strong>결측치 처리</strong></p>
+</section>
+<section id="id9">
+<h3><span class="section-number">16.3.2. </span>결측치 처리<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <p>붓꽃 데이터셋 안에 결측치가 포함되어 있다.
 결측치가 있는지 여부를 다음과 같이 확인한다.</p>
 <ul class="simple">
@@ -965,7 +1043,7 @@ x-좌표 리스트와 y-좌표 리스트를 생성하며
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">variety</span> <span class="ow">in</span> <span class="n">varieties</span><span class="p">:</span>
-    <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="n">variety</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">variety</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2"> 샘플 수: </span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -978,7 +1056,9 @@ Iris-virginica  샘플 수: 50
 </div>
 </div>
 </div>
-<p><strong>산점도 그리기</strong></p>
+</section>
+<section id="id10">
+<h3><span class="section-number">16.3.3. </span>산점도 그리기<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
 <p>꽃잎의 길이(2번 열)와 너비 정보(3번 열)를 이용하여 산점도를 그린다.
 먼저 꽃잎 길이를 x-좌표값으로, 꽃잎 너비를 y-좌표 값으로 지정한다.
 이때 모든 x-좌표와 모든 y-좌표를 따로따로 지정한다.</p>
@@ -1011,7 +1091,7 @@ Iris-virginica  샘플 수: 50
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.5, 7.0, 0.0, 3.0)
 </pre></div>
 </div>
-<img alt="_images/6271e37ebe8fbf28f7321fa20999084c7398adae4879c8aafb0b003e45321c5f.png" src="_images/6271e37ebe8fbf28f7321fa20999084c7398adae4879c8aafb0b003e45321c5f.png" />
+<img alt="_images/ea451248662ccd9ab56a932fcc9f0a1a461842f1cf18eb33e9968ecff2939de7.png" src="_images/ea451248662ccd9ab56a932fcc9f0a1a461842f1cf18eb33e9968ecff2939de7.png" />
 </div>
 </div>
 <p>그런데 이렇게 하면 품종이 구별되지 않기에 품종 정보를 함께 활용해야 한다.
@@ -1031,7 +1111,7 @@ Iris-virginica  샘플 수: 50
 <span class="c1"># 버시컬러 품종 산점도: 파랑 네모</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">],</span> <span class="s1">&#39;bs&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Iris versicolor&#39;</span><span class="p">)</span>
 <span class="c1"># 버지니카 품종 산점도: 초록 세모</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">],</span> <span class="s1">&#39;g^&#39;</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Iris setosa&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">],</span> <span class="s1">&#39;g^&#39;</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Iris virginica&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Petal length&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Petal width&quot;</span><span class="p">)</span>
@@ -1043,7 +1123,7 @@ Iris-virginica  샘플 수: 50
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/91d0fdc1ea55b821fb45d480388a8c63b33746de63207ffa4e76215ec110a5c9.png" src="_images/91d0fdc1ea55b821fb45d480388a8c63b33746de63207ffa4e76215ec110a5c9.png" />
+<img alt="_images/cac2f81b03a101d597ca9551d28b9ba7499a0e8142fb44bbc3f0ad50eae9703f.png" src="_images/cac2f81b03a101d597ca9551d28b9ba7499a0e8142fb44bbc3f0ad50eae9703f.png" />
 </div>
 </div>
 <p><strong>격자 무늬</strong></p>
@@ -1056,7 +1136,7 @@ Iris-virginica  샘플 수: 50
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">],</span> <span class="s1">&#39;yo&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Iris setosa&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">],</span> <span class="s1">&#39;bs&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Iris versicolor&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">],</span> <span class="s1">&#39;g^&#39;</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Iris setosa&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">],</span> <span class="s1">&#39;g^&#39;</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Iris virginica&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Petal length&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Petal width&quot;</span><span class="p">)</span>
@@ -1070,11 +1150,13 @@ Iris-virginica  샘플 수: 50
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/556b1d340a2cf95343019d621c8e4026ff77348512cb1a78de2342aad6ec8e43.png" src="_images/556b1d340a2cf95343019d621c8e4026ff77348512cb1a78de2342aad6ec8e43.png" />
+<img alt="_images/3c58ff57639752bcf881ac3f57f2af581267d8b9e560e0c87ab7a799aba265db.png" src="_images/3c58ff57639752bcf881ac3f57f2af581267d8b9e560e0c87ab7a799aba265db.png" />
 </div>
 </div>
-<p><strong>배경화면 색</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">meshgrid()</span></code> 함수를 이용하여 배경화면의 색을 지정할 수 있다.</p>
+</section>
+<section id="id11">
+<h3><span class="section-number">16.3.4. </span>배경 색칠<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">meshgrid()</span></code> 함수를 이용하여 배경의 색을 지정할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">points_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">7.01</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">)</span>
@@ -1088,13 +1170,13 @@ Iris-virginica  샘플 수: 50
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 
-<span class="c1"># 배경화면</span>
+<span class="c1"># 배경</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span> <span class="s1">&#39;ivory&#39;</span><span class="p">)</span> <span class="c1"># 아이보리색</span>
 
 <span class="c1"># 붓꽃 데이터 산점도</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">],</span> <span class="s1">&#39;yo&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Iris setosa&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">],</span> <span class="s1">&#39;bs&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Iris versicolor&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">],</span> <span class="s1">&#39;g^&#39;</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Iris setosa&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">],</span> <span class="s1">&#39;g^&#39;</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Iris virginica&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Petal length&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Petal width&quot;</span><span class="p">)</span>
@@ -1108,12 +1190,14 @@ Iris-virginica  샘플 수: 50
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/44d4c682d271a13fbdad1eeb3959900090240f678a1a3347063098411a98f1df.png" src="_images/44d4c682d271a13fbdad1eeb3959900090240f678a1a3347063098411a98f1df.png" />
+<img alt="_images/8e8bc8bc80f4a93ef158b2e955439605618ee090cfe8bf6abac27e5453b4762c.png" src="_images/8e8bc8bc80f4a93ef158b2e955439605618ee090cfe8bf6abac27e5453b4762c.png" />
 </div>
 </div>
-<p><strong>품종 분류</strong></p>
+</section>
+<section id="id12">
+<h3><span class="section-number">16.3.5. </span>등고선과 품종 분류<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
 <p>품종의 분류를 색으로 구분하기 위해 <code class="docutils literal notranslate"><span class="pre">plt.contour()</span></code> 함수 또는 <code class="docutils literal notranslate"><span class="pre">plt.contourf()</span></code> 를 이용한다.
-먼저 등고선을 그리기 위해 <code class="docutils literal notranslate"><span class="pre">meshgrid()</span></code> 함수가 생성한 각 좌표에 해당하는 지점의
+적절한 등고선을 그리기 위해 <code class="docutils literal notranslate"><span class="pre">meshgrid()</span></code> 함수가 생성한 각 좌표에 해당하는 지점의
 값을 담고 있는 어레이 <code class="docutils literal notranslate"><span class="pre">Z</span></code>를 생성한다.
 단 x-좌표의 값에 따라 0, 1, 2를 항목으로 갖도록 한다.</p>
 <ul class="simple">
@@ -1121,10 +1205,19 @@ Iris-virginica  샘플 수: 50
 <li><p>1: x-좌표가 2.5보다 같거나 크고 5보다 작은 경우</p></li>
 <li><p>2: x-좌표가 5보다 같거나 큰 경우</p></li>
 </ul>
+<p>먼저 <code class="docutils literal notranslate"><span class="pre">xs</span></code>, <code class="docutils literal notranslate"><span class="pre">ys</span></code>와 동일한 모양을 갖는 0-행렬로 <code class="docutils literal notranslate"><span class="pre">Z</span></code>를 생성한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">xs</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="n">Z</span><span class="p">[(</span><span class="mf">2.5</span> <span class="o">&lt;=</span> <span class="n">xs</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xs</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>이제 배경에 포함된 점들의 x-좌표값이 2.5와 5를 기준으로 <code class="docutils literal notranslate"><span class="pre">Z</span></code>의 항목에 해당하는 값을 각각 1과 2로 변경한다.
+아래 코드는 부울 마스크를 이용하여 이 과정을 처리한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Z</span><span class="p">[(</span><span class="mf">2.5</span> <span class="o">&lt;=</span> <span class="n">xs</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">xs</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">Z</span><span class="p">[(</span><span class="mf">5.</span> <span class="o">&lt;=</span> <span class="n">xs</span><span class="p">)]</span> <span class="o">=</span> <span class="mi">2</span>
 </pre></div>
 </div>
@@ -1137,18 +1230,19 @@ Iris-virginica  샘플 수: 50
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 0., 0., ..., 2., 2., 2.],
-       [0., 0., 0., ..., 2., 2., 2.],
-       [0., 0., 0., ..., 2., 2., 2.],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 0., 0., ..., 0., 0., 0.],
+       [0., 0., 0., ..., 0., 0., 0.],
+       [0., 0., 0., ..., 0., 0., 0.],
        ...,
-       [0., 0., 0., ..., 2., 2., 2.],
-       [0., 0., 0., ..., 2., 2., 2.],
-       [0., 0., 0., ..., 2., 2., 2.]])
+       [0., 0., 0., ..., 0., 0., 0.],
+       [0., 0., 0., ..., 0., 0., 0.],
+       [0., 0., 0., ..., 0., 0., 0.]])
 </pre></div>
 </div>
 </div>
 </div>
-<p>이제 색으로 등고선을 구분하도록 하면 자연스럽게 품종을 구분해준다.</p>
+<p>아래 코드는 다른 색의 등고선을 이용하여 자연스럽게 품종을 구분하는 배경과 함께 산점도를 그린다.
+배경을 먼저 그린 다음에 산점도를 그림에 주의한다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">plt.contourf(xs,</span> <span class="pre">ys,</span> <span class="pre">Z,</span> <span class="pre">alpha=0.3,</span> <span class="pre">cmap='Wistia')</span></code>: 색으로 등고선 구분.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">alpha=0.3</span></code>: 투명도를 0.3으로 지정. 0에서 1사이의 값이며 클 수록 불투명해짐</p></li>
@@ -1164,7 +1258,7 @@ Iris-virginica  샘플 수: 50
 <span class="c1"># 붓꽃 데이터 산점도</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">],</span> <span class="s1">&#39;yo&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Iris setosa&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">],</span> <span class="s1">&#39;bs&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Iris versicolor&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">],</span> <span class="s1">&#39;g^&#39;</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Iris setosa&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">],</span> <span class="s1">&#39;g^&#39;</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Iris virginica&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Petal length&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Petal width&quot;</span><span class="p">)</span>
@@ -1177,40 +1271,13 @@ Iris-virginica  샘플 수: 50
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/be2bd7160acceb1a673661499ff6ad2b751e63e73a8b2b386cef265762d76cab.png" src="_images/be2bd7160acceb1a673661499ff6ad2b751e63e73a8b2b386cef265762d76cab.png" />
-</div>
-</div>
-<p>아래 코드는 등고선도 함께 그린다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-
-<span class="c1"># 등고선도 함께</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">contourf</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Wistia&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">Z</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Greys&quot;</span><span class="p">)</span>
-
-<span class="c1"># 붓꽃 데이터 산점도</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-setosa&#39;</span><span class="p">],</span> <span class="s1">&#39;yo&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Iris setosa&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">],</span> <span class="s1">&#39;bs&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Iris versicolor&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="n">iris_labels</span> <span class="o">==</span> <span class="s1">&#39;Iris-virginica&#39;</span><span class="p">],</span> <span class="s1">&#39;g^&#39;</span><span class="p">,</span>  <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Iris setosa&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Petal length&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Petal width&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;center left&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
-
-<span class="c1"># plt.grid()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="_images/4ea9437bc3889d93eb6d133931a457d61e10e72d417e8420de386e63c887d32b.png" src="_images/4ea9437bc3889d93eb6d133931a457d61e10e72d417e8420de386e63c887d32b.png" />
+<img alt="_images/af69f585ac9bf43402f92750b76c89e5a1c142dea6fd4c65f9f0ef2eca69ff10.png" src="_images/af69f585ac9bf43402f92750b76c89e5a1c142dea6fd4c65f9f0ef2eca69ff10.png" />
 </div>
 </div>
 </section>
-<section id="id4">
-<h2><span class="section-number">16.3. </span>연습문제<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="id13">
+<h2><span class="section-number">16.4. </span>연습문제<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-numpy_5.ipynb">(실습) 실전 예제: 어레이 활용</a></p>
 </section>
 </section>
@@ -1279,9 +1346,22 @@ Iris-virginica  샘플 수: 50
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">16.1. 2차원 격자 어레이</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">16.2. 붓꽃 데이터셋</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">16.3. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">16.1. 목표</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">16.2. 그래프 배경색칠</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">16.2.1. 2차원 격자 어레이</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">16.2.2. 배경색칠</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">16.2.3. 등고선</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">16.3. 붓꽃 데이터셋 분석</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">16.3.1. 데이터셋 불러오기</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">16.3.2. 결측치 처리</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">16.3.3. 산점도 그리기</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">16.3.4. 배경 색칠</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">16.3.5. 등고선과 품종 분류</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">16.4. 연습문제</a></li>
 </ul>
   </nav></div>
 
