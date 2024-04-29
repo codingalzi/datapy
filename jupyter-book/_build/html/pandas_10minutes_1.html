@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>17. 판다스 10분 완성 1부 &#8212; 파이썬 데이터 분석</title>
   
@@ -28,36 +29,36 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pandas_10minutes_1';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -467,7 +468,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-pandas10min-1">
-<span id="id1"></span><h1><span class="section-number">17. </span>판다스 10분 완성 1부<a class="headerlink" href="#sec-pandas10min-1" title="Link to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">17. </span>판다스 10분 완성 1부<a class="headerlink" href="#sec-pandas10min-1" title="Permalink to this heading">#</a></h1>
 <p><strong>필수 라이브러리</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -480,9 +481,9 @@ document.write(`
 <p><strong>참고</strong></p>
 <p><a class="reference external" href="https://pandas.pydata.org/docs/user_guide/index.html">Pandas User Guide</a>의 내용을 정리하였다.</p>
 <section id="id2">
-<h2><span class="section-number">17.1. </span>시리즈와 데이터프레임<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.1. </span>시리즈와 데이터프레임<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <section id="id3">
-<h3><span class="section-number">17.1.1. </span>시리즈 객체 생성<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.1.1. </span>시리즈 객체 생성<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>리스트를 이용하여 시리즈를 생성할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -505,7 +506,7 @@ dtype: float64
 </div>
 </section>
 <section id="id4">
-<h3><span class="section-number">17.1.2. </span>데이터프레임 객체 생성<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.1.2. </span>데이터프레임 객체 생성<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p><strong>방식 1</strong></p>
 <p>2차원 어레이, 인덱스 라벨, 열 라벨을 지정하여 데이터프레임을 생성한다.</p>
 <ul class="simple">
@@ -731,7 +732,7 @@ dtype: object
 </section>
 </section>
 <section id="id5">
-<h2><span class="section-number">17.2. </span>데이터 살펴보기<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.2. </span>데이터 살펴보기<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
 <p><strong>데이터 일부 확인</strong></p>
 <ul class="simple">
 <li><p>처음 5행 확인</p></li>
@@ -1160,7 +1161,7 @@ dtype: object
 </div>
 </section>
 <section id="id6">
-<h2><span class="section-number">17.3. </span>정렬<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.3. </span>정렬<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>열 라벨 내림차순 정렬</p></li>
 </ul>
@@ -1403,7 +1404,7 @@ dtype: object
 </div>
 </section>
 <section id="id7">
-<h2><span class="section-number">17.4. </span>인덱싱/슬라이싱<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.4. </span>인덱싱/슬라이싱<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <p><strong>열 라벨 인덱싱</strong></p>
 <p>시리즈가 생성된다.</p>
 <div class="cell docutils container">
@@ -2175,7 +2176,7 @@ Name: 2013-01-04 00:00:00, dtype: float64
 </div></div></div>
 </div>
 <section id="id8">
-<h3><span class="section-number">17.4.1. </span>리인덱싱<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.4.1. </span>리인덱싱<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <p>리인덱싱<font size='2'>reindexing</font>은
 이미 생성된 시리즈와 데이터프레임의 열 라벨 또는 행 라벨을
 선택하여 새로운 시리즈 또는 데이터프레임을 생성하는 기법이다.
@@ -2628,7 +2629,7 @@ dtype: float64
 </div>
 </section>
 <section id="id9">
-<h3><span class="section-number">17.4.2. </span>부울 인덱싱<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">17.4.2. </span>부울 인덱싱<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <p>넘파이 어레이의 부울 인덱싱에 사용된 부울 마스크를 거의 유사하게 활용한다.</p>
 <p><strong>행 선택 부울 인덱싱</strong></p>
 <p>예를 들어 <code class="docutils literal notranslate"><span class="pre">A</span></code> 열에 양수 항목이 있는 행만 추출하려면 아래 부울 마스크를 이용한다.</p>
@@ -2859,7 +2860,7 @@ Freq: D, Name: A, dtype: bool
 </section>
 </section>
 <section id="id10">
-<h2><span class="section-number">17.5. </span>데이터프레임 수정<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.5. </span>데이터프레임 수정<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
 <p>인덱싱/슬라이싱을 이용하여 항목 변경, 행/열 추가 등을 실행한다.</p>
 <p><strong>열 추가</strong></p>
 <p>아래 시리즈를 <code class="docutils literal notranslate"><span class="pre">df</span></code>의 새로운 열로 추가하려 한다.</p>
@@ -3412,7 +3413,7 @@ Freq: D, dtype: int64
 </div>
 </section>
 <section id="id11">
-<h2><span class="section-number">17.6. </span>결측치 처리<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.6. </span>결측치 처리<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
 <p>모든 결측치는 내부적으로 <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>로 처리된다.
 다만 자료형에 따라 <code class="docutils literal notranslate"><span class="pre">NaN</span></code>(부동소수점), <code class="docutils literal notranslate"><span class="pre">NA</span></code>(정수), <code class="docutils literal notranslate"><span class="pre">NaT</span></code>(시간) 등으로 표기된다.
 결측치를 처리하는 연습을 위해 <code class="docutils literal notranslate"><span class="pre">df</span></code>를 수정하여 결측치를 일부 포함한 데이터프레임을 생성한다.</p>
@@ -4459,7 +4460,7 @@ Freq: D, dtype: int64
 </div>
 </section>
 <section id="id12">
-<h2><span class="section-number">17.7. </span>기초 통계<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.7. </span>기초 통계<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
 <p>데이터프레임에 포함된 데이터로부터 기초 통계 정보를 추출하는 다양한 메서드가 지원된다.
 <code class="docutils literal notranslate"><span class="pre">df</span></code>를 계속 활용한다.</p>
 <div class="cell docutils container">
@@ -4634,7 +4635,7 @@ Freq: D, dtype: float64
 </div>
 </section>
 <section id="id13">
-<h2><span class="section-number">17.8. </span>데이터 구간 범주화<a class="headerlink" href="#id13" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.8. </span>데이터 구간 범주화<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h2>
 <p>연속형 데이터를 구간으로 나누어 범주화를 실행할 수 있다.
 설명을 위해 아래 시리즈를 이용한다.</p>
 <div class="cell docutils container">
@@ -4824,7 +4825,7 @@ Categories (4, object): [&#39;A&#39; &lt; &#39;B&#39; &lt; &#39;C&#39; &lt; &#39
 </div>
 </section>
 <section id="id14">
-<h2><span class="section-number">17.9. </span>문자열 메서드 활용<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">17.9. </span>문자열 메서드 활용<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h2>
 <p>시리즈와 <code class="docutils literal notranslate"><span class="pre">Index</span></code> 자료형은 <code class="docutils literal notranslate"><span class="pre">str</span></code> 속성을 이용하여 각각의 항목을 문자열로 변환하여 문자열 메서드를 적용해서
 새로운 시리즈와 <code class="docutils literal notranslate"><span class="pre">Index</span></code> 자료형을 생성하는 기능을 제공한다.</p>
 <p><strong>시리즈에 문자열 메서드 적용</strong></p>
