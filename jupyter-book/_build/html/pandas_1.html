@@ -451,8 +451,9 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">17.2.4. 데이터프레임 연산</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">17.3. 데이터셋 불러오기와 저장하기</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">17.4. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">17.3. 문자열 메서드 활용</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">17.4. 데이터셋 불러오기와 저장하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">17.5. 연습문제</a></li>
 </ul>
             </nav>
         </div>
@@ -494,11 +495,10 @@ document.write(`
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">Series</span></code>와 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>을 표로 보여줄 때 사용되는 행의 수를 20으로 지정한다.
-기본 값은 60이다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Series</span></code>와 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>을 표로 보여줄 때 사용되는 행의 수 60이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_rows</span> <span class="c1"># 원래 60이 기본.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_rows</span>
 </pre></div>
 </div>
 </div>
@@ -508,7 +508,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>기본값을 20으로 변경한다.</p>
+<p>보여지는 행의 수를 20으로 변경한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.max_rows&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
@@ -690,54 +690,6 @@ dtype: int64
 </div>
 </div>
 </div>
-<p><strong>중복 인덱스 허용</strong></p>
-<p>인덱스를 중복해서 사용할 수도 있다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dup_labels</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">([</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span>
-<span class="n">dup_labels</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;d&#39;, &#39;d&#39;, &#39;a&#39;, &#39;a&#39;, &#39;a&#39;], dtype=&#39;object&#39;)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d    4
-b    7
-a   -5
-c    3
-dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">obj2</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">dup_labels</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d    4
-d    4
-a   -5
-a   -5
-a   -5
-dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">Index</span></code> 객체</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">index</span></code> 키워드로 지정된 인덱스는 <code class="docutils literal notranslate"><span class="pre">index</span></code> 속성이 가리키며 <code class="docutils literal notranslate"><span class="pre">Index</span></code> 객체로 저장된다.</p>
 <div class="cell docutils container">
@@ -791,13 +743,13 @@ dtype: int64
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">idx</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/pandas/core/indexes/base.py:5157,</span> in <span class="ni">Index.__setitem__</span><span class="nt">(self, key, value)</span>
-<span class="g g-Whitespace">   </span><span class="mi">5155</span> <span class="nd">@final</span>
-<span class="g g-Whitespace">   </span><span class="mi">5156</span> <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">5157</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Index does not support mutable operations&quot;</span><span class="p">)</span>
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/pandas/core/indexes/base.py:5348,</span> in <span class="ni">Index.__setitem__</span><span class="nt">(self, key, value)</span>
+<span class="g g-Whitespace">   </span><span class="mi">5346</span> <span class="nd">@final</span>
+<span class="g g-Whitespace">   </span><span class="mi">5347</span> <span class="k">def</span> <span class="fm">__setitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">5348</span>     <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Index does not support mutable operations&quot;</span><span class="p">)</span>
 
 <span class="ne">TypeError</span>: Index does not support mutable operations
 </pre></div>
@@ -1288,7 +1240,7 @@ Name: Banana, dtype: int64
 </div>
 </div>
 </div>
-<p><strong>리스트 사전 활용</strong></p>
+<p><strong>사전 활용</strong></p>
 <p>리스트를 값으로 갖는 사전을 이용하여 데이터프레임을 생성할 수 있다.</p>
 <p>아래 코드에서 <code class="docutils literal notranslate"><span class="pre">dict2</span></code>는 <code class="docutils literal notranslate"><span class="pre">state</span></code>(주 이름), <code class="docutils literal notranslate"><span class="pre">year</span></code>(년도), <code class="docutils literal notranslate"><span class="pre">pop</span></code>(인구)을 키(key)로 사용하며,
 해당 특성에 해당하는 데이터로 구성된 리스트를 값으로 갖는 사전 객체이다.</p>
@@ -1774,120 +1726,6 @@ Name: Banana, dtype: int64
 </table>
 </div></div></div>
 </div>
-<p>또는 사전에 항목을 추가하듯이 진행할 수도 있다.</p>
-<p><strong>주의사항:</strong> <code class="docutils literal notranslate"><span class="pre">frame2</span></code>와의 충돌을 피하기 위해 복사해서 사용한다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame2_</span> <span class="o">=</span> <span class="n">frame2</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">frame2_</span><span class="p">[</span><span class="s2">&quot;debt2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>   <span class="c1"># 구간 [0, 1]을 8개의 구간으로 쪼개기</span>
-
-<span class="n">frame2_</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>year</th>
-      <th>state</th>
-      <th>pop</th>
-      <th>debt</th>
-      <th>debt2</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2000</td>
-      <td>Ohio</td>
-      <td>1.5</td>
-      <td>NaN</td>
-      <td>0.000</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2001</td>
-      <td>Ohio</td>
-      <td>1.7</td>
-      <td>NaN</td>
-      <td>0.125</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2002</td>
-      <td>Ohio</td>
-      <td>3.6</td>
-      <td>NaN</td>
-      <td>0.250</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2001</td>
-      <td>Nevada</td>
-      <td>2.4</td>
-      <td>NaN</td>
-      <td>0.375</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2002</td>
-      <td>Nevada</td>
-      <td>2.9</td>
-      <td>NaN</td>
-      <td>0.500</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>2003</td>
-      <td>Nevada</td>
-      <td>3.2</td>
-      <td>NaN</td>
-      <td>0.625</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>2002</td>
-      <td>NY</td>
-      <td>8.3</td>
-      <td>NaN</td>
-      <td>0.750</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>2003</td>
-      <td>NY</td>
-      <td>8.4</td>
-      <td>NaN</td>
-      <td>0.875</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>2004</td>
-      <td>NY</td>
-      <td>8.5</td>
-      <td>NaN</td>
-      <td>1.000</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
 <p><code class="docutils literal notranslate"><span class="pre">columns</span></code> 속성을 확인하면 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2091,198 +1929,6 @@ Name: Banana, dtype: int64
       <td>2004</td>
       <td>NY</td>
       <td>8.5</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p><strong>중복 인덱스 허용</strong></p>
-<p>인덱스를 중복해서 사용할 수도 있다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dup_labels</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Index</span><span class="p">([</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">])</span>
-<span class="n">dup_labels</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;one&#39;, &#39;two&#39;, &#39;two&#39;, &#39;three&#39;, &#39;three&#39;, &#39;three&#39;], dtype=&#39;object&#39;)
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame2</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>year</th>
-      <th>state</th>
-      <th>pop</th>
-      <th>debt</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>one</th>
-      <td>2000</td>
-      <td>Ohio</td>
-      <td>1.5</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>two</th>
-      <td>2001</td>
-      <td>Ohio</td>
-      <td>1.7</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>three</th>
-      <td>2002</td>
-      <td>Ohio</td>
-      <td>3.6</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>four</th>
-      <td>2001</td>
-      <td>Nevada</td>
-      <td>2.4</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>five</th>
-      <td>2002</td>
-      <td>Nevada</td>
-      <td>2.9</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>six</th>
-      <td>2003</td>
-      <td>Nevada</td>
-      <td>3.2</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>seven</th>
-      <td>2002</td>
-      <td>NY</td>
-      <td>8.3</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>eight</th>
-      <td>2003</td>
-      <td>NY</td>
-      <td>8.4</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>nine</th>
-      <td>2004</td>
-      <td>NY</td>
-      <td>8.5</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">frame2</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">dup_labels</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>year</th>
-      <th>state</th>
-      <th>pop</th>
-      <th>debt</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>one</th>
-      <td>2000</td>
-      <td>Ohio</td>
-      <td>1.5</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>two</th>
-      <td>2001</td>
-      <td>Ohio</td>
-      <td>1.7</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>two</th>
-      <td>2001</td>
-      <td>Ohio</td>
-      <td>1.7</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>three</th>
-      <td>2002</td>
-      <td>Ohio</td>
-      <td>3.6</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>three</th>
-      <td>2002</td>
-      <td>Ohio</td>
-      <td>3.6</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>three</th>
-      <td>2002</td>
-      <td>Ohio</td>
-      <td>3.6</td>
       <td>NaN</td>
     </tr>
   </tbody>
@@ -3315,7 +2961,211 @@ dtype: bool
 </section>
 </section>
 <section id="id9">
-<h2><span class="section-number">17.3. </span>데이터셋 불러오기와 저장하기<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">17.3. </span>문자열 메서드 활용<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<p>시리즈와 <code class="docutils literal notranslate"><span class="pre">Index</span></code> 자료형은 <code class="docutils literal notranslate"><span class="pre">str</span></code> 속성을 이용하여 각각의 항목을 문자열로 변환하여 문자열 메서드를 적용해서
+새로운 시리즈와 <code class="docutils literal notranslate"><span class="pre">Index</span></code> 자료형을 생성하는 기능을 제공한다.</p>
+<p><strong>시리즈에 문자열 메서드 적용</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">str</span></code> 속성은 모든 항목을 문자열로 변환한 벡터를 가리킨다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">,</span> <span class="s2">&quot;Aaba&quot;</span><span class="p">,</span> <span class="s2">&quot;Baca&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="s2">&quot;CABA&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">])</span>
+<span class="n">s</span><span class="o">.</span><span class="n">str</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.strings.accessor.StringMethods at 0x7fb55cce2c90&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>변환된 벡터에 문자열 메서드를 적용하면 새로운 시리즈가 생성된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       a
+1       b
+2       c
+3    aaba
+4    baca
+5     NaN
+6    caba
+7     dog
+8     cat
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">Index</span></code> 자료형에 문자열 메서드 적용</strong></p>
+<p>아래 데이터프레임을 이용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot; Column A &quot;</span><span class="p">,</span> <span class="s2">&quot; Column B &quot;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Column A</th>
+      <th>Column B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.204708</td>
+      <td>0.478943</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.519439</td>
+      <td>-0.555730</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.965781</td>
+      <td>1.393406</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>열 라벨 인덱스에 대해 문자열 메서드를 적용해보자.</p>
+<ul class="simple">
+<li><p>소문자화</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39; column a &#39;, &#39; column b &#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>양끝의 공백 제거</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;column a&#39;, &#39;column b&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>중간에 위치한 공백을 밑줄(underscore)로 대체</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;column_a&#39;, &#39;column_b&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>열 라벨을 소문자로는 변경하지 않으면서 모든 공백을 제거해보자.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">columns1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+<span class="n">columns1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Column_A&#39;, &#39;Column_B&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="o">=</span><span class="n">columns1</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Column_A</th>
+      <th>Column_B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.204708</td>
+      <td>0.478943</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.519439</td>
+      <td>-0.555730</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.965781</td>
+      <td>1.393406</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="id10">
+<h2><span class="section-number">17.4. </span>데이터셋 불러오기와 저장하기<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
 <p><strong>csv 파일로 저장하기</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3553,8 +3403,8 @@ dtype: bool
 </div></div></div>
 </div>
 </section>
-<section id="id10">
-<h2><span class="section-number">17.4. </span>연습문제<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<section id="id11">
+<h2><span class="section-number">17.5. </span>연습문제<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-pandas_1.ipynb">(실습) 판다스 데이터프레임</a></p>
 </section>
 </section>
@@ -3637,8 +3487,9 @@ dtype: bool
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">17.2.4. 데이터프레임 연산</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">17.3. 데이터셋 불러오기와 저장하기</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">17.4. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">17.3. 문자열 메서드 활용</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">17.4. 데이터셋 불러오기와 저장하기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">17.5. 연습문제</a></li>
 </ul>
   </nav></div>
 

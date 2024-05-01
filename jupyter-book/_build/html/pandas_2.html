@@ -444,12 +444,16 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">18.2. 시리즈 인덱싱/슬라이싱</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">18.3. 데이터프레임 인덱싱</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">18.3.1. 열 인덱싱</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">18.3.2. 행 인덱싱</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">18.3. 데이터프레임 인덱싱/슬라이싱</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">18.3.1. 열 라벨 인덱싱</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">18.3.2. 부울 인덱싱</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">18.3.3. 행 인덱싱</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">18.3.4. 데이터프레임 슬라이싱</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loc-iloc">18.4. 데이터프레임 슬라이싱: <code class="docutils literal notranslate"><span class="pre">loc()</span></code>과 <code class="docutils literal notranslate"><span class="pre">iloc()</span></code> 함수</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">18.4. 데이터프레임 수정</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">18.5. 결측치 처리</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">18.6. 연습문제</a></li>
 </ul>
             </nav>
         </div>
@@ -492,11 +496,10 @@ document.write(`
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">Series</span></code>와 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>을 표로 보여줄 때 사용되는 행의 수를 20으로 지정한다.
-기본 값은 60이다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Series</span></code>와 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>을 표로 보여줄 때 사용되는 행의 수 60이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_rows</span> <span class="c1"># 원래 60이 기본.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_rows</span>
 </pre></div>
 </div>
 </div>
@@ -506,7 +509,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>기본값을 20으로 변경한다.</p>
+<p>보여지는 행의 수를 20으로 변경한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;display.max_rows&quot;</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
@@ -519,6 +522,7 @@ document.write(`
 <p><code class="docutils literal notranslate"><span class="pre">reindex()</span></code> 메서드를 이용하여 시리즈의 <code class="docutils literal notranslate"><span class="pre">index</span></code>와 데이터프레임의 <code class="docutils literal notranslate"><span class="pre">index</span></code>, <code class="docutils literal notranslate"><span class="pre">columns</span></code> 속성을 임의로 재설정한다.</p>
 <section id="id3">
 <h3><span class="section-number">18.1.1. </span>시리즈 리인덱싱<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<p>설명을 위해 아래 시리즈를 이용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">7.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.3</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">])</span>
@@ -573,11 +577,30 @@ dtype: float64
 </div>
 </div>
 </div>
+<p>중복 인덱스 활용도 가능하다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj2</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">reindex</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">])</span>
+<span class="n">obj2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a   -5.3
+a   -5.3
+d    4.5
+e    NaN
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="id4">
 <h3><span class="section-number">18.1.2. </span>데이터프레임 리인덱싱<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>데이터프레임은 (행의) <code class="docutils literal notranslate"><span class="pre">index</span></code>와 (열의) <code class="docutils literal notranslate"><span class="pre">columns</span></code> 속성에 대해
-리인덱싱이 가능하며 작동법은 시리지의 인덱싱과 동일하다.</p>
+리인덱싱이 가능하며 작동법은 시리즈의 인덱싱과 동일하다.
+설명을 위해 아래 데이터프레임을 이용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span>
@@ -750,13 +773,146 @@ dtype: float64
 </table>
 </div></div></div>
 </div>
+<p>행과 열 모두 중복 인덱스 사용이 가능하다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame2</span> <span class="o">=</span> <span class="n">frame</span><span class="o">.</span><span class="n">reindex</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">])</span>
+<span class="n">frame2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Ohio</th>
+      <th>Texas</th>
+      <th>California</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>a</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>b</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>c</th>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>d</th>
+      <td>6.0</td>
+      <td>7.0</td>
+      <td>8.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">states</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Texas&#39;</span><span class="p">,</span> <span class="s1">&#39;Utah&#39;</span><span class="p">,</span> <span class="s1">&#39;California&#39;</span><span class="p">,</span> <span class="s1">&#39;California&#39;</span><span class="p">]</span>
+<span class="n">frame</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">states</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Texas</th>
+      <th>Utah</th>
+      <th>California</th>
+      <th>California</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>a</th>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>a</th>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>c</th>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>5.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>d</th>
+      <td>7.0</td>
+      <td>NaN</td>
+      <td>8.0</td>
+      <td>8.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 </section>
 <section id="id5">
 <h3><span class="section-number">18.1.3. </span>리인덱싱과 결측치<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>리인덱싱 과정에서 결측치가 발생할 때 여러 방식으로 채울 수 있다.</p>
 <p><strong>결측치 채우기 1: <code class="docutils literal notranslate"><span class="pre">method</span></code> 키워드 인자</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">method='fill'</span></code> 키워드 인자는 결측치를 위쪽에 위치한 값으로 채운다.</p>
-<p><strong>주의사항:</strong> 인덱스가 오름 또는 내림 차순으로 정렬되어 있는 경우에만 가능하다.</p>
+<p>인덱스가 오름 또는 내림 차순으로 정렬되어 있는 경우에
+<code class="docutils literal notranslate"><span class="pre">method</span></code> 키워드 인자를 이용하여 결측치를 주변 값으로 채울 수 있다.
+설명을 위해 아래 시리즈를 이용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
@@ -773,25 +929,10 @@ dtype: object
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj3</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ffill&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      blue
-1      blue
-2    purple
-3    purple
-4    purple
-5    yellow
-dtype: object
-</pre></div>
-</div>
-</div>
-</div>
-<p>물론 위쪽에 위치한 값이 없으면 결측치가 된다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">method=ffill</span></code>: 결측치를 위쪽으로 가장 가깝게 위치한 값으로 채운다.
+위쪽에 위치한 값이 없으면 결측치가 된다.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj3</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;ffill&#39;</span><span class="p">)</span>
@@ -811,7 +952,9 @@ dtype: object
 </div>
 </div>
 </div>
-<p>아랫쪽에 있는 값으로 채울 수도 있다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">method=bfill</span></code>: 결측치를 아랫쪽으로 가장 가깝게 위치한 값으로 채운다.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj3</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;bfill&#39;</span><span class="p">)</span>
@@ -831,8 +974,11 @@ dtype: object
 </div>
 </div>
 </div>
-<p>아니면 가장 가까운 곳에 있는 값으로 채울 수도 있다.
-1번 인덱스의 경우처럼 거리가 같으면 아랫쪽에서 택한다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">method=nearest</span></code>: 결측치를 가장 가깝게 위치한 값으로 채운다.
+1번 인덱스 행의 항목이 0번이 아닌 2번 인덱스 행의 항목으로 채워진 것처럼
+아래와 위쪽에 위치한 두 값의 거리가 같으면 아랫쪽에서 선택한다.</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj3</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
@@ -874,6 +1020,7 @@ dtype: object
 </div>
 </div>
 </div>
+<p><strong>주의사항</strong></p>
 <p>리인덱싱은 항상 새로운 시리즈를 생성한다.
 따라서 <code class="docutils literal notranslate"><span class="pre">obj3</span></code> 자체는 변하지 않는다.</p>
 <div class="cell docutils container">
@@ -896,8 +1043,8 @@ dtype: object
 <section id="id6">
 <h2><span class="section-number">18.2. </span>시리즈 인덱싱/슬라이싱<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <p><strong>시리즈 인덱싱</strong></p>
-<p>시리즈의 경우 1차원 넘파이 어레이와 거의 동일하게 작동한다.
-다만 정수 대신에 지정된 인덱스를 사용할 때 조금 차이가 있다.</p>
+<p>1차원 넘파이 어레이와 거의 동일하게 작동한다.
+설명을 위해 아래 데이터프레이을 이용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">4.</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">])</span>
@@ -915,7 +1062,8 @@ dtype: float64
 </div>
 </div>
 </div>
-<p>시리즈 인덱싱은 인덱스 라벨 또는 정수를 사용할 수 있다.</p>
+<p>시리즈 인덱싱은 인덱스 라벨 또는 정수를 사용할 수 있다.
+인덱스 라벨을 이용하는 경우엔 사전 인덱싱처럼 활용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>
@@ -928,9 +1076,10 @@ dtype: float64
 </div>
 </div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">iloc[]</span></code> 객체를 행의 정수 인덱스와 함께 이용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -941,23 +1090,24 @@ dtype: float64
 </div>
 </div>
 <p><strong>시리즈 슬라이싱</strong></p>
-<p>정수를 이용한 슬라이싱은 1차원 어레이의 경우와 동일하다.</p>
+<p>행의 정수 인덱스를 이용한 슬라이싱 또한 <code class="docutils literal notranslate"><span class="pre">iloc[]</span></code> 객체를 이용한다.
+사용법은 1차원 어레이의 경우와 유사하다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c    2.0
-d    3.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b    1.0
+c    2.0
 dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-<p>반면에 정수가 아닌 다른 인덱스 라벨을 이용하는 슬라이싱은 양쪽 구간의 끝을 모두
-포함하는 점이 다르다.</p>
+<p>반면에 정수가 아닌 다른 인덱스 라벨을 이용하는 슬라이싱은 리스트의 슬라이싱과 유사한 방식으로 진행한다.
+다만, 양쪽 구간의 끝을 모두 포함하는 점이 다르다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="s1">&#39;c&#39;</span><span class="p">]</span>
@@ -989,8 +1139,10 @@ dtype: float64
 </div>
 </div>
 </div>
-<p><strong>주의사항:</strong> 인덱스 라벨 슬라이싱은 기본적으로 알파벳 순서를 따르며
-시리즈에 사용된 순서와 상관 없다.</p>
+<p>인덱스 라벨 슬라이싱은 기본적으로 알파벳 순서를 따르며
+시리즈에 사용된 순서와 상관 없음에 주의한다.
+예를 들어, 아래 코드는 <code class="docutils literal notranslate"><span class="pre">'b'</span></code>부터 <code class="docutils literal notranslate"><span class="pre">'d'</span></code>까지, 즉, <code class="docutils literal notranslate"><span class="pre">'b'</span></code>, <code class="docutils literal notranslate"><span class="pre">'c'</span></code>, <code class="docutils literal notranslate"><span class="pre">'d'</span></code>를 대상으로
+슬라이싱을 진행한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="o">.</span><span class="n">reindex</span><span class="p">([</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span>
@@ -1043,11 +1195,11 @@ dtype: float64
 </div>
 </div>
 <ul class="simple">
-<li><p>정수 인덱스 활용</p></li>
+<li><p>정수 인덱스 활용: <code class="docutils literal notranslate"><span class="pre">iloc[]</span></code> 객체 활용</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -1060,7 +1212,7 @@ dtype: float64
 </div>
 </div>
 <p><strong>시리즈 부울 인덱싱(필터링)</strong></p>
-<p>부울 인덱싱(필터링)은 동일하게 작동한다.</p>
+<p>부울 인덱싱은 넘파이 어레이의 경우와 동일하게 작동한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj</span> <span class="o">&lt;</span> <span class="mi">2</span>
@@ -1092,17 +1244,18 @@ dtype: float64
 </div>
 </section>
 <section id="id7">
-<h2><span class="section-number">18.3. </span>데이터프레임 인덱싱<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
-<p>2차원 넘파이 어레이와 거의 유사하게 작동한다.</p>
+<h2><span class="section-number">18.3. </span>데이터프레임 인덱싱/슬라이싱<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<p>2차원 넘파이 어레이와 거의 유사하게 작동한다.
+설명을 위해 아래 데이터프레이을 이용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">state_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;state&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Ohio&#39;</span><span class="p">,</span> <span class="s1">&#39;Ohio&#39;</span><span class="p">,</span> <span class="s1">&#39;Ohio&#39;</span><span class="p">,</span> <span class="s1">&#39;Nevada&#39;</span><span class="p">,</span> <span class="s1">&#39;Nevada&#39;</span><span class="p">,</span> <span class="s1">&#39;Nevada&#39;</span><span class="p">,</span> <span class="s1">&#39;NY&#39;</span><span class="p">,</span> <span class="s1">&#39;NY&#39;</span><span class="p">,</span> <span class="s1">&#39;NY&#39;</span><span class="p">],</span>
-         <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2001</span><span class="p">,</span> <span class="mi">2002</span><span class="p">,</span> <span class="mi">2001</span><span class="p">,</span> <span class="mi">2002</span><span class="p">,</span> <span class="mi">2003</span><span class="p">,</span> <span class="mi">2002</span><span class="p">,</span> <span class="mi">2003</span><span class="p">,</span> <span class="mi">2004</span><span class="p">],</span>
-         <span class="s1">&#39;pop&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">,</span> <span class="mf">2.9</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span> <span class="mf">8.3</span><span class="p">,</span> <span class="mf">8.4</span><span class="p">,</span> <span class="mf">8.5</span><span class="p">]}</span>
+              <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2001</span><span class="p">,</span> <span class="mi">2002</span><span class="p">,</span> <span class="mi">2001</span><span class="p">,</span> <span class="mi">2002</span><span class="p">,</span> <span class="mi">2003</span><span class="p">,</span> <span class="mi">2002</span><span class="p">,</span> <span class="mi">2003</span><span class="p">,</span> <span class="mi">2004</span><span class="p">],</span>
+              <span class="s1">&#39;pop&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">,</span> <span class="mf">2.9</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span> <span class="mf">8.3</span><span class="p">,</span> <span class="mf">8.4</span><span class="p">,</span> <span class="mf">8.5</span><span class="p">]}</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">state_dict</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;state&#39;</span><span class="p">,</span> <span class="s1">&#39;pop&#39;</span><span class="p">,</span> <span class="s1">&#39;debt&#39;</span><span class="p">],</span>
-                      <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="s1">&#39;four&#39;</span><span class="p">,</span>
-                             <span class="s1">&#39;five&#39;</span><span class="p">,</span> <span class="s1">&#39;six&#39;</span><span class="p">,</span> <span class="s1">&#39;seven&#39;</span><span class="p">,</span> <span class="s1">&#39;eight&#39;</span><span class="p">,</span> <span class="s1">&#39;nine&#39;</span><span class="p">])</span>
+                      <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="s1">&#39;four&#39;</span><span class="p">,</span> <span class="s1">&#39;five&#39;</span><span class="p">,</span> <span class="s1">&#39;six&#39;</span><span class="p">,</span> <span class="s1">&#39;seven&#39;</span><span class="p">,</span> <span class="s1">&#39;eight&#39;</span><span class="p">,</span> <span class="s1">&#39;nine&#39;</span><span class="p">])</span>
+
 <span class="n">df</span>
 </pre></div>
 </div>
@@ -1201,10 +1354,9 @@ dtype: float64
 </div></div></div>
 </div>
 <section id="id8">
-<h3><span class="section-number">18.3.1. </span>열 인덱싱<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
-<p>열 인덱싱은 시리즈, 사전 등과 동일한 방식을 사용한다.
-다만, 지정된 열의 이름을 사용한다.
-예를 들어, <code class="docutils literal notranslate"><span class="pre">state</span></code> 열을 확인하면 시리즈로 보여준다.</p>
+<h3><span class="section-number">18.3.1. </span>열 라벨 인덱싱<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<p>열 라벨 인덱싱은 시리즈, 사전 등과 동일한 방식을 사용한다.
+예를 들어, <code class="docutils literal notranslate"><span class="pre">state</span></code> 열을 확인하면 시리즈를 생성한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span>
@@ -1253,7 +1405,7 @@ Name: year, dtype: int64
 <p>대괄호를 사용하는 인덱싱은 임의의 문자열을 사용한다.
 반면에 속성 형식은 변수를 사용하듯이 처리한다.
 따라서 속성 형식에 사용될 수 있는 열의 이름은 일반 변수의 이름을 짓는 형식을 따라야 한다.</p>
-<p>예를 들어, Ohio 주(state)인지 여부를 판정하는 ‘Ohio state’ 라는 열을 추가해보자.
+<p>예를 들어, <code class="docutils literal notranslate"><span class="pre">Ohio</span></code> 주(state)인지 여부를 판정하는 <code class="docutils literal notranslate"><span class="pre">'Ohio</span> <span class="pre">state'</span></code> 라는 열을 추가해보자.
 아래 코드는 새로운 열을 추가하기 위해 사전의 경우처럼 대괄호를 이용하여 새로운 열의 이름과 값을 지정한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1389,15 +1541,23 @@ Name: Ohio state, dtype: bool
 </div>
 <p>아래와 같이 실행하면 문법 오류(<code class="docutils literal notranslate"><span class="pre">SyntaxError</span></code>)가 발생한다.
 이유는 <code class="docutils literal notranslate"><span class="pre">Ohio</span> <span class="pre">state</span></code>가 변수 이름으로 허용되지 않기 때문이다.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">df</span><span class="o">.</span><span class="n">Ohio</span> <span class="n">state</span>
-<span class="go">  Cell In [122], line 1</span>
-<span class="go">    df.Ohio state</span>
-<span class="go">            ^</span>
-<span class="go">SyntaxError: invalid syntax</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">Ohio</span> <span class="n">state</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">37</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">Ohio</span> <span class="n">state</span>
+            <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>열 팬시 인덱싱</strong></p>
-<p>열 인덱스의 리스트를 사용하면 팬시 인덱싱처럼 작동하고 데이터프레임을 생성한다.</p>
+<p>열 라벨의 리스트를 사용하면 어레이 팬시 인덱싱 방식으로 데이터프레임을 생성한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;state&#39;</span><span class="p">,</span> <span class="s1">&#39;state&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;year&#39;</span><span class="p">]]</span>
@@ -1577,10 +1737,32 @@ Name: Ohio state, dtype: bool
 </table>
 </div></div></div>
 </div>
+<p>반면에 열 라벨 인덱싱은 시리즈를 생성한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>one        Ohio
+two        Ohio
+three      Ohio
+four     Nevada
+five     Nevada
+six      Nevada
+seven        NY
+eight        NY
+nine         NY
+Name: state, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
 <p><strong>열 업데이트</strong></p>
-<p>열 인덱싱을 이용하여 항목의 값을 지정할 수 있다.
-아래 코드는 <code class="docutils literal notranslate"><span class="pre">'debt'</span></code> 열의 값을 16.5로 일정하게 지정한다.</p>
-<p><strong>참고:</strong> 브로드캐스팅이 기본적으로 작동한다.</p>
+<p>열 라벨 인덱싱을 이용하여 항목의 값을 지정할 수 있다.
+아래 코드는 <code class="docutils literal notranslate"><span class="pre">'debt'</span></code> 열의 값을 16.5로 일정하게 지정한다.
+참고로 브로드캐스팅이 작동한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;debt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mf">16.5</span>
@@ -1691,8 +1873,8 @@ Name: Ohio state, dtype: bool
 </table>
 </div></div></div>
 </div>
-<p>반면에 행의 길이와 동일한 리스트, 어레이 등을 이용하여 각 행별로 다른 값을 지정할 수 있다.
-리스트, 어레이의 길이가 행의 개수와 동일해야 함에 주의해야 한다.</p>
+<p>행의 길이와 동일한 리스트, 어레이 등을 이용하여 지정된 열의 항목을 업데이트할 수 있다.
+단, 리스트, 어레이의 길이가 행의 개수와 동일해야 함에 주의해야 한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;debt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">9.</span><span class="p">)</span>
@@ -1805,7 +1987,7 @@ Name: Ohio state, dtype: bool
 </div>
 <p>반면에 시리즈를 이용하여 특정 열의 값을 지정할 수 있으며, 이 때는 항목의 길이가
 행의 개수와 동일할 필요가 없다.
-다만, 지정된 행의 인덱스 값만 삽입되며 나머지는 <code class="docutils literal notranslate"><span class="pre">NaN</span></code>이 삽입된다.</p>
+다만, 지정된 행의 인덱스 값만 삽입되며 나머지는 결측치로 처리된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.7</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;four&#39;</span><span class="p">,</span> <span class="s1">&#39;five&#39;</span><span class="p">,</span> <span class="s1">&#39;eleven&#39;</span><span class="p">])</span>
@@ -1939,12 +2121,17 @@ dtype: float64
 </table>
 </div></div></div>
 </div>
-<p><strong>부울 인덱싱(필터링)</strong></p>
+</section>
+<section id="id9">
+<h3><span class="section-number">18.3.2. </span>부울 인덱싱<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<p>부울 인덱싱 또한 넘파이 2차원 어레이와 동일하게 작동한다.
+설명을 위해 아래 데이터프레임을 이용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">16</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)),</span>
                     <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Ohio&#39;</span><span class="p">,</span> <span class="s1">&#39;Colorado&#39;</span><span class="p">,</span> <span class="s1">&#39;Utah&#39;</span><span class="p">,</span> <span class="s1">&#39;New York&#39;</span><span class="p">],</span>
                     <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="s1">&#39;four&#39;</span><span class="p">])</span>
+
 <span class="n">data</span>
 </pre></div>
 </div>
@@ -2007,7 +2194,7 @@ dtype: float64
 </table>
 </div></div></div>
 </div>
-<p>필터링(부울 인덱싱) 또한 넘파이 2차원 어레이와 동일하게 작동한다.</p>
+<p>아래 코드는 <code class="docutils literal notranslate"><span class="pre">'three'</span></code> 라벨 열에 포함된 항목이 5보다 큰 경우에만 <code class="docutils literal notranslate"><span class="pre">True</span></code>로 갖는 마스크 시리즈를 생성한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;three&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">5</span>
@@ -2025,6 +2212,8 @@ Name: three, dtype: bool
 </div>
 </div>
 </div>
+<p>아래 코드는 <code class="docutils literal notranslate"><span class="pre">True</span></code>인 행만 추출한다.
+즉, <code class="docutils literal notranslate"><span class="pre">'three'</span></code> 라벨 열의 항목 중에서 5보다 큰 값이 포함된 행만 추출한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="n">mask1</span><span class="p">]</span>
@@ -2082,10 +2271,10 @@ Name: three, dtype: bool
 </table>
 </div></div></div>
 </div>
-<p>필터링을 이용하여 특정 항목의 값을 업데이트할 수도 있다.</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">~mask1</span></code>은 <code class="docutils literal notranslate"><span class="pre">mask1</span></code>의 부정을 나타낸다.</p></li>
-</ul>
+<p><strong>항목 업데이트</strong></p>
+<p>부울 인덱싱을 이용하여 특정 항목의 값을 업데이트할 수도 있다.
+예를 들어 아래 코드는 <code class="docutils literal notranslate"><span class="pre">'three'</span></code> 라벨 열의 항목이 5보다 작은 행의 모든 항목을 0으로 지정한다.
+참고로 <code class="docutils literal notranslate"><span class="pre">~mask1</span></code>은 <code class="docutils literal notranslate"><span class="pre">mask1</span></code>의 부정을 나타내는 마스크 시리즈다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="p">[</span><span class="o">~</span><span class="n">mask1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
@@ -2151,7 +2340,8 @@ Name: three, dtype: bool
 </table>
 </div></div></div>
 </div>
-<p>각각의 항목에 대한 필터링도 비슷하게 작동한다.</p>
+<p>데이터프레임에 포함된 각각의 항목에 대한 부울 인덱싱도 비슷하게 작동한다.
+예를 들어 아래 코드는 6보다 작은 항목을 모두 0으로 지정한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mask2</span> <span class="o">=</span> <span class="n">data</span> <span class="o">&lt;</span> <span class="mi">6</span>
@@ -2283,14 +2473,79 @@ Name: three, dtype: bool
 </div></div></div>
 </div>
 </section>
-<section id="id9">
-<h3><span class="section-number">18.3.2. </span>행 인덱싱<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
-<p><strong><code class="docutils literal notranslate"><span class="pre">loc()</span></code>와 <code class="docutils literal notranslate"><span class="pre">iloc()</span></code> 함수</strong></p>
-<p><code class="docutils literal notranslate"><span class="pre">loc()</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">iloc()</span></code> 함수를 이용한다.</p>
+<section id="id10">
+<h3><span class="section-number">18.3.3. </span>행 인덱싱<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<p>행 인덱싱은 <code class="docutils literal notranslate"><span class="pre">loc()</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">iloc()</span></code> 함수를 이용한다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">loc()</span></code> 함수: 인덱스 라벨을 이용할 경우</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">iloc()</span></code> 함수: 정수 인덱스를 이용할 경우</p></li>
 </ul>
+<p>설명을 위해 계속해서 <code class="docutils literal notranslate"><span class="pre">data</span></code>가 가리키는 데이터프레임을 이용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>one</th>
+      <th>two</th>
+      <th>three</th>
+      <th>four</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Ohio</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Colorado</th>
+      <td>0</td>
+      <td>0</td>
+      <td>6</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>Utah</th>
+      <td>8</td>
+      <td>9</td>
+      <td>10</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>12</td>
+      <td>13</td>
+      <td>14</td>
+      <td>15</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>아래 코드는 <code class="docutils literal notranslate"><span class="pre">'Colorado'</span></code> 행을 시리즈로 추출한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Colorado&#39;</span><span class="p">]</span>
@@ -2302,11 +2557,12 @@ Name: three, dtype: bool
 two      0
 three    6
 four     7
-Name: Colorado, dtype: int32
+Name: Colorado, dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">'Colorado'</span></code> 행이 2번 인덱스의 행기이에 다음과 같이 행 인덱싱을 진행해도 된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
@@ -2318,16 +2574,16 @@ Name: Colorado, dtype: int32
 two       9
 three    10
 four     11
-Name: Utah, dtype: int32
+Name: Utah, dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
 <p><strong>행 팬시 인덱싱</strong></p>
-<p>여러 행을 대상으로 인덱싱 하려면 아래와 같이 인덱스 라벨의 리스트 또는 정수의 리스트를 활용한다.
+<p>여러 행을 대상으로 인덱싱 하려면 아래와 같이 행 라벨의 리스트 또는 정수 인덱스의 리스트를 활용한다.
 결과로 데이터프레임이 생성된다.</p>
 <ul class="simple">
-<li><p>인덱스 라벨 리스트 활용</p></li>
+<li><p>행 라벨 리스트 활용</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2394,7 +2650,7 @@ Name: Utah, dtype: int32
 </div></div></div>
 </div>
 <ul class="simple">
-<li><p>정수 리스트 활용</p></li>
+<li><p>정수 인덱스 리스트 활용</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2461,17 +2717,78 @@ Name: Utah, dtype: int32
 </div></div></div>
 </div>
 </section>
-</section>
-<section id="loc-iloc">
-<h2><span class="section-number">18.4. </span>데이터프레임 슬라이싱: <code class="docutils literal notranslate"><span class="pre">loc()</span></code>과 <code class="docutils literal notranslate"><span class="pre">iloc()</span></code> 함수<a class="headerlink" href="#loc-iloc" title="Permalink to this heading">#</a></h2>
+<section id="id11">
+<h3><span class="section-number">18.3.4. </span>데이터프레임 슬라이싱<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">loc()</span></code> 과 <code class="docutils literal notranslate"><span class="pre">iloc()</span></code> 함수를 행과 열에 동시에 적용할 수 있으며,
-2차원 넘파이 어레이에 대한 인덱싱/슬라이싱이 작동하는 방식과 거의 동일하다.</p>
+2차원 넘파이 어레이에 대한 인덱싱/슬라이싱이 작동하는 방식과 거의 동일하다.
+설명을 위해 계속해서 <code class="docutils literal notranslate"><span class="pre">data</span></code>가 가리키는 데이터프레임을 이용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>one</th>
+      <th>two</th>
+      <th>three</th>
+      <th>four</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Ohio</th>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Colorado</th>
+      <td>0</td>
+      <td>0</td>
+      <td>6</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>Utah</th>
+      <td>8</td>
+      <td>9</td>
+      <td>10</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>12</td>
+      <td>13</td>
+      <td>14</td>
+      <td>15</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 <p><strong>열 슬라이싱</strong></p>
-<p>열에 대해서만 슬라이싱을 적용하려면 행을 전체로 지정한다.</p>
-<ul class="simple">
-<li><p>행: <code class="docutils literal notranslate"><span class="pre">[:]</span></code></p></li>
-<li><p>열: <code class="docutils literal notranslate"><span class="pre">[:3]</span></code></p></li>
-</ul>
+<p>열에 대해서만 슬라이싱을 적용하려면 행을 전체로 지정한다.
+아래 코드는 전체 행을 대상으로 3번 인덱스열 이전까지 추출한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
@@ -2533,10 +2850,6 @@ Name: Utah, dtype: int32
 </div>
 <p><strong>행 슬라이싱</strong></p>
 <p>행에 대해서만 슬라이싱을 적용하려면 열을 전체로 지정한다.</p>
-<ul class="simple">
-<li><p>행: <code class="docutils literal notranslate"><span class="pre">[:]</span></code></p></li>
-<li><p>열: <code class="docutils literal notranslate"><span class="pre">[:3]</span></code></p></li>
-</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span> <span class="p">:]</span>
@@ -2638,8 +2951,59 @@ Name: Utah, dtype: int32
 </table>
 </div></div></div>
 </div>
+<p><strong>행/열 슬라이싱</strong></p>
+<p>행과 열 슬라이싱을 동시에 진행할 수도 있다.
+아래 코드는 2번 인덱스 행부터의 모든 행을 대상으로 3번 인덱스 열 이전까지의 항목만 추출한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>one</th>
+      <th>two</th>
+      <th>three</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Utah</th>
+      <td>8</td>
+      <td>9</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>New York</th>
+      <td>12</td>
+      <td>13</td>
+      <td>14</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 <p><strong>스텝 활용</strong></p>
-<p>스텝(step)도 사용할 수 있다.</p>
+<p>스텝<font size='2'>step</font>도 사용할 수 있다.
+아래 코드는 짝수 인덱스 행에 속한 항목 중에서 홀수 인덱스 열의 항목만 추출한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[::</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">::</span><span class="mi">2</span><span class="p">]</span>
@@ -2686,10 +3050,7 @@ Name: Utah, dtype: int32
 </div>
 <p><strong>인덱싱과 슬라이싱 조합</strong></p>
 <p>인덱싱과 슬라이싱의 어떤 조합도 행과 열에 대해 적용할 수 있다.</p>
-<ul class="simple">
-<li><p>행: <code class="docutils literal notranslate"><span class="pre">Colorado</span></code></p></li>
-<li><p>열: <code class="docutils literal notranslate"><span class="pre">['two',</span> <span class="pre">'three']</span></code></p></li>
-</ul>
+<p>아래 코드는 <code class="docutils literal notranslate"><span class="pre">'Colorado'</span></code> 행의 <code class="docutils literal notranslate"><span class="pre">'two'</span></code>와 <code class="docutils literal notranslate"><span class="pre">'three'</span></code> 열의 항목을 시리즈로 추출한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;Colorado&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">]]</span>
@@ -2699,15 +3060,12 @@ Name: Utah, dtype: int32
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>two      0
 three    6
-Name: Colorado, dtype: int32
+Name: Colorado, dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
-<ul class="simple">
-<li><p>행: <code class="docutils literal notranslate"><span class="pre">2</span></code></p></li>
-<li><p>열: <code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">0,</span> <span class="pre">1]</span></code></p></li>
-</ul>
+<p>아래 코드는 2번 인덱스 행의 3번, 0번, 1번 인덱스 열의 항목을 시리즈로 추출한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
@@ -2718,15 +3076,12 @@ Name: Colorado, dtype: int32
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>four    11
 one      8
 two      9
-Name: Utah, dtype: int32
+Name: Utah, dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
-<ul class="simple">
-<li><p>행: <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2]</span></code></p></li>
-<li><p>열: <code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">0,</span> <span class="pre">1]</span></code></p></li>
-</ul>
+<p>아래 코드는 1번, 2번 인덱스 행의 3번, 0번, 1번 인덱스 열의 항목을 데이터프레임으로 추출한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
@@ -2774,10 +3129,7 @@ Name: Utah, dtype: int32
 </table>
 </div></div></div>
 </div>
-<ul class="simple">
-<li><p>행: <code class="docutils literal notranslate"><span class="pre">[:Colorado]</span></code></p></li>
-<li><p>열: <code class="docutils literal notranslate"><span class="pre">'two'</span></code></p></li>
-</ul>
+<p>아래 코드는 <code class="docutils literal notranslate"><span class="pre">'Colorado'</span></code> 라벨 행까지의 모든 행에서 <code class="docutils literal notranslate"><span class="pre">'two'</span></code> 열의 항목을 시리즈로 추출한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="s1">&#39;Colorado&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">]</span>
@@ -2787,15 +3139,12 @@ Name: Utah, dtype: int32
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ohio        0
 Colorado    0
-Name: two, dtype: int32
+Name: two, dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
-<ul class="simple">
-<li><p>행: <code class="docutils literal notranslate"><span class="pre">[:Colorado]</span></code></p></li>
-<li><p>열: <code class="docutils literal notranslate"><span class="pre">['two':]</span></code></p></li>
-</ul>
+<p>아래 코드는 <code class="docutils literal notranslate"><span class="pre">'Colorado'</span></code> 라벨 행까지의 모든 행에서 <code class="docutils literal notranslate"><span class="pre">'two'</span></code> 열 이후의 모든 열의 항목을 데이터프레임으로 추출한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="s1">&#39;Colorado&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">:]</span>
@@ -2843,9 +3192,11 @@ Name: two, dtype: int32
 </table>
 </div></div></div>
 </div>
-<p><strong>부울 인덱싱(필터링) 연속 적용</strong></p>
-<p>인덱싱/슬라이싱은 시리즈 또는 데이터프레임을 생성하기에 바로 이어 필터링을 연달아 적용하면
+<p><strong>부울 인덱싱 연속 적용</strong></p>
+<p>인덱싱/슬라이싱은 시리즈 또는 데이터프레임을 생성하기에 바로 이어 부울 인덱싱을 연달아 적용하면
 보다 간편하게 원하는 시리즈 또는 데이터프레임을 생성할 수 있다.</p>
+<p>아래 코드는 전체 행의  3번 인덱스 열 이전까지의 항목들 중에서
+<code class="docutils literal notranslate"><span class="pre">'three'</span></code> 열의 항목이 5보다 큰 행의 값들만 항목으로 포함하는 데이터프레임을 생성한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="p">:</span><span class="mi">3</span><span class="p">][</span><span class="n">data</span><span class="o">.</span><span class="n">three</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">]</span>
@@ -2899,6 +3250,1715 @@ Name: two, dtype: int32
 </table>
 </div></div></div>
 </div>
+</section>
+</section>
+<section id="id12">
+<h2><span class="section-number">18.4. </span>데이터프레임 수정<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
+<p>인덱싱/슬라이싱을 이용하여 항목 변경, 행/열 추가 등을 실행한다.
+설명을 위해 새로운 데이터프레임을 생성한다.</p>
+<p>아래 데이터프레임을 생성하기 위해 <code class="docutils literal notranslate"><span class="pre">pd.date_range()</span></code> 함수는 시간으로 구성된 인덱스 자료형을 생성한다.
+함수 호출에 사용된 키워드 인자의 의미는 다음과 같다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">start=&quot;20130101</span></code>: 2013년 1월 1일부터 시작</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">periods=6</span></code>: 첫째 인자로 지정된 시간부터 6 개의 시간 데이터 샘플 생성</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">freq=&quot;D&quot;</span></code>: 시간 데이터 샘플을 일(day) 단위로 생성</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="s2">&quot;20130101&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;D&quot;</span><span class="p">)</span>
+<span class="n">dates</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>DatetimeIndex([&#39;2013-01-01&#39;, &#39;2013-01-02&#39;, &#39;2013-01-03&#39;, &#39;2013-01-04&#39;,
+               &#39;2013-01-05&#39;, &#39;2013-01-06&#39;],
+              dtype=&#39;datetime64[ns]&#39;, freq=&#39;D&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="n">index</span><span class="o">=</span><span class="n">dates</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s2">&quot;ABCD&quot;</span><span class="p">))</span>
+<span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>1.764052</td>
+      <td>0.400157</td>
+      <td>0.978738</td>
+      <td>2.240893</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>1.867558</td>
+      <td>-0.977278</td>
+      <td>0.950088</td>
+      <td>-0.151357</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>-0.103219</td>
+      <td>0.410599</td>
+      <td>0.144044</td>
+      <td>1.454274</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>0.333674</td>
+    </tr>
+    <tr>
+      <th>2013-01-05</th>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>-0.854096</td>
+    </tr>
+    <tr>
+      <th>2013-01-06</th>
+      <td>-2.552990</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
+      <td>-0.742165</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>열 추가</strong></p>
+<p>아래 시리즈를 <code class="docutils literal notranslate"><span class="pre">df1</span></code>의 새로운 열로 추가하려 한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="n">index</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;20130102&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">s1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2013-01-02    1
+2013-01-03    2
+2013-01-04    3
+2013-01-05    4
+2013-01-06    5
+2013-01-07    6
+Freq: D, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>열 라벨은 <code class="docutils literal notranslate"><span class="pre">F</span></code>로 지정한다.
+그러면 <code class="docutils literal notranslate"><span class="pre">2013-01-01</span></code>의 데이터가 없기에 결측치로 처리된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;F&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">s1</span>
+<span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>1.764052</td>
+      <td>0.400157</td>
+      <td>0.978738</td>
+      <td>2.240893</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>1.867558</td>
+      <td>-0.977278</td>
+      <td>0.950088</td>
+      <td>-0.151357</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>-0.103219</td>
+      <td>0.410599</td>
+      <td>0.144044</td>
+      <td>1.454274</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>0.333674</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-05</th>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>-0.854096</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-06</th>
+      <td>-2.552990</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
+      <td>-0.742165</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>항목 지정</strong></p>
+<p>아래 코드는 <code class="docutils literal notranslate"><span class="pre">2013-01-01</span></code> 행의 <code class="docutils literal notranslate"><span class="pre">'A'</span></code>열의 값을 0으로 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;A&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>0.000000</td>
+      <td>0.400157</td>
+      <td>0.978738</td>
+      <td>2.240893</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>1.867558</td>
+      <td>-0.977278</td>
+      <td>0.950088</td>
+      <td>-0.151357</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>-0.103219</td>
+      <td>0.410599</td>
+      <td>0.144044</td>
+      <td>1.454274</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>0.333674</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-05</th>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>-0.854096</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-06</th>
+      <td>-2.552990</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
+      <td>-0.742165</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">iloc[]</span></code>도 활용할 수 있다.
+아래 코드는 <code class="docutils literal notranslate"><span class="pre">2013-01-01</span></code> 행의 <code class="docutils literal notranslate"><span class="pre">'B'</span></code>열의 값도 0으로 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.978738</td>
+      <td>2.240893</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>1.867558</td>
+      <td>-0.977278</td>
+      <td>0.950088</td>
+      <td>-0.151357</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>-0.103219</td>
+      <td>0.410599</td>
+      <td>0.144044</td>
+      <td>1.454274</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>0.333674</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-05</th>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>-0.854096</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-06</th>
+      <td>-2.552990</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
+      <td>-0.742165</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>행/열 지정</strong></p>
+<p>어레이를 이용하여 열 또는 행을 지정할 수 있다.
+아래 코드는 <code class="docutils literal notranslate"><span class="pre">D</span></code> 열을 새로운 어레이로 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s2">&quot;D&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">df1</span><span class="p">))</span>
+<span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.978738</td>
+      <td>5.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>1.867558</td>
+      <td>-0.977278</td>
+      <td>0.950088</td>
+      <td>5.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>-0.103219</td>
+      <td>0.410599</td>
+      <td>0.144044</td>
+      <td>5.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>5.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-05</th>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>5.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-06</th>
+      <td>-2.552990</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
+      <td>5.0</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>아래 코드는 <code class="docutils literal notranslate"><span class="pre">2013-01-02</span></code> 행을 새롭게 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dates</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="n">df1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.978738</td>
+      <td>5.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>-0.103219</td>
+      <td>0.410599</td>
+      <td>0.144044</td>
+      <td>5.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>5.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-05</th>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>5.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-06</th>
+      <td>-2.552990</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
+      <td>5.0</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">iloc[]</span></code> 객체를 이용할 수도 있다.
+아래 코드는 2번 행을 새로 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">]</span> <span class="o">*</span> <span class="n">df1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.978738</td>
+      <td>5.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>5.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-05</th>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>5.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-06</th>
+      <td>-2.552990</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
+      <td>5.0</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="id13">
+<h2><span class="section-number">18.5. </span>결측치 처리<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h2>
+<p>모든 결측치는 내부적으로 <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>로 처리된다.
+다만 자료형에 따라 <code class="docutils literal notranslate"><span class="pre">NaN</span></code>(부동소수점), <code class="docutils literal notranslate"><span class="pre">NA</span></code>(정수), <code class="docutils literal notranslate"><span class="pre">NaT</span></code>(시간) 등으로 표기된다.
+결측치를 처리하는 연습을 위해 <code class="docutils literal notranslate"><span class="pre">df1</span></code>를 수정하여 결측치를 일부 포함한 데이터프레임을 생성한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.978738</td>
+      <td>5.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>5.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-05</th>
+      <td>1.494079</td>
+      <td>-0.205158</td>
+      <td>0.313068</td>
+      <td>5.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-06</th>
+      <td>-2.552990</td>
+      <td>0.653619</td>
+      <td>0.864436</td>
+      <td>5.0</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>리인덱싱으로 다음 데이터프레임을 생성한다.
+<code class="docutils literal notranslate"><span class="pre">'E'</span></code>열이 추가되는데 <code class="docutils literal notranslate"><span class="pre">df1</span></code>에 없던 열이기에 모든 항목이 결측치로 지정된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">],</span> <span class="n">columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="s1">&#39;E&#39;</span><span class="p">])</span>
+<span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+      <th>E</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.978738</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>결측치 일부도 특정 값으로 채운다.
+아래 코드는 <code class="docutils literal notranslate"><span class="pre">'E'</span></code>열의 일부를 1로 지정한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="n">dates</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;E&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">df2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+      <th>E</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.978738</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">isna()</span></code> 함수</strong></p>
+<p>결측치가 위치한 곳만 <code class="docutils literal notranslate"><span class="pre">True</span></code> 항목을 갖는 부울 마스크를 생성한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+      <th>E</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>데이터프레임의 <code class="docutils literal notranslate"><span class="pre">isna()</span></code> 메서드가 동일한 일을 수행한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+      <th>E</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">dropna()</span></code> 메서드</strong></p>
+<p>결측치를 포함한 행 또는 열이 삭제된 데이터프레임을 반환한다.</p>
+<ul class="simple">
+<li><p>행 기준: <code class="docutils literal notranslate"><span class="pre">axis=0</span></code>이 기본값임. 아래 코드는 결측치를 하나 이상 포함한 모든 행 삭제.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+      <th>E</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-02</th>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>행 기준: <code class="docutils literal notranslate"><span class="pre">axis=0</span></code>이 기본값임. 아래 코드는 결측치로만 구성된 모든 행 삭제.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+      <th>E</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.978738</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>열 기준: <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> 지정. 아래 코드는 하나 이상의 결측치를 포함한 모든 열 삭제.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.978738</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<ul class="simple">
+<li><p>열 기준: <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> 지정. 아래 코드는 하나 결측치로만 구성된 모든 열 삭제.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+      <th>E</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.978738</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">fillna()</span></code> 메서드</strong></p>
+<p>모든 결측치를 지정된 값으로 채운 데이터프레임을 생성한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+      <th>E</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.978738</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>5.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">ffill()</span></code> 메서드</strong></p>
+<p>열 별로 모든 결측치를 위쪽에 위치한 가장 가까운 값으로 채운 데이터프레임을 생성한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">ffill</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+      <th>E</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.978738</td>
+      <td>5.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">axis=1</span></code>을 지정하면 행 기준으로 채워진다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">ffill</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+      <th>E</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.978738</td>
+      <td>5.0</td>
+      <td>5.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">bfill()</span></code> 메서드</strong></p>
+<p>열 별로 모든 결측치를 아래쪽에 위치한 가장 가까운 값으로 채운 데이터프레임을 생성한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">bfill</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+      <th>E</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.978738</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">axis=1</span></code>을 지정하면 행 기준으로 채워진다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">bfill</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+      <th>E</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.978738</td>
+      <td>5.0</td>
+      <td>1.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.000000</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.000000</td>
+      <td>4.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>0.761038</td>
+      <td>0.121675</td>
+      <td>0.443863</td>
+      <td>5.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="id14">
+<h2><span class="section-number">18.6. </span>연습문제<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h2>
+<p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-pandas_2.ipynb">(실습) 데이터프레임 인덱싱</a></p>
 </section>
 </section>
 
@@ -2973,12 +5033,16 @@ Name: two, dtype: int32
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">18.2. 시리즈 인덱싱/슬라이싱</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">18.3. 데이터프레임 인덱싱</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">18.3.1. 열 인덱싱</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">18.3.2. 행 인덱싱</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">18.3. 데이터프레임 인덱싱/슬라이싱</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">18.3.1. 열 라벨 인덱싱</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">18.3.2. 부울 인덱싱</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">18.3.3. 행 인덱싱</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">18.3.4. 데이터프레임 슬라이싱</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loc-iloc">18.4. 데이터프레임 슬라이싱: <code class="docutils literal notranslate"><span class="pre">loc()</span></code>과 <code class="docutils literal notranslate"><span class="pre">iloc()</span></code> 함수</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">18.4. 데이터프레임 수정</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">18.5. 결측치 처리</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">18.6. 연습문제</a></li>
 </ul>
   </nav></div>
 
