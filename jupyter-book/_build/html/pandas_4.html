@@ -439,11 +439,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">20.1. 합, 평균, 표준편차</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">20.2. 상관관계와 공분산</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">20.3. 중복과 빈도</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">20.4. 미니 프로젝트: 붓꽃 데이터셋 분석</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">20.5. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">20.1. 데이터 탐색</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">20.2. 합, 평균, 표준편차</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">20.3. 상관관계와 공분산</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">20.4. 중복과 빈도</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">20.5. 미니 프로젝트: 붓꽃 데이터셋 분석</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">20.6. 연습문제</a></li>
 </ul>
             </nav>
         </div>
@@ -509,7 +510,414 @@ document.write(`
 </div>
 </div>
 <section id="id2">
-<h2><span class="section-number">20.1. </span>합, 평균, 표준편차<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">20.1. </span>데이터 탐색<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p>데이터 탐색을 위한 주요 메서드를 살펴 본다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">head()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tail()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">info()</span></code></p></li>
+</ul>
+<p>설명을 위해 아래 데이터프레임을 이용한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;state&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;Ohio&#39;</span><span class="p">,</span> <span class="s1">&#39;Ohio&#39;</span><span class="p">,</span> <span class="s1">&#39;Ohio&#39;</span><span class="p">,</span> <span class="s1">&#39;Nevada&#39;</span><span class="p">,</span> <span class="s1">&#39;Nevada&#39;</span><span class="p">,</span> <span class="s1">&#39;Nevada&#39;</span><span class="p">,</span> <span class="s1">&#39;NY&#39;</span><span class="p">,</span> <span class="s1">&#39;NY&#39;</span><span class="p">,</span> <span class="s1">&#39;NY&#39;</span><span class="p">],</span>
+         <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">2001</span><span class="p">,</span> <span class="mi">2002</span><span class="p">,</span> <span class="mi">2001</span><span class="p">,</span> <span class="mi">2002</span><span class="p">,</span> <span class="mi">2003</span><span class="p">,</span> <span class="mi">2002</span><span class="p">,</span> <span class="mi">2003</span><span class="p">,</span> <span class="mi">2004</span><span class="p">]],</span>
+         <span class="s1">&#39;pop&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.7</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">2.4</span><span class="p">,</span> <span class="mf">2.9</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span> <span class="mf">8.3</span><span class="p">,</span> <span class="mf">8.4</span><span class="p">,</span> <span class="mf">8.5</span><span class="p">],</span>
+         <span class="s1">&#39;debt&#39;</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">)}</span>
+
+<span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;state&#39;</span><span class="p">,</span> <span class="s1">&#39;pop&#39;</span><span class="p">,</span> <span class="s1">&#39;debt&#39;</span><span class="p">],</span>
+                      <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;one&#39;</span><span class="p">,</span> <span class="s1">&#39;two&#39;</span><span class="p">,</span> <span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="s1">&#39;four&#39;</span><span class="p">,</span>
+                             <span class="s1">&#39;five&#39;</span><span class="p">,</span> <span class="s1">&#39;six&#39;</span><span class="p">,</span> <span class="s1">&#39;seven&#39;</span><span class="p">,</span> <span class="s1">&#39;eight&#39;</span><span class="p">,</span> <span class="s1">&#39;nine&#39;</span><span class="p">])</span>
+<span class="n">frame</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>state</th>
+      <th>pop</th>
+      <th>debt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>one</th>
+      <td>2000</td>
+      <td>Ohio</td>
+      <td>1.5</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>2001</td>
+      <td>Ohio</td>
+      <td>1.7</td>
+      <td>0.125</td>
+    </tr>
+    <tr>
+      <th>three</th>
+      <td>2002</td>
+      <td>Ohio</td>
+      <td>3.6</td>
+      <td>0.250</td>
+    </tr>
+    <tr>
+      <th>four</th>
+      <td>2001</td>
+      <td>Nevada</td>
+      <td>2.4</td>
+      <td>0.375</td>
+    </tr>
+    <tr>
+      <th>five</th>
+      <td>2002</td>
+      <td>Nevada</td>
+      <td>2.9</td>
+      <td>0.500</td>
+    </tr>
+    <tr>
+      <th>six</th>
+      <td>2003</td>
+      <td>Nevada</td>
+      <td>3.2</td>
+      <td>0.625</td>
+    </tr>
+    <tr>
+      <th>seven</th>
+      <td>2002</td>
+      <td>NY</td>
+      <td>8.3</td>
+      <td>0.750</td>
+    </tr>
+    <tr>
+      <th>eight</th>
+      <td>2003</td>
+      <td>NY</td>
+      <td>8.4</td>
+      <td>0.875</td>
+    </tr>
+    <tr>
+      <th>nine</th>
+      <td>2004</td>
+      <td>NY</td>
+      <td>8.5</td>
+      <td>1.000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">head()</span></code> 메서드</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">head()</span></code> 메서드는 지정된 크기만큼의 행을 보여준다.
+인자를 지정하지 않으면 처음 5개의 행을 보여준다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>state</th>
+      <th>pop</th>
+      <th>debt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>one</th>
+      <td>2000</td>
+      <td>Ohio</td>
+      <td>1.5</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>2001</td>
+      <td>Ohio</td>
+      <td>1.7</td>
+      <td>0.125</td>
+    </tr>
+    <tr>
+      <th>three</th>
+      <td>2002</td>
+      <td>Ohio</td>
+      <td>3.6</td>
+      <td>0.250</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>state</th>
+      <th>pop</th>
+      <th>debt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>one</th>
+      <td>2000</td>
+      <td>Ohio</td>
+      <td>1.5</td>
+      <td>0.000</td>
+    </tr>
+    <tr>
+      <th>two</th>
+      <td>2001</td>
+      <td>Ohio</td>
+      <td>1.7</td>
+      <td>0.125</td>
+    </tr>
+    <tr>
+      <th>three</th>
+      <td>2002</td>
+      <td>Ohio</td>
+      <td>3.6</td>
+      <td>0.250</td>
+    </tr>
+    <tr>
+      <th>four</th>
+      <td>2001</td>
+      <td>Nevada</td>
+      <td>2.4</td>
+      <td>0.375</td>
+    </tr>
+    <tr>
+      <th>five</th>
+      <td>2002</td>
+      <td>Nevada</td>
+      <td>2.9</td>
+      <td>0.500</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">tail()</span></code> 메서드</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">tail()</span></code> 메서드는 지정된 크기만큼의 행을 뒤에서부터 보여준다.
+인자를 지정하지 않으면 뒤에서부터 5개의 행을 보여준다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>state</th>
+      <th>pop</th>
+      <th>debt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>seven</th>
+      <td>2002</td>
+      <td>NY</td>
+      <td>8.3</td>
+      <td>0.750</td>
+    </tr>
+    <tr>
+      <th>eight</th>
+      <td>2003</td>
+      <td>NY</td>
+      <td>8.4</td>
+      <td>0.875</td>
+    </tr>
+    <tr>
+      <th>nine</th>
+      <td>2004</td>
+      <td>NY</td>
+      <td>8.5</td>
+      <td>1.000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>state</th>
+      <th>pop</th>
+      <th>debt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>five</th>
+      <td>2002</td>
+      <td>Nevada</td>
+      <td>2.9</td>
+      <td>0.500</td>
+    </tr>
+    <tr>
+      <th>six</th>
+      <td>2003</td>
+      <td>Nevada</td>
+      <td>3.2</td>
+      <td>0.625</td>
+    </tr>
+    <tr>
+      <th>seven</th>
+      <td>2002</td>
+      <td>NY</td>
+      <td>8.3</td>
+      <td>0.750</td>
+    </tr>
+    <tr>
+      <th>eight</th>
+      <td>2003</td>
+      <td>NY</td>
+      <td>8.4</td>
+      <td>0.875</td>
+    </tr>
+    <tr>
+      <th>nine</th>
+      <td>2004</td>
+      <td>NY</td>
+      <td>8.5</td>
+      <td>1.000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">info()</span></code> 메서드</strong></p>
+<p>열(columns) 별로 결측치가 아닌 항목의 수와 자료형을 확인해준다.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">9</span> <span class="pre">non-null</span></code>: 결측치가 아닌 항목이 9개 있음을 의미함.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">object</span></code>: 일반적으로 문자열 자료형을 가리킴.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Index: 9 entries, one to nine
+Data columns (total 4 columns):
+ #   Column  Non-Null Count  Dtype  
+---  ------  --------------  -----  
+ 0   year    9 non-null      object 
+ 1   state   9 non-null      object 
+ 2   pop     9 non-null      float64
+ 3   debt    9 non-null      float64
+dtypes: float64(2), object(2)
+memory usage: 360.0+ bytes
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">20.2. </span>합, 평균, 표준편차<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>기초 통계에서 사용되는 주요 메서드들의 활용법을 살펴본다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">sum()</span></code></p></li>
@@ -1072,8 +1480,8 @@ dtype: object
 </div>
 </div>
 </section>
-<section id="id3">
-<h2><span class="section-number">20.2. </span>상관관계와 공분산<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<section id="id4">
+<h2><span class="section-number">20.3. </span>상관관계와 공분산<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
 <p>금융 사이트에서 구한 4 개 회사의 주가(price)와 거래량(volume)을 담고 있는 두 개의 데이터를 이용하여
 상관계수와 공분산을 계산해본다.</p>
 <p>이를 위해 먼저 바이너리 파일 두 개를 다운로드해서 지정된 하위 디렉토리에 저장한다.</p>
@@ -1507,7 +1915,7 @@ Var(Y) &amp; = \dfrac{\sum (X-\mu_Y)^2}{n}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4997636114415108
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.49976361144151144
 </pre></div>
 </div>
 </div>
@@ -1520,7 +1928,7 @@ Var(Y) &amp; = \dfrac{\sum (X-\mu_Y)^2}{n}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.870655479703533e-05
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8.870655479703546e-05
 </pre></div>
 </div>
 </div>
@@ -1533,7 +1941,7 @@ Var(Y) &amp; = \dfrac{\sum (X-\mu_Y)^2}{n}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4997636114415108
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.49976361144151144
 </pre></div>
 </div>
 </div>
@@ -1703,8 +2111,8 @@ dtype: float64
 </div>
 </div>
 </section>
-<section id="id4">
-<h2><span class="section-number">20.3. </span>중복과 빈도<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<section id="id5">
+<h2><span class="section-number">20.4. </span>중복과 빈도<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
 <p><strong><code class="docutils literal notranslate"><span class="pre">unique()</span></code> 메서드</strong></p>
 <p>시리즈에서 사용된 값을 중복 없이 확인하려면 <code class="docutils literal notranslate"><span class="pre">unique()</span></code> 메서드를 이용한다.
 <code class="docutils literal notranslate"><span class="pre">set()</span></code> 함수와 유사하게 작동하며, 넘파이 어레이를 반환한다.</p>
@@ -1756,7 +2164,7 @@ dtype: object
 a    3
 b    2
 d    1
-dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1772,14 +2180,14 @@ dtype: int64
 a    3
 d    1
 b    2
-dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="id5">
-<h2><span class="section-number">20.4. </span>미니 프로젝트: 붓꽃 데이터셋 분석<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<section id="id6">
+<h2><span class="section-number">20.5. </span>미니 프로젝트: 붓꽃 데이터셋 분석<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <p>아래 코드는 인터넷 데이터 저장소로부터 아이리스(붓꽃) 데이터(<code class="docutils literal notranslate"><span class="pre">iris.data</span></code>)를
 2차원 넘파이 어레이로 불러온다.</p>
 <div class="cell docutils container">
@@ -2729,7 +3137,7 @@ dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.843333333333335 5.8 0.828066127977863 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.843333333333335 5.8 0.8280661279778629 
 </pre></div>
 </div>
 </div>
@@ -3198,8 +3606,8 @@ dtype: float64
 <p><strong>추가 사항</strong></p>
 <p>꽃잎의 길이/너비와 품종 사이의 상관 관계 파악하기</p>
 </section>
-<section id="id6">
-<h2><span class="section-number">20.5. </span>연습문제<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<section id="id7">
+<h2><span class="section-number">20.6. </span>연습문제<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-pandas_4.ipynb">(실습) 판다스 활용: 통계 기초</a></p>
 </section>
 </section>
@@ -3268,11 +3676,12 @@ dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">20.1. 합, 평균, 표준편차</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">20.2. 상관관계와 공분산</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">20.3. 중복과 빈도</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">20.4. 미니 프로젝트: 붓꽃 데이터셋 분석</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">20.5. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">20.1. 데이터 탐색</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">20.2. 합, 평균, 표준편차</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">20.3. 상관관계와 공분산</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">20.4. 중복과 빈도</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">20.5. 미니 프로젝트: 붓꽃 데이터셋 분석</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">20.6. 연습문제</a></li>
 </ul>
   </nav></div>
 

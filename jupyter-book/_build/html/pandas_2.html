@@ -446,8 +446,12 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">18.3. 데이터프레임 수정</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">18.4. 결측치 처리</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">18.5. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">18.4. 결측치 처리</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">18.4.1. 시리즈의 결측치</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">18.4.2. 데이터프레임의 결측치</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">18.5. 연습문제</a></li>
 </ul>
             </nav>
         </div>
@@ -464,9 +468,9 @@ document.write(`
 <p><strong>주요 내용</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">Series</span></code>와 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> 객체를 다루는 다양한 도구를 살펴본다.</p>
 <ul class="simple">
-<li><p>리인덱싱</p></li>
 <li><p>인덱싱</p></li>
 <li><p>슬라이싱</p></li>
+<li><p>결측치 처리</p></li>
 </ul>
 <p><strong>기본 설정</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">pandas</span></code> 라이브러리는 보통 <code class="docutils literal notranslate"><span class="pre">pd</span></code> 라는 별칭으로 사용된다.</p>
@@ -3382,9 +3386,224 @@ Freq: D, dtype: int64
 </section>
 <section id="id9">
 <h2><span class="section-number">18.4. </span>결측치 처리<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
-<p>모든 결측치는 내부적으로 <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>로 처리된다.
-다만 자료형에 따라 <code class="docutils literal notranslate"><span class="pre">NaN</span></code>(부동소수점), <code class="docutils literal notranslate"><span class="pre">NA</span></code>(정수), <code class="docutils literal notranslate"><span class="pre">NaT</span></code>(시간) 등으로 표기된다.
-결측치를 처리하는 연습을 위해 <code class="docutils literal notranslate"><span class="pre">df1</span></code>를 수정하여 결측치를 일부 포함한 데이터프레임을 생성한다.</p>
+<p>시리즈와 데이터프레임의 모든 결측치는 내부적으로 <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>로 처리된다.
+다만 자료형에 따라 <code class="docutils literal notranslate"><span class="pre">NaN</span></code>(부동소수점), <code class="docutils literal notranslate"><span class="pre">NA</span></code>(정수), <code class="docutils literal notranslate"><span class="pre">NaT</span></code>(시간) 등으로 표기된다.</p>
+<section id="id10">
+<h3><span class="section-number">18.4.1. </span>시리즈의 결측치<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<p>연습을 위해 결측치를 하나 포함한 시리즈를 생성한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sdata</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Ohio&#39;</span><span class="p">:</span> <span class="mi">35000</span><span class="p">,</span> <span class="s1">&#39;Texas&#39;</span><span class="p">:</span> <span class="mi">71000</span><span class="p">,</span> <span class="s1">&#39;Oregon&#39;</span><span class="p">:</span> <span class="mi">16000</span><span class="p">,</span> <span class="s1">&#39;Utah&#39;</span><span class="p">:</span> <span class="mi">5000</span><span class="p">}</span>
+<span class="n">states</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;California&#39;</span><span class="p">,</span> <span class="s1">&#39;Ohio&#39;</span><span class="p">,</span> <span class="s1">&#39;Oregon&#39;</span><span class="p">,</span> <span class="s1">&#39;Texas&#39;</span><span class="p">]</span>
+
+<span class="n">obj2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">sdata</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">states</span><span class="p">)</span>
+<span class="n">obj2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>California        NaN
+Ohio          35000.0
+Oregon        16000.0
+Texas         71000.0
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">isna()</span></code>와 <code class="docutils literal notranslate"><span class="pre">notna()</span></code></strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">pd.isna()</span></code> 함수는 누락된 항목은 <code class="docutils literal notranslate"><span class="pre">True</span></code>, 아니면 <code class="docutils literal notranslate"><span class="pre">False</span></code>로 지정하여 단번에 결측치가 포함되었는지
+여부를 확인해준다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">obj2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>California     True
+Ohio          False
+Oregon        False
+Texas         False
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">pd.notna()</span></code> 함수는 누락된 항목은 <code class="docutils literal notranslate"><span class="pre">False</span></code>, 아니면 <code class="docutils literal notranslate"><span class="pre">True</span></code>로 지정하여 단번에 결측치가 포함되었는지
+여부를 확인해준다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">obj2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>California    False
+Ohio           True
+Oregon         True
+Texas          True
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>두 함수를 호출하면 실제로는 시리즈 객체의 메서드인 <code class="docutils literal notranslate"><span class="pre">isna()</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">notna()</span></code>이 내부에서 호출된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj2</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>California     True
+Ohio          False
+Oregon        False
+Texas         False
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj2</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>California    False
+Ohio           True
+Oregon         True
+Texas          True
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">isnull()</span></code> 과 <code class="docutils literal notranslate"><span class="pre">notnull()</span></code></strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">isnull()</span></code> 과 <code class="docutils literal notranslate"><span class="pre">notnull()</span></code>는 각각 <code class="docutils literal notranslate"><span class="pre">isna()</span></code>와 <code class="docutils literal notranslate"><span class="pre">notna()</span></code>의 별칭이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">isnull</span><span class="p">(</span><span class="n">obj2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>California     True
+Ohio          False
+Oregon        False
+Texas         False
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">notnull</span><span class="p">(</span><span class="n">obj2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>California    False
+Ohio           True
+Oregon         True
+Texas          True
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj2</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>California     True
+Ohio          False
+Oregon        False
+Texas         False
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj2</span><span class="o">.</span><span class="n">notnull</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>California    False
+Ohio           True
+Oregon         True
+Texas          True
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">any()</span></code> 와 <code class="docutils literal notranslate"><span class="pre">all()</span></code></strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">any()</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">all()</span></code> 메서드를 활용하면 결측치 사용 여부를 단번에 알 수 있다.
+예를 들어, <code class="docutils literal notranslate"><span class="pre">pd.isna()</span></code> 과 <code class="docutils literal notranslate"><span class="pre">any()</span></code> 메서드의 활용 경과가 <code class="docutils literal notranslate"><span class="pre">True</span></code> 이면 결측치가 있다는 의미이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj2</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<p>반면에 <code class="docutils literal notranslate"><span class="pre">pd.notna()</span></code> 과 <code class="docutils literal notranslate"><span class="pre">all()</span></code> 메서드의 활용 경과가 <code class="docutils literal notranslate"><span class="pre">False</span></code> 이면 역시 결측치가 있다는 의미이다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">obj2</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>넘파이의 <code class="docutils literal notranslate"><span class="pre">np.any()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.all()</span></code> 를 활용해도 동일한 결과를 얻는다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">obj2</span><span class="o">.</span><span class="n">isna</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">obj2</span><span class="o">.</span><span class="n">notna</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id11">
+<h3><span class="section-number">18.4.2. </span>데이터프레임의 결측치<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<p>연습을 위해 <code class="docutils literal notranslate"><span class="pre">df1</span></code>를 수정하여 결측치를 일부 포함한 데이터프레임을 생성한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df1</span>
@@ -3624,8 +3843,8 @@ Freq: D, dtype: int64
 </table>
 </div></div></div>
 </div>
-<p><strong><code class="docutils literal notranslate"><span class="pre">isna()</span></code> 함수</strong></p>
-<p>결측치가 위치한 곳만 <code class="docutils literal notranslate"><span class="pre">True</span></code> 항목을 갖는 부울 마스크를 생성한다.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">isna()</span></code>와 <code class="docutils literal notranslate"><span class="pre">notna()</span></code></strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">pd.isna()</span></code> 함수는 결측치가 위치한 곳만 <code class="docutils literal notranslate"><span class="pre">True</span></code> 항목을 갖는 부울 마스크를 생성한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
@@ -3774,6 +3993,346 @@ Freq: D, dtype: int64
   </tbody>
 </table>
 </div></div></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">pd.notna()</span></code> 함수는 결측치가 아닌 곳만 <code class="docutils literal notranslate"><span class="pre">True</span></code> 항목을 갖는 부울 마스크를 생성한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">df2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+      <th>E</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>데이터프레임의 <code class="docutils literal notranslate"><span class="pre">notna()</span></code> 메서드가 동일한 일을 수행한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+      <th>F</th>
+      <th>E</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2013-01-01</th>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2013-01-02</th>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>2013-01-03</th>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2013-01-04</th>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>참고</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">isnull()</span></code>과 <code class="docutils literal notranslate"><span class="pre">notnull()</span></code> 은 각각 <code class="docutils literal notranslate"><span class="pre">isna()</span></code>와 <code class="docutils literal notranslate"><span class="pre">notna()</span></code> 별칭이다.</p>
+<p><strong><code class="docutils literal notranslate"><span class="pre">any()</span></code>와 <code class="docutils literal notranslate"><span class="pre">all()</span></code></strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">any()</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">all()</span></code> 메서드를 활용하면 결측치 사용 여부를 단번에 알 수 있다.
+두 메서드는 기본적으로 열별로 적어도 하나가 또는 모두 참인지 여부를 확인한다. 결과는 시리즈다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    False
+B    False
+C    False
+D    False
+F     True
+E     True
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>축 키워드 인자를 <code class="docutils literal notranslate"><span class="pre">axis=0</span></code>로 지정한 것과 동일하다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    False
+B    False
+C    False
+D    False
+F     True
+E     True
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>행 별로 결측치 존재 여부를 확인하려면 축 키워드 인자를 <code class="docutils literal notranslate"><span class="pre">axis=1</span></code>로 지정한다.
+결과는 시리즈다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2013-01-01     True
+2013-01-02    False
+2013-01-03     True
+2013-01-04     True
+Freq: D, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>반면에 <code class="docutils literal notranslate"><span class="pre">all()</span></code> 메서드는 열별 또는 행별로 모두 참인지 확인한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    False
+B    False
+C    False
+D    False
+F    False
+E    False
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>축 키워드 인자를 <code class="docutils literal notranslate"><span class="pre">axis=0</span></code>으로 지정한 것과 동일하다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A    False
+B    False
+C    False
+D    False
+F    False
+E    False
+dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>행 별로 결측치 존재 여부를 확인하려면 축 키워드 인자를 <code class="docutils literal notranslate"><span class="pre">axis=1</span></code>로 지정한다.
+결과는 시리즈다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2013-01-01    False
+2013-01-02    False
+2013-01-03    False
+2013-01-04    False
+Freq: D, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>넘파이의 <code class="docutils literal notranslate"><span class="pre">np.any()</span></code>, <code class="docutils literal notranslate"><span class="pre">np.all()</span></code>는 전체 항목을 대상으로만 작동한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">isna</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">isna</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<p>데이터프레임의 <code class="docutils literal notranslate"><span class="pre">any()</span></code> 메서드와 <code class="docutils literal notranslate"><span class="pre">all()</span></code> 메서드를 이용하여 전체 항목을 확인하려면 해당 메서드를 두 번 적용해야 한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
 </div>
 <p><strong><code class="docutils literal notranslate"><span class="pre">dropna()</span></code> 메서드</strong></p>
 <p>결측치를 포함한 행 또는 열이 삭제된 데이터프레임을 반환한다.</p>
@@ -4427,8 +4986,9 @@ Freq: D, dtype: int64
 </div></div></div>
 </div>
 </section>
-<section id="id10">
-<h2><span class="section-number">18.5. </span>연습문제<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="id12">
+<h2><span class="section-number">18.5. </span>연습문제<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-pandas_2.ipynb">(실습) 데이터프레임 인덱싱</a></p>
 </section>
 </section>
@@ -4506,8 +5066,12 @@ Freq: D, dtype: int64
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">18.3. 데이터프레임 수정</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">18.4. 결측치 처리</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">18.5. 연습문제</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">18.4. 결측치 처리</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">18.4.1. 시리즈의 결측치</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">18.4.2. 데이터프레임의 결측치</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">18.5. 연습문제</a></li>
 </ul>
   </nav></div>
 
