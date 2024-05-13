@@ -837,7 +837,7 @@ dtype: float64
 </section>
 <section id="id4">
 <h3><span class="section-number">19.1.2. </span>연산과 결측치<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
-<p>공통 인덱스가 아니거나 결측치가 이미 존재하는 경우 기본적으로 결측치로 처리된다.
+<p>공통 인덱스가 아니거나 결측치가 이미 존재하는 경우 결측치로 처리된다.
 하지만 <code class="docutils literal notranslate"><span class="pre">fill_value</span></code> 키워드 인자를 이용하여 지정된 값으로 처리하게 만들 수도 있다.
 다만, 연산 기호 대신에 해당 연산의 메서드를 활용해야 한다.</p>
 <div class="cell docutils container">
@@ -911,7 +911,7 @@ dtype: float64
 </table>
 </div></div></div>
 </div>
-<p>기본적으로 사용되는 산술 연산 기호에 해당하는 메서드가 존재한다.
+<p>많이 사용되는 산술 연산 기호에 해당하는 메서드가 존재한다.
 아래는 가장 많이 사용되는 연산 메서드들이다.</p>
 <table class="table">
 <thead>
@@ -1125,7 +1125,7 @@ Name: Utah, dtype: float64
 </div>
 </div>
 </div>
-<p>브로드캐스팅은 기본족으로 행 단위로 이루어진다.
+<p>브로드캐스팅은 기본적으로 행 단위로 이루어진다.
 따라서 아래처럼 데이터프레임과 시리즈의 연산을 그냥 적용할 수 있다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1411,7 +1411,8 @@ Name: d, dtype: float64
 <p>유니버설 함수는 넘파이의 경우와 동일하게 작동한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;bde&#39;</span><span class="p">),</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> 
+                     <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;bde&#39;</span><span class="p">),</span>
                      <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Utah&#39;</span><span class="p">,</span> <span class="s1">&#39;Ohio&#39;</span><span class="p">,</span> <span class="s1">&#39;Texas&#39;</span><span class="p">,</span> <span class="s1">&#39;Oregon&#39;</span><span class="p">])</span>
 <span class="n">frame</span>
 </pre></div>
@@ -1554,7 +1555,7 @@ Name: b, dtype: float64
 한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;</span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">x</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">format</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1567,11 +1568,11 @@ Name: b, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Utah      -0.52
-Ohio       1.39
-Texas      0.77
-Oregon    -1.30
-Name: e, dtype: object
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Utah     -0.52
+Ohio      1.39
+Texas     0.77
+Oregon   -1.30
+Name: e, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -2309,63 +2310,6 @@ dtype: float64
       <th>1</th>
       <td>7</td>
       <td>1</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<p><strong>참고:</strong> <code class="docutils literal notranslate"><span class="pre">axis=1</span></code>을 이용하여 특정 행의 값을 기준으로 정렬할 수도 있다.
-하지만 데이터프레임은 서로 다른 특성을 열 단위로 담는 목적으로
-사용되기에 이런 정렬은 사용할 이유가 별로 없다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>a</th>
-      <th>b</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>7</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0</td>
-      <td>-3</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1</td>
-      <td>2</td>
     </tr>
   </tbody>
 </table>
