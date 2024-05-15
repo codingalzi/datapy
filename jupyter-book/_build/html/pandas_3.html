@@ -1578,6 +1578,10 @@ Name: e, dtype: float64
 </div>
 </div>
 <p>데이터프레임의 항목별로 적용이 가능하다.</p>
+<p><strong>주의사항</strong></p>
+<p>아래 코드를 실행할 때 오류가 발생하면 설치된 판다스가 2.1 이전 버전이라는 의미이며,
+<code class="docutils literal notranslate"><span class="pre">applymap()</span></code> 함수를 대신 사용해야 한다.
+판다스 2.1 버전부터 <code class="docutils literal notranslate"><span class="pre">applymap()</span></code> 대신에 <code class="docutils literal notranslate"><span class="pre">map()</span></code>이 활용된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="nb">format</span><span class="p">)</span>
