@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>8. 모듈 &#8212; 파이썬 데이터 분석</title>
   
@@ -28,36 +29,36 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_basic_8';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -190,26 +191,27 @@
 <li class="toctree-l1"><a class="reference internal" href="pandas_1.html">17. 판다스 데이터프레임</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_2.html">18. 데이터프레임 인덱싱</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_3.html">19. 데이터프레임 중심 프로그래밍</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_4.html">20. 판다스 활용: 통계</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_5.html">21. 데이터 결합</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_6.html">22. 데이터 그룹화</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_4.html">20. 판다스 활용: 기초 통계</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_5.html">21. 데이터 결합/합병</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_6.html">22. 다중 인덱스</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_7.html">23. 데이터 그룹화</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">데이터 시각화</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="visualization_1.html">23. matplotlib.pyplot 1부</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_2.html">24. matplotlib.pyplot 2부</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">25. 판다스 시각화 도구</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_4.html">26. Seaborn 시각화 라이브러리</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_1.html">24. matplotlib.pyplot 1부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_2.html">25. matplotlib.pyplot 2부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">26. 판다스 시각화 도구</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_4.html">27. Seaborn 시각화 라이브러리</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">시계열 데이터</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">27. 시계열 데이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">28. 시계열 데이터</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">실전 데이터 분석</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">28. 타이타닉 데이터 분석</a></li>
-<li class="toctree-l1"><a class="reference internal" href="casestudy_california_housing.html">29. 캘리포니아 주택 가격</a></li>
-<li class="toctree-l1"><a class="reference internal" href="casestudy_oecd_bli.html">30. OECD 국가의 삶의 만족도</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">29. 타이타닉 데이터 분석</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_california_housing.html">30. 캘리포니아 주택 가격</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_oecd_bli.html">31. OECD 국가의 삶의 만족도</a></li>
 </ul>
 
     </div>
@@ -453,7 +455,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="ch-modules">
-<span id="id1"></span><h1><span class="section-number">8. </span>모듈<a class="headerlink" href="#ch-modules" title="Link to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">8. </span>모듈<a class="headerlink" href="#ch-modules" title="Permalink to this heading">#</a></h1>
 <p><strong>모듈</strong><font size='2'>module</font>은 이미 선언된 함수, 변수, 클래스의 정의가
 포함된 소스코드 파일이며, 파일명의 확장자는 <code class="docutils literal notranslate"><span class="pre">.py</span></code>이다.
 아래 세 모듈의 이용하여 모듈에 포함된 함수, 변수 등을 활용하는 일반적인 방법을 소개한다.</p>
@@ -469,7 +471,7 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">모듈명</span> <span class="pre">as</span> <span class="pre">모듈별칭</span></code></p></li>
 </ul>
 <section id="import">
-<h2><span class="section-number">8.1. </span>모듈 활용법 1: <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">모듈명</span></code><a class="headerlink" href="#import" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.1. </span>모듈 활용법 1: <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">모듈명</span></code><a class="headerlink" href="#import" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">time</span></code> 모듈은 시간과 관련된 유용한 함수를 제공한다.
 여기서는 <code class="docutils literal notranslate"><span class="pre">sleep()</span></code>, <code class="docutils literal notranslate"><span class="pre">time()</span></code>, <code class="docutils literal notranslate"><span class="pre">ctime()</span></code> 함수의 간단한 사용법을 소개한다.</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">time.sleep()</span></code> 함수</strong></p>
@@ -562,7 +564,7 @@ document.write(`
 그리니치 표준시, 즉 영국 시간으로는 1970년 1월 1일 0시를 가리킨다.</p>
 </section>
 <section id="from-import">
-<h2><span class="section-number">8.2. </span>모듈 활용법 2: <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">모듈명</span> <span class="pre">import</span> <span class="pre">...</span></code><a class="headerlink" href="#from-import" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.2. </span>모듈 활용법 2: <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">모듈명</span> <span class="pre">import</span> <span class="pre">...</span></code><a class="headerlink" href="#from-import" title="Permalink to this heading">#</a></h2>
 <p>예를 들어 1부터 5까지의 정수 중에서 무작위로 하나의 정수를 계산하는
 함수가 필요할 때 <code class="docutils literal notranslate"><span class="pre">random</span></code> 모듈의 <code class="docutils literal notranslate"><span class="pre">randint()</span></code> 함수를 활용할 수 있다.
 이를 위해 먼저 <code class="docutils literal notranslate"><span class="pre">random</span></code> 모듈을 불러온다.</p>
@@ -730,7 +732,7 @@ document.write(`
 </div>
 </section>
 <section id="import-as">
-<h2><span class="section-number">8.3. </span>모듈 활용법 3: <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">모듈명</span> <span class="pre">as</span> <span class="pre">모듈별칭</span></code><a class="headerlink" href="#import-as" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.3. </span>모듈 활용법 3: <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">모듈명</span> <span class="pre">as</span> <span class="pre">모듈별칭</span></code><a class="headerlink" href="#import-as" title="Permalink to this heading">#</a></h2>
 <p>수학에서 많이 사용되는 <code class="docutils literal notranslate"><span class="pre">log</span></code>, <code class="docutils literal notranslate"><span class="pre">sin</span></code>, <code class="docutils literal notranslate"><span class="pre">cos</span></code> 등의 함수의 정의는 <code class="docutils literal notranslate"><span class="pre">math</span></code> 모듈에 포함되어 있다.
 예를 들어 아래 코드는 정수 2의 자연로그값을 계산한다.</p>
 <div class="cell docutils container">
@@ -850,11 +852,11 @@ document.write(`
 </div>
 </section>
 <section id="id2">
-<h2><span class="section-number">8.4. </span>필수 예제<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.4. </span>필수 예제<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/pybook/blob/master/examples/examples-modules.ipynb">(필수 예제) 모듈</a></p>
 </section>
 <section id="id3">
-<h2><span class="section-number">8.5. </span>연습문제<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">8.5. </span>연습문제<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/pybook/blob/master/practices/practice-modules.ipynb">(연습) 모듈</a></p>
 </section>
 </section>
