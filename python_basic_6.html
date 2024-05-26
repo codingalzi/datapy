@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>6. 함수 &#8212; 파이썬 데이터 분석</title>
   
@@ -29,36 +28,36 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_basic_6';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -191,27 +190,26 @@
 <li class="toctree-l1"><a class="reference internal" href="pandas_1.html">17. 판다스 데이터프레임</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_2.html">18. 데이터프레임 인덱싱</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_3.html">19. 데이터프레임 중심 프로그래밍</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_4.html">20. 판다스 활용: 기초 통계</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_5.html">21. 데이터 결합/합병</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_6.html">22. 다중 인덱스</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_7.html">23. 데이터 그룹화</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_4.html">20. 판다스 활용: 통계</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_5.html">21. 데이터 결합</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_6.html">22. 데이터 그룹화</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">데이터 시각화</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="visualization_1.html">24. matplotlib.pyplot 1부</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_2.html">25. matplotlib.pyplot 2부</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">26. 판다스 시각화 도구</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_4.html">27. Seaborn 시각화 라이브러리</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_1.html">23. matplotlib.pyplot 1부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_2.html">24. matplotlib.pyplot 2부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">25. 판다스 시각화 도구</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_4.html">26. Seaborn 시각화 라이브러리</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">시계열 데이터</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">28. 시계열 데이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">27. 시계열 데이터</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">실전 데이터 분석</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">29. 타이타닉 데이터 분석</a></li>
-<li class="toctree-l1"><a class="reference internal" href="casestudy_california_housing.html">30. 캘리포니아 주택 가격</a></li>
-<li class="toctree-l1"><a class="reference internal" href="casestudy_oecd_bli.html">31. OECD 국가의 삶의 만족도</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">28. 타이타닉 데이터 분석</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_california_housing.html">29. 캘리포니아 주택 가격</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_oecd_bli.html">30. OECD 국가의 삶의 만족도</a></li>
 </ul>
 
     </div>
@@ -444,7 +442,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.4. 제1종 객체와 함수</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.5. 고계 함수</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.6. 람다 함수</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">6.7. 연습문제</a></li>
 </ul>
             </nav>
         </div>
@@ -457,11 +454,11 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-python-basic-6">
-<span id="id1"></span><h1><span class="section-number">6. </span>함수<a class="headerlink" href="#sec-python-basic-6" title="Permalink to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">6. </span>함수<a class="headerlink" href="#sec-python-basic-6" title="Link to this heading">#</a></h1>
 <p>데이터 분석용 프로그램 작성에 가장 중요한 요소는 적절한 함수를 적재적소에 활용하는 일이다.
 파이썬 함수의 다양한 특성과 활용법을 잘 익혀 두어야 한다.</p>
 <section id="id2">
-<h2><span class="section-number">6.1. </span>함수 선언<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.1. </span>함수 선언<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>함수는 지정된 코드에 이름을 주어 필요할 때 간편하게 재사용할 수 있도록 도와주는 도구이다.
 파이썬에서 함수는 <code class="docutils literal notranslate"><span class="pre">def</span></code> 키워드, 함수 이름, 매개변수, 함수 본문을 아래 형식으로 사용하여 선언된다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">함수이름</span><span class="p">(</span><span class="n">위치매개변수</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">키워드매개변수</span><span class="p">,</span> <span class="o">...</span> <span class="p">):</span>
@@ -526,7 +523,7 @@ document.write(`
 </div>
 </section>
 <section id="id3">
-<h2><span class="section-number">6.2. </span>변수 이름 공간과 활동 영역<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.2. </span>변수 이름 공간과 활동 영역<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>함수 본문에서는 전역 변수와 지역 변수 모두 사용될 수 있다.</p>
 <ul class="simple">
 <li><p>전역 변수: 함수 밖에서 선언된 변수</p></li>
@@ -678,7 +675,7 @@ document.write(`
 </div>
 </section>
 <section id="id4">
-<h2><span class="section-number">6.3. </span>다중 값 반환<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.3. </span>다중 값 반환<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>함수는 실행 중에 <code class="docutils literal notranslate"><span class="pre">return</span></code> 키워드를 만나는 순간에 지정된 값을 반환하고 실행을 멈춘다.
 즉, 원칙적으로 하나의 값만 반환할 수 있다는 의미이다.
 그런데 튜플을 이용하여 여러 개의 값을 하나로 묶어서 하나의 값으로 반환할 수 있다.
@@ -724,7 +721,7 @@ document.write(`
 </div>
 </section>
 <section id="id5">
-<h2><span class="section-number">6.4. </span>제1종 객체와 함수<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.4. </span>제1종 객체와 함수<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <p>변수 선언, 리스트의 항목, 함수의 인자 또는 반환값으로 사용될 수 있는 객체(값)를
 <strong>제1종 객체</strong><font size='2'>first-class object</font>라 한다.
 정수, 부동소수점, 문자열, 리스트, 튜플, 사전 등이 대표적인 제1종 객체이다.</p>
@@ -1029,7 +1026,7 @@ document.write(`
 </div>
 </section>
 <section id="id6">
-<h2><span class="section-number">6.5. </span>고계 함수<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.5. </span>고계 함수<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <p>함수가 제1종 객체이기 때문에 함수를 다른 함수의 인자 또는 반환값으로 사용할 수 있다.</p>
 <p><strong>예제</strong></p>
 <p>아래 함수는 인자로 들어오는 함수를 정수 1과 함께 호출하여 반환된 값에 1을 더한 값을 반환한다.</p>
@@ -1114,7 +1111,7 @@ document.write(`
 <strong>고계 함수</strong><font size='2'>higher-order function</font>라 한다.</p>
 </section>
 <section id="id7">
-<h2><span class="section-number">6.6. </span>람다 함수<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.6. </span>람다 함수<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
 <p>람다 함수는 이름 없이 정의된 함수를 의미한다.
 k개의 인자를 받는 함수를 람다 함수로 정의하는 양식은 아래와 같다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">lambda</span> <span class="n">변수1</span><span class="p">,</span> <span class="n">변수2</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">변수k</span><span class="p">:</span> <span class="n">반환값</span>
@@ -1277,12 +1274,6 @@ k개의 인자를 받는 함수를 람다 함수로 정의하는 양식은 아�
 </div>
 </div>
 </section>
-<section id="id8">
-<h2><span class="section-number">6.7. </span>연습문제<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
-<ol class="arabic simple">
-<li><p><a class="reference external" href="https://colab.research.google.com/github/codingalzi/pybook/blob/master/practices/practice-functions.ipynb">(실습) 함수</a></p></li>
-</ol>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1355,7 +1346,6 @@ k개의 인자를 받는 함수를 람다 함수로 정의하는 양식은 아�
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">6.4. 제1종 객체와 함수</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">6.5. 고계 함수</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">6.6. 람다 함수</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">6.7. 연습문제</a></li>
 </ul>
   </nav></div>
 

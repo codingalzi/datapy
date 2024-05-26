@@ -1,15 +1,14 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>27. Seaborn 시각화 라이브러리 &#8212; 파이썬 데이터 분석</title>
+    <title>26. Seaborn 시각화 라이브러리 &#8212; 파이썬 데이터 분석</title>
   
   
   
@@ -29,43 +28,43 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'visualization_4';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="28. 시계열 데이터" href="pandas_timeseries.html" />
-    <link rel="prev" title="26. 판다스 시각화 도구" href="visualization_3.html" />
+    <link rel="next" title="27. 시계열 데이터" href="pandas_timeseries.html" />
+    <link rel="prev" title="25. 판다스 시각화 도구" href="visualization_3.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -193,27 +192,26 @@
 <li class="toctree-l1"><a class="reference internal" href="pandas_1.html">17. 판다스 데이터프레임</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_2.html">18. 데이터프레임 인덱싱</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_3.html">19. 데이터프레임 중심 프로그래밍</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_4.html">20. 판다스 활용: 기초 통계</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_5.html">21. 데이터 결합/합병</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_6.html">22. 다중 인덱스</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_7.html">23. 데이터 그룹화</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_4.html">20. 판다스 활용: 통계</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_5.html">21. 데이터 결합</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_6.html">22. 데이터 그룹화</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">데이터 시각화</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="visualization_1.html">24. matplotlib.pyplot 1부</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_2.html">25. matplotlib.pyplot 2부</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">26. 판다스 시각화 도구</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">27. Seaborn 시각화 라이브러리</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_1.html">23. matplotlib.pyplot 1부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_2.html">24. matplotlib.pyplot 2부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">25. 판다스 시각화 도구</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">26. Seaborn 시각화 라이브러리</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">시계열 데이터</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">28. 시계열 데이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">27. 시계열 데이터</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">실전 데이터 분석</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">29. 타이타닉 데이터 분석</a></li>
-<li class="toctree-l1"><a class="reference internal" href="casestudy_california_housing.html">30. 캘리포니아 주택 가격</a></li>
-<li class="toctree-l1"><a class="reference internal" href="casestudy_oecd_bli.html">31. OECD 국가의 삶의 만족도</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">28. 타이타닉 데이터 분석</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_california_housing.html">29. 캘리포니아 주택 가격</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_oecd_bli.html">30. OECD 국가의 삶의 만족도</a></li>
 </ul>
 
     </div>
@@ -440,18 +438,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">27.1. seaborn 라이브러리 불러오기</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">27.2. 막대 그래프</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">27.3. 그래프 스타일 설정</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">27.3.1. 그래프 기본 설정</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">27.3.2. 히스토그램과 밀도그래프</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">27.3.3. 색상 스타일 설정</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seabon">27.3.4. seabon 그래프 속성 초기화</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">27.3.5. 산점도</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#facet-grids">27.3.6. 패싯 그리드(Facet Grids)과 범주형 데이터</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">26.1. seaborn 라이브러리 불러오기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">26.2. 막대 그래프</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">26.3. 그래프 스타일 설정</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">26.3.1. 그래프 기본 설정</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">26.3.2. 히스토그램과 밀도그래프</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">26.3.3. 색상 스타일 설정</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seabon">26.3.4. seabon 그래프 속성 초기화</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">26.3.5. 산점도</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#facet-grids">26.3.6. 패싯 그리드(Facet Grids)과 범주형 데이터</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">27.4. 기타 시각화 도구</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">26.4. 기타 시각화 도구</a></li>
 </ul>
             </nav>
         </div>
@@ -464,7 +462,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="seaborn">
-<span id="sec-visualization-4"></span><h1><span class="section-number">27. </span>Seaborn 시각화 라이브러리<a class="headerlink" href="#seaborn" title="Permalink to this heading">#</a></h1>
+<span id="sec-visualization-4"></span><h1><span class="section-number">26. </span>Seaborn 시각화 라이브러리<a class="headerlink" href="#seaborn" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -507,7 +505,7 @@ document.write(`
 </div>
 </div>
 <section id="id1">
-<h2><span class="section-number">27.1. </span>seaborn 라이브러리 불러오기<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">26.1. </span>seaborn 라이브러리 불러오기<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>seaborn 라이브러리는 matplotlib을 바탕으로 멋진 통계 관련 그래프를 그리는 API(도구)를 제공한다.
 활용법 설명을 위해 서빙 팁(tip) 데이터를 계속 활용한다.</p>
 <div class="cell docutils container">
@@ -917,7 +915,7 @@ seabon 라이브러리도 제공한다.</p>
 </div>
 </section>
 <section id="id2">
-<h2><span class="section-number">27.2. </span>막대 그래프<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">26.2. </span>막대 그래프<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p><strong><code class="docutils literal notranslate"><span class="pre">seaborn.barplot()</span></code> 함수</strong></p>
 <p>요일별 서빙 팁의 비율의 평균값(mean)은 다음과 같다.
 막대 끝에 위치한 검정 직선 기본적으로 신뢰도 95%의 신뢰구간을 표시하는 오차 막대(error bar)이다.</p>
@@ -1042,7 +1040,7 @@ seabon 라이브러리도 제공한다.</p>
 </div>
 </section>
 <section id="id3">
-<h2><span class="section-number">27.3. </span>그래프 스타일 설정<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">26.3. </span>그래프 스타일 설정<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>자주 사용되는 Seaborn 그래프 스타일을 지정하는 함수는 다음 세 가지다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">sns.set_style()</span></code></p></li>
@@ -1051,7 +1049,7 @@ seabon 라이브러리도 제공한다.</p>
 </ul>
 <p>여기서는 <code class="docutils literal notranslate"><span class="pre">sns.set_style()</span></code>과 <code class="docutils literal notranslate"><span class="pre">sns.set_palette()</span></code>를 자세히 살펴 본다.</p>
 <section id="id4">
-<h3><span class="section-number">27.3.1. </span>그래프 기본 설정<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">26.3.1. </span>그래프 기본 설정<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">set_style()</span></code> 함수가 그래프의 기본 설정을 담당한다.</p>
 <ul class="simple">
 <li><p>참고: <a class="reference external" href="https://www.codecademy.com/article/seaborn-design-i">Seaborn Styling, Part 1: Figure Style and Scale</a></p></li>
@@ -1079,7 +1077,7 @@ seabon 라이브러리도 제공한다.</p>
 </div>
 </section>
 <section id="id5">
-<h3><span class="section-number">27.3.2. </span>히스토그램과 밀도그래프<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">26.3.2. </span>히스토그램과 밀도그래프<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>아래 pandas의 <code class="docutils literal notranslate"><span class="pre">plot()</span></code> 함수를 이용하여 히스토그램을 그리는 것을 보여준다.
 사용되는 데이트는 요일별 팁의 비율이며 최고 2.5% 정도에 다다른다.</p>
 <div class="cell docutils container">
@@ -1149,7 +1147,7 @@ seabon 라이브러리도 제공한다.</p>
 </div>
 </section>
 <section id="id6">
-<h3><span class="section-number">27.3.3. </span>색상 스타일 설정<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">26.3.3. </span>색상 스타일 설정<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">sns.set_palette()</span></code> 함수가 색상 스타일을 지정한다.</p>
 <ul class="simple">
 <li><p>참고: <a class="reference external" href="https://www.codecademy.com/article/seaborn-design-ii">Seaborn Styling, Part 2: Color</a></p></li>
@@ -1203,7 +1201,7 @@ seabon 라이브러리도 제공한다.</p>
 </div>
 </section>
 <section id="seabon">
-<h3><span class="section-number">27.3.4. </span>seabon 그래프 속성 초기화<a class="headerlink" href="#seabon" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">26.3.4. </span>seabon 그래프 속성 초기화<a class="headerlink" href="#seabon" title="Link to this heading">#</a></h3>
 <p>아래 명령문은 seaborn 그래프 속성을 초기화한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1328,7 +1326,7 @@ Length: 400, dtype: float64
 </div>
 </section>
 <section id="id7">
-<h3><span class="section-number">27.3.5. </span>산점도<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">26.3.5. </span>산점도<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>산점도는 두 변수간의 관계를 좌표상의 점으로 표시하여 나타내는 그래프다.
 산점도의 활용을 살펴보기 위해 1959년부터 2009년까지 미국의 거시경제지표를 담고 있는 데이터를 사용하며,
 <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> 모듈에서 불러온다.</p>
@@ -2016,7 +2014,7 @@ Length: 400, dtype: float64
 </div>
 </section>
 <section id="facet-grids">
-<h3><span class="section-number">27.3.6. </span>패싯 그리드(Facet Grids)과 범주형 데이터<a class="headerlink" href="#facet-grids" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">26.3.6. </span>패싯 그리드(Facet Grids)과 범주형 데이터<a class="headerlink" href="#facet-grids" title="Link to this heading">#</a></h3>
 <p>패싯그리드 클래스(<code class="docutils literal notranslate"><span class="pre">seaborn.FacetGrid</span></code>)는 여러 개의 <code class="docutils literal notranslate"><span class="pre">pyplot.subplots()</span></code> 함수와 비슷하게 작동한다.
 다만, 지정된 옵션에 따라 격자 분할을 적절하게 지정한다.</p>
 <p>아래 코드는 요일별 팁 비율을 막대그래프로 보여준다. 단, 1% 미만의 팁 비율만 다룬다.
@@ -2099,7 +2097,7 @@ Length: 400, dtype: float64
 </section>
 </section>
 <section id="id8">
-<h2><span class="section-number">27.4. </span>기타 시각화 도구<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">26.4. </span>기타 시각화 도구<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 <p>matplotlib과 seaborn 등은 출판용도의 정적 그래프를 생성한다.
 반면에 웹에서 동적 대화형으로 작동하는 그래프를 파이썬으로 그리려면
 <a class="reference external" href="https://altair-viz.github.io/">Altair</a>,
@@ -2146,7 +2144,7 @@ Length: 400, dtype: float64
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">26. </span>판다스 시각화 도구</p>
+        <p class="prev-next-title"><span class="section-number">25. </span>판다스 시각화 도구</p>
       </div>
     </a>
     <a class="right-next"
@@ -2154,7 +2152,7 @@ Length: 400, dtype: float64
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">28. </span>시계열 데이터</p>
+        <p class="prev-next-title"><span class="section-number">27. </span>시계열 데이터</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2174,18 +2172,18 @@ Length: 400, dtype: float64
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">27.1. seaborn 라이브러리 불러오기</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">27.2. 막대 그래프</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">27.3. 그래프 스타일 설정</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">27.3.1. 그래프 기본 설정</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">27.3.2. 히스토그램과 밀도그래프</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">27.3.3. 색상 스타일 설정</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seabon">27.3.4. seabon 그래프 속성 초기화</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">27.3.5. 산점도</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#facet-grids">27.3.6. 패싯 그리드(Facet Grids)과 범주형 데이터</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">26.1. seaborn 라이브러리 불러오기</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">26.2. 막대 그래프</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">26.3. 그래프 스타일 설정</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">26.3.1. 그래프 기본 설정</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">26.3.2. 히스토그램과 밀도그래프</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">26.3.3. 색상 스타일 설정</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seabon">26.3.4. seabon 그래프 속성 초기화</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">26.3.5. 산점도</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#facet-grids">26.3.6. 패싯 그리드(Facet Grids)과 범주형 데이터</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">27.4. 기타 시각화 도구</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">26.4. 기타 시각화 도구</a></li>
 </ul>
   </nav></div>
 
