@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>19. 데이터프레임 중심 프로그래밍 &#8212; 파이썬 데이터 분석</title>
   
@@ -28,40 +29,40 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pandas_3';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="20. 판다스 활용: 통계" href="pandas_4.html" />
+    <link rel="next" title="20. 판다스 활용: 기초 통계" href="pandas_4.html" />
     <link rel="prev" title="18. 데이터프레임 인덱싱" href="pandas_2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -190,26 +191,27 @@
 <li class="toctree-l1"><a class="reference internal" href="pandas_1.html">17. 판다스 데이터프레임</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_2.html">18. 데이터프레임 인덱싱</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">19. 데이터프레임 중심 프로그래밍</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_4.html">20. 판다스 활용: 통계</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_5.html">21. 데이터 결합</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_6.html">22. 데이터 그룹화</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_4.html">20. 판다스 활용: 기초 통계</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_5.html">21. 데이터 결합/합병</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_6.html">22. 다중 인덱스</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_7.html">23. 데이터 그룹화</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">데이터 시각화</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="visualization_1.html">23. matplotlib.pyplot 1부</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_2.html">24. matplotlib.pyplot 2부</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">25. 판다스 시각화 도구</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_4.html">26. Seaborn 시각화 라이브러리</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_1.html">24. matplotlib.pyplot 1부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_2.html">25. matplotlib.pyplot 2부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">26. 판다스 시각화 도구</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_4.html">27. Seaborn 시각화 라이브러리</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">시계열 데이터</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">27. 시계열 데이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">28. 시계열 데이터</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">실전 데이터 분석</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">28. 타이타닉 데이터 분석</a></li>
-<li class="toctree-l1"><a class="reference internal" href="casestudy_california_housing.html">29. 캘리포니아 주택 가격</a></li>
-<li class="toctree-l1"><a class="reference internal" href="casestudy_oecd_bli.html">30. OECD 국가의 삶의 만족도</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">29. 타이타닉 데이터 분석</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_california_housing.html">30. 캘리포니아 주택 가격</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_oecd_bli.html">31. OECD 국가의 삶의 만족도</a></li>
 </ul>
 
     </div>
@@ -458,7 +460,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-pandas-3">
-<span id="id1"></span><h1><span class="section-number">19. </span>데이터프레임 중심 프로그래밍<a class="headerlink" href="#sec-pandas-3" title="Link to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">19. </span>데이터프레임 중심 프로그래밍<a class="headerlink" href="#sec-pandas-3" title="Permalink to this heading">#</a></h1>
 <p><strong>주요 내용</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">Series</span></code>와 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> 객체를 다루는 다양한 도구를 살펴본다.</p>
 <ul class="simple">
@@ -511,9 +513,9 @@ document.write(`
 </div>
 </div>
 <section id="id2">
-<h2><span class="section-number">19.1. </span>연산<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.1. </span>연산<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <section id="id3">
-<h3><span class="section-number">19.1.1. </span>산술 연산<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.1.1. </span>산술 연산<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
 <p>시리즈/데이터프레임의 사칙 연산은 아래 원칙을 따르면서 항목별로 이뤄진다.</p>
 <ul class="simple">
 <li><p>연산에 사용된 모든 행과 열의 라벨 모두 포함</p></li>
@@ -835,7 +837,7 @@ dtype: float64
 </div>
 </section>
 <section id="id4">
-<h3><span class="section-number">19.1.2. </span>연산과 결측치<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.1.2. </span>연산과 결측치<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>공통 인덱스가 아니거나 결측치가 이미 존재하는 경우 결측치로 처리된다.
 하지만 <code class="docutils literal notranslate"><span class="pre">fill_value</span></code> 키워드 인자를 이용하여 지정된 값으로 처리하게 만들 수도 있다.
 다만, 연산 기호 대신에 해당 연산의 메서드를 활용해야 한다.</p>
@@ -941,7 +943,7 @@ dtype: float64
 </table>
 </section>
 <section id="id5">
-<h3><span class="section-number">19.1.3. </span>브로드캐스팅<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.1.3. </span>브로드캐스팅<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>넘파이에서 2차원 어레이와 1차원 어레이 사이에
 브로드캐스팅이 가능한 경우,
 즉, 차원을 맞출 수 있는 경우에 연산이 가능했다.</p>
@@ -1406,7 +1408,7 @@ Name: d, dtype: float64
 </div>
 </section>
 <section id="id6">
-<h3><span class="section-number">19.1.4. </span>유니버설 함수<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">19.1.4. </span>유니버설 함수<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p>유니버설 함수는 넘파이의 경우와 동일하게 작동한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1764,7 +1766,7 @@ dtype: float64
 </section>
 </section>
 <section id="id7">
-<h2><span class="section-number">19.2. </span>정렬<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.2. </span>정렬<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <p>행과 열의 인덱스 또는 항목을 대상으로 정렬할 수 있다.</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">sort_index()</span></code> 메서드</strong></p>
 <p>시리즈의 경우 인덱스를 기준으로 정렬한다.</p>
@@ -2320,7 +2322,7 @@ dtype: float64
 </div>
 </section>
 <section id="drop">
-<h2><span class="section-number">19.3. </span>행/열 삭제: <code class="docutils literal notranslate"><span class="pre">drop()</span></code> 메서드<a class="headerlink" href="#drop" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.3. </span>행/열 삭제: <code class="docutils literal notranslate"><span class="pre">drop()</span></code> 메서드<a class="headerlink" href="#drop" title="Permalink to this heading">#</a></h2>
 <p>특정 행 또는 열의 인덱스를 제외한 나머지로 이루어진 시리즈/데이터프레임을 생성할 때 사용한다.</p>
 <p><strong>시리즈의 행 삭제</strong></p>
 <p>시리즈의 경우 인덱스를 한 개 또는 여러 개 지정하면 나머지로 이루어진 시리즈를 얻는다.</p>
@@ -2722,7 +2724,7 @@ dtype: float64
 </div>
 </section>
 <section id="id8">
-<h2><span class="section-number">19.4. </span>연습문제<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">19.4. </span>연습문제<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-pandas_3.ipynb">(실습) 데이터프레임 중심 프로그래밍</a></p>
 </section>
 </section>
@@ -2771,7 +2773,7 @@ dtype: float64
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">20. </span>판다스 활용: 통계</p>
+        <p class="prev-next-title"><span class="section-number">20. </span>판다스 활용: 기초 통계</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
