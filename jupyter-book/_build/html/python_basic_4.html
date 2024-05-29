@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>4. 제어문 &#8212; 파이썬 데이터 분석</title>
   
@@ -28,36 +29,36 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'python_basic_4';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -190,26 +191,27 @@
 <li class="toctree-l1"><a class="reference internal" href="pandas_1.html">17. 판다스 데이터프레임</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_2.html">18. 데이터프레임 인덱싱</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pandas_3.html">19. 데이터프레임 중심 프로그래밍</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_4.html">20. 판다스 활용: 통계</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_5.html">21. 데이터 결합</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pandas_6.html">22. 데이터 그룹화</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_4.html">20. 판다스 활용: 기초 통계</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_5.html">21. 데이터 결합/합병</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_6.html">22. 다중 인덱스</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_7.html">23. 데이터 그룹화</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">데이터 시각화</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="visualization_1.html">23. matplotlib.pyplot 1부</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_2.html">24. matplotlib.pyplot 2부</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">25. 판다스 시각화 도구</a></li>
-<li class="toctree-l1"><a class="reference internal" href="visualization_4.html">26. Seaborn 시각화 라이브러리</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_1.html">24. matplotlib.pyplot 1부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_2.html">25. matplotlib.pyplot 2부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">26. 판다스 시각화 도구</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_4.html">27. Seaborn 시각화 라이브러리</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">시계열 데이터</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">27. 시계열 데이터</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">28. 시계열 데이터</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">실전 데이터 분석</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">28. 타이타닉 데이터 분석</a></li>
-<li class="toctree-l1"><a class="reference internal" href="casestudy_california_housing.html">29. 캘리포니아 주택 가격</a></li>
-<li class="toctree-l1"><a class="reference internal" href="casestudy_oecd_bli.html">30. OECD 국가의 삶의 만족도</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">29. 타이타닉 데이터 분석</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_california_housing.html">30. 캘리포니아 주택 가격</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_oecd_bli.html">31. OECD 국가의 삶의 만족도</a></li>
 </ul>
 
     </div>
@@ -458,7 +460,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-python-basic-4">
-<span id="id1"></span><h1><span class="section-number">4. </span>제어문<a class="headerlink" href="#sec-python-basic-4" title="Link to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">4. </span>제어문<a class="headerlink" href="#sec-python-basic-4" title="Permalink to this heading">#</a></h1>
 <p>프로그램 실행의 흐름을 제어하는 명령문을 소개한다.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">if</span></code> 조건문</p></li>
@@ -466,7 +468,7 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">while</span></code> 반복문</p></li>
 </ul>
 <section id="if">
-<h2><span class="section-number">4.1. </span><code class="docutils literal notranslate"><span class="pre">if</span></code> 조건문<a class="headerlink" href="#if" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.1. </span><code class="docutils literal notranslate"><span class="pre">if</span></code> 조건문<a class="headerlink" href="#if" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">if</span></code> 다음에 위치한 조건식이 참이면 해당 본문 불록의 코드를 실행한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -558,7 +560,7 @@ document.write(`
 </pre></div>
 </div>
 <section id="pass">
-<h3><span class="section-number">4.1.1. </span><code class="docutils literal notranslate"><span class="pre">pass</span></code> 명령문<a class="headerlink" href="#pass" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.1.1. </span><code class="docutils literal notranslate"><span class="pre">pass</span></code> 명령문<a class="headerlink" href="#pass" title="Permalink to this heading">#</a></h3>
 <p>아무 것도 하지 않고 다음으로 넘어가도는 하는 명령문이다.
 주로 앞으로 채워야 할 부분을 명시할 때 또는
 무시해야 하는 경우를 다룰 때 사용한다.</p>
@@ -581,7 +583,7 @@ document.write(`
 </section>
 </section>
 <section id="for">
-<h2><span class="section-number">4.2. </span><code class="docutils literal notranslate"><span class="pre">for</span></code> 반복문<a class="headerlink" href="#for" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.2. </span><code class="docutils literal notranslate"><span class="pre">for</span></code> 반복문<a class="headerlink" href="#for" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">for</span></code> 반복문은 리스트, 튜플, 문자열과 같은 이터러블 자료형의 값에 포함된 항목을 순회하는 데에 사용된다.
 기본 사용 양식은 다음과 같다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">collection</span><span class="p">:</span>
@@ -589,7 +591,7 @@ document.write(`
 </pre></div>
 </div>
 <section id="continue">
-<h3><span class="section-number">4.2.1. </span><code class="docutils literal notranslate"><span class="pre">continue</span></code> 명령문<a class="headerlink" href="#continue" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.2.1. </span><code class="docutils literal notranslate"><span class="pre">continue</span></code> 명령문<a class="headerlink" href="#continue" title="Permalink to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">for</span></code> 또는 아래에서 소개할 <code class="docutils literal notranslate"><span class="pre">while</span></code> 반복문이 실행되는 도중에
 <code class="docutils literal notranslate"><span class="pre">continue</span></code> 명령문을 만나는 순간 현재 실행되는 코드의 실행을 멈추고
 다음 순번 항목을 대상으로 반복문을 이어간다.</p>
@@ -616,7 +618,7 @@ document.write(`
 </div>
 </section>
 <section id="break">
-<h3><span class="section-number">4.2.2. </span><code class="docutils literal notranslate"><span class="pre">break</span></code> 명령문<a class="headerlink" href="#break" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">4.2.2. </span><code class="docutils literal notranslate"><span class="pre">break</span></code> 명령문<a class="headerlink" href="#break" title="Permalink to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">for</span></code> 또는 아래에서 소개할 <code class="docutils literal notranslate"><span class="pre">while</span></code> 반복문이 실행되는 도중에
 <code class="docutils literal notranslate"><span class="pre">break</span></code> 명령문을 만나는 순간 현재 실행되는 반복문 자체의 실행을 멈추고,
 다음 명령을 실행한다.</p>
@@ -700,7 +702,7 @@ document.write(`
 </section>
 </section>
 <section id="while">
-<h2><span class="section-number">4.3. </span><code class="docutils literal notranslate"><span class="pre">while</span></code> 반복문<a class="headerlink" href="#while" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">4.3. </span><code class="docutils literal notranslate"><span class="pre">while</span></code> 반복문<a class="headerlink" href="#while" title="Permalink to this heading">#</a></h2>
 <p>지정된 조건이 만족되는 동안, 또는 실행 중에 <code class="docutils literal notranslate"><span class="pre">break</span></code> 명령문을 만날 때까
 동일한 코드를 반복실행 시킬 때 <code class="docutils literal notranslate"><span class="pre">while</span></code> 반복문을 사용한다.</p>
 <p>아래 코드는 256부터 시작해서 계속 반으로 나눈 값을 더하는 코드이며,
