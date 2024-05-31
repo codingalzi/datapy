@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>12. 넘파이 어레이 &#8212; 파이썬 데이터 분석</title>
   
@@ -29,36 +28,36 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'numpy_1';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -466,7 +465,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-numpy-1">
-<span id="id1"></span><h1><span class="section-number">12. </span>넘파이 어레이<a class="headerlink" href="#sec-numpy-1" title="Permalink to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">12. </span>넘파이 어레이<a class="headerlink" href="#sec-numpy-1" title="Link to this heading">#</a></h1>
 <p>넘파이 라이브러리가 제공하는 다차원 어레이 자료형을 소개한다.</p>
 <p><strong>주요 내용</strong></p>
 <ul class="simple">
@@ -491,7 +490,7 @@ document.write(`
 </div>
 </div>
 <section id="id2">
-<h2><span class="section-number">12.1. </span>넘파이란?<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">12.1. </span>넘파이란?<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p><strong>넘파이</strong><font size='2'>numpy</font>는 NUMerical PYthon의 줄임말이며,
 파이썬 데이터 과학에서 가장 중요한 도구를 제공하는 라이브러리이다.
 넘파이가 제공하는 가장 중요한 요소는 아래 두 가지이다.</p>
@@ -571,12 +570,12 @@ document.write(`
 <p>이제부터 넘파이에 대해 필수적으로 알아 두어야만 하는 내용들을 정리하며 살펴본다.</p>
 </section>
 <section id="id3">
-<h2><span class="section-number">12.2. </span>다차원 어레이<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">12.2. </span>다차원 어레이<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p>넘파이 어레이는 리스트와는 달리 포함된 모양, 항목의 자료형 등에 대한 자료형 정보도 포함한다.
 모양에 따라 차원이 결정되며, 모든 항목은 동일한 자료형을 갖는다.
 가장 많이 활용되는 어레이의 차원은 다음과 같다.</p>
 <section id="id4">
-<h3><span class="section-number">12.2.1. </span>1차원 어레이<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">12.2.1. </span>1차원 어레이<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>리스트와 유사한 모양을 가지며, 리스트와 튜플 등에 <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> 함수를 적용하여 생성할 수 있다.
 1차원 어레이는 <strong>벡터</strong><font size='2'>vector</font>로도 불리며,
 한 개의 <strong>축</strong><font size='2'>axis</font>을 갖는다.</p>
@@ -643,7 +642,7 @@ document.write(`
 </div>
 </section>
 <section id="id5">
-<h3><span class="section-number">12.2.2. </span>2차원 어레이<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">12.2.2. </span>2차원 어레이<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <p>동일한 길이의 리스트를 항목으로 갖는 중첩 리스트를
 2차원 어레이로 변환할 수 있다.
 따라서 2차원 어레이는 어레이의 모든 항목은
@@ -724,7 +723,7 @@ document.write(`
 </div>
 </section>
 <section id="id6">
-<h3><span class="section-number">12.2.3. </span>3차원 어레이<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">12.2.3. </span>3차원 어레이<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>3차원 이상의 어레이는 처음에는 매우 생소하게 다가올 수 있다.
 하지만 이미지 데이터 분석에서 가장 기본으로 사용되는 차원이기에 3차원 어레이에 익숙해져야 한다.</p>
 <p><code class="docutils literal notranslate"><span class="pre">(n,</span> <span class="pre">m,</span> <span class="pre">p)</span></code> 모양의 3차원 어레이를 이해하는 두 가지 방법은 다음과 같다.</p>
@@ -739,7 +738,7 @@ document.write(`
 <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy-array.svg" style="width:30%;"></div>
 <p><div style="text-align: center">&lt;그림 출처: <a href="https://www.reallifeedublogging.com/2020/07/numpy-arrays-and-data-analysis.html">NumPy Arrays and Data Analysis</a>&gt;</div></p></section>
 <section id="id7">
-<h3><span class="section-number">12.2.4. </span>어레이 객체 생성 함수<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">12.2.4. </span>어레이 객체 생성 함수<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>배열을 쉽게 생성할 수 있는 함수는 다음과 같으며,
 각 함수의 기능은
 <a class="reference external" href="https://ipgp.github.io/scientific_python_cheat_sheet/?utm_content=buffer7d821&amp;amp;utm_medium=social&amp;amp;utm_source=twitter.com&amp;amp;utm_campaign=buffer#numpy-import-numpy-as-np">numpy cheat sheet</a>를
@@ -840,11 +839,11 @@ document.write(`
 </section>
 </section>
 <section id="dtype">
-<h2><span class="section-number">12.3. </span><code class="docutils literal notranslate"><span class="pre">dtype</span></code> 종류<a class="headerlink" href="#dtype" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">12.3. </span><code class="docutils literal notranslate"><span class="pre">dtype</span></code> 종류<a class="headerlink" href="#dtype" title="Link to this heading">#</a></h2>
 <p>넘파이 어레이의 <code class="docutils literal notranslate"><span class="pre">dtype</span></code> 속성은 어레이 항목의 자료형을 담고 있으며, 파이썬 표준 라이브러리에서 제공하는
 <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code> 등을 보다 세분화시킨 자료형을 제공한다.</p>
 <section id="id8">
-<h3><span class="section-number">12.3.1. </span>기본 <code class="docutils literal notranslate"><span class="pre">dtype</span></code><a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">12.3.1. </span>기본 <code class="docutils literal notranslate"><span class="pre">dtype</span></code><a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <p>여기서는 세분화된 자료형을 일일이 설명하기 보다는 예제를 이용하여 세분화된 자료형의 형식을
 살펴본다.
 자료형 세분화는 주로 자료형의 객체가 사용하는 메모리 용량을 제한하는 형식으로 이루어진다.
@@ -1007,7 +1006,7 @@ document.write(`
 </div>
 </section>
 <section id="astype">
-<h3><span class="section-number">12.3.2. </span>형변환: <code class="docutils literal notranslate"><span class="pre">astype()</span></code> 메서드<a class="headerlink" href="#astype" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">12.3.2. </span>형변환: <code class="docutils literal notranslate"><span class="pre">astype()</span></code> 메서드<a class="headerlink" href="#astype" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">astype()</span></code> 메서드를 이용하여 dtype을 변경할 수 있다.
 즉, 항목의 자료형을 강제로 변환시킨다.</p>
 <ul class="simple">
@@ -1155,7 +1154,7 @@ document.write(`
 </section>
 </section>
 <section id="id9">
-<h2><span class="section-number">12.4. </span>어레이 연산<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">12.4. </span>어레이 연산<a class="headerlink" href="#id9" title="Link to this heading">#</a></h2>
 <p>넘파이 어레이 연산은 기본적으로 항목별로 이루어진다.
 즉, 지정된 연산을 동일한 위치의 항목끼리 실행하여 새로운, 동일한 모양의 어레이를 생성한다.</p>
 <div class="cell docutils container">
@@ -1577,7 +1576,7 @@ document.write(`
 </div>
 </section>
 <section id="reshape">
-<h2><span class="section-number">12.5. </span>어레이 변형: <code class="docutils literal notranslate"><span class="pre">reshape()</span></code> 메서드<a class="headerlink" href="#reshape" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">12.5. </span>어레이 변형: <code class="docutils literal notranslate"><span class="pre">reshape()</span></code> 메서드<a class="headerlink" href="#reshape" title="Link to this heading">#</a></h2>
 <p>주어진 어레이의 항목을 그대로 유지하면서 모양만 변형시키는 방식과
 활용법을 소개한다.</p>
 <p><strong><code class="docutils literal notranslate"><span class="pre">reshape()</span></code> 메서드</strong></p>
@@ -1784,7 +1783,7 @@ document.write(`
 </div>
 </section>
 <section id="id10">
-<h2><span class="section-number">12.6. </span>연습문제<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">12.6. </span>연습문제<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-numpy_1.ipynb">(실습) 넘파이 어레이</a></p>
 </section>
 </section>
