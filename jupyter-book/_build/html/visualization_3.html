@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>26. 판다스 시각화 도구 &#8212; 파이썬 데이터 분석</title>
   
@@ -29,36 +28,36 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'visualization_3';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -461,7 +460,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-visualization-3">
-<span id="id1"></span><h1><span class="section-number">26. </span>판다스 시각화 도구<a class="headerlink" href="#sec-visualization-3" title="Permalink to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">26. </span>판다스 시각화 도구<a class="headerlink" href="#sec-visualization-3" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -520,9 +519,9 @@ document.write(`
 <li><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.html"><code class="docutils literal notranslate"><span class="pre">pandas.DataFrame.plot()</span></code></a></p></li>
 </ul>
 <section id="id2">
-<h2><span class="section-number">26.1. </span>시리즈 시각화<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">26.1. </span>시리즈 시각화<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <section id="id3">
-<h3><span class="section-number">26.1.1. </span>선 그래프<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">26.1.1. </span>선 그래프<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>시리즈는 하나의 선그래프를 그릴 수 있으며, 항목이 y축 좌표로, 인덱스가 x축 좌표로 사용된다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -577,7 +576,7 @@ dtype: float64
 </div>
 </section>
 <section id="id4">
-<h3><span class="section-number">26.1.2. </span>막대그래프<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">26.1.2. </span>막대그래프<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>수직 막대그래프: <code class="docutils literal notranslate"><span class="pre">pandas.Series.plot.bar()</span></code></p></li>
 <li><p>수평 막대그래프: <code class="docutils literal notranslate"><span class="pre">pandas.Series.plot.barh()</span></code></p></li>
@@ -661,9 +660,9 @@ dtype: float64
 </section>
 </section>
 <section id="id5">
-<h2><span class="section-number">26.2. </span>데이터프레임 시각화<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">26.2. </span>데이터프레임 시각화<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <section id="id6">
-<h3><span class="section-number">26.2.1. </span>데이터프레임과 선 그래프<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">26.2.1. </span>데이터프레임과 선 그래프<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>데이터프레임은 특성 수만큼의  선그래프를 그릴 수 있다.
 y축 좌표는 특성별 항목이며, x축 좌표는 기본적으로 인덱스가 사용된다.
 또한 특성 이름이 범례로 지정된다.</p>
@@ -915,7 +914,7 @@ y축 좌표는 특성별 항목이며, x축 좌표는 기본적으로 인덱스�
 </div>
 </section>
 <section id="id7">
-<h3><span class="section-number">26.2.2. </span>데이터프레임과 막대그래프<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">26.2.2. </span>데이터프레임과 막대그래프<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>수직 막대그래프: <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame.plot.bar()</span></code></p></li>
 <li><p>수평 막대그래프: <code class="docutils literal notranslate"><span class="pre">pandas.DataFrame.plot.barh()</span></code></p></li>
@@ -1723,7 +1722,7 @@ y축 좌표는 특성별 항목이며, x축 좌표는 기본적으로 인덱스�
 </section>
 </section>
 <section id="id8">
-<h2><span class="section-number">26.3. </span>주석 추가<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">26.3. </span>주석 추가<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 <p>이미지에 설명, 화살표 등 다양한 주석을 추가할 수 있다.</p>
 <p>설명을 위해 S&amp;P 500 (스탠다드 앤 푸어스, Standard and Poor’s 500)의 미국 500대 기업을 포함한
 주식시장지수 데이터로 그래프를 생성하고 2007-2008년 사이에 있었던
