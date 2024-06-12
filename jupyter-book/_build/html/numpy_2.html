@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>13. 어레이 인덱싱 &#8212; 파이썬 데이터 분석</title>
   
@@ -28,36 +29,36 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'numpy_2';</script>
@@ -471,7 +472,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-numpy-2">
-<span id="id1"></span><h1><span class="section-number">13. </span>어레이 인덱싱<a class="headerlink" href="#sec-numpy-2" title="Link to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">13. </span>어레이 인덱싱<a class="headerlink" href="#sec-numpy-2" title="Permalink to this heading">#</a></h1>
 <p>넘파이 어레이를 활용하는 핵심 기능인 인덱싱의 다양한 기능을 소개한다.</p>
 <p><strong>주요 내용</strong></p>
 <ul class="simple">
@@ -508,7 +509,7 @@ document.write(`
 </div>
 </div>
 <section id="id2">
-<h2><span class="section-number">13.1. </span>어레이의 축과 인덱스<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.1. </span>어레이의 축과 인덱스<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p><strong>축</strong></p>
 <p>n-차원 어레이는 n 개의 축<font axis='2'>axis</font>을 갖는다.
 아래 그림은 1차원, 2차원, 3차원 어레이의 축을 설명한다.</p>
@@ -520,11 +521,11 @@ document.write(`
 <div align="center" border="1px"><img src="https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/images/numpy-array_index.png" style="width:30%;"></div>
 <p><div style="text-align: center">&lt;그림 출처: <a href="https://wesmckinney.com/book/numpy-basics.html">Python for Data Analysis</a>&gt;</div></p></section>
 <section id="id3">
-<h2><span class="section-number">13.2. </span>인덱싱과 슬라이싱<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.2. </span>인덱싱과 슬라이싱<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>리스트의 인덱싱과 슬라이싱 개념과 유사하지만 보다 다양한 기능을 제공한다.
 데이터 분석에서 인덱싱과 슬라이싱의 역할이 매우 크다.</p>
 <section id="id4">
-<h3><span class="section-number">13.2.1. </span>1차원 어레이 인덱싱, 슬라이싱<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.2.1. </span>1차원 어레이 인덱싱, 슬라이싱<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <p>1차원 어레이이 대해서는 리스트의 경우와 거의 동일하다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -702,7 +703,7 @@ document.write(`
 </div>
 </section>
 <section id="id5">
-<h3><span class="section-number">13.2.2. </span>2차원 어레이 인덱싱, 슬라이싱<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.2.2. </span>2차원 어레이 인덱싱, 슬라이싱<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <p>2차원 이상의 다차원 어레이는 보다 다양한 인덱싱, 슬라이싱 기능을 제공한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1052,7 +1053,7 @@ document.write(`
 </div>
 </section>
 <section id="id6">
-<h3><span class="section-number">13.2.3. </span>3차원 어레이 인덱싱, 슬라이싱<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.2.3. </span>3차원 어레이 인덱싱, 슬라이싱<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">arr3d</span></code>는 (2, 2, 3) 모양의 3차원 어레이다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1531,11 +1532,11 @@ RGB 값이 변할 때의 색 변화는 <a class="reference external" href="https
 </section>
 </section>
 <section id="id7">
-<h2><span class="section-number">13.3. </span>부울 인덱싱<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.3. </span>부울 인덱싱<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
 <p>부울 인덱싱<font size='2'>boolean indexing</font>은
 지금까지 소개한 인덱싱/슬라이싱 기법이 처리하지 못하는 기능을 제공한다.</p>
 <section id="id8">
-<h3><span class="section-number">13.3.1. </span>1차원 부울 어레이 활용<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.3.1. </span>1차원 부울 어레이 활용<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <p>1차원 부울 어레이를 이용한 인덱싱을 설명하기 위해 아래 두 개의 어레이를 이용한다.</p>
 <ul class="simple">
 <li><p>길이가 7인 1차원 어레이: 중복된 사람 이름을 항목으로 담고 있는 벡터</p></li>
@@ -1651,7 +1652,7 @@ RGB 값이 변할 때의 색 변화는 <a class="reference external" href="https
 </div>
 </section>
 <section id="id9">
-<h3><span class="section-number">13.3.2. </span>마스크 활용<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.3.2. </span>마스크 활용<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <p><strong>부울 마스크</strong><font size='2'>boolean mask</font>는
 논리 연산자(<code class="docutils literal notranslate"><span class="pre">~</span></code>, <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">|</span></code>)를 적용하여 생성된 부울 어레이 표현식이다.
 마스크를 활용하면 보다 다양한 부울 인덱싱을 간단하게 적용할 수 있다.</p>
@@ -1790,7 +1791,7 @@ RGB 값이 변할 때의 색 변화는 <a class="reference external" href="https
 </div>
 </section>
 <section id="id10">
-<h3><span class="section-number">13.3.3. </span>부울 인덱싱과 뷰<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.3.3. </span>부울 인덱싱과 뷰<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
 <p>부울 인덱싱은 뷰를 이용하지 않고 항상 새로운 어레이를 생성한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1843,11 +1844,11 @@ RGB 값이 변할 때의 색 변화는 <a class="reference external" href="https
 </section>
 </section>
 <section id="id11">
-<h2><span class="section-number">13.4. </span>팬시 인덱싱<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.4. </span>팬시 인덱싱<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
 <p><strong>팬시 인덱싱</strong><font size='2'>fancy indexing</font>은 인덱스로 구성된 1차원 리스트와 튜플을 이용한다.
 팬시 인덱싱 또한 부울 인덱싱처럼 뷰를 이용하지 않고 객체를 항상 새로 생성한다.</p>
 <section id="id12">
-<h3><span class="section-number">13.4.1. </span>1차원 어레이 팬시 인덱싱<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.4.1. </span>1차원 어레이 팬시 인덱싱<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
 <p>먼저 6개의 항목을 갖는 1차원 어레이를 생성한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1897,7 +1898,7 @@ RGB 값이 변할 때의 색 변화는 <a class="reference external" href="https
 </div>
 </section>
 <section id="id13">
-<h3><span class="section-number">13.4.2. </span>2차원 어레이 팬시 인덱싱<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.4.2. </span>2차원 어레이 팬시 인덱싱<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
 <p>아래 코드는 0부터 31까지의 정수로 채워진 (8, 4) 모양의 2차원 어레이를 생성한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2001,7 +2002,7 @@ RGB 값이 변할 때의 색 변화는 <a class="reference external" href="https
 </div>
 </section>
 <section id="id14">
-<h3><span class="section-number">13.4.3. </span>축과 팬시 인덱싱<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">13.4.3. </span>축과 팬시 인덱싱<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
 <p>여러 개의 인덱스 리스트를 사용할 수도 있다.
 단, 모든 리스트의 길이가 동일해야 하며,
 각 리스트의 동일한 위치의 항목들로 구성된 튜플이 가리키는 값을 차례대로 추출한다.
@@ -2146,7 +2147,7 @@ RGB 값이 변할 때의 색 변화는 <a class="reference external" href="https
 </section>
 </section>
 <section id="id15">
-<h2><span class="section-number">13.5. </span>연습문제<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">13.5. </span>연습문제<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-numpy_2.ipynb">(실습) 어레이 인덱싱</a></p>
 </section>
 </section>
