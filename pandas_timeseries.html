@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="./" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>28. 시계열 데이터 &#8212; 파이썬 데이터 분석</title>
   
@@ -28,36 +29,36 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="_static/doctools.js?v=888ff710"></script>
-    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="_static/copybutton.js?v=f281be69"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'pandas_timeseries';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -490,7 +491,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="sec-timeseries">
-<span id="id1"></span><h1><span class="section-number">28. </span>시계열 데이터<a class="headerlink" href="#sec-timeseries" title="Link to this heading">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">28. </span>시계열 데이터<a class="headerlink" href="#sec-timeseries" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -527,7 +528,7 @@ document.write(`
 </div>
 </div>
 <section id="datetime">
-<h2><span class="section-number">28.1. </span><code class="docutils literal notranslate"><span class="pre">datetime</span></code> 자료형<a class="headerlink" href="#datetime" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">28.1. </span><code class="docutils literal notranslate"><span class="pre">datetime</span></code> 자료형<a class="headerlink" href="#datetime" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
@@ -636,7 +637,7 @@ document.write(`
 </div>
 </div>
 <section id="id2">
-<h3><span class="section-number">28.1.1. </span>문자열과 <code class="docutils literal notranslate"><span class="pre">Datetime</span></code><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">28.1.1. </span>문자열과 <code class="docutils literal notranslate"><span class="pre">Datetime</span></code><a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2011</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
@@ -748,7 +749,7 @@ document.write(`
 </section>
 </section>
 <section id="id3">
-<h2><span class="section-number">28.2. </span>시계열 데이터 기초<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">28.2. </span>시계열 데이터 기초<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dates</span> <span class="o">=</span> <span class="p">[</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2011</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2011</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
@@ -849,7 +850,7 @@ dtype: float64
 </div>
 </div>
 <section id="id4">
-<h3><span class="section-number">28.2.1. </span>인덱싱, 선택, 슬라이싱<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">28.2.1. </span>인덱싱, 선택, 슬라이싱<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stamp</span> <span class="o">=</span> <span class="n">ts</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
@@ -1224,7 +1225,7 @@ dtype: float64
 </div>
 </section>
 <section id="id5">
-<h3><span class="section-number">28.2.2. </span>중복 인덱스 라벨을 갖는 시계열 데이터<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">28.2.2. </span>중복 인덱스 라벨을 갖는 시계열 데이터<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DatetimeIndex</span><span class="p">([</span><span class="s2">&quot;2000-01-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2000-01-02&quot;</span><span class="p">,</span> <span class="s2">&quot;2000-01-02&quot;</span><span class="p">,</span>
@@ -1325,9 +1326,9 @@ dtype: int64
 </section>
 </section>
 <section id="id6">
-<h2><span class="section-number">28.3. </span>날짜 구간 인덱스, 빈도, 시프팅<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">28.3. </span>날짜 구간 인덱스, 빈도, 시프팅<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
 <section id="id7">
-<h3><span class="section-number">28.3.1. </span>날짜 구간 인덱스 생성<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">28.3.1. </span>날짜 구간 인덱스 생성<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2012-04-01&quot;</span><span class="p">,</span> <span class="s2">&quot;2012-06-01&quot;</span><span class="p">)</span>
@@ -1437,7 +1438,7 @@ dtype: int64
 </div>
 </section>
 <section id="id8">
-<h3><span class="section-number">28.3.2. </span>빈도와 빈도 단위<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">28.3.2. </span>빈도와 빈도 단위<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas.tseries.offsets</span> <span class="kn">import</span> <span class="n">Hour</span><span class="p">,</span> <span class="n">Minute</span>
@@ -1543,7 +1544,7 @@ dtype: int64
 </div>
 </section>
 <section id="id9">
-<h3><span class="section-number">28.3.3. </span>데이터 시프팅<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">28.3.3. </span>데이터 시프팅<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span>
@@ -1779,7 +1780,7 @@ Freq: M, dtype: float64
 </section>
 </section>
 <section id="id10">
-<h2><span class="section-number">28.4. </span>시간대<a class="headerlink" href="#id10" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">28.4. </span>시간대<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pytz</span>
@@ -1808,7 +1809,7 @@ Freq: M, dtype: float64
 </div>
 </div>
 <section id="id11">
-<h3><span class="section-number">28.4.1. </span>시간대 지정<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">28.4.1. </span>시간대 지정<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2012-03-09 09:30&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
@@ -1983,7 +1984,7 @@ dtype: float64
 </div>
 </section>
 <section id="id12">
-<h3><span class="section-number">28.4.2. </span>시간대와 타임 스탬프<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">28.4.2. </span>시간대와 타임 스탬프<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stamp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timestamp</span><span class="p">(</span><span class="s2">&quot;2011-03-12 04:00&quot;</span><span class="p">)</span>
@@ -2087,7 +2088,7 @@ dtype: float64
 </div>
 </section>
 <section id="id13">
-<h3><span class="section-number">28.4.3. </span>다른 시간대 다루기<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">28.4.3. </span>다른 시간대 다루기<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2012-03-07 09:30&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">)</span>
@@ -2134,7 +2135,7 @@ Freq: B, dtype: float64
 </section>
 </section>
 <section id="id14">
-<h2><span class="section-number">28.5. </span>기간 연산<a class="headerlink" href="#id14" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">28.5. </span>기간 연산<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Period</span><span class="p">(</span><span class="s2">&quot;2011&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;A-DEC&quot;</span><span class="p">)</span>
@@ -2230,7 +2231,7 @@ Freq: M, dtype: float64
 </div>
 </div>
 <section id="id15">
-<h3><span class="section-number">28.5.1. </span>기간 빈도 변환<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">28.5.1. </span>기간 빈도 변환<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Period</span><span class="p">(</span><span class="s2">&quot;2011&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;A-DEC&quot;</span><span class="p">)</span>
@@ -2383,7 +2384,7 @@ Freq: B, dtype: float64
 </div>
 </section>
 <section id="id16">
-<h3><span class="section-number">28.5.2. </span>분기 단위 기간<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">28.5.2. </span>분기 단위 기간<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Period</span><span class="p">(</span><span class="s2">&quot;2012Q4&quot;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;Q-JAN&quot;</span><span class="p">)</span>
@@ -2489,7 +2490,7 @@ dtype: int32
 </div>
 </section>
 <section id="id17">
-<h3><span class="section-number">28.5.3. </span>타임 스탬프와 기간<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">28.5.3. </span>타임 스탬프와 기간<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2000-01-01&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;M&quot;</span><span class="p">)</span>
@@ -2600,7 +2601,7 @@ Freq: D, dtype: float64
 </div>
 </section>
 <section id="id18">
-<h3><span class="section-number">28.5.4. </span>기간 인덱스<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">28.5.4. </span>기간 인덱스<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/examples/&quot;</span>
@@ -2833,7 +2834,7 @@ Freq: Q-DEC, Name: infl, Length: 203, dtype: float64
 </section>
 </section>
 <section id="id19">
-<h2><span class="section-number">28.6. </span>리샘플링<a class="headerlink" href="#id19" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">28.6. </span>리샘플링<a class="headerlink" href="#id19" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2000-01-01&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
@@ -2892,7 +2893,7 @@ Freq: M, dtype: float64
 </div>
 </div>
 <section id="id20">
-<h3><span class="section-number">28.6.1. </span>다운 샘플링<a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">28.6.1. </span>다운 샘플링<a class="headerlink" href="#id20" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="s2">&quot;2000-01-01&quot;</span><span class="p">,</span> <span class="n">periods</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
@@ -3052,7 +3053,7 @@ Freq: 5T, dtype: int32
 </div>
 </section>
 <section id="id21">
-<h3><span class="section-number">28.6.2. </span>업샘플링과 보간법<a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">28.6.2. </span>업샘플링과 보간법<a class="headerlink" href="#id21" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)),</span>
@@ -3436,7 +3437,7 @@ Freq: 5T, dtype: int32
 </div>
 </section>
 <section id="id22">
-<h3><span class="section-number">28.6.3. </span>기간 활용 리샘플링<a class="headerlink" href="#id22" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">28.6.3. </span>기간 활용 리샘플링<a class="headerlink" href="#id22" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="mi">24</span><span class="p">,</span> <span class="mi">4</span><span class="p">)),</span>
@@ -3821,7 +3822,7 @@ Freq: 5T, dtype: int32
 </div>
 </section>
 <section id="id23">
-<h3><span class="section-number">28.6.4. </span>시간 리샘플링 그룹화<a class="headerlink" href="#id23" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">28.6.4. </span>시간 리샘플링 그룹화<a class="headerlink" href="#id23" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">15</span>
@@ -4244,7 +4245,7 @@ Freq: 5T, dtype: int32
 </section>
 </section>
 <section id="id24">
-<h2><span class="section-number">28.7. </span>윈도우 함수 활용<a class="headerlink" href="#id24" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">28.7. </span>윈도우 함수 활용<a class="headerlink" href="#id24" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://raw.githubusercontent.com/codingalzi/datapy/master/jupyter-book/examples/&quot;</span>
@@ -4435,7 +4436,7 @@ Freq: 5T, dtype: int32
 </div></div></div>
 </div>
 <section id="id25">
-<h3><span class="section-number">28.7.1. </span>지수 가중치 함수<a class="headerlink" href="#id25" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">28.7.1. </span>지수 가중치 함수<a class="headerlink" href="#id25" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -4462,7 +4463,7 @@ Freq: 5T, dtype: int32
 </div>
 </section>
 <section id="id26">
-<h3><span class="section-number">28.7.2. </span>이진 이동 윈도우 함수<a class="headerlink" href="#id26" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">28.7.2. </span>이진 이동 윈도우 함수<a class="headerlink" href="#id26" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -4506,7 +4507,7 @@ Freq: 5T, dtype: int32
 </div>
 </section>
 <section id="id27">
-<h3><span class="section-number">28.7.3. </span>사용자 정의 윈도우 함수<a class="headerlink" href="#id27" title="Link to this heading">#</a></h3>
+<h3><span class="section-number">28.7.3. </span>사용자 정의 윈도우 함수<a class="headerlink" href="#id27" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
