@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>30. 캘리포니아 주택 가격 &#8212; 파이썬 데이터 분석</title>
   
@@ -15,50 +14,50 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'casestudy_california_housing';</script>
@@ -75,27 +74,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -117,8 +112,13 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -142,6 +142,8 @@
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="intro.html">
   
@@ -157,7 +159,7 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -229,7 +231,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -238,14 +240,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -270,14 +272,14 @@
       
       <li><a href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/jupyter-book/casestudy_california_housing.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="_static/images/logo_colab.png">
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -401,10 +403,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -412,14 +414,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -476,7 +478,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">30. </span>캘리포니아 주택 가격<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<h1><span class="section-number">30. </span>캘리포니아 주택 가격<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>넘파이와 판다스 기본 설정</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -498,10 +500,10 @@ document.write(`
 </div>
 </div>
 <section id="id2">
-<h2><span class="section-number">30.1. </span>캘리포니아 데이터셋<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">30.1. </span>캘리포니아 데이터셋<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>1990년대 초에 캘리포니아 주를 20640 개 구역으로 쪼갠 후 구역별로 통계 자료를 조사한 데이터셋이다.</p>
 <div align="center"><img src="https://raw.githubusercontent.com/codingalzi/handson-ml3/master/jupyter-book/imgs/ch02/LA-USA01.png" width="600"></div><p>구역별로 다음 10개 내용을 조사했다.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>특성</p></th>
 <th class="head text-left"><p>의미</p></th>
@@ -540,8 +542,9 @@ document.write(`
 </tr>
 </tbody>
 </table>
+</div>
 <section id="id3">
-<h3><span class="section-number">30.1.1. </span>캘리포니아 데이터셋 다운로드<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">30.1.1. </span>캘리포니아 데이터셋 다운로드<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>아래 주소에 tgz 압축 파일로 저장되어 있다.
 해당 파일을 다운로드해서 특정 폴더에 저장한 후에
 압축을 풀면 csv 파일이 생성되며, 이를 데이터프레임으로 불러온다.</p>
@@ -576,7 +579,7 @@ document.write(`
 </div>
 </section>
 <section id="id4">
-<h3><span class="section-number">30.1.2. </span>데이터셋 기본 정보 확인<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">30.1.2. </span>데이터셋 기본 정보 확인<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <p>총 20640개의 데이터 샘플이 포함되며, 10개의 특성(열)을 포함한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -826,7 +829,7 @@ memory usage: 1.6+ MB
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">'ocean_proximity'</span></code> 특성은 구역별로 5개의 범주로 구분된 해안 근접도를 나타낸다.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>해안근접도</p></th>
 <th class="head text-left"><p>의미</p></th>
@@ -850,6 +853,7 @@ memory usage: 1.6+ MB
 </tr>
 </tbody>
 </table>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">housing</span><span class="p">[</span><span class="s2">&quot;ocean_proximity&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
@@ -884,9 +888,9 @@ Name: ocean_proximity, dtype: int64
 </section>
 </section>
 <section id="id5">
-<h2><span class="section-number">30.2. </span>데이터 특성 살펴보기<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">30.2. </span>데이터 특성 살펴보기<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <section id="id6">
-<h3><span class="section-number">30.2.1. </span>위치 정보 시각화<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">30.2.1. </span>위치 정보 시각화<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p>경도와 위도 정보를 이용해서 구역의 분포를 살펴본다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -968,11 +972,11 @@ Name: ocean_proximity, dtype: int64
 </div>
 </section>
 <section id="id7">
-<h3><span class="section-number">30.2.2. </span>해안 근접도 시각화<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">30.2.2. </span>해안 근접도 시각화<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>해안 근접도에 따른 구역의 위치를 지도에 확인한다.
 이를 위해 해안 근접도 특성을 정수화 한다.
 이유는 데이터프레임의 항목별로 색깔을 지정하려면 숫자로 값을 변환해야 하기 때문이다.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p>해안 근접도</p></th>
 <th class="head text-center"><p>숫자</p></th>
@@ -996,6 +1000,7 @@ Name: ocean_proximity, dtype: int64
 </tr>
 </tbody>
 </table>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">pd.factorize()</span></code> 함수는 범주형 데이터를 수치형 데이터로 변환한다.
 반환값은 변환된 숫자로 구성된 넘파이 어레이와 변환에 사용된 순서대로의 범주형 데이터로 구성된 인덱스로
 구성된 튜플이다.</p>
@@ -1050,7 +1055,7 @@ Name: ocean_proximity, dtype: int64
 </div>
 </section>
 <section id="id8">
-<h3><span class="section-number">30.2.3. </span>특성별 히스토그램<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">30.2.3. </span>특성별 히스토그램<a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">hist()</span></code> 메서드는 수치형 특성(라벨)에 대해 히스토그램을 그린다.
 여기서는 해안 근접도를 수치화한 특성을 포함해서 10개의 특성에 대한 히스토그램을 그린다.
 해안 근접도 히스토그램을 통해 1번, 즉 해안으로부터 1시간 이내에 위치한 구역이 가장 많음을 알 수 있다.</p>
@@ -1067,10 +1072,10 @@ Name: ocean_proximity, dtype: int64
 </div>
 </section>
 <section id="id9">
-<h3><span class="section-number">30.2.4. </span>중위소득 구간 나누기<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">30.2.4. </span>중위소득 구간 나누기<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">'median_income'</span></code> 특성의 히스토그램은 다음과 같다.</p>
 <p>중위소득을 구간의 크기를 1.5 정도로 총 5개 구간으로 쪼개 후 각 구간에 대해 1, 2, 3, 4, 5의 라벨을 사용한다.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p>구간</p></th>
 <th class="head text-center"><p>라벨</p></th>
@@ -1094,6 +1099,7 @@ Name: ocean_proximity, dtype: int64
 </tr>
 </tbody>
 </table>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mf">6.</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">]</span>
@@ -1159,7 +1165,7 @@ Name: median_income, dtype: int64
 </div>
 </section>
 <section id="id10">
-<h3><span class="section-number">30.2.5. </span>특성별 상관관계<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">30.2.5. </span>특성별 상관관계<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <p>수치형 특성들 사이의 상관관계를 계산한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1380,9 +1386,9 @@ Name: median_house_value, dtype: float64
 </section>
 </section>
 <section id="id11">
-<h2><span class="section-number">30.3. </span>데이터 전처리<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">30.3. </span>데이터 전처리<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
 <section id="id12">
-<h3><span class="section-number">30.3.1. </span>이상치 처리<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">30.3.1. </span>이상치 처리<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
 <p>중위소득과 주택 중위가격 사이의 상관관계만 따로 확대해서 보면 다음과 같다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1477,7 +1483,7 @@ Name: median_house_value, dtype: float64
 </div>
 </section>
 <section id="id13">
-<h3><span class="section-number">30.3.2. </span>결측치 처리<a class="headerlink" href="#id13" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">30.3.2. </span>결측치 처리<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">total_bedrooms</span></code> 특성(라벨)에 결측치가 200개 있다.
 원래 207개 이지만 앞서 50만1달러 주택 중위가격 데이터를 삭제했기 때문에 200개로 줄었다.</p>
 <div class="cell docutils container">
@@ -1952,7 +1958,7 @@ dtype: int64
 </div>
 </section>
 <section id="id14">
-<h3><span class="section-number">30.3.3. </span>데이터 스케일링<a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">30.3.3. </span>데이터 스케일링<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
 <p>데이터 스케일링은 수치형 특성에 포함된 데이터의 크기(scale)를 조정하는 기법을 가리킨다.
 데이터분석 분야에서 가장 많이 활용되는 스케일링 기법은 다음 세가지다.</p>
 <ul class="simple">
@@ -1961,7 +1967,7 @@ dtype: int64
 <li><p>로그 변환</p></li>
 </ul>
 <section id="id15">
-<h4><span class="section-number">30.3.3.1. </span>표준화<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">30.3.3.1. </span>표준화<a class="headerlink" href="#id15" title="Link to this heading">#</a></h4>
 <p>표준화는 특성(열)별로 평균값은 0, 표준편차는 1이 되도록 값들을 변환시키는 기법이다.
 즉, 아래 식에서 처럼 원래의 값 <span class="math notranslate nohighlight">\(x\)</span>에서 해당 데이터셋의 평균값(<span class="math notranslate nohighlight">\(\mu\)</span>)을 뺀 다음에
 해당 데이터셋의 표준편차(<span class="math notranslate nohighlight">\(\sigma\)</span>)로 나눈다.</p>
@@ -2438,7 +2444,7 @@ dtype: float64
 </div>
 </section>
 <section id="id16">
-<h4><span class="section-number">30.3.3.2. </span>정규화<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">30.3.3.2. </span>정규화<a class="headerlink" href="#id16" title="Link to this heading">#</a></h4>
 <p>정규화는 특성별로 최소값은 0, 최대값은 1로 만들며 아래 공식을 이용한다.</p>
 <div class="math notranslate nohighlight">
 \[z = \frac{x-\min}{\max-\min}\]</div>
@@ -2739,7 +2745,7 @@ dtype: float64
 </div>
 </section>
 <section id="id17">
-<h4><span class="section-number">30.3.3.3. </span>로그 변환<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h4>
+<h4><span class="section-number">30.3.3.3. </span>로그 변환<a class="headerlink" href="#id17" title="Link to this heading">#</a></h4>
 <p>다음 다섯 개 특성의 히스토그램을 보면 데이터의 분포가 정규분포를 따르지 않는다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2925,7 +2931,7 @@ dtype: float64
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -3034,8 +3040,8 @@ By 코딩알지
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

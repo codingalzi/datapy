@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>24. matplotlib.pyplot 1부 &#8212; 파이썬 데이터 분석</title>
   
@@ -15,50 +14,50 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'visualization_1';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -73,27 +72,23 @@
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -115,8 +110,13 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -140,6 +140,8 @@
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="intro.html">
   
@@ -155,7 +157,7 @@
 
  <script>
  document.write(`
-   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass"></i>
     <span class="search-button__default-text">Search</span>
     <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
@@ -227,7 +229,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -236,14 +238,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -268,14 +270,14 @@
       
       <li><a href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/jupyter-book/visualization_1.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="_static/images/logo_colab.png">
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -399,10 +401,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -410,14 +412,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -458,7 +460,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="matplotlib-pyplot-1">
-<span id="sec-visualization-1"></span><h1><span class="section-number">24. </span>matplotlib.pyplot 1부<a class="headerlink" href="#matplotlib-pyplot-1" title="Permalink to this heading">#</a></h1>
+<span id="sec-visualization-1"></span><h1><span class="section-number">24. </span>matplotlib.pyplot 1부<a class="headerlink" href="#matplotlib-pyplot-1" title="Link to this heading">#</a></h1>
 <p><strong>기본 설정</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -478,7 +480,7 @@ document.write(`
 </div>
 </div>
 <section id="plot">
-<h2><span class="section-number">24.1. </span><code class="docutils literal notranslate"><span class="pre">plot()</span></code> 함수<a class="headerlink" href="#plot" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">24.1. </span><code class="docutils literal notranslate"><span class="pre">plot()</span></code> 함수<a class="headerlink" href="#plot" title="Link to this heading">#</a></h2>
 <p><strong>선분 그리기</strong></p>
 <p>2차원 평면의 두 점이 주어졌을 때 두 점을 잇는 선분을 그린다.
 두 점의 좌표는 x 축 기준으로 두 개의 값을,
@@ -576,7 +578,7 @@ y 축 기준으로 두 개의 값을 지정하면
 </div>
 </section>
 <section id="id1">
-<h2><span class="section-number">24.2. </span>마커<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">24.2. </span>마커<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>각 점을 강조하기 위해 모양을 지정하고 싶을 때 <code class="docutils literal notranslate"><span class="pre">marker</span></code> 옵션 인자를 사용한다.
 예를 들어, 작은 원으로 각 점을 표시하고 싶으면 <code class="docutils literal notranslate"><span class="pre">market='o'</span></code> 로 지정한다.</p>
 <div class="cell docutils container">
@@ -610,7 +612,7 @@ y 축 기준으로 두 개의 값을 지정하면
 <p><a class="reference external" href="https://matplotlib.org/stable/api/markers_api.html">다양한 종류의 마커<font size='2'>marker</font></a>가
 제공된다.
 그중 일부는 다음과 같다.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-center"><p>마커</p></th>
 <th class="head text-center"><p>기호</p></th>
@@ -640,6 +642,7 @@ y 축 기준으로 두 개의 값을 지정하면
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>선-마커 형식 문자열</strong></p>
 <p>점 모양, 선분 사용 여부 등을 한꺼번에 지정할 수 있다.
 예를 들어, 빨간 점을 잇는 선분을 사용하려면 셋째 인자로 선과 마커의 속성을 지정하는
@@ -682,7 +685,7 @@ y 축 기준으로 두 개의 값을 지정하면
 <p><strong>선분 모양</strong></p>
 <p>선 모양은 다음 중 하나를 선택한다.
 지정되지 않으면 선이 그려지지 않는다.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>선 기호</p></th>
 <th class="head text-left"><p>선 모양</p></th>
@@ -703,6 +706,7 @@ y 축 기준으로 두 개의 값을 지정하면
 </tr>
 </tbody>
 </table>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
@@ -733,7 +737,7 @@ y 축 기준으로 두 개의 값을 지정하면
 <p><strong>색 선택</strong></p>
 <p>색은 다음 중 하나를 선택한다.
 생략되면 파랑이 기본값으로 사용된다.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>색 기호</p></th>
 <th class="head text-left"><p>색</p></th>
@@ -766,6 +770,7 @@ y 축 기준으로 두 개의 값을 지정하면
 </tr>
 </tbody>
 </table>
+</div>
 <p><strong>마커 크기</strong></p>
 <p>마커의 크기는 <code class="docutils literal notranslate"><span class="pre">markersize</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">ms</span></code> 옵션 인자로 지정한다.</p>
 <div class="cell docutils container">
@@ -867,10 +872,10 @@ y 축 기준으로 두 개의 값을 지정하면
 </div>
 </section>
 <section id="id2">
-<h2><span class="section-number">24.3. </span>선분<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">24.3. </span>선분<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">linestyle</span></code> 또는 <code class="docutils literal notranslate"><span class="pre">ls</span></code> 옵션 인자로 선 모양을 지정할 수 있다.
 앞서 언급한 선 기호를 사용하거나 다음 문자열 중에 하나를 사용한다.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>선 기호</p></th>
 <th class="head text-left"><p>문자열</p></th>
@@ -891,6 +896,7 @@ y 축 기준으로 두 개의 값을 지정하면
 </tr>
 </tbody>
 </table>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ypoints</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
@@ -989,7 +995,7 @@ y 축 기준으로 두 개의 값을 지정하면
 </div>
 </section>
 <section id="id3">
-<h2><span class="section-number">24.4. </span>라벨과 제목<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">24.4. </span>라벨과 제목<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
 <p><strong>축 라벨</strong></p>
 <p><code class="docutils literal notranslate"><span class="pre">plt.xlabel()</span></code>, <code class="docutils literal notranslate"><span class="pre">plt.ylabel()</span></code> 함수를 이용하여
 x 축, y 축에 표시 라벨을 붙일 수 있다.</p>
@@ -1127,7 +1133,7 @@ x 축, y 축에 표시 라벨을 붙일 수 있다.</p>
 <p>범례는 적절한 곳에 자동으로 위치하지만,
 <code class="docutils literal notranslate"><span class="pre">loc</span></code> 옵션 인자 다음 중 하나를 선택하여 위치를 지정할 수도 있다.
 문자열 또는 코드를 사용한다.</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head text-left"><p>위치 문자열</p></th>
 <th class="head text-left"><p>위치 코드</p></th>
@@ -1169,6 +1175,7 @@ x 축, y 축에 표시 라벨을 붙일 수 있다.</p>
 </tr>
 </tbody>
 </table>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">])</span>
@@ -1201,7 +1208,7 @@ x 축, y 축에 표시 라벨을 붙일 수 있다.</p>
 </div>
 </section>
 <section id="id4">
-<h2><span class="section-number">24.5. </span>격자 무늬 배경<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">24.5. </span>격자 무늬 배경<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>격자 무늬를 그래프의 배경에 넣기 위해 <code class="docutils literal notranslate"><span class="pre">plt.grid()</span></code> 함수를 사용한다.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1274,7 +1281,7 @@ x 축, y 축에 표시 라벨을 붙일 수 있다.</p>
 </div>
 </section>
 <section id="id5">
-<h2><span class="section-number">24.6. </span>축의 범위와 척도<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">24.6. </span>축의 범위와 척도<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <p>x 축, y 축의 범위와 척도는 <code class="docutils literal notranslate"><span class="pre">plt.plot()</span></code> 함수가 데이터에 맞춰 자동으로 지정한다.
 하자민 경우에 따라 범위와 척도를 수동으로 지정해야할 때가 있다.</p>
 <p><strong>범위 지정</strong></p>
@@ -1345,7 +1352,7 @@ y 축의 최솟값, 최댓값
 </div>
 </section>
 <section id="id6">
-<h2><span class="section-number">24.7. </span>산점도<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">24.7. </span>산점도<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <p>산점도는 데이터의 분포를 표현할 때 사용된다.
 예를 들어, 아래 그래프는 파이썬 점수가 높으면 머신러닝 점수도 높아짐을
 산점도를 통해 보여준다.</p>
@@ -1573,7 +1580,7 @@ y 축의 최솟값, 최댓값
 </div>
 </section>
 <section id="id7">
-<h2><span class="section-number">24.8. </span>연습문제<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">24.8. </span>연습문제<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
 <p>참고: <a class="reference external" href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/practices/practice-data_visualization_pyplot1.ipynb">(실습) matplotlib.pyplot 1부</a></p>
 </section>
 </section>
@@ -1605,7 +1612,7 @@ y 축의 최솟값, 최댓값
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1698,8 +1705,8 @@ By 코딩알지
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,0 +1,3704 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>바이오차 활용 메타 데이터 &#8212; 파이썬 데이터 분석</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css?v=ca93fcec" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'meta_statistic';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">파이썬 데이터 분석</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">파이썬 기초</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="python_basic_1.html">1. 프로그램 개발 환경</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_2.html">2. 기초 문법</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_3.html">3. 기초 자료형</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_4.html">4. 제어문</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_5.html">5. 모음 자료형</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_6.html">6. 함수</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_7.html">7. 파일</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_8.html">8. 모듈</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_basic_9.html">9. 객체 지향 프로그래밍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="from_scratch_1.html">10. 선형대수 기초</a></li>
+<li class="toctree-l1"><a class="reference internal" href="from_scratch_2.html">11. 통계 기초</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">넘파이</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="numpy_1.html">12. 넘파이 어레이</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_2.html">13. 어레이 인덱싱</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_3.html">14. 어레이 중심 프로그래밍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_4.html">15. 어레이 변형</a></li>
+<li class="toctree-l1"><a class="reference internal" href="numpy_5.html">16. 실전 예제: 붓꽃 데이터 분석</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">판다스</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pandas_1.html">17. 판다스 데이터프레임</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_2.html">18. 데이터프레임 인덱싱</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_3.html">19. 데이터프레임 중심 프로그래밍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_4.html">20. 판다스 활용: 기초 통계</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_5.html">21. 데이터 결합/합병</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_6.html">22. 다중 인덱스</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pandas_7.html">23. 데이터 그룹화</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">데이터 시각화</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="visualization_1.html">24. matplotlib.pyplot 1부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_2.html">25. matplotlib.pyplot 2부</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_3.html">26. 판다스 시각화 도구</a></li>
+<li class="toctree-l1"><a class="reference internal" href="visualization_4.html">27. Seaborn 시각화 라이브러리</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">시계열 데이터</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="pandas_timeseries.html">28. 시계열 데이터</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">실전 데이터 분석</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="casestudy_titanic.html">29. 타이타닉 데이터 분석</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_california_housing.html">30. 캘리포니아 주택 가격</a></li>
+<li class="toctree-l1"><a class="reference internal" href="casestudy_oecd_bli.html">31. OECD 국가의 삶의 만족도</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/codingalzi/datapy/blob/master/jupyter-book/meta_statistic.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/codingalzi/datapy" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/codingalzi/datapy/issues/new?title=Issue%20on%20page%20%2Fmeta_statistic.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/meta_statistic.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>바이오차  활용 메타 데이터</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">최종 목표</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">세부 목표</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">주요 처리 기법</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">필요한 모듈 임포트</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">데이터 불러오기</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field">Field 데이터</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">데이터 특성 탐색</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">전처리</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">특성명 변경</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">결측치 처리</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">범주형 특성별 그룹화</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">수치형 특성 구간화</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">수치형 특성 구간별 평균값</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">수치형 특성 구간화</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">특성 조합</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>바이오차  활용 메타 데이터<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="id2">
+<h2>최종 목표<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>바이오차의 밭 토양 온실가스 배출 저감, 토양 탄소 증진, 토양 환경 개선 효과를 정량적으로 평가</p></li>
+<li><p>바이오차 활용 및 보급을 위한 사업화 근거 마련</p></li>
+</ul>
+</section>
+<section id="id3">
+<h2>세부 목표<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>밭에서 바이오차 활용시 아산화질소 배출 저감·탄소증진·토양환경 개선 효과 메타 분석</p></li>
+<li><p>밭에서 바이오차 효과 극대화를 위한 바이오차 및 영농 조건 제시</p></li>
+<li><p>밭에서 유래된 바이오차를 활용한 온실가스 저감 및 토양환경 개선 효과 실증</p></li>
+<li><p>밭에서 바이오차 활용 사업화 모델 실증 자료 제공</p></li>
+<li><p>밭에서 경축순환 바이오차 활용 사업화 모델 실증 자료 제공</p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>주요 처리 기법<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>범주형 특성 처리: <code class="docutils literal notranslate"><span class="pre">RR</span></code> 값에 따라 순차적으로 정수 인코딩 적용</p>
+<ul>
+<li><p><strong>정수 인코딩 후 계속해서 범주형으로 간주</strong></p></li>
+</ul>
+</li>
+<li><p>데이터 분포 확인: <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> 메서드 활용</p></li>
+</ul>
+</section>
+<section id="id5">
+<h2>필요한 모듈 임포트<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># numpy와 pandas</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 그래프 모듈</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 시간 데이터</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 사이킷런 모델</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span><span class="p">,</span> <span class="n">RandomizedSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span><span class="p">,</span> <span class="n">GradientBoostingRegressor</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 머신러닝 모델 저장</span>
+<span class="kn">import</span> <span class="nn">joblib</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 디렉토리 관리</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>matplotlib 한글 설정</strong></p>
+<p>pip을 이용하여 <code class="docutils literal notranslate"><span class="pre">koreanize_matplotlib</span></code>을 먼저 운영체제에 설치해야 한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install koreanize_matplotlib</span>
+<span class="c1"># import koreanize_matplotlib</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>pyplot 그래프 설정</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 그래프 설정</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">&#39;figure&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>  <span class="c1"># 그래프 크기 지정</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>데이터프레임 설정</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="c1"># 모든 특성이 잘리지 않도록 함.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id6">
+<h2>데이터 불러오기<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p><strong>데이터 저장소</strong></p>
+<p>현재 디렉토리 안의 <code class="docutils literal notranslate"><span class="pre">data</span></code> 디렉토리에 데이터 엑셀 파일이 있다고 가정하고 진행한다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;data&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>데이터 엑셀 파일 불러오기</strong></p>
+<p>Field+Pot 데이터만 살펴본다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_file</span> <span class="o">=</span> <span class="s2">&quot;meta_analysis_V6.xlsx&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meta</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">base_path</span> <span class="o">/</span> <span class="n">data_file</span><span class="p">,</span> 
+                     <span class="c1"># skiprows= [0, 1, 2, 3], </span>
+                     <span class="n">header</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> 
+                     <span class="n">sheet_name</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="field">
+<h3>Field 데이터<a class="headerlink" href="#field" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meta</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Unnamed: 0_level_0</th>
+      <th>Unnamed: 1_level_0</th>
+      <th>Unnamed: 2_level_0</th>
+      <th>Unnamed: 3_level_0</th>
+      <th colspan="7" halign="left">Condition</th>
+      <th colspan="33" halign="left">Biochar</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>First author</th>
+      <th>Publication year</th>
+      <th>number</th>
+      <th>Study region by continent</th>
+      <th>Experimental_method</th>
+      <th>Fertilizer Type</th>
+      <th>N_input kg N/ha</th>
+      <th>Soil Texture</th>
+      <th>pH</th>
+      <th>bulk density, g/cm3</th>
+      <th>Moisture, %</th>
+      <th>pH</th>
+      <th>C</th>
+      <th>C/N</th>
+      <th>Tem. Range</th>
+      <th>Feed Stock</th>
+      <th>Application_Rate, t/ha</th>
+      <th>X control</th>
+      <th>X treatment</th>
+      <th>(unit)</th>
+      <th>RR</th>
+      <th>N2O % Change</th>
+      <th>N2O % Change.1</th>
+      <th>N2O % Change.2</th>
+      <th>Reference</th>
+      <th>Reference.1</th>
+      <th>Reference.2</th>
+      <th>Reference.3</th>
+      <th>Reference.4</th>
+      <th>Reference.5</th>
+      <th>Reference.6</th>
+      <th>Explanation</th>
+      <th>Explanation.1</th>
+      <th>Explanation.2</th>
+      <th>Explanation.3</th>
+      <th>Explanation.4</th>
+      <th>Explanation.5</th>
+      <th>Explanation.6</th>
+      <th>Explanation.7</th>
+      <th>Explanation.8</th>
+      <th>Explanation.9</th>
+      <th>Explanation.10</th>
+      <th>Explanation.11</th>
+      <th>Explanation.12</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Yoo.G</td>
+      <td>2018</td>
+      <td>1.0</td>
+      <td>Asia</td>
+      <td>Field</td>
+      <td>Chemical Fertilizer</td>
+      <td>140.0</td>
+      <td>coarse</td>
+      <td>7.20</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.30</td>
+      <td>0.4702</td>
+      <td>67.17</td>
+      <td>300-400</td>
+      <td>Lignocellulosic waste</td>
+      <td>2.0</td>
+      <td>0.004100</td>
+      <td>0.007600</td>
+      <td>kg N ha−1</td>
+      <td>1.853659</td>
+      <td>0.853659</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://doi.org/10.1016/j.scitotenv.2018.01.098</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>. In Exp A and C, cumulative N2O emissions sig...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Asia</td>
+      <td>Field</td>
+      <td>Chemical Fertilizer</td>
+      <td>190.0</td>
+      <td>coarse</td>
+      <td>6.90</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.30</td>
+      <td>0.4702</td>
+      <td>67.17</td>
+      <td>300-400</td>
+      <td>Lignocellulosic waste</td>
+      <td>2.0</td>
+      <td>0.002800</td>
+      <td>0.003200</td>
+      <td>kg N ha−1</td>
+      <td>1.142857</td>
+      <td>0.142857</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://doi.org/10.1016/j.scitotenv.2018.01.098</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Asia</td>
+      <td>Field</td>
+      <td>Chemical Fertilizer</td>
+      <td>225.0</td>
+      <td>coarse</td>
+      <td>5.90</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.30</td>
+      <td>0.4702</td>
+      <td>67.17</td>
+      <td>300-400</td>
+      <td>Lignocellulosic waste</td>
+      <td>2.0</td>
+      <td>0.001100</td>
+      <td>0.001800</td>
+      <td>kg N ha−1</td>
+      <td>1.636364</td>
+      <td>0.636364</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://doi.org/10.1016/j.scitotenv.2018.01.098</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Asia</td>
+      <td>Field</td>
+      <td>Chemical Fertilizer</td>
+      <td>225.0</td>
+      <td>coarse</td>
+      <td>5.90</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.30</td>
+      <td>0.4702</td>
+      <td>67.17</td>
+      <td>300-400</td>
+      <td>Lignocellulosic waste</td>
+      <td>2.0</td>
+      <td>0.001100</td>
+      <td>0.000800</td>
+      <td>kg N ha−1</td>
+      <td>0.727273</td>
+      <td>-0.272727</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://doi.org/10.1016/j.scitotenv.2018.01.098</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Sun. Z</td>
+      <td>2017</td>
+      <td>2.0</td>
+      <td>Europe</td>
+      <td>Field</td>
+      <td>No Fertilizer</td>
+      <td>0.0</td>
+      <td>coarse</td>
+      <td>6.81</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>9.35</td>
+      <td>0.7800</td>
+      <td>108.30</td>
+      <td>&gt;800</td>
+      <td>Wood</td>
+      <td>10.0</td>
+      <td>0.000104</td>
+      <td>0.000163</td>
+      <td>kg N ha−1</td>
+      <td>1.561960</td>
+      <td>0.561960</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>http://dx.doi.org/10.1016/j.scitotenv.2016.10.230</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Biochar showed no effect on N2O emissions and ...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>398</th>
+      <td>Song.Y</td>
+      <td>2019</td>
+      <td>94.0</td>
+      <td>Asia</td>
+      <td>Field</td>
+      <td>Chemical Fertilizer</td>
+      <td>200.0</td>
+      <td>medium</td>
+      <td>4.48</td>
+      <td>1.14</td>
+      <td>NaN</td>
+      <td>9.37</td>
+      <td>0.6670</td>
+      <td>NaN</td>
+      <td>500-600</td>
+      <td>Herbaceous</td>
+      <td>5.0</td>
+      <td>2.440000</td>
+      <td>1.710000</td>
+      <td>kg N ha−1</td>
+      <td>0.700820</td>
+      <td>-0.299180</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://doi.org/10.1016/j.geoderma.2019.04.025</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>biochar decreased soil N2O emission mainly by...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>399</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Asia</td>
+      <td>Field</td>
+      <td>Chemical Fertilizer</td>
+      <td>200.0</td>
+      <td>medium</td>
+      <td>4.48</td>
+      <td>1.14</td>
+      <td>NaN</td>
+      <td>9.37</td>
+      <td>0.6670</td>
+      <td>NaN</td>
+      <td>500-600</td>
+      <td>Herbaceous</td>
+      <td>15.0</td>
+      <td>2.440000</td>
+      <td>1.650000</td>
+      <td>kg N ha−1</td>
+      <td>0.676230</td>
+      <td>-0.323770</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://doi.org/10.1016/j.geoderma.2019.04.025</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>In addition, different types of biochar, produ...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>400</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Asia</td>
+      <td>Field</td>
+      <td>Chemical Fertilizer</td>
+      <td>200.0</td>
+      <td>medium</td>
+      <td>4.48</td>
+      <td>1.14</td>
+      <td>NaN</td>
+      <td>9.37</td>
+      <td>0.6670</td>
+      <td>NaN</td>
+      <td>500-600</td>
+      <td>Herbaceous</td>
+      <td>5.0</td>
+      <td>2.560000</td>
+      <td>2.060000</td>
+      <td>kg N ha−1</td>
+      <td>0.804688</td>
+      <td>-0.195312</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://doi.org/10.1016/j.geoderma.2019.04.025</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>401</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Asia</td>
+      <td>Field</td>
+      <td>Chemical Fertilizer</td>
+      <td>200.0</td>
+      <td>medium</td>
+      <td>4.48</td>
+      <td>1.14</td>
+      <td>NaN</td>
+      <td>9.37</td>
+      <td>0.6670</td>
+      <td>NaN</td>
+      <td>500-600</td>
+      <td>Herbaceous</td>
+      <td>15.0</td>
+      <td>2.560000</td>
+      <td>1.820000</td>
+      <td>kg N ha−1</td>
+      <td>0.710938</td>
+      <td>-0.289062</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>https://doi.org/10.1016/j.geoderma.2019.04.025</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>402</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>7.290323</td>
+      <td>6.290323</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>403 rows × 44 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">meta</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 403 entries, 0 to 402
+Data columns (total 44 columns):
+ #   Column                                           Non-Null Count  Dtype  
+---  ------                                           --------------  -----  
+ 0   (Unnamed: 0_level_0, First author)               94 non-null     object 
+ 1   (Unnamed: 1_level_0, Publication year)           94 non-null     object 
+ 2   (Unnamed: 2_level_0, number)                     94 non-null     float64
+ 3   (Unnamed: 3_level_0, Study region by continent)  402 non-null    object 
+ 4   (Condition, Experimental_method )                402 non-null    object 
+ 5   (Condition, Fertilizer Type)                     402 non-null    object 
+ 6   (Condition, N_input kg N/ha)                     396 non-null    float64
+ 7   (Condition, Soil Texture)                        325 non-null    object 
+ 8   (Condition, pH)                                  364 non-null    float64
+ 9   (Condition, bulk density, g/cm3)                 207 non-null    float64
+ 10  (Condition, Moisture, %)                         162 non-null    float64
+ 11  (Biochar, pH)                                    375 non-null    float64
+ 12  (Biochar, C)                                     371 non-null    float64
+ 13  (Biochar, C/N)                                   359 non-null    float64
+ 14  (Biochar, Tem. Range)                            363 non-null    object 
+ 15  (Biochar, Feed Stock)                            390 non-null    object 
+ 16  (Biochar, Application_Rate, t/ha)                402 non-null    float64
+ 17  (Biochar, X control)                             402 non-null    float64
+ 18  (Biochar, X treatment)                           402 non-null    float64
+ 19  (Biochar, (unit))                                402 non-null    object 
+ 20  (Biochar, RR)                                    403 non-null    float64
+ 21  (Biochar, N2O % Change)                          403 non-null    float64
+ 22  (Biochar, N2O % Change.1)                        0 non-null      float64
+ 23  (Biochar, N2O % Change.2)                        0 non-null      float64
+ 24  (Biochar, Reference)                             402 non-null    object 
+ 25  (Biochar, Reference.1)                           0 non-null      float64
+ 26  (Biochar, Reference.2)                           0 non-null      float64
+ 27  (Biochar, Reference.3)                           0 non-null      float64
+ 28  (Biochar, Reference.4)                           0 non-null      float64
+ 29  (Biochar, Reference.5)                           170 non-null    object 
+ 30  (Biochar, Reference.6)                           0 non-null      float64
+ 31  (Biochar, Explanation)                           1 non-null      object 
+ 32  (Biochar, Explanation.1)                         0 non-null      float64
+ 33  (Biochar, Explanation.2)                         0 non-null      float64
+ 34  (Biochar, Explanation.3)                         0 non-null      float64
+ 35  (Biochar, Explanation.4)                         0 non-null      float64
+ 36  (Biochar, Explanation.5)                         0 non-null      float64
+ 37  (Biochar, Explanation.6)                         0 non-null      float64
+ 38  (Biochar, Explanation.7)                         0 non-null      float64
+ 39  (Biochar, Explanation.8)                         0 non-null      float64
+ 40  (Biochar, Explanation.9)                         0 non-null      float64
+ 41  (Biochar, Explanation.10)                        0 non-null      float64
+ 42  (Biochar, Explanation.11)                        0 non-null      float64
+ 43  (Biochar, Explanation.12)                        1 non-null      object 
+dtypes: float64(31), object(13)
+memory usage: 138.7+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>필요한 특성만 사용함.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">field</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">22</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">field</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Unnamed: 3_level_0</th>
+      <th colspan="7" halign="left">Condition</th>
+      <th colspan="11" halign="left">Biochar</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Study region by continent</th>
+      <th>Experimental_method</th>
+      <th>Fertilizer Type</th>
+      <th>N_input kg N/ha</th>
+      <th>Soil Texture</th>
+      <th>pH</th>
+      <th>bulk density, g/cm3</th>
+      <th>Moisture, %</th>
+      <th>pH</th>
+      <th>C</th>
+      <th>C/N</th>
+      <th>Tem. Range</th>
+      <th>Feed Stock</th>
+      <th>Application_Rate, t/ha</th>
+      <th>X control</th>
+      <th>X treatment</th>
+      <th>(unit)</th>
+      <th>RR</th>
+      <th>N2O % Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Asia</td>
+      <td>Field</td>
+      <td>Chemical Fertilizer</td>
+      <td>140.0</td>
+      <td>coarse</td>
+      <td>7.20</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.30</td>
+      <td>0.4702</td>
+      <td>67.17</td>
+      <td>300-400</td>
+      <td>Lignocellulosic waste</td>
+      <td>2.0</td>
+      <td>0.004100</td>
+      <td>0.007600</td>
+      <td>kg N ha−1</td>
+      <td>1.853659</td>
+      <td>0.853659</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Asia</td>
+      <td>Field</td>
+      <td>Chemical Fertilizer</td>
+      <td>190.0</td>
+      <td>coarse</td>
+      <td>6.90</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.30</td>
+      <td>0.4702</td>
+      <td>67.17</td>
+      <td>300-400</td>
+      <td>Lignocellulosic waste</td>
+      <td>2.0</td>
+      <td>0.002800</td>
+      <td>0.003200</td>
+      <td>kg N ha−1</td>
+      <td>1.142857</td>
+      <td>0.142857</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Asia</td>
+      <td>Field</td>
+      <td>Chemical Fertilizer</td>
+      <td>225.0</td>
+      <td>coarse</td>
+      <td>5.90</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.30</td>
+      <td>0.4702</td>
+      <td>67.17</td>
+      <td>300-400</td>
+      <td>Lignocellulosic waste</td>
+      <td>2.0</td>
+      <td>0.001100</td>
+      <td>0.001800</td>
+      <td>kg N ha−1</td>
+      <td>1.636364</td>
+      <td>0.636364</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Asia</td>
+      <td>Field</td>
+      <td>Chemical Fertilizer</td>
+      <td>225.0</td>
+      <td>coarse</td>
+      <td>5.90</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.30</td>
+      <td>0.4702</td>
+      <td>67.17</td>
+      <td>300-400</td>
+      <td>Lignocellulosic waste</td>
+      <td>2.0</td>
+      <td>0.001100</td>
+      <td>0.000800</td>
+      <td>kg N ha−1</td>
+      <td>0.727273</td>
+      <td>-0.272727</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Europe</td>
+      <td>Field</td>
+      <td>No Fertilizer</td>
+      <td>0.0</td>
+      <td>coarse</td>
+      <td>6.81</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>9.35</td>
+      <td>0.7800</td>
+      <td>108.30</td>
+      <td>&gt;800</td>
+      <td>Wood</td>
+      <td>10.0</td>
+      <td>0.000104</td>
+      <td>0.000163</td>
+      <td>kg N ha−1</td>
+      <td>1.561960</td>
+      <td>0.561960</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>397</th>
+      <td>Asia</td>
+      <td>Pot</td>
+      <td>No Fertilizer</td>
+      <td>0.0</td>
+      <td>coarse</td>
+      <td>4.69</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.70</td>
+      <td>0.3305</td>
+      <td>39.80</td>
+      <td>400-500</td>
+      <td>Wood</td>
+      <td>0.8</td>
+      <td>0.000004</td>
+      <td>0.000004</td>
+      <td>kg N ha−1</td>
+      <td>0.906902</td>
+      <td>-0.093098</td>
+    </tr>
+    <tr>
+      <th>398</th>
+      <td>Asia</td>
+      <td>Field</td>
+      <td>Chemical Fertilizer</td>
+      <td>200.0</td>
+      <td>medium</td>
+      <td>4.48</td>
+      <td>1.14</td>
+      <td>NaN</td>
+      <td>9.37</td>
+      <td>0.6670</td>
+      <td>NaN</td>
+      <td>500-600</td>
+      <td>Herbaceous</td>
+      <td>5.0</td>
+      <td>2.440000</td>
+      <td>1.710000</td>
+      <td>kg N ha−1</td>
+      <td>0.700820</td>
+      <td>-0.299180</td>
+    </tr>
+    <tr>
+      <th>399</th>
+      <td>Asia</td>
+      <td>Field</td>
+      <td>Chemical Fertilizer</td>
+      <td>200.0</td>
+      <td>medium</td>
+      <td>4.48</td>
+      <td>1.14</td>
+      <td>NaN</td>
+      <td>9.37</td>
+      <td>0.6670</td>
+      <td>NaN</td>
+      <td>500-600</td>
+      <td>Herbaceous</td>
+      <td>15.0</td>
+      <td>2.440000</td>
+      <td>1.650000</td>
+      <td>kg N ha−1</td>
+      <td>0.676230</td>
+      <td>-0.323770</td>
+    </tr>
+    <tr>
+      <th>400</th>
+      <td>Asia</td>
+      <td>Field</td>
+      <td>Chemical Fertilizer</td>
+      <td>200.0</td>
+      <td>medium</td>
+      <td>4.48</td>
+      <td>1.14</td>
+      <td>NaN</td>
+      <td>9.37</td>
+      <td>0.6670</td>
+      <td>NaN</td>
+      <td>500-600</td>
+      <td>Herbaceous</td>
+      <td>5.0</td>
+      <td>2.560000</td>
+      <td>2.060000</td>
+      <td>kg N ha−1</td>
+      <td>0.804688</td>
+      <td>-0.195312</td>
+    </tr>
+    <tr>
+      <th>401</th>
+      <td>Asia</td>
+      <td>Field</td>
+      <td>Chemical Fertilizer</td>
+      <td>200.0</td>
+      <td>medium</td>
+      <td>4.48</td>
+      <td>1.14</td>
+      <td>NaN</td>
+      <td>9.37</td>
+      <td>0.6670</td>
+      <td>NaN</td>
+      <td>500-600</td>
+      <td>Herbaceous</td>
+      <td>15.0</td>
+      <td>2.560000</td>
+      <td>1.820000</td>
+      <td>kg N ha−1</td>
+      <td>0.710938</td>
+      <td>-0.289062</td>
+    </tr>
+  </tbody>
+</table>
+<p>402 rows × 19 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">field</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 402 entries, 0 to 401
+Data columns (total 19 columns):
+ #   Column                                           Non-Null Count  Dtype  
+---  ------                                           --------------  -----  
+ 0   (Unnamed: 3_level_0, Study region by continent)  402 non-null    object 
+ 1   (Condition, Experimental_method )                402 non-null    object 
+ 2   (Condition, Fertilizer Type)                     402 non-null    object 
+ 3   (Condition, N_input kg N/ha)                     396 non-null    float64
+ 4   (Condition, Soil Texture)                        325 non-null    object 
+ 5   (Condition, pH)                                  364 non-null    float64
+ 6   (Condition, bulk density, g/cm3)                 207 non-null    float64
+ 7   (Condition, Moisture, %)                         162 non-null    float64
+ 8   (Biochar, pH)                                    375 non-null    float64
+ 9   (Biochar, C)                                     371 non-null    float64
+ 10  (Biochar, C/N)                                   359 non-null    float64
+ 11  (Biochar, Tem. Range)                            363 non-null    object 
+ 12  (Biochar, Feed Stock)                            390 non-null    object 
+ 13  (Biochar, Application_Rate, t/ha)                402 non-null    float64
+ 14  (Biochar, X control)                             402 non-null    float64
+ 15  (Biochar, X treatment)                           402 non-null    float64
+ 16  (Biochar, (unit))                                402 non-null    object 
+ 17  (Biochar, RR)                                    402 non-null    float64
+ 18  (Biochar, N2O % Change)                          402 non-null    float64
+dtypes: float64(12), object(7)
+memory usage: 59.8+ KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>아래 세 특성 삭제</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">(Condition,</span> <span class="pre">Experimental</span> <span class="pre">method)</span></code>: pot 도 field로 간주.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">(Biochar,</span> <span class="pre">(unit))</span></code>: 단위 필요 없음</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">('Biochar',</span> <span class="pre">'X</span> <span class="pre">control')</span></code>, <code class="docutils literal notranslate"><span class="pre">('Biochar',</span> <span class="pre">'X</span> <span class="pre">treatment')</span></code>, <code class="docutils literal notranslate"><span class="pre">('Biochar',</span> <span class="pre">'N2O</span> <span class="pre">%</span> <span class="pre">Change')</span></code>: 삭제</p>
+<ul>
+<li><p>이유: <code class="docutils literal notranslate"><span class="pre">('Biochar',</span> <span class="pre">'RR')</span></code>를 타깃으로 지정</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">to_drop</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;Condition&#39;</span><span class="p">,</span> <span class="s1">&#39;Experimental_method &#39;</span><span class="p">),</span> 
+           <span class="p">(</span><span class="s1">&#39;Biochar&#39;</span><span class="p">,</span> <span class="s1">&#39;X control&#39;</span><span class="p">),</span> 
+           <span class="p">(</span><span class="s1">&#39;Biochar&#39;</span><span class="p">,</span> <span class="s1">&#39;X treatment&#39;</span><span class="p">),</span> 
+           <span class="p">(</span><span class="s1">&#39;Biochar&#39;</span><span class="p">,</span> <span class="s1">&#39;(unit)&#39;</span><span class="p">),</span> 
+           <span class="p">(</span><span class="s1">&#39;Biochar&#39;</span><span class="p">,</span> <span class="s1">&#39;N2O % Change&#39;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">field</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">to_drop</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">field</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Unnamed: 3_level_0</th>
+      <th colspan="6" halign="left">Condition</th>
+      <th colspan="7" halign="left">Biochar</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Study region by continent</th>
+      <th>Fertilizer Type</th>
+      <th>N_input kg N/ha</th>
+      <th>Soil Texture</th>
+      <th>pH</th>
+      <th>bulk density, g/cm3</th>
+      <th>Moisture, %</th>
+      <th>pH</th>
+      <th>C</th>
+      <th>C/N</th>
+      <th>Tem. Range</th>
+      <th>Feed Stock</th>
+      <th>Application_Rate, t/ha</th>
+      <th>RR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Asia</td>
+      <td>Chemical Fertilizer</td>
+      <td>140.0</td>
+      <td>coarse</td>
+      <td>7.20</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.30</td>
+      <td>0.4702</td>
+      <td>67.17</td>
+      <td>300-400</td>
+      <td>Lignocellulosic waste</td>
+      <td>2.0</td>
+      <td>1.853659</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Asia</td>
+      <td>Chemical Fertilizer</td>
+      <td>190.0</td>
+      <td>coarse</td>
+      <td>6.90</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.30</td>
+      <td>0.4702</td>
+      <td>67.17</td>
+      <td>300-400</td>
+      <td>Lignocellulosic waste</td>
+      <td>2.0</td>
+      <td>1.142857</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Asia</td>
+      <td>Chemical Fertilizer</td>
+      <td>225.0</td>
+      <td>coarse</td>
+      <td>5.90</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.30</td>
+      <td>0.4702</td>
+      <td>67.17</td>
+      <td>300-400</td>
+      <td>Lignocellulosic waste</td>
+      <td>2.0</td>
+      <td>1.636364</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Asia</td>
+      <td>Chemical Fertilizer</td>
+      <td>225.0</td>
+      <td>coarse</td>
+      <td>5.90</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.30</td>
+      <td>0.4702</td>
+      <td>67.17</td>
+      <td>300-400</td>
+      <td>Lignocellulosic waste</td>
+      <td>2.0</td>
+      <td>0.727273</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Europe</td>
+      <td>No Fertilizer</td>
+      <td>0.0</td>
+      <td>coarse</td>
+      <td>6.81</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>9.35</td>
+      <td>0.7800</td>
+      <td>108.30</td>
+      <td>&gt;800</td>
+      <td>Wood</td>
+      <td>10.0</td>
+      <td>1.561960</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>397</th>
+      <td>Asia</td>
+      <td>No Fertilizer</td>
+      <td>0.0</td>
+      <td>coarse</td>
+      <td>4.69</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.70</td>
+      <td>0.3305</td>
+      <td>39.80</td>
+      <td>400-500</td>
+      <td>Wood</td>
+      <td>0.8</td>
+      <td>0.906902</td>
+    </tr>
+    <tr>
+      <th>398</th>
+      <td>Asia</td>
+      <td>Chemical Fertilizer</td>
+      <td>200.0</td>
+      <td>medium</td>
+      <td>4.48</td>
+      <td>1.14</td>
+      <td>NaN</td>
+      <td>9.37</td>
+      <td>0.6670</td>
+      <td>NaN</td>
+      <td>500-600</td>
+      <td>Herbaceous</td>
+      <td>5.0</td>
+      <td>0.700820</td>
+    </tr>
+    <tr>
+      <th>399</th>
+      <td>Asia</td>
+      <td>Chemical Fertilizer</td>
+      <td>200.0</td>
+      <td>medium</td>
+      <td>4.48</td>
+      <td>1.14</td>
+      <td>NaN</td>
+      <td>9.37</td>
+      <td>0.6670</td>
+      <td>NaN</td>
+      <td>500-600</td>
+      <td>Herbaceous</td>
+      <td>15.0</td>
+      <td>0.676230</td>
+    </tr>
+    <tr>
+      <th>400</th>
+      <td>Asia</td>
+      <td>Chemical Fertilizer</td>
+      <td>200.0</td>
+      <td>medium</td>
+      <td>4.48</td>
+      <td>1.14</td>
+      <td>NaN</td>
+      <td>9.37</td>
+      <td>0.6670</td>
+      <td>NaN</td>
+      <td>500-600</td>
+      <td>Herbaceous</td>
+      <td>5.0</td>
+      <td>0.804688</td>
+    </tr>
+    <tr>
+      <th>401</th>
+      <td>Asia</td>
+      <td>Chemical Fertilizer</td>
+      <td>200.0</td>
+      <td>medium</td>
+      <td>4.48</td>
+      <td>1.14</td>
+      <td>NaN</td>
+      <td>9.37</td>
+      <td>0.6670</td>
+      <td>NaN</td>
+      <td>500-600</td>
+      <td>Herbaceous</td>
+      <td>15.0</td>
+      <td>0.710938</td>
+    </tr>
+  </tbody>
+</table>
+<p>402 rows × 14 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="id7">
+<h3>데이터 특성 탐색<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">field</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 402 entries, 0 to 401
+Data columns (total 14 columns):
+ #   Column                                           Non-Null Count  Dtype  
+---  ------                                           --------------  -----  
+ 0   (Unnamed: 3_level_0, Study region by continent)  402 non-null    object 
+ 1   (Condition, Fertilizer Type)                     402 non-null    object 
+ 2   (Condition, N_input kg N/ha)                     396 non-null    float64
+ 3   (Condition, Soil Texture)                        325 non-null    object 
+ 4   (Condition, pH)                                  364 non-null    float64
+ 5   (Condition, bulk density, g/cm3)                 207 non-null    float64
+ 6   (Condition, Moisture, %)                         162 non-null    float64
+ 7   (Biochar, pH)                                    375 non-null    float64
+ 8   (Biochar, C)                                     371 non-null    float64
+ 9   (Biochar, C/N)                                   359 non-null    float64
+ 10  (Biochar, Tem. Range)                            363 non-null    object 
+ 11  (Biochar, Feed Stock)                            390 non-null    object 
+ 12  (Biochar, Application_Rate, t/ha)                402 non-null    float64
+ 13  (Biochar, RR)                                    402 non-null    float64
+dtypes: float64(9), object(5)
+memory usage: 44.1+ KB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id8">
+<h2>전처리<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
+<section id="id9">
+<h3>특성명 변경<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>0 레벨 컬럼 삭제</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">field</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">droplevel</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>기존 특성명 (1 레벨)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">old_columns</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">old_columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Study region by continent&#39;,
+ &#39;Fertilizer Type&#39;,
+ &#39;N_input kg N/ha&#39;,
+ &#39;Soil Texture&#39;,
+ &#39;pH&#39;,
+ &#39;bulk density, g/cm3&#39;,
+ &#39;Moisture, %&#39;,
+ &#39;pH&#39;,
+ &#39;C&#39;,
+ &#39;C/N&#39;,
+ &#39;Tem. Range&#39;,
+ &#39;Feed Stock&#39;,
+ &#39;Application_Rate, t/ha&#39;,
+ &#39;RR&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>새로운 특성명</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Region&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Fertilizer&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;N_input&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Soil_Texture&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Cond_pH&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Bulk_density&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Moisture&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Bio_pH&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;C&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;C/N&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Temp&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Feedstock&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;Application_Rate&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;RR&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>특성명 변경</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">field</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">new_columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">field</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 402 entries, 0 to 401
+Data columns (total 14 columns):
+ #   Column            Non-Null Count  Dtype  
+---  ------            --------------  -----  
+ 0   Region            402 non-null    object 
+ 1   Fertilizer        402 non-null    object 
+ 2   N_input           396 non-null    float64
+ 3   Soil_Texture      325 non-null    object 
+ 4   Cond_pH           364 non-null    float64
+ 5   Bulk_density      207 non-null    float64
+ 6   Moisture          162 non-null    float64
+ 7   Bio_pH            375 non-null    float64
+ 8   C                 371 non-null    float64
+ 9   C/N               359 non-null    float64
+ 10  Temp              363 non-null    object 
+ 11  Feedstock         390 non-null    object 
+ 12  Application_Rate  402 non-null    float64
+ 13  RR                402 non-null    float64
+dtypes: float64(9), object(5)
+memory usage: 44.1+ KB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id10">
+<h3>결측치 처리<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<p>결측치 그대로 두고 진행함.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">core_field</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">core_field</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 402 entries, 0 to 401
+Data columns (total 14 columns):
+ #   Column            Non-Null Count  Dtype  
+---  ------            --------------  -----  
+ 0   Region            402 non-null    object 
+ 1   Fertilizer        402 non-null    object 
+ 2   N_input           396 non-null    float64
+ 3   Soil_Texture      325 non-null    object 
+ 4   Cond_pH           364 non-null    float64
+ 5   Bulk_density      207 non-null    float64
+ 6   Moisture          162 non-null    float64
+ 7   Bio_pH            375 non-null    float64
+ 8   C                 371 non-null    float64
+ 9   C/N               359 non-null    float64
+ 10  Temp              363 non-null    object 
+ 11  Feedstock         390 non-null    object 
+ 12  Application_Rate  402 non-null    float64
+ 13  RR                402 non-null    float64
+dtypes: float64(9), object(5)
+memory usage: 44.1+ KB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id11">
+<h2>범주형 특성별 그룹화<a class="headerlink" href="#id11" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat_features</span> <span class="o">=</span> <span class="n">core_field</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;object&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">cat_features</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Region&#39;, &#39;Fertilizer&#39;, &#39;Soil_Texture&#39;, &#39;Temp&#39;, &#39;Feedstock&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">base_features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;RR&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>범주형 입력 특성들의 조합 결과 확인</strong></p>
+<ul class="simple">
+<li><p>그룹별 평균값 계산 함수</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">groupby_mean</span><span class="p">(</span><span class="n">input_features</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">core_field</span><span class="p">,</span> <span class="n">base_features</span><span class="o">=</span><span class="n">base_features</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_features</span><span class="o">+</span><span class="n">by</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">input_features</span><span class="o">+</span><span class="n">base_features</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">input_features</span><span class="o">+</span><span class="n">by</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">input_features</span><span class="o">+</span><span class="n">base_features</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">input_features</span><span class="o">+</span><span class="n">by</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">future_stack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>그룹별 샘플수 계산 함수</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">groupby_count</span><span class="p">(</span><span class="n">input_features</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">core_field</span><span class="p">,</span> <span class="n">base_features</span><span class="o">=</span><span class="n">base_features</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_features</span><span class="o">+</span><span class="n">by</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">input_features</span><span class="o">+</span><span class="n">base_features</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">input_features</span><span class="o">+</span><span class="n">by</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">df</span><span class="p">[</span><span class="n">input_features</span><span class="o">+</span><span class="n">base_features</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">input_features</span><span class="o">+</span><span class="n">by</span><span class="p">,</span> <span class="n">observed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">fill_value</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">stack</span><span class="p">(</span><span class="n">future_stack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>그룹별 샘플수와 평균값 계산 함수</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">groupby_count_mean</span><span class="p">(</span><span class="n">input_features</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">core_field</span><span class="p">,</span> <span class="n">base_features</span><span class="o">=</span><span class="n">base_features</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="n">gCount</span> <span class="o">=</span> <span class="n">groupby_count</span><span class="p">(</span><span class="n">input_features</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">base_features</span><span class="p">,</span> <span class="n">by</span><span class="p">)</span>
+    <span class="n">gMean</span> <span class="o">=</span> <span class="n">groupby_mean</span><span class="p">(</span><span class="n">input_features</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">base_features</span><span class="p">,</span> <span class="n">by</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">gCount</span><span class="p">,</span> <span class="n">gMean</span><span class="p">,</span> <span class="n">left_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right_index</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="n">suffixes</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;_count&quot;</span><span class="p">,</span> <span class="s2">&quot;_mean&quot;</span><span class="p">),</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f_Region</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Asia&#39;</span><span class="p">,</span> <span class="s1">&#39;South America&#39;</span><span class="p">,</span> <span class="s1">&#39;Europe&#39;</span><span class="p">,</span> <span class="s1">&#39;North America&#39;</span><span class="p">,</span> <span class="s1">&#39;Australia&#39;</span><span class="p">]</span>
+<span class="n">f_Fertilizer</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Organic Fertilizer&#39;</span><span class="p">,</span> <span class="s1">&#39;No Fertilizer&#39;</span><span class="p">,</span> <span class="s1">&#39;Chemical Fertilizer&#39;</span><span class="p">]</span>
+<span class="n">f_Soil_Texture</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;coarse&#39;</span><span class="p">,</span> <span class="s1">&#39;medium&#39;</span><span class="p">,</span> <span class="s1">&#39;fine&#39;</span><span class="p">]</span>
+<span class="n">f_Temp</span><span class="o">=</span> <span class="p">[</span><span class="s1">&#39;300-400&#39;</span><span class="p">,</span> <span class="s1">&#39;400-500&#39;</span><span class="p">,</span> <span class="s1">&#39;500-600&#39;</span><span class="p">,</span> <span class="s1">&#39;700-800&#39;</span><span class="p">,</span> <span class="s1">&#39;600-700&#39;</span><span class="p">,</span> <span class="s1">&#39;&gt;800&#39;</span><span class="p">]</span>
+<span class="n">f_Feedstock</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Biosolids&#39;</span><span class="p">,</span> <span class="s1">&#39;Wood&#39;</span><span class="p">,</span> <span class="s1">&#39;Herbaceous&#39;</span><span class="p">,</span> <span class="s1">&#39;Lignocellulosic waste&#39;</span><span class="p">,</span> <span class="s1">&#39;Manure&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">f_Region</span><span class="p">,</span> <span class="n">f_Fertilizer</span><span class="p">,</span> <span class="n">f_Soil_Texture</span><span class="p">,</span> <span class="n">f_Temp</span><span class="p">,</span> <span class="n">f_Feedstock</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat_features</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Region&#39;, &#39;Fertilizer&#39;, &#39;Soil_Texture&#39;, &#39;Temp&#39;, &#39;Feedstock&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>범주형 특성 4개 기준 평균값</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groupby_count_mean</span><span class="p">([</span><span class="s1">&#39;Fertilizer&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">f_Fertilizer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>RR_count</th>
+      <th>RR_mean</th>
+    </tr>
+    <tr>
+      <th>Fertilizer</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Organic Fertilizer</th>
+      <td>67</td>
+      <td>0.771395</td>
+    </tr>
+    <tr>
+      <th>No Fertilizer</th>
+      <td>26</td>
+      <td>0.976254</td>
+    </tr>
+    <tr>
+      <th>Chemical Fertilizer</th>
+      <td>309</td>
+      <td>0.826562</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groupby_count_mean</span><span class="p">([</span><span class="s1">&#39;Soil_Texture&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">f_Soil_Texture</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>RR_count</th>
+      <th>RR_mean</th>
+    </tr>
+    <tr>
+      <th>Soil_Texture</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>coarse</th>
+      <td>111</td>
+      <td>0.792118</td>
+    </tr>
+    <tr>
+      <th>medium</th>
+      <td>182</td>
+      <td>0.796199</td>
+    </tr>
+    <tr>
+      <th>fine</th>
+      <td>32</td>
+      <td>0.943165</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groupby_count_mean</span><span class="p">([</span><span class="s1">&#39;Temp&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">f_Temp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>RR_count</th>
+      <th>RR_mean</th>
+    </tr>
+    <tr>
+      <th>Temp</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>300-400</th>
+      <td>31</td>
+      <td>0.830455</td>
+    </tr>
+    <tr>
+      <th>400-500</th>
+      <td>138</td>
+      <td>0.780954</td>
+    </tr>
+    <tr>
+      <th>500-600</th>
+      <td>121</td>
+      <td>0.790590</td>
+    </tr>
+    <tr>
+      <th>700-800</th>
+      <td>5</td>
+      <td>1.022879</td>
+    </tr>
+    <tr>
+      <th>600-700</th>
+      <td>48</td>
+      <td>0.789524</td>
+    </tr>
+    <tr>
+      <th>&gt;800</th>
+      <td>20</td>
+      <td>0.833384</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groupby_count_mean</span><span class="p">([</span><span class="s1">&#39;Feedstock&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">f_Feedstock</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>RR_count</th>
+      <th>RR_mean</th>
+    </tr>
+    <tr>
+      <th>Feedstock</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Biosolids</th>
+      <td>13</td>
+      <td>0.382772</td>
+    </tr>
+    <tr>
+      <th>Wood</th>
+      <td>78</td>
+      <td>0.877727</td>
+    </tr>
+    <tr>
+      <th>Herbaceous</th>
+      <td>215</td>
+      <td>0.810537</td>
+    </tr>
+    <tr>
+      <th>Lignocellulosic waste</th>
+      <td>67</td>
+      <td>0.958779</td>
+    </tr>
+    <tr>
+      <th>Manure</th>
+      <td>17</td>
+      <td>0.742221</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">cat_features</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+    <span class="n">idx_x</span><span class="p">,</span> <span class="n">idx_y</span> <span class="o">=</span> <span class="n">idx</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">idx</span> <span class="o">%</span> <span class="mi">2</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">idx_x</span><span class="p">,</span> <span class="n">idx_y</span><span class="p">]</span>
+    <span class="p">(</span><span class="n">groupby_count_mean</span><span class="p">([</span><span class="n">feature</span><span class="p">])</span><span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="nb">eval</span><span class="p">(</span><span class="s2">&quot;f_&quot;</span><span class="o">+</span><span class="n">feature</span><span class="p">))[</span><span class="s1">&#39;RR_mean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">))</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">labelrotation</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">h_pad</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+                                          
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e82d0d548068246265e12dc38ef4dfa8847e890a35f54445462b138e35ef6bb5.png" src="_images/e82d0d548068246265e12dc38ef4dfa8847e890a35f54445462b138e35ef6bb5.png" />
+</div>
+</div>
+</section>
+<section id="id12">
+<h2>수치형 특성 구간화<a class="headerlink" href="#id12" title="Link to this heading">#</a></h2>
+<p>모든 수치형 특성에 대해 구간화를 적용하여 범주형 특성으로 변환한다.</p>
+<p><strong>수치형 특성 확인</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_features</span> <span class="o">=</span> <span class="n">core_field</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;f8&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">num_features</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;N_input&#39;, &#39;Cond_pH&#39;, &#39;Bulk_density&#39;, &#39;Moisture&#39;, &#39;Bio_pH&#39;, &#39;C&#39;, &#39;C/N&#39;,
+       &#39;Application_Rate&#39;, &#39;RR&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>수치형 특성 분포</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">core_field</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>N_input</th>
+      <th>Cond_pH</th>
+      <th>Bulk_density</th>
+      <th>Moisture</th>
+      <th>Bio_pH</th>
+      <th>C</th>
+      <th>C/N</th>
+      <th>Application_Rate</th>
+      <th>RR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>396.000000</td>
+      <td>364.000000</td>
+      <td>207.000000</td>
+      <td>162.000000</td>
+      <td>375.000000</td>
+      <td>371.000000</td>
+      <td>359.000000</td>
+      <td>402.000000</td>
+      <td>402.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>226.975505</td>
+      <td>6.329396</td>
+      <td>1.192174</td>
+      <td>0.484314</td>
+      <td>9.329920</td>
+      <td>0.527461</td>
+      <td>102.220195</td>
+      <td>18.709824</td>
+      <td>0.827049</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>187.985088</td>
+      <td>1.200879</td>
+      <td>0.170706</td>
+      <td>0.210301</td>
+      <td>1.000185</td>
+      <td>0.139111</td>
+      <td>75.783862</td>
+      <td>15.262156</td>
+      <td>0.525317</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>3.870000</td>
+      <td>0.590000</td>
+      <td>0.169000</td>
+      <td>5.590000</td>
+      <td>0.188700</td>
+      <td>9.300000</td>
+      <td>0.010000</td>
+      <td>-2.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>90.000000</td>
+      <td>5.400000</td>
+      <td>1.130000</td>
+      <td>0.288000</td>
+      <td>9.000000</td>
+      <td>0.463200</td>
+      <td>49.400000</td>
+      <td>9.000000</td>
+      <td>0.617183</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>200.000000</td>
+      <td>6.200000</td>
+      <td>1.200000</td>
+      <td>0.504000</td>
+      <td>9.400000</td>
+      <td>0.480000</td>
+      <td>78.900000</td>
+      <td>15.000000</td>
+      <td>0.787523</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>300.000000</td>
+      <td>6.832500</td>
+      <td>1.310000</td>
+      <td>0.665000</td>
+      <td>10.000000</td>
+      <td>0.623300</td>
+      <td>117.100000</td>
+      <td>25.000000</td>
+      <td>0.956570</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>890.000000</td>
+      <td>9.100000</td>
+      <td>1.530000</td>
+      <td>0.984500</td>
+      <td>10.900000</td>
+      <td>0.950000</td>
+      <td>399.500000</td>
+      <td>128.000000</td>
+      <td>7.290323</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">num_features</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="n">id_x</span><span class="p">,</span> <span class="n">id_y</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    
+    <span class="n">_</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">core_field</span><span class="p">[</span><span class="n">feature</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">axes</span><span class="p">[</span><span class="n">id_x</span><span class="p">,</span> <span class="n">id_y</span><span class="p">])</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f3a2dadfa8bdd3cd526fa20bfb9e36683403e17b71b56b3c8c8aaf87fc23353b.png" src="_images/f3a2dadfa8bdd3cd526fa20bfb9e36683403e17b71b56b3c8c8aaf87fc23353b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">core_field</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>N_input</th>
+      <th>Cond_pH</th>
+      <th>Bulk_density</th>
+      <th>Moisture</th>
+      <th>Bio_pH</th>
+      <th>C</th>
+      <th>C/N</th>
+      <th>Application_Rate</th>
+      <th>RR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>396.000000</td>
+      <td>364.000000</td>
+      <td>207.000000</td>
+      <td>162.000000</td>
+      <td>375.000000</td>
+      <td>371.000000</td>
+      <td>359.000000</td>
+      <td>402.000000</td>
+      <td>402.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>226.975505</td>
+      <td>6.329396</td>
+      <td>1.192174</td>
+      <td>0.484314</td>
+      <td>9.329920</td>
+      <td>0.527461</td>
+      <td>102.220195</td>
+      <td>18.709824</td>
+      <td>0.827049</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>187.985088</td>
+      <td>1.200879</td>
+      <td>0.170706</td>
+      <td>0.210301</td>
+      <td>1.000185</td>
+      <td>0.139111</td>
+      <td>75.783862</td>
+      <td>15.262156</td>
+      <td>0.525317</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>0.000000</td>
+      <td>3.870000</td>
+      <td>0.590000</td>
+      <td>0.169000</td>
+      <td>5.590000</td>
+      <td>0.188700</td>
+      <td>9.300000</td>
+      <td>0.010000</td>
+      <td>-2.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>90.000000</td>
+      <td>5.400000</td>
+      <td>1.130000</td>
+      <td>0.288000</td>
+      <td>9.000000</td>
+      <td>0.463200</td>
+      <td>49.400000</td>
+      <td>9.000000</td>
+      <td>0.617183</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>200.000000</td>
+      <td>6.200000</td>
+      <td>1.200000</td>
+      <td>0.504000</td>
+      <td>9.400000</td>
+      <td>0.480000</td>
+      <td>78.900000</td>
+      <td>15.000000</td>
+      <td>0.787523</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>300.000000</td>
+      <td>6.832500</td>
+      <td>1.310000</td>
+      <td>0.665000</td>
+      <td>10.000000</td>
+      <td>0.623300</td>
+      <td>117.100000</td>
+      <td>25.000000</td>
+      <td>0.956570</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>890.000000</td>
+      <td>9.100000</td>
+      <td>1.530000</td>
+      <td>0.984500</td>
+      <td>10.900000</td>
+      <td>0.950000</td>
+      <td>399.500000</td>
+      <td>128.000000</td>
+      <td>7.290323</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>지정된 퍼센트 구간으로 구간화하는 함수</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">featureCut</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">core_field</span><span class="p">,</span> <span class="n">percentiles</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">retbins</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    percentiles: 퍼센트로 구성된 리스트 형식의 값. describe 메서드에 전달됨. </span>
+<span class="sd">                 None은 사분범위를 가리킴.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">percentiles</span><span class="p">:</span>
+        <span class="n">p_length</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">p_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">percentiles</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span>
+
+    <span class="n">bins</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">percentiles</span><span class="o">=</span><span class="n">percentiles</span><span class="p">)</span><span class="o">.</span><span class="n">to_list</span><span class="p">()[</span><span class="o">-</span><span class="n">p_length</span><span class="p">:]</span>
+    <span class="n">bins</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">bins</span><span class="p">))</span> <span class="c1"># 중복삭제</span>
+    <span class="n">bins</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    <span class="n">bins</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="mf">0.1</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">percentiles</span><span class="p">:</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;q</span><span class="si">{</span><span class="n">idx</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">bins</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">feature</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="n">right</span><span class="p">,</span> <span class="n">retbins</span><span class="o">=</span><span class="n">retbins</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>예제: <code class="docutils literal notranslate"><span class="pre">N_input</span></code> 특성값을 4분위수를 이용하여 구간화 진행</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">featureCut</span><span class="p">(</span><span class="s1">&#39;N_input&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0      q2
+1      q2
+2      q3
+3      q3
+4      q1
+       ..
+397    q1
+398    q3
+399    q3
+400    q3
+401    q3
+Name: N_input, Length: 402, dtype: category
+Categories (4, object): [&#39;q1&#39; &lt; &#39;q2&#39; &lt; &#39;q3&#39; &lt; &#39;q4&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>결측치는 그대로 유지된다.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">field</span><span class="p">[</span><span class="s1">&#39;N_input&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">featureCut</span><span class="p">(</span><span class="s1">&#39;N_input&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+</pre></div>
+</div>
+</div>
+</div>
+<section id="id13">
+<h3>수치형 특성 구간별 평균값<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">feature</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">num_features</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="n">idx_x</span><span class="p">,</span> <span class="n">idx_y</span> <span class="o">=</span> <span class="n">idx</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">idx</span> <span class="o">%</span> <span class="mi">2</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">idx_x</span><span class="p">,</span> <span class="n">idx_y</span><span class="p">]</span>
+
+    <span class="n">groupby_count_mean</span><span class="p">([],</span> <span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="n">featureCut</span><span class="p">(</span><span class="n">feature</span><span class="p">)])[</span><span class="s1">&#39;RR_mean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">_</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">labelrotation</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">h_pad</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+                                          
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d7397ca6c62918206967eb7b87bd33f4b7c9e344c9658875eedad031d60a3af8.png" src="_images/d7397ca6c62918206967eb7b87bd33f4b7c9e344c9658875eedad031d60a3af8.png" />
+</div>
+</div>
+</section>
+<section id="id14">
+<h3>수치형 특성 구간화<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">core_field_q</span> <span class="o">=</span> <span class="n">field</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">num_features</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">column</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;RR&#39;</span><span class="p">]:</span>
+        <span class="n">core_field_q</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">featureCut</span><span class="p">(</span><span class="n">column</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">core_field_q</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Region</th>
+      <th>Fertilizer</th>
+      <th>N_input</th>
+      <th>Soil_Texture</th>
+      <th>Cond_pH</th>
+      <th>Bulk_density</th>
+      <th>Moisture</th>
+      <th>Bio_pH</th>
+      <th>C</th>
+      <th>C/N</th>
+      <th>Temp</th>
+      <th>Feedstock</th>
+      <th>Application_Rate</th>
+      <th>RR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Asia</td>
+      <td>Chemical Fertilizer</td>
+      <td>q2</td>
+      <td>coarse</td>
+      <td>q4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>q4</td>
+      <td>q2</td>
+      <td>q2</td>
+      <td>300-400</td>
+      <td>Lignocellulosic waste</td>
+      <td>q1</td>
+      <td>1.853659</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Asia</td>
+      <td>Chemical Fertilizer</td>
+      <td>q2</td>
+      <td>coarse</td>
+      <td>q4</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>q4</td>
+      <td>q2</td>
+      <td>q2</td>
+      <td>300-400</td>
+      <td>Lignocellulosic waste</td>
+      <td>q1</td>
+      <td>1.142857</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Asia</td>
+      <td>Chemical Fertilizer</td>
+      <td>q3</td>
+      <td>coarse</td>
+      <td>q2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>q4</td>
+      <td>q2</td>
+      <td>q2</td>
+      <td>300-400</td>
+      <td>Lignocellulosic waste</td>
+      <td>q1</td>
+      <td>1.636364</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Asia</td>
+      <td>Chemical Fertilizer</td>
+      <td>q3</td>
+      <td>coarse</td>
+      <td>q2</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>q4</td>
+      <td>q2</td>
+      <td>q2</td>
+      <td>300-400</td>
+      <td>Lignocellulosic waste</td>
+      <td>q1</td>
+      <td>0.727273</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Europe</td>
+      <td>No Fertilizer</td>
+      <td>q1</td>
+      <td>coarse</td>
+      <td>q3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>q2</td>
+      <td>q4</td>
+      <td>q3</td>
+      <td>&gt;800</td>
+      <td>Wood</td>
+      <td>q2</td>
+      <td>1.561960</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>397</th>
+      <td>Asia</td>
+      <td>No Fertilizer</td>
+      <td>q1</td>
+      <td>coarse</td>
+      <td>q1</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>q1</td>
+      <td>q1</td>
+      <td>q1</td>
+      <td>400-500</td>
+      <td>Wood</td>
+      <td>q1</td>
+      <td>0.906902</td>
+    </tr>
+    <tr>
+      <th>398</th>
+      <td>Asia</td>
+      <td>Chemical Fertilizer</td>
+      <td>q3</td>
+      <td>medium</td>
+      <td>q1</td>
+      <td>q2</td>
+      <td>NaN</td>
+      <td>q2</td>
+      <td>q4</td>
+      <td>NaN</td>
+      <td>500-600</td>
+      <td>Herbaceous</td>
+      <td>q1</td>
+      <td>0.700820</td>
+    </tr>
+    <tr>
+      <th>399</th>
+      <td>Asia</td>
+      <td>Chemical Fertilizer</td>
+      <td>q3</td>
+      <td>medium</td>
+      <td>q1</td>
+      <td>q2</td>
+      <td>NaN</td>
+      <td>q2</td>
+      <td>q4</td>
+      <td>NaN</td>
+      <td>500-600</td>
+      <td>Herbaceous</td>
+      <td>q3</td>
+      <td>0.676230</td>
+    </tr>
+    <tr>
+      <th>400</th>
+      <td>Asia</td>
+      <td>Chemical Fertilizer</td>
+      <td>q3</td>
+      <td>medium</td>
+      <td>q1</td>
+      <td>q2</td>
+      <td>NaN</td>
+      <td>q2</td>
+      <td>q4</td>
+      <td>NaN</td>
+      <td>500-600</td>
+      <td>Herbaceous</td>
+      <td>q1</td>
+      <td>0.804688</td>
+    </tr>
+    <tr>
+      <th>401</th>
+      <td>Asia</td>
+      <td>Chemical Fertilizer</td>
+      <td>q3</td>
+      <td>medium</td>
+      <td>q1</td>
+      <td>q2</td>
+      <td>NaN</td>
+      <td>q2</td>
+      <td>q4</td>
+      <td>NaN</td>
+      <td>500-600</td>
+      <td>Herbaceous</td>
+      <td>q3</td>
+      <td>0.710938</td>
+    </tr>
+  </tbody>
+</table>
+<p>402 rows × 14 columns</p>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="id15">
+<h2>특성 조합<a class="headerlink" href="#id15" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>예제: ‘Fertilizer’<code class="docutils literal notranslate"><span class="pre">와</span> </code>‘Feedstock’`</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">groupby_count_mean</span><span class="p">([</span><span class="s1">&#39;Fertilizer&#39;</span><span class="p">,</span> <span class="s1">&#39;Feedstock&#39;</span><span class="p">],</span> <span class="n">df</span><span class="o">=</span><span class="n">core_field_q</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th></th>
+      <th>RR_count</th>
+      <th>RR_mean</th>
+    </tr>
+    <tr>
+      <th>Fertilizer</th>
+      <th>Feedstock</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="5" valign="top">Chemical Fertilizer</th>
+      <th>Biosolids</th>
+      <td>13</td>
+      <td>0.382772</td>
+    </tr>
+    <tr>
+      <th>Herbaceous</th>
+      <td>192</td>
+      <td>0.796833</td>
+    </tr>
+    <tr>
+      <th>Lignocellulosic waste</th>
+      <td>46</td>
+      <td>1.021572</td>
+    </tr>
+    <tr>
+      <th>Manure</th>
+      <td>13</td>
+      <td>0.807020</td>
+    </tr>
+    <tr>
+      <th>Wood</th>
+      <td>33</td>
+      <td>0.970984</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">No Fertilizer</th>
+      <th>Biosolids</th>
+      <td>0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Herbaceous</th>
+      <td>12</td>
+      <td>0.986856</td>
+    </tr>
+    <tr>
+      <th>Lignocellulosic waste</th>
+      <td>2</td>
+      <td>1.034404</td>
+    </tr>
+    <tr>
+      <th>Manure</th>
+      <td>2</td>
+      <td>0.949614</td>
+    </tr>
+    <tr>
+      <th>Wood</th>
+      <td>10</td>
+      <td>0.957229</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">Organic Fertilizer</th>
+      <th>Biosolids</th>
+      <td>0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>Herbaceous</th>
+      <td>11</td>
+      <td>0.857380</td>
+    </tr>
+    <tr>
+      <th>Lignocellulosic waste</th>
+      <td>19</td>
+      <td>0.798792</td>
+    </tr>
+    <tr>
+      <th>Manure</th>
+      <td>2</td>
+      <td>0.113633</td>
+    </tr>
+    <tr>
+      <th>Wood</th>
+      <td>35</td>
+      <td>0.767085</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><strong>막대 그래프 활용</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">input_features</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Fertilizer&#39;</span><span class="p">,</span> <span class="s1">&#39;Feedstock&#39;</span><span class="p">]</span>
+<span class="n">groupby_mean</span><span class="p">(</span><span class="n">input_features</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">core_field_q</span><span class="p">)[</span><span class="s1">&#39;RR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Feedstock</th>
+      <th>Biosolids</th>
+      <th>Herbaceous</th>
+      <th>Lignocellulosic waste</th>
+      <th>Manure</th>
+      <th>Wood</th>
+    </tr>
+    <tr>
+      <th>Fertilizer</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Chemical Fertilizer</th>
+      <td>0.382772</td>
+      <td>0.796833</td>
+      <td>1.021572</td>
+      <td>0.807020</td>
+      <td>0.970984</td>
+    </tr>
+    <tr>
+      <th>No Fertilizer</th>
+      <td>NaN</td>
+      <td>0.986856</td>
+      <td>1.034404</td>
+      <td>0.949614</td>
+      <td>0.957229</td>
+    </tr>
+    <tr>
+      <th>Organic Fertilizer</th>
+      <td>NaN</td>
+      <td>0.857380</td>
+      <td>0.798792</td>
+      <td>0.113633</td>
+      <td>0.767085</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">groupby_bar</span><span class="p">(</span><span class="n">feature1</span><span class="p">,</span> <span class="n">feature2</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="n">input_features</span> <span class="o">=</span> <span class="p">[</span><span class="n">feature1</span><span class="p">,</span> <span class="n">feature2</span><span class="p">]</span>
+
+    <span class="n">gMean</span> <span class="o">=</span> <span class="p">(</span><span class="n">groupby_mean</span><span class="p">(</span><span class="n">input_features</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">)[</span><span class="s1">&#39;RR&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">gCount</span> <span class="o">=</span> <span class="n">groupby_count</span><span class="p">(</span><span class="n">input_features</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">)[</span><span class="s1">&#39;RR&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unstack</span><span class="p">()</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">cColumns</span> <span class="o">=</span> <span class="n">gCount</span><span class="o">.</span><span class="n">columns</span>
+
+    <span class="n">gMean</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;RR&quot;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">rot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># 막대 위에 빈도 표기</span>
+    <span class="k">for</span> <span class="n">bars</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">containers</span><span class="p">,</span> <span class="n">cColumns</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">bars</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;&#39;</span> <span class="k">if</span> <span class="n">val</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">gCount</span><span class="p">[</span><span class="n">col</span><span class="p">]])</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">h_pad</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="c1">#     plt.show()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>활용 예제</p></li>
+</ul>
+<p><strong>Region 기준</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">65</span><span class="p">))</span>
+
+<span class="n">feature1</span> <span class="o">=</span> <span class="s1">&#39;Region&#39;</span>
+
+<span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="n">core_field_q</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="p">[</span><span class="n">feature1</span><span class="p">,</span> <span class="s1">&#39;RR&#39;</span><span class="p">]:</span>
+        <span class="k">continue</span>
+    <span class="n">groupby_bar</span><span class="p">(</span><span class="n">feature1</span><span class="p">,</span> <span class="n">feature2</span><span class="p">,</span> <span class="n">core_field_q</span><span class="p">,</span> <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+    <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/98d07779481c03b1b3989e4a7f271196746a01c2180229fa730573340179b5df.png" src="_images/98d07779481c03b1b3989e4a7f271196746a01c2180229fa730573340179b5df.png" />
+</div>
+</div>
+<p><strong>Fertilizer 기준</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">65</span><span class="p">))</span>
+
+<span class="n">feature1</span> <span class="o">=</span> <span class="s1">&#39;Fertilizer&#39;</span>
+
+<span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="n">core_field_q</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="p">[</span><span class="n">feature1</span><span class="p">,</span> <span class="s1">&#39;RR&#39;</span><span class="p">]:</span>
+        <span class="k">continue</span>
+    <span class="n">groupby_bar</span><span class="p">(</span><span class="n">feature1</span><span class="p">,</span> <span class="n">feature2</span><span class="p">,</span> <span class="n">core_field_q</span><span class="p">,</span> <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+    <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d9750659cc793d97fb6d4e687d848fdc1c3e8e0c60ced7b6322a60bd9b3e747f.png" src="_images/d9750659cc793d97fb6d4e687d848fdc1c3e8e0c60ced7b6322a60bd9b3e747f.png" />
+</div>
+</div>
+<p><strong>N_input 기준</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">65</span><span class="p">))</span>
+
+<span class="n">feature1</span> <span class="o">=</span> <span class="s1">&#39;N_input&#39;</span>
+
+<span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="n">core_field_q</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="p">[</span><span class="n">feature1</span><span class="p">,</span> <span class="s1">&#39;RR&#39;</span><span class="p">]:</span>
+        <span class="k">continue</span>
+    <span class="n">groupby_bar</span><span class="p">(</span><span class="n">feature1</span><span class="p">,</span> <span class="n">feature2</span><span class="p">,</span> <span class="n">core_field_q</span><span class="p">,</span> <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+    <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f0f9a080b938217b7397289ea93a91201b60bcb7d9b4f1edeecec4c1e2516c5f.png" src="_images/f0f9a080b938217b7397289ea93a91201b60bcb7d9b4f1edeecec4c1e2516c5f.png" />
+</div>
+</div>
+<p><strong>Soil_Texture 기준</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">65</span><span class="p">))</span>
+
+<span class="n">feature1</span> <span class="o">=</span> <span class="s1">&#39;Soil_Texture&#39;</span>
+
+<span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="n">core_field_q</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="p">[</span><span class="n">feature1</span><span class="p">,</span> <span class="s1">&#39;RR&#39;</span><span class="p">]:</span>
+        <span class="k">continue</span>
+    <span class="n">groupby_bar</span><span class="p">(</span><span class="n">feature1</span><span class="p">,</span> <span class="n">feature2</span><span class="p">,</span> <span class="n">core_field_q</span><span class="p">,</span> <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+    <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/81e405147bd72fce30e33a0e105844bd70733a8a8e02de5af578f5b005b9c765.png" src="_images/81e405147bd72fce30e33a0e105844bd70733a8a8e02de5af578f5b005b9c765.png" />
+</div>
+</div>
+<p><strong>Cond_pH 기준</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">65</span><span class="p">))</span>
+
+<span class="n">feature1</span> <span class="o">=</span> <span class="s1">&#39;Cond_pH&#39;</span>
+
+<span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="n">core_field_q</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="p">[</span><span class="n">feature1</span><span class="p">,</span> <span class="s1">&#39;RR&#39;</span><span class="p">]:</span>
+        <span class="k">continue</span>
+    <span class="n">groupby_bar</span><span class="p">(</span><span class="n">feature1</span><span class="p">,</span> <span class="n">feature2</span><span class="p">,</span> <span class="n">core_field_q</span><span class="p">,</span> <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+    <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0e41cc283ec22bce8dd9ad85ac7b3d99b47e75786afc234ef51c18217e2111ec.png" src="_images/0e41cc283ec22bce8dd9ad85ac7b3d99b47e75786afc234ef51c18217e2111ec.png" />
+</div>
+</div>
+<p><strong>Bulk_density 기준</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">65</span><span class="p">))</span>
+
+<span class="n">feature1</span> <span class="o">=</span> <span class="s1">&#39;Bulk_density&#39;</span>
+
+<span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="n">core_field_q</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="p">[</span><span class="n">feature1</span><span class="p">,</span> <span class="s1">&#39;RR&#39;</span><span class="p">]:</span>
+        <span class="k">continue</span>
+    <span class="n">groupby_bar</span><span class="p">(</span><span class="n">feature1</span><span class="p">,</span> <span class="n">feature2</span><span class="p">,</span> <span class="n">core_field_q</span><span class="p">,</span> <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+    <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/39b027e29441743896fa81b53d5d8cf2e179910753543c0203190a1818a7bac5.png" src="_images/39b027e29441743896fa81b53d5d8cf2e179910753543c0203190a1818a7bac5.png" />
+</div>
+</div>
+<p><strong>Moisture 기준</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">65</span><span class="p">))</span>
+
+<span class="n">feature1</span> <span class="o">=</span> <span class="s1">&#39;Moisture&#39;</span>
+
+<span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="n">core_field_q</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="p">[</span><span class="n">feature1</span><span class="p">,</span> <span class="s1">&#39;RR&#39;</span><span class="p">]:</span>
+        <span class="k">continue</span>
+    <span class="n">groupby_bar</span><span class="p">(</span><span class="n">feature1</span><span class="p">,</span> <span class="n">feature2</span><span class="p">,</span> <span class="n">core_field_q</span><span class="p">,</span> <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+    <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/56d72c56c66688d3be90783b89e1b8a6f0ffaa4756ad54878614d61b77bc7a72.png" src="_images/56d72c56c66688d3be90783b89e1b8a6f0ffaa4756ad54878614d61b77bc7a72.png" />
+</div>
+</div>
+<p><strong>Bio_pH 기준</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">65</span><span class="p">))</span>
+
+<span class="n">feature1</span> <span class="o">=</span> <span class="s1">&#39;Bio_pH&#39;</span>
+
+<span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="n">core_field_q</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="p">[</span><span class="n">feature1</span><span class="p">,</span> <span class="s1">&#39;RR&#39;</span><span class="p">]:</span>
+        <span class="k">continue</span>
+    <span class="n">groupby_bar</span><span class="p">(</span><span class="n">feature1</span><span class="p">,</span> <span class="n">feature2</span><span class="p">,</span> <span class="n">core_field_q</span><span class="p">,</span> <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+    <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c5eb7faab335b1cbdb384cf00bb0d7fcb411ba4ad1290d2f8b26c2531af2c860.png" src="_images/c5eb7faab335b1cbdb384cf00bb0d7fcb411ba4ad1290d2f8b26c2531af2c860.png" />
+</div>
+</div>
+<p><strong>C 기준</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">65</span><span class="p">))</span>
+
+<span class="n">feature1</span> <span class="o">=</span> <span class="s1">&#39;C&#39;</span>
+
+<span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="n">core_field_q</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="p">[</span><span class="n">feature1</span><span class="p">,</span> <span class="s1">&#39;RR&#39;</span><span class="p">]:</span>
+        <span class="k">continue</span>
+    <span class="n">groupby_bar</span><span class="p">(</span><span class="n">feature1</span><span class="p">,</span> <span class="n">feature2</span><span class="p">,</span> <span class="n">core_field_q</span><span class="p">,</span> <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+    <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/04026be8525da72d7f96b485ee1e03d1d9e235aa78ab09decb56115d0929817b.png" src="_images/04026be8525da72d7f96b485ee1e03d1d9e235aa78ab09decb56115d0929817b.png" />
+</div>
+</div>
+<p><strong>C/N 기준</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">65</span><span class="p">))</span>
+
+<span class="n">feature1</span> <span class="o">=</span> <span class="s1">&#39;C/N&#39;</span>
+
+<span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="n">core_field_q</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="p">[</span><span class="n">feature1</span><span class="p">,</span> <span class="s1">&#39;RR&#39;</span><span class="p">]:</span>
+        <span class="k">continue</span>
+    <span class="n">groupby_bar</span><span class="p">(</span><span class="n">feature1</span><span class="p">,</span> <span class="n">feature2</span><span class="p">,</span> <span class="n">core_field_q</span><span class="p">,</span> <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+    <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/27597cb374775996b75fae2972a89197514f7ceecf1b70948a9656db3b77d558.png" src="_images/27597cb374775996b75fae2972a89197514f7ceecf1b70948a9656db3b77d558.png" />
+</div>
+</div>
+<p><strong>Temp 기준</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">65</span><span class="p">))</span>
+
+<span class="n">feature1</span> <span class="o">=</span> <span class="s1">&#39;Temp&#39;</span>
+
+<span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="n">core_field_q</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="p">[</span><span class="n">feature1</span><span class="p">,</span> <span class="s1">&#39;RR&#39;</span><span class="p">]:</span>
+        <span class="k">continue</span>
+    <span class="n">groupby_bar</span><span class="p">(</span><span class="n">feature1</span><span class="p">,</span> <span class="n">feature2</span><span class="p">,</span> <span class="n">core_field_q</span><span class="p">,</span> <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+    <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/fe53695b96eb4474bf304c12a94e5b4b145df2d8c63cf5d56379dcb1bf8b1e6a.png" src="_images/fe53695b96eb4474bf304c12a94e5b4b145df2d8c63cf5d56379dcb1bf8b1e6a.png" />
+</div>
+</div>
+<p><strong>Feedstock 기준</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">65</span><span class="p">))</span>
+
+<span class="n">feature1</span> <span class="o">=</span> <span class="s1">&#39;Feedstock&#39;</span>
+
+<span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="n">core_field_q</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="p">[</span><span class="n">feature1</span><span class="p">,</span> <span class="s1">&#39;RR&#39;</span><span class="p">]:</span>
+        <span class="k">continue</span>
+    <span class="n">groupby_bar</span><span class="p">(</span><span class="n">feature1</span><span class="p">,</span> <span class="n">feature2</span><span class="p">,</span> <span class="n">core_field_q</span><span class="p">,</span> <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+    <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2562ac70d2328fc36a1fd8005c51f4ac5182c9bf541406c257b82c6dddf41ed7.png" src="_images/2562ac70d2328fc36a1fd8005c51f4ac5182c9bf541406c257b82c6dddf41ed7.png" />
+</div>
+</div>
+<p><strong>Application_Rate 기준</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">65</span><span class="p">))</span>
+
+<span class="n">feature1</span> <span class="o">=</span> <span class="s1">&#39;Application_Rate&#39;</span>
+
+<span class="n">idx</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="n">core_field_q</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">feature2</span> <span class="ow">in</span> <span class="p">[</span><span class="n">feature1</span><span class="p">,</span> <span class="s1">&#39;RR&#39;</span><span class="p">]:</span>
+        <span class="k">continue</span>
+    <span class="n">groupby_bar</span><span class="p">(</span><span class="n">feature1</span><span class="p">,</span> <span class="n">feature2</span><span class="p">,</span> <span class="n">core_field_q</span><span class="p">,</span> <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+    <span class="n">idx</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a6430da03a0a2577e504bd592d6d029495d3356867b0cd24a1837e788f52fe84.png" src="_images/a6430da03a0a2577e504bd592d6d029495d3356867b0cd24a1837e788f52fe84.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">최종 목표</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">세부 목표</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">주요 처리 기법</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">필요한 모듈 임포트</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">데이터 불러오기</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#field">Field 데이터</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">데이터 특성 탐색</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">전처리</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">특성명 변경</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">결측치 처리</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">범주형 특성별 그룹화</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">수치형 특성 구간화</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">수치형 특성 구간별 평균값</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14">수치형 특성 구간화</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">특성 조합</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 코딩알지
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
